@@ -1,6 +1,6 @@
-import { apiClientPublic } from "../../services/api-client/swagger-custom-client";
-import { ManagerApi } from "../../services/api-client/swagger-api-client";
 import authService from "../../services/authService";
+import { apiClientPublic } from "../../services/api-client/swagger-custom-client";
+import { ManagerApi } from "gv-api-web";
 
 const profileViewActionTypes = {
   request: "PROFILE_VIEW_REQUEST",

@@ -3,11 +3,10 @@ import { apiClientPublic } from "../../services/api-client/swagger-custom-client
 import {
   ManagerApi,
   LoginViewModel
-} from "../../services/api-client/swagger-api-client/index";
-import authService from "../../services/authService";
+} from "gv-api-web";
+import authService from '../../services/authService';
 import history from "../../utils/history";
 import routes from "../../utils/constants/routes";
-import ApiClient from "../../services/api-client/swagger-api-client/ApiClient";
 
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -32,7 +31,6 @@ const loginUser = (user, from) => async dispatch => {
   dispatch(loginRequest());
 
   const api = new ManagerApi(apiClientPublic());
-  const authorization = `Bearer ${authService.getToken()}`;
   const opts = {
     model: LoginViewModel.constructFromObject(user)
   };

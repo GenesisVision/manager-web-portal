@@ -1,4 +1,4 @@
-import { ApiClient } from "./swagger-api-client";
+import { ApiClient } from "gv-api-web";
 
 export const apiClientPublic = () => {
   const apiClient = ApiClient.instance;

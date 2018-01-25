@@ -1,7 +1,7 @@
 import {
   ManagerApi,
   RegisterManagerViewModel
-} from "../../services/api-client/swagger-api-client";
+} from "gv-api-web";
 import { apiClientPublic } from "../../services/api-client/swagger-custom-client";
 import history from "../../utils/history";
 import routes from "../../utils/constants/routes";
