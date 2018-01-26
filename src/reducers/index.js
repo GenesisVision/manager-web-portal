@@ -7,7 +7,7 @@ import alertMessagesReducer from "./alertMessagesReducer/alertMessagesReducer";
 import authReducer from "./authReducer";
 import loginReducer from "../shared/login/reducers";
 import profileReducer from "./profileReducer/profileReducer";
-import registerReducer from "./registerReducer/registerReducer";
+import registerReducer from "../shared/register/reducers/index";
 import traderReducer from "./traderReducer";
 import tradersReducer from "./tradersReducer";
 import gvtWalletReducer from "./gvtWalletReducer/gvtWalletReducer";

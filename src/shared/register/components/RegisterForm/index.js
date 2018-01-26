@@ -2,10 +2,10 @@ import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 import React from "react";
 
-import FieldInput from "../../../common/FieldInput/FieldInput";
+import FieldInput from "../../../../components/common/FieldInput/FieldInput";
 import routes from "../../../../utils/constants/routes";
 
-import validate from "./RegisterForm.validation";
+import validate from "./validators";
 
 const RegisterForm = ({
   error,

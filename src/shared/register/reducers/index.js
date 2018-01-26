@@ -1,4 +1,4 @@
-import { registerActionTypes } from "../../actions/registerActions/registerActions"
+import * as actionTypes from "../actions/constants"
 
 const initialState = {
   isPending: false,
@@ -7,18 +7,18 @@ const initialState = {
 
 const registerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case registerActionTypes.request:
+    case actionTypes.REGISTER_REQUEST:
       return {
         ...state,
         isPending: true,
       }
-    case registerActionTypes.success:
+    case actionTypes.REGISTER_SUCCESS:
       return {
         ...state,
         isPending: false,
         errorMessage: ''
       }
-    case registerActionTypes.failure:
+    case actionTypes.REGISTER_FAILURE:
       return {
         ...state,
         isPending: false,

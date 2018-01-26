@@ -2,27 +2,22 @@ import {
   ManagerApi,
   RegisterManagerViewModel
 } from "gv-api-web";
-import { apiClientPublic } from "../../services/api-client/swagger-custom-client";
-import history from "../../utils/history";
-import routes from "../../utils/constants/routes";
-
-const registerActionTypes = {
-  request: "REGISTER_REQUEST",
-  success: "REGISTER_SUCCESS",
-  failure: "REGISTER_FAILURE"
-};
+import { apiClientPublic } from "../../../services/api-client/swagger-custom-client";
+import history from "../../../utils/history";
+import routes from "../../../utils/constants/routes";
+import * as actionTypes from "./constants";
 
 export const registerRequest = () => ({
-  type: registerActionTypes.request
+  type: actionTypes.REGISTER_REQUEST
 });
 
 export const registerSuccess = email => ({
-  type: registerActionTypes.success,
+  type: actionTypes.REGISTER_SUCCESS,
   email
 });
 
 export const registerError = message => ({
-  type: registerActionTypes.failure,
+  type: actionTypes.REGISTER_FAILURE,
   message
 });
 
@@ -46,4 +41,4 @@ const registerUser = user => async dispatch => {
 };
 
 const registerActions = { registerUser };
-export { registerActions, registerActionTypes };
+export { registerActions };

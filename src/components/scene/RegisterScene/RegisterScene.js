@@ -2,9 +2,9 @@ import { connect } from "react-redux";
 import { SubmissionError } from "redux-form";
 import React from "react";
 
-import { registerActions } from "../../../actions/registerActions/registerActions";
+import { registerActions } from "../../../shared/register/actions/index";
 import authActions from "../../../actions/authActions";
-import RegisterForm from "./RegisterForm/RegisterForm";
+import RegisterForm from "../../../shared/register/components/RegisterForm/index";
 
 const RegisterScene = ({
   isAuthenticated,
