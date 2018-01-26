@@ -18,14 +18,14 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        profile: action.profile,
+        profile: action.payload,
         errorMessage: ""
       };
     case profileViewActionTypes.failure:
       return {
         ...state,
         isFetching: false,
-        errorMessage: action.message
+        errorMessage: action.payload.message
       };
     case profileEditActionTypes.success:
       return {
