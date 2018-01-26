@@ -1,4 +1,4 @@
-import { alertMessageActions, alertMessageActionTypes } from "./alertMessageActions"
+import { alertMessageActions, alertMessageActionTypes } from "./index"
 
 describe('alertMessageActions', () => {
   const text = 'New text';

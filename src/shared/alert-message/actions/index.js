@@ -1,9 +1,5 @@
 const alertMessageActionTypes = {
-  success: 'ALERT_MESSAGE_SUCCESS',
-  warning: 'ALERT_MESSAGE_WARNING',
-  error: 'ALERT_MESSAGE_ERROR',
-  removeAt: 'ALERT_MESSAGE_REMOVE_AT',
-  clearAll: 'ALERT_MESSAGE_CLEAR_ALL'
+
 }
 
 const success = (text) => ({

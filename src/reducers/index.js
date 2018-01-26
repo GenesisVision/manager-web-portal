@@ -3,7 +3,7 @@ import { loadingBarReducer } from "react-redux-loading-bar";
 import { reducer as formReducer } from "redux-form";
 import { routerReducer } from "react-router-redux";
 
-import alertMessagesReducer from "./alertMessagesReducer/alertMessagesReducer";
+import alertMessagesReducer from "../shared/alert-message/reducers/index";
 import authReducer from "./authReducer";
 import loginReducer from "../shared/login/reducers";
 import profileReducer from "./profileReducer/profileReducer";

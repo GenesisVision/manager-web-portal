@@ -1,6 +1,6 @@
 import { setTimeout } from "timers";
 
-import { alertMessageActions } from "../alertMessageActions/alertMessageActions";
+import { alertMessageActions } from "../../shared/alert-message/actions/index";
 
 const gvtWalletActionTypes = {
   request: "GVT_WALLET_REQUEST",

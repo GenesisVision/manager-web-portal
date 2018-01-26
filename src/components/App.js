@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 import React from "react";
 
-import AlertMessageList from "./common/AlertMessageList/AlertMessageList";
+import AlertMessageList from "../shared/alert-message/components/AlertMessageList/index";
 import ConfirmEmail from "./scene/ConfirmEmail/ConfirmEmail";
 import GvtWalletContainer from "./scene/GvtWalletContainer/GvtWalletContainer";
 import Header from "./layout/Header/Header";
