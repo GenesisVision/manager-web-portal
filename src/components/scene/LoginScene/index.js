@@ -3,8 +3,8 @@ import { SubmissionError } from "redux-form";
 import React from "react";
 
 import authActions from "../../../actions/authActions";
-import loginActions from "../../../actions/loginActions/loginActions";
-import LoginForm from "./LoginForm/LoginForm";
+import loginActions from "../../../shared/login/actions/index";
+import LoginForm from "../../../shared/login/components/LoginForm/index";
 import routes from "../../../utils/constants/routes";
 
 const LoginScene = ({

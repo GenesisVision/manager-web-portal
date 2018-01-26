@@ -1,28 +1,27 @@
-import { apiClientPublic } from "../../services/api-client/swagger-custom-client";
+import * as actionTypes from './constants';
+import { apiClientPublic } from "../../../services/api-client/swagger-custom-client";
 
 import {
   ManagerApi,
   LoginViewModel
 } from "gv-api-web";
-import authService from '../../services/authService';
-import history from "../../utils/history";
-import routes from "../../utils/constants/routes";
+import authService from '../../../services/authService';
+import history from "../../../utils/history";
+import routes from "../../../utils/constants/routes";
 
-export const LOGIN_REQUEST = "LOGIN_REQUEST";
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAILURE = "LOGIN_FAILURE";
+
 
 export const loginRequest = () => ({
-  type: LOGIN_REQUEST
+  type: actionTypes.LOGIN_REQUEST
 });
 
 export const loginSuccess = email => ({
-  type: LOGIN_SUCCESS,
+  type: actionTypes.LOGIN_SUCCESS,
   email
 });
 
 export const loginError = message => ({
-  type: LOGIN_FAILURE,
+  type: actionTypes.LOGIN_FAILURE,
   message
 });
 
@@ -48,16 +47,14 @@ const loginUser = (user, from) => async dispatch => {
   }
 };
 
-export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
-export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
-export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
+
 
 const logoutRequest = () => ({
-  type: LOGOUT_REQUEST
+  type: actionTypes.LOGOUT_REQUEST
 });
 
 const logoutSuccess = () => ({
-  type: LOGOUT_SUCCESS
+  type: actionTypes.LOGOUT_SUCCESS
 });
 
 const logoutUser = () => dispatch => {

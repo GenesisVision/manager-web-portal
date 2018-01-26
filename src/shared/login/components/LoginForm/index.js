@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import * as classnames from "classnames";
 import React from "react";
 
-import FieldInput from "../../../common/FieldInput/FieldInput";
+import FieldInput from "../../../../components/common/FieldInput/FieldInput";
 import routes from "../../../../utils/constants/routes";
 
-import validate from "./LoginForm.validation";
+import validate from "./validators";
 
 const LoginForm = ({
   error,

@@ -1,9 +1,9 @@
-import ApimanagerApi from "../../services/api-client/swagger-api-client/api/ApimanagerApi";
-import authService from "../../services/authService";
-import loginActions, { loginSuccess } from "./loginActions";
+import ApimanagerApi from "gv-api-web";
+import authService from "../../../services/authService";
+import loginActions, { loginSuccess } from "./index";
 
-jest.mock("../../services/api-client/swagger-api-client/api/ApimanagerApi");
-jest.mock("../../utils/history");
+jest.mock("gv-api-web");
+jest.mock("../../../utils/history");
 
 describe("loginActions", () => {
   describe("login user", () => {

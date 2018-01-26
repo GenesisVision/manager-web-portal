@@ -8,7 +8,7 @@ import ConfirmEmail from "./scene/ConfirmEmail/ConfirmEmail";
 import GvtWalletContainer from "./scene/GvtWalletContainer/GvtWalletContainer";
 import Header from "./layout/Header/Header";
 import history from "../utils/history";
-import LoginScene from "./scene/LoginScene/LoginScene";
+import LoginScene from "./scene/LoginScene/index";
 import NotFoundPage from "./scene/NotFoundPage/NotFoundPage";
 import PrivateRoute from "./common/PrivateRoute";
 import RegisterScene from "./scene/RegisterScene/RegisterScene";

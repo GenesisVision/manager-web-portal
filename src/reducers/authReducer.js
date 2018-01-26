@@ -1,6 +1,9 @@
-import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from '../actions/loginActions/loginActions'
-import authService from '../services/authService'
-import { registerActionTypes} from '../actions/registerActions/registerActions'
+import {
+  LOGIN_SUCCESS,
+  LOGOUT_SUCCESS
+} from "../shared/login/actions/constants";
+import { registerActionTypes } from "../actions/registerActions/registerActions";
+import authService from "../services/authService";
 
 const initialState = {
   isAuthenticated: authService.isAuthenticated(),
@@ -14,22 +17,22 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: true,
         username: action.username
-      }
+      };
     case registerActionTypes.success:
       return {
         ...state,
         isAuthenticated: true,
         username: action.username
-      }
+      };
     case LOGOUT_SUCCESS:
       return {
         ...state,
         isAuthenticated: false,
-        username: ''
-      }
+        username: ""
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default authReducer
+export default authReducer;
