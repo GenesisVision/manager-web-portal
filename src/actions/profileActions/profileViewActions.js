@@ -1,8 +1,6 @@
-import { ManagerApi } from "gv-api-web";
-
-import { apiClientPublic } from "../../services/api-client/swagger-custom-client";
 import { SWAGGER_API_ACTION_TYPE } from "../../middleware/swagger-api-middleware/swagger-api-middleware";
 import authService from "../../services/authService";
+import swaggerManagerApi from "../../services/api-client/swagger-manager-api";
 
 const profileViewActionTypes = {
   request: "PROFILE_VIEW_REQUEST",
@@ -16,7 +14,7 @@ const fetchProfile = () => {
     meta: {
       type: "PROFILE_VIEW",
       promise: () => {
-        const api = new ManagerApi(apiClientPublic());
+        const api = new swaggerManagerApi();
         const authorization = `Bearer1 ${authService.getToken()}`;
         return api.apiManagerProfileGet(authorization);
       }

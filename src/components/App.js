@@ -3,14 +3,14 @@ import { Provider } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 import React from "react";
 
-import AlertMessageList from "../shared/alert-message/components/AlertMessageList/index";
+import AlertMessageList from "../shared/modules/alert-message/components/alert-message-list/alert-message-list";
 import ConfirmEmail from "./scene/ConfirmEmail/ConfirmEmail";
 import GvtWalletContainer from "./scene/GvtWalletContainer/GvtWalletContainer";
 import Header from "./layout/Header/Header";
 import history from "../utils/history";
 import LoginScene from "./scene/LoginScene/index";
 import NotFoundPage from "./scene/NotFoundPage/NotFoundPage";
-import PrivateRoute from "./common/PrivateRoute";
+import PrivateRoute from "../shared/components/PrivateRoute";
 import RegisterScene from "./scene/RegisterScene/RegisterScene";
 import routes from "../utils/constants/routes";
 import store from "../store";

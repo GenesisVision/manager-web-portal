@@ -1,7 +1,7 @@
 import { Field, reduxForm } from "redux-form";
 import React from "react";
 
-import FieldInput from "../../../../common/FieldInput/FieldInput";
+import FieldInput from "../../../../../shared/components/FieldInput/FieldInput";
 
 const ProfileForm = ({
   handleSubmit,

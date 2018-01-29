@@ -3,11 +3,11 @@ import { loadingBarReducer } from "react-redux-loading-bar";
 import { reducer as formReducer } from "redux-form";
 import { routerReducer } from "react-router-redux";
 
-import alertMessagesReducer from "../shared/alert-message/reducers/index";
+import alertMessagesReducer from "../shared/modules/alert-message/reducers/alert-message-reducers";
 import authReducer from "./authReducer";
-import loginReducer from "../shared/login/reducers";
+import loginReducer from "../shared/modules/login/reducers/login-reducers";
 import profileReducer from "./profileReducer/profileReducer";
-import registerReducer from "../shared/register/reducers/index";
+import registerReducer from "../shared/modules/register/reducers/register-reducers";
 import traderReducer from "./traderReducer";
 import tradersReducer from "./tradersReducer";
 import gvtWalletReducer from "./gvtWalletReducer/gvtWalletReducer";
