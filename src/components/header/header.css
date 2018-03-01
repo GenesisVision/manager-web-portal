@@ -1,0 +1,20 @@
+.header {
+  background: white;
+  box-shadow: 0 0.25rem 0.75rem rgba(24, 79, 97, 0.05);
+  border-bottom: 1px solid rgba(24, 79, 97, 0.2); }
+
+.header__link {
+  color: #184f61; }
+  .header__link:hover {
+    color: #03bdaf; }
+
+.header__loading-bar {
+  position: absolute;
+  height: 3px;
+  background: #184f61;
+  background: linear-gradient(to right, #184f61, #03bdaf); }
+
+.nav-link__profile {
+  color: #184f61 !important; }
+  .nav-link__profile:hover {
+    color: #03bdaf !important; }

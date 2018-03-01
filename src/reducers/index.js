@@ -1,27 +1,37 @@
 import { combineReducers } from "redux";
 import { loadingBarReducer } from "react-redux-loading-bar";
-import { reducer as formReducer } from "redux-form";
 import { routerReducer } from "react-router-redux";
 
 import alertMessagesReducer from "../shared/modules/alert-message/reducers/alert-message-reducers";
 import authReducer from "./authReducer";
+import dashboardReducer from "../modules/dashboard/reducers/dashboard-reducers";
 import loginReducer from "../shared/modules/login/reducers/login-reducers";
-import profileReducer from "./profileReducer/profileReducer";
+import profileFormReducer from "../modules/profile/reducers/profile-form-reducers";
+import profileReducer from "../modules/profile/reducers/profile-reducers";
 import registerReducer from "../shared/modules/register/reducers/register-reducers";
-import traderReducer from "./traderReducer";
-import tradersReducer from "./tradersReducer";
-import gvtWalletReducer from "./gvtWalletReducer/gvtWalletReducer";
+import traderDepositReducer from "../modules/trader-deposit/reducers/trader-deposit-reducers";
+import traderReducer from "../modules/traders/reducers/trader-reducers";
+import tradersReducer from "../modules/traders/reducers/traders-reducers";
+import traderWithdrawReducer from "../modules/trader-withdraw/reducers/trader-withdraw-reducers";
+import walletAddressReducer from "../modules/wallet/reducers/wallet-address-reducer";
+import walletReducer from "../modules/wallet/reducers/wallet-reducers";
+import walletTransactionsReducer from "../modules/wallet/reducers/wallet-transactions-reducer";
 
 export default combineReducers({
   routing: routerReducer,
-  form: formReducer,
   loadingBar: loadingBarReducer,
-  tradersInfo: tradersReducer,
+  tradersData: tradersReducer,
   traderData: traderReducer,
   loginData: loginReducer,
   registerData: registerReducer,
   authData: authReducer,
+  alertMessages: alertMessagesReducer,
   profileData: profileReducer,
-  gvtWalletData: gvtWalletReducer,
-  alertMessages: alertMessagesReducer
+  profileFormData: profileFormReducer,
+  walletData: walletReducer,
+  walletTransactionsData: walletTransactionsReducer,
+  walletAddressData: walletAddressReducer,
+  dashboardData: dashboardReducer,
+  traderDepositData: traderDepositReducer,
+  traderWithdrawData: traderWithdrawReducer
 });

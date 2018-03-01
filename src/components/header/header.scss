@@ -1,0 +1,28 @@
+@import "styles/_colors.scss";
+
+.header {
+  background: white;
+  box-shadow: 0 0.25rem 0.75rem rgba($main-color, 0.05);
+  border-bottom: 1px solid rgba($main-color, 0.2);
+}
+
+.header__link {
+  color: $text-color;
+  &:hover {
+    color: $text-color-light;
+  }
+}
+
+.header__loading-bar {
+  position: absolute;
+  height: 3px;
+  background: $main-color;
+  background: linear-gradient(to right, $main-color, $alternate-color);
+}
+
+.nav-link__profile {
+  color: $text-color !important;
+  &:hover {
+    color: $text-color-light !important;
+  }
+}

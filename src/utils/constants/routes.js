@@ -3,11 +3,7 @@ import { BASE_ROUTE } from "./index";
 const routes = {
   index: "/",
   login: "/login",
-  signup: "/singup",
-  confirmEmail: "/confirm-email",
-  profile: "/profile",
-  investmentPrograms: "/investment-programs",
-  gvtWallet: "/gvt-wallet"
+  signup: "/singup"
 };
 
 const addBaseRoutePrefix = routes => {

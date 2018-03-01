@@ -19,7 +19,6 @@ const refreshToken = async () => {
 const callApi = (url, options, authenticated) => {
   let headers = {
     'Accept': 'application/json',
-    'api-version': '1.0'
   };
 
   options = {
