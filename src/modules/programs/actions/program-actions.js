@@ -17,8 +17,8 @@ const submitProgramForm = formData => {
   return {
     type: actionTypes.PROGRAM_FORM_SUBMIT,
     payload: SwaggerManagerApi.apiManagerAccountNewInvestmentRequestPost(
-      data,
-      authService.getAuthArg()
+      authService.getAuthArg(),
+      data
     )
   };
 };
