@@ -9,7 +9,8 @@ const Header = props => {
   const routes = {
     profile: "/profile",
     gvtWallet: "/wallet",
-    investmentPrograms: "/traders"
+    traders: "/traders",
+    investmentPrograms: "/investment-programs"
   };
   return (
     <header>
@@ -18,6 +19,7 @@ const Header = props => {
         <div className="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul className="navbar-nav mr-auto">
             <MenuLink url={routes.profile} name="Profile" match={match} />
+            <MenuLink url={routes.traders} name="Traders" match={match} />
             <MenuLink
               url={routes.investmentPrograms}
               name="Investment Programs"

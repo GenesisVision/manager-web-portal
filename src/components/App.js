@@ -6,7 +6,6 @@ import React from "react";
 import AlertMessageList from "../shared/modules/alert-message/components/alert-message-list/alert-message-list";
 import Header from "./header/header";
 import history from "../utils/history";
-import Sidebar from "./sidebar/sidebar";
 import store from "../store/index";
 
 import AppRoutes from "./app.routes";
