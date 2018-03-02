@@ -192,42 +192,6 @@ const ProgramCreateForm = ({
                 />
               </div>
             </div>
-            <div className="row">
-              <div className="col-6">Fee Entrance</div>
-              <div className="col-6">
-                <Field
-                  type="number"
-                  name="feeEntrance"
-                  placeholder="Fee Entrance"
-                  addon="fas fa-question"
-                  component={InputText}
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-6">Invest Min Amount</div>
-              <div className="col-6">
-                <Field
-                  type="number"
-                  name="investMinAmount"
-                  placeholder="Invest Min Amount"
-                  addon="fas fa-question"
-                  component={InputText}
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-6">Invest Max Amount</div>
-              <div className="col-6">
-                <Field
-                  type="number"
-                  name="investMaxAmount"
-                  placeholder="Invest Max Amount"
-                  addon="fas fa-question"
-                  component={InputText}
-                />
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -252,11 +216,8 @@ export default withFormik({
     period: "",
     dateFrom: "",
     dateTo: "",
-    feeEntrance: "",
     feeSuccess: "",
-    feeManagement: "",
-    investMinAmount: "",
-    investMaxAmount: ""
+    feeManagement: ""
   }),
   validationSchema: programCreateFormValidationSchema,
   handleSubmit: (values, { props, setSubmitting }) => {
