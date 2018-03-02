@@ -10,7 +10,13 @@ const ProgramCreateForm = ({
   programForm,
   isSubmitting,
   handleSubmit,
-  error
+  error,
+  values,
+  touched,
+  errors,
+  handleChange,
+  handleBlur,
+  dirty
 }) => {
   const brokerList = () => {
     const list = programForm.brokers.map(x => (
@@ -248,9 +254,11 @@ export default withFormik({
     dateTo: "",
     feeEntrance: "",
     feeSuccess: "",
-    feeManagement: ""
+    feeManagement: "",
+    investMinAmount: "",
+    investMaxAmount: ""
   }),
-  //validationSchema: programCreateFormValidationSchema,
+  validationSchema: programCreateFormValidationSchema,
   handleSubmit: (values, { props, setSubmitting }) => {
     props.onSubmit(values, setSubmitting);
   }
