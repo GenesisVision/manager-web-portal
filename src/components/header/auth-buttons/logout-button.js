@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import React from "react";
 
-import loginActions from "../../../shared/modules/login/actions/login-actions";
+import loginActions from "../../../modules/login/actions/login-actions";
 
 const LogoutButton = ({ username, logoutUser }) => (
   <div>
