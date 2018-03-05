@@ -1,12 +1,12 @@
 import authService from "../../../services/authService";
-import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
+import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./profile-actions.constants";
 
 const fetchProfile = () => {
   return {
     type: actionTypes.PROFILE,
-    payload: SwaggerInvestorApi.apiInvestorProfileFullGet(
+    payload: SwaggerManagerApi.apiManagerProfileFullGet(
       authService.getAuthArg()
     )
   };

@@ -2,7 +2,7 @@ import { ProfileFullViewModel } from "gv-api-web";
 
 import authService from "../../../services/authService";
 import history from "../../../utils/history";
-import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
+import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import { PROFILE_FORM } from "./profile-actions.constants";
 import { PROFILE_ROUTE } from "../profile.constants";
@@ -13,7 +13,7 @@ const updateProfile = profileFormData => {
   };
   return {
     type: PROFILE_FORM,
-    payload: SwaggerInvestorApi.apiInvestorProfileUpdatePost(
+    payload: SwaggerManagerApi.apiManagerProfileUpdatePost(
       authService.getAuthArg(),
       opts
     ).then(response => {
