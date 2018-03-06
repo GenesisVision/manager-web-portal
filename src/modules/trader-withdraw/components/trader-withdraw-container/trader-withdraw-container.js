@@ -2,9 +2,10 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import React from "react";
 
-import routes from "../../../../utils/constants/routes";
 import traderWithdrawActions from "../../actions/trader-withdraw-actions";
 import TraderWithdrawModal from "./trader-withdraw-modal/trader-withdraw-modal";
+
+import { TRADER_ROUTE } from "../../../traders/traders.constants";
 
 const TraderWithdrawContainer = ({
   location,
@@ -22,7 +23,7 @@ const TraderWithdrawContainer = ({
     fetchWithdraw();
     return null;
   }
-  const { from } = location.state || { from: { pathname: routes.index } };
+  const { from } = location.state || { from: { pathname: TRADER_ROUTE } };
   const handleCloseModal = () => {
     closeModal(from);
   };

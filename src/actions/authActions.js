@@ -1,9 +1,9 @@
-import history from '../utils/history'
-import routes from '../utils/constants/routes'
+import history from "../utils/history";
+import { HOME_ROUTE } from "../components/app.constants";
 
-const alreadyAuthenticated = () => (dispatch) => {
-    history.push(routes.index);
-}
+const alreadyAuthenticated = () => dispatch => {
+  history.push(HOME_ROUTE);
+};
 
-const authActions = { alreadyAuthenticated }
-export default authActions
+const authActions = { alreadyAuthenticated };
+export default authActions;
