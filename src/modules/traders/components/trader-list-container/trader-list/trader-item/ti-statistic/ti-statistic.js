@@ -19,7 +19,7 @@ const TIStatistic = ({ trader }) => {
   });
   return (
     <div className="row">
-      <div className="col-4">
+      <div className="col-6">
         <p>Balance: {trader.balance} GVT</p>
         <p>Trades: {trader.tradesCount}</p>
         <p>Investors: {trader.investorsCount}</p>
@@ -31,26 +31,6 @@ const TIStatistic = ({ trader }) => {
         <p>EOP: {/*trader.endOfPeriod*/}</p>
         <p>Fee Success: {trader.feeSuccess}</p>
         <p>Fee Management: {trader.feeManagement}</p>
-      </div>
-      <div className="col-2">
-        <Link
-          to={{
-            pathname: traderDepositUrl,
-            state: { from: TRADERS_ROUTE }
-          }}
-          className="btn btn-outline-primary"
-        >
-          Buy tokens
-        </Link>
-        <Link
-          to={{
-            pathname: traderWithdrawUrl,
-            state: { from: TRADERS_ROUTE }
-          }}
-          className="btn btn-outline-secondary mt-4"
-        >
-          Sell tokens
-        </Link>
       </div>
     </div>
   );

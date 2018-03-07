@@ -10,13 +10,18 @@ class TraderContainer extends Component {
     this.props.fetchTrader(traderId);
   }
   render() {
-    const { isPending, trader } = this.props;
+    const { isPending, trader, closeTraderProgram } = this.props;
 
     if (isPending || trader === undefined) {
       return null;
     }
 
-    return <Trader trader={trader.investmentProgram} />;
+    return (
+      <Trader
+        trader={trader.investmentProgram}
+        closeTraderProgram={closeTraderProgram}
+      />
+    );
   }
 }
 
@@ -28,6 +33,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   fetchTrader: traderId => {
     dispatch(tradersActions.fetchTrader(traderId));
+  },
+  closeTraderProgram: traderId => () => {
+    dispatch(tradersActions.closeTraderProgram(traderId));
   }
 });
 

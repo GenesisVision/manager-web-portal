@@ -6,3 +6,6 @@
 
 .ti-info__image {
   position: relative; }
+  .ti-info__image img {
+    max-width: 130px;
+    max-height: 130px; }

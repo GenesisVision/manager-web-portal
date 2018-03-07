@@ -1,25 +1,10 @@
 import React from "react";
 
-import replaceParams from "../../../../../../utils/replace-params";
 import TSCards from "./ts-cards/ts-cards";
 
-import {
-  TRADER_DEPOSIT_ROUTE,
-  TRADER_WITHDRAW_ROUTE,
-  TRADER_ROUTE
-} from "../../../../traders.constants";
-import { Link } from "react-router-dom";
+import TSButtons from "./ts-buttons/ts-buttons";
 
-const TraderStatistic = ({ trader }) => {
-  const traderDepositUrl = replaceParams(TRADER_DEPOSIT_ROUTE, {
-    ":traderId": trader.id
-  });
-  const traderWithdrawUrl = replaceParams(TRADER_WITHDRAW_ROUTE, {
-    ":traderId": trader.id
-  });
-  const traderUrl = replaceParams(TRADER_ROUTE, {
-    ":traderId": trader.id
-  });
+const TraderStatistic = ({ trader, closeTraderProgram }) => {
   return (
     <div>
       <TSCards
@@ -40,24 +25,13 @@ const TraderStatistic = ({ trader }) => {
           <p>Success Fee: {trader.feeSuccess} %</p>
         </div>
         <div className="col-1">
-          <Link
-            to={{
-              pathname: traderDepositUrl,
-              state: { from: traderUrl }
-            }}
-            className="btn btn-outline-primary"
-          >
-            Buy tokens
-          </Link>
-          <Link
-            to={{
-              pathname: traderWithdrawUrl,
-              state: { from: traderUrl }
-            }}
-            className="btn btn-outline-secondary mt-4"
-          >
-            Sell tokens
-          </Link>
+          <TSButtons
+            traderId={trader.id}
+            isOwnProgram={trader.isOwnProgram}
+            isInvestEnable={trader.isInvestEnable}
+            isWithdrawEnable={trader.isWithdrawEnable}
+            closeTraderProgram={closeTraderProgram(trader.id)}
+          />
         </div>
       </div>
     </div>
