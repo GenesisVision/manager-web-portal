@@ -11,6 +11,7 @@ import {
 const TSButtons = ({
   traderId,
   isOwnProgram,
+  isEnable,
   isInvestEnable,
   isWithdrawEnable,
   closeTraderProgram
@@ -55,14 +56,16 @@ const TSButtons = ({
     );
   };
   const renderCloseProgramButton = () => {
-    return (
+    return isEnable ? (
       <button className="btn btn-outline-warning" onClick={closeTraderProgram}>
         Close Program
       </button>
+    ) : (
+      <div>Can not close program</div>
     );
   };
 
-  if (isOwnProgram) {
+  if (!isOwnProgram) {
     return null;
   }
   return (

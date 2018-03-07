@@ -1,7 +1,9 @@
 import authService from "../../../services/authService";
 import filesService from "../../../shared/services/file-service";
+import history from "../../../utils/history";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
+import { TRADERS_ROUTE } from "../traders.constants";
 import * as actionTypes from "./traders-actions.constants";
 
 const fetchTraders = () => {
@@ -42,5 +44,14 @@ const closeTraderProgram = traderId => {
   };
 };
 
-const tradersActions = { fetchTraders, fetchTrader, closeTraderProgram };
+const openTradersPage = () => {
+  history.pushState(TRADERS_ROUTE);
+};
+
+const tradersActions = {
+  fetchTraders,
+  fetchTrader,
+  closeTraderProgram,
+  openTradersPage
+};
 export default tradersActions;

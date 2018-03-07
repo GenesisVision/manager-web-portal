@@ -1,8 +1,7 @@
 import React from "react";
 
-import TSCards from "./ts-cards/ts-cards";
-
 import TSButtons from "./ts-buttons/ts-buttons";
+import TSCards from "./ts-cards/ts-cards";
 
 const TraderStatistic = ({ trader, closeTraderProgram }) => {
   return (
@@ -28,6 +27,7 @@ const TraderStatistic = ({ trader, closeTraderProgram }) => {
           <TSButtons
             traderId={trader.id}
             isOwnProgram={trader.isOwnProgram}
+            isEnable={trader.isEnable}
             isInvestEnable={trader.isInvestEnable}
             isWithdrawEnable={trader.isWithdrawEnable}
             closeTraderProgram={closeTraderProgram(trader.id)}
