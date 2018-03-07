@@ -56,6 +56,9 @@ const ProgramCreateForm = ({
             <Field name="brokerTradeServerId" component="select">
               {brokerList()}
             </Field>
+            {errors["brokerTradeServerId"] && (
+              <div className="">{errors["brokerTradeServerId"]}</div>
+            )}
           </div>
         </div>
       </div>
