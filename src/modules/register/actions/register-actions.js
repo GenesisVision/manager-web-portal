@@ -1,7 +1,7 @@
 import { RegisterManagerViewModel } from "gv-api-web";
 
 import history from "../../../utils/history";
-import swaggerInvestorApi from "../../../services/api-client/swagger-manager-api";
+import swaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
 
 import { HOME_ROUTE } from "../../../components/app.constants";
 import * as actionTypes from "./register-actions.constants";
