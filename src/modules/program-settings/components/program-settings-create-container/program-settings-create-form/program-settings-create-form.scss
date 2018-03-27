@@ -1,0 +1,23 @@
+.create-program-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.create-program-form__program-detail {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.create-program-form__header {
+  font-size: 2.2rem;
+}
+
+.create-program-form__program-description,
+.create-program-form__program-settings {
+  flex: 1;
+  max-width: 436px;
+}

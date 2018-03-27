@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 
 import programActions from "../../actions/program-settings-actions";
-import ProgramCreateForm from "../program-create-form/program-create-form";
+import ProgramCreateForm from "./program-settings-create-form/program-settings-create-form";
 
 class ProgramSettingsCreateContainer extends Component {
   componentWillMount() {
