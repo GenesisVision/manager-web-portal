@@ -1,6 +1,6 @@
 import { ProfileFullViewModel } from "gv-api-web";
 
-import authService from "../../../services/authService";
+import authService from "../../../services/auth-service";
 import history from "../../../utils/history";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 

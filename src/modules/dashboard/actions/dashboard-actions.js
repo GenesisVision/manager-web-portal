@@ -1,13 +1,13 @@
 import authService from "../../../services/auth-service";
 import filesService from "../../../shared/services/file-service";
-import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
+import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./dashboard-actions.constants";
 
 const fetchDashboardPrograms = () => {
   return {
     type: actionTypes.DASHBOARD_PROGRAMS,
-    payload: SwaggerInvestorApi.apiInvestorDashboardGet(
+    payload: SwaggerManagerApi.apiManagerDashboardGet(
       authService.getAuthArg()
     ).then(response => {
       response.investmentPrograms.forEach(x => {
@@ -27,7 +27,7 @@ const fetchDashboardChart = () => {
   };
   return {
     type: actionTypes.DASHBOARD_CHART,
-    payload: SwaggerInvestorApi.apiInvestorWalletStatisticPost(
+    payload: SwaggerManagerApi.apiManagerWalletStatisticPost(
       authService.getAuthArg(),
       data
     )

@@ -1,5 +1,5 @@
 import authService from "../../../services/auth-service";
-import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
+import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./trader-withdraw-actions.constants";
 
@@ -22,7 +22,7 @@ const submitTraderWithdraw = (traderId, amount) => {
   };
   return {
     type: actionTypes.TRADER_WITHDRAW_SUBMIT,
-    payload: SwaggerInvestorApi.apiInvestorInvestmentProgramsWithdrawPost(
+    payload: SwaggerManagerApi.apiManagerInvestmentProgramsWithdrawPost(
       authService.getAuthArg(),
       { model }
     )

@@ -5,7 +5,7 @@ import {
 import authService from "../../../services/auth-service";
 import filesService from "../../../shared/services/file-service";
 import pagingActionsFactory from "../../paging/actions/paging-actions";
-import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
+import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./trader-actions.constants";
 
@@ -17,7 +17,7 @@ const fetchTrader = traderId => {
 
   return {
     type: actionTypes.TRADER_DETAIL,
-    payload: SwaggerInvestorApi.apiInvestorInvestmentProgramGet(
+    payload: SwaggerManagerApi.apiManagerInvestmentProgramGet(
       traderId,
       data
     ).then(response => {
@@ -33,7 +33,7 @@ const fetchTraderHistory = traderId => {
 
   return {
     type: actionTypes.TRADER_HISTORY,
-    payload: SwaggerInvestorApi.apiInvestorInvestmentProgramTradesPost({
+    payload: SwaggerManagerApi.apiManagerInvestmentProgramTradesPost({
       filter
     }).then(response => {
       return response.trades.map(x => ({ profit: x.profit, date: x.date }));
@@ -49,7 +49,7 @@ const fetchTraderRequests = traderId => (dispatch, getState) => {
 
   return dispatch({
     type: actionTypes.TRADER_REQUESTS,
-    payload: SwaggerInvestorApi.apiInvestorInvestmentProgramRequestsPost(
+    payload: SwaggerManagerApi.apiManagerInvestmentProgramRequestsPost(
       authService.getAuthArg(),
       { filter }
     )
@@ -86,7 +86,7 @@ const fetchTraderDealList = traderId => (dispatch, getState) => {
   };
   return dispatch({
     type: actionTypes.TRADER_DEALS,
-    payload: SwaggerInvestorApi.apiInvestorInvestmentProgramTradesPost({
+    payload: SwaggerManagerApi.apiManagerInvestmentProgramTradesPost({
       filter
     })
   }).then(response => {
@@ -108,7 +108,7 @@ const updateTraderDealListPagingAndFetch = (traderId, paging) => dispatch => {
 const cancelTraderRequest = (traderId, requestId) => dispatch => {
   return dispatch({
     type: actionTypes.TRADER_CANCEL_REQUEST,
-    payload: SwaggerInvestorApi.apiInvestorInvestmentProgramsCancelInvestmentRequestPost(
+    payload: SwaggerManagerApi.apiManagerInvestmentProgramsCancelInvestmentRequestPost(
       requestId,
       authService.getAuthArg()
     )

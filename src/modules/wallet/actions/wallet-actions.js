@@ -5,7 +5,7 @@ import {
 import authService from "../../../services/auth-service";
 import filterPaneActionsFactory from "../../filter-pane/actions/filter-pane-actions";
 import pagingActionsFactory from "../../paging/actions/paging-actions";
-import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
+import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./wallet-actions.constants";
 import filteringActionsFactory from "../../filtering/actions/filtering-actions";
@@ -13,14 +13,14 @@ import filteringActionsFactory from "../../filtering/actions/filtering-actions";
 const fetchWallet = () => {
   return {
     type: actionTypes.WALLET,
-    payload: SwaggerInvestorApi.apiInvestorWalletGet(authService.getAuthArg())
+    payload: SwaggerManagerApi.apiManagerWalletGet(authService.getAuthArg())
   };
 };
 
 const fetchWalletAddress = () => {
   return {
     type: actionTypes.WALLET_ADDRESS,
-    payload: SwaggerInvestorApi.apiInvestorWalletAddressGet(
+    payload: SwaggerManagerApi.apiManagerWalletAddressGet(
       authService.getAuthArg()
     )
   };
@@ -43,7 +43,7 @@ const fetchWalletTransactions = () => (dispatch, getState) => {
 
   dispatch({
     type: actionTypes.WALLET_TRANSACTIONS,
-    payload: SwaggerInvestorApi.apiInvestorWalletTransactionsPost(
+    payload: SwaggerManagerApi.apiManagerWalletTransactionsPost(
       authService.getAuthArg(),
       { filter }
     )
@@ -61,7 +61,7 @@ const fetchWalletChart = () => (dispatch, getState) => {
   }
   dispatch({
     type: actionTypes.WALLET_CHART,
-    payload: SwaggerInvestorApi.apiInvestorWalletStatisticPost(
+    payload: SwaggerManagerApi.apiManagerWalletStatisticPost(
       authService.getAuthArg(),
       { filter }
     )
@@ -71,7 +71,7 @@ const fetchWalletChart = () => (dispatch, getState) => {
 const fetchWalletTransactionProgramFilter = () => {
   return {
     type: actionTypes.WALLET_FILER_PANE_PROGRAMS,
-    payload: SwaggerInvestorApi.apiInvestorWalletTransactionsInvestmentProgramsListGet(
+    payload: SwaggerManagerApi.apiManagerWalletTransactionsInvestmentProgramsListGet(
       authService.getAuthArg()
     )
   };
@@ -122,7 +122,7 @@ const walletWithdraw = withdrawData => {
   };
   return {
     type: actionTypes.WALLET_WITHDRAW,
-    payload: SwaggerInvestorApi.apiInvestorWalletWithdrawRequestPost(
+    payload: SwaggerManagerApi.apiManagerWalletWithdrawRequestPost(
       authService.getAuthArg(),
       data
     )

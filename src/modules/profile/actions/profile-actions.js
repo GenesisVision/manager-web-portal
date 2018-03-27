@@ -1,4 +1,4 @@
-import authService from "../../../services/authService";
+import authService from "../../../services/auth-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./profile-actions.constants";

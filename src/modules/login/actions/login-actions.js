@@ -1,12 +1,12 @@
 import { LoginViewModel } from "gv-api-web";
 
-import swaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
+import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./login-actions.constants";
 
 const loginUser = loginData => ({
   type: actionTypes.LOGIN,
-  payload: swaggerInvestorApi.apiInvestorAuthSignInPostWithHttpInfo({
+  payload: SwaggerManagerApi.apiManagerAuthSignInPostWithHttpInfo({
     model: LoginViewModel.constructFromObject(loginData)
   })
 });

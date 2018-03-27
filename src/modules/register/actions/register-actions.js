@@ -1,12 +1,12 @@
 import { RegisterManagerViewModel } from "gv-api-web";
 
-import swaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
+import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./register-actions.constants";
 
 const registerUser = registerData => ({
   type: actionTypes.REGISTER,
-  payload: swaggerInvestorApi.apiInvestorAuthSignUpPostWithHttpInfo({
+  payload: SwaggerManagerApi.apiManagerAuthSignUpPostWithHttpInfo({
     model: RegisterManagerViewModel.constructFromObject(registerData)
   })
 });

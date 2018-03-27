@@ -2,7 +2,7 @@ import authService from "../../../services/auth-service";
 import filesService from "../../../shared/services/file-service";
 import filteringActionsFactory from "../../filtering/actions/filtering-actions";
 import filterPaneActionsFactory from "../../filter-pane/actions/filter-pane-actions";
-import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
+import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./traders-actions.constants";
 import {
@@ -44,7 +44,7 @@ const fetchTraders = () => (dispatch, getState) => {
 
   return dispatch({
     type: actionTypes.TRADERS,
-    payload: SwaggerInvestorApi.apiInvestorInvestmentProgramsPost(data).then(
+    payload: SwaggerManagerApi.apiManagerInvestmentProgramsPost(data).then(
       response => {
         response.investmentPrograms.forEach(x => {
           x.logo = filesService.getFileUrl(x.logo);

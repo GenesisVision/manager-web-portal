@@ -1,5 +1,5 @@
 import authService from "../../../services/auth-service";
-import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
+import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 import * as actionTypes from "./wallet-pane-actions.constants";
 
 const fetchWalletPaneTransactions = () => {
@@ -10,7 +10,7 @@ const fetchWalletPaneTransactions = () => {
   };
   return {
     type: actionTypes.WALLET_PANE_TRANSACTIONS,
-    payload: SwaggerInvestorApi.apiInvestorWalletTransactionsPost(
+    payload: SwaggerManagerApi.apiManagerWalletTransactionsPost(
       authService.getAuthArg(),
       data
     )
@@ -26,7 +26,7 @@ const fetchWalletPaneChart = () => {
   };
   return {
     type: actionTypes.WALLET_PANE_CHART,
-    payload: SwaggerInvestorApi.apiInvestorWalletStatisticPost(
+    payload: SwaggerManagerApi.apiManagerWalletStatisticPost(
       authService.getAuthArg(),
       data
     )

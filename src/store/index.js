@@ -9,7 +9,7 @@ import rootReducer from "../reducers";
 import apiErrorHandlerMiddleware from "../shared/middlewares/api-error-handler-middleware/api-error-handler-middleware";
 import refreshTokenMiddleware from "../shared/middlewares/refresh-token-middleware/refresh-token-middleware";
 import authService from "../services/auth-service";
-import SwaggerInvestorApi from "../services/api-client/swagger-investor-api";
+import SwaggerManagerApi from "../services/api-client/swagger-manager-api";
 
 const failureSuffix = "FAILURE";
 const suffixes = ["REQUEST", "SUCCESS", failureSuffix];
@@ -20,7 +20,7 @@ const middleware = [
   thunk,
   refreshTokenMiddleware(
     authService,
-    SwaggerInvestorApi.apiInvestorAuthUpdateTokenGet.bind(SwaggerInvestorApi)
+    SwaggerManagerApi.apiManagerAuthUpdateTokenGet.bind(SwaggerManagerApi)
   ),
   promiseMiddleware({ promiseTypeSuffixes: suffixes }),
   apiErrorHandlerMiddleware({ failureSuffix: failureSuffix }),

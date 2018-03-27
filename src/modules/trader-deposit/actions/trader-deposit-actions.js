@@ -1,13 +1,13 @@
 import authService from "../../../services/auth-service";
 import filesService from "../../../shared/services/file-service";
-import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
+import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./trader-deposit-actions.constants";
 
 const fetchTraderDeposit = traderId => {
   return {
     type: actionTypes.TRADER_DEPOSIT,
-    payload: SwaggerInvestorApi.apiInvestorInvestmentProgramBuyTokensGet(
+    payload: SwaggerManagerApi.apiManagerInvestmentProgramBuyTokensGet(
       traderId,
       authService.getAuthArg()
     ).then(response => {
@@ -25,7 +25,7 @@ const submitTraderDeposit = (traderId, amount) => {
   };
   return {
     type: actionTypes.TRADER_DEPOSIT_SUBMIT,
-    payload: SwaggerInvestorApi.apiInvestorInvestmentProgramsInvestPost(
+    payload: SwaggerManagerApi.apiManagerInvestmentProgramsInvestPost(
       authService.getAuthArg(),
       { model }
     )
