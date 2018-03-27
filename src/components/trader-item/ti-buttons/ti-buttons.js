@@ -20,15 +20,6 @@ const TIButtons = ({
       <Link className="ti-button gv-btn gv-btn-secondary" to={traderRoute}>
         View Profile
       </Link>
-      {isAuthenticated && (
-        <button
-          className="ti-button gv-btn gv-btn-primary"
-          onClick={openInvestPopup(traderId)}
-          disabled={!isInvestEnable}
-        >
-          Invest
-        </button>
-      )}
     </div>
   );
 };

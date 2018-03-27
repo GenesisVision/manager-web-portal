@@ -6,18 +6,21 @@ import TraderRequestList from "./trader-request-list/trader-request-list";
 
 class TraderRequestListContainer extends PureComponent {
   componentWillMount() {
-    this.props.fetchTraderRequests(this.props.traderId);
+    if (this.props.isOwnProgram) {
+      this.props.fetchTraderRequests(this.props.traderId);
+    }
   }
 
   render() {
     const {
+      isOwnProgram,
       isPending,
       traderRequests,
       cancelRequest,
       traderId,
       token
     } = this.props;
-    if (isPending || traderRequests === undefined) {
+    if (!isOwnProgram || isPending || traderRequests === undefined) {
       return null;
     }
     return (
@@ -35,6 +38,7 @@ const mapStateToProps = state => {
   const { data: traderDetail } = state.traderData.traderDetail;
 
   let traderRequests,
+    isOwnProgram,
     token = {};
   if (data) {
     traderRequests = data;
@@ -42,12 +46,14 @@ const mapStateToProps = state => {
 
   if (traderDetail && traderDetail.investmentProgram) {
     token = traderDetail.investmentProgram.token;
+    isOwnProgram = traderDetail.investmentProgram.token;
   }
 
   return {
     isPending,
     traderRequests,
     token,
+    isOwnProgram,
     errorMessage
   };
 };

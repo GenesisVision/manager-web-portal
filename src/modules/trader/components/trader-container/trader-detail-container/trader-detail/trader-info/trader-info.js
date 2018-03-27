@@ -19,17 +19,18 @@ const TraderInfo = ({
         <div className="trader-info__title">{trader.title}</div>
         <div className="trader-info__description">{trader.description}</div>
       </div>
-      {isAuthenticated && (
-        <div className="trader-info__buttons">
-          <TraderButtons
-            traderId={trader.id}
-            isInvestEnable={trader.isInvestEnable}
-            isWithdrawEnable={trader.isWithdrawEnable}
-            openInvestPopup={openInvestPopup}
-            openWithdrawPopup={openWithdrawPopup}
-          />
-        </div>
-      )}
+      {isAuthenticated &&
+        trader.isOwnProgram && (
+          <div className="trader-info__buttons">
+            <TraderButtons
+              traderId={trader.id}
+              isInvestEnable={trader.isInvestEnable}
+              isWithdrawEnable={trader.isWithdrawEnable}
+              openInvestPopup={openInvestPopup}
+              openWithdrawPopup={openWithdrawPopup}
+            />
+          </div>
+        )}
     </div>
   );
 };
