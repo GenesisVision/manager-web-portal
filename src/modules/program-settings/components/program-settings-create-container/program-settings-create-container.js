@@ -3,6 +3,7 @@ import React, { Component } from "react";
 
 import programActions from "../../actions/program-settings-actions";
 import ProgramCreateForm from "./program-settings-create-form/program-settings-create-form";
+import programSettingsSevice from "../../service/program-settings-sevice";
 
 class ProgramSettingsCreateContainer extends Component {
   componentWillMount() {
@@ -46,7 +47,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(programActions.fetchProgramForm());
   },
   createProgram: (data, setSubmitting) => {
-    dispatch(programActions.submitProgramForm(data)).catch(() => {
+    dispatch(programSettingsSevice.createProgram(data)).catch(() => {
       setSubmitting(false);
     });
   }
