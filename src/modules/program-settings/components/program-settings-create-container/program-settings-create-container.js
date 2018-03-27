@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 
-import programActions from "../../actions/program-actions";
-import ProgramCreateForm from "./program-create-form/program-create-form";
+import programActions from "../../actions/program-settings-actions";
+import ProgramCreateForm from "../program-create-form/program-create-form";
 
-class ProgramCreateContainer extends Component {
+class ProgramSettingsCreateContainer extends Component {
   componentWillMount() {
     this.props.fetchProgramForm();
   }
@@ -53,5 +53,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  ProgramCreateContainer
+  ProgramSettingsCreateContainer
 );

@@ -1,7 +1,7 @@
 import authService from "../../../services/auth-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
-import * as actionTypes from "./program-actions.constants";
+import * as actionTypes from "./program-settings-actions.constants";
 
 const fetchProgramForm = () => {
   return {
@@ -23,5 +23,5 @@ const submitProgramForm = formData => {
   };
 };
 
-const programActions = { fetchProgramForm, submitProgramForm };
-export default programActions;
+const programSettingsActions = { fetchProgramForm, submitProgramForm };
+export default programSettingsActions;

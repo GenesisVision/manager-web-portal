@@ -3,11 +3,11 @@ import { combineReducers } from "redux";
 import {
   programFormRequestReducer,
   programFormSubmitReducer
-} from "./program-form-reducer";
+} from "./program-settings-form-reducer";
 
-const programReducer = combineReducers({
+const programSettingsReducer = combineReducers({
   formData: programFormRequestReducer,
   formSubmit: programFormSubmitReducer
 });
 
-export default programReducer;
+export default programSettingsReducer;

@@ -1,8 +1,8 @@
 import { withFormik, Field } from "formik";
 import React from "react";
 
-import FormError from "../../../../../shared/components/form/form-error/form-error";
-import InputText from "../../../../../shared/components/form/input-text/input-text";
+import FormError from "../../../../shared/components/form/form-error/form-error";
+import InputText from "../../../../shared/components/form/input-text/input-text";
 
 import programCreateFormValidationSchema from "./program-create-form.validators";
 

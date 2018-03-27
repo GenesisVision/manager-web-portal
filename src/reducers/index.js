@@ -9,7 +9,7 @@ import emailConfirmReducer from "../modules/email-confirm/reducers/email-confirm
 import loginReducer from "../modules/login/reducers/login-reducers";
 import popupReducer from "../modules/popup/reducers/popup-reducers";
 import profileReducer from "../modules/profile/reducers/profile-reducers";
-import programReducer from "../modules/programs/reducers/program-reducers";
+import programSettingsReducer from "../modules/program-settings/reducers/program-settings-reducers";
 import registerReducer from "../modules/register/reducers/register-reducers";
 import traderDepositReducer from "../modules/trader-deposit/reducers/trader-deposit-reducers";
 import traderReducer from "../modules/trader/reducers/trader-reducers";
@@ -35,5 +35,5 @@ export default combineReducers({
   traderDepositData: traderDepositReducer,
   traderWithdrawData: traderWithdrawReducer,
   popupData: popupReducer,
-  programFormData: programReducer
+  programFormData: programSettingsReducer
 });
