@@ -1,9 +1,35 @@
 @import "styles/_colors.scss";
+@import "styles/_breakpoint.scss";
+
+.header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  @include media-breakpoint-phone() {
+    position: initial;
+  }
+}
 
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
   background: white;
-  box-shadow: 0 0.25rem 0.75rem rgba($main-color, 0.05);
-  border-bottom: 1px solid rgba($main-color, 0.2);
+  border-bottom: 1px solid $border-color;
+  box-shadow: 0 1px 4px 0 rgba(227, 235, 237, 0.86);
+  @include media-breakpoint-phone() {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.header__sorting {
+  display: flex;
+}
+
+.header__filtering {
+  display: flex;
+  align-items: center;
 }
 
 .header__link {
@@ -24,5 +50,38 @@
   color: $text-color !important;
   &:hover {
     color: $text-color-light !important;
+  }
+}
+
+.h-sorting {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 2rem;
+  @include media-breakpoint-phone() {
+    margin-left: 1rem;
+  }
+}
+
+.h-filtering {
+  display: flex;
+  span {
+    display: flex;
+  }
+
+  &:hover,
+  .h-filtering--open {
+    cursor: pointer;
+    .filter--border,
+    .filter--outer {
+      fill: $alternate-color;
+      stroke: $alternate-color;
+    }
+    .filter--inner {
+      fill: white;
+      stroke: white;
+    }
+    .filter--shadow {
+      fill-opacity: 1;
+    }
   }
 }

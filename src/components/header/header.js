@@ -1,38 +1,153 @@
+import { connect } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import classnames from "classnames";
 import LoadingBar from "react-redux-loading-bar";
 import React from "react";
 
-import AuthButtons from "./auth-buttons/auth-buttons";
-import MenuLink from "./auth-buttons/menu-link";
+import FilterIcon from "./filter-icon";
+import filterPaneActionsFactory from "../../modules/filter-pane/actions/filter-pane-actions";
+import loginService from "../../modules/login/service/login-service";
+import MobileNav from "./mobile-nav";
 
-const Header = props => {
-  const { match } = props;
-  const routes = {
-    profile: "/profile",
-    gvtWallet: "/wallet",
-    traders: "/traders",
-    investmentPrograms: "/investment-programs"
-  };
+import "./header.css";
+import { HOME_ROUTE } from "../app.constants";
+import { LOGIN_ROUTE } from "../../modules/login/login.constants";
+import { TRADERS } from "../../modules/traders/actions/traders-actions.constants";
+import { TRADERS_ROUTE } from "../../modules/traders/traders.constants";
+import { WALLET } from "../../modules/wallet/actions/wallet-actions.constants";
+import { WALLET_ROUTE } from "../../modules/wallet/wallet.constants";
+import gvLogo from "./gv-logo.svg";
+
+const PAGES_WITH_FILTER = {
+  [TRADERS_ROUTE]: {
+    actionType: TRADERS,
+    getStateData: state => state.tradersData
+  },
+  [WALLET_ROUTE]: {
+    actionType: WALLET,
+    getStateData: state => state.walletData
+  }
+};
+
+const authorizedControl = signOut => (
+  <ul className="navbar-nav px-3 flex-row">
+    <li className="nav-item text-nowrap">
+      <button
+        className="gv-btn gv-btn-secondary"
+        title="Sign out"
+        onClick={() => {
+          signOut();
+        }}
+      >
+        Sign Out
+      </button>
+    </li>
+  </ul>
+);
+
+const unauthorizedControl = () => (
+  <ul className="navbar-nav px-3 flex-row">
+    <li className="nav-item text-nowrap">
+      <Link
+        className="gv-btn gv-btn-secondary"
+        title="Sign In"
+        to={LOGIN_ROUTE}
+      >
+        Sign In
+      </Link>
+    </li>
+  </ul>
+);
+
+const filterPaneControl = (
+  shouldShowFilterControl,
+  isFilterOpen,
+  toggleFilter
+) => {
+  if (!shouldShowFilterControl) return null;
   return (
-    <header>
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <span className="navbar-brand">Manager app</span>
-        <div className="collapse navbar-collapse" id="navbarsExampleDefault">
-          <ul className="navbar-nav mr-auto">
-            <MenuLink url={routes.profile} name="Profile" match={match} />
-            <MenuLink url={routes.traders} name="Traders" match={match} />
-            <MenuLink
-              url={routes.investmentPrograms}
-              name="Investment Programs"
-              match={match}
-            />
-            <MenuLink url={routes.gvtWallet} name="GVT Wallet" match={match} />
-          </ul>
-          <AuthButtons {...props} />
-        </div>
-      </nav>
-      <LoadingBar style={{ backgroundColor: "#17a2b8" }} />
-    </header>
+    <div className="h-filtering">
+      <span
+        className={classnames({
+          "h-filtering--open": isFilterOpen
+        })}
+        onClick={toggleFilter}
+      >
+        <FilterIcon />
+      </span>
+    </div>
   );
 };
 
-export default Header;
+const Header = ({
+  shouldShowFilterControl,
+  isAuthenticated,
+  signOut,
+  isFilterOpen,
+  toggleFilter
+}) => {
+  return (
+    <div className="header-wrapper">
+      <header className="header">
+        <div className="header__sorting">
+          <NavLink title="Home" to={HOME_ROUTE}>
+            <img src={gvLogo} alt="Genesis Vision" />
+          </NavLink>
+          <div className="h-sorting">Manager Portal</div>
+        </div>
+        <div className="header__filtering">
+          {filterPaneControl(
+            shouldShowFilterControl,
+            isFilterOpen,
+            toggleFilter
+          )}
+          {isAuthenticated ? authorizedControl(signOut) : unauthorizedControl()}
+        </div>
+      </header>
+      <MobileNav />
+      <LoadingBar className="header__loading-bar" />
+    </div>
+  );
+};
+
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = dispatch => ({
+  signOut: () => {
+    dispatch(loginService.logout());
+  },
+  dispatch
+});
+
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  const { isAuthenticated } = stateProps.authData;
+  const { dispatch, ...otherDispatchProps } = dispatchProps;
+  const { location } = ownProps;
+
+  const pageWithFilter = Object.keys(PAGES_WITH_FILTER).find(
+    x => location.pathname === x
+  );
+  const shouldShowFilterControl = pageWithFilter !== undefined;
+  const { isFilterOpen } =
+    shouldShowFilterControl &&
+    PAGES_WITH_FILTER[pageWithFilter].getStateData(stateProps).filterPane.state;
+  const filterPaneActions =
+    shouldShowFilterControl &&
+    filterPaneActionsFactory(PAGES_WITH_FILTER[pageWithFilter].actionType);
+  return {
+    isAuthenticated,
+    ...otherDispatchProps,
+    ...ownProps,
+    shouldShowFilterControl,
+    isFilterOpen,
+    toggleFilter: () => {
+      dispatch(
+        isFilterOpen
+          ? filterPaneActions.closeFilter()
+          : filterPaneActions.openFilter()
+      );
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Header);

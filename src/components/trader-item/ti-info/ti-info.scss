@@ -1,0 +1,68 @@
+@import "styles/_colors.scss";
+@import "styles/_breakpoint.scss";
+
+.ti-info {
+  display: flex;
+  order: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1 1 28%;
+  max-width: 28%;
+  min-width: 300px;
+
+  @include media-breakpoint-desktop() {
+    max-width: 380px;
+  }
+}
+
+.ti-info__order {
+  font-size: 1.4rem;
+  @include media-breakpoint-phone() {
+    font-size: 1rem;
+  }
+}
+
+.ti-info__image {
+  position: relative;
+  width: 100px;
+  margin: 0 0.5rem;
+  text-align: center;
+  @include media-breakpoint-phone() {
+    margin: 0.5rem;
+  }
+}
+
+.ti-info__name {
+  max-width: 14rem;
+}
+
+.ti-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ti-name__title {
+  font-size: 1.6rem;
+  color: $text-color;
+}
+
+.ti-name__description {
+  font-size: 0.9em;
+  color: $text-sub-color;
+  line-height: 1.2;
+  margin: 1rem 0;
+  height: 4rem;
+  width: 225px;
+  overflow: hidden;
+  @include media-breakpoint-phone() {
+    height: initial;
+  }
+}
+
+.ti-name__eop {
+  display: flex;
+  align-items: center;
+  color: $text-sub-color;
+  max-width: 12rem;
+}
