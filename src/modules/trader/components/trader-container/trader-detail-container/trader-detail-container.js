@@ -16,6 +16,10 @@ class TraderDetailContainer extends PureComponent {
     this.props.fetchTraderDetail(this.props.traderId);
   }
 
+  componentWillUnmount() {
+    this.props.clearTraderDetail();
+  }
+
   render() {
     const {
       isAuthenticated,
@@ -57,6 +61,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   fetchTraderDetail: traderId => {
     dispatch(traderActions.fetchTrader(traderId));
+  },
+  clearTraderDetail: () => {
+    dispatch(traderActions.clearTrader());
   },
   dispatch
 });

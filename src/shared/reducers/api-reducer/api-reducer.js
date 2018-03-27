@@ -2,6 +2,7 @@ const API_TYPE = "API";
 const REQUEST_SUFFIX = "REQUEST";
 const SUCCESS_SUFFIX = "SUCCESS";
 const FAILURE_SUFFIX = "FAILURE";
+const CLEAR_SUFFIX = "CLEAR";
 
 const initialState = {
   isPending: false,
@@ -18,9 +19,12 @@ const apiReducerFactory = (
   const suffixes = config.suffixes || [
     REQUEST_SUFFIX,
     SUCCESS_SUFFIX,
-    FAILURE_SUFFIX
+    FAILURE_SUFFIX,
+    CLEAR_SUFFIX
   ];
-  const [REQUEST, SUCCESS, FAILURE] = suffixes.map(x => `${apiType}_${x}`);
+  const [REQUEST, SUCCESS, FAILURE, CLEAR] = suffixes.map(
+    x => `${apiType}_${x}`
+  );
 
   switch (action.type) {
     case REQUEST:
@@ -44,6 +48,8 @@ const apiReducerFactory = (
           .map(x => x.message)
           .join(", ")
       };
+    case CLEAR:
+      return initialState;
     default:
       return state;
   }

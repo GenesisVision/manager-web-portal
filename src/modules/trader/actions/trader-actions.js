@@ -117,6 +117,14 @@ const cancelTraderRequest = (traderId, requestId) => dispatch => {
     .then(() => dispatch(traderActions.fetchTrader(traderId)));
 };
 
+const clearTrader = () => ({
+  type: `${actionTypes.TRADER_DETAIL}_CLEAR`
+});
+
+const clearTraderRequests = () => ({
+  type: `${actionTypes.TRADER_REQUESTS}_CLEAR`
+});
+
 const traderActions = {
   fetchTrader,
   fetchTraderHistory,
@@ -126,7 +134,9 @@ const traderActions = {
   updateTraderRequestListPagingAndFetch,
   fetchTraderDealList,
   updateTraderDealListPaging,
-  updateTraderDealListPagingAndFetch
+  updateTraderDealListPagingAndFetch,
+  clearTrader,
+  clearTraderRequests
 };
 
 export default traderActions;

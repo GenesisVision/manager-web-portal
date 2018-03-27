@@ -5,10 +5,22 @@ import traderActions from "../../../../actions/trader-actions";
 import TraderRequestList from "./trader-request-list/trader-request-list";
 
 class TraderRequestListContainer extends PureComponent {
-  componentWillMount() {
-    if (this.props.isOwnProgram) {
-      this.props.fetchTraderRequests(this.props.traderId);
+  componentWillReceiveProps(nextProps) {
+    const {
+      isOwnProgram,
+      isPending,
+      traderRequests,
+      errorMessage,
+      traderId,
+      fetchTraderRequests
+    } = nextProps;
+    if (isOwnProgram && !isPending && !errorMessage && !traderRequests) {
+      fetchTraderRequests(traderId);
     }
+  }
+
+  componentWillUnmount() {
+    this.props.clearTraderRequests();
   }
 
   render() {
@@ -46,7 +58,7 @@ const mapStateToProps = state => {
 
   if (traderDetail && traderDetail.investmentProgram) {
     token = traderDetail.investmentProgram.token;
-    isOwnProgram = traderDetail.investmentProgram.token;
+    isOwnProgram = traderDetail.investmentProgram.isOwnProgram;
   }
 
   return {
@@ -64,6 +76,9 @@ const mapDispatchToProps = dispatch => ({
   },
   cancelRequest: traderId => requestId => () => {
     dispatch(traderActions.cancelTraderRequest(traderId, requestId));
+  },
+  clearTraderRequests: () => {
+    dispatch(traderActions.clearTraderRequests());
   }
 });
 
