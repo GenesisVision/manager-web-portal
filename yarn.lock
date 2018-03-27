@@ -1518,7 +1518,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@2.2.5, classnames@^2.2.3, classnames@^2.2.5:
+classnames@2.2.5, classnames@^2.2.3, classnames@^2.2.4, classnames@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -3336,9 +3336,9 @@ growly@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
 
-gv-api-web@^1.0.11:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/gv-api-web/-/gv-api-web-1.0.11.tgz#16c575159a77bee2c8793d810462dd7dbb827307"
+gv-api-web@^1.0.24:
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/gv-api-web/-/gv-api-web-1.0.24.tgz#fb570cd1cad0524596f7e6d25b706422c472ae0f"
   dependencies:
     superagent "3.5.2"
 
@@ -6206,11 +6206,23 @@ react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
 
+react-input-autosize@^2.1.2:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-input-autosize/-/react-input-autosize-2.2.1.tgz#ec428fa15b1592994fb5f9aa15bb1eb6baf420f8"
+  dependencies:
+    prop-types "^15.5.8"
+
 react-number-format@^3.1.5:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-3.2.0.tgz#83b542317d5d7403435a93dce8e6f9dc0f46e0f3"
   dependencies:
     prop-types "^15.6.0"
+
+react-pager@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/react-pager/-/react-pager-1.3.3.tgz#471ccf36aa6799987657ccf5d400c45d83fda51d"
+  dependencies:
+    prop-types "^15.5.10"
 
 react-popper@0.8.1:
   version "0.8.1"
@@ -6338,6 +6350,14 @@ react-scripts@1.1.0:
     whatwg-fetch "2.0.3"
   optionalDependencies:
     fsevents "1.1.2"
+
+react-select@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-select/-/react-select-1.2.1.tgz#a2fe58a569eb14dcaa6543816260b97e538120d1"
+  dependencies:
+    classnames "^2.2.4"
+    prop-types "^15.5.8"
+    react-input-autosize "^2.1.2"
 
 react-smooth@1.0.0:
   version "1.0.0"
@@ -8187,7 +8207,7 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-yup@^0.24.0:
+yup@^0.24.1:
   version "0.24.1"
   resolved "https://registry.yarnpkg.com/yup/-/yup-0.24.1.tgz#2c8a81b5f929ef29aaf77a8b7c9acfa52ab6a7d1"
   dependencies:
