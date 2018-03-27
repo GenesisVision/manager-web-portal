@@ -51,10 +51,10 @@ const LoginForm = ({
         </button>
         <div className="login__separator" />
         <a
-          href={process.env.REACT_APP_MANAGER_PORTAL_URL}
+          href={process.env.REACT_APP_INVESTOR_PORTAL_URL}
           className="login__btn gv-btn gv-btn-secondary"
         >
-          Login as Manager
+          Login as Investor
         </a>
         <Link
           to={REGISTER_ROUTE}
