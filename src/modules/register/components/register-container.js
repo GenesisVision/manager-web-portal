@@ -1,8 +1,7 @@
 import { connect } from "react-redux";
 import React from "react";
 
-import authActions from "../../../actions/authActions";
-import registerActions from "../actions/register-actions";
+import registerService from "../service/register-service";
 import RegisterForm from "./register-form/register-form";
 
 const RegisterContainer = ({
@@ -12,11 +11,6 @@ const RegisterContainer = ({
   register,
   alreadyAuthenticated
 }) => {
-  if (isAuthenticated) {
-    alreadyAuthenticated();
-    return null;
-  }
-
   const handleSubmit = (registerFormData, setSubmitting) => {
     register(registerFormData, setSubmitting);
   };
@@ -32,12 +26,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   register: (registerFormData, setSubmitting) => {
-    dispatch(registerActions.registerUser(registerFormData)).finally(() => {
+    dispatch(registerService.register(registerFormData)).catch(() => {
       setSubmitting(false);
     });
-  },
-  alreadyAuthenticated: () => {
-    dispatch(authActions.alreadyAuthenticated());
   }
 });
 

@@ -1,33 +1,39 @@
-import history from "../../../utils/history";
+import authService from "../../../services/auth-service";
+import filesService from "../../../shared/services/file-service";
+import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
 
 import * as actionTypes from "./trader-deposit-actions.constants";
 
 const fetchTraderDeposit = traderId => {
   return {
     type: actionTypes.TRADER_DEPOSIT,
-    payload: Promise.resolve({
-      id: "1",
-      name: "Program A",
-      rate: 22,
-      available: 100
+    payload: SwaggerInvestorApi.apiInvestorInvestmentProgramBuyTokensGet(
+      traderId,
+      authService.getAuthArg()
+    ).then(response => {
+      const trader = response;
+      trader.logo = filesService.getFileUrl(trader.logo);
+      return response;
     })
   };
 };
 
-const submitTraderDeposit = (traderId, amount, onCatch) => {
+const submitTraderDeposit = (traderId, amount) => {
+  const model = {
+    investmentProgramId: traderId,
+    amount
+  };
   return {
     type: actionTypes.TRADER_DEPOSIT_SUBMIT,
-    payload: Promise.resolve()
+    payload: SwaggerInvestorApi.apiInvestorInvestmentProgramsInvestPost(
+      authService.getAuthArg(),
+      { model }
+    )
   };
-};
-
-const closeTraderDepositModal = from => {
-  history.push(from);
 };
 
 const traderDepositActions = {
   fetchTraderDeposit,
-  closeTraderDepositModal,
   submitTraderDeposit
 };
 export default traderDepositActions;
