@@ -155,7 +155,11 @@ const ProgramCreateForm = ({
         </div>
       </div>
       <FormError error={error} />
-      <button type="submit" disabled={isSubmitting} className="btn btn-primary">
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="btn btn-primary create-program-form__submit"
+      >
         Create Program
       </button>
     </form>

@@ -9,6 +9,7 @@
 .create-program-form__program-detail {
   flex: 1;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -20,6 +21,7 @@
 .create-program-form__program-settings {
   flex: 1;
   max-width: 436px;
+  min-width: 436px;
 }
 
 .create-program-form__program-image {
@@ -34,4 +36,9 @@
     flex: 1;
     max-width: 45%;
   }
+}
+
+.create-program-form__submit {
+  margin-top: 2rem;
+  max-width: 10rem;
 }
