@@ -25,6 +25,11 @@ const ProgramCreateForm = ({
     value: x.id,
     label: `${x.name} (${x.host})`
   }));
+  const periodOptions = [1, 2, 3, 5, 7, 10, 14].map(x => ({
+    value: x,
+    label: `${x} days`
+  }));
+
   return (
     <form onSubmit={handleSubmit} className="create-program-form" noValidate>
       <div className="create-program-form__header">Create Program</div>
@@ -70,16 +75,18 @@ const ProgramCreateForm = ({
             component={GVSelect}
             options={brokerOptions}
             clearable={false}
+            label="Broker Server"
           />
-          {/* {errors["brokerTradeServerId"] && (
-            <div className="">{errors["brokerTradeServerId"]}</div>
-          )} */}
           <Field
-            type="number"
             name="period"
-            placeholder="Reporting Period Length"
-            addon="fas fa-calendar"
-            component={InputText}
+            value={values.period}
+            onChange={setFieldValue}
+            setFieldValue={setFieldValue}
+            onBlur={setFieldTouched}
+            component={GVSelect}
+            options={periodOptions}
+            clearable={false}
+            label="Reporting Period Length"
           />
           <Field
             type="date"

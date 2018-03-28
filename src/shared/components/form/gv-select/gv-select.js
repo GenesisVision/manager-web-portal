@@ -3,6 +3,7 @@ import Select from "react-select";
 import "./gv-select.css";
 const GVSelect = ({
   field,
+  label,
   setFieldValue,
   onChange,
   onBlur,
@@ -27,6 +28,7 @@ const GVSelect = ({
 
   return (
     <div className="gv-select">
+      <div>{label}</div>
       <Select
         id={field.name}
         name={field.name}
