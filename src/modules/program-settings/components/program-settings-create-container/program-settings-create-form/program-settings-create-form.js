@@ -2,6 +2,7 @@ import { withFormik, Field } from "formik";
 import React from "react";
 
 import FormError from "../../../../../shared/components/form/form-error/form-error";
+import GVSelect from "../../../../../shared/components/form/gv-select/gv-select";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
 
@@ -13,27 +14,17 @@ const ProgramCreateForm = ({
   isSubmitting,
   handleSubmit,
   setFieldValue,
+  setFieldTouched,
   error,
   values,
   touched,
   errors,
   uploadAvatar
 }) => {
-  const brokerList = () => {
-    const list = programForm.brokers.map(x => (
-      <option key={x.id} value={x.id}>
-        {x.name} ({x.host})
-      </option>
-    ));
-
-    list.unshift(
-      <option key="" value="" disabled hidden>
-        Choose sever
-      </option>
-    );
-
-    return list;
-  };
+  const brokerOptions = programForm.brokers.map(x => ({
+    value: x.id,
+    label: `${x.name} (${x.host})`
+  }));
   return (
     <form onSubmit={handleSubmit} className="create-program-form" noValidate>
       <div className="create-program-form__header">Create Program</div>
@@ -70,12 +61,19 @@ const ProgramCreateForm = ({
             addon="fas fa-lock"
             component={InputText}
           />
-          <Field name="brokerTradeServerId" component="select">
-            {brokerList()}
-          </Field>
-          {errors["brokerTradeServerId"] && (
+          <Field
+            name="brokerTradeServerId"
+            value={values.brokerTradeServerId}
+            onChange={setFieldValue}
+            setFieldValue={setFieldValue}
+            onBlur={setFieldTouched}
+            component={GVSelect}
+            options={brokerOptions}
+            clearable={false}
+          />
+          {/* {errors["brokerTradeServerId"] && (
             <div className="">{errors["brokerTradeServerId"]}</div>
-          )}
+          )} */}
           <Field
             type="number"
             name="period"

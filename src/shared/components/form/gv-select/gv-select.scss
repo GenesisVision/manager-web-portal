@@ -8,5 +8,17 @@ $select-option-selected-color: $alternate-color;
 $select-option-selected-bg: $background-color;
 $select-option-focused-color: $alternate-color;
 $select-option-focused-bg: white;
+$select-menu-max-height: 210px;
 
 @import "node_modules/react-select/scss/default.scss";
+
+.gv-select {
+  margin-bottom: 1rem;
+}
+
+.gv-select__invalid {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
