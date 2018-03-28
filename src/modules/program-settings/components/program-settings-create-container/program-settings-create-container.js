@@ -3,14 +3,21 @@ import React, { Component } from "react";
 
 import programActions from "../../actions/program-settings-actions";
 import ProgramCreateForm from "./program-settings-create-form/program-settings-create-form";
-import programSettingsSevice from "../../service/program-settings-sevice";
+import programSettingsSevice from "../../service/program-settings-service";
+import filesService from "../../../../shared/services/file-service";
 
 class ProgramSettingsCreateContainer extends Component {
   componentWillMount() {
     this.props.fetchProgramForm();
   }
   render() {
-    const { isPending, programForm, errorMessage, createProgram } = this.props;
+    const {
+      isPending,
+      programForm,
+      errorMessage,
+      createProgram,
+      uploadAvatar
+    } = this.props;
     const handleCreateProgram = (values, setSubmitting) => {
       createProgram(values, setSubmitting);
       setSubmitting(false);
@@ -25,6 +32,7 @@ class ProgramSettingsCreateContainer extends Component {
           programForm={programForm}
           onSubmit={handleCreateProgram}
           error={errorMessage}
+          uploadAvatar={uploadAvatar}
         />
       </div>
     );
@@ -50,6 +58,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(programSettingsSevice.createProgram(data)).catch(() => {
       setSubmitting(false);
     });
+  },
+  uploadAvatar: file => {
+    return filesService.uploadFile(file);
   }
 });
 

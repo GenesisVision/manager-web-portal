@@ -14,5 +14,5 @@ const createProgram = programData => dispatch => {
   );
 };
 
-const programSettingsSevice = { createProgram };
-export default programSettingsSevice;
+const programSettingsService = { createProgram };
+export default programSettingsService;

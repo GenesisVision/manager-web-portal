@@ -16,7 +16,8 @@ const ProgramCreateForm = ({
   error,
   values,
   touched,
-  errors
+  errors,
+  uploadAvatar
 }) => {
   const brokerList = () => {
     const list = programForm.brokers.map(x => (
@@ -38,7 +39,14 @@ const ProgramCreateForm = ({
       <div className="create-program-form__header">Create Program</div>
       <div className="create-program-form__program-detail">
         <div className="create-program-form__program-description">
-          <InputFile id="avatar" name="avatar" setFieldValue={setFieldValue} />
+          <InputFile
+            id="logo"
+            name="logo"
+            label="Program image"
+            className="create-program-form__program-image"
+            setFieldValue={setFieldValue}
+            uploadAvatar={uploadAvatar}
+          />
           <Field name="title" placeholder="Title" component={InputText} />
           <Field
             component="textarea"
@@ -135,6 +143,7 @@ const ProgramCreateForm = ({
 export default withFormik({
   displayName: "programCreateForm",
   mapPropsToValues: () => ({
+    logo: "",
     tradePlatformPassword: "",
     confirmTradePlatformPassword: "",
     brokerTradeServerId: "",
