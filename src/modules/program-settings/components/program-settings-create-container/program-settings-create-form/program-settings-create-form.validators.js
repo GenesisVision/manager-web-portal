@@ -8,6 +8,9 @@ const programCreateFormValidationSchema = Yup.object().shape({
     )
     .max(16, "Password is very long")
     .required("Password is required"),
+  confirmTradePlatformPassword: Yup.string()
+    .oneOf([Yup.ref("tradePlatformPassword")], "Passwords don't match.")
+    .required("Confirm Password is required"),
   brokerTradeServerId: Yup.string().required("Server is required"),
   title: Yup.string().required("Title is required"),
   description: Yup.string(),
