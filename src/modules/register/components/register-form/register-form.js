@@ -14,7 +14,12 @@ const RegisterForm = ({ isSubmitting, handleSubmit, error }) => {
     <form onSubmit={handleSubmit} noValidate>
       <div className="register">
         <div className="register__header">Sign Up</div>
-
+        <Field
+          name="userName"
+          placeholder="User Name"
+          addon="fas fa-user"
+          component={InputText}
+        />
         <Field
           type="email"
           name="email"
@@ -22,7 +27,6 @@ const RegisterForm = ({ isSubmitting, handleSubmit, error }) => {
           addon="fas fa-envelope"
           component={InputText}
         />
-
         <Field
           type="password"
           name="password"
@@ -30,7 +34,6 @@ const RegisterForm = ({ isSubmitting, handleSubmit, error }) => {
           addon="fas fa-lock"
           component={InputText}
         />
-
         <Field
           type="password"
           name="confirmPassword"
@@ -39,12 +42,10 @@ const RegisterForm = ({ isSubmitting, handleSubmit, error }) => {
           component={InputText}
         />
         <FormError error={error} />
-
         <button type="submit" className="gv-btn gv-btn-primary">
           Sign Up
         </button>
         <div className="register__separator" />
-
         <Link to={LOGIN_ROUTE} className="login__btn gv-btn gv-btn-secondary">
           Already have an account? Sing In!
         </Link>
@@ -56,6 +57,7 @@ const RegisterForm = ({ isSubmitting, handleSubmit, error }) => {
 export default withFormik({
   displayName: "register",
   mapPropsToValues: () => ({
+    userName: "",
     email: "",
     password: "",
     confirmPassword: ""
