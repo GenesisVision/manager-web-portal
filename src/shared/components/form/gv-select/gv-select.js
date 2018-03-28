@@ -54,7 +54,8 @@ class GVSelect extends PureComponent {
           "gv-select",
           { "gv-select--material": material },
           { "gv-select--is-open": isOpen },
-          { "gv-select--is-filled": !!field.value }
+          { "gv-select--is-filled": !!field.value },
+          { "gv-select--has-error": hasError }
         )}
       >
         <label
@@ -63,7 +64,7 @@ class GVSelect extends PureComponent {
             { "gv-select__label--material": material },
             {
               "gv-select__label--regular":
-                touched[field.name] && !hasError && field.value.length > 0
+                touched[field.name] && !hasError && !!field.value
             },
             { "gv-select__label--error": hasError }
           )}

@@ -19,10 +19,12 @@ $select-menu-max-height: 210px;
 }
 
 .gv-select__invalid {
-  width: 100%;
-  margin-top: 0.25rem;
-  font-size: 80%;
-  color: #dc3545;
+  position: absolute;
+  bottom: -15px;
+  font-size: 12px;
+  line-height: 12px;
+  color: $danger-color;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 
 .gv-select__label {
@@ -51,7 +53,8 @@ $select-menu-max-height: 210px;
 }
 
 .gv-select--is-open,
-.gv-select--is-filled {
+.gv-select--is-filled,
+.gv-select--has-error {
   .gv-select__label--material {
     transform: scale(0.75) translate(0px, -28px);
   }
