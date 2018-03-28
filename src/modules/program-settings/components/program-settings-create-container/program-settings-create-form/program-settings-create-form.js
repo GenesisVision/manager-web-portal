@@ -3,6 +3,7 @@ import React from "react";
 
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 import GVSelect from "../../../../../shared/components/form/gv-select/gv-select";
+import GVDatePicker from "../../../../../shared/components/form/gv-datepicker/gv-datepicker";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
 
@@ -69,8 +70,6 @@ const ProgramCreateForm = ({
           <Field
             name="brokerTradeServerId"
             value={values.brokerTradeServerId}
-            onChange={setFieldValue}
-            setFieldValue={setFieldValue}
             onBlur={setFieldTouched}
             component={GVSelect}
             options={brokerOptions}
@@ -80,8 +79,6 @@ const ProgramCreateForm = ({
           <Field
             name="period"
             value={values.period}
-            onChange={setFieldValue}
-            setFieldValue={setFieldValue}
             onBlur={setFieldTouched}
             component={GVSelect}
             options={periodOptions}
@@ -89,18 +86,22 @@ const ProgramCreateForm = ({
             label="Reporting Period Length"
           />
           <Field
-            type="date"
             name="dateFrom"
-            placeholder="Date Start"
-            addon="fas fa-calendar-alt"
-            component={InputText}
+            selected={values.dateFrom}
+            selectsStart
+            startDate={values.dateFrom}
+            endDate={values.dateTo}
+            component={GVDatePicker}
+            label="Program Start Date"
           />
           <Field
-            type="date"
             name="dateTo"
-            placeholder="Date End"
-            addon="fas fa-calendar-alt"
-            component={InputText}
+            selected={values.dateTo}
+            selectsEnd
+            startDate={values.dateFrom}
+            endDate={values.dateTo}
+            component={GVDatePicker}
+            label="Program End Date"
           />
           <Field
             type="number"
@@ -158,8 +159,8 @@ export default withFormik({
     tokenName: "",
     tokenSymbol: "",
     period: "",
-    dateFrom: "",
-    dateTo: "",
+    dateFrom: null,
+    dateTo: null,
     feeSuccess: "",
     feeManagement: ""
   }),

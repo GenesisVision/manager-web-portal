@@ -15,8 +15,8 @@ const programCreateFormValidationSchema = Yup.object().shape({
   tokenName: Yup.string().required("Token Name is required"),
   tokenSymbol: Yup.string().required("Token Symbol is required"),
   period: Yup.string().required("Period is required"),
-  dateFrom: Yup.date(),
-  dateTo: Yup.date(),
+  dateFrom: Yup.object().nullable(),
+  dateTo: Yup.object().nullable(),
   feeSuccess: Yup.number(),
   feeManagement: Yup.number()
 });

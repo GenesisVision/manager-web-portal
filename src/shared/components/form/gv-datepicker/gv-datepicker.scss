@@ -1,0 +1,20 @@
+@import "styles/_colors.scss";
+
+$datepicker__selected-color: $alternate-color;
+$datepicker__font-family: "NeuzeitGroLig";
+$datepicker__border-color: $border-color;
+$datepicker__text-color: $text-color;
+$datepicker__header-color: $text-color;
+
+@import "node_modules/react-datepicker/src/stylesheets/datepicker.scss";
+
+.gv-datepicker {
+  margin-bottom: 1rem;
+}
+
+.gv-datepicker__invalid {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+}

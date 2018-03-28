@@ -4,15 +4,14 @@ import "./gv-select.css";
 const GVSelect = ({
   field,
   label,
-  setFieldValue,
-  onChange,
+  onChange = val => {},
   onBlur,
-  form: { touched, errors },
+  form: { touched, errors, setFieldValue },
   ...other
 }) => {
   const handleChange = value => {
-    setFieldValue(field.name, value);
     const newValue = value ? value.value : "";
+    setFieldValue(field.name, newValue);
     onChange(newValue);
   };
 

@@ -68,7 +68,6 @@ const TraderListFilter = ({
             name="sorting"
             value={values.sorting}
             onChange={onChangeComplete("sorting")}
-            setFieldValue={setFieldValue}
             onBlur={setFieldTouched}
             component={GVSelect}
             options={sortingOptions}
