@@ -7,6 +7,7 @@ import GVSelect from "../../../../../shared/components/form/gv-select/gv-select"
 import GVDatePicker from "../../../../../shared/components/form/gv-datepicker/gv-datepicker";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
+import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 
 import "./program-settings-create-form.css";
 import programCreateFormValidationSchema from "./program-settings-create-form.validators";
@@ -52,10 +53,9 @@ const ProgramCreateForm = ({
             component={InputText}
           />
           <Field
-            component="textarea"
-            rows="4"
             name="description"
-            placeholder="Description"
+            label="Description"
+            component={GVTextarea}
           />
         </div>
         <div className="create-program-form__program-settings">
