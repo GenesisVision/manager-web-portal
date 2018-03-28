@@ -1,5 +1,6 @@
 import { withFormik, Field } from "formik";
 import React from "react";
+import moment from "moment";
 
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 import GVSelect from "../../../../../shared/components/form/gv-select/gv-select";
@@ -91,6 +92,10 @@ const ProgramCreateForm = ({
             selectsStart
             startDate={values.dateFrom}
             endDate={values.dateTo}
+            minDate={moment()}
+            maxDate={values.dateTo || moment().add(100, "years")}
+            showTimeSelect
+            dateFormat="LLL"
             component={GVDatePicker}
             label="Program Start Date"
           />
@@ -100,6 +105,9 @@ const ProgramCreateForm = ({
             selectsEnd
             startDate={values.dateFrom}
             endDate={values.dateTo}
+            minDate={values.dateFrom || moment()}
+            showTimeSelect
+            dateFormat="LLL"
             component={GVDatePicker}
             label="Program End Date"
           />

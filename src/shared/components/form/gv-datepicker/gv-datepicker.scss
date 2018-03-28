@@ -1,7 +1,7 @@
 @import "styles/_colors.scss";
 
 $datepicker__selected-color: $alternate-color;
-$datepicker__font-family: "NeuzeitGroLig";
+$datepicker__font-family: "NeuzeitGroReg";
 $datepicker__border-color: $border-color;
 $datepicker__text-color: $text-color;
 $datepicker__header-color: $text-color;
@@ -17,4 +17,8 @@ $datepicker__header-color: $text-color;
   margin-top: 0.25rem;
   font-size: 80%;
   color: #dc3545;
+}
+
+.react-datepicker__time-list {
+  padding: 0.5rem;
 }
