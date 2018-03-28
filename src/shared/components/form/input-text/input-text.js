@@ -10,7 +10,6 @@ const InputText = ({
   controllClass,
   material,
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-  type,
   ...props
 }) => {
   const showError = () =>
@@ -40,7 +39,7 @@ const InputText = ({
   const renderMaterialInput = () => (
     <div className="input-text input-text--material">
       <input
-        type={type || "text"}
+        type="text"
         className={classnames(
           "input-text__input",
           "input-text__input--material",

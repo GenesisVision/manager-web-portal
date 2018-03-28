@@ -74,6 +74,7 @@ const ProgramCreateForm = ({
             component={InputText}
           />
           <Field
+            material
             name="brokerTradeServerId"
             value={values.brokerTradeServerId}
             onBlur={setFieldTouched}
@@ -81,8 +82,10 @@ const ProgramCreateForm = ({
             options={brokerOptions}
             clearable={false}
             label="Broker Server"
+            placeholder=" "
           />
           <Field
+            material
             name="period"
             value={values.period}
             onBlur={setFieldTouched}
@@ -90,6 +93,7 @@ const ProgramCreateForm = ({
             options={periodOptions}
             clearable={false}
             label="Period Length"
+            placeholder=" "
           />
           <div className="create-program-form__couple-field">
             <Field
