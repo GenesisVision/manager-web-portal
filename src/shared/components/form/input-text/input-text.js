@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import React from "react";
 
 import "./input-text.css";
@@ -5,8 +6,11 @@ import "./input-text.css";
 const InputText = ({
   field, // { name, value, onChange, onBlur }
   addon,
+  label,
   controllClass,
+  material,
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+  type,
   ...props
 }) => {
   const showError = () =>
@@ -30,7 +34,51 @@ const InputText = ({
   const validationClass = touched[field.name]
     ? errors[field.name] ? "is-invalid" : "is-valid"
     : "";
-  return (
+
+  const hasError = touched[field.name] && errors[field.name];
+
+  const renderMaterialInput = () => (
+    <div className="input-text input-text--material">
+      <input
+        type={type || "text"}
+        className={classnames(
+          "input-text__input",
+          "input-text__input--material",
+          { "input-text__input--filled": field.value.length > 0 },
+          { "input-text__input--error": hasError }
+        )}
+        autoComplete="off"
+        {...field}
+        {...props}
+      />
+
+      <label
+        className={classnames(
+          "input-text__label",
+          "input-text__label--material",
+          {
+            "input-text__label--regular":
+              touched[field.name] && !hasError && field.value.length > 0
+          },
+          { "input-text__label--error": hasError }
+        )}
+      >
+        {label}
+      </label>
+      <hr className="input-text__hr-placeholder" />
+      <hr
+        className={classnames(
+          "input-text__hr",
+          hasError ? "input-text__hr--error" : "input-text__hr--regular"
+        )}
+      />
+      {hasError && (
+        <div className="input-text__error-message">{errors[field.name]}</div>
+      )}
+    </div>
+  );
+
+  const renderInput = () => (
     <div className="form-group">
       <div className="input-group">
         {renderAddon()}
@@ -45,6 +93,8 @@ const InputText = ({
       </div>
     </div>
   );
+
+  return material ? renderMaterialInput() : renderInput();
 };
 
 export default InputText;

@@ -45,7 +45,12 @@ const ProgramCreateForm = ({
             setFieldValue={setFieldValue}
             uploadAvatar={uploadAvatar}
           />
-          <Field name="title" placeholder="Title" component={InputText} />
+          <Field
+            material
+            name="title"
+            label="Program Title"
+            component={InputText}
+          />
           <Field
             component="textarea"
             rows="4"
@@ -55,17 +60,17 @@ const ProgramCreateForm = ({
         </div>
         <div className="create-program-form__program-settings">
           <Field
+            material
             type="password"
             name="tradePlatformPassword"
-            placeholder="Trading Account Password"
-            addon="fas fa-lock"
+            label="Trading Account Password"
             component={InputText}
           />
           <Field
+            material
             type="password"
             name="confirmTradePlatformPassword"
-            placeholder="Confirm Trading Account Password"
-            addon="fas fa-lock"
+            label="Confirm Trading Account Password"
             component={InputText}
           />
           <Field
@@ -84,66 +89,69 @@ const ProgramCreateForm = ({
             component={GVSelect}
             options={periodOptions}
             clearable={false}
-            label="Reporting Period Length"
+            label="Period Length"
           />
+          <div className="create-program-form__couple-field">
+            <Field
+              name="dateFrom"
+              selected={values.dateFrom}
+              selectsStart
+              startDate={values.dateFrom}
+              endDate={values.dateTo}
+              minDate={moment()}
+              maxDate={values.dateTo || moment().add(100, "years")}
+              showTimeSelect
+              dateFormat="LLL"
+              component={GVDatePicker}
+              label="Start Date"
+            />
+            <Field
+              name="dateTo"
+              selected={values.dateTo}
+              selectsEnd
+              startDate={values.dateFrom}
+              endDate={values.dateTo}
+              minDate={values.dateFrom || moment()}
+              showTimeSelect
+              dateFormat="LLL"
+              component={GVDatePicker}
+              label="End Date"
+            />
+          </div>
           <Field
-            name="dateFrom"
-            selected={values.dateFrom}
-            selectsStart
-            startDate={values.dateFrom}
-            endDate={values.dateTo}
-            minDate={moment()}
-            maxDate={values.dateTo || moment().add(100, "years")}
-            showTimeSelect
-            dateFormat="LLL"
-            component={GVDatePicker}
-            label="Program Start Date"
-          />
-          <Field
-            name="dateTo"
-            selected={values.dateTo}
-            selectsEnd
-            startDate={values.dateFrom}
-            endDate={values.dateTo}
-            minDate={values.dateFrom || moment()}
-            showTimeSelect
-            dateFormat="LLL"
-            component={GVDatePicker}
-            label="Program End Date"
-          />
-          <Field
-            type="number"
-            name="feeSuccess"
-            placeholder="Success Fee"
-            addon="fas fa-money-bill-alt"
-            component={InputText}
-          />
-          <Field
-            type="number"
-            name="feeManagement"
-            placeholder="Management Fee"
-            addon="fas fa-money-bill-alt"
-            component={InputText}
-          />
-          <Field
-            type="number"
+            material
             name="depositAmount"
-            placeholder="Deposit Amount"
-            addon="fas fa-question"
+            label="Deposit Amount (GVT)"
             component={InputText}
           />
-          <Field
-            name="tokenName"
-            placeholder="Token Name"
-            addon="fas fa-question"
-            component={InputText}
-          />
-          <Field
-            name="tokenSymbol"
-            placeholder="Token Symbol"
-            addon="fas fa-question"
-            component={InputText}
-          />
+          <div className="create-program-form__couple-field">
+            <Field
+              material
+              name="feeSuccess"
+              label="Success Fee (%)"
+              component={InputText}
+            />
+            <Field
+              material
+              name="feeManagement"
+              label="Management Fee (%)"
+              component={InputText}
+            />
+          </div>
+          <div className="create-program-form__couple-field">
+            <Field
+              material
+              name="tokenName"
+              label="Token Name"
+              component={InputText}
+            />
+            <Field
+              material
+              name="tokenSymbol"
+              label="Token Symbol"
+              component={InputText}
+            />
+          </div>
         </div>
       </div>
       <FormError error={error} />

@@ -11,14 +11,21 @@ const programCreateFormValidationSchema = Yup.object().shape({
   brokerTradeServerId: Yup.string().required("Server is required"),
   title: Yup.string().required("Title is required"),
   description: Yup.string(),
-  depositAmount: Yup.number().required("Deposit Amount is required"),
+  depositAmount: Yup.number()
+    .typeError("Deposit Amount must be a number")
+    .positive("Deposit Amount must be a positive number")
+    .required("Deposit Amount is required"),
   tokenName: Yup.string().required("Token Name is required"),
   tokenSymbol: Yup.string().required("Token Symbol is required"),
   period: Yup.string().required("Period is required"),
   dateFrom: Yup.object().nullable(),
   dateTo: Yup.object().nullable(),
-  feeSuccess: Yup.number(),
+  feeSuccess: Yup.number()
+    .typeError("Success Fee must be a number")
+    .positive("Success Fee must be a positive number"),
   feeManagement: Yup.number()
+    .typeError("Management Fee must be a number")
+    .positive("Management Feet must be a positive number")
 });
 
 export default programCreateFormValidationSchema;
