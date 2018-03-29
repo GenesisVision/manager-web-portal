@@ -29,7 +29,7 @@ const DashboardProfitChart = ({ data }) => {
             allowDuplicatedCategory={false}
             axisLine={false}
           />
-          <YAxis dataKey="totalProfit" />
+          <YAxis dataKey="totalProfit" axisLine={false} />
           <Tooltip />
           <Legend />
           {series.map((s, idx) => (

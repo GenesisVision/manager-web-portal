@@ -13,7 +13,7 @@ const DashboardFundChart = ({ data }) => {
   return (
     <ResponsiveContainer stackOffset="sign">
       <ComposedChart data={data}>
-        <XAxis dataKey="title" />
+        <XAxis dataKey="title" axisLine={false} />
         <YAxis hide />
         <Tooltip />
         <Bar
