@@ -10,7 +10,7 @@ const DashboardStatistic = ({ dashboard }) => {
   return (
     <div className="dashboard-statistic">
       <div className="dashboard-card card">
-        <DSFund funds={dashboard.fundChart} />
+        <DSFund funds={dashboard.programBalances} />
       </div>
       <div className="dashboard-card card">
         <DSInvestors
