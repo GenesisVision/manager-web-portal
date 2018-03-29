@@ -2,9 +2,9 @@ import { connect } from "react-redux";
 import React, { PureComponent } from "react";
 
 import dashboardActions from "../../../actions/dashboard-actions";
+import DashboardCharts from "./dashboard-charts/dashboard-charts";
 import DashboardDescription from "./dashboard-description/dashboard-description";
 import DashboardStatistic from "./dashboard-statistic/dashboard-statistic";
-
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 
 class DashboardContainer extends PureComponent {
@@ -21,6 +21,10 @@ class DashboardContainer extends PureComponent {
       <div>
         <DashboardDescription />
         <DashboardStatistic dashboard={dashboard} />
+        <DashboardCharts
+          fundChart={dashboard.fundChart}
+          profitChart={dashboard.profitChart}
+        />
         <FormError error={errorMessage} />
       </div>
     );

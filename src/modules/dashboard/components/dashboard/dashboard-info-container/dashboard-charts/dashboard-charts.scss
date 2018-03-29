@@ -1,0 +1,17 @@
+@import "styles/_breakpoint.scss";
+
+.dashboard-charts__charts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 400px;
+}
+
+.dashboard-charts__chart {
+  flex: 1;
+  min-width: 50%;
+  height: 100%;
+  @include media-breakpoint-phone() {
+    min-width: 100%;
+  }
+}

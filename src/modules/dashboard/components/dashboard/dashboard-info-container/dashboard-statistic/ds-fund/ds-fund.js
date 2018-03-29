@@ -4,16 +4,8 @@ import React from "react";
 import DSFundChart from "./ds-fund-chart";
 
 import "./ds-fund.css";
+import { COLORS } from "../../../../../dashboard.constants";
 
-const COLORS = [
-  "#1b4f64",
-  "#03bdaf",
-  "#7d9399",
-  "#6a00ff",
-  "#1ba1e2",
-  "#647687",
-  "#76608a"
-];
 const DSFund = ({ funds }) => {
   return (
     <div className="dashboard-card__body card-body">

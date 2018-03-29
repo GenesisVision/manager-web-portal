@@ -18,9 +18,11 @@ const DashboardStatistic = ({ dashboard }) => {
           investorsFund={dashboard.investorsFund}
         />
       </div>
-      <div className="dashboard-card card">
-        <DSPeriodEnd periodEnd={dashboard.endOfNextPeriod} />
-      </div>
+      {dashboard.endOfNextPeriod && (
+        <div className="dashboard-card card">
+          <DSPeriodEnd periodEnd={dashboard.endOfNextPeriod} />
+        </div>
+      )}
       <div className="dashboard-card card">
         <DSProfit profit={dashboard.totalProfit} />
       </div>
