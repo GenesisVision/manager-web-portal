@@ -5,10 +5,12 @@ import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api"
 import * as actionTypes from "./dashboard-actions.constants";
 
 const fetchDashboardPrograms = () => {
+  const filter = { type: "All" };
   return {
     type: actionTypes.DASHBOARD_PROGRAMS,
-    payload: SwaggerManagerApi.apiManagerDashboardGet(
-      authService.getAuthArg()
+    payload: SwaggerManagerApi.apiManagerDashboardProgramsGet(
+      authService.getAuthArg(),
+      { filter }
     ).then(response => {
       response.investmentPrograms.forEach(x => {
         x.logo = filesService.getFileUrl(x.logo);
@@ -19,20 +21,14 @@ const fetchDashboardPrograms = () => {
   };
 };
 
-const fetchDashboardChart = () => {
-  const data = {
-    filter: {
-      type: "Internal"
-    }
-  };
+const fetchDashboardInfo = () => {
   return {
-    type: actionTypes.DASHBOARD_CHART,
-    payload: SwaggerManagerApi.apiManagerWalletStatisticPost(
-      authService.getAuthArg(),
-      data
+    type: actionTypes.DASHBOARD_INFO,
+    payload: SwaggerManagerApi.apiManagerDashboardStatisticGet(
+      authService.getAuthArg()
     )
   };
 };
 
-const dashboardActions = { fetchDashboardPrograms, fetchDashboardChart };
+const dashboardActions = { fetchDashboardPrograms, fetchDashboardInfo };
 export default dashboardActions;

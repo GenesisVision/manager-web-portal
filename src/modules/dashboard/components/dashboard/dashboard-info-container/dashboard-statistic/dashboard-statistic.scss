@@ -1,0 +1,40 @@
+@import "styles/_colors.scss";
+
+.dashboard-statistic {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dashboard-card {
+  flex: 1 1;
+  margin: 2rem;
+  border-color: white;
+  box-shadow: 0 70px 70px 0 $box-shadow-color;
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.dashboard-card__body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dashboard-card__header {
+  font-size: 1.4rem;
+}
+
+.dashboard-card__image {
+  display: flex;
+  min-height: 170px;
+}
+
+.dashboard-card .days-left-widget {
+  flex-direction: column;
+}
