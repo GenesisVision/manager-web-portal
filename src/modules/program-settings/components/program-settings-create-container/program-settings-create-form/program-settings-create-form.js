@@ -95,33 +95,33 @@ const ProgramCreateForm = ({
             label="Period Length"
             placeholder=" "
           />
-          <div className="create-program-form__couple-field">
-            <Field
-              name="dateFrom"
-              selected={values.dateFrom}
-              selectsStart
-              startDate={values.dateFrom}
-              endDate={values.dateTo}
-              minDate={moment()}
-              maxDate={values.dateTo || moment().add(100, "years")}
-              showTimeSelect
-              dateFormat="LLL"
-              component={GVDatePicker}
-              label="Start Date"
-            />
-            <Field
-              name="dateTo"
-              selected={values.dateTo}
-              selectsEnd
-              startDate={values.dateFrom}
-              endDate={values.dateTo}
-              minDate={values.dateFrom || moment()}
-              showTimeSelect
-              dateFormat="LLL"
-              component={GVDatePicker}
-              label="End Date"
-            />
-          </div>
+          <Field
+            material
+            name="dateFrom"
+            selected={values.dateFrom}
+            selectsStart
+            startDate={values.dateFrom}
+            endDate={values.dateTo}
+            minDate={moment()}
+            maxDate={values.dateTo || moment().add(100, "years")}
+            showTimeSelect
+            dateFormat="LLL"
+            component={GVDatePicker}
+            label="Start Date"
+          />
+          <Field
+            material
+            name="dateTo"
+            selected={values.dateTo}
+            selectsEnd
+            startDate={values.dateFrom}
+            endDate={values.dateTo}
+            minDate={values.dateFrom || moment()}
+            showTimeSelect
+            dateFormat="LLL"
+            component={GVDatePicker}
+            label="End Date"
+          />
           <Field
             material
             name="depositAmount"

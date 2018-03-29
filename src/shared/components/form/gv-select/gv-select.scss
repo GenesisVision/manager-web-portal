@@ -14,7 +14,6 @@ $select-menu-max-height: 210px;
 
 .gv-select {
   position: relative;
-  margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
@@ -102,6 +101,7 @@ $select-menu-max-height: 210px;
 }
 
 .gv-select--material {
+  margin-top: 2rem;
   .Select.is-focused > .Select-control {
     background-color: transparent;
   }

@@ -1,7 +1,8 @@
+import classnames from "classnames";
 import React, { PureComponent } from "react";
 import Select from "react-select";
+
 import "./gv-select.css";
-import classnames from "classnames";
 
 class GVSelect extends PureComponent {
   state = { isOpen: false };
