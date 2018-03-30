@@ -22,7 +22,7 @@ const submitTraderWithdraw = (traderId, amount) => {
   };
   return {
     type: actionTypes.TRADER_WITHDRAW_SUBMIT,
-    payload: SwaggerManagerApi.apiManagerInvestmentProgramsWithdrawPost(
+    payload: SwaggerManagerApi.apiManagerInvestmentWithdrawPost(
       authService.getAuthArg(),
       { model }
     )

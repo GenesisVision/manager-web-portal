@@ -25,7 +25,7 @@ const submitTraderDeposit = (traderId, amount) => {
   };
   return {
     type: actionTypes.TRADER_DEPOSIT_SUBMIT,
-    payload: SwaggerManagerApi.apiManagerInvestmentProgramsInvestPost(
+    payload: SwaggerManagerApi.apiManagerInvestmentInvestPost(
       authService.getAuthArg(),
       { model }
     )
