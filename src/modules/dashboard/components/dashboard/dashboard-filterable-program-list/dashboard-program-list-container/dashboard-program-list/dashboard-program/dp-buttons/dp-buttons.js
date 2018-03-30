@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./trader-buttons.css";
+import "./dp-buttons.css";
 
-const TraderButtons = ({
+const DPButtons = ({
   traderId,
   isInvestEnable,
   isWithdrawEnable,
@@ -29,4 +29,4 @@ const TraderButtons = ({
   );
 };
 
-export default TraderButtons;
+export default DPButtons;

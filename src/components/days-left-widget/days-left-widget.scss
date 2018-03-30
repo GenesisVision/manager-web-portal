@@ -5,6 +5,14 @@
   width: 100%;
 }
 
+.days-left-widget--row {
+  flex-direction: row;
+}
+
+.days-left-widget--column {
+  flex-direction: column;
+}
+
 .days-left-widget__text {
   font-size: 0.9em;
   flex: 1;

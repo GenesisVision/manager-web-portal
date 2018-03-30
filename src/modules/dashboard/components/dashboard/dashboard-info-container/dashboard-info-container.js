@@ -9,7 +9,7 @@ import FormError from "../../../../../shared/components/form/form-error/form-err
 
 class DashboardContainer extends PureComponent {
   componentWillMount() {
-    this.props.fetchDashboardPrograms();
+    this.props.fetchDashboardInfo();
   }
   render() {
     const { isPending, dashboard, errorMessage } = this.props;
@@ -42,7 +42,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchDashboardPrograms: () => {
+  fetchDashboardInfo: () => {
     dispatch(dashboardActions.fetchDashboardInfo());
   }
 });

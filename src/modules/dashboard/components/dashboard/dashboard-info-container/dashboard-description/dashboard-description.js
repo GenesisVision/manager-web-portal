@@ -8,7 +8,7 @@ const DashboardDescription = () => {
   return (
     <div className="dashboard-description">
       <div className="dashboard-description__name dashboard-subheader">
-        Programs
+        Dashboard
       </div>
       <div className="dashboard-description__buttons">
         <Link
