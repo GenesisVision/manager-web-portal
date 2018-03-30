@@ -30,7 +30,7 @@ class TraderRequestListContainer extends PureComponent {
       traderRequests,
       cancelRequest,
       traderId,
-      token
+      currency
     } = this.props;
     if (!isOwnProgram || isPending || traderRequests === undefined) {
       return null;
@@ -38,7 +38,7 @@ class TraderRequestListContainer extends PureComponent {
     return (
       <TraderRequestList
         requests={traderRequests.requests}
-        token={token}
+        currency={currency}
         cancelRequest={cancelRequest(traderId)}
       />
     );
@@ -49,22 +49,20 @@ const mapStateToProps = state => {
   const { isPending, errorMessage, data } = state.traderData.requests.items;
   const { data: traderDetail } = state.traderData.traderDetail;
 
-  let traderRequests,
-    isOwnProgram,
-    token = {};
+  let traderRequests, isOwnProgram, currency;
   if (data) {
     traderRequests = data;
   }
 
   if (traderDetail && traderDetail.investmentProgram) {
-    token = traderDetail.investmentProgram.token;
+    currency = traderDetail.investmentProgram.currency;
     isOwnProgram = traderDetail.investmentProgram.isOwnProgram;
   }
 
   return {
     isPending,
     traderRequests,
-    token,
+    currency,
     isOwnProgram,
     errorMessage
   };

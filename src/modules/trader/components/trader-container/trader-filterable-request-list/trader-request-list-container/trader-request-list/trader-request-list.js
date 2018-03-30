@@ -4,7 +4,7 @@ import TraderRequest from "./trader-request/trader-request";
 
 import "./trader-request-list.css";
 
-const TraderRequestList = ({ requests, token, cancelRequest }) => {
+const TraderRequestList = ({ requests, currency, cancelRequest }) => {
   const renderRequestList = () => {
     if (requests.length === 0) {
       return <div>There are no requests.</div>;
@@ -14,7 +14,7 @@ const TraderRequestList = ({ requests, token, cancelRequest }) => {
       <TraderRequest
         key={x.id}
         request={x}
-        token={token}
+        currency={currency}
         cancelRequest={cancelRequest}
       />
     ));

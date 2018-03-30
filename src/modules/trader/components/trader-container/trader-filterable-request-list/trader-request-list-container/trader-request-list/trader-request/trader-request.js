@@ -3,27 +3,36 @@ import moment from "moment";
 
 import "./trader-request.css";
 
-const TraderRequest = ({ request, token, cancelRequest }) => {
+const TraderRequest = ({ request, currency, cancelRequest }) => {
+  const getRequestCurrency = () => {
+    if (request.type === "Withdrawal") return currency;
+    return "GVT";
+  };
+
   return (
     <div className="trader-request__row">
-      <div className="trader-request__type">{request.type}</div>
-      <div className="trader-request__amount">
-        {request.amount} {token.tokenSymbol}
+      <div className="trader-request__type trader-request__cell">
+        {request.type}
       </div>
-      <div className="trader-request__status">{request.status}</div>
-      <div className="trader-request__date">
+      <div className="trader-request__amount trader-request__cell">
+        {request.amount} {getRequestCurrency()}
+      </div>
+      <div className="trader-request__status trader-request__cell">
+        {request.status}
+      </div>
+      <div className="trader-request__date trader-request__cell">
         {moment(request.date).format("L")}
       </div>
-      {request.status === "New" ? (
-        <div className="trader-request__cancel">
+      <div className="trader-request__cancel trader-request__cell">
+        {request.status === "New" ? (
           <button
             className="gv-btn gv-btn-primary"
             onClick={cancelRequest(request.id)}
           >
             Cancel
           </button>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </div>
   );
 };
