@@ -11,7 +11,7 @@ import {
 
 const DashboardFundChart = ({ data }) => {
   return (
-    <ResponsiveContainer stackOffset="sign">
+    <ResponsiveContainer height={400} stackOffset="sign">
       <ComposedChart data={data}>
         <XAxis dataKey="title" axisLine={false} />
         <YAxis hide />
