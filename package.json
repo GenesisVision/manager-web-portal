@@ -2,7 +2,6 @@
   "name": "manager-web-portal",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
   "dependencies": {
     "@fortawesome/fontawesome-free-webfonts": "^1.0.3",
     "bootstrap": "^4.0.0",
@@ -38,7 +37,8 @@
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src src/ -o src/ --watch --recursive",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar --include-path ./src src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
