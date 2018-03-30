@@ -1,7 +1,10 @@
 @import "styles/_colors.scss";
 
 .dashboard-program-list-tabs {
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .dashboard-program-tab {

@@ -14,7 +14,7 @@ const fetchDashboardPrograms = () => (dispatch, getState) => {
 
   return dispatch({
     type: actionTypes.DASHBOARD_PROGRAMS,
-    payload: SwaggerManagerApi.apiManagerDashboardProgramsGet(
+    payload: SwaggerManagerApi.apiManagerDashboardProgramsPost(
       authService.getAuthArg(),
       { filter }
     ).then(response => {
