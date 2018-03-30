@@ -155,7 +155,7 @@ const ProgramCreateForm = ({
 export default withFormik({
   displayName: "programCreateForm",
   mapPropsToValues: () => ({
-    logo: "",
+    logo: {},
     tradePlatformPassword: "",
     confirmTradePlatformPassword: "",
     brokerTradeServerId: "",
