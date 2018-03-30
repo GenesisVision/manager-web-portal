@@ -19,8 +19,7 @@ class DashboardProgramListContainer extends PureComponent {
       isPending,
       programs,
       openInvestPopup,
-      openWithdrawPopup,
-      errorMessage
+      openWithdrawPopup
     } = this.props;
     if (isPending || programs === undefined) {
       return null;

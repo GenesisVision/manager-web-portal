@@ -17,15 +17,19 @@ class DashboardContainer extends PureComponent {
       return null;
     }
 
+    const hasPrograms = dashboard.programBalances.length > 0;
+
     return (
       <div>
         <DashboardDescription />
-        <DashboardStatistic dashboard={dashboard} />
-        <DashboardCharts
-          fundChart={dashboard.fundChart}
-          profitChart={dashboard.profitChart}
-        />
-        <FormError error={errorMessage} />
+        {hasPrograms && <DashboardStatistic dashboard={dashboard} />}
+        {hasPrograms && (
+          <DashboardCharts
+            fundChart={dashboard.fundChart}
+            profitChart={dashboard.profitChart}
+          />
+        )}
+        {hasPrograms && <FormError error={errorMessage} />}
       </div>
     );
   }

@@ -11,6 +11,7 @@ const DashboardProgramList = ({
 }) => {
   return (
     <div className="dashboard-program-list">
+      {programs.length === 0 && <div>There are no programs.</div>}
       {programs.map(x => (
         <DashboardProgram
           key={x.id}
