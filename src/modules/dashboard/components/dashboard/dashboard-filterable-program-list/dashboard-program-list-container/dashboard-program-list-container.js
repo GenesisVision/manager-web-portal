@@ -8,7 +8,7 @@ import {
   TRADER_DEPOSIT_POPUP,
   TRADER_WITHDRAW_POPUP
 } from "../../../../../popup/actions/popup-actions.constants";
-import dashboardService from "../../../../service/dashboardService";
+import dashboardService from "../../../../service/dashboard-service";
 
 class DashboardProgramListContainer extends PureComponent {
   componentWillMount() {
