@@ -1,9 +1,16 @@
+@import "styles/_breakpoint.scss";
+
 .create-program-form {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   max-width: 1000px;
   margin: 2rem auto;
+
+  @include media-breakpoint-phone() {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
 }
 
 .create-program-form__program-detail {
@@ -22,10 +29,17 @@
   flex: 1;
   max-width: 436px;
   min-width: 436px;
+  @include media-breakpoint-phone() {
+    max-width: 100%;
+    min-width: 100%;
+  }
 }
 
 .create-program-form__program-image {
   max-width: 200px;
+  @include media-breakpoint-phone() {
+    max-width: 100%;
+  }
 }
 
 .create-program-form__couple-field {
