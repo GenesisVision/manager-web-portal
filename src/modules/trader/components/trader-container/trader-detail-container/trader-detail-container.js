@@ -98,8 +98,11 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         level: traderDetail.level,
         startOfPeriod: traderDetail.startOfPeriod,
         periodDuration: traderDetail.periodDuration,
-        investedTokens: traderDetail.investedTokens,
-        token: traderDetail.token
+        ownBalance: traderDetail.ownBalance,
+        token: traderDetail.token,
+        currency: traderDetail.currency,
+        minAccountBalanceUsd: traderDetail.minAccountBalanceUsd,
+        minAccountBalance: traderDetail.minAccountBalance
       };
       const popupProps = {
         traderWithdraw

@@ -73,17 +73,19 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         )
       );
     },
-    openWithdrawPopup: () => {
-      const { traderDetail } = stateProps;
+    openWithdrawPopup: program => {
       const traderWithdraw = {
-        id: traderDetail.id,
-        title: traderDetail.title,
-        logo: traderDetail.logo,
-        level: traderDetail.level,
-        startOfPeriod: traderDetail.startOfPeriod,
-        periodDuration: traderDetail.periodDuration,
-        investedTokens: traderDetail.investedTokens,
-        token: traderDetail.token
+        id: program.id,
+        title: program.title,
+        logo: program.logo,
+        level: program.level,
+        startOfPeriod: program.startOfPeriod,
+        periodDuration: program.periodDuration,
+        ownBalance: program.ownBalance,
+        token: program.token,
+        currency: program.currency,
+        minAccountBalanceUsd: program.minAccountBalanceUsd,
+        minAccountBalance: program.minAccountBalance
       };
       const popupProps = {
         traderWithdraw

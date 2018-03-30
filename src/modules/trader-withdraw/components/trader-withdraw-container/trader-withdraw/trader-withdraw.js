@@ -20,9 +20,6 @@ const TraderWithdraw = ({
   isSubmitting,
   setFieldValue
 }) => {
-  const handleWithdrawAll = () => {
-    setFieldValue("amount", traderWithdraw.investedTokens);
-  };
   return (
     <div className="popup">
       <PopupHeader header="Sell Tokens" onClose={closePopup} />
@@ -52,10 +49,10 @@ const TraderWithdraw = ({
           <div className="trader-withdraw__info-cell">
             <div className="metric">
               <div className="metric__value">
-                {+traderWithdraw.investedTokens.toFixed(2)}
+                {+traderWithdraw.ownBalance.toFixed(2)}
               </div>
               <div className="metric__description">
-                Invested {traderWithdraw.token.tokenSymbol}
+                Invested {traderWithdraw.currency}
               </div>
             </div>
           </div>
@@ -75,12 +72,15 @@ const TraderWithdraw = ({
               />
             </div>
             <div className="input-token__description">
-              Enter {traderWithdraw.token.tokenSymbol} amount
+              Enter {traderWithdraw.currency} amount
             </div>
           </div>
           <div>
-            <span className="link" onClick={handleWithdrawAll}>
-              Withdraw all invested tokens
+            <span>
+              Minimal remaining balance is ${
+                traderWithdraw.minAccountBalanceUsd
+              }{" "}
+              ({traderWithdraw.minAccountBalance} {traderWithdraw.currency})
             </span>
           </div>
         </div>

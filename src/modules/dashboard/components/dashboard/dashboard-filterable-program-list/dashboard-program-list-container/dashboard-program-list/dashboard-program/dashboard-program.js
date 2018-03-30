@@ -7,6 +7,9 @@ import TraderAvatar from "../../../../../../../../components/trader-avatar/trade
 import "./dashboard-program.css";
 
 const DashboardProgram = ({ program, openInvestPopup, openWithdrawPopup }) => {
+  const handleOpenWithdrawPopup = () => {
+    return openWithdrawPopup(program);
+  };
   return (
     <div className="dashboard-program-card card">
       <TraderAvatar imgUrl={program.logo} level={program.level} />
@@ -19,7 +22,7 @@ const DashboardProgram = ({ program, openInvestPopup, openWithdrawPopup }) => {
         isInvestEnable={program.isInvestEnable}
         isWithdrawEnable={program.isWithdrawEnable}
         openInvestPopup={openInvestPopup}
-        openWithdrawPopup={openWithdrawPopup}
+        openWithdrawPopup={handleOpenWithdrawPopup}
       />
       <DPStatistic program={program} />
     </div>
