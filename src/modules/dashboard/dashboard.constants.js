@@ -8,3 +8,7 @@ export const COLORS = [
   "#647687",
   "#76608a"
 ];
+
+export const DASHBOARD_FILTERS = {
+  type: "All"
+};

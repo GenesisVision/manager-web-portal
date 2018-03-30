@@ -36,7 +36,7 @@ class DashboardProgramListContainer extends PureComponent {
 }
 
 const mapStateToProps = state => {
-  const { isPending, errorMessage, data } = state.dashboardData.programs;
+  const { isPending, errorMessage, data } = state.dashboardData.programs.items;
 
   let programs;
   if (data) {
