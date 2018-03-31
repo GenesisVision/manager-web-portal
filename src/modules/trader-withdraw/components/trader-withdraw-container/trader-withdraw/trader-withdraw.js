@@ -22,7 +22,7 @@ const TraderWithdraw = ({
 }) => {
   return (
     <div className="popup">
-      <PopupHeader header="Sell Tokens" onClose={closePopup} />
+      <PopupHeader header="Withdraw" onClose={closePopup} />
       <form onSubmit={handleSubmit}>
         <div className="trader-withdraw__info">
           <div className="trader-withdraw__info-cell">
@@ -87,7 +87,7 @@ const TraderWithdraw = ({
 
         <FormError error={error} />
         <PopupButtons
-          submitLabel="Sell Tokens"
+          submitLabel="Withdraw"
           isSubmitting={isSubmitting}
           onSubmit={handleSubmit}
           onCancel={closePopup}
