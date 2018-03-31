@@ -97,6 +97,7 @@ const ProgramCreateForm = ({
           />
           <Field
             material
+            selected={values.dateFrom}
             name="dateFrom"
             minDate={moment()}
             showTimeSelect
