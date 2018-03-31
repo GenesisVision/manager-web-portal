@@ -52,7 +52,7 @@ const TraderWithdraw = ({
                 {+traderWithdraw.ownBalance.toFixed(2)}
               </div>
               <div className="metric__description">
-                Invested {traderWithdraw.currency}
+                Your balance {traderWithdraw.currency}
               </div>
             </div>
           </div>
