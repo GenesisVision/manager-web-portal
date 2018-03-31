@@ -5,6 +5,7 @@ import {
   YAxis,
   Tooltip,
   Legend,
+  Brush,
   ResponsiveContainer
 } from "recharts";
 import moment from "moment";
@@ -16,7 +17,7 @@ const DashboardProfitChart = ({ data }) => {
     title: x.title,
     data: x.data.map(sub => ({
       totalProfit: sub.totalProfit,
-      date: moment(+new Date(sub.date)).format(" MMMM Do HH:mm ")
+      date: +new Date(sub.date).getTime()
     }))
   }));
   return (
@@ -25,13 +26,16 @@ const DashboardProfitChart = ({ data }) => {
         <LineChart>
           <XAxis
             dataKey="date"
-            type="category"
+            type="number"
+            domain={["dataMin", "dataMax"]}
+            tickFormatter={x => moment(x).format(" MMMM Do HH:mm ")}
             allowDuplicatedCategory={false}
             axisLine={false}
           />
           <YAxis dataKey="totalProfit" axisLine={false} />
-          <Tooltip />
+          <Tooltip labelFormatter={x => moment(x).format(" MMMM Do HH:mm ")} />
           <Legend />
+          <Brush />
           {series.map((s, idx) => (
             <Line
               key={s.title}
