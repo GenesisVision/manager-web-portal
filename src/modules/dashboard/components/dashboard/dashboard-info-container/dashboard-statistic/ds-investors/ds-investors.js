@@ -17,7 +17,7 @@ const DSInvestors = ({ investorsCount, investorsFund }) => {
             <div className="metric__value">
               <NumberFormat value={investorsCount} displayType="text" />
             </div>
-            <div className="metric__description">Participate</div>
+            <div className="metric__description">Investors</div>
           </div>
           <div className="metric">
             <div className="metric__value">
