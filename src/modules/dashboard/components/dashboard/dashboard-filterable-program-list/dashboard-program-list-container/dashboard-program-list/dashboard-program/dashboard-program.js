@@ -1,19 +1,27 @@
+import { Link } from "react-router-dom";
 import React from "react";
 
 import DPButtons from "./dp-buttons/dp-buttons";
 import DPStatistic from "./dp-statistic/dp-statistic";
+import replaceParams from "../../../../../../../../utils/replace-params";
 import TraderAvatar from "../../../../../../../../components/trader-avatar/trader-avatar";
 
 import "./dashboard-program.css";
+import { TRADER_ROUTE } from "../../../../../../../trader/trader.constants";
 
 const DashboardProgram = ({ program, openInvestPopup, openWithdrawPopup }) => {
   const handleOpenWithdrawPopup = () => {
     return openWithdrawPopup(program);
   };
+  const traderRoute = replaceParams(TRADER_ROUTE, {
+    ":traderId": program.id
+  });
   return (
     <div className="dashboard-program-card card">
       <TraderAvatar imgUrl={program.logo} level={program.level} />
-      <div className="dashboard-program-card__title">{program.title}</div>
+      <Link className="dashboard-program-card__title" to={traderRoute}>
+        {program.title}
+      </Link>
       <div className="dashboard-program-card__description">
         {program.description}
       </div>

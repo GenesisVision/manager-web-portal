@@ -21,9 +21,13 @@
 .dashboard-program-card__title {
   font-size: 1.5rem;
   max-width: 100%;
+  color: $text-color;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .dashboard-program-card__description {
