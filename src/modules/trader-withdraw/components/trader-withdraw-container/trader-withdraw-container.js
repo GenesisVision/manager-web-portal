@@ -60,7 +60,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         .then(() => {
           dispatch(
             alertMessageActions.success(
-              "Request to buy tokens sent successfully"
+              "Request to withdrawal sent successfully"
             )
           );
           return Promise.resolve();
