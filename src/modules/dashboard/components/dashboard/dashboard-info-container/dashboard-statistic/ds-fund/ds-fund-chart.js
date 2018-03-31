@@ -6,7 +6,7 @@ const DSFundChart = ({ data, colors }) => {
     <ResponsiveContainer>
       <PieChart>
         <Pie
-          dataKey="balance"
+          dataKey="balanceUsd"
           data={data}
           innerRadius="60%"
           outerRadius="100%"

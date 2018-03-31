@@ -22,9 +22,11 @@ const DashboardCharts = ({ fundChart, profitChart }) => {
       <div className="dashboard-subheader">Analytics</div>
       <div className="dashboard-charts__charts">
         <div className="dashboard-charts__chart">
+          <div className="dashboard-charts__chart-header">Fund</div>
           <DashboardFundChart data={fundChartData} />
         </div>
         <div className="dashboard-charts__chart">
+          <div className="dashboard-charts__chart-header">Profit</div>
           <DashboardProfitChart data={profitChart} />
         </div>
       </div>
