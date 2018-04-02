@@ -7,8 +7,6 @@ import ProgramSettingsCreateContainer from "../modules/program-settings/componen
 
 import { DASHBOARD_ROUTE } from "../modules/dashboard/dashboard.constants";
 import { EMAIL_CONFIRM_ROUTE } from "../modules/email-confirm/email-confirm.constants";
-import { FORGOT_PASSWORD_ROUTE } from "../modules/password-reset/password-reset.constants";
-import { ForgotPasswordRoutes } from "../modules/password-reset/password-reset.routes";
 import { HOME_ROUTE } from "./app.constants";
 import { LOGIN_ROUTE } from "../modules/login/login.constants";
 import { PROFILE_ROUTE } from "../modules/profile/profile.constants";
@@ -17,6 +15,14 @@ import { REGISTER_ROUTE } from "../modules/register/register.constants";
 import { TRADER_ROUTE } from "../modules/trader/trader.constants";
 import { TRADERS_ROUTE } from "../modules/traders/traders.constants";
 import { WALLET_ROUTE } from "../modules/wallet/wallet.constants";
+import {
+  FORGOT_PASSWORD_ROUTE,
+  RESET_PASSWORD_ROUTE
+} from "../modules/password-reset/password-reset.constants";
+import {
+  ForgotPasswordRoutes,
+  ResetPasswordRoutes
+} from "../modules/password-reset/password-reset.routes";
 import DashboardRoutes from "../modules/dashboard/dashboard.routes";
 import EmailConfirmRoutes from "../modules/email-confirm/email-confirm.routes";
 import LoginRoutes from "../modules/login/login.routes";
@@ -30,6 +36,7 @@ const AppRoutes = () => (
   <Switch>
     <Route path={EMAIL_CONFIRM_ROUTE} component={EmailConfirmRoutes} />
     <Route path={FORGOT_PASSWORD_ROUTE} component={ForgotPasswordRoutes} />
+    <Route path={RESET_PASSWORD_ROUTE} component={ResetPasswordRoutes} />
     <Route path={LOGIN_ROUTE} component={LoginRoutes} />
     <Route path={REGISTER_ROUTE} component={RegisterRoutes} />
     <PrivateRoute

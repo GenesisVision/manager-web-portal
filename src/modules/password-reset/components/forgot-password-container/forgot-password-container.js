@@ -12,7 +12,6 @@ const ForgotPasswordContainer = ({
   const handleSubmit = (formData, setSubmitting) => {
     forgotPassword(formData, setSubmitting);
   };
-  if (isPending) return null;
 
   return <ForgotPassword error={errorMessage} onSubmit={handleSubmit} />;
 };
@@ -23,8 +22,10 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  forgotPassword: formData => {
-    dispatch(passwordResetService.forgotPassword(formData));
+  forgotPassword: (formData, setSubmitting) => {
+    dispatch(passwordResetService.forgotPassword(formData)).catch(() => {
+      setSubmitting(false);
+    });
   }
 });
 
