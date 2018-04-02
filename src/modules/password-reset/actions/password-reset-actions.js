@@ -1,16 +1,26 @@
-import * as actionTypes from "./password-reset-actions.constants";
-
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
-const passwordResetRequest = email => {
+import * as actionTypes from "./password-reset-actions.constants";
+
+const forgotPassword = fpForm => {
   return {
     type: actionTypes.RESET_PASSWORD,
-    payload: SwaggerManagerApi.apiManagerAuthPasswordResetPost({
-      email
-    })
+    payload: SwaggerManagerApi.apiManagerAuthForgotPasswordPost(fpForm)
   };
 };
 
-const passwordResetActions = { passwordResetRequest };
+const resetPassword = (userId, code, rpForm) => {
+  const data = {
+    userId,
+    code,
+    ...rpForm
+  };
+  return {
+    type: actionTypes.RESET_PASSWORD,
+    payload: SwaggerManagerApi.apiManagerAuthForgotPasswordPost(data)
+  };
+};
+
+const passwordResetActions = { forgotPassword, resetPassword };
 
 export default passwordResetActions;

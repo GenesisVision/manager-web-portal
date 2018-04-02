@@ -1,7 +1,6 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import React from "react";
 
-import ForgotPasswordContainer from "../modules/password-reset/components/forgot-password-container/forgot-password-container";
 import NotFoundPage from "../shared/components/not-found/not-found";
 import PrivateRoute from "../shared/components/private-route/private-route";
 import ProgramSettingsCreateContainer from "../modules/program-settings/components/program-settings-create-container/program-settings-create-container";
@@ -9,6 +8,7 @@ import ProgramSettingsCreateContainer from "../modules/program-settings/componen
 import { DASHBOARD_ROUTE } from "../modules/dashboard/dashboard.constants";
 import { EMAIL_CONFIRM_ROUTE } from "../modules/email-confirm/email-confirm.constants";
 import { FORGOT_PASSWORD_ROUTE } from "../modules/password-reset/password-reset.constants";
+import { ForgotPasswordRoutes } from "../modules/password-reset/password-reset.routes";
 import { HOME_ROUTE } from "./app.constants";
 import { LOGIN_ROUTE } from "../modules/login/login.constants";
 import { PROFILE_ROUTE } from "../modules/profile/profile.constants";
@@ -29,7 +29,7 @@ import WalletRoutes from "../modules/wallet/wallet.routes";
 const AppRoutes = () => (
   <Switch>
     <Route path={EMAIL_CONFIRM_ROUTE} component={EmailConfirmRoutes} />
-    <Route path={FORGOT_PASSWORD_ROUTE} component={ForgotPasswordContainer} />
+    <Route path={FORGOT_PASSWORD_ROUTE} component={ForgotPasswordRoutes} />
     <Route path={LOGIN_ROUTE} component={LoginRoutes} />
     <Route path={REGISTER_ROUTE} component={RegisterRoutes} />
     <PrivateRoute

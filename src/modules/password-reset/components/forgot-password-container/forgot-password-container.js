@@ -1,15 +1,21 @@
 import { connect } from "react-redux";
-import React, { PureComponent } from "react";
-import passwordResetActions from "../../actions/password-reset-actions";
-import ForgotPassword from "./forgot-password/forgot-password";
+import React from "react";
 
-class ForgotPassportContainer extends PureComponent {
-  render() {
-    const { isPending, errorMessage } = this.props;
-    if (isPending) return null;
-    return <ForgotPassword error={errorMessage} />;
-  }
-}
+import ForgotPassword from "./forgot-password/forgot-password";
+import passwordResetService from "../../service/password-reset-service";
+
+const ForgotPasswordContainer = ({
+  isPending,
+  errorMessage,
+  forgotPassword
+}) => {
+  const handleSubmit = (formData, setSubmitting) => {
+    forgotPassword(formData, setSubmitting);
+  };
+  if (isPending) return null;
+
+  return <ForgotPassword error={errorMessage} onSubmit={handleSubmit} />;
+};
 
 const mapStateToProps = state => {
   const { isPending, errorMessage } = state.passwordResetData.forgot;
@@ -17,11 +23,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  passwordResetRequest: email => {
-    dispatch(passwordResetActions.passwordResetRequest(email));
+  forgotPassword: formData => {
+    dispatch(passwordResetService.forgotPassword(formData));
   }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  ForgotPassportContainer
+  ForgotPasswordContainer
 );
