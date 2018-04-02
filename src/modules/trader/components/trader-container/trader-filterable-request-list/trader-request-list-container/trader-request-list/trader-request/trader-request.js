@@ -24,7 +24,7 @@ const TraderRequest = ({ request, currency, cancelRequest }) => {
         {moment(request.date).format("L")}
       </div>
       <div className="trader-request__cancel trader-request__cell">
-        {request.status === "New" ? (
+        {request.canCancelRequest ? (
           <button
             className="gv-btn gv-btn-primary"
             onClick={cancelRequest(request.id)}
