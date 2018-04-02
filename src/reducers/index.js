@@ -7,6 +7,7 @@ import authReducer from "./auth-reducer";
 import dashboardReducer from "../modules/dashboard/reducers/dashboard-reducers";
 import emailConfirmReducer from "../modules/email-confirm/reducers/email-confirm-reducers";
 import loginReducer from "../modules/login/reducers/login-reducers";
+import passwordResetReducer from "../modules/password-reset/reducers/password-reset-reducers";
 import popupReducer from "../modules/popup/reducers/popup-reducers";
 import profileReducer from "../modules/profile/reducers/profile-reducers";
 import programSettingsReducer from "../modules/program-settings/reducers/program-settings-reducers";
@@ -27,6 +28,7 @@ export default combineReducers({
   registerData: registerReducer,
   authData: authReducer,
   emailConfirmData: emailConfirmReducer,
+  passwordResetData: passwordResetReducer,
   alertMessages: alertMessagesReducer,
   profileData: profileReducer,
   walletData: walletReducer,
