@@ -47,7 +47,7 @@ const RegisterForm = ({ isSubmitting, handleSubmit, error }) => {
         </button>
         <div className="register__separator" />
         <Link to={LOGIN_ROUTE} className="login__btn gv-btn gv-btn-secondary">
-          Already have an account? Sing In!
+          Already have an account? Sign In!
         </Link>
       </div>
     </form>
