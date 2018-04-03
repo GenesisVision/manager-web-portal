@@ -5,14 +5,17 @@ import "./popup.css";
 
 import {
   TRADER_DEPOSIT_POPUP,
-  TRADER_WITHDRAW_POPUP
+  TRADER_WITHDRAW_POPUP,
+  TRADER_CLOSE_POPUP
 } from "../../actions/popup-actions.constants";
 
 import TraderDepositContainer from "../../../trader-deposit/components/trader-deposit-container/trader-deposit-container";
-import traderWithdrawContainer from "../../../trader-withdraw/components/trader-withdraw-container/trader-withdraw-container";
+import TraderWithdrawContainer from "../../../trader-withdraw/components/trader-withdraw-container/trader-withdraw-container";
+import TraderCloseContainer from "../../../trader-close/components/trader-close-container/trader-close-container";
 const POPUP_COMPONENTS = {
   [TRADER_DEPOSIT_POPUP]: TraderDepositContainer,
-  [TRADER_WITHDRAW_POPUP]: traderWithdrawContainer
+  [TRADER_WITHDRAW_POPUP]: TraderWithdrawContainer,
+  [TRADER_CLOSE_POPUP]: TraderCloseContainer
 };
 
 const Popup = ({ isOpen, type, onSubmitPopup, onClosePopup, popupProps }) => {

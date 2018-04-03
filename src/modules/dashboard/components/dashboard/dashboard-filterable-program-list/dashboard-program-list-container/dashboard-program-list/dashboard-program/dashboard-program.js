@@ -9,7 +9,12 @@ import TraderAvatar from "../../../../../../../../components/trader-avatar/trade
 import "./dashboard-program.css";
 import { TRADER_ROUTE } from "../../../../../../../trader/trader.constants";
 
-const DashboardProgram = ({ program, openInvestPopup, openWithdrawPopup }) => {
+const DashboardProgram = ({
+  program,
+  openInvestPopup,
+  openWithdrawPopup,
+  openCloseProgramPopup
+}) => {
   const handleOpenWithdrawPopup = () => {
     return openWithdrawPopup(program);
   };
@@ -31,6 +36,7 @@ const DashboardProgram = ({ program, openInvestPopup, openWithdrawPopup }) => {
         isWithdrawEnable={program.isWithdrawEnable}
         openInvestPopup={openInvestPopup}
         openWithdrawPopup={handleOpenWithdrawPopup}
+        openCloseProgramPopup={openCloseProgramPopup}
       />
       <DPStatistic program={program} />
     </div>

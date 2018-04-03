@@ -12,6 +12,7 @@ import popupReducer from "../modules/popup/reducers/popup-reducers";
 import profileReducer from "../modules/profile/reducers/profile-reducers";
 import programSettingsReducer from "../modules/program-settings/reducers/program-settings-reducers";
 import registerReducer from "../modules/register/reducers/register-reducers";
+import traderCloseReducer from "../modules/trader-close/reducers/trader-close-reducers";
 import traderDepositReducer from "../modules/trader-deposit/reducers/trader-deposit-reducers";
 import traderReducer from "../modules/trader/reducers/trader-reducers";
 import tradersReducer from "../modules/traders/reducers/traders-reducers";
@@ -36,6 +37,7 @@ export default combineReducers({
   dashboardData: dashboardReducer,
   traderDepositData: traderDepositReducer,
   traderWithdrawData: traderWithdrawReducer,
+  traderCloseData: traderCloseReducer,
   popupData: popupReducer,
   programFormData: programSettingsReducer
 });

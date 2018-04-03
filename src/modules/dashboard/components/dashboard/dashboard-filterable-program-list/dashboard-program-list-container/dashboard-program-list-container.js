@@ -4,9 +4,11 @@ import React, { PureComponent } from "react";
 import dashboardActions from "../../../../actions/dashboard-actions";
 import DashboardProgramList from "./dashboard-program-list/dashboard-program-list";
 import popupActions from "../../../../../popup/actions/popup-actions";
+
 import {
   TRADER_DEPOSIT_POPUP,
-  TRADER_WITHDRAW_POPUP
+  TRADER_WITHDRAW_POPUP,
+  TRADER_CLOSE_POPUP
 } from "../../../../../popup/actions/popup-actions.constants";
 import dashboardService from "../../../../service/dashboard-service";
 
@@ -19,7 +21,8 @@ class DashboardProgramListContainer extends PureComponent {
       isPending,
       programs,
       openInvestPopup,
-      openWithdrawPopup
+      openWithdrawPopup,
+      openCloseProgramPopup
     } = this.props;
     if (isPending || programs === undefined) {
       return null;
@@ -30,6 +33,7 @@ class DashboardProgramListContainer extends PureComponent {
         programs={programs}
         openInvestPopup={openInvestPopup}
         openWithdrawPopup={openWithdrawPopup}
+        openCloseProgramPopup={openCloseProgramPopup}
       />
     );
   }
@@ -95,6 +99,17 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
           TRADER_WITHDRAW_POPUP,
           popupProps,
           closeInvestPopup(popupProps.traderWithdraw.id)
+        )
+      );
+    },
+    openCloseProgramPopup: traderId => () => {
+      dispatch(
+        popupActions.openPopup(
+          TRADER_CLOSE_POPUP,
+          {
+            traderId
+          },
+          closeInvestPopup(traderId)
         )
       );
     }

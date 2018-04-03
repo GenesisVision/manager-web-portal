@@ -7,7 +7,8 @@ import "./dashboard-program-list.css";
 const DashboardProgramList = ({
   programs,
   openInvestPopup,
-  openWithdrawPopup
+  openWithdrawPopup,
+  openCloseProgramPopup
 }) => {
   return (
     <div className="dashboard-program-list">
@@ -18,6 +19,7 @@ const DashboardProgramList = ({
           program={x}
           openInvestPopup={openInvestPopup}
           openWithdrawPopup={openWithdrawPopup}
+          openCloseProgramPopup={openCloseProgramPopup}
         />
       ))}
     </div>
