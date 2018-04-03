@@ -6,6 +6,7 @@ const DPButtons = ({
   traderId,
   isInvestEnable,
   isWithdrawEnable,
+  canCloseProgram,
   openInvestPopup,
   openWithdrawPopup,
   openCloseProgramPopup
@@ -29,6 +30,7 @@ const DPButtons = ({
       <button
         className="dp-button gv-btn gv-btn-secondary"
         onClick={openCloseProgramPopup(traderId)}
+        disabled={!canCloseProgram}
       >
         Close Program
       </button>

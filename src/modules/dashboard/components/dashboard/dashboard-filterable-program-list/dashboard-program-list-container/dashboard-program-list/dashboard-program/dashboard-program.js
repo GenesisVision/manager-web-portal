@@ -34,6 +34,7 @@ const DashboardProgram = ({
         traderId={program.id}
         isInvestEnable={program.isInvestEnable}
         isWithdrawEnable={program.isWithdrawEnable}
+        canCloseProgram={program.canCloseProgram}
         openInvestPopup={openInvestPopup}
         openWithdrawPopup={handleOpenWithdrawPopup}
         openCloseProgramPopup={openCloseProgramPopup}

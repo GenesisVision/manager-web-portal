@@ -1,8 +1,9 @@
 import React from "react";
 
-import "./trader-info.css";
 import TraderAvatar from "../../../../../../../components/trader-avatar/trader-avatar";
 import TraderButtons from "./trader-buttons/trader-buttons";
+
+import "./trader-info.css";
 
 const TraderInfo = ({
   trader,
@@ -27,6 +28,7 @@ const TraderInfo = ({
               traderId={trader.id}
               isInvestEnable={trader.isInvestEnable}
               isWithdrawEnable={trader.isWithdrawEnable}
+              canCloseProgram={trader.canCloseProgram}
               openInvestPopup={openInvestPopup}
               openWithdrawPopup={openWithdrawPopup}
               openCloseProgramPopup={openCloseProgramPopup}

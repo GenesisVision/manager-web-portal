@@ -1,9 +1,9 @@
 import { withFormik } from "formik";
 import React from "react";
 
-import PopupHeader from "../../../../popup/components/popup-header/popup-header";
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 import PopupButtons from "../../../../popup/components/popup-buttons/popup-buttons";
+import PopupHeader from "../../../../popup/components/popup-header/popup-header";
 
 const TraderClose = ({
   setFieldValue,
@@ -16,7 +16,12 @@ const TraderClose = ({
     <div className="popup">
       <PopupHeader header="Close Program" onClose={closePopup} />
       <form onSubmit={handleSubmit}>
-        The Program will be closed. Please confirm.
+        <div>
+          Investment program will be closed after this reporting period. Current
+          investment requests will be cancelled and new requests won’t be
+          accepted. Profit and funds from the trading account will be deposited
+          to GVT wallets of investors and manager according to their shares.
+        </div>
         <FormError error={error} />
         <PopupButtons
           submitLabel="Close Program"
