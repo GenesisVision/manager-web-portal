@@ -8,7 +8,8 @@ const TraderDetail = ({
   trader,
   isAuthenticated,
   openInvestPopup,
-  openWithdrawPopup
+  openWithdrawPopup,
+  openCloseProgramPopup
 }) => {
   return (
     <div>
@@ -17,6 +18,7 @@ const TraderDetail = ({
         isAuthenticated={isAuthenticated}
         openInvestPopup={openInvestPopup}
         openWithdrawPopup={openWithdrawPopup}
+        openCloseProgramPopup={openCloseProgramPopup}
       />
       <TraderStatistic trader={trader} />
       <TraderCharts chart={trader.chart} profitDiagram={trader.profitDiagram} />

@@ -8,7 +8,8 @@ const TraderInfo = ({
   trader,
   isAuthenticated,
   openInvestPopup,
-  openWithdrawPopup
+  openWithdrawPopup,
+  openCloseProgramPopup
 }) => {
   return (
     <div className="trader-info">
@@ -28,6 +29,7 @@ const TraderInfo = ({
               isWithdrawEnable={trader.isWithdrawEnable}
               openInvestPopup={openInvestPopup}
               openWithdrawPopup={openWithdrawPopup}
+              openCloseProgramPopup={openCloseProgramPopup}
             />
           </div>
         )}

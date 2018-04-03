@@ -7,7 +7,8 @@ import TraderDetail from "./trader-detail/trader-detail";
 
 import {
   TRADER_DEPOSIT_POPUP,
-  TRADER_WITHDRAW_POPUP
+  TRADER_WITHDRAW_POPUP,
+  TRADER_CLOSE_POPUP
 } from "../../../../popup/actions/popup-actions.constants";
 import traderService from "../../../service/trader-service";
 
@@ -26,7 +27,8 @@ class TraderDetailContainer extends PureComponent {
       isPending,
       traderDetail,
       openInvestPopup,
-      openWithdrawPopup
+      openWithdrawPopup,
+      openCloseProgramPopup
     } = this.props;
     if (isPending || traderDetail === undefined) {
       return <div>Loading statistic...</div>;
@@ -38,6 +40,7 @@ class TraderDetailContainer extends PureComponent {
         isAuthenticated={isAuthenticated}
         openInvestPopup={openInvestPopup}
         openWithdrawPopup={openWithdrawPopup}
+        openCloseProgramPopup={openCloseProgramPopup}
       />
     );
   }
@@ -112,6 +115,17 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
           TRADER_WITHDRAW_POPUP,
           popupProps,
           closeInvestPopup(popupProps.traderWithdraw.id)
+        )
+      );
+    },
+    openCloseProgramPopup: traderId => () => {
+      dispatch(
+        popupActions.openPopup(
+          TRADER_CLOSE_POPUP,
+          {
+            traderId
+          },
+          closeInvestPopup(traderId)
         )
       );
     }
