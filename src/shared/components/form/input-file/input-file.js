@@ -1,7 +1,8 @@
 import classnames from "classnames";
+import Cropper from "react-cropper";
 import Dropzone from "react-dropzone";
 import React, { Component } from "react";
-import Cropper from "react-cropper";
+
 import "cropperjs/dist/cropper.css";
 
 import "./input-file.css";
@@ -26,44 +27,34 @@ class InputFile extends Component {
   };
 
   onDrop = files => {
+    this.setState({
+      dropzoneActive: false
+    });
     if (files.length === 0) {
       return;
     } else {
       this.setState({
-        files: files[0]
+        thumb: files[0].preview
       });
     }
-    this.setState({
-      dropzoneActive: false
-    });
   };
 
-  applyMimeTypes(event) {
-    this.setState({
-      accept: event.target.value
-    });
-  }
+  onCrop = (a, b, c) => {
+    var self = this;
+    this.refs.cropper.getCroppedCanvas().toBlob(function(blob) {
+      blob.name = "image.png";
+
+      self.props.setFieldValue(self.props.name, blob);
+    }, "image/png");
+  };
+
+  openFileDialog = () => {
+    this.dropzone.open();
+  };
 
   render() {
-    const { name, label, className, setFieldValue, uploadAvatar } = this.props;
-    const { accept, files, dropzoneActive } = this.state;
-
-    const _crop = () => {
-      // image in dataUrl
-      //console.log(this.refs.cropper.getCroppedCanvas().toDataURL());
-    };
-    const overlayStyle = {
-      position: "absolute",
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      padding: "2.5em 0",
-      background: "rgba(0,0,0,0.5)",
-      textAlign: "center",
-      color: "#fff"
-    };
-
+    const { label, className } = this.props;
+    const { thumb, dropzoneActive } = this.state;
     return (
       <div className={classnames("input-file", className)}>
         {label && <div className="input-file__label">{label}</div>}
@@ -73,24 +64,33 @@ class InputFile extends Component {
               disableClick
               className="dropzone"
               accept="image/jpeg, image/png"
+              ref={dropzone => {
+                this.dropzone = dropzone;
+              }}
               onDrop={this.onDrop}
               onDragEnter={this.onDragEnter}
               onDragLeave={this.onDragLeave}
             >
-              {dropzoneActive && <div style={overlayStyle}>Drop files...</div>}
+              {dropzoneActive && (
+                <div className="dropzone--active">Drop files...</div>
+              )}
               <div>
                 <Cropper
                   ref="cropper"
-                  src={this.state.thumb}
-                  style={{ height: 200, width: 200 }}
+                  src={thumb}
                   aspectRatio={1}
                   autoCropArea={1}
-                  crop={_crop}
+                  crop={this.onCrop}
                 />
                 <p className="input-file__text--big">
                   Drag the image here or click{" "}
-                  <span className="input-file__text--lighter">upload</span> to
-                  browse your files
+                  <span
+                    className="input-file__text--lighter"
+                    onClick={this.openFileDialog}
+                  >
+                    upload
+                  </span>{" "}
+                  to browse your files
                 </p>
                 <p className="input-file__text--small">
                   Tap to upload the image

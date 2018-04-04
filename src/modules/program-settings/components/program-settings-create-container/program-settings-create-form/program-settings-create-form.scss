@@ -37,7 +37,6 @@
 
 .create-program-form__program-image {
   max-width: 300px;
-  min-height: 400px;
   @include media-breakpoint-phone() {
     max-width: 100%;
   }
