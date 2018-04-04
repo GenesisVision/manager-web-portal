@@ -1,6 +1,6 @@
 import Yup from "yup";
 
-const programCreateFormValidationSchema = Yup.object().shape({
+const programSettingsCreateFormValidationSchema = Yup.object().shape({
   tradePlatformPassword: Yup.string()
     .matches(
       /^(?=(.*[a-zA-Z]){1,})(?=(.*[0-9]){1,}).{8,16}$/,
@@ -30,4 +30,4 @@ const programCreateFormValidationSchema = Yup.object().shape({
     .positive("Management Feet must be a positive number")
 });
 
-export default programCreateFormValidationSchema;
+export default programSettingsCreateFormValidationSchema;

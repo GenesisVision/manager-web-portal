@@ -5,17 +5,17 @@ import * as actionTypes from "./program-settings-actions.constants";
 
 const fetchProgramForm = () => {
   return {
-    type: actionTypes.PROGRAM_FORM,
+    type: actionTypes.PROGRAM_SETTINGS_FETCH_FORM,
     payload: SwaggerManagerApi.apiManagerBrokersPost()
   };
 };
 
-const submitProgramForm = programData => {
+const createProgram = programData => {
   const data = {
     request: programData
   };
   return {
-    type: actionTypes.PROGRAM_FORM_SUBMIT,
+    type: actionTypes.PROGRAM_SETTINGS_CREATE_FORM,
     payload: SwaggerManagerApi.apiManagerAccountNewInvestmentRequestPost(
       authService.getAuthArg(),
       data
@@ -23,5 +23,18 @@ const submitProgramForm = programData => {
   };
 };
 
-const programSettingsActions = { fetchProgramForm, submitProgramForm };
+const editProgram = programData => {
+  const data = {
+    request: programData
+  };
+  return {
+    type: actionTypes.PROGRAM_SETTINGS_EDIT_FORM,
+    payload: SwaggerManagerApi.apiManagerAccountNewInvestmentRequestPost(
+      authService.getAuthArg(),
+      data
+    )
+  };
+};
+
+const programSettingsActions = { fetchProgramForm, createProgram, editProgram };
 export default programSettingsActions;

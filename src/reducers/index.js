@@ -39,5 +39,5 @@ export default combineReducers({
   traderWithdrawData: traderWithdrawReducer,
   traderCloseData: traderCloseReducer,
   popupData: popupReducer,
-  programFormData: programSettingsReducer
+  programSettingsData: programSettingsReducer
 });

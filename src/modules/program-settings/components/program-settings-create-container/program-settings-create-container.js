@@ -32,8 +32,10 @@ class ProgramSettingsCreateContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  const { isPending, errorMessage, data } = state.programFormData.formData;
-  const errorMessageOnSubmit = state.programFormData.formSubmit.errorMessage;
+  const { isPending, errorMessage, data } = state.programSettingsData.formData;
+  const {
+    errorMessage: errorMessageOnSubmit
+  } = state.programSettingsData.createSettingsData;
 
   return {
     isPending,

@@ -1,18 +1,17 @@
 import { withFormik, Field } from "formik";
-import React from "react";
 import moment from "moment";
+import React from "react";
 
 import FormError from "../../../../../shared/components/form/form-error/form-error";
-import GVSelect from "../../../../../shared/components/form/gv-select/gv-select";
 import GVDatePicker from "../../../../../shared/components/form/gv-datepicker/gv-datepicker";
+import GVSelect from "../../../../../shared/components/form/gv-select/gv-select";
+import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
-import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 
-import "./program-settings-create-form.css";
-import programSettingsCreateFormValidationSchema from "./program-settings-create-form.validators";
+import programSettingsEditFormValidationSchema from "./program-settings-edit-form.validators";
 
-const ProgramCreateForm = ({
+const ProgramSettingsEditForm = ({
   programForm,
   isSubmitting,
   handleSubmit,
@@ -131,6 +130,7 @@ const ProgramCreateForm = ({
               component={InputText}
             />
             <Field
+              readonly
               material
               name="tokenSymbol"
               label="Token Symbol"
@@ -152,24 +152,14 @@ const ProgramCreateForm = ({
 };
 
 export default withFormik({
-  displayName: "programCreateForm",
+  displayName: "programSettingsEditForm",
   mapPropsToValues: () => ({
     logo: {},
-    tradePlatformPassword: "",
-    confirmTradePlatformPassword: "",
-    brokerTradeServerId: "",
     title: "",
-    description: "",
-    depositAmount: "",
-    tokenName: "",
-    tokenSymbol: "",
-    period: "",
-    dateFrom: null,
-    feeSuccess: "",
-    feeManagement: ""
+    description: ""
   }),
-  validationSchema: programSettingsCreateFormValidationSchema,
+  validationSchema: programSettingsEditFormValidationSchema,
   handleSubmit: (values, { props, setSubmitting }) => {
     props.onSubmit(values, setSubmitting);
   }
-})(ProgramCreateForm);
+})(ProgramSettingsEditForm);
