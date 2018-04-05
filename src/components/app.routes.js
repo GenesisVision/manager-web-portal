@@ -3,18 +3,22 @@ import React from "react";
 
 import NotFoundPage from "../shared/components/not-found/not-found";
 import PrivateRoute from "../shared/components/private-route/private-route";
-import ProgramSettingsCreateContainer from "../modules/program-settings/components/program-settings-create-container/program-settings-create-container";
 
 import { DASHBOARD_ROUTE } from "../modules/dashboard/dashboard.constants";
 import { EMAIL_CONFIRM_ROUTE } from "../modules/email-confirm/email-confirm.constants";
 import { HOME_ROUTE } from "./app.constants";
 import { LOGIN_ROUTE } from "../modules/login/login.constants";
 import { PROFILE_ROUTE } from "../modules/profile/profile.constants";
-import { PROGRAM_SETTINGS_CREATE_ROUTE } from "../modules/program-settings/program-settings.constants";
+
+import {
+  PROGRAM_SETTINGS_CREATE_ROUTE,
+  PROGRAM_SETTINGS_EDIT_ROUTE
+} from "../modules/program-settings/program-settings.constants";
 import { REGISTER_ROUTE } from "../modules/register/register.constants";
 import { TRADER_ROUTE } from "../modules/trader/trader.constants";
 import { TRADERS_ROUTE } from "../modules/traders/traders.constants";
 import { WALLET_ROUTE } from "../modules/wallet/wallet.constants";
+
 import {
   FORGOT_PASSWORD_ROUTE,
   RESET_PASSWORD_ROUTE
@@ -31,6 +35,10 @@ import RegisterRoutes from "../modules/register/register.routes";
 import TraderRoutes from "../modules/trader/trader.routes";
 import TradersRoutes from "../modules/traders/traders.routes";
 import WalletRoutes from "../modules/wallet/wallet.routes";
+import {
+  ProgramSettingsCreateRoutes,
+  ProgramSettingsEditRoutes
+} from "../modules/program-settings/program-settings.routes";
 
 const AppRoutes = () => (
   <Switch>
@@ -41,7 +49,11 @@ const AppRoutes = () => (
     <Route path={REGISTER_ROUTE} component={RegisterRoutes} />
     <PrivateRoute
       path={PROGRAM_SETTINGS_CREATE_ROUTE}
-      component={ProgramSettingsCreateContainer}
+      component={ProgramSettingsCreateRoutes}
+    />
+    <PrivateRoute
+      path={PROGRAM_SETTINGS_EDIT_ROUTE}
+      component={ProgramSettingsEditRoutes}
     />
     <Route exact path={TRADER_ROUTE} component={TraderRoutes} />
     <Route exact path={TRADERS_ROUTE} component={TradersRoutes} />

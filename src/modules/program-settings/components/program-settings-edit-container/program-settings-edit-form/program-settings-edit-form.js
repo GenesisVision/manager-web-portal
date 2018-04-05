@@ -1,10 +1,7 @@
 import { withFormik, Field } from "formik";
-import moment from "moment";
 import React from "react";
 
 import FormError from "../../../../../shared/components/form/form-error/form-error";
-import GVDatePicker from "../../../../../shared/components/form/gv-datepicker/gv-datepicker";
-import GVSelect from "../../../../../shared/components/form/gv-select/gv-select";
 import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
@@ -12,28 +9,16 @@ import InputText from "../../../../../shared/components/form/input-text/input-te
 import programSettingsEditFormValidationSchema from "./program-settings-edit-form.validators";
 
 const ProgramSettingsEditForm = ({
-  programForm,
+  programSettings,
   isSubmitting,
   handleSubmit,
   setFieldValue,
-  setFieldTouched,
   error,
-  values,
-  touched,
-  errors
+  values
 }) => {
-  const brokerOptions = programForm.brokers.map(x => ({
-    value: x.id,
-    label: `${x.name} (${x.host})`
-  }));
-  const periodOptions = [1, 2, 3, 5, 7, 10, 14].map(x => ({
-    value: x,
-    label: `${x} days`
-  }));
-
   return (
     <form onSubmit={handleSubmit} className="create-program-form" noValidate>
-      <div className="create-program-form__header">Create Program</div>
+      <div className="create-program-form__header">Program Settings</div>
       <div className="create-program-form__program-detail">
         <div className="create-program-form__program-description">
           <InputFile
@@ -58,85 +43,12 @@ const ProgramSettingsEditForm = ({
         <div className="create-program-form__program-settings">
           <Field
             material
-            type="password"
-            name="tradePlatformPassword"
-            label="Trading Account Password"
+            name="broker"
+            label="Broker"
+            readOnly
+            field={{value:programSettings.broker}}
             component={InputText}
           />
-          <Field
-            material
-            type="password"
-            name="confirmTradePlatformPassword"
-            label="Confirm Trading Account Password"
-            component={InputText}
-          />
-          <Field
-            material
-            name="brokerTradeServerId"
-            value={values.brokerTradeServerId}
-            onBlur={setFieldTouched}
-            component={GVSelect}
-            options={brokerOptions}
-            clearable={false}
-            label="Broker Server"
-            placeholder=" "
-          />
-          <Field
-            material
-            name="period"
-            value={values.period}
-            onBlur={setFieldTouched}
-            component={GVSelect}
-            options={periodOptions}
-            clearable={false}
-            label="Period Length"
-            placeholder=" "
-          />
-          <Field
-            material
-            selected={values.dateFrom}
-            name="dateFrom"
-            minDate={moment()}
-            showTimeSelect
-            dateFormat="LLL"
-            component={GVDatePicker}
-            label="Start Date"
-          />
-          <Field
-            material
-            name="depositAmount"
-            label="Deposit Amount (GVT)"
-            component={InputText}
-          />
-          <div className="create-program-form__couple-field">
-            <Field
-              material
-              name="feeSuccess"
-              label="Success Fee (%)"
-              component={InputText}
-            />
-            <Field
-              material
-              name="feeManagement"
-              label="Management Fee (%)"
-              component={InputText}
-            />
-          </div>
-          <div className="create-program-form__couple-field">
-            <Field
-              material
-              name="tokenName"
-              label="Token Name"
-              component={InputText}
-            />
-            <Field
-              readonly
-              material
-              name="tokenSymbol"
-              label="Token Symbol"
-              component={InputText}
-            />
-          </div>
         </div>
       </div>
       <FormError error={error} />
@@ -145,7 +57,7 @@ const ProgramSettingsEditForm = ({
         disabled={isSubmitting}
         className="btn btn-primary create-program-form__submit"
       >
-        Create Program
+        Edit Program
       </button>
     </form>
   );
@@ -153,11 +65,11 @@ const ProgramSettingsEditForm = ({
 
 export default withFormik({
   displayName: "programSettingsEditForm",
-  mapPropsToValues: () => ({
-    logo: {},
-    title: "",
-    description: ""
-  }),
+  mapPropsToValues: ({programSettings}) => ({
+       logo: programSettings.logo,
+      title: programSettings.title,
+      description: programSettings.description
+  }  ),
   validationSchema: programSettingsEditFormValidationSchema,
   handleSubmit: (values, { props, setSubmitting }) => {
     props.onSubmit(values, setSubmitting);

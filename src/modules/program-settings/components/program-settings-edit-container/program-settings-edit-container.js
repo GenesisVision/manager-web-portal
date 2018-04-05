@@ -1,29 +1,39 @@
 import { connect } from "react-redux";
 import React, { PureComponent } from "react";
 
+import NotFoundPage from '../../../../shared/components/not-found/not-found';
 import programActions from "../../actions/program-settings-actions";
 import ProgramSettingsEditForm from "./program-settings-edit-form/program-settings-edit-form";
 import programSettingsService from "../../service/program-settings-service";
 
 class ProgramSettingsEditContainer extends PureComponent {
   componentWillMount() {
-    //this.props.fetchProgramForm();
+    const { traderId } = this.props.match.params;
+    this.props.fetchProgramSettings(traderId);
   }
   render() {
-    const { traderId } = this.props.match.params;
-    const { isPending, programForm, errorMessage, editProgram } = this.props;
+    const {
+      isPending,
+      programSettings,
+      errorMessage,
+      editProgram
+    } = this.props;
     const handleEditProgram = (values, setSubmitting) => {
       editProgram(values, setSubmitting);
       setSubmitting(false);
     };
-    if (isPending || programForm === undefined) {
+    if (isPending || programSettings === undefined) {
       return null;
+    }
+
+    if(!programSettings.isOwnProgram){
+      return <NotFoundPage />;
     }
 
     return (
       <div>
         <ProgramSettingsEditForm
-          programForm={programForm}
+          programSettings={programSettings}
           onSubmit={handleEditProgram}
           error={errorMessage}
         />
@@ -33,19 +43,24 @@ class ProgramSettingsEditContainer extends PureComponent {
 }
 
 const mapStateToProps = state => {
-  const { isPending, errorMessage, data } = state.programFormData.formData;
-  const errorMessageOnSubmit = state.programFormData.formSubmit.errorMessage;
+  const {
+    isPending,
+    errorMessage,
+    data
+  } = state.programSettingsData.programSettings;
+  const errorMessageOnSubmit =
+    state.programSettingsData.editProgram;
 
   return {
     isPending,
     errorMessage: errorMessage || errorMessageOnSubmit,
-    programForm: data
+    programSettings: data
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchProgramForm: () => {
-    dispatch(programActions.fetchProgramForm());
+  fetchProgramSettings: traderId => {
+    dispatch(programActions.fetchProgramSettings(traderId));
   },
   editProgram: (data, setSubmitting) => {
     dispatch(programSettingsService.editProgram(data)).catch(() => {
