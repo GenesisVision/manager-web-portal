@@ -1,16 +1,15 @@
 import classnames from "classnames";
 import Cropper from "react-cropper";
 import Dropzone from "react-dropzone";
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import "cropperjs/dist/cropper.css";
 
 import "./input-file.css";
-import managerAvatar from "../../../media/manager-avatar.png";
 
-class InputFile extends Component {
+class InputFile extends PureComponent {
   state = {
-    thumb: managerAvatar,
+    thumb: this.props.logoBlob || this.props.defaultImage,
     dropzoneActive: false
   };
 
@@ -39,12 +38,17 @@ class InputFile extends Component {
     }
   };
 
-  onCrop = (a, b, c) => {
-    var self = this;
-    this.refs.cropper.getCroppedCanvas().toBlob(function(blob) {
+  onCrop = () => {
+    if (!this.cropper) return;
+
+    const croppedCanvas = this.cropper.getCroppedCanvas();
+    if (!croppedCanvas) return;
+
+    croppedCanvas.toBlob(blob => {
+      if (!blob) return;
       blob.name = "image.png";
 
-      self.props.setFieldValue(self.props.name, blob);
+      this.props.setFieldValue(this.props.name, blob);
     }, "image/png");
   };
 
@@ -76,7 +80,9 @@ class InputFile extends Component {
               )}
               <div>
                 <Cropper
-                  ref="cropper"
+                  ref={cropper => {
+                    this.cropper = cropper;
+                  }}
                   src={thumb}
                   aspectRatio={1}
                   autoCropArea={1}

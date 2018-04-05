@@ -20,13 +20,11 @@ class ProgramSettingsCreateContainer extends Component {
     }
 
     return (
-      <div>
-        <ProgramCreateForm
-          programForm={programForm}
-          onSubmit={handleCreateProgram}
-          error={errorMessage}
-        />
-      </div>
+      <ProgramCreateForm
+        programForm={programForm}
+        onSubmit={handleCreateProgram}
+        error={errorMessage}
+      />
     );
   }
 }

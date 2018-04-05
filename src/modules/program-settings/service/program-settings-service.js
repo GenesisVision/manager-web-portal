@@ -21,7 +21,7 @@ const createProgram = programData => dispatch => {
   }
 
   return filesService
-    .uploadFile(data.logo)
+    .uploadFile(data.logoBlob)
     .then(response => {
       const data = {
         ...programData,

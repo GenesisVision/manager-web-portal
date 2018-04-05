@@ -1,15 +1,16 @@
 import { withFormik, Field } from "formik";
-import React from "react";
 import moment from "moment";
+import React from "react";
 
 import FormError from "../../../../../shared/components/form/form-error/form-error";
-import GVSelect from "../../../../../shared/components/form/gv-select/gv-select";
 import GVDatePicker from "../../../../../shared/components/form/gv-datepicker/gv-datepicker";
+import GVSelect from "../../../../../shared/components/form/gv-select/gv-select";
+import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
-import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 
 import "./program-settings-create-form.css";
+import managerAvatar from "../../../../../shared/media/manager-avatar.png";
 import programSettingsCreateFormValidationSchema from "./program-settings-create-form.validators";
 
 const ProgramCreateForm = ({
@@ -38,8 +39,8 @@ const ProgramCreateForm = ({
       <div className="create-program-form__program-detail">
         <div className="create-program-form__program-description">
           <InputFile
-            id="logo"
-            name="logo"
+            name="logoBlob"
+            defaultImage={managerAvatar}
             label="Program image"
             className="create-program-form__program-image"
             setFieldValue={setFieldValue}
@@ -154,7 +155,7 @@ const ProgramCreateForm = ({
 export default withFormik({
   displayName: "programCreateForm",
   mapPropsToValues: () => ({
-    logo: {},
+    logoBlob: null,
     tradePlatformPassword: "",
     confirmTradePlatformPassword: "",
     brokerTradeServerId: "",
