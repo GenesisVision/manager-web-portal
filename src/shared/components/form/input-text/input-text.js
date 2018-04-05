@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import NumberFormat from "react-number-format";
 import React from "react";
 
 import "./input-text.css";
@@ -7,9 +8,10 @@ const InputText = ({
   field, // { name, value, onChange, onBlur }
   addon,
   label,
-  controllClass,
   material,
-  form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+  number,
+  controllClass,
+  form: { touched, errors, setFieldValue }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
   ...props
 }) => {
   const showError = () =>
@@ -77,10 +79,22 @@ const InputText = ({
     </div>
   );
 
-  const renderInput = () => (
-    <div className="form-group">
-      <div className="input-group">
-        {renderAddon()}
+  const renderGeneralInput = () => {
+    const renderInput = () => {
+      if (number) {
+        return (
+          <NumberFormat
+            className={`${controllClass || "form-control"} ${validationClass}`}
+            value={field.value}
+            onValueChange={(values, e) => {
+              setFieldValue(field.name, values.value || 0);
+            }}
+            {...props}
+          />
+        );
+      }
+
+      return (
         <input
           type="text"
           className={`${controllClass || "form-control"} ${validationClass}`}
@@ -88,12 +102,21 @@ const InputText = ({
           {...field}
           {...props}
         />
-        {showError()}
-      </div>
-    </div>
-  );
+      );
+    };
 
-  return material ? renderMaterialInput() : renderInput();
+    return (
+      <div className="form-group">
+        <div className="input-group">
+          {renderAddon()}
+          {renderInput()}
+          {showError()}
+        </div>
+      </div>
+    );
+  };
+
+  return material ? renderMaterialInput() : renderGeneralInput();
 };
 
 export default InputText;
