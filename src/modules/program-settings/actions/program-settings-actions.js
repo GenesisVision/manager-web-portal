@@ -29,8 +29,9 @@ const fetchProgramSettings = traderId => {
         title: program.title,
         description: program.description,
         isOwnProgram: program.isOwnProgram,
+        login: program.login,
         broker: program.brokerTitle,
-        traderServer: program.traderServer
+        brokerServer: program.brokerTradeServerTitle
       };
     })
   };

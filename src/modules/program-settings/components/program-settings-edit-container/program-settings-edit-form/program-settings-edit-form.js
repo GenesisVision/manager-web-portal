@@ -44,10 +44,26 @@ const ProgramSettingsEditForm = ({
         <div className="create-program-form__program-settings">
           <Field
             material
+            readOnly
+            name="login"
+            label="Login"
+            field={{value:programSettings.login}}
+            component={InputText}
+          />
+          <Field
+            material
+            readOnly
             name="broker"
             label="Broker"
-            readOnly
             field={{value:programSettings.broker}}
+            component={InputText}
+          />
+           <Field
+            material
+            readOnly
+            name="brokerServer"
+            label="Broker Server"            
+            field={{value:programSettings.brokerServer}}
             component={InputText}
           />
         </div>

@@ -8,8 +8,7 @@ import programSettingsService from "../../service/program-settings-service";
 
 class ProgramSettingsEditContainer extends PureComponent {
   componentWillMount() {
-    const { traderId } = this.props.match.params;
-    this.props.fetchProgramSettings(traderId);
+    this.props.fetchProgramSettings();
   }
   render() {
     const {
@@ -59,6 +58,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  dispatch,
   fetchProgramSettings: traderId => {
     dispatch(programActions.fetchProgramSettings(traderId));
   },
@@ -69,6 +69,24 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  const { dispatch, ...otherDispatchProps } = dispatchProps;
+  const { traderId } = this.props.match.params;
+  return {
+    ...stateProps,
+    ...otherDispatchProps,
+    ...ownProps,
+    fetchProgramSettings: () => {
+      dispatch(programActions.fetchProgramSettings(traderId));
+    },
+    editProgram: (data, setSubmitting) => {
+      dispatch(programSettingsService.editProgram(traderId, data)).catch(() => {
+        setSubmitting(false);
+      });
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(
   ProgramSettingsEditContainer
 );

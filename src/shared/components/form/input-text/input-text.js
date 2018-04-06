@@ -57,7 +57,7 @@ const InputText = ({
           "input-text__label--material",
           {
             "input-text__label--regular":
-              touched[field.name] && !hasError && field.value.length > 0
+               touched[field.name] && !hasError && field.value.length > 0
           },
           { "input-text__label--error": hasError }
         )}
@@ -65,12 +65,12 @@ const InputText = ({
         {label}
       </label>
       <hr className="input-text__hr-placeholder" />
-      <hr
+      {!props.readOnly && <hr
         className={classnames(
           "input-text__hr",
           hasError ? "input-text__hr--error" : "input-text__hr--regular"
         )}
-      />
+      />}
       {hasError && (
         <div className="input-text__error-message">{errors[field.name]}</div>
       )}
