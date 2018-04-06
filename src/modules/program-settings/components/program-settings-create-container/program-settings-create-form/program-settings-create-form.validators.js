@@ -12,6 +12,7 @@ const programCreateFormValidationSchema = Yup.object().shape({
     .oneOf([Yup.ref("tradePlatformPassword")], "Passwords don't match.")
     .required("Confirm Password is required"),
   brokerTradeServerId: Yup.string().required("Server is required"),
+  leverage: Yup.string().required("Server is required"),
   title: Yup.string().required("Title is required"),
   description: Yup.string(),
   depositAmount: Yup.number()

@@ -31,6 +31,12 @@ const ProgramCreateForm = ({
     value: x,
     label: `${x} days`
   }));
+  const getLeverages = brokerId => {
+    return programForm.brokers[0].leverages.map(x => ({
+      value: x,
+      label: x
+    }));
+  };
 
   return (
     <form onSubmit={handleSubmit} className="create-program-form" noValidate>
@@ -80,6 +86,17 @@ const ProgramCreateForm = ({
             options={brokerOptions}
             clearable={false}
             label="Broker Server"
+            placeholder=" "
+          />
+          <Field
+            material
+            name="leverage"
+            value={values.leverage}
+            onBlur={setFieldTouched}
+            component={GVSelect}
+            options={getLeverages(values.brokerTradeServerId)}
+            clearable={false}
+            label="Leverage"
             placeholder=" "
           />
           <Field
@@ -158,6 +175,7 @@ export default withFormik({
     tradePlatformPassword: "",
     confirmTradePlatformPassword: "",
     brokerTradeServerId: "",
+    leverage: "",
     title: "",
     description: "",
     depositAmount: "",
