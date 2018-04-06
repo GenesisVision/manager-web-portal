@@ -38,12 +38,12 @@ const ProgramCreateForm = ({
       <div className="create-program-form__header">Create Program</div>
       <div className="create-program-form__program-detail">
         <div className="create-program-form__program-description">
-          <InputFile
+          <Field
             name="logoBlob"
-            defaultImage={managerAvatar}
-            label="Program image"
+            label="Program Title"
             className="create-program-form__program-image"
-            setFieldValue={setFieldValue}
+            component={InputFile}
+            defaultImage={managerAvatar}
           />
           <Field
             material

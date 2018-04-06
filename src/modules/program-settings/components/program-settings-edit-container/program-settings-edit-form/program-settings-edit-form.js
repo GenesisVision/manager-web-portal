@@ -6,6 +6,7 @@ import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-tex
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
 
+import managerAvatar from "../../../../../shared/media/manager-avatar.png";
 import programSettingsEditFormValidationSchema from "./program-settings-edit-form.validators";
 
 const ProgramSettingsEditForm = ({
@@ -21,12 +22,12 @@ const ProgramSettingsEditForm = ({
       <div className="create-program-form__header">Program Settings</div>
       <div className="create-program-form__program-detail">
         <div className="create-program-form__program-description">
-          <InputFile
-            id="logo"
+          <Field
             name="logo"
-            label="Program image"
+            label="Program Title"
             className="create-program-form__program-image"
-            setFieldValue={setFieldValue}
+            component={InputFile}
+            defaultImage={managerAvatar}
           />
           <Field
             material
@@ -66,7 +67,7 @@ const ProgramSettingsEditForm = ({
 export default withFormik({
   displayName: "programSettingsEditForm",
   mapPropsToValues: ({programSettings}) => ({
-       logo: programSettings.logo,
+      logo: programSettings.logo,
       title: programSettings.title,
       description: programSettings.description
   }  ),

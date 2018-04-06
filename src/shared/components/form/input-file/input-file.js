@@ -9,7 +9,7 @@ import "./input-file.css";
 
 class InputFile extends PureComponent {
   state = {
-    thumb: this.props.logoBlob || this.props.defaultImage,
+    thumb: this.props.field.value || this.props.defaultImage,
     dropzoneActive: false
   };
 
@@ -38,25 +38,22 @@ class InputFile extends PureComponent {
     }
   };
 
-  onCrop = () => {
-    if (!this.cropper) return;
-
+  onCropEnd = (ev) => {
     const croppedCanvas = this.cropper.getCroppedCanvas();
-    if (!croppedCanvas) return;
-
     croppedCanvas.toBlob(blob => {
-      if (!blob) return;
-      blob.name = "image.png";
+      if (blob){
+        blob.name = "image.png";
+      }
 
-      this.props.setFieldValue(this.props.name, blob);
+      this.props.form.setFieldValue(this.props.name, blob);
     }, "image/png");
-  };
+  }
 
   openFileDialog = () => {
     this.dropzone.open();
   };
 
-  render() {
+  render() {   
     const { label, className } = this.props;
     const { thumb, dropzoneActive } = this.state;
     return (
@@ -86,7 +83,7 @@ class InputFile extends PureComponent {
                   src={thumb}
                   aspectRatio={1}
                   autoCropArea={1}
-                  crop={this.onCrop}
+                  cropend={this.onCropEnd.bind(this)}
                 />
                 <p className="input-file__text--big">
                   Drag the image here or click{" "}
