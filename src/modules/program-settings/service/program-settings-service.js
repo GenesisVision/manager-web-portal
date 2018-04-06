@@ -42,7 +42,7 @@ const createProgram = programData => dispatch => {
 
 const editProgram = (programId, programData) => dispatch => {
  
-  let promise = Promise.resolve(null);
+  let promise = Promise.resolve(programData.logoId);
   if(programData.logo.size){
     promise = filesService.uploadFile(programData.logo)
   }

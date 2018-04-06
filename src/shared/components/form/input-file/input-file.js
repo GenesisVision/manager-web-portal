@@ -10,7 +10,8 @@ import "./input-file.css";
 class InputFile extends PureComponent {
   state = {
     thumb: this.props.field.value || this.props.defaultImage,
-    dropzoneActive: false
+    dropzoneActive: false,
+    shouldCrop: false
   };
 
   onDragEnter = () => {
@@ -32,11 +33,11 @@ class InputFile extends PureComponent {
     if (files.length === 0) {
       return;
     } else {
+      const img = files[0];
       this.setState({
-        thumb: files[0].preview
+        thumb: img.preview
       });
     }
-    this.onCropEnd();
   };
 
   onCropEnd = () => {    
@@ -55,6 +56,17 @@ class InputFile extends PureComponent {
   openFileDialog = () => {
     this.dropzone.open();
   };
+
+  ready = () => {
+    //skip first crop on render
+    //then crop every time when file is changed
+    if(!this.state.shouldCrop){
+      this.setState({shouldCrop: true});
+    }
+    else{
+      this.onCropEnd();
+    }
+  }
 
   render() {   
     const { label, className } = this.props;
@@ -87,6 +99,7 @@ class InputFile extends PureComponent {
                   aspectRatio={1}
                   autoCropArea={1}
                   cropend={this.onCropEnd.bind(this)}
+                  ready={this.ready}
                 />
                 <p className="input-file__text--big">
                   Drag the image here or click{" "}

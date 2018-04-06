@@ -25,6 +25,7 @@ const fetchProgramSettings = traderId => {
       const program = response.investmentProgram;
       return {
         id: program.id,
+        logoId: program.logo,
         logo: filesService.getFileUrl(program.logo),
         title: program.title,
         description: program.description,

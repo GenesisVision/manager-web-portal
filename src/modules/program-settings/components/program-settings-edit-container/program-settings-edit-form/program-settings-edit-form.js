@@ -83,6 +83,7 @@ const ProgramSettingsEditForm = ({
 export default withFormik({
   displayName: "programSettingsEditForm",
   mapPropsToValues: ({programSettings}) => ({
+      logoId: programSettings.logoId,
       logo: programSettings.logo,
       title: programSettings.title,
       description: programSettings.description
