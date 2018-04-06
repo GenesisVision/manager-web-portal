@@ -52,11 +52,11 @@ const createProgram = programData => {
 
 const editProgram = programData => {
   const data = {
-    request: programData
+    model: programData
   };
   return {
     type: actionTypes.PROGRAM_SETTINGS_EDIT_FORM,
-    payload: SwaggerManagerApi.apiManagerAccountNewInvestmentRequestPost(
+    payload: SwaggerManagerApi.apiManagerInvestmentProgramUpdatePost(
       authService.getAuthArg(),
       data
     )

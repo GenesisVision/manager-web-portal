@@ -7,7 +7,7 @@ import programSettingsActions from "../actions/program-settings-actions";
 import replaceParams from '../../../utils/replace-params';
 
 import { HOME_ROUTE } from "../../../components/app.constants";
-import {TRADER_ROUTE} from '../../trader/trader.constants';
+import { TRADER_ROUTE } from '../../trader/trader.constants';
 
 const createProgram = programData => dispatch => {
   const data = {
@@ -41,14 +41,15 @@ const createProgram = programData => dispatch => {
 };
 
 const editProgram = (programId, programData) => dispatch => {
-  
+ 
   let promise = Promise.resolve(null);
-  if(programData.logo){
+  if(programData.logo.size){
     promise = filesService.uploadFile(programData.logo)
   }
 
   return promise.then(response => {
       const data = {
+        id: programId,
         ...programData,
         logo: response
       };

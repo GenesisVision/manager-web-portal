@@ -71,7 +71,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const { dispatch, ...otherDispatchProps } = dispatchProps;
-  const { traderId } = this.props.match.params;
+  const { traderId } = ownProps.match.params;
   return {
     ...stateProps,
     ...otherDispatchProps,

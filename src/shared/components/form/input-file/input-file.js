@@ -36,17 +36,20 @@ class InputFile extends PureComponent {
         thumb: files[0].preview
       });
     }
+    this.onCropEnd();
   };
 
-  onCropEnd = (ev) => {
+  onCropEnd = () => {    
     const croppedCanvas = this.cropper.getCroppedCanvas();
-    croppedCanvas.toBlob(blob => {
+    croppedCanvas.toBlob(updateFiledValue.bind(this), "image/png");
+
+    function updateFiledValue(blob){
       if (blob){
         blob.name = "image.png";
       }
 
-      this.props.form.setFieldValue(this.props.name, blob);
-    }, "image/png");
+      this.props.form.setFieldValue(this.props.field.name, blob);
+    }
   }
 
   openFileDialog = () => {
