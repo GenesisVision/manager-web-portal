@@ -13,7 +13,8 @@ const DashboardProgram = ({
   program,
   openInvestPopup,
   openWithdrawPopup,
-  openCloseProgramPopup
+  openCloseProgramPopup,
+  openEditProgramPage
 }) => {
   const handleOpenWithdrawPopup = () => {
     return openWithdrawPopup(program);
@@ -38,6 +39,7 @@ const DashboardProgram = ({
         openInvestPopup={openInvestPopup}
         openWithdrawPopup={handleOpenWithdrawPopup}
         openCloseProgramPopup={openCloseProgramPopup}
+        openEditProgramPage={openEditProgramPage}
       />
       <DPStatistic program={program} />
     </div>

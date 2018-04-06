@@ -1,15 +1,16 @@
 import React from "react";
 
+import TraderCharts from "./trader-charts/trader-charts";
 import TraderInfo from "./trader-info/trader-info";
 import TraderStatistic from "./trader-statistic/trader-statistic";
-import TraderCharts from "./trader-charts/trader-charts";
 
 const TraderDetail = ({
   trader,
   isAuthenticated,
   openInvestPopup,
   openWithdrawPopup,
-  openCloseProgramPopup
+  openCloseProgramPopup,
+  openEditProgramPage
 }) => {
   return (
     <div>
@@ -19,6 +20,7 @@ const TraderDetail = ({
         openInvestPopup={openInvestPopup}
         openWithdrawPopup={openWithdrawPopup}
         openCloseProgramPopup={openCloseProgramPopup}
+        openEditProgramPage={openEditProgramPage}
       />
       <TraderStatistic trader={trader} />
       <TraderCharts chart={trader.chart} profitDiagram={trader.profitDiagram} />

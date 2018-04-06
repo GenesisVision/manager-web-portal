@@ -9,7 +9,8 @@ const DPButtons = ({
   canCloseProgram,
   openInvestPopup,
   openWithdrawPopup,
-  openCloseProgramPopup
+  openCloseProgramPopup,
+  openEditProgramPage
 }) => {
   return (
     <div className="dp-buttons">
@@ -26,6 +27,13 @@ const DPButtons = ({
         disabled={!isWithdrawEnable}
       >
         Withdraw
+      </button>
+      <button
+        className="dp-button gv-btn gv-btn-secondary"
+        onClick={openEditProgramPage(traderId)}
+        disabled={!canCloseProgram}
+      >
+        Edit Program
       </button>
       <button
         className="dp-button gv-btn gv-btn-secondary"

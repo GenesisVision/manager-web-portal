@@ -8,7 +8,8 @@ const DashboardProgramList = ({
   programs,
   openInvestPopup,
   openWithdrawPopup,
-  openCloseProgramPopup
+  openCloseProgramPopup,
+  openEditProgramPage
 }) => {
   return (
     <div className="dashboard-program-list">
@@ -20,6 +21,7 @@ const DashboardProgramList = ({
           openInvestPopup={openInvestPopup}
           openWithdrawPopup={openWithdrawPopup}
           openCloseProgramPopup={openCloseProgramPopup}
+          openEditProgramPage={openEditProgramPage}
         />
       ))}
     </div>

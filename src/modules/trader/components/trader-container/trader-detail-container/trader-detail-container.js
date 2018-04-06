@@ -28,7 +28,8 @@ class TraderDetailContainer extends PureComponent {
       traderDetail,
       openInvestPopup,
       openWithdrawPopup,
-      openCloseProgramPopup
+      openCloseProgramPopup,
+      openEditProgramPage
     } = this.props;
     if (isPending || traderDetail === undefined) {
       return <div>Loading statistic...</div>;
@@ -41,6 +42,7 @@ class TraderDetailContainer extends PureComponent {
         openInvestPopup={openInvestPopup}
         openWithdrawPopup={openWithdrawPopup}
         openCloseProgramPopup={openCloseProgramPopup}
+        openEditProgramPage={openEditProgramPage}
       />
     );
   }
@@ -128,6 +130,9 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
           closeInvestPopup(traderId)
         )
       );
+    },
+    openEditProgramPage: traderId => () => {
+      traderService.openEditProgramPage(traderId);
     }
   };
 };

@@ -22,7 +22,8 @@ class DashboardProgramListContainer extends PureComponent {
       programs,
       openInvestPopup,
       openWithdrawPopup,
-      openCloseProgramPopup
+      openCloseProgramPopup,
+      openEditProgramPage
     } = this.props;
     if (isPending || programs === undefined) {
       return null;
@@ -34,6 +35,7 @@ class DashboardProgramListContainer extends PureComponent {
         openInvestPopup={openInvestPopup}
         openWithdrawPopup={openWithdrawPopup}
         openCloseProgramPopup={openCloseProgramPopup}
+        openEditProgramPage={openEditProgramPage}
       />
     );
   }
@@ -112,6 +114,9 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
           closeInvestPopup(traderId)
         )
       );
+    },
+    openEditProgramPage: traderId => () => {
+      dashboardService.openEditProgramPage(traderId);
     }
   };
 };
