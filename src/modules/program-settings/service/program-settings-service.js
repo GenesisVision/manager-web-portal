@@ -22,8 +22,12 @@ const createProgram = programData => dispatch => {
       .toISOString();
   }
 
-  return filesService
-    .uploadFile(data.logoBlob)
+  let promise = Promise.resolve(null);
+  if(data.logoBlob){
+    promise = filesService.uploadFile(data.logoBlob)
+  }
+
+  return promise
     .then(response => {
       const data = {
         ...programData,
