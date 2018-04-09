@@ -1,13 +1,13 @@
 import { withFormik, Field } from "formik";
-import React from "react";
 import moment from "moment";
+import React from "react";
 
 import FormError from "../../../../../shared/components/form/form-error/form-error";
-import GVSelect from "../../../../../shared/components/form/gv-select/gv-select";
 import GVDatePicker from "../../../../../shared/components/form/gv-datepicker/gv-datepicker";
+import GVSelect from "../../../../../shared/components/form/gv-select/gv-select";
+import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
-import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 
 import "./program-settings-create-form.css";
 import programCreateFormValidationSchema from "./program-settings-create-form.validators";
@@ -31,8 +31,10 @@ const ProgramCreateForm = ({
     value: x,
     label: `${x} days`
   }));
-  const getLeverages = brokerId => {
-    return programForm.brokers[0].leverages.map(x => ({
+  const getLeverages = brokerServerId => {
+    const broker = programForm.brokers.find(x => x.id === brokerServerId);
+    if (!broker) return [];
+    return broker.leverages.map(x => ({
       value: x,
       label: x
     }));
@@ -90,6 +92,7 @@ const ProgramCreateForm = ({
           />
           <Field
             material
+            disabled={!values.brokerTradeServerId}
             name="leverage"
             value={values.leverage}
             onBlur={setFieldTouched}
