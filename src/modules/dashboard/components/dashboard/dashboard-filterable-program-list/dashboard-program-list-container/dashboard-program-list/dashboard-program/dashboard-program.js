@@ -24,7 +24,9 @@ const DashboardProgram = ({
   });
   return (
     <div className="dashboard-program-card card">
-      <TraderAvatar imgUrl={program.logo} level={program.level} />
+      <Link to={traderRoute}>
+        <TraderAvatar imgUrl={program.logo} level={program.level} />
+      </Link>
       <Link className="dashboard-program-card__title" to={traderRoute}>
         {program.title}
       </Link>
