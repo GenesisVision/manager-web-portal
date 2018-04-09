@@ -5,7 +5,6 @@ import {
   YAxis,
   Tooltip,
   Legend,
-  Brush,
   ResponsiveContainer
 } from "recharts";
 import moment from "moment";
@@ -35,7 +34,6 @@ const DashboardProfitChart = ({ data }) => {
           <YAxis dataKey="totalProfit" axisLine={false} />
           <Tooltip labelFormatter={x => moment(x).format(" MMMM Do HH:mm ")} />
           <Legend />
-          <Brush />
           {series.map((s, idx) => (
             <Line
               key={s.title}
