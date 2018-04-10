@@ -42,7 +42,12 @@ const ProgramCreateForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="create-program-form" noValidate>
+    <form
+      id="createProgramForm"
+      onSubmit={handleSubmit}
+      className="create-program-form"
+      noValidate
+    >
       <div className="create-program-form__header">Create Program</div>
       <div className="create-program-form__program-detail">
         <div className="create-program-form__program-description">
@@ -163,6 +168,7 @@ const ProgramCreateForm = ({
       <FormError error={error} />
       <button
         type="submit"
+        id="createProgramSubmit"
         disabled={isSubmitting}
         className="btn btn-primary create-program-form__submit"
       >
