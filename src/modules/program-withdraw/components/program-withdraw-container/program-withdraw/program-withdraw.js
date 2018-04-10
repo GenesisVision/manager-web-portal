@@ -9,59 +9,58 @@ import PopupButtons from "../../../../popup/components/popup-buttons/popup-butto
 import PopupHeader from "../../../../popup/components/popup-header/popup-header";
 import TraderAvatar from "../../../../../components/trader-avatar/trader-avatar";
 
-import "./trader-withdraw.css";
+import "./program-withdraw.css";
 
-const TraderWithdraw = ({
+const ProgramWithdraw = ({
   values,
-  traderWithdraw,
+  programWithdraw,
   handleSubmit,
   closePopup,
   error,
-  isSubmitting,
-  setFieldValue
+  isSubmitting
 }) => {
   return (
     <div className="popup">
       <PopupHeader header="Withdraw" onClose={closePopup} />
       <form id="programWithdrawForm" onSubmit={handleSubmit}>
-        <div className="trader-withdraw__info">
-          <div className="trader-withdraw__info-cell">
-            <div className="trader-withdraw__trader">
+        <div className="program-withdraw__info">
+          <div className="program-withdraw__info-cell">
+            <div className="program-withdraw__trader">
               <div className="trader-withdraw__avatar">
                 <TraderAvatar
-                  imgUrl={traderWithdraw.logo}
-                  level={traderWithdraw.level}
+                  imgUrl={programWithdraw.logo}
+                  level={programWithdraw.level}
                 />
               </div>
-              <div className="trader-withdraw__name">
-                {traderWithdraw.title}
+              <div className="program-withdraw__name">
+                {programWithdraw.title}
               </div>
             </div>
           </div>
-          <div className="trader-withdraw__info-cell">
-            <div className="trader-withdraw__days-left">
+          <div className="program-withdraw__info-cell">
+            <div className="program-withdraw__days-left">
               <DaysLeftWidget
-                start={traderWithdraw.startOfPeriod}
-                duration={traderWithdraw.periodDuration}
+                start={programWithdraw.startOfPeriod}
+                duration={programWithdraw.periodDuration}
               />
             </div>
           </div>
-          <div className="trader-withdraw__info-cell">
+          <div className="program-withdraw__info-cell">
             <div className="metric">
               <div className="metric__value">
-                {+traderWithdraw.ownBalance.toFixed(2)}
+                {+programWithdraw.ownBalance.toFixed(2)}
               </div>
               <div className="metric__description">
-                Your balance {traderWithdraw.currency}
+                Your balance {programWithdraw.currency}
               </div>
             </div>
           </div>
         </div>
-        <div className="trader-withdraw__calculator">
-          <div className="trader-withdraw__calculator-header">
+        <div className="program-withdraw__calculator">
+          <div className="program-withdraw__calculator-header">
             How much would you like to withdraw?
           </div>
-          <div className="trader-withdraw__calculator-cell input-token">
+          <div className="program-withdraw__calculator-cell input-token">
             <div className="input-gvt__token">
               <Field
                 name="amount"
@@ -72,15 +71,15 @@ const TraderWithdraw = ({
               />
             </div>
             <div className="input-token__description">
-              Enter {traderWithdraw.currency} amount
+              Enter {programWithdraw.currency} amount
             </div>
           </div>
           <div>
             <span>
               Minimal remaining balance is ${
-                traderWithdraw.minAccountBalanceUsd
+                programWithdraw.minAccountBalanceUsd
               }{" "}
-              ({traderWithdraw.minAccountBalance} {traderWithdraw.currency})
+              ({programWithdraw.minAccountBalance} {programWithdraw.currency})
             </span>
           </div>
         </div>
@@ -99,7 +98,7 @@ const TraderWithdraw = ({
 };
 
 export default withFormik({
-  displayName: "traderWithdrawForm",
+  displayName: "programWithdrawForm",
   mapPropsToValues: () => ({
     amount: 0
   }),
@@ -112,4 +111,4 @@ export default withFormik({
   handleSubmit: (values, { props, setSubmitting }) => {
     props.submitPopup(values, setSubmitting);
   }
-})(TraderWithdraw);
+})(ProgramWithdraw);
