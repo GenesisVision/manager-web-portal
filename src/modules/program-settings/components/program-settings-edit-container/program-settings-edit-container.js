@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import React, { PureComponent } from "react";
 
-import NotFoundPage from '../../../../shared/components/not-found/not-found';
+import NotFoundPage from "../../../../shared/components/not-found/not-found";
 import programActions from "../../actions/program-settings-actions";
 import ProgramSettingsEditForm from "./program-settings-edit-form/program-settings-edit-form";
 import programSettingsService from "../../service/program-settings-service";
@@ -25,7 +25,7 @@ class ProgramSettingsEditContainer extends PureComponent {
       return null;
     }
 
-    if(!programSettings.isOwnProgram){
+    if (!programSettings.isOwnProgram) {
       return <NotFoundPage />;
     }
 
@@ -47,8 +47,9 @@ const mapStateToProps = state => {
     errorMessage,
     data
   } = state.programSettingsData.programSettings;
-  const errorMessageOnSubmit =
-    state.programSettingsData.editProgram;
+  const {
+    errorMessage: errorMessageOnSubmit
+  } = state.programSettingsData.editSettingsData;
 
   return {
     isPending,

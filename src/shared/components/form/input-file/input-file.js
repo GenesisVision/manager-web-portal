@@ -8,69 +8,49 @@ import "cropperjs/dist/cropper.css";
 import "./input-file.css";
 
 class InputFile extends PureComponent {
-  state = {
-    thumb: this.props.field.value || this.props.defaultImage,
-    dropzoneActive: false,
-    shouldCrop: false
-  };
-
-  onDragEnter = () => {
-    this.setState({
-      dropzoneActive: true
-    });
-  };
-
-  onDragLeave = () => {
-    this.setState({
-      dropzoneActive: false
-    });
-  };
-
   onDrop = files => {
-    this.setState({
-      dropzoneActive: false
-    });
+    const { name } = this.props.field;
+    const { setFieldValue } = this.props.form;
     if (files.length === 0) {
       return;
     } else {
       const img = files[0];
-      this.setState({
-        thumb: img.preview
-      });
+      const reader = new FileReader();
+      reader.onload = () => {
+        const data = {
+          src: reader.result,
+          filename: img.name,
+          filetype: img.type,
+          isNew: true
+        };
+        setFieldValue(name, data);
+      };
+      reader.readAsDataURL(img);
     }
   };
 
-  onCropEnd = () => {    
+  onCrop = () => {
+    const { name, value } = this.props.field;
+    const { setFieldValue } = this.props.form;
     const croppedCanvas = this.cropper.getCroppedCanvas();
-    croppedCanvas.toBlob(updateFiledValue.bind(this), "image/png");
+    if (!croppedCanvas) return;
 
-    function updateFiledValue(blob){
-      if (blob){
-        blob.name = "image.png";
-      }
-
-      this.props.form.setFieldValue(this.props.field.name, blob);
-    }
-  }
+    croppedCanvas.toBlob(blob => {
+      blob.name = value.filename;
+      const img = {
+        ...value,
+        cropped: blob
+      };
+      setFieldValue(name, img);
+    }, value.filetype);
+  };
 
   openFileDialog = () => {
     this.dropzone.open();
   };
 
-  ready = () => {
-    //skip first crop on render
-    //then crop every time when file is changed
-    if(!this.state.shouldCrop){
-      this.setState({shouldCrop: true});
-    }
-    else{
-      this.onCropEnd();
-    }
-  }
-
-  render() {   
-    const { label, className } = this.props;
-    const { thumb, dropzoneActive } = this.state;
+  render() {
+    const { label, className, field: { value } } = this.props;
     return (
       <div className={classnames("input-file", className)}>
         {label && <div className="input-file__label">{label}</div>}
@@ -79,28 +59,30 @@ class InputFile extends PureComponent {
             <Dropzone
               disableClick
               className="dropzone"
+              activeClassName="dropzone--active"
               accept="image/jpeg, image/png"
               ref={dropzone => {
                 this.dropzone = dropzone;
               }}
               onDrop={this.onDrop}
-              onDragEnter={this.onDragEnter}
-              onDragLeave={this.onDragLeave}
             >
-              {dropzoneActive && (
-                <div className="dropzone--active">Drop files...</div>
-              )}
+              <div className="dropzone-helper">Drop files...</div>
               <div>
-                <Cropper
-                  ref={cropper => {
-                    this.cropper = cropper;
-                  }}
-                  src={thumb}
-                  aspectRatio={1}
-                  autoCropArea={1}
-                  cropend={this.onCropEnd.bind(this)}
-                  ready={this.ready}
-                />
+                {value.isNew ? (
+                  <Cropper
+                    ref={cropper => {
+                      this.cropper = cropper;
+                    }}
+                    src={value.src}
+                    aspectRatio={1}
+                    autoCropArea={1}
+                    imageSmoothingEnabled={false}
+                    imageSmoothingQuality="high"
+                    crop={this.onCrop}
+                  />
+                ) : (
+                  <img src={value.src} alt="Program Avatar" />
+                )}
                 <p className="input-file__text--big">
                   Drag the image here or click{" "}
                   <span
@@ -111,7 +93,10 @@ class InputFile extends PureComponent {
                   </span>{" "}
                   to browse your files
                 </p>
-                <p className="input-file__text--small">
+                <p
+                  className="input-file__text--small"
+                  onClick={this.openFileDialog}
+                >
                   Tap to upload the image
                 </p>
               </div>

@@ -4,10 +4,10 @@ import { alertMessageActions } from "../../../shared/modules/alert-message/actio
 import filesService from "../../../shared/services/file-service";
 import history from "../../../utils/history";
 import programSettingsActions from "../actions/program-settings-actions";
-import replaceParams from '../../../utils/replace-params';
+import replaceParams from "../../../utils/replace-params";
 
 import { HOME_ROUTE } from "../../../components/app.constants";
-import { TRADER_ROUTE } from '../../trader/trader.constants';
+import { TRADER_ROUTE } from "../../trader/trader.constants";
 
 const createProgram = programData => dispatch => {
   const data = {
@@ -23,8 +23,8 @@ const createProgram = programData => dispatch => {
   }
 
   let promise = Promise.resolve(null);
-  if(data.logoBlob){
-    promise = filesService.uploadFile(data.logoBlob)
+  if (data.logo.cropped) {
+    promise = filesService.uploadFile(data.logo.cropped);
   }
 
   return promise
@@ -45,13 +45,13 @@ const createProgram = programData => dispatch => {
 };
 
 const editProgram = (programId, programData) => dispatch => {
- 
   let promise = Promise.resolve(programData.logoId);
-  if(programData.logo.size){
-    promise = filesService.uploadFile(programData.logo)
+  if (programData.logo.cropped) {
+    promise = filesService.uploadFile(programData.logo.cropped);
   }
 
-  return promise.then(response => {
+  return promise
+    .then(response => {
       const data = {
         id: programId,
         ...programData,
@@ -60,9 +60,11 @@ const editProgram = (programId, programData) => dispatch => {
       return dispatch(programSettingsActions.editProgram(data));
     })
     .then(response => {
-      history.push(replaceParams(TRADER_ROUTE, {
-        ":traderId": programId
-      }));
+      history.push(
+        replaceParams(TRADER_ROUTE, {
+          ":traderId": programId
+        })
+      );
       return response;
     })
     .then(response =>

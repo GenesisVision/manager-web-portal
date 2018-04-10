@@ -47,7 +47,7 @@ const ProgramCreateForm = ({
       <div className="create-program-form__program-detail">
         <div className="create-program-form__program-description">
           <Field
-            name="logoBlob"
+            name="logo"
             label="Program Title"
             className="create-program-form__program-image"
             component={InputFile}
@@ -175,7 +175,12 @@ const ProgramCreateForm = ({
 export default withFormik({
   displayName: "programCreateForm",
   mapPropsToValues: () => ({
-    logoBlob: null,
+    logo: {
+      src: managerAvatar,
+      filename: "image.png",
+      filetype: "image/png",
+      cropped: null
+    },
     tradePlatformPassword: "",
     confirmTradePlatformPassword: "",
     brokerTradeServerId: "",

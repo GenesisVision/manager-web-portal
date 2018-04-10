@@ -47,7 +47,7 @@ const ProgramSettingsEditForm = ({
             readOnly
             name="login"
             label="Login"
-            field={{value:programSettings.login}}
+            field={{ value: programSettings.login }}
             component={InputText}
           />
           <Field
@@ -55,15 +55,15 @@ const ProgramSettingsEditForm = ({
             readOnly
             name="broker"
             label="Broker"
-            field={{value:programSettings.broker}}
+            field={{ value: programSettings.broker }}
             component={InputText}
           />
-           <Field
+          <Field
             material
             readOnly
             name="brokerServer"
-            label="Broker Server"            
-            field={{value:programSettings.brokerServer}}
+            label="Broker Server"
+            field={{ value: programSettings.brokerServer }}
             component={InputText}
           />
         </div>
@@ -82,12 +82,17 @@ const ProgramSettingsEditForm = ({
 
 export default withFormik({
   displayName: "programSettingsEditForm",
-  mapPropsToValues: ({programSettings}) => ({
-      logoId: programSettings.logoId,
-      logo: programSettings.logo,
-      title: programSettings.title,
-      description: programSettings.description
-  }  ),
+  mapPropsToValues: ({ programSettings }) => ({
+    logoId: programSettings.logoId,
+    logo: {
+      src: programSettings.logo || managerAvatar,
+      filename: "image.png",
+      filetype: "image/png",
+      cropped: null
+    },
+    title: programSettings.title,
+    description: programSettings.description
+  }),
   validationSchema: programSettingsEditFormValidationSchema,
   handleSubmit: (values, { props, setSubmitting }) => {
     props.onSubmit(values, setSubmitting);
