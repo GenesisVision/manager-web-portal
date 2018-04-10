@@ -12,15 +12,15 @@ import MobileNav from "./mobile-nav";
 import "./header.css";
 import { HOME_ROUTE } from "../app.constants";
 import { LOGIN_ROUTE } from "../../modules/login/login.constants";
-import { TRADERS } from "../../modules/traders/actions/traders-actions.constants";
-import { TRADERS_ROUTE } from "../../modules/traders/traders.constants";
+import { PROGRAMS } from "../../modules/programs/actions/programs-actions.constants";
+import { PROGRAMS_ROUTE } from "../../modules/programs/programs.constants";
 import { WALLET } from "../../modules/wallet/actions/wallet-actions.constants";
 import { WALLET_ROUTE } from "../../modules/wallet/wallet.constants";
 import gvLogo from "./gv-logo.svg";
 
 const PAGES_WITH_FILTER = {
-  [TRADERS_ROUTE]: {
-    actionType: TRADERS,
+  [PROGRAMS_ROUTE]: {
+    actionType: PROGRAMS,
     getStateData: state => state.tradersData
   },
   [WALLET_ROUTE]: {

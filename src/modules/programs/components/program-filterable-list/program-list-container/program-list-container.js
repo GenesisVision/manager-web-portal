@@ -2,28 +2,22 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 
 import popupActions from "../../../../popup/actions/popup-actions";
-import TraderList from "./trader-list/trader-list";
-import tradersActions from "../../../actions/traders-actions";
-import tradersService from "../../../service/traders-service";
-import withQueryParams from "../../../../../shared/hoc/with-query-params/with-query-params";
+import ProgramList from "./program-list/program-list";
+import programsService from "../../../service/programs-service";
 
 import { TRADER_DEPOSIT_POPUP } from "../../../../popup/actions/popup-actions.constants";
 
-class TraderListContainer extends Component {
-  fetchTraders = () => {
-    const { fetchTradersIfNeeded } = this.props;
-    fetchTradersIfNeeded();
-  };
-
+class ProgramListContainer extends Component {
   componentWillMount() {
-    this.fetchTraders();
+    const { getPrograms } = this.props;
+    getPrograms();
   }
 
   render() {
     const { isPending, traders, isAuthenticated, openInvestPopup } = this.props;
     if (isPending || !traders) return null;
     return (
-      <TraderList
+      <ProgramList
         traders={traders.investmentPrograms}
         isAuthenticated={isAuthenticated}
         openInvestPopup={openInvestPopup}
@@ -34,13 +28,13 @@ class TraderListContainer extends Component {
 
 const mapStateToProps = state => {
   const { isAuthenticated } = state.authData;
-  const { isPending, data } = state.tradersData.traders.items;
+  const { isPending, data } = state.tradersData.programs.items;
   return { isPending, traders: data, isAuthenticated };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchTradersIfNeeded: () => {
-    dispatch(tradersActions.fetchTradersIfNeeded());
+  getPrograms: () => {
+    dispatch(programsService.getPrograms());
   },
   dispatch
 });
@@ -48,7 +42,7 @@ const mapDispatchToProps = dispatch => ({
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const { dispatch, ...otherDispatchProps } = dispatchProps;
   const closeInvestPopup = () => {
-    return tradersService.updateAfterInvestment();
+    return programsService.updateAfterInvestment();
   };
   return {
     ...stateProps,
@@ -68,6 +62,6 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
   };
 };
 
-export default withQueryParams(
-  connect(mapStateToProps, mapDispatchToProps, mergeProps)(TraderListContainer)
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(
+  ProgramListContainer
 );

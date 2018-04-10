@@ -16,7 +16,7 @@ import {
 } from "../modules/program-settings/program-settings.constants";
 import { REGISTER_ROUTE } from "../modules/register/register.constants";
 import { TRADER_ROUTE } from "../modules/trader/trader.constants";
-import { TRADERS_ROUTE } from "../modules/traders/traders.constants";
+import { PROGRAMS_ROUTE } from "../modules/programs/programs.constants";
 import { WALLET_ROUTE } from "../modules/wallet/wallet.constants";
 
 import {
@@ -33,7 +33,7 @@ import LoginRoutes from "../modules/login/login.routes";
 import ProfileRoutes from "../modules/profile/profile.routes";
 import RegisterRoutes from "../modules/register/register.routes";
 import TraderRoutes from "../modules/trader/trader.routes";
-import TradersRoutes from "../modules/traders/traders.routes";
+import ProgramsRoutes from "../modules/programs/programs.routes";
 import WalletRoutes from "../modules/wallet/wallet.routes";
 import {
   ProgramSettingsCreateRoutes,
@@ -56,14 +56,14 @@ const AppRoutes = () => (
       component={ProgramSettingsEditRoutes}
     />
     <Route exact path={TRADER_ROUTE} component={TraderRoutes} />
-    <Route exact path={TRADERS_ROUTE} component={TradersRoutes} />
+    <Route exact path={PROGRAMS_ROUTE} component={ProgramsRoutes} />
     <PrivateRoute path={PROFILE_ROUTE} component={ProfileRoutes} />
     <PrivateRoute path={DASHBOARD_ROUTE} component={DashboardRoutes} />
     <PrivateRoute path={WALLET_ROUTE} component={WalletRoutes} />
     <Route
       exact
       path={HOME_ROUTE}
-      render={() => <Redirect to={TRADERS_ROUTE} />}
+      render={() => <Redirect to={PROGRAMS_ROUTE} />}
     />
     <Route component={NotFoundPage} />
   </Switch>

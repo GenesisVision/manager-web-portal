@@ -4,11 +4,11 @@ import React from "react";
 import TIButtons from "../../../../../../../components/trader-item/ti-buttons/ti-buttons";
 import TIChart from "../../../../../../../components/trader-item/ti-chart/ti-chart";
 import TIInfo from "../../../../../../../components/trader-item/ti-info/ti-info";
-import TIStatistic from "./ti-statistic/ti-statistic";
+import PIStatistic from "./pi-statistic/pi-statistic";
 
-import "./trader-item.css";
+import "./program-item.css";
 
-const TraderItem = ({ idx, trader, isAuthenticated, openInvestPopup }) => {
+const ProgramItem = ({ idx, trader, isAuthenticated, openInvestPopup }) => {
   const traderChartData = trader.chart.map(x => ({
     fund: +(x.investorFund + x.managerFund).toFixed(8),
     profit: x.profit,
@@ -17,13 +17,13 @@ const TraderItem = ({ idx, trader, isAuthenticated, openInvestPopup }) => {
   }));
   return (
     <div
-      className={classnames("trader-item", {
+      className={classnames("program-item", {
         "trader-item--inactive": !trader.isEnabled
       })}
     >
       <TIInfo idx={idx} trader={trader} />
       <TIChart data={traderChartData} />
-      <TIStatistic trader={trader} />
+      <PIStatistic trader={trader} />
       <TIButtons
         traderId={trader.id}
         isInvestEnable={trader.isInvestEnable}
@@ -34,4 +34,4 @@ const TraderItem = ({ idx, trader, isAuthenticated, openInvestPopup }) => {
   );
 };
 
-export default TraderItem;
+export default ProgramItem;

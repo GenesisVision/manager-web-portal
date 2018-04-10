@@ -1,19 +1,20 @@
 import authService from "../../../services/auth-service";
-import filesService from "../../../shared/services/file-service";
 import filteringActionsFactory from "../../filtering/actions/filtering-actions";
 import filterPaneActionsFactory from "../../filter-pane/actions/filter-pane-actions";
-import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
+import programsActions from "../actions/programs-actions";
+import walletActions from "../../wallet/actions/wallet-actions";
+import walletPaneActions from "../../wallet-pane/actions/wallet-pane-actions";
 
-import * as actionTypes from "./traders-actions.constants";
 import {
   LEVEL_MAX,
   LEVEL_MIN,
   PROFIT_PROGRAM_PROCENT_MAX,
   PROFIT_PROGRAM_PROCENT_MIN
-} from "../traders.constants";
+} from "../programs.constants";
+import * as actionTypes from "../actions/programs-actions.constants";
 
-const fetchTraders = () => (dispatch, getState) => {
-  const { filtering } = getState().tradersData.traders;
+const getPrograms = () => (dispatch, getState) => {
+  const { filtering } = getState().tradersData.programs;
   let data = {
     filter: {}
   };
@@ -41,34 +42,11 @@ const fetchTraders = () => (dispatch, getState) => {
   if (filtering.sorting) {
     data.filter.sorting = filtering.sorting + filtering.sortingDirection;
   }
-
-  return dispatch({
-    type: actionTypes.TRADERS,
-    payload: SwaggerManagerApi.apiManagerInvestmentProgramsPost(data).then(
-      response => {
-        response.investmentPrograms.forEach(x => {
-          x.logo = filesService.getFileUrl(x.logo);
-        });
-
-        return response;
-      }
-    )
-  });
-};
-
-const shouldFetchTraders = traders => {
-  return true;
-};
-
-const fetchTradersIfNeeded = () => (dispatch, getState) => {
-  const traders = getState().tradersData.data;
-  if (shouldFetchTraders(traders)) {
-    return dispatch(fetchTraders());
-  }
+  return dispatch(programsActions.fetchPrograms(data));
 };
 
 const composeFiltering = filter => {
-  const filteringActions = filteringActionsFactory(actionTypes.TRADERS);
+  const filteringActions = filteringActionsFactory(actionTypes.PROGRAMS);
   let filtering = {};
   switch (filter.name) {
     case "traderLevel": {
@@ -90,17 +68,27 @@ const composeFiltering = filter => {
 
 const updateFiltering = filter => dispatch => {
   dispatch(composeFiltering(filter));
-  dispatch(fetchTradersIfNeeded());
+  dispatch(getPrograms());
+};
+
+const updateAfterInvestment = () => dispatch => {
+  return Promise.all([
+    dispatch(programsActions.getPrograms()),
+    dispatch(walletPaneActions.fetchWalletPaneChart()),
+    dispatch(walletPaneActions.fetchWalletPaneTransactions()),
+    dispatch(walletActions.fetchWallet())
+  ]);
 };
 
 const closeFilterPane = () => {
-  const filterPaneActions = filterPaneActionsFactory(actionTypes.TRADERS);
+  const filterPaneActions = filterPaneActionsFactory(actionTypes.PROGRAMS);
   return filterPaneActions.closeFilter();
 };
 
-const tradersActions = {
-  fetchTradersIfNeeded,
-  updateFiltering,
-  closeFilterPane
+const programsService = {
+  getPrograms,
+  updateAfterInvestment,
+  closeFilterPane,
+  updateFiltering
 };
-export default tradersActions;
+export default programsService;
