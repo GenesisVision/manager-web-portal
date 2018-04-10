@@ -9,54 +9,54 @@ import PopupButtons from "../../../../popup/components/popup-buttons/popup-butto
 import PopupHeader from "../../../../popup/components/popup-header/popup-header";
 import TraderAvatar from "../../../../../components/trader-avatar/trader-avatar";
 
-import "./trader-deposit.css";
+import "./program-deposit.css";
 
-const TraderDeposit = ({
+const ProgramDeposit = ({
   values,
-  traderDeposit,
+  programDeposit,
   isSubmitting,
   handleSubmit,
   closePopup,
   error
 }) => {
   const calculateManagerCurrency = () => {
-    return (values.amount * traderDeposit.gvtRate).toFixed(2);
+    return (values.amount * programDeposit.gvtRate).toFixed(2);
   };
   return (
     <div className="popup">
       <PopupHeader header="Deposit" onClose={closePopup} />
       <form id="programDepositForm" onSubmit={handleSubmit}>
-        <div className="trader-deposit__info">
-          <div className="trader-deposit__info-cell">
-            <div className="trader-deposit__trader">
+        <div className="program-deposit__info">
+          <div className="program-deposit__info-cell">
+            <div className="program-deposit__trader">
               <div className="trader-deposit__avatar">
                 <TraderAvatar
-                  imgUrl={traderDeposit.logo}
-                  level={traderDeposit.level}
+                  imgUrl={programDeposit.logo}
+                  level={programDeposit.level}
                 />
               </div>
-              <div className="trader-deposit__name">{traderDeposit.title}</div>
+              <div className="program-deposit__name">{programDeposit.title}</div>
             </div>
           </div>
-          <div className="trader-deposit__info-cell">
-            <div className="trader-deposit__days-left">
+          <div className="program-deposit__info-cell">
+            <div className="program-deposit__days-left">
               <DaysLeftWidget
-                start={traderDeposit.startOfPeriod}
-                duration={traderDeposit.periodDuration}
+                start={programDeposit.startOfPeriod}
+                duration={programDeposit.periodDuration}
               />
             </div>
           </div>
-          <div className="trader-deposit__info-cell trader-deposit__available">
+          <div className="program-deposit__info-cell program-deposit__available">
             <div className="metric">
               <div className="metric__value">
-                {+traderDeposit.gvtWalletAmount.toFixed(2)}
+                {+programDeposit.gvtWalletAmount.toFixed(2)}
               </div>
               <div className="metric__description">Avaialble GVT</div>
             </div>
           </div>
         </div>
-        <div className="trader-deposit__calculator">
-          <div className="trader-deposit__calculator-cell input-gvt">
+        <div className="program-deposit__calculator">
+          <div className="program-deposit__calculator-cell input-gvt">
             <div className="input-gvt__value">
               <Field
                 number
@@ -69,13 +69,13 @@ const TraderDeposit = ({
             </div>
             <div className="input-gvt__description">Enter GVT amount</div>
           </div>
-          <div className="trader-deposit__calculator-cell calculated-usd">
+          <div className="program-deposit__calculator-cell calculated-usd">
             <div className="metric">
               <div className="metric__value label-usd__value">
                 {calculateManagerCurrency()}
               </div>
               <div className="metric__description">
-                Amount in {traderDeposit.currency}
+                Amount in {programDeposit.currency}
               </div>
             </div>
           </div>
@@ -108,4 +108,4 @@ export default withFormik({
   handleSubmit: (values, { props, setSubmitting }) => {
     props.submitPopup(values, setSubmitting);
   }
-})(TraderDeposit);
+})(ProgramDeposit);

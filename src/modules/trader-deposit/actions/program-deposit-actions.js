@@ -2,11 +2,11 @@ import authService from "../../../services/auth-service";
 import filesService from "../../../shared/services/file-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
-import * as actionTypes from "./trader-deposit-actions.constants";
+import * as actionTypes from "./program-deposit-actions.constants";
 
-const fetchTraderDeposit = traderId => {
+const fetchProgramDeposit = traderId => {
   return {
-    type: actionTypes.TRADER_DEPOSIT,
+    type: actionTypes.PROGRAM_DEPOSIT,
     payload: SwaggerManagerApi.apiManagerInvestmentProgramBuyTokensGet(
       traderId,
       authService.getAuthArg()
@@ -18,13 +18,13 @@ const fetchTraderDeposit = traderId => {
   };
 };
 
-const submitTraderDeposit = (traderId, amount) => {
+const submitProgramDeposit = (traderId, amount) => {
   const model = {
     investmentProgramId: traderId,
     amount
   };
   return {
-    type: actionTypes.TRADER_DEPOSIT_SUBMIT,
+    type: actionTypes.PROGRAM_DEPOSIT_SUBMIT,
     payload: SwaggerManagerApi.apiManagerInvestmentInvestPost(
       authService.getAuthArg(),
       { model }
@@ -32,8 +32,8 @@ const submitTraderDeposit = (traderId, amount) => {
   };
 };
 
-const traderDepositActions = {
-  fetchTraderDeposit,
-  submitTraderDeposit
+const programDepositActions = {
+  fetchProgramDeposit,
+  submitProgramDeposit
 };
-export default traderDepositActions;
+export default programDepositActions;

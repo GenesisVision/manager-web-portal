@@ -15,7 +15,7 @@ import programsReducer from "../modules/programs/reducers/programs-reducers";
 import programWithdrawReducer from "../modules/program-withdraw/reducers/program-withdraw-reducers";
 import registerReducer from "../modules/register/reducers/register-reducers";
 import traderCloseReducer from "../modules/trader-close/reducers/trader-close-reducers";
-import traderDepositReducer from "../modules/trader-deposit/reducers/trader-deposit-reducers";
+import programDepositReducer from "../modules/trader-deposit/reducers/program-deposit-reducers";
 import traderReducer from "../modules/trader/reducers/trader-reducers";
 import walletPaneReducer from "../modules/wallet-pane/reducers/wallet-pane-reducers";
 import walletReducer from "../modules/wallet/reducers/wallet-reducers";
@@ -35,7 +35,7 @@ export default combineReducers({
   walletData: walletReducer,
   walletPaneData: walletPaneReducer,
   dashboardData: dashboardReducer,
-  traderDepositData: traderDepositReducer,
+  programDepositData: programDepositReducer,
   programWithdrawData: programWithdrawReducer,
   traderCloseData: traderCloseReducer,
   popupData: popupReducer,
