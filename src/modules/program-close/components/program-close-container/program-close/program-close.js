@@ -5,7 +5,7 @@ import FormError from "../../../../../shared/components/form/form-error/form-err
 import PopupButtons from "../../../../popup/components/popup-buttons/popup-buttons";
 import PopupHeader from "../../../../popup/components/popup-header/popup-header";
 
-const TraderClose = ({
+const ProgramClose = ({
   setFieldValue,
   isSubmitting,
   closePopup,
@@ -36,8 +36,8 @@ const TraderClose = ({
 };
 
 export default withFormik({
-  displayName: "traderCloseForm",
+  displayName: "programCloseForm",
   handleSubmit: (values, { props, setSubmitting }) => {
     props.submitPopup(setSubmitting);
   }
-})(TraderClose);
+})(ProgramClose);

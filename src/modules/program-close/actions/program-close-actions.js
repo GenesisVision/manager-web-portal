@@ -1,19 +1,19 @@
 import authService from "../../../services/auth-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
-import * as actionTypes from "./trader-close-actions.constants";
+import * as actionTypes from "./program-close-actions.constants";
 
-const traderClose = traderId => {
+const programClose = programId => {
   return {
-    type: actionTypes.TRADER_CLOSE,
+    type: actionTypes.PROGRAM_CLOSE,
     payload: SwaggerManagerApi.apiManagerInvestmentClosePost(
-      traderId,
+      programId,
       authService.getAuthArg()
     )
   };
 };
 
-const traderCloseActions = {
-  traderClose
+const programCloseActions = {
+  programClose
 };
-export default traderCloseActions;
+export default programCloseActions;

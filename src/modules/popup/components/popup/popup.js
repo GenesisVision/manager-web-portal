@@ -11,7 +11,7 @@ import {
 
 import TraderDepositContainer from "../../../program-deposit/components/program-deposit-container/program-deposit-container";
 import TraderWithdrawContainer from "../../../program-withdraw/components/program-withdraw-container/program-withdraw-container";
-import TraderCloseContainer from "../../../trader-close/components/trader-close-container/trader-close-container";
+import TraderCloseContainer from "../../../program-close/components/program-close-container/program-close-container";
 const POPUP_COMPONENTS = {
   [TRADER_DEPOSIT_POPUP]: TraderDepositContainer,
   [TRADER_WITHDRAW_POPUP]: TraderWithdrawContainer,

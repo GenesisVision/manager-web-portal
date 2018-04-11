@@ -2,10 +2,10 @@ import { connect } from "react-redux";
 import React from "react";
 
 import { alertMessageActions } from "../../../../shared/modules/alert-message/actions/alert-message-actions";
-import TraderClose from "./trader-close/trader-close";
-import traderCloseActions from "../../actions/trader-close-actions";
+import ProgramClose from "./program-close/program-close";
+import programCloseActions from "../../actions/program-close-actions";
 
-const TraderCloseContainer = ({
+const ProgramCloseContainer = ({
   traderId,
   errorMessage,
   closeProgram,
@@ -15,7 +15,7 @@ const TraderCloseContainer = ({
     closeProgram(setSubmitting);
   };
   return (
-    <TraderClose
+    <ProgramClose
       error={errorMessage}
       submitPopup={handleCloseProgramSubmit}
       closePopup={closePopup}
@@ -24,7 +24,7 @@ const TraderCloseContainer = ({
 };
 
 const mapStateToProps = state => {
-  const { errorMessage } = state.traderCloseData;
+  const { errorMessage } = state.programCloseData;
 
   return {
     errorMessage
@@ -42,7 +42,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     ...otherDispatchProps,
     ...ownProps,
     closeProgram: () =>
-      dispatch(traderCloseActions.traderClose(ownProps.traderId))
+      dispatch(programCloseActions.programClose(ownProps.traderId))
         .then(() => ownProps.submitPopup())
         .then(() => {
           dispatch(
@@ -56,5 +56,5 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(
-  TraderCloseContainer
+  ProgramCloseContainer
 );
