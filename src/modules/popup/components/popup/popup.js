@@ -9,7 +9,7 @@ import {
   TRADER_CLOSE_POPUP
 } from "../../actions/popup-actions.constants";
 
-import TraderDepositContainer from "../../../trader-deposit/components/program-deposit-container/program-deposit-container";
+import TraderDepositContainer from "../../../program-deposit/components/program-deposit-container/program-deposit-container";
 import TraderWithdrawContainer from "../../../program-withdraw/components/program-withdraw-container/program-withdraw-container";
 import TraderCloseContainer from "../../../trader-close/components/trader-close-container/trader-close-container";
 const POPUP_COMPONENTS = {
