@@ -4,12 +4,12 @@ import React from "react";
 import DaysLeftWidget from "../../days-left-widget/days-left-widget";
 import replaceParams from "../../../utils/replace-params";
 import TokensWidget from "../../tokens-widget/tokens-widget";
-import TraderAvatar from "../../trader-avatar/trader-avatar";
+import TraderAvatar from "../../program-avatar/program-avatar";
 
-import "./ti-info.css";
+import "./pi-info.css";
 import { PROGRAM_ROUTE } from "../../../modules/program/program.constants";
 
-const TIInfo = ({ idx, trader }) => {
+const PIInfo = ({ idx, trader }) => {
   const renderDaysLeft = () => {
     if (trader.isEnabled) {
       return (
@@ -41,21 +41,21 @@ const TIInfo = ({ idx, trader }) => {
     ":programId": trader.id
   });
   return (
-    <div className="ti-info">
-      <div className="ti-info__order">{idx}</div>
-      <Link className="ti-info__image" to={traderRoute}>
+    <div className="pi-info">
+      <div className="pi-info__order">{idx}</div>
+      <Link className="pi-info__image" to={traderRoute}>
         <TraderAvatar imgUrl={trader.logo} level={trader.level} />
       </Link>
-      <div className="ti-info__name ti-name">
-        <Link className="ti-name__title" to={traderRoute}>
+      <div className="pi-info__name pi-name">
+        <Link className="pi-name__title" to={traderRoute}>
           {trader.title}
         </Link>
-        <div className="ti-name__description">{trader.description}</div>
-        <div className="ti-name__eop">{renderDaysLeft()}</div>
-        <div className="ti-name__eop">{renderTokens()}</div>
+        <div className="pi-name__description">{trader.description}</div>
+        <div className="pi-name__eop">{renderDaysLeft()}</div>
+        <div className="pi-name__eop">{renderTokens()}</div>
       </div>
     </div>
   );
 };
 
-export default TIInfo;
+export default PIInfo;

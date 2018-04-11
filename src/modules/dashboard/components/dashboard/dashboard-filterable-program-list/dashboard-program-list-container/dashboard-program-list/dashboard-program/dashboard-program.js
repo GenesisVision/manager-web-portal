@@ -4,7 +4,7 @@ import React from "react";
 import DPButtons from "./dp-buttons/dp-buttons";
 import DPStatistic from "./dp-statistic/dp-statistic";
 import replaceParams from "../../../../../../../../utils/replace-params";
-import TraderAvatar from "../../../../../../../../components/trader-avatar/trader-avatar";
+import TraderAvatar from "../../../../../../../../components/program-avatar/program-avatar";
 
 import "./dashboard-program.css";
 import { PROGRAM_ROUTE } from "../../../../../../../program/program.constants";

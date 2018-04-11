@@ -1,6 +1,6 @@
 import React from "react";
 
-import TraderAvatar from "../../../../../../../components/trader-avatar/trader-avatar";
+import TraderAvatar from "../../../../../../../components/program-avatar/program-avatar";
 import ProgramButtons from "./program-buttons/program-buttons";
 
 import "./program-info.css";
