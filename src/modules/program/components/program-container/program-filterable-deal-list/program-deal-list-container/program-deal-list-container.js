@@ -5,7 +5,7 @@ import programService from "../../../../service/program-service";
 
 class ProgramDealListContainer extends PureComponent {
   componentWillMount() {
-    this.props.fetchTraderDealList(this.props.programId);
+    this.props.fetchProgramDealList(this.props.programId);
   }
 
   render() {
@@ -48,8 +48,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchTraderDealList: programId => {
-    dispatch(programService.getTraderDeals(programId));
+  fetchProgramDealList: programId => {
+    dispatch(programService.getProgramDeals(programId));
   }
 });
 

@@ -14,8 +14,8 @@ import clearDataActionFactory from "../../../shared/actions/clear-data.factory";
 
 const updateAfterInvestment = programId => dispatch => {
   return Promise.all([
-    dispatch(programActions.fetchTrader(programId)),
-    dispatch(programActions.fetchTraderRequests(programId))
+    dispatch(programActions.fetchProgram(programId)),
+    dispatch(getProgramRequests(programId))
   ]);
 };
 
@@ -33,7 +33,7 @@ const getProgramRequests = programId => (dispatch, getState) => {
   );
 };
 
-const getTraderDeals = programId => (dispatch, getState) => {
+const getProgramDeals = programId => (dispatch, getState) => {
   const { paging } = getState().programData.deals;
   const { skip, take } = calculateSkipAndTake(paging);
 
@@ -71,10 +71,10 @@ const updateProgramDealListPaging = paging => {
 
 const changeProgramDealsPage = (programId, paging) => dispatch => {
   dispatch(updateProgramDealListPaging(paging));
-  dispatch(getTraderDeals(programId));
+  dispatch(getProgramDeals(programId));
 };
 
-const cancelTraderRequest = (programId, requestId) => dispatch => {
+const cancelProgramRequest = (programId, requestId) => dispatch => {
   return dispatch(programActions.cancelProgramRequest(requestId))
     .then(() => dispatch(getProgramRequests(programId)))
     .then(() => dispatch(programActions.fetchProgram(programId)));
@@ -104,10 +104,10 @@ const clearProgram = () => dispatch => {
 const programService = {
   updateAfterInvestment,
   getProgramRequests,
-  getTraderDeals,
+  getProgramDeals,
   changeProgramRequestsPage,
   changeProgramDealsPage,
-  cancelTraderRequest,
+  cancelProgramRequest,
   openEditProgramPage,
   clearProgram
 };

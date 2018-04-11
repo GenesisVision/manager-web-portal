@@ -47,9 +47,7 @@ const ProgramWithdraw = ({
           </div>
           <div className="program-withdraw__info-cell">
             <div className="metric">
-              <div className="metric__value">
-                {+programWithdraw.ownBalance.toFixed(2)}
-              </div>
+              <div className="metric__value">{programWithdraw.ownBalance}</div>
               <div className="metric__description">
                 Your balance {programWithdraw.currency}
               </div>

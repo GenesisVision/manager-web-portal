@@ -34,7 +34,7 @@ class ProgramWithdrawContainer extends PureComponent {
 }
 
 const mapStateToProps = state => {
-  const { errorMessage } = state.traderWithdrawData.submitData;
+  const { errorMessage } = state.programWithdrawData.submitData;
 
   return {
     errorMessage

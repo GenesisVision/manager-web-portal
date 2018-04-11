@@ -35,7 +35,9 @@ const ProgramDeposit = ({
                   level={programDeposit.level}
                 />
               </div>
-              <div className="program-deposit__name">{programDeposit.title}</div>
+              <div className="program-deposit__name">
+                {programDeposit.title}
+              </div>
             </div>
           </div>
           <div className="program-deposit__info-cell">
@@ -49,7 +51,7 @@ const ProgramDeposit = ({
           <div className="program-deposit__info-cell program-deposit__available">
             <div className="metric">
               <div className="metric__value">
-                {+programDeposit.gvtWalletAmount.toFixed(2)}
+                {programDeposit.gvtWalletAmount}
               </div>
               <div className="metric__description">Avaialble GVT</div>
             </div>
