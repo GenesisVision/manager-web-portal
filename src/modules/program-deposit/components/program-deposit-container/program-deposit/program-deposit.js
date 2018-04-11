@@ -53,7 +53,7 @@ const ProgramDeposit = ({
               <div className="metric__value">
                 {programDeposit.gvtWalletAmount}
               </div>
-              <div className="metric__description">Avaialble GVT</div>
+              <div className="metric__description">Available GVT</div>
             </div>
           </div>
         </div>
