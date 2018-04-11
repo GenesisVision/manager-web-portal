@@ -25,7 +25,7 @@ const TraderListFilterContainer = ({
 };
 
 const mapStateToProps = state => {
-  const { filterPane, programs } = state.tradersData;
+  const { filterPane, programs } = state.programsData;
   const { isFilterOpen } = filterPane.state;
   const { filtering } = programs;
   return { isFilterOpen, filtering };

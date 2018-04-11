@@ -12,18 +12,18 @@ import popupReducer from "../modules/popup/reducers/popup-reducers";
 import profileReducer from "../modules/profile/reducers/profile-reducers";
 import programCloseReducer from "../modules/program-close/reducers/program-close-reducers";
 import programDepositReducer from "../modules/program-deposit/reducers/program-deposit-reducers";
+import programReducer from "../modules/program/reducers/program-reducers";
 import programSettingsReducer from "../modules/program-settings/reducers/program-settings-reducers";
 import programsReducer from "../modules/programs/reducers/programs-reducers";
 import programWithdrawReducer from "../modules/program-withdraw/reducers/program-withdraw-reducers";
 import registerReducer from "../modules/register/reducers/register-reducers";
-import programReducer from "../modules/program/reducers/program-reducers";
 import walletPaneReducer from "../modules/wallet-pane/reducers/wallet-pane-reducers";
 import walletReducer from "../modules/wallet/reducers/wallet-reducers";
 
 export default combineReducers({
   routing: routerReducer,
   loadingBar: loadingBarReducer,
-  tradersData: programsReducer,
+  programsData: programsReducer,
   programData: programReducer,
   loginData: loginReducer,
   registerData: registerReducer,

@@ -14,7 +14,7 @@ import {
 import * as actionTypes from "../actions/programs-actions.constants";
 
 const getPrograms = () => (dispatch, getState) => {
-  const { filtering } = getState().tradersData.programs;
+  const { filtering } = getState().programsData.programs;
   let data = {
     filter: {}
   };

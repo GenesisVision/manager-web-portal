@@ -28,7 +28,7 @@ class ProgramListContainer extends Component {
 
 const mapStateToProps = state => {
   const { isAuthenticated } = state.authData;
-  const { isPending, data } = state.tradersData.programs.items;
+  const { isPending, data } = state.programsData.programs.items;
   return { isPending, traders: data, isAuthenticated };
 };
 

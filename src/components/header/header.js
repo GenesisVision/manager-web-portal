@@ -21,7 +21,7 @@ import gvLogo from "./gv-logo.svg";
 const PAGES_WITH_FILTER = {
   [PROGRAMS_ROUTE]: {
     actionType: PROGRAMS,
-    getStateData: state => state.tradersData
+    getStateData: state => state.programsData
   },
   [WALLET_ROUTE]: {
     actionType: WALLET,
