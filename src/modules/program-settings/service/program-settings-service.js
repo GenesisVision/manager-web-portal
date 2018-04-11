@@ -7,7 +7,7 @@ import programSettingsActions from "../actions/program-settings-actions";
 import replaceParams from "../../../utils/replace-params";
 
 import { HOME_ROUTE } from "../../../components/app.constants";
-import { TRADER_ROUTE } from "../../trader/trader.constants";
+import { PROGRAM_ROUTE } from "../../program/program.constants";
 
 const createProgram = programData => dispatch => {
   const data = {
@@ -61,8 +61,8 @@ const editProgram = (programId, programData) => dispatch => {
     })
     .then(response => {
       history.push(
-        replaceParams(TRADER_ROUTE, {
-          ":traderId": programId
+        replaceParams(PROGRAM_ROUTE, {
+          ":programId": programId
         })
       );
       return response;

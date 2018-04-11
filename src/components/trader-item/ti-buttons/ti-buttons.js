@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 import React from "react";
 
-import { TRADER_ROUTE } from "../../../modules/trader/trader.constants";
+import { PROGRAM_ROUTE } from "../../../modules/program/program.constants";
 import replaceParams from "../../../utils/replace-params";
 
 import "./ti-buttons.css";
 
 const TIButtons = ({
   isAuthenticated,
-  traderId,
+  programId,
   isInvestEnable,
   openInvestPopup
 }) => {
-  const traderRoute = replaceParams(TRADER_ROUTE, {
-    ":traderId": traderId
+  const traderRoute = replaceParams(PROGRAM_ROUTE, {
+    ":programId": programId
   });
   return (
     <div className="ti-buttons">

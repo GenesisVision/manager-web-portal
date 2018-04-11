@@ -1,0 +1,43 @@
+@import "styles/_breakpoint.scss";
+
+.program-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.program-info__avatar {
+  flex: 1;
+  margin: 0 1rem;
+}
+
+.program-info__name {
+  flex: 5;
+}
+
+.program-info__buttons {
+  flex: 1;
+  min-width: 430px;
+  @include media-breakpoint-phone() {
+    min-width: 100%;
+  }
+}
+
+.program-info__title {
+  font-family: "NeuzeitGroBol";
+  font-size: 3rem;
+  max-width: 20em;
+  overflow: hidden;
+  @include media-breakpoint-phone() {
+    font-size: 2rem;
+  }
+}
+
+.program-info__description {
+  word-break: break-word;
+  max-width: 100%;
+  @include media-breakpoint-phone() {
+    font-size: 0.7rem;
+  }
+}

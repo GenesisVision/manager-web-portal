@@ -7,13 +7,13 @@ import programDepositActions from "../../actions/program-deposit-actions";
 
 class ProgramDepositContainer extends PureComponent {
   componentWillMount() {
-    this.props.fetchDeposit(this.props.traderId);
+    this.props.fetchDeposit(this.props.programId);
   }
 
   render() {
     const {
       isPending,
-      traderId,
+      programId,
       programDeposit,
       errorMessage,
       submitDeposit,
@@ -21,7 +21,7 @@ class ProgramDepositContainer extends PureComponent {
     } = this.props;
 
     const handleDepositSubmit = ({ amount }, setSubmitting) => {
-      return submitDeposit(traderId, amount, setSubmitting);
+      return submitDeposit(programId, amount, setSubmitting);
     };
 
     if (isPending || programDeposit === undefined) {

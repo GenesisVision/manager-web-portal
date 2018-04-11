@@ -11,7 +11,7 @@ const fetchProgramForm = () => {
   };
 };
 
-const fetchProgramSettings = traderId => {
+const fetchProgramSettings = programId => {
   let data = {
     authorization: authService.getAuthArg()
   };
@@ -19,7 +19,7 @@ const fetchProgramSettings = traderId => {
   return {
     type: actionTypes.PROGRAM_SETTINGS,
     payload: SwaggerManagerApi.apiManagerInvestmentProgramGet(
-      traderId,
+      programId,
       data
     ).then(response => {
       const program = response.investmentProgram;

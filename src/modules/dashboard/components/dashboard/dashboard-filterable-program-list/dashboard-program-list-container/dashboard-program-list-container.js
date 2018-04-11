@@ -60,22 +60,22 @@ const mapDispatchToProps = dispatch => ({
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const { dispatch, ...otherDispatchProps } = dispatchProps;
-  const closeInvestPopup = traderId => () => {
-    return dashboardService.updateAfterInvestment(traderId);
+  const closeInvestPopup = programId => () => {
+    return dashboardService.updateAfterInvestment(programId);
   };
 
   return {
     ...stateProps,
     ...otherDispatchProps,
     ...ownProps,
-    openInvestPopup: traderId => () => {
+    openInvestPopup: programId => () => {
       dispatch(
         popupActions.openPopup(
           TRADER_DEPOSIT_POPUP,
           {
-            traderId
+            programId
           },
-          closeInvestPopup(traderId)
+          closeInvestPopup(programId)
         )
       );
     },
@@ -104,19 +104,19 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         )
       );
     },
-    openCloseProgramPopup: traderId => () => {
+    openCloseProgramPopup: programId => () => {
       dispatch(
         popupActions.openPopup(
           TRADER_CLOSE_POPUP,
           {
-            traderId
+            programId
           },
-          closeInvestPopup(traderId)
+          closeInvestPopup(programId)
         )
       );
     },
-    openEditProgramPage: traderId => () => {
-      dashboardService.openEditProgramPage(traderId);
+    openEditProgramPage: programId => () => {
+      dashboardService.openEditProgramPage(programId);
     }
   };
 };

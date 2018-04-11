@@ -25,7 +25,7 @@ const ProgramItem = ({ idx, trader, isAuthenticated, openInvestPopup }) => {
       <TIChart data={traderChartData} />
       <PIStatistic trader={trader} />
       <TIButtons
-        traderId={trader.id}
+        programId={trader.id}
         isInvestEnable={trader.isInvestEnable}
         isAuthenticated={isAuthenticated}
         openInvestPopup={openInvestPopup}

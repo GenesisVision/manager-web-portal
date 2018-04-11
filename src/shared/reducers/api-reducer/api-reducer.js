@@ -1,8 +1,9 @@
+import {CLEAR_SUFFIX} from "../../actions/clear-data.factory";
+
 const API_TYPE = "API";
 const REQUEST_SUFFIX = "REQUEST";
 const SUCCESS_SUFFIX = "SUCCESS";
 const FAILURE_SUFFIX = "FAILURE";
-const CLEAR_SUFFIX = "CLEAR";
 
 const initialState = {
   isPending: false,

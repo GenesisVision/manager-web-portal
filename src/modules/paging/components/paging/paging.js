@@ -5,14 +5,8 @@ import "./paging.css";
 class Paging extends PureComponent {
   handlePageChanged = nextPage => {
     const currentPage = nextPage;
-    this.props.updatePagingAndFetch({ currentPage });
+    this.props.updatePaging({ currentPage });
   };
-
-  componentWillUnmount() {
-    const currentPage = 0;
-    const totalPages = 0;
-    this.props.updatePaging({ currentPage, totalPages });
-  }
 
   render() {
     const { paging } = this.props;

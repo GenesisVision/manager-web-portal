@@ -15,7 +15,7 @@ import {
   PROGRAM_SETTINGS_EDIT_ROUTE
 } from "../modules/program-settings/program-settings.constants";
 import { REGISTER_ROUTE } from "../modules/register/register.constants";
-import { TRADER_ROUTE } from "../modules/trader/trader.constants";
+import { PROGRAM_ROUTE } from "../modules/program/program.constants";
 import { PROGRAMS_ROUTE } from "../modules/programs/programs.constants";
 import { WALLET_ROUTE } from "../modules/wallet/wallet.constants";
 
@@ -32,7 +32,7 @@ import EmailConfirmRoutes from "../modules/email-confirm/email-confirm.routes";
 import LoginRoutes from "../modules/login/login.routes";
 import ProfileRoutes from "../modules/profile/profile.routes";
 import RegisterRoutes from "../modules/register/register.routes";
-import TraderRoutes from "../modules/trader/trader.routes";
+import ProgramRoutes from "../modules/program/program.routes";
 import ProgramsRoutes from "../modules/programs/programs.routes";
 import WalletRoutes from "../modules/wallet/wallet.routes";
 import {
@@ -55,7 +55,7 @@ const AppRoutes = () => (
       path={PROGRAM_SETTINGS_EDIT_ROUTE}
       component={ProgramSettingsEditRoutes}
     />
-    <Route exact path={TRADER_ROUTE} component={TraderRoutes} />
+    <Route exact path={PROGRAM_ROUTE} component={ProgramRoutes} />
     <Route exact path={PROGRAMS_ROUTE} component={ProgramsRoutes} />
     <PrivateRoute path={PROFILE_ROUTE} component={ProfileRoutes} />
     <PrivateRoute path={DASHBOARD_ROUTE} component={DashboardRoutes} />

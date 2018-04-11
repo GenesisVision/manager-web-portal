@@ -6,7 +6,7 @@ import ProgramClose from "./program-close/program-close";
 import programCloseActions from "../../actions/program-close-actions";
 
 const ProgramCloseContainer = ({
-  traderId,
+  programId,
   errorMessage,
   closeProgram,
   closePopup
@@ -42,7 +42,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     ...otherDispatchProps,
     ...ownProps,
     closeProgram: () =>
-      dispatch(programCloseActions.programClose(ownProps.traderId))
+      dispatch(programCloseActions.programClose(ownProps.programId))
         .then(() => ownProps.submitPopup())
         .then(() => {
           dispatch(

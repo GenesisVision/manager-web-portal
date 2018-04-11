@@ -3,7 +3,7 @@ import React from "react";
 import "./dp-buttons.css";
 
 const DPButtons = ({
-  traderId,
+  programId,
   isInvestEnable,
   isWithdrawEnable,
   canCloseProgram,
@@ -16,7 +16,7 @@ const DPButtons = ({
     <div className="dp-buttons">
       <button
         className="dp-button gv-btn gv-btn-primary"
-        onClick={openInvestPopup(traderId)}
+        onClick={openInvestPopup(programId)}
         disabled={!isInvestEnable}
       >
         Invest
@@ -30,14 +30,14 @@ const DPButtons = ({
       </button>
       <button
         className="dp-button gv-btn gv-btn-secondary"
-        onClick={openEditProgramPage(traderId)}
+        onClick={openEditProgramPage(programId)}
         disabled={!canCloseProgram}
       >
         Edit Program
       </button>
       <button
         className="dp-button gv-btn gv-btn-secondary"
-        onClick={openCloseProgramPopup(traderId)}
+        onClick={openCloseProgramPopup(programId)}
         disabled={!canCloseProgram}
       >
         Close Program

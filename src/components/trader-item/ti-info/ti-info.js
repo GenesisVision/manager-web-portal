@@ -7,7 +7,7 @@ import TokensWidget from "../../tokens-widget/tokens-widget";
 import TraderAvatar from "../../trader-avatar/trader-avatar";
 
 import "./ti-info.css";
-import { TRADER_ROUTE } from "../../../modules/trader/trader.constants";
+import { PROGRAM_ROUTE } from "../../../modules/program/program.constants";
 
 const TIInfo = ({ idx, trader }) => {
   const renderDaysLeft = () => {
@@ -37,8 +37,8 @@ const TIInfo = ({ idx, trader }) => {
     return null;
   };
 
-  const traderRoute = replaceParams(TRADER_ROUTE, {
-    ":traderId": trader.id
+  const traderRoute = replaceParams(PROGRAM_ROUTE, {
+    ":programId": trader.id
   });
   return (
     <div className="ti-info">

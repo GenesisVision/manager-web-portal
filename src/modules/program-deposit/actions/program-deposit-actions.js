@@ -4,11 +4,11 @@ import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api"
 
 import * as actionTypes from "./program-deposit-actions.constants";
 
-const fetchProgramDeposit = traderId => {
+const fetchProgramDeposit = programId => {
   return {
     type: actionTypes.PROGRAM_DEPOSIT,
     payload: SwaggerManagerApi.apiManagerInvestmentProgramBuyTokensGet(
-      traderId,
+      programId,
       authService.getAuthArg()
     ).then(response => {
       const trader = response;
@@ -18,9 +18,9 @@ const fetchProgramDeposit = traderId => {
   };
 };
 
-const submitProgramDeposit = (traderId, amount) => {
+const submitProgramDeposit = (programId, amount) => {
   const model = {
-    investmentProgramId: traderId,
+    investmentProgramId: programId,
     amount
   };
   return {

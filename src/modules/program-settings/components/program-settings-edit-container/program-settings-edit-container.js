@@ -60,8 +60,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   dispatch,
-  fetchProgramSettings: traderId => {
-    dispatch(programActions.fetchProgramSettings(traderId));
+  fetchProgramSettings: programId => {
+    dispatch(programActions.fetchProgramSettings(programId));
   },
   editProgram: (data, setSubmitting) => {
     dispatch(programSettingsService.editProgram(data)).catch(() => {
@@ -72,16 +72,16 @@ const mapDispatchToProps = dispatch => ({
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const { dispatch, ...otherDispatchProps } = dispatchProps;
-  const { traderId } = ownProps.match.params;
+  const { programId } = ownProps.match.params;
   return {
     ...stateProps,
     ...otherDispatchProps,
     ...ownProps,
     fetchProgramSettings: () => {
-      dispatch(programActions.fetchProgramSettings(traderId));
+      dispatch(programActions.fetchProgramSettings(programId));
     },
     editProgram: (data, setSubmitting) => {
-      dispatch(programSettingsService.editProgram(traderId, data)).catch(() => {
+      dispatch(programSettingsService.editProgram(programId, data)).catch(() => {
         setSubmitting(false);
       });
     }

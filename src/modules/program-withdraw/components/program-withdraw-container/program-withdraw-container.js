@@ -42,8 +42,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchWithdraw: traderId => {
-    dispatch(programWithdrawActions.fetchTraderWithdraw(traderId));
+  fetchWithdraw: programId => {
+    dispatch(programWithdrawActions.fetchTraderWithdraw(programId));
   },
   dispatch
 });
@@ -54,8 +54,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     ...stateProps,
     ...otherDispatchProps,
     ...ownProps,
-    submitWithdraw: (traderId, amount, setSubmitting) =>
-      dispatch(programWithdrawActions.submitProgramWithdraw(traderId, amount))
+    submitWithdraw: (programId, amount, setSubmitting) =>
+      dispatch(programWithdrawActions.submitProgramWithdraw(programId, amount))
         .then(() => ownProps.submitPopup())
         .then(() => {
           dispatch(

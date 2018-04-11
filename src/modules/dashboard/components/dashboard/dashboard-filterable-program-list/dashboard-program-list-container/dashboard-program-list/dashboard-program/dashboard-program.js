@@ -7,7 +7,7 @@ import replaceParams from "../../../../../../../../utils/replace-params";
 import TraderAvatar from "../../../../../../../../components/trader-avatar/trader-avatar";
 
 import "./dashboard-program.css";
-import { TRADER_ROUTE } from "../../../../../../../trader/trader.constants";
+import { PROGRAM_ROUTE } from "../../../../../../../program/program.constants";
 
 const DashboardProgram = ({
   program,
@@ -19,8 +19,8 @@ const DashboardProgram = ({
   const handleOpenWithdrawPopup = () => {
     return openWithdrawPopup(program);
   };
-  const traderRoute = replaceParams(TRADER_ROUTE, {
-    ":traderId": program.id
+  const traderRoute = replaceParams(PROGRAM_ROUTE, {
+    ":programId": program.id
   });
   return (
     <div className="dashboard-program-card card">
@@ -34,7 +34,7 @@ const DashboardProgram = ({
         {program.description}
       </div>
       <DPButtons
-        traderId={program.id}
+        programId={program.id}
         isInvestEnable={program.isInvestEnable}
         isWithdrawEnable={program.isWithdrawEnable}
         canCloseProgram={program.canCloseProgram}
