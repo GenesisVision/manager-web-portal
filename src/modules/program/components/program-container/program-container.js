@@ -5,9 +5,9 @@ import ProgramDetailContainer from "./program-detail-container/program-detail-co
 import ProgramFilterableDealList from "./program-filterable-deal-list/program-filterable-deal-list";
 import ProgramFilterableRequestList from "./program-filterable-request-list/program-filterable-request-list";
 import ProgramHistoryContainer from "./program-history-container/program-history-container";
+import programService from "../../service/program-service";
 
 import "./program-container.css";
-import programService from "../../service/program-service";
 
 class ProgramContainer extends PureComponent {
   componentWillUnmount() {
