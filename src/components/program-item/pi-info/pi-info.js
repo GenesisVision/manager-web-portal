@@ -9,13 +9,13 @@ import TraderAvatar from "../../program-avatar/program-avatar";
 import "./pi-info.css";
 import { PROGRAM_ROUTE } from "../../../modules/program/program.constants";
 
-const PIInfo = ({ idx, trader }) => {
+const PIInfo = ({ program }) => {
   const renderDaysLeft = () => {
-    if (trader.isEnabled) {
+    if (program.isEnabled) {
       return (
         <DaysLeftWidget
-          start={trader.startOfPeriod}
-          duration={trader.periodDuration}
+          start={program.startOfPeriod}
+          duration={program.periodDuration}
         />
       );
     }
@@ -24,12 +24,12 @@ const PIInfo = ({ idx, trader }) => {
   };
 
   const renderTokens = () => {
-    if (trader.isEnabled) {
+    if (program.isEnabled) {
       return (
         <TokensWidget
-          invested={trader.freeTokens.investorsTokens}
-          requested={trader.freeTokens.requestsTokens}
-          total={trader.freeTokens.total}
+          invested={program.freeTokens.investorsTokens}
+          requested={program.freeTokens.requestsTokens}
+          total={program.freeTokens.total}
         />
       );
     }
@@ -38,19 +38,19 @@ const PIInfo = ({ idx, trader }) => {
   };
 
   const traderRoute = replaceParams(PROGRAM_ROUTE, {
-    ":programId": trader.id
+    ":programId": program.id
   });
   return (
     <div className="pi-info">
-      <div className="pi-info__order">{idx}</div>
+      <div className="pi-info__order">{program.order}</div>
       <Link className="pi-info__image" to={traderRoute}>
-        <TraderAvatar imgUrl={trader.logo} level={trader.level} />
+        <TraderAvatar imgUrl={program.logo} level={program.level} />
       </Link>
       <div className="pi-info__name pi-name">
         <Link className="pi-name__title" to={traderRoute}>
-          {trader.title}
+          {program.title}
         </Link>
-        <div className="pi-name__description">{trader.description}</div>
+        <div className="pi-name__description">{program.description}</div>
         <div className="pi-name__eop">{renderDaysLeft()}</div>
         <div className="pi-name__eop">{renderTokens()}</div>
       </div>

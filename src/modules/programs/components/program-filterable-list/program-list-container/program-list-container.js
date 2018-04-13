@@ -14,11 +14,16 @@ class ProgramListContainer extends Component {
   }
 
   render() {
-    const { isPending, traders, isAuthenticated, openInvestPopup } = this.props;
-    if (isPending || !traders) return null;
+    const {
+      isPending,
+      programs,
+      isAuthenticated,
+      openInvestPopup
+    } = this.props;
+    if (isPending || !programs) return null;
     return (
       <ProgramList
-        traders={traders.investmentPrograms}
+        programs={programs.investmentPrograms}
         isAuthenticated={isAuthenticated}
         openInvestPopup={openInvestPopup}
       />
@@ -29,7 +34,7 @@ class ProgramListContainer extends Component {
 const mapStateToProps = state => {
   const { isAuthenticated } = state.authData;
   const { isPending, data } = state.programsData.programs.items;
-  return { isPending, traders: data, isAuthenticated };
+  return { isPending, programs: data, isAuthenticated };
 };
 
 const mapDispatchToProps = dispatch => ({

@@ -14,11 +14,11 @@ const programReducer = combineReducers({
   programDetail: apiReducerFactory({ apiType: PROGRAM_DETAIL }),
   requests: combineReducers({
     items: apiReducerFactory({ apiType: PROGRAM_REQUESTS }),
-    paging: pagingReducerFactory(PROGRAM_REQUESTS)
+    paging: pagingReducerFactory({ type: PROGRAM_REQUESTS })
   }),
   deals: combineReducers({
     items: apiReducerFactory({ apiType: PROGRAM_DEALS }),
-    paging: pagingReducerFactory(PROGRAM_DEALS)
+    paging: pagingReducerFactory({ type: PROGRAM_DEALS })
   }),
   history: apiReducerFactory({ apiType: PROGRAM_HISTORY })
 });

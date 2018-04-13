@@ -12,11 +12,19 @@ import {
   PROFIT_PROGRAM_PROCENT_MIN
 } from "../programs.constants";
 import * as actionTypes from "../actions/programs-actions.constants";
+import {
+  calculateSkipAndTake,
+  calculateTotalPages
+} from "../../paging/helpers/paging-helpers";
+import filesService from "../../../shared/services/file-service";
+import pagingActionsFactory from "../../paging/actions/paging-actions";
 
 const getPrograms = () => (dispatch, getState) => {
+  const { paging } = getState().programsData.programs;
+  const { skip, take } = calculateSkipAndTake(paging);
   const { filtering } = getState().programsData.programs;
   let data = {
-    filter: {}
+    filter: { skip, take }
   };
   if (authService.getAuthArg()) {
     data.authorization = authService.getAuthArg();
@@ -42,7 +50,23 @@ const getPrograms = () => (dispatch, getState) => {
   if (filtering.sorting) {
     data.filter.sorting = filtering.sorting + filtering.sortingDirection;
   }
-  return dispatch(programsActions.fetchPrograms(data));
+
+  const setLogoAndOrder = response => {
+    response.investmentPrograms.forEach((x, idx) => {
+      x.logo = filesService.getFileUrl(x.logo);
+      x.order = skip + idx + 1;
+    });
+
+    return response;
+  };
+
+  return dispatch(programsActions.fetchPrograms(data, setLogoAndOrder)).then(
+    response => {
+      const totalPages = calculateTotalPages(response.value.total, take);
+      dispatch(updateProgramListPaging({ totalPages }));
+      return response;
+    }
+  );
 };
 
 const composeFiltering = filter => {
@@ -66,6 +90,16 @@ const composeFiltering = filter => {
   return filteringActions.updateFiltering(filtering);
 };
 
+const updateProgramListPaging = paging => {
+  const pagingActionsProgramList = pagingActionsFactory(actionTypes.PROGRAMS);
+  return pagingActionsProgramList.updatePaging(paging);
+};
+
+const changeProgramListPage = paging => dispatch => {
+  dispatch(updateProgramListPaging(paging));
+  dispatch(getPrograms());
+};
+
 const updateFiltering = filter => dispatch => {
   dispatch(composeFiltering(filter));
   dispatch(getPrograms());
@@ -87,6 +121,7 @@ const closeFilterPane = () => {
 
 const programsService = {
   getPrograms,
+  changeProgramListPage,
   updateAfterInvestment,
   closeFilterPane,
   updateFiltering

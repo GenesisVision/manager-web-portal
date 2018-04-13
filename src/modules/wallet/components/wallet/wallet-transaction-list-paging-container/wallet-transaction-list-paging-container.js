@@ -8,13 +8,7 @@ const WalletTransactionListPagingContainer = ({
   paging,
   updatePaging,
   updatePagingAndFetch
-}) => (
-  <PagingContainer
-    paging={paging}
-    updatePaging={updatePaging}
-    updatePagingAndFetch={updatePagingAndFetch}
-  />
-);
+}) => <PagingContainer paging={paging} updatePaging={updatePaging} />;
 
 const mapStateToProps = state => {
   const { paging } = state.walletData.transactions;
@@ -23,9 +17,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   updatePaging: paging => {
-    dispatch(walletActions.updateWalletTransactionsPaging(paging));
-  },
-  updatePagingAndFetch: paging => {
     dispatch(walletActions.updateWalletTransactionsPagingAndFetch(paging));
   }
 });
