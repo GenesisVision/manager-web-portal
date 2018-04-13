@@ -57,10 +57,7 @@ const updateProgramRequestListPaging = paging => {
 };
 
 const changeProgramRequestsPage = (programId, paging) => dispatch => {
-  const pagingActionsRequestList = pagingActionsFactory(
-    actionTypes.PROGRAM_REQUESTS
-  );
-  dispatch(pagingActionsRequestList.updatePaging(paging));
+  dispatch(updateProgramRequestListPaging(paging));
   dispatch(getProgramRequests(programId));
 };
 
