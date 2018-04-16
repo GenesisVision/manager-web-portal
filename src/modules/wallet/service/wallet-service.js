@@ -11,6 +11,7 @@ import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-ap
 
 import * as actionTypes from "../actions/wallet-actions.constants";
 import clearDataActionFactory from "../../../shared/actions/clear-data.factory";
+import { composeFilteringActionType } from "../../filtering/helpers/filtering-helpers";
 
 const getWalletTransactions = () => (dispatch, getState) => {
   const { paging, filtering } = getState().walletData.transactions;
@@ -101,13 +102,22 @@ const clearPaging = () => dispatch => {
   );
 };
 
+const clearFiltering = () => dispatch => {
+  dispatch(
+    clearDataActionFactory(
+      composeFilteringActionType(actionTypes.WALLET_TRANSACTIONS)
+    ).clearData()
+  );
+};
+
 const walletService = {
   getWalletTransactions,
   getWalletChart,
   closeFilterPane,
   changeFilter,
   changePage,
-  clearPaging
+  clearPaging,
+  clearFiltering
 };
 
 export default walletService;

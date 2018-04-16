@@ -12,6 +12,10 @@ class WalletTransactionListFilterContainer extends PureComponent {
     this.props.fetchTransactionFilter();
   }
 
+  componentWillUnmount() {
+    this.props.clearFiltering();
+  }
+
   render() {
     const {
       isPending,
@@ -63,7 +67,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(walletActions.fetchWalletTransactionProgramFilter());
   },
   closeFilter: () => {
-    dispatch(walletActions.closeFilterPane());
+    dispatch(walletService.closeFilterPane());
+  },
+  clearFiltering: () => {
+    dispatch(walletService.clearFiltering());
   }
 });
 
