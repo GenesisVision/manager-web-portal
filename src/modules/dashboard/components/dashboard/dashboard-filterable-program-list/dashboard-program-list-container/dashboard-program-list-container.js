@@ -7,8 +7,7 @@ import popupActions from "../../../../../popup/actions/popup-actions";
 
 import {
   TRADER_DEPOSIT_POPUP,
-  TRADER_WITHDRAW_POPUP,
-  TRADER_CLOSE_POPUP
+  TRADER_WITHDRAW_POPUP
 } from "../../../../../popup/actions/popup-actions.constants";
 import dashboardService from "../../../../service/dashboard-service";
 
@@ -101,17 +100,6 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
           TRADER_WITHDRAW_POPUP,
           popupProps,
           closeInvestPopup(popupProps.traderWithdraw.id)
-        )
-      );
-    },
-    openCloseProgramPopup: programId => () => {
-      dispatch(
-        popupActions.openPopup(
-          TRADER_CLOSE_POPUP,
-          {
-            programId
-          },
-          closeInvestPopup(programId)
         )
       );
     },

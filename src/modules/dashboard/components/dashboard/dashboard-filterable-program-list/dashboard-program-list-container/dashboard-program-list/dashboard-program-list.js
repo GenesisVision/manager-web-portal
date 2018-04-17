@@ -8,7 +8,6 @@ const DashboardProgramList = ({
   programs,
   openInvestPopup,
   openWithdrawPopup,
-  openCloseProgramPopup,
   openEditProgramPage
 }) => {
   return (
@@ -20,7 +19,6 @@ const DashboardProgramList = ({
           program={x}
           openInvestPopup={openInvestPopup}
           openWithdrawPopup={openWithdrawPopup}
-          openCloseProgramPopup={openCloseProgramPopup}
           openEditProgramPage={openEditProgramPage}
         />
       ))}

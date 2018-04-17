@@ -6,7 +6,7 @@ const DPButtons = ({
   programId,
   isInvestEnable,
   isWithdrawEnable,
-  canCloseProgram,
+  canEditProgram,
   openInvestPopup,
   openWithdrawPopup,
   openCloseProgramPopup,
@@ -31,16 +31,9 @@ const DPButtons = ({
       <button
         className="dp-button gv-btn gv-btn-secondary"
         onClick={openEditProgramPage(programId)}
-        disabled={!canCloseProgram}
+        disabled={!canEditProgram}
       >
         Edit Program
-      </button>
-      <button
-        className="dp-button gv-btn gv-btn-secondary"
-        onClick={openCloseProgramPopup(programId)}
-        disabled={!canCloseProgram}
-      >
-        Close Program
       </button>
     </div>
   );
