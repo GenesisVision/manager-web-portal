@@ -1,5 +1,6 @@
 import React from "react";
 
+import ProgramButtons from "./program-buttons/program-buttons";
 import ProgramCharts from "./program-charts/program-charts";
 import ProgramInfo from "./program-info/program-info";
 import ProgramStatistic from "./program-statistic/program-statistic";
@@ -10,18 +11,29 @@ const ProgramDetail = ({
   openInvestPopup,
   openWithdrawPopup,
   openCloseProgramPopup,
-  openEditProgramPage
+  openEditProgramPage,
+  openClosePeriodPopup
 }) => {
   return (
     <div>
-      <ProgramInfo
-        program={program}
-        isAuthenticated={isAuthenticated}
-        openInvestPopup={openInvestPopup}
-        openWithdrawPopup={openWithdrawPopup}
-        openCloseProgramPopup={openCloseProgramPopup}
-        openEditProgramPage={openEditProgramPage}
-      />
+      <ProgramInfo program={program} />
+      {isAuthenticated &&
+        program.isOwnProgram && (
+          <div className="program-info__buttons">
+            <ProgramButtons
+              programId={program.id}
+              isInvestEnable={program.isInvestEnable}
+              isWithdrawEnable={program.isWithdrawEnable}
+              canClosePeriod={program.canClosePeriod}
+              canCloseProgram={program.canCloseProgram}
+              openInvestPopup={openInvestPopup}
+              openWithdrawPopup={openWithdrawPopup}
+              openCloseProgramPopup={openCloseProgramPopup}
+              openEditProgramPage={openEditProgramPage}
+              openClosePeriodPopup={openClosePeriodPopup}
+            />
+          </div>
+        )}
       <ProgramStatistic program={program} />
       <ProgramCharts
         chart={program.chart}

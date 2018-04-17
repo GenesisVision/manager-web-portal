@@ -7,10 +7,12 @@ const TraderButtons = ({
   isInvestEnable,
   isWithdrawEnable,
   canCloseProgram,
+  canClosePeriod,
   openInvestPopup,
   openWithdrawPopup,
   openCloseProgramPopup,
-  openEditProgramPage
+  openEditProgramPage,
+  openClosePeriodPopup
 }) => {
   return (
     <div className="program-buttons">
@@ -34,6 +36,13 @@ const TraderButtons = ({
         disabled={!canCloseProgram}
       >
         Edit Program
+      </button>
+      <button
+        className="program-button gv-btn gv-btn-secondary"
+        onClick={openClosePeriodPopup(programId)}
+        disabled={!canClosePeriod}
+      >
+        Close Period
       </button>
       <button
         className="program-button gv-btn gv-btn-secondary"

@@ -25,7 +25,8 @@ class TraderDetailContainer extends PureComponent {
       openInvestPopup,
       openWithdrawPopup,
       openCloseProgramPopup,
-      openEditProgramPage
+      openEditProgramPage,
+      openClosePeriodPopup
     } = this.props;
     if (isPending || programDetail === undefined) {
       return <div>Loading statistic...</div>;
@@ -39,6 +40,7 @@ class TraderDetailContainer extends PureComponent {
         openWithdrawPopup={openWithdrawPopup}
         openCloseProgramPopup={openCloseProgramPopup}
         openEditProgramPage={openEditProgramPage}
+        openClosePeriodPopup={openClosePeriodPopup}
       />
     );
   }
@@ -112,6 +114,17 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
           closeInvestPopup(popupProps.traderWithdraw.id)
         )
       );
+    },
+    openClosePeriodPopup: programId => () => {
+      // dispatch(
+      //   popupActions.openPopup(
+      //     TRADER_CLOSE_POPUP,
+      //     {
+      //       programId
+      //     },
+      //     closeInvestPopup(programId)
+      //   )
+      // );
     },
     openCloseProgramPopup: programId => () => {
       dispatch(
