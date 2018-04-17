@@ -41,7 +41,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     ...stateProps,
     ...otherDispatchProps,
     ...ownProps,
-    closeProgram: () =>
+    closePeriod: () =>
       dispatch(programClosePeriodActions.programClosePeriod(ownProps.programId))
         .then(() => ownProps.submitPopup())
         .then(() => {
