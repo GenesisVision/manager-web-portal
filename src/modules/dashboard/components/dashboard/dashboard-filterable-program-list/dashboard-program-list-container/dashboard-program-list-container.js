@@ -6,8 +6,8 @@ import DashboardProgramList from "./dashboard-program-list/dashboard-program-lis
 import popupActions from "../../../../../popup/actions/popup-actions";
 
 import {
-  TRADER_DEPOSIT_POPUP,
-  TRADER_WITHDRAW_POPUP
+  PROGRAM_DEPOSIT_POPUP,
+  PROGRAM_WITHDRAW_POPUP
 } from "../../../../../popup/actions/popup-actions.constants";
 import dashboardService from "../../../../service/dashboard-service";
 
@@ -70,7 +70,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     openInvestPopup: programId => () => {
       dispatch(
         popupActions.openPopup(
-          TRADER_DEPOSIT_POPUP,
+          PROGRAM_DEPOSIT_POPUP,
           {
             programId
           },
@@ -97,7 +97,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
       };
       dispatch(
         popupActions.openPopup(
-          TRADER_WITHDRAW_POPUP,
+          PROGRAM_WITHDRAW_POPUP,
           popupProps,
           closeInvestPopup(popupProps.traderWithdraw.id)
         )

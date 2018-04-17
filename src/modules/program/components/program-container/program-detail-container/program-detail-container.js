@@ -6,9 +6,10 @@ import programActions from "../../../actions/program-actions";
 import ProgramDetail from "./program-detail/program-detail";
 
 import {
-  TRADER_DEPOSIT_POPUP,
-  TRADER_WITHDRAW_POPUP,
-  TRADER_CLOSE_POPUP
+  PROGRAM_DEPOSIT_POPUP,
+  PROGRAM_WITHDRAW_POPUP,
+  PROGRAM_CLOSE_POPUP,
+  PROGRAM_CLOSE_PERIOD_POPUP
 } from "../../../../popup/actions/popup-actions.constants";
 import programService from "../../../service/program-service";
 
@@ -81,7 +82,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     openInvestPopup: programId => () => {
       dispatch(
         popupActions.openPopup(
-          TRADER_DEPOSIT_POPUP,
+          PROGRAM_DEPOSIT_POPUP,
           {
             programId
           },
@@ -109,27 +110,27 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
       };
       dispatch(
         popupActions.openPopup(
-          TRADER_WITHDRAW_POPUP,
+          PROGRAM_WITHDRAW_POPUP,
           popupProps,
           closeInvestPopup(popupProps.traderWithdraw.id)
         )
       );
     },
     openClosePeriodPopup: programId => () => {
-      // dispatch(
-      //   popupActions.openPopup(
-      //     TRADER_CLOSE_POPUP,
-      //     {
-      //       programId
-      //     },
-      //     closeInvestPopup(programId)
-      //   )
-      // );
+      dispatch(
+        popupActions.openPopup(
+          PROGRAM_CLOSE_PERIOD_POPUP,
+          {
+            programId
+          },
+          closeInvestPopup(programId)
+        )
+      );
     },
     openCloseProgramPopup: programId => () => {
       dispatch(
         popupActions.openPopup(
-          TRADER_CLOSE_POPUP,
+          PROGRAM_CLOSE_POPUP,
           {
             programId
           },

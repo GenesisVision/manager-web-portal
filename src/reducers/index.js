@@ -10,6 +10,7 @@ import loginReducer from "../modules/login/reducers/login-reducers";
 import passwordResetReducer from "../modules/password-reset/reducers/password-reset-reducers";
 import popupReducer from "../modules/popup/reducers/popup-reducers";
 import profileReducer from "../modules/profile/reducers/profile-reducers";
+import programClosePeriodReducer from "../modules/program-close-period/reducers/program-close-period-reducers";
 import programCloseReducer from "../modules/program-close/reducers/program-close-reducers";
 import programDepositReducer from "../modules/program-deposit/reducers/program-deposit-reducers";
 import programReducer from "../modules/program/reducers/program-reducers";
@@ -38,6 +39,7 @@ export default combineReducers({
   programDepositData: programDepositReducer,
   programWithdrawData: programWithdrawReducer,
   programCloseData: programCloseReducer,
+  programClosePeriodData: programClosePeriodReducer,
   popupData: popupReducer,
   programSettingsData: programSettingsReducer
 });

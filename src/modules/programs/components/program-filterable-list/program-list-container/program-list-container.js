@@ -5,7 +5,7 @@ import popupActions from "../../../../popup/actions/popup-actions";
 import ProgramList from "./program-list/program-list";
 import programsService from "../../../service/programs-service";
 
-import { TRADER_DEPOSIT_POPUP } from "../../../../popup/actions/popup-actions.constants";
+import { PROGRAM_DEPOSIT_POPUP } from "../../../../popup/actions/popup-actions.constants";
 
 class ProgramListContainer extends Component {
   componentWillMount() {
@@ -56,7 +56,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     openInvestPopup: programId => () => {
       dispatch(
         popupActions.openPopup(
-          TRADER_DEPOSIT_POPUP,
+          PROGRAM_DEPOSIT_POPUP,
           {
             programId
           },
