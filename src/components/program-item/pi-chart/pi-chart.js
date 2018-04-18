@@ -18,7 +18,7 @@ const PIChart = ({ data }) => {
     <div className="pi-chart">
       <ResponsiveContainer>
         <LineChart data={data} stackOffset="sign" margin={LineChartMargin}>
-          <XAxis dataKey="name" interval={interval} />
+          <XAxis dataKey="name" interval={interval} axisLine={false} />
           <YAxis hide />
           <Tooltip offset={20} wrapperStyle={wrapperStyle} />
           <Line
