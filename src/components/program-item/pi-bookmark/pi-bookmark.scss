@@ -1,0 +1,11 @@
+@import "styles/_colors.scss";
+
+.pi-bookmark {
+  color: #ccd5d4;
+  font-size: 1rem;
+  margin-left: 1rem;
+
+  &_active {
+    color: $alternate-color;
+  }
+}
