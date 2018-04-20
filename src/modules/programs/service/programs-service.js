@@ -119,11 +119,41 @@ const closeFilterPane = () => {
   return filterPaneActions.closeFilter();
 };
 
+const addFavoriteProgram = programId => dispatch => {
+  const requestData = {
+    programId
+  };
+  if (authService.getAuthArg()) {
+    requestData.authorization = authService.getAuthArg();
+  }
+  dispatch(
+    programsActions.addFavoriteProgram(requestData, response =>
+      dispatch(getPrograms())
+    )
+  );
+};
+
+const removeFavoriteProgram = programId => dispatch => {
+  const requestData = {
+    programId
+  };
+  if (authService.getAuthArg()) {
+    requestData.authorization = authService.getAuthArg();
+  }
+  dispatch(
+    programsActions.removeFavoriteProgram(requestData, response =>
+      dispatch(getPrograms())
+    )
+  );
+};
+
 const programsService = {
   getPrograms,
   changeProgramListPage,
   updateAfterInvestment,
   closeFilterPane,
-  updateFiltering
+  updateFiltering,
+  addFavoriteProgram,
+  removeFavoriteProgram
 };
 export default programsService;

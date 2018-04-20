@@ -4,15 +4,10 @@ import classnames from "classnames";
 
 import "./pi-bookmark.css";
 
-const PIBookmark = ({
-  isFavorite,
-  toggleFavorite = () => {
-    console.info(arguments);
-  }
-}) => {
+const PIBookmark = ({ isFavorite, onClick }) => {
   return (
     <i
-      onClick={toggleFavorite}
+      onClick={onClick}
       className={classnames("fas fa-bookmark", "pi-bookmark", {
         "pi-bookmark_active": isFavorite
       })}
@@ -22,7 +17,7 @@ const PIBookmark = ({
 
 PIBookmark.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
-  toggleFavorite: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 export default PIBookmark;
