@@ -15,17 +15,20 @@ class ProgramListContainer extends Component {
 
   render() {
     const {
-      isPending,
       programs,
       isAuthenticated,
-      openInvestPopup
+      openInvestPopup,
+      addFavoriteProgram,
+      removeFavoriteProgram
     } = this.props;
-    if (isPending || !programs) return null;
+    if (!programs) return null;
     return (
       <ProgramList
         programs={programs.investmentPrograms}
         isAuthenticated={isAuthenticated}
         openInvestPopup={openInvestPopup}
+        addFavoriteProgram={addFavoriteProgram}
+        removeFavoriteProgram={removeFavoriteProgram}
       />
     );
   }
@@ -40,6 +43,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   getPrograms: () => {
     dispatch(programsService.getPrograms());
+  },
+  addFavoriteProgram: id => {
+    dispatch(programsService.addFavoriteProgram(id));
+  },
+  removeFavoriteProgram: id => {
+    dispatch(programsService.removeFavoriteProgram(id));
   },
   dispatch
 });
