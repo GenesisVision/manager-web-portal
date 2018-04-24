@@ -19,11 +19,11 @@ const addFavoriteProgram = (
   onResolve = response => Promise.resolve(response)
 ) => dispatch => {
   return dispatch({
-    type: actionTypes.PROGRAMS_FAVORITE_ADD,
+    type: actionTypes.PROGRAMS_FAVORITE,
     payload: SwaggerManagerApi.apiManagerInvestmentProgramsFavoritesAddPost(
       programId,
       authorization
-    ).then(onResolve)
+    ).then(() => Promise.resolve({ id: programId }))
   });
 };
 
@@ -32,11 +32,11 @@ const removeFavoriteProgram = (
   onResolve = response => Promise.resolve(response)
 ) => dispatch => {
   return dispatch({
-    type: actionTypes.PROGRAMS_FAVORITE_ADD,
+    type: actionTypes.PROGRAMS_FAVORITE,
     payload: SwaggerManagerApi.apiManagerInvestmentProgramsFavoritesRemovePost(
       programId,
       authorization
-    ).then(onResolve)
+    ).then(() => Promise.resolve({ id: programId }))
   });
 };
 

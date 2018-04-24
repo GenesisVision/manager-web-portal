@@ -9,7 +9,12 @@ import PIBookmark from "../pi-bookmark/pi-bookmark";
 import "./pi-info.css";
 import { PROGRAM_ROUTE } from "../../../modules/program/program.constants";
 
-const PIInfo = ({ program, addFavoriteProgram, removeFavoriteProgram }) => {
+const PIInfo = ({
+  program,
+  addFavoriteProgram,
+  removeFavoriteProgram,
+  isAuthenticated
+}) => {
   const renderDaysLeft = () => {
     if (program.isEnabled) {
       return (
@@ -54,10 +59,12 @@ const PIInfo = ({ program, addFavoriteProgram, removeFavoriteProgram }) => {
       <div className="pi-info__name pi-name">
         <div className="pi-name__title">
           <Link to={traderRoute}>{program.title}</Link>
-          <PIBookmark
-            isFavorite={program.isFavorite}
-            onClick={toggleFavorite}
-          />
+          {isAuthenticated && (
+            <PIBookmark
+              isFavorite={program.isFavorite}
+              onClick={toggleFavorite}
+            />
+          )}
         </div>
         <div className="pi-name__description">{program.description}</div>
         <div className="pi-name__eop">{renderDaysLeft()}</div>

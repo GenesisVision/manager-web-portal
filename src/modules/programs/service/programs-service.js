@@ -126,11 +126,7 @@ const addFavoriteProgram = programId => dispatch => {
   if (authService.getAuthArg()) {
     requestData.authorization = authService.getAuthArg();
   }
-  dispatch(
-    programsActions.addFavoriteProgram(requestData, response =>
-      dispatch(getPrograms())
-    )
-  );
+  dispatch(programsActions.addFavoriteProgram(requestData));
 };
 
 const removeFavoriteProgram = programId => dispatch => {
@@ -140,11 +136,7 @@ const removeFavoriteProgram = programId => dispatch => {
   if (authService.getAuthArg()) {
     requestData.authorization = authService.getAuthArg();
   }
-  dispatch(
-    programsActions.removeFavoriteProgram(requestData, response =>
-      dispatch(getPrograms())
-    )
-  );
+  dispatch(programsActions.removeFavoriteProgram(requestData));
 };
 
 const programsService = {

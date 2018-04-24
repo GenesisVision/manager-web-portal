@@ -15,14 +15,13 @@ class ProgramListContainer extends Component {
 
   render() {
     const {
-      isPending,
       programs,
       isAuthenticated,
       openInvestPopup,
       addFavoriteProgram,
       removeFavoriteProgram
     } = this.props;
-    if (isPending || !programs) return null;
+    if (!programs) return null;
     return (
       <ProgramList
         programs={programs.investmentPrograms}

@@ -24,6 +24,7 @@ const ProgramItem = ({
       <PIInfo
         order={program.order}
         program={program}
+        isAuthenticated={isAuthenticated}
         addFavoriteProgram={addFavoriteProgram}
         removeFavoriteProgram={removeFavoriteProgram}
         showTokensWidget
