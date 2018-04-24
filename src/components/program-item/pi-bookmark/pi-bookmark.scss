@@ -10,11 +10,10 @@
   }
 
   &:active {
-    color: darken( $alternate-color, 5% )
-    ;
+    color: darken($alternate-color, 5%);
   }
 
-  &_active {
+  &--active {
     color: $alternate-color;
   }
 }
