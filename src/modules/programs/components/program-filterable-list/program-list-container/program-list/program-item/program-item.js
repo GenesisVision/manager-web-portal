@@ -1,10 +1,10 @@
 import classnames from "classnames";
 import React from "react";
 
-import PTIButtons from "../../../../../../../components/program-item/pi-buttons/pi-buttons";
 import PIChart from "../../../../../../../components/program-item/pi-chart/pi-chart";
 import PIInfo from "../../../../../../../components/program-item/pi-info/pi-info";
 import PIStatistic from "./pi-statistic/pi-statistic";
+import PTIButtons from "../../../../../../../components/program-item/pi-buttons/pi-buttons";
 
 import "./program-item.css";
 
@@ -17,7 +17,7 @@ const ProgramItem = ({ program, isAuthenticated, openInvestPopup }) => {
     >
       <PIInfo order={program.order} program={program} showTokensWidget />
       <PIChart data={program.equityChart} />
-      <PIStatistic trader={program} />
+      <PIStatistic program={program} />
       <PTIButtons
         programId={program.id}
         isInvestEnable={program.isInvestEnable}

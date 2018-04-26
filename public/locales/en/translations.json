@@ -4,5 +4,35 @@
   },
   "days-left-widget": {
     "text": "{days, plural, =1 {Day} other {Days}} left"
+  },
+  "program-item-statistic": {
+    "avg-profit": {
+      "text": "Avg Profit",
+      "tooltip":
+        "Avg. profit – is the average profit for the period in relation to the starting balance."
+    },
+    "available-to-invest": {
+      "text": "Available to Invest",
+      "tooltip":
+        "Available to invest - is the number of manager's tokens which are available to purchase."
+    },
+    "trades": {
+      "text": "Trades",
+      "tooltip":
+        "Trades show the number of financial operations conducted by the manager."
+    },
+    "investors": {
+      "text": "Investors",
+      "tooltip":
+        "Investor - is a Genesis Vision client, investors choose a manager in the Program Ratings and invest money in their investment programs."
+    },
+    "balance": {
+      "text": "Balance",
+      "tooltip": "Balance – is the amount of funds on a trading account."
+    },
+    "total-profit": {
+      "text": "Total Profit",
+      "tooltip": "Total profit - is the all-time total manager’s profit."
+    }
   }
 }
