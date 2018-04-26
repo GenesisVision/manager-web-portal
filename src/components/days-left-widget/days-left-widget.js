@@ -1,11 +1,13 @@
+import { translate } from 'react-i18next';
+import classnames from "classnames";
 import moment from "moment";
 import React from "react";
-import classnames from "classnames";
+
 import Progress from "../../shared/components/progress/progress";
 
 import "./days-left-widget.css";
 
-const DaysLeftWidget = ({ start, end, duration, className }) => {
+const DaysLeftWidget = ({t, start, end, duration, className }) => {
   const dateNow = moment();
   const startDate = moment(start);
 
@@ -13,23 +15,20 @@ const DaysLeftWidget = ({ start, end, duration, className }) => {
     ? duration
     : startDate.diff(moment(end), "days");
 
-  const daysPassed = () => {
-    return dateNow.diff(startDate, "days");
-  };
-  const daysLeft = () => {
-    return periodDuration - daysPassed();
-  };
+  const daysPassed = dateNow.diff(startDate, "days");
 
+  const daysLeft = periodDuration - daysPassed;
+  
   return (
     <div
       className={classnames("days-left-widget", { [className]: !!className })}
     >
-      <div className="days-left-widget__text">{daysLeft()} Days left</div>
+      <div className="days-left-widget__text">{daysLeft} {t('days-left-widget.text', {days: daysLeft})}</div>
       <div className="days-left-widget__progress">
-        <Progress value={daysPassed()} max={periodDuration} />
+        <Progress value={daysPassed} max={periodDuration} />
       </div>
     </div>
   );
 };
 
-export default DaysLeftWidget;
+export default translate()(DaysLeftWidget);

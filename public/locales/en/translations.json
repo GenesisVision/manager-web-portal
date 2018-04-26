@@ -1,0 +1,8 @@
+{
+  "app": {
+    "header": "Manager Portal"
+  },
+  "days-left-widget": {
+    "text": "{days, plural, =1 {Day} other {Days}} left"
+  }
+}
