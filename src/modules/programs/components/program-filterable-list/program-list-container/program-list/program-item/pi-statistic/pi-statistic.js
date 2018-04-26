@@ -19,13 +19,13 @@ const PIStatistic = ({ t, program }) => {
           </div>
           <div className="metric__description">
             <span id={`availableToInvestment_${program.id}`}>
-              {t("program-item-statistic.available-to-invest.text")}
+              {t("program-statistic.available-to-invest.text")}
             </span>
             <UncontrolledTooltip
               placement="bottom"
               target={`availableToInvestment_${program.id}`}
             >
-              {t("program-item-statistic.available-to-invest.tooltip")}
+              {t("program-statistic.available-to-invest.tooltip")}
             </UncontrolledTooltip>
           </div>
         </div>
@@ -42,13 +42,13 @@ const PIStatistic = ({ t, program }) => {
           </div>
           <div className="metric__description">
             <span id={`avgProfit_${program.id}`}>
-              {t("program-item-statistic.avg-profit.text")}
+              {t("program-statistic.avg-profit.text")}
             </span>
             <UncontrolledTooltip
               placement="bottom"
               target={`avgProfit_${program.id}`}
             >
-              {t("program-item-statistic.avg-profit.tooltip")}
+              {t("program-statistic.avg-profit.tooltip")}
             </UncontrolledTooltip>
           </div>
         </div>
@@ -58,13 +58,13 @@ const PIStatistic = ({ t, program }) => {
           <div className="metric__value">{program.tradesCount}</div>
           <div className="metric__description">
             <span id={`trades_${program.id}`}>
-              {t("program-item-statistic.trades.text")}
+              {t("program-statistic.trades.text")}
             </span>
             <UncontrolledTooltip
               placement="bottom"
               target={`trades_${program.id}`}
             >
-              {t("program-item-statistic.trades.tooltip")}
+              {t("program-statistic.trades.tooltip")}
             </UncontrolledTooltip>
           </div>
         </div>
@@ -74,13 +74,15 @@ const PIStatistic = ({ t, program }) => {
           <div className="metric__value">{program.investorsCount}</div>
           <div className="metric__description">
             <span id={`investors_${program.id}`}>
-              {t("program-item-statistic.investors.text")}
+              {t("program-statistic.investors.text", {
+                count: program.investorsCount
+              })}
             </span>
             <UncontrolledTooltip
               placement="bottom"
               target={`investors_${program.id}`}
             >
-              {t("program-item-statistic.investors.tooltip")}
+              {t("program-statistic.investors.tooltip")}
             </UncontrolledTooltip>
           </div>
         </div>
@@ -97,13 +99,13 @@ const PIStatistic = ({ t, program }) => {
           </div>
           <div className="metric__description">
             <span id={`balance_${program.id}`}>
-              {t("program-item-statistic.balance.text")}
+              {t("program-statistic.program-item-balance.text")}
             </span>
             <UncontrolledTooltip
               placement="bottom"
               target={`balance_${program.id}`}
             >
-              {t("program-item-statistic.balance.tooltip")}
+              {t("program-statistic.program-item-balance.tooltip")}
             </UncontrolledTooltip>
           </div>
         </div>
@@ -116,13 +118,13 @@ const PIStatistic = ({ t, program }) => {
           </div>
           <div className="metric__description">
             <span id={`totalProfit_${program.id}`}>
-              {t("program-item-statistic.total-profit.text")}
+              {t("program-statistic.total-profit.text")}
             </span>
             <UncontrolledTooltip
               placement="bottom"
               target={`totalProfit_${program.id}`}
             >
-              {t("program-item-statistic.total-profit.tooltip")}
+              {t("program-statistic.total-profit.tooltip")}
             </UncontrolledTooltip>
           </div>
         </div>

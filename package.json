@@ -12,7 +12,6 @@
     "gv-api-web": "git+https://github.com/GenesisVision/gv-api-web.git",
     "i18next": "^11.2.3",
     "i18next-browser-languagedetector": "^2.2.0",
-    "i18next-icu": "^0.3.0",
     "i18next-xhr-backend": "^1.5.1",
     "jwt-decode": "^2.2.0",
     "moment": "^2.21.0",

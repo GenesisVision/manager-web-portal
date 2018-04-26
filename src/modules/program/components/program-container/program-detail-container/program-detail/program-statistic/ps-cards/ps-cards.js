@@ -1,3 +1,5 @@
+import { translate } from "react-i18next";
+import { UncontrolledTooltip } from "reactstrap";
 import React from "react";
 import NumberFormat from "react-number-format";
 
@@ -16,7 +18,7 @@ const profitChartData = (chartData, programStartDate) => {
   ];
 };
 
-const PSCards = ({ program }) => {
+const PSCards = ({ t, program }) => {
   return (
     <div className="program-cards">
       <div className="program-card card">
@@ -27,14 +29,20 @@ const PSCards = ({ program }) => {
             />
           </div>
           <div className="program-card__value">
-            <NumberFormat
-              value={program.profitTotal}
-              // decimalScale={4}
-              displayType="text"
-            />
+            <NumberFormat value={program.profitTotal} displayType="text" />
             <div className="program-card__bubble metric__bubble">GVT</div>
           </div>
-          <div className="program-card__description">Profit</div>
+          <div className="program-card__description">
+            <span id={`totalProfit_${program.id}`}>
+              {t("program-statistic.total-profit.text")}
+            </span>
+            <UncontrolledTooltip
+              placement="bottom"
+              target={`totalProfit_${program.id}`}
+            >
+              {t("program-statistic.total-profit.tooltip")}
+            </UncontrolledTooltip>
+          </div>
         </div>
       </div>
       <div className="program-card card">
@@ -43,7 +51,17 @@ const PSCards = ({ program }) => {
             <img src={walletIcon} height="100" alt="Avg Profit" />
           </div>
           <div className="program-card__value">{program.profitAvgPercent}%</div>
-          <div className="program-card__description">Avg Profit</div>
+          <div className="program-card__description">
+            <span id={`avgProfit_${program.id}`}>
+              {t("program-statistic.avg-profit.text")}
+            </span>
+            <UncontrolledTooltip
+              placement="bottom"
+              target={`avgProfit_${program.id}`}
+            >
+              {t("program-statistic.avg-profit.tooltip")}
+            </UncontrolledTooltip>
+          </div>
         </div>
       </div>
       <div className="program-card card">
@@ -52,11 +70,23 @@ const PSCards = ({ program }) => {
             <img src={investorAvatar} height="130" alt="Investor" />
           </div>
           <div className="program-card__value">{program.investorsCount}</div>
-          <div className="program-card__description">Investors</div>
+          <div className="program-card__description">
+            <span id={`investors_${program.id}`}>
+              {t("program-statistic.investors.text", {
+                count: program.investorsCount
+              })}
+            </span>
+            <UncontrolledTooltip
+              placement="bottom"
+              target={`investors_${program.id}`}
+            >
+              {t("program-statistic.investors.tooltip")}
+            </UncontrolledTooltip>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default PSCards;
+export default translate()(PSCards);
