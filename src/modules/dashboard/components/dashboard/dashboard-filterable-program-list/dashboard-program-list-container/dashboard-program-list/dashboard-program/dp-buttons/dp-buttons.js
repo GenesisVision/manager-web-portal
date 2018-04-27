@@ -1,8 +1,10 @@
+import { translate } from "react-i18next";
 import React from "react";
 
 import "./dp-buttons.css";
 
 const DPButtons = ({
+  t,
   programId,
   isInvestEnable,
   isWithdrawEnable,
@@ -19,24 +21,24 @@ const DPButtons = ({
         onClick={openInvestPopup(programId)}
         disabled={!isInvestEnable}
       >
-        Invest
+        {t("program-actions.invest")}
       </button>
       <button
         className="dp-button gv-btn gv-btn-secondary"
         onClick={openWithdrawPopup}
         disabled={!isWithdrawEnable}
       >
-        Withdraw
+        {t("program-actions.withdraw")}
       </button>
       <button
         className="dp-button gv-btn gv-btn-secondary"
         onClick={openEditProgramPage(programId)}
         disabled={!canEditProgram}
       >
-        Edit Program
+        {t("program-actions.edit-program")}
       </button>
     </div>
   );
 };
 
-export default DPButtons;
+export default translate()(DPButtons);
