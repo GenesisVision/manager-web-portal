@@ -20,7 +20,7 @@ const ProgramDeposit = ({
   error
 }) => {
   const calculateManagerCurrency = () => {
-    return (values.amount * programDeposit.gvtRate).toFixed(2);
+    return ((+values.amount || 0) * programDeposit.gvtRate).toFixed(2);
   };
   return (
     <div className="popup">
@@ -63,10 +63,11 @@ const ProgramDeposit = ({
               <Field
                 number
                 name="amount"
-                placeholder=""
+                placeholder="0"
                 controllClass="input-gvt__amount"
                 component={InputText}
                 decimalScale={2}
+                allowNegative={false}
               />
             </div>
             <div className="input-gvt__description">Enter GVT amount</div>
@@ -99,14 +100,21 @@ const ProgramDeposit = ({
 export default withFormik({
   displayName: "traderDepositForm",
   mapPropsToValues: () => ({
-    amount: 0
+    amount: ""
   }),
-  validationSchema: Yup.object().shape({
-    amount: Yup.number()
-      .typeError("Amount must be a number.")
-      .moreThan(0, "Amount must be greater than zero")
-      .required("Amount is required.")
-  }),
+  validationSchema: ({ programDeposit: { gvtWalletAmount } }) => {
+    const scheme = Yup.object().shape({
+      amount: Yup.number()
+        .typeError("Amount must be a number.")
+        .moreThan(0, "Amount must be greater than zero")
+        .max(
+          gvtWalletAmount,
+          "Amount must be less than or equal to Available GVT"
+        )
+        .required("Amount is required.")
+    });
+    return scheme;
+  },
   handleSubmit: (values, { props, setSubmitting }) => {
     props.submitPopup(values, setSubmitting);
   }

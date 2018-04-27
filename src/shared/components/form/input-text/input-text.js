@@ -106,7 +106,7 @@ const InputText = ({
             className={`${controllClass || "form-control"} ${validationClass}`}
             value={field.value}
             onValueChange={(values, e) => {
-              setFieldValue(field.name, values.value || 0);
+              setFieldValue(field.name, values.value);
             }}
             {...props}
           />
