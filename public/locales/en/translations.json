@@ -80,7 +80,7 @@
       "tooltip": "Ticket is a unique trade id."
     },
     "price": {
-      "text": "Ticket",
+      "text": "Price",
       "tooltip":
         "Price is a price of base trading instrument unit the value of quoted currency (in case of a currency pair)."
     },
