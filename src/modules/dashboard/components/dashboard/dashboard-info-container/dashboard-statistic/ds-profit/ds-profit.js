@@ -1,12 +1,24 @@
 import NumberFormat from "react-number-format";
+import { translate } from "react-i18next";
+import { UncontrolledTooltip } from "reactstrap";
 import React from "react";
 
 import ProfitImage from "./profit-icon.svg";
 
-const DSProfit = ({ profit }) => {
+const DSProfit = ({ t, profit }) => {
   return (
     <div className="dashboard-card__body card-body">
-      <div className="dashboard-card__header">Profit</div>
+      <div className="dashboard-card__header">
+        <span id="dashboardStatisticProfit">
+          {t("dashboard-statistic.profit.text")}
+        </span>
+        <UncontrolledTooltip
+          placement="bottom"
+          target="dashboardStatisticProfit"
+        >
+          {t("dashboard-statistic.profit.tooltip")}
+        </UncontrolledTooltip>
+      </div>
       <div className="dashboard-card__image">
         <img src={ProfitImage} alt="Profit" />
       </div>
@@ -23,4 +35,4 @@ const DSProfit = ({ profit }) => {
   );
 };
 
-export default DSProfit;
+export default translate()(DSProfit);

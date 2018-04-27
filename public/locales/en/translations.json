@@ -6,6 +6,14 @@
     "text": "Day left",
     "text_plural": "Days left"
   },
+  "program-actions": {
+    "invest": "Invest",
+    "withdraw": "Withdraw",
+    "create-program": "Create Program",
+    "edit-program": "Edit Program",
+    "close-program": "Close Program",
+    "close-period": "Close Period"
+  },
   "program-statistic": {
     "avg-profit": {
       "text": "Avg Profit",
@@ -118,6 +126,36 @@
     "entry": {
       "text": "Entry",
       "tooltip": "Entry is a status of the trade (i.e. “Out” or “In”)."
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "analytics": "Analytics",
+    "programs": "Programs"
+  },
+  "dashboard-statistic": {
+    "funds": {
+      "text": "Funds",
+      "tooltip":
+        "Funds – is the amount of money which is managed by the trader."
+    },
+    "investors": {
+      "text": "Investors",
+      "tooltip":
+        "Investors show the amount of investors who invested in the manager."
+    },
+    "end-of-next-period": {
+      "text": "End of next period",
+      "tooltip":
+        "End of next period shows the amount of days until the end of the nearest next trading period."
+    },
+    "profit": {
+      "text": "Profit",
+      "tooltip": "Profit is the total manager’s profit."
+    },
+    "my-profit": {
+      "text": "My profit",
+      "tooltip": "My profit is the total profit earned by all programs."
     }
   }
 }

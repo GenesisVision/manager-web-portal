@@ -1,4 +1,6 @@
 import NumberFormat from "react-number-format";
+import { translate } from "react-i18next";
+import { UncontrolledTooltip } from "reactstrap";
 import React from "react";
 
 import DSFundChart from "./ds-fund-chart";
@@ -6,10 +8,20 @@ import DSFundChart from "./ds-fund-chart";
 import "./ds-fund.css";
 import { COLORS } from "../../../../../dashboard.constants";
 
-const DSFund = ({ funds }) => {
+const DSFund = ({ t, funds }) => {
   return (
     <div className="dashboard-card__body card-body">
-      <div className="dashboard-card__header">Funds</div>
+      <div className="dashboard-card__header">
+        <span id="dashboardStatisticFunds">
+          {t("dashboard-statistic.funds.text")}
+        </span>
+        <UncontrolledTooltip
+          placement="bottom"
+          target="dashboardStatisticFunds"
+        >
+          {t("dashboard-statistic.funds.tooltip")}
+        </UncontrolledTooltip>
+      </div>
       <div className="dashboard-card__image ds-fund__chart">
         <DSFundChart data={funds} colors={COLORS} />
       </div>
@@ -40,4 +52,4 @@ const DSFund = ({ funds }) => {
   );
 };
 
-export default DSFund;
+export default translate()(DSFund);
