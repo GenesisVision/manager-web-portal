@@ -3,8 +3,6 @@ import { UncontrolledTooltip } from "reactstrap";
 import NumberFormat from "react-number-format";
 import React from "react";
 
-import TokensWidget from "../../../../../../../../components/tokens-widget/tokens-widget";
-
 import "./ps-short-statistic.css";
 
 const PSShortStatistic = ({ t, program }) => {
@@ -131,19 +129,6 @@ const PSShortStatistic = ({ t, program }) => {
               {t("program-settings.success-fee.tooltip")}
             </UncontrolledTooltip>
           </div>
-        </div>
-      </div>
-      <div className="program-statistic__cell">
-        <div className="metric">
-          <div className="metric__value">
-            <TokensWidget
-              invested={program.freeTokens.investorsTokens}
-              requested={program.freeTokens.requestsTokens}
-              total={program.freeTokens.total}
-              showHeader={false}
-            />
-          </div>
-          <div className="metric__description">Tokens</div>
         </div>
       </div>
     </div>
