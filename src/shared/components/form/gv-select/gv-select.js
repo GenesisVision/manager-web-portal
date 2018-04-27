@@ -1,3 +1,4 @@
+import { UncontrolledTooltip } from "reactstrap";
 import classnames from "classnames";
 import React, { PureComponent } from "react";
 import Select from "react-select";
@@ -10,6 +11,7 @@ class GVSelect extends PureComponent {
     const {
       field,
       label,
+      helpMessage,
       onChange = val => {},
       onBlur,
       material,
@@ -49,6 +51,18 @@ class GVSelect extends PureComponent {
         <div className="gv-select__invalid">{errors[field.name]}</div>
       );
 
+    const renderHelpIcon = () => {
+      if (!helpMessage) return null;
+      return (
+        <span className="gv-select__help">
+          <i id={field.name} className="fas fa-question-circle" />
+          <UncontrolledTooltip target={field.name}>
+            {helpMessage}
+          </UncontrolledTooltip>
+        </span>
+      );
+    };
+
     return (
       <div
         className={classnames(
@@ -59,6 +73,7 @@ class GVSelect extends PureComponent {
           { "gv-select--has-error": hasError }
         )}
       >
+        {renderHelpIcon()}
         <label
           className={classnames(
             "gv-select__label",

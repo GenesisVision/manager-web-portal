@@ -1,3 +1,4 @@
+import { translate } from "react-i18next";
 import { withFormik, Field } from "formik";
 import moment from "moment";
 import React from "react";
@@ -14,6 +15,7 @@ import managerAvatar from "../../../../../shared/media/manager-avatar.png";
 import programSettingsCreateFormValidationSchema from "./program-settings-create-form.validators";
 
 const ProgramCreateForm = ({
+  t,
   programForm,
   isSubmitting,
   handleSubmit,
@@ -105,7 +107,8 @@ const ProgramCreateForm = ({
             component={GVSelect}
             options={getLeverages(values.brokerTradeServerId)}
             clearable={false}
-            label="Leverage"
+            label={t("program-settings.leverage.text") + " %"}
+            helpMessage={t("program-settings.leverage.tooltip")}
             placeholder=" "
           />
           <Field
@@ -116,7 +119,8 @@ const ProgramCreateForm = ({
             component={GVSelect}
             options={periodOptions}
             clearable={false}
-            label="Period Length"
+            label={t("program-settings.period-length.text") + " %"}
+            helpMessage={t("program-settings.period-length.tooltip")}
             placeholder=" "
           />
           <Field
@@ -127,25 +131,29 @@ const ProgramCreateForm = ({
             showTimeSelect
             dateFormat="LLL"
             component={GVDatePicker}
-            label="Start Date"
+            label={t("program-settings.start-date.text")}
+            helpMessage={t("program-settings.start-date.tooltip")}
           />
           <Field
             material
             name="depositAmount"
-            label="Deposit Amount (GVT)"
+            label={t("program-settings.deposit-amount.text")}
+            helpMessage={t("program-settings.deposit-amount.tooltip")}
             component={InputText}
           />
           <div className="create-program-form__couple-field">
             <Field
               material
               name="feeSuccess"
-              label="Success Fee (%)"
+              label={t("program-settings.success-fee.text") + " %"}
+              helpMessage={t("program-settings.success-fee.tooltip")}
               component={InputText}
             />
             <Field
               material
               name="feeManagement"
-              label="Management Fee (%)"
+              label={t("program-settings.management-fee.text") + " %"}
+              helpMessage={t("program-settings.management-fee.tooltip")}
               component={InputText}
             />
           </div>
@@ -153,13 +161,15 @@ const ProgramCreateForm = ({
             <Field
               material
               name="tokenName"
-              label="Token Name"
+              label={t("program-settings.token-name.text")}
+              helpMessage={t("program-settings.token-name.tooltip")}
               component={InputText}
             />
             <Field
               material
               name="tokenSymbol"
-              label="Token Symbol"
+              label={t("program-settings.token-symbol.text")}
+              helpMessage={t("program-settings.token-symbol.tooltip")}
               component={InputText}
             />
           </div>
@@ -178,31 +188,33 @@ const ProgramCreateForm = ({
   );
 };
 
-export default withFormik({
-  displayName: "programCreateForm",
-  mapPropsToValues: () => ({
-    logo: {
-      src: managerAvatar,
-      filename: "image.png",
-      filetype: "image/png",
-      cropped: null
-    },
-    tradePlatformPassword: "",
-    confirmTradePlatformPassword: "",
-    brokerTradeServerId: "",
-    leverage: "",
-    title: "",
-    description: "",
-    depositAmount: "",
-    tokenName: "",
-    tokenSymbol: "",
-    period: "",
-    dateFrom: null,
-    feeSuccess: "",
-    feeManagement: ""
-  }),
-  validationSchema: programSettingsCreateFormValidationSchema,
-  handleSubmit: (values, { props, setSubmitting }) => {
-    props.onSubmit(values, setSubmitting);
-  }
-})(ProgramCreateForm);
+export default translate()(
+  withFormik({
+    displayName: "programCreateForm",
+    mapPropsToValues: () => ({
+      logo: {
+        src: managerAvatar,
+        filename: "image.png",
+        filetype: "image/png",
+        cropped: null
+      },
+      tradePlatformPassword: "",
+      confirmTradePlatformPassword: "",
+      brokerTradeServerId: "",
+      leverage: "",
+      title: "",
+      description: "",
+      depositAmount: "",
+      tokenName: "",
+      tokenSymbol: "",
+      period: "",
+      dateFrom: null,
+      feeSuccess: "",
+      feeManagement: ""
+    }),
+    validationSchema: programSettingsCreateFormValidationSchema,
+    handleSubmit: (values, { props, setSubmitting }) => {
+      props.onSubmit(values, setSubmitting);
+    }
+  })(ProgramCreateForm)
+);

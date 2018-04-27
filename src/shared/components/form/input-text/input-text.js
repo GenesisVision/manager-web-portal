@@ -1,3 +1,4 @@
+import { UncontrolledTooltip } from "reactstrap";
 import classnames from "classnames";
 import NumberFormat from "react-number-format";
 import React from "react";
@@ -8,6 +9,7 @@ const InputText = ({
   field, // { name, value, onChange, onBlur }
   addon,
   label,
+  helpMessage,
   material,
   number,
   controllClass,
@@ -32,14 +34,30 @@ const InputText = ({
     }
     return null;
   };
+
+  const renderHelpIcon = () => {
+    if (!helpMessage) return null;
+    return (
+      <span className="input-text__help">
+        <i id={field.name} className="fas fa-question-circle" />
+        <UncontrolledTooltip target={field.name}>
+          {helpMessage}
+        </UncontrolledTooltip>
+      </span>
+    );
+  };
+
   const validationClass = touched[field.name]
-    ? errors[field.name] ? "is-invalid" : "is-valid"
+    ? errors[field.name]
+      ? "is-invalid"
+      : "is-valid"
     : "";
 
   const hasError = touched[field.name] && errors[field.name];
 
   const renderMaterialInput = () => (
     <div className="input-text input-text--material">
+      {renderHelpIcon()}
       <input
         type="text"
         className={classnames(
@@ -52,14 +70,13 @@ const InputText = ({
         {...field}
         {...props}
       />
-
       <label
         className={classnames(
           "input-text__label",
           "input-text__label--material",
           {
             "input-text__label--regular":
-               touched[field.name] && !hasError && field.value.length > 0
+              touched[field.name] && !hasError && field.value.length > 0
           },
           { "input-text__label--error": hasError }
         )}
@@ -67,12 +84,14 @@ const InputText = ({
         {label}
       </label>
       <hr className="input-text__hr-placeholder" />
-      {!props.readOnly && <hr
-        className={classnames(
-          "input-text__hr",
-          hasError ? "input-text__hr--error" : "input-text__hr--regular"
-        )}
-      />}
+      {!props.readOnly && (
+        <hr
+          className={classnames(
+            "input-text__hr",
+            hasError ? "input-text__hr--error" : "input-text__hr--regular"
+          )}
+        />
+      )}
       {hasError && (
         <div className="input-text__error-message">{errors[field.name]}</div>
       )}

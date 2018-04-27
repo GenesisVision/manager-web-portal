@@ -1,3 +1,4 @@
+import { UncontrolledTooltip } from "reactstrap";
 import classnames from "classnames";
 import DatePicker from "react-datepicker";
 import React, { PureComponent } from "react";
@@ -11,6 +12,7 @@ class GVDatePicker extends PureComponent {
       material,
       field,
       label,
+      helpMessage,
       onChange,
       form: { touched, errors, setFieldValue },
       ...other
@@ -45,6 +47,18 @@ class GVDatePicker extends PureComponent {
         <div className="gv-datepicker__invalid">{errors[field.name]}</div>
       );
 
+    const renderHelpIcon = () => {
+      if (!helpMessage) return null;
+      return (
+        <span className="gv-datepicker__help">
+          <i id={field.name} className="fas fa-question-circle" />
+          <UncontrolledTooltip target={field.name}>
+            {helpMessage}
+          </UncontrolledTooltip>
+        </span>
+      );
+    };
+
     return (
       <div
         className={classnames(
@@ -55,6 +69,7 @@ class GVDatePicker extends PureComponent {
           { "gv-datepicker--has-error": hasError }
         )}
       >
+        {renderHelpIcon()}
         <label
           className={classnames(
             "gv-datepicker__label",

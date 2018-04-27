@@ -69,20 +69,20 @@ const PSShortStatistic = ({ t, program }) => {
           <div className="metric__value">
             {program.periodDuration}{" "}
             <div className="metric__bubble">
-              {t("program-statistic.period-duration.bubble", {
+              {t("program-settings.period-duration.bubble", {
                 count: program.periodDuration
               })}
             </div>
           </div>
           <div className="metric__description">
             <span id={`periodDuration_${program.id}`}>
-              {t("program-statistic.period-duration.text")}
+              {t("program-settings.period-duration.text")}
             </span>
             <UncontrolledTooltip
               placement="bottom"
               target={`periodDuration_${program.id}`}
             >
-              {t("program-statistic.period-duration.tooltip")}
+              {t("program-settings.period-duration.tooltip")}
             </UncontrolledTooltip>
           </div>
         </div>
@@ -99,13 +99,13 @@ const PSShortStatistic = ({ t, program }) => {
           </div>
           <div className="metric__description">
             <span id={`managersFee_${program.id}`}>
-              {t("program-statistic.managers-fee.text")}
+              {t("program-settings.management-fee.text")}
             </span>
             <UncontrolledTooltip
               placement="bottom"
               target={`managersFee_${program.id}`}
             >
-              {t("program-statistic.managers-fee.tooltip")}
+              {t("program-settings.management-fee.tooltip")}
             </UncontrolledTooltip>
           </div>
         </div>
@@ -122,13 +122,13 @@ const PSShortStatistic = ({ t, program }) => {
           </div>
           <div className="metric__description">
             <span id={`successFee_${program.id}`}>
-              {t("program-statistic.success-fee.text")}
+              {t("program-settings.success-fee.text")}
             </span>
             <UncontrolledTooltip
               placement="bottom"
               target={`successFee_${program.id}`}
             >
-              {t("program-statistic.success-fee.tooltip")}
+              {t("program-settings.success-fee.tooltip")}
             </UncontrolledTooltip>
           </div>
         </div>

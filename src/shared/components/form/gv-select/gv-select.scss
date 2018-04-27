@@ -114,3 +114,9 @@ $select-menu-max-height: 210px;
     }
   }
 }
+
+.gv-select__help {
+  position: absolute;
+  left: -22px;
+  color: lighten($color: $main-color, $amount: 10%);
+}

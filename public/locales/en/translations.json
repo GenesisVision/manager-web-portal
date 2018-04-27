@@ -53,23 +53,6 @@
       "text": "Own Balance",
       "tooltip":
         "Own balance - is an amount of money which belongs to the manager."
-    },
-    "period-duration": {
-      "text": "Period Duration",
-      "bubble": "day",
-      "bubble_plural": "days",
-      "tooltip":
-        "Period duration - is a period that is defined by a manager at the end of which all trading positions are closed with a subsequent profit distribution."
-    },
-    "success-fee": {
-      "text": "Success Fee",
-      "tooltip":
-        "Success fee is an additional successful trading fee that is charged from the investor’s profit at the end of the reporting period."
-    },
-    "managers-fee": {
-      "text": "Manager’s Fee",
-      "tooltip":
-        "Manager’s fee - is an obligatory annual fee, charged at the end of the reporting period from the total amount of funds invested in this investment program."
     }
   },
   "program-deal-list": {
@@ -126,6 +109,53 @@
     "entry": {
       "text": "Entry",
       "tooltip": "Entry is a status of the trade (i.e. “Out” or “In”)."
+    }
+  },
+  "program-settings": {
+    "token-symbol": {
+      "text": "Token Symbol",
+      "tooltip":
+        "Token symbol - is a unique abbreviation used to identify manager’s token."
+    },
+    "token-name": {
+      "text": "Token Name",
+      "tooltip": "Token name - is a unique name to identify manager’s token."
+    },
+    "deposit-amount": {
+      "text": "Deposit amount (GVT)",
+      "tooltip":
+        "Deposit amount (GVT) - is the amount of manager’s own funds invested in his program."
+    },
+    "start-date": {
+      "text": "Start Date",
+      "tooltip": "Start date - is the date of a program start."
+    },
+    "period-length": {
+      "text": "Period Length",
+      "tooltip":
+        "Period length is the duration of the reporting period estimated in days."
+    },
+    "leverage": {
+      "text": "Leverage",
+      "tooltip":
+        "Leverage - is the correlation between margin amount and trade volume."
+    },
+    "period-duration": {
+      "text": "Period Duration",
+      "bubble": "day",
+      "bubble_plural": "days",
+      "tooltip":
+        "Period duration - is a period that is defined by a manager at the end of which all trading positions are closed with a subsequent profit distribution."
+    },
+    "success-fee": {
+      "text": "Success Fee",
+      "tooltip":
+        "Success fee is an additional successful trading fee that is charged from the investor’s profit at the end of the reporting period."
+    },
+    "management-fee": {
+      "text": "Management Fee",
+      "tooltip":
+        "Management fee - is an obligatory annual fee, charged at the end of the reporting period from the total amount of funds invested in this investment program."
     }
   },
   "dashboard": {
