@@ -19,7 +19,7 @@ const ProgramClosePeriod = ({
         <div>Do you really want to restart current period?</div>
         <FormError error={error} />
         <PopupButtons
-          submitLabel="Close Period"
+          submitLabel="Restart Period"
           isSubmitting={isSubmitting}
           onSubmit={handleSubmit}
           onCancel={closePopup}

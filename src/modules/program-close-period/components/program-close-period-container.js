@@ -47,7 +47,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         .then(() => {
           dispatch(
             alertMessageActions.success(
-              "Request to Close period sent successfully"
+              "Request to Restart period sent successfully"
             )
           );
           return Promise.resolve();
