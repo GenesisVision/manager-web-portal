@@ -2,19 +2,15 @@ import { Link } from "react-router-dom";
 import React from "react";
 
 import DaysLeftWidget from "../../days-left-widget/days-left-widget";
+import PIBookmark from "../pi-bookmark/pi-bookmark";
 import replaceParams from "../../../utils/replace-params";
 import TokensWidget from "../../tokens-widget/tokens-widget";
 import TraderAvatar from "../../program-avatar/program-avatar";
-import PIBookmark from "../pi-bookmark/pi-bookmark";
+
 import "./pi-info.css";
 import { PROGRAM_ROUTE } from "../../../modules/program/program.constants";
 
-const PIInfo = ({
-  program,
-  addFavoriteProgram,
-  removeFavoriteProgram,
-  isAuthenticated
-}) => {
+const PIInfo = ({ program, toggleFavoriteProgram, isAuthenticated }) => {
   const renderDaysLeft = () => {
     if (program.isEnabled) {
       return (
@@ -42,11 +38,6 @@ const PIInfo = ({
     return null;
   };
 
-  const toggleFavorite = () => {
-    const { id, isFavorite } = program;
-    isFavorite ? removeFavoriteProgram(id) : addFavoriteProgram(id);
-  };
-
   const traderRoute = replaceParams(PROGRAM_ROUTE, {
     ":programId": program.id
   });
@@ -62,7 +53,7 @@ const PIInfo = ({
           {isAuthenticated && (
             <PIBookmark
               isFavorite={program.isFavorite}
-              onClick={toggleFavorite}
+              onClick={toggleFavoriteProgram(program)}
             />
           )}
         </div>
