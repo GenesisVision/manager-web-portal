@@ -18,12 +18,12 @@
     "avg-profit": {
       "text": "Avg Profit",
       "tooltip":
-        "Avg. profit – is the average profit for the period in relation to the starting balance."
+        "The average profit for the period in relation to the starting balance."
     },
     "available-to-invest": {
       "text": "Available to Invest",
       "tooltip":
-        "Available to invest - is the number of manager's tokens which are available to purchase."
+        "The amount available for investment"
     },
     "trades": {
       "text": "Trades",
