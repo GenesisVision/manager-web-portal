@@ -6,12 +6,20 @@ import ProgramSettingsEditContainer from "./components/program-settings-edit-con
 
 import {
   PROGRAM_SETTINGS_CREATE_ROUTE,
-  PROGRAM_SETTINGS_EDIT_ROUTE
+  PROGRAM_SETTINGS_EDIT_ROUTE,
+  PROGRAM_SETTINGS_CREATE_TOURNAMENT_ROUTE
 } from "./program-settings.constants";
 
 export const ProgramSettingsCreateRoutes = () => (
   <Route
     path={PROGRAM_SETTINGS_CREATE_ROUTE}
+    component={ProgramSettingsCreateContainer}
+  />
+);
+
+export const ProgramSettingsCreateTournamentRoutes = () => (
+  <Route
+    path={PROGRAM_SETTINGS_CREATE_TOURNAMENT_ROUTE}
     component={ProgramSettingsCreateContainer}
   />
 );

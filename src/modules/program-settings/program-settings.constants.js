@@ -3,3 +3,4 @@ import { PROGRAMS_ROUTE } from "../programs/programs.constants";
 
 export const PROGRAM_SETTINGS_EDIT_ROUTE = `${PROGRAM_ROUTE}/edit`;
 export const PROGRAM_SETTINGS_CREATE_ROUTE = `${PROGRAMS_ROUTE}/create`;
+export const PROGRAM_SETTINGS_CREATE_TOURNAMENT_ROUTE = `${PROGRAM_SETTINGS_CREATE_ROUTE}-tournament`;
