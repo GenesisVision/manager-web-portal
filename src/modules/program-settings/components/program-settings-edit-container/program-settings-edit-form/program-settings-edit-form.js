@@ -29,7 +29,7 @@ const ProgramSettingsEditForm = ({
         <div className="create-program-form__program-description">
           <Field
             name="logo"
-            label="Program Title"
+            label="Program Logo"
             className="create-program-form__program-image"
             component={InputFile}
             defaultImage={managerAvatar}
