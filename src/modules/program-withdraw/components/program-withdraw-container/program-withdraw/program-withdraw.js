@@ -1,3 +1,4 @@
+import { translate } from "react-i18next";
 import { withFormik, Field } from "formik";
 import React from "react";
 import Yup from "yup";
@@ -12,6 +13,7 @@ import TraderAvatar from "../../../../../components/program-avatar/program-avata
 import "./program-withdraw.css";
 
 const ProgramWithdraw = ({
+  t,
   values,
   programWithdraw,
   handleSubmit,
@@ -21,7 +23,7 @@ const ProgramWithdraw = ({
 }) => {
   return (
     <div className="popup">
-      <PopupHeader header="Withdraw" onClose={closePopup} />
+      <PopupHeader header={t("program-withdraw.header")} onClose={closePopup} />
       <form id="programWithdrawForm" onSubmit={handleSubmit}>
         <div className="program-withdraw__info">
           <div className="program-withdraw__info-cell">
@@ -49,14 +51,14 @@ const ProgramWithdraw = ({
             <div className="metric">
               <div className="metric__value">{programWithdraw.ownBalance}</div>
               <div className="metric__description">
-                Your balance {programWithdraw.currency}
+                {t("program-withdraw.your-balance")} {programWithdraw.currency}
               </div>
             </div>
           </div>
         </div>
         <div className="program-withdraw__calculator">
           <div className="program-withdraw__calculator-header">
-            How much would you like to withdraw?
+            {t("program-withdraw.how-much-withdraw")}
           </div>
           <div className="program-withdraw__calculator-cell input-token">
             <div className="input-gvt__token">
@@ -70,12 +72,14 @@ const ProgramWithdraw = ({
               />
             </div>
             <div className="input-token__description">
-              Enter {programWithdraw.currency} amount
+              {t("program-withdraw.enter-amount", {
+                currency: programWithdraw.currency
+              })}
             </div>
           </div>
           <div>
             <span>
-              Minimal remaining balance is ${
+              {t("program-withdraw.minimal-balance")} ${
                 programWithdraw.minAccountBalanceUsd
               }{" "}
               ({programWithdraw.minAccountBalance} {programWithdraw.currency})
@@ -110,4 +114,4 @@ export default withFormik({
   handleSubmit: (values, { props, setSubmitting }) => {
     props.submitPopup(values, setSubmitting);
   }
-})(ProgramWithdraw);
+})(translate()(ProgramWithdraw));

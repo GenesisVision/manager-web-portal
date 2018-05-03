@@ -192,5 +192,12 @@
     "available-gvt": "Available GVT",
     "enter-gvt-amount": "Enter GVT amount",
     "amount-in": "Amount in"
+  },
+  "program-withdraw": {
+    "header": "Withdraw",
+    "your-balance": "Your balance",
+    "how-much-withdraw": "How much would you like to withdraw?",
+    "enter-amount": "Enter {{currency}} amount",
+    "minimal-balance": "Minimal remaining balance is"
   }
 }
