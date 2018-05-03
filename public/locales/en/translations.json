@@ -22,8 +22,7 @@
     },
     "available-to-invest": {
       "text": "Available to Invest",
-      "tooltip":
-        "The amount available for investment"
+      "tooltip": "The amount available for investment"
     },
     "trades": {
       "text": "Trades",
@@ -187,5 +186,11 @@
       "text": "My profit",
       "tooltip": "My profit is the total profit earned by all programs."
     }
+  },
+  "program-deposit": {
+    "header": "Deposit",
+    "available-gvt": "Available GVT",
+    "enter-gvt-amount": "Enter GVT amount",
+    "amount-in": "Amount in"
   }
 }

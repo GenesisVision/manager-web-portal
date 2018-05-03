@@ -1,3 +1,4 @@
+import { translate } from "react-i18next";
 import { withFormik, Field } from "formik";
 import React from "react";
 import Yup from "yup";
@@ -12,6 +13,7 @@ import TraderAvatar from "../../../../../components/program-avatar/program-avata
 import "./program-deposit.css";
 
 const ProgramDeposit = ({
+  t,
   values,
   programDeposit,
   isSubmitting,
@@ -24,7 +26,7 @@ const ProgramDeposit = ({
   };
   return (
     <div className="popup">
-      <PopupHeader header="Deposit" onClose={closePopup} />
+      <PopupHeader header={t("program-deposit.header")} onClose={closePopup} />
       <form id="programDepositForm" onSubmit={handleSubmit}>
         <div className="program-deposit__info">
           <div className="program-deposit__info-cell">
@@ -53,7 +55,9 @@ const ProgramDeposit = ({
               <div className="metric__value">
                 {programDeposit.gvtWalletAmount}
               </div>
-              <div className="metric__description">Available GVT</div>
+              <div className="metric__description">
+                {t("program-deposit.available-gvt")}
+              </div>
             </div>
           </div>
         </div>
@@ -70,7 +74,9 @@ const ProgramDeposit = ({
                 allowNegative={false}
               />
             </div>
-            <div className="input-gvt__description">Enter GVT amount</div>
+            <div className="input-gvt__description">
+              {t("program-deposit.enter-gvt-amount")}
+            </div>
           </div>
           <div className="program-deposit__calculator-cell calculated-usd">
             <div className="metric">
@@ -78,7 +84,7 @@ const ProgramDeposit = ({
                 {calculateManagerCurrency()}
               </div>
               <div className="metric__description">
-                Amount in {programDeposit.currency}
+                {t("program-deposit.amount-in")} {programDeposit.currency}
               </div>
             </div>
           </div>
@@ -118,4 +124,4 @@ export default withFormik({
   handleSubmit: (values, { props, setSubmitting }) => {
     props.submitPopup(values, setSubmitting);
   }
-})(ProgramDeposit);
+})(translate()(ProgramDeposit));
