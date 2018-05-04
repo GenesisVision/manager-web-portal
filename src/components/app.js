@@ -41,7 +41,9 @@ class App extends Component {
   }
 }
 
-const ConnectedApp = connect(undefined, { updatePlatformStatus })(App);
+const ConnectedApp = connect(null, { updatePlatformStatus }, null, {
+  pure: false
+})(App);
 
 const Root = () => (
   <Provider store={store}>
