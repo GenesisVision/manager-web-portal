@@ -1,6 +1,5 @@
 import { translate } from "react-i18next";
 import { withFormik, Field } from "formik";
-import moment from "moment";
 import React from "react";
 
 import FormError from "../../../../../shared/components/form/form-error/form-error";

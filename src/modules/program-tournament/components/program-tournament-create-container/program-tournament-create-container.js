@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 
 import TournamentProgramForm from "./program-tournament-create-form/program-tournament-create-form";
-
+import { createProgram } from "../../service/program-tournament-service";
 class TournamentProgramFormContainer extends Component {
   render() {
     const { isPending, errorMessage, createProgram } = this.props;
@@ -20,7 +20,7 @@ class TournamentProgramFormContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  const { isPending, errorMessage } = state.programTournament.formData;
+  const { isPending, errorMessage } = state.programTournament.createData;
 
   return {
     isPending,
@@ -28,12 +28,6 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  createProgram: (data, setSubmitting) => {
-    console.info(data);
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(
+export default connect(mapStateToProps, { createProgram })(
   TournamentProgramFormContainer
 );
