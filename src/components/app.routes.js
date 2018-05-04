@@ -14,6 +14,12 @@ import {
   PROGRAM_SETTINGS_CREATE_ROUTE,
   PROGRAM_SETTINGS_EDIT_ROUTE
 } from "../modules/program-settings/program-settings.constants";
+
+import {
+  PROGRAM_SETTINGS_CREATE_TOURNAMENT_ROUTE,
+  PROGRAM_SETTINGS_EDIT_TOURNAMENT_ROUTE
+} from "../modules/program-tournament/program-tournament.constants";
+
 import { REGISTER_ROUTE } from "../modules/register/register.constants";
 import { PROGRAM_ROUTE } from "../modules/program/program.constants";
 import { PROGRAMS_ROUTE } from "../modules/programs/programs.constants";
@@ -39,7 +45,10 @@ import {
   ProgramSettingsCreateRoutes,
   ProgramSettingsEditRoutes
 } from "../modules/program-settings/program-settings.routes";
-
+import {
+  ProgramSettingsCreateTournamentRoutes,
+  ProgramSettingsEditTournamentRoutes
+} from "../modules/program-tournament/program-tournament.routes";
 const AppRoutes = () => (
   <Switch>
     <Route path={EMAIL_CONFIRM_ROUTE} component={EmailConfirmRoutes} />
@@ -54,6 +63,14 @@ const AppRoutes = () => (
     <PrivateRoute
       path={PROGRAM_SETTINGS_EDIT_ROUTE}
       component={ProgramSettingsEditRoutes}
+    />
+    <PrivateRoute
+      path={PROGRAM_SETTINGS_CREATE_TOURNAMENT_ROUTE}
+      component={ProgramSettingsCreateTournamentRoutes}
+    />
+    <PrivateRoute
+      path={PROGRAM_SETTINGS_EDIT_TOURNAMENT_ROUTE}
+      component={ProgramSettingsEditTournamentRoutes}
     />
     <Route exact path={PROGRAM_ROUTE} component={ProgramRoutes} />
     <Route exact path={PROGRAMS_ROUTE} component={ProgramsRoutes} />

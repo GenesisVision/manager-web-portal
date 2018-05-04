@@ -1,0 +1,7 @@
+import {
+  PROGRAM_SETTINGS_CREATE_ROUTE,
+  PROGRAM_SETTINGS_EDIT_ROUTE
+} from "../program-settings/program-settings.constants";
+
+export const PROGRAM_SETTINGS_EDIT_TOURNAMENT_ROUTE = `${PROGRAM_SETTINGS_EDIT_ROUTE}-tournament`;
+export const PROGRAM_SETTINGS_CREATE_TOURNAMENT_ROUTE = `${PROGRAM_SETTINGS_CREATE_ROUTE}-tournament`;

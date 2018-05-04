@@ -17,13 +17,6 @@ export const ProgramSettingsCreateRoutes = () => (
   />
 );
 
-export const ProgramSettingsCreateTournamentRoutes = () => (
-  <Route
-    path={PROGRAM_SETTINGS_CREATE_TOURNAMENT_ROUTE}
-    component={ProgramSettingsCreateContainer}
-  />
-);
-
 export const ProgramSettingsEditRoutes = () => (
   <Route
     path={PROGRAM_SETTINGS_EDIT_ROUTE}
