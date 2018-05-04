@@ -6,9 +6,9 @@ import FormError from "../../../../../shared/components/form/form-error/form-err
 import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
-
 import managerAvatar from "../../../../../shared/media/manager-avatar.png";
 import validateSchema from "./program-tournament-create-form.validators";
+import "./program-tournament-create-form.css";
 
 const ProgramTournamentCreateForm = ({
   t,
@@ -26,7 +26,7 @@ const ProgramTournamentCreateForm = ({
     <form
       id="createProgramForm"
       onSubmit={handleSubmit}
-      className="create-program-form"
+      className="create-program-form tournament-form"
       noValidate
     >
       <div className="create-program-form__header">Create Program</div>
@@ -60,9 +60,9 @@ const ProgramTournamentCreateForm = ({
         type="submit"
         id="createProgramSubmit"
         disabled={isSubmitting}
-        className="btn btn-primary create-program-form__submit"
+        className="btn btn-primary create-program-form__submit tournament-form__submit"
       >
-        Create Program
+        Create Tournament Account
       </button>
     </form>
   );
