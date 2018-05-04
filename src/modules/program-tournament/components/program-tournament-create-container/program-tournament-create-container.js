@@ -21,13 +21,20 @@ class TournamentProgramFormContainer extends Component {
 
 const mapStateToProps = state => {
   const { isPending, errorMessage } = state.programTournament.createData;
-
   return {
     isPending,
     errorMessage
   };
 };
 
-export default connect(mapStateToProps, { createProgram })(
+const mapDispatchToProps = dispatch => ({
+  createProgram: (data, setSubmitting) => {
+    dispatch(createProgram(data)).catch(() => {
+      setSubmitting(false);
+    });
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(
   TournamentProgramFormContainer
 );

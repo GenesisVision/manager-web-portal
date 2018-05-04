@@ -12,7 +12,6 @@ import "./program-tournament-create-form.css";
 
 const ProgramTournamentCreateForm = ({
   t,
-  programForm,
   isSubmitting,
   handleSubmit,
   setFieldValue,
