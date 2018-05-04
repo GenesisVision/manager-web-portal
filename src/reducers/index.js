@@ -15,6 +15,7 @@ import programCloseReducer from "../modules/program-close/reducers/program-close
 import programDepositReducer from "../modules/program-deposit/reducers/program-deposit-reducers";
 import programReducer from "../modules/program/reducers/program-reducers";
 import programSettingsReducer from "../modules/program-settings/reducers/program-settings-reducers";
+import programTournamentReducer from "../modules/program-tournament/reducers/program-tournament-reducers";
 import programsReducer from "../modules/programs/reducers/programs-reducers";
 import programWithdrawReducer from "../modules/program-withdraw/reducers/program-withdraw-reducers";
 import registerReducer from "../modules/register/reducers/register-reducers";
@@ -41,5 +42,6 @@ export default combineReducers({
   programCloseData: programCloseReducer,
   programClosePeriodData: programClosePeriodReducer,
   popupData: popupReducer,
-  programSettingsData: programSettingsReducer
+  programSettingsData: programSettingsReducer,
+  programTournament: programTournamentReducer
 });
