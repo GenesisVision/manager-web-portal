@@ -12,7 +12,7 @@ const DashboardDescription = ({ t, isTournamentActive }) => {
         {t("dashboard.title")}
       </div>
       <div className="dashboard-description__buttons">
-        {!isTournamentActive && (
+        {isTournamentActive && (
           <Link
             className="gv-btn gv-btn-primary"
             to={PROGRAM_SETTINGS_CREATE_TOURNAMENT_ROUTE}
