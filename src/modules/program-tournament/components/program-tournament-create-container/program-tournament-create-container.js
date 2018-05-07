@@ -20,7 +20,7 @@ class TournamentProgramFormContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  const { isPending, errorMessage } = state.programTournament.createData;
+  const { isPending, errorMessage } = state.programTournamentData.createData;
   return {
     isPending,
     errorMessage

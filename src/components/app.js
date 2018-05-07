@@ -1,12 +1,13 @@
-import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ConnectedRouter } from "react-router-redux";
 import { Provider } from "react-redux";
 import { Route } from "react-router-dom";
+import React, { Component } from "react";
 
 import AlertMessageList from "../shared/modules/alert-message/components/alert-message-list/alert-message-list";
 import Header from "./header/header";
 import history from "../utils/history";
+import platformActions from "../actions/platform-action";
 import PopupContainer from "../modules/popup/components/popup-container";
 import Sidebar from "./sidebar/sidebar";
 import store from "../store/index";
@@ -14,12 +15,10 @@ import store from "../store/index";
 import "./app.css";
 import AppRoutes from "./app.routes";
 
-import { updatePlatformStatus } from "../actions/platform-status-action";
-
 class App extends Component {
   componentWillMount() {
-    const { updatePlatformStatus } = this.props;
-    updatePlatformStatus();
+    const { fetchPlatformSettings } = this.props;
+    fetchPlatformSettings();
   }
 
   render() {
@@ -41,9 +40,16 @@ class App extends Component {
   }
 }
 
-const ConnectedApp = connect(null, { updatePlatformStatus }, null, {
-  pure: false
-})(App);
+const ConnectedApp = connect(
+  null,
+  dispatch => ({
+    fetchPlatformSettings: () => dispatch(platformActions.fetchPlatformSettings)
+  }),
+  null,
+  {
+    pure: false
+  }
+)(App);
 
 const Root = () => (
   <Provider store={store}>
