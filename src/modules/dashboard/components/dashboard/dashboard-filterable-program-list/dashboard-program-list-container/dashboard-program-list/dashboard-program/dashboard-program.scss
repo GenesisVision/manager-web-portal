@@ -19,6 +19,8 @@
 }
 
 .dashboard-program-card__title {
+  display: flex;
+  justify-content: center;
   font-size: 1.5rem;
   max-width: 100%;
   color: $text-color;
@@ -28,6 +30,15 @@
   &:hover {
     text-decoration: none;
   }
+}
+
+.dashboard-program-card__pending {
+  color: $inactive-icon-color;
+  line-height: inherit;
+}
+
+.dashboard-program-card__avatar {
+  margin: auto;
 }
 
 .dashboard-program-card__description {

@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { translate } from "react-i18next";
+import { UncontrolledTooltip } from "reactstrap";
 import React from "react";
 
 import DPButtons from "./dp-buttons/dp-buttons";
@@ -10,6 +12,7 @@ import "./dashboard-program.css";
 import { PROGRAM_ROUTE } from "../../../../../../../program/program.constants";
 
 const DashboardProgram = ({
+  t,
   program,
   openInvestPopup,
   openWithdrawPopup,
@@ -21,14 +24,49 @@ const DashboardProgram = ({
   const traderRoute = replaceParams(PROGRAM_ROUTE, {
     ":programId": program.id
   });
+
+  const renderProgramTitle = () => {
+    if (program.isPending) {
+      return (
+        <span>
+          <TraderAvatar
+            className="dashboard-program-card__avatar"
+            imgUrl={program.logo}
+            level={program.level}
+          />
+          <span className="dashboard-program-card__title">
+            {program.title}
+            &nbsp;
+            <i
+              id={`isPending_${program.id}`}
+              className="fas fa-clock dashboard-program-card__pending"
+            />
+            <UncontrolledTooltip
+              placement="bottom"
+              target={`isPending_${program.id}`}
+            >
+              {t("dashboard.pending-tooltip")}
+            </UncontrolledTooltip>
+          </span>
+        </span>
+      );
+    }
+
+    return (
+      <Link to={traderRoute}>
+        <TraderAvatar
+          className="dashboard-program-card__avatar"
+          imgUrl={program.logo}
+          level={program.level}
+        />
+        <span className="dashboard-program-card__title">{program.title}</span>
+      </Link>
+    );
+  };
+
   return (
     <div className="dashboard-program-card card">
-      <Link to={traderRoute}>
-        <TraderAvatar imgUrl={program.logo} level={program.level} />
-      </Link>
-      <Link className="dashboard-program-card__title" to={traderRoute}>
-        {program.title}
-      </Link>
+      {renderProgramTitle()}
       <div className="dashboard-program-card__description">
         {program.description}
       </div>
@@ -46,4 +84,4 @@ const DashboardProgram = ({
   );
 };
 
-export default DashboardProgram;
+export default translate()(DashboardProgram);

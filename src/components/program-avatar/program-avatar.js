@@ -1,11 +1,12 @@
+import classnames from "classnames";
 import React from "react";
 
 import "./program-avatar.css";
 import avatarStub from "../../shared/media/manager-avatar.png";
 
-const ProgramAvatar = ({ imgUrl, level }) => {
+const ProgramAvatar = ({ imgUrl, level, className }) => {
   return (
-    <div className="program-avatar">
+    <div className={classnames("program-avatar", className)}>
       <img
         className="program-avatar__image"
         src={imgUrl || avatarStub}
