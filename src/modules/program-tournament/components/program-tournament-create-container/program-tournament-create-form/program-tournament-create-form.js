@@ -95,7 +95,6 @@ const ProgramTournamentCreateForm = ({
               The account will be created on Just2Trade broker, using the
               MetaTrader 5.
             </li>
-            <li>The leverage is 1:10</li>
             <li>
               A fixed amount of $ 10,000 is credited to each participant's
               account.
