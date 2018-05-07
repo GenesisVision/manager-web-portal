@@ -4,14 +4,22 @@ import React from "react";
 
 import "./dashboard-description.css";
 import { PROGRAM_SETTINGS_CREATE_ROUTE } from "../../../../../program-settings/program-settings.constants";
-
-const DashboardDescription = ({ t }) => {
+import { PROGRAM_SETTINGS_CREATE_TOURNAMENT_ROUTE } from "../../../../../program-tournament/program-tournament.constants";
+const DashboardDescription = ({ t, isTournamentActive }) => {
   return (
     <div className="dashboard-description">
       <div className="dashboard-description__name dashboard-subheader">
         {t("dashboard.title")}
       </div>
       <div className="dashboard-description__buttons">
+        {isTournamentActive && (
+          <Link
+            className="gv-btn gv-btn-primary"
+            to={PROGRAM_SETTINGS_CREATE_TOURNAMENT_ROUTE}
+          >
+            {t("program-actions.create-tournament-account")}
+          </Link>
+        )}
         <Link
           className="gv-btn gv-btn-primary"
           to={PROGRAM_SETTINGS_CREATE_ROUTE}

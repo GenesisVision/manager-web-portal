@@ -1,11 +1,13 @@
+import { connect } from "react-redux";
 import { ConnectedRouter } from "react-router-redux";
 import { Provider } from "react-redux";
 import { Route } from "react-router-dom";
-import React from "react";
+import React, { Component } from "react";
 
 import AlertMessageList from "../shared/modules/alert-message/components/alert-message-list/alert-message-list";
 import Header from "./header/header";
 import history from "../utils/history";
+import platformActions from "../actions/platform-action";
 import PopupContainer from "../modules/popup/components/popup-container";
 import Sidebar from "./sidebar/sidebar";
 import store from "../store/index";
@@ -13,9 +15,14 @@ import store from "../store/index";
 import "./app.css";
 import AppRoutes from "./app.routes";
 
-const App = () => (
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
+class App extends Component {
+  componentWillMount() {
+    const { fetchPlatformSettings } = this.props;
+    fetchPlatformSettings();
+  }
+
+  render() {
+    return (
       <div>
         <Route component={Header} />
         <div className="app__main">
@@ -29,8 +36,27 @@ const App = () => (
         <AlertMessageList />
         <PopupContainer />
       </div>
+    );
+  }
+}
+
+const ConnectedApp = connect(
+  null,
+  dispatch => ({
+    fetchPlatformSettings: () => dispatch(platformActions.fetchPlatformSettings)
+  }),
+  null,
+  {
+    pure: false
+  }
+)(App);
+
+const Root = () => (
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <ConnectedApp />
     </ConnectedRouter>
   </Provider>
 );
 
-export default App;
+export default Root;

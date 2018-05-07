@@ -1,4 +1,8 @@
 @import "../_colors.scss";
 $secondary: $main-color;
 $primary: $alternate-color;
+$font-family-sans-serif: NeuzeitGroReg;
+$font-family-monospace: NeuzeitGroReg;
+$font-family-base: NeuzeitGroReg;
+$link-hover-decoration: none;
 @import "node_modules/bootstrap/scss/bootstrap.scss";

@@ -12,7 +12,12 @@ class DashboardContainer extends PureComponent {
     this.props.fetchDashboardInfo();
   }
   render() {
-    const { isPending, dashboard, errorMessage } = this.props;
+    const {
+      isPending,
+      dashboard,
+      errorMessage,
+      isTournamentActive
+    } = this.props;
     if (isPending || dashboard === undefined) {
       return null;
     }
@@ -21,7 +26,7 @@ class DashboardContainer extends PureComponent {
 
     return (
       <div>
-        <DashboardDescription />
+        <DashboardDescription isTournamentActive={isTournamentActive} />
         {hasPrograms && <DashboardStatistic dashboard={dashboard} />}
         {hasPrograms && (
           <DashboardCharts
@@ -37,12 +42,14 @@ class DashboardContainer extends PureComponent {
 
 const mapStateToProps = state => {
   const { isPending, errorMessage, data } = state.dashboardData.info;
-
+  const { data: tournamentStatus } = state.platformData.settings;
+  const isTournamentActive =
+    tournamentStatus && tournamentStatus.isTournamentActive;
   let dashboard;
   if (data) {
     dashboard = data;
   }
-  return { isPending, dashboard, errorMessage };
+  return { isPending, dashboard, errorMessage, isTournamentActive };
 };
 
 const mapDispatchToProps = dispatch => ({
