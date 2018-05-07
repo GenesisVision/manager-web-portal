@@ -112,13 +112,15 @@ const ProgramTournamentCreateForm = ({
             </li>
             <li>A reporting period is fixed and equals one single day. </li>
           </ul>
-          {/* <p>
+          <p>
             <strong>
               If you want to learn more information about the contest and the
               determination of winners, please familiarize yourself with{" "}
-              <a href="">this article</a>.
+              <a href="https://blog.genesis.vision/gv-traders-championship-63ed29cc4011">
+                this article
+              </a>.
             </strong>
-          </p> */}
+          </p>
         </div>
       </div>
       <FormError error={error} />
