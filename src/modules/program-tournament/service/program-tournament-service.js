@@ -1,4 +1,3 @@
-import moment from "moment";
 import filesService from "../../../shared/services/file-service";
 import history from "../../../utils/history";
 import { alertMessageActions } from "../../../shared/modules/alert-message/actions/alert-message-actions";
@@ -9,14 +8,6 @@ export const createProgram = programData => dispatch => {
   const data = {
     ...programData
   };
-  if (data.dateTo) {
-    data.dateTo = moment(data.dateTo)
-      .set({
-        second: 0,
-        millisecond: 0
-      })
-      .toISOString();
-  }
 
   let promise = Promise.resolve(null);
   if (data.logo.cropped) {
