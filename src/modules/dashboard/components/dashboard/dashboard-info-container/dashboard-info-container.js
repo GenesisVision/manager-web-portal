@@ -44,7 +44,7 @@ const mapStateToProps = state => {
   const { isPending, errorMessage, data } = state.dashboardData.info;
   const { data: tournamentStatus } = state.platformData.settings;
   const isTournamentActive =
-    tournamentStatus && tournamentStatus.isTournamentActive;
+    tournamentStatus && tournamentStatus.isTournamentRegistrationActive;
   let dashboard;
   if (data) {
     dashboard = data;
