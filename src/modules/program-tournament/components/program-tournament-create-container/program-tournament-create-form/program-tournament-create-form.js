@@ -6,9 +6,10 @@ import FormError from "../../../../../shared/components/form/form-error/form-err
 import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
+
+import "./program-tournament-create-form.css";
 import managerAvatar from "../../../../../shared/media/manager-avatar.png";
 import validateSchema from "./program-tournament-create-form.validators";
-import "./program-tournament-create-form.css";
 
 const ProgramTournamentCreateForm = ({
   t,
@@ -23,12 +24,14 @@ const ProgramTournamentCreateForm = ({
 }) => {
   return (
     <form
-      id="createProgramForm"
+      id="tournamentForm"
       onSubmit={handleSubmit}
       className="create-program-form tournament-form"
       noValidate
     >
-      <div className="create-program-form__header">Create Program</div>
+      <div className="create-program-form__header">
+        Create Tournament Program
+      </div>
       <div className="create-program-form__program-detail">
         <div className="create-program-form__program-description">
           <Field
@@ -50,8 +53,10 @@ const ProgramTournamentCreateForm = ({
             component={GVTextarea}
           />
         </div>
-        <div className="create-program-form__program-settings">
-          <h3>Сontest conditions:</h3>
+        <div className="create-program-form__program-settings tournament-form__program-settings">
+          <div className="tournament-form__conditions-header">
+            Сontest conditions:
+          </div>
           <p>
             The competition will take place from May 14, 2018, to June 10, 2018,
             with registration slots being available from May 7 until June 3.
@@ -119,7 +124,7 @@ const ProgramTournamentCreateForm = ({
       <FormError error={error} />
       <button
         type="submit"
-        id="createProgramSubmit"
+        id="tournamentFormSubmit"
         disabled={isSubmitting}
         className="btn btn-primary create-program-form__submit tournament-form__submit"
       >
@@ -131,6 +136,7 @@ const ProgramTournamentCreateForm = ({
 
 export default translate()(
   withFormik({
+    displayName: "tournamentForm",
     mapPropsToValues: () => ({
       logo: {
         src: managerAvatar,
