@@ -5,7 +5,7 @@ import TournamentProgramForm from "./program-tournament-create-form/program-tour
 import { createProgram } from "../../service/program-tournament-service";
 class TournamentProgramFormContainer extends Component {
   render() {
-    const { isPending, errorMessage, createProgram } = this.props;
+    const { errorMessage, createProgram } = this.props;
     const handleCreateProgram = (values, setSubmitting) => {
       createProgram(values, setSubmitting);
     };
