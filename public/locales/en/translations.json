@@ -162,7 +162,7 @@
     "title": "Dashboard",
     "analytics": "Analytics",
     "programs": "Programs",
-    "pending-tooltip": "Program in the process of creating accounts."
+    "pending-tooltip": "The program is being created."
   },
   "dashboard-statistic": {
     "funds": {
