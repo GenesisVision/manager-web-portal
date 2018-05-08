@@ -4,6 +4,10 @@
   "plugins": [
     "react",
     "jsx-a11y",
-    "import"
-  ]
+    "import",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error"
+  }
 }
