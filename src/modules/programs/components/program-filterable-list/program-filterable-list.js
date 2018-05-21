@@ -14,7 +14,7 @@ const ProgramFilterableList = () => {
           <ProgramListContainer />
           <ProgramListPagingContainer />
         </div>
-        <WalletPaneContainer />
+        {/* <WalletPaneContainer /> */}
       </div>
     </div>
   );
