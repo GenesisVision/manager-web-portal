@@ -17,13 +17,14 @@ const fetchDashboardPrograms = () => (dispatch, getState) => {
     payload: SwaggerManagerApi.apiManagerDashboardProgramsPost(
       authService.getAuthArg(),
       { filter }
-    ).then(response => {
-      response.investmentPrograms.forEach(x => {
-        x.logo = filesService.getFileUrl(x.logo);
-      });
+    )
+    // .then(response => {
+    //   response.investmentPrograms.forEach(x => {
+    //     x.logo = filesService.getFileUrl(x.logo);
+    //   });
 
-      return response;
-    })
+    //   return response;
+    // })
   });
 };
 

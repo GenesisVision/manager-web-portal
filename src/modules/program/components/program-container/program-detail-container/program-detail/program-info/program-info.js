@@ -15,7 +15,7 @@ const ProgramInfo = ({
   return (
     <div className="program-info">
       <div className="program-info__avatar">
-        <TraderAvatar imgUrl={program.logo} level={program.level} />
+        <TraderAvatar url={program.logo} />
       </div>
       <div className="program-info__name">
         <div className="program-info__title">{program.title}</div>

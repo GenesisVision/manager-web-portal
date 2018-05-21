@@ -57,7 +57,7 @@
   }
 
   &__button {
-    width: calc(50% - 0.5rem);
+    // width: calc(50% - 0.5rem);
   }
 
   &__buttons {
@@ -133,7 +133,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      width: calc(100% - 112px - 192px - 3rem);
+      width: calc(100% - 112px - 99px - 3rem);
       margin-right: 1rem;
     }
 

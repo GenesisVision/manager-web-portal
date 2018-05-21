@@ -3,11 +3,13 @@ import { UncontrolledTooltip } from "reactstrap";
 import NumberFormat from "react-number-format";
 import React from "react";
 
+import PIStat from '../../../../../../../../components/program-item/pi-stat/pi-stat';
+
 import "./pi-statisctic.css";
 
 const PIStatistic = ({ t, program }) => {
   return (
-    <div className="ti-statistic">
+    <div className="pi-statistic">
       <div className="pis-item">
         <div className="metric">
           <div className="metric__value">

@@ -21,20 +21,21 @@ const fetchProgramSettings = programId => {
     payload: SwaggerManagerApi.apiManagerInvestmentProgramGet(
       programId,
       data
-    ).then(response => {
-      const program = response.investmentProgram;
-      return {
-        id: program.id,
-        logoId: program.logo,
-        logo: filesService.getFileUrl(program.logo),
-        title: program.title,
-        description: program.description,
-        isOwnProgram: program.isOwnProgram,
-        login: program.login,
-        broker: program.brokerTitle,
-        brokerServer: program.brokerTradeServerTitle
-      };
-    })
+    )
+    // .then(response => {
+    //   const program = response.investmentProgram;
+    //   return {
+    //     id: program.id,
+    //     logoId: program.logo,
+    //     logo: filesService.getFileUrl(program.logo),
+    //     title: program.title,
+    //     description: program.description,
+    //     isOwnProgram: program.isOwnProgram,
+    //     login: program.login,
+    //     broker: program.brokerTitle,
+    //     brokerServer: program.brokerTradeServerTitle
+    //   };
+    // })
   };
 };
 

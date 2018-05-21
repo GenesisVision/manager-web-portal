@@ -70,13 +70,13 @@ const ProgramItem = ({
           className="program-item__button"
           label="View Profile"
         />
-        <Button
+        {/* <Button
           primary
           className="program-item__button"
           label="Invest"
           onClick={openInvestPopup(program.id)}
           href={isAuthenticated ? "" : LOGIN_ROUTE}
-        />
+        /> */}
       </div>
       <div className="program-item__stats">
         <Statistic program={program} />

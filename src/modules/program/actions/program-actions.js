@@ -17,7 +17,7 @@ const fetchProgram = programId => {
       data
     ).then(response => {
       const program = response.investmentProgram;
-      program.logo = filesService.getFileUrl(program.logo);
+      // program.logo = filesService.getFileUrl(program.logo);
       return response;
     })
   };

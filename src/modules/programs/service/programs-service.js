@@ -16,7 +16,7 @@ import {
   calculateSkipAndTake,
   calculateTotalPages
 } from "../../paging/helpers/paging-helpers";
-import filesService from "../../../shared/services/file-service";
+// import filesService from "../../../shared/services/file-service";
 import pagingActionsFactory from "../../paging/actions/paging-actions";
 
 const getPrograms = () => (dispatch, getState) => {
@@ -53,7 +53,6 @@ const getPrograms = () => (dispatch, getState) => {
 
   const setLogoAndOrder = response => {
     response.investmentPrograms.forEach((x, idx) => {
-      x.logo = filesService.getFileUrl(x.logo);
       x.order = skip + idx + 1;
     });
 

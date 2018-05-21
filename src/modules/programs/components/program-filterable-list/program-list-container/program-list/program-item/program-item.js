@@ -6,7 +6,7 @@ import PIInfo from "../../../../../../../components/program-item/pi-info/pi-info
 import PIStatistic from "./pi-statistic/pi-statistic";
 import PTIButtons from "../../../../../../../components/program-item/pi-buttons/pi-buttons";
 
-import ProgramItem from '../../../../../../../components/program-item.1/program-item';
+import ProgramItem from '../../../../../../../components/program-item/program-item';
 
 import "./program-item.css";
 

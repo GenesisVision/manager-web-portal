@@ -10,11 +10,12 @@ const fetchProgramDeposit = programId => {
     payload: SwaggerManagerApi.apiManagerInvestmentProgramBuyTokensGet(
       programId,
       authService.getAuthArg()
-    ).then(response => {
-      const trader = response;
-      trader.logo = filesService.getFileUrl(trader.logo);
-      return response;
-    })
+    )
+    // .then(response => {
+    //   const trader = response;
+    //   trader.logo = filesService.getFileUrl(trader.logo);
+    //   return response;
+    // })
   };
 };
 

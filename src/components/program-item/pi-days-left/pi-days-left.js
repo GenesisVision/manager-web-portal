@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DaysLeftWidget from "../../days-left-widget.1/days-left-widget";
+import DaysLeftWidget from "../../days-left-widget/days-left-widget";
 
 const propTypes = {
   isEnabled: PropTypes.bool.isRequired,
