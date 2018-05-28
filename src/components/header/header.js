@@ -8,6 +8,7 @@ import FilterIcon from "./filter-icon";
 import filterPaneActionsFactory from "../../modules/filter-pane/actions/filter-pane-actions";
 import loginService from "../../modules/login/service/login-service";
 import MobileNav from "./mobile-nav";
+import Button from "../../components/button/button";
 
 import "./header.css";
 import { HOME_ROUTE } from "../app.constants";
@@ -32,15 +33,7 @@ const PAGES_WITH_FILTER = {
 const authorizedControl = signOut => (
   <ul className="navbar-nav px-3 flex-row">
     <li className="nav-item text-nowrap">
-      <button
-        className="gv-btn gv-btn-secondary"
-        title="Sign out"
-        onClick={() => {
-          signOut();
-        }}
-      >
-        Sign Out
-      </button>
+      <Button label="Sign Out" onClick={signOut} secondary />
     </li>
   </ul>
 );
@@ -48,13 +41,7 @@ const authorizedControl = signOut => (
 const unauthorizedControl = () => (
   <ul className="navbar-nav px-3 flex-row">
     <li className="nav-item text-nowrap">
-      <Link
-        className="gv-btn gv-btn-secondary"
-        title="Sign In"
-        to={LOGIN_ROUTE}
-      >
-        Sign In
-      </Link>
+      <Button label="Sign In" secondary href={LOGIN_ROUTE} />
     </li>
   </ul>
 );
