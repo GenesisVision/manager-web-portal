@@ -1,16 +1,13 @@
 @import "styles/_colors.scss";
 @import "styles/_breakpoint.scss";
 
-$avatar-size: 112px;
-$mobile-avatar-size: 48px;
-
 .program-avatar {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: $avatar-size;
-  width: $avatar-size;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 
   &__image {
@@ -31,10 +28,5 @@ $mobile-avatar-size: 48px;
       top: 0;
       left: 0;
     }
-  }
-
-  @include media-breakpoint-phone() {
-    max-width: $mobile-avatar-size;
-    max-height: $mobile-avatar-size;
   }
 }
