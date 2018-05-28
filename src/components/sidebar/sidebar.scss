@@ -8,7 +8,8 @@
   justify-content: center;
   background: $main-color;
   border-right: 1px solid $main-color;
-  height: calc(100vh - 70px);
+  box-shadow: 1px 0 4px 0 $main-color;
+  height: calc(100vh - 68px);
 }
 
 .sidebar__item {
