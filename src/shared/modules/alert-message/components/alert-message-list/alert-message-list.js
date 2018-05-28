@@ -6,12 +6,11 @@ import "./alert-message-list.css";
 
 import { alertMessageActions } from "../../actions/alert-message-actions";
 import history from "../../../../../utils/history";
+import Button from "../../../../../components/button/button";
 
 const ClearAllButton = ({ onClick }) => (
   <div className="alert-message__clear-all">
-    <button className="gv-btn gv-btn-secondary" onClick={onClick}>
-      Clear
-    </button>
+    <Button secondary label="Clear" onClick={onClick} />
   </div>
 );
 

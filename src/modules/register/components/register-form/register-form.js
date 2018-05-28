@@ -4,6 +4,7 @@ import React from "react";
 
 import FormError from "../../../../shared/components/form/form-error/form-error";
 import InputText from "../../../../shared/components/form/input-text/input-text";
+import Button from "../../../../components/button/button";
 
 import "./register-form.css";
 import { LOGIN_ROUTE } from "../../../login/login.constants";
@@ -42,17 +43,14 @@ const RegisterForm = ({ isSubmitting, handleSubmit, error }) => {
           component={InputText}
         />
         <FormError error={error} />
-        <button
-          type="submit"
-          id="registerSubmit"
-          className="gv-btn gv-btn-primary"
-        >
-          Sign Up
-        </button>
+        <Button label="Sign Up" type="submit" id="registerSubmit" primary />
         <div className="register__separator" />
-        <Link to={LOGIN_ROUTE} className="login__btn gv-btn gv-btn-secondary">
-          Already have an account? Sign In!
-        </Link>
+        <Button
+          href={LOGIN_ROUTE}
+          className="login__btn"
+          secondary
+          label="Already have an account? Sign In!"
+        />
       </div>
     </form>
   );
