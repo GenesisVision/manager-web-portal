@@ -18,7 +18,8 @@ const ProgramItem = ({
   openInvestPopup,
   toggleFavoriteProgram,
   statistic: Statistic,
-  order
+  order,
+  showBookmark = false
 }) => {
   const programRoute = replaceParams(PROGRAM_ROUTE, {
     ":programId": program.id
@@ -41,13 +42,14 @@ const ProgramItem = ({
       </Link>
       <div className="program-item__info">
         <div className="program-item__title">
-          {/* {isAuthenticated && (
-            <PIBookmark
-              className="program-item__bookmark"
-              isFavorite={program.isFavorite}
-              onClick={toggleFavoriteProgram(program)}
-            />
-          )} */}
+          {/* {showBookmark &&
+            isAuthenticated && (
+              <PIBookmark
+                className="program-item__bookmark"
+                isFavorite={program.isFavorite}
+                onClick={toggleFavoriteProgram(program)}
+              />
+            )} */}
           <Link className="program-item__link" to={programRoute}>
             {program.title}
           </Link>
@@ -70,13 +72,6 @@ const ProgramItem = ({
           className="program-item__button"
           label="View Profile"
         />
-        {/* <Button
-          primary
-          className="program-item__button"
-          label="Invest"
-          onClick={openInvestPopup(program.id)}
-          href={isAuthenticated ? "" : LOGIN_ROUTE}
-        /> */}
       </div>
       <div className="program-item__stats">
         <Statistic program={program} />
