@@ -7,7 +7,6 @@
 .app__sidebar {
   flex: 1 0 65px;
   max-width: 65px;
-  z-index: 1;
   @include media-breakpoint-phone() {
     display: none;
   }
@@ -15,7 +14,6 @@
 
 .app__body {
   flex: 1 1 100%;
-  z-index: 0;
   width: calc(100% - 65px);
   @include media-breakpoint-phone() {
     max-width: 100%;
