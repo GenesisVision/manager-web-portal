@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { translate } from "react-i18next";
 import React from "react";
 import Button from "../../../../../../components/button/button";

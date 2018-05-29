@@ -1,5 +1,4 @@
 import authService from "../../../services/auth-service";
-import filesService from "../../../shared/services/file-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./dashboard-actions.constants";
@@ -18,13 +17,6 @@ const fetchDashboardPrograms = () => (dispatch, getState) => {
       authService.getAuthArg(),
       { filter }
     )
-    // .then(response => {
-    //   response.investmentPrograms.forEach(x => {
-    //     x.logo = filesService.getFileUrl(x.logo);
-    //   });
-
-    //   return response;
-    // })
   });
 };
 

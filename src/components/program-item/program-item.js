@@ -3,9 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import PIChart from "./pi-chart/pi-chart";
-// import PIBookmark from "./pi-bookmark/pi-bookmark";
 import { PROGRAM_ROUTE } from "../../modules/program/program.constants";
-import { LOGIN_ROUTE } from "../../modules/login/login.constants";
 import replaceParams from "../../utils/replace-params";
 import Button from "../button/button";
 import "./program-item.css";
@@ -42,14 +40,6 @@ const ProgramItem = ({
       </Link>
       <div className="program-item__info">
         <div className="program-item__title">
-          {/* {showBookmark &&
-            isAuthenticated && (
-              <PIBookmark
-                className="program-item__bookmark"
-                isFavorite={program.isFavorite}
-                onClick={toggleFavoriteProgram(program)}
-              />
-            )} */}
           <Link className="program-item__link" to={programRoute}>
             {program.title}
           </Link>

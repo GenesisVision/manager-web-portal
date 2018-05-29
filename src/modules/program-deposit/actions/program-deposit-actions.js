@@ -1,5 +1,4 @@
 import authService from "../../../services/auth-service";
-import filesService from "../../../shared/services/file-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./program-deposit-actions.constants";
@@ -11,11 +10,6 @@ const fetchProgramDeposit = programId => {
       programId,
       authService.getAuthArg()
     )
-    // .then(response => {
-    //   const trader = response;
-    //   trader.logo = filesService.getFileUrl(trader.logo);
-    //   return response;
-    // })
   };
 };
 
