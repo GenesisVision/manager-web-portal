@@ -20,7 +20,7 @@ i18n
       wait: true
     },
     backend: {
-      queryStringParams: { v: "0.0.1" }
+      queryStringParams: { v: "0.0.2" }
     }
   });
 
