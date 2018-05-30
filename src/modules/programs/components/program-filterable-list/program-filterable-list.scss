@@ -9,7 +9,6 @@
   flex: 1;
   max-width: 1570px;
   margin: 0 auto;
-  z-index: -1;
   &:not(:last-child) {
     @include media-breakpoint-desktop() {
       height: calc(100vh - 72px);
