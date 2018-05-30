@@ -2,7 +2,6 @@ import authService from "../../../services/auth-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 
 import * as actionTypes from "./dashboard-actions.constants";
-import filteringActionsFactory from "../../filtering/actions/filtering-actions";
 
 const fetchDashboardPrograms = () => (dispatch, getState) => {
   const { filtering } = getState().dashboardData.programs;
@@ -29,17 +28,14 @@ const fetchDashboardInfo = () => {
   };
 };
 
+const dashboardFiltering = filter => ({
+  type: actionTypes.DASHBOARD_FILTERING,
+  filter
+});
+
 const updateFiltering = filter => dispatch => {
-  dispatch(updateWalletTransactionsFiltering(filter));
+  dispatch(dashboardFiltering(filter));
   dispatch(fetchDashboardPrograms());
-};
-
-const updateWalletTransactionsFiltering = filter => {
-  const filteringActions = filteringActionsFactory(
-    actionTypes.DASHBOARD_PROGRAMS
-  );
-
-  return filteringActions.updateFiltering(filter);
 };
 
 const dashboardActions = {

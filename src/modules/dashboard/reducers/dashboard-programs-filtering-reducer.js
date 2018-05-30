@@ -1,11 +1,10 @@
-import filteringReducerFactory from "../../filtering/reducers/filtering-reducers";
+import { DASHBOARD_FILTERING } from "../actions/dashboard-actions.constants";
 
-import { DASHBOARD_FILTERS } from "../dashboard.constants";
-import { DASHBOARD_PROGRAMS } from "../actions/dashboard-actions.constants";
+function filtering(filtering = { type: "All" }, action) {
+  if (action.type === DASHBOARD_FILTERING) {
+    return action.filter;
+  }
+  return filtering;
+}
 
-const dashboardProgramsFilteringReducer = filteringReducerFactory({
-  type: DASHBOARD_PROGRAMS,
-  filters: DASHBOARD_FILTERS
-});
-
-export default dashboardProgramsFilteringReducer;
+export default filtering;
