@@ -1,11 +1,12 @@
 import React from "react";
 import classnames from "classnames";
 import avatarStub from "../../shared/media/manager-avatar.png";
-import fileService from "../../shared/services/file-service";
+import getFileUrlHOC from "../../shared/hoc/getFileUrlHOC";
+
 import "./program-avatar.css";
 
 const ProgramAvatar = ({ url, className }) => {
-  const src = url ? fileService.getFileUrl(url) : avatarStub;
+  const src = url ? url : avatarStub;
   return (
     <div className={classnames("program-avatar", className)}>
       <img className="program-avatar__image" src={src} alt="Trader Avatar" />
@@ -13,4 +14,4 @@ const ProgramAvatar = ({ url, className }) => {
   );
 };
 
-export default ProgramAvatar;
+export default getFileUrlHOC(ProgramAvatar, "url");
