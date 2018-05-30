@@ -6,7 +6,7 @@ import React from "react";
 import DPButtons from "./dp-buttons/dp-buttons";
 import DPStatistic from "./dp-statistic/dp-statistic";
 import replaceParams from "../../../../../../../../utils/replace-params";
-import TraderAvatar from "../../../../../../../../components/program-avatar/program-avatar";
+import TraderAvatar from "../../../../../../../../components/program-item/pi-avatar/pi-avatar";
 
 import "./dashboard-program.css";
 import { PROGRAM_ROUTE } from "../../../../../../../program/program.constants";
@@ -31,8 +31,9 @@ const DashboardProgram = ({
         <span>
           <TraderAvatar
             className="dashboard-program-card__avatar"
-            imgUrl={program.logo}
+            url={program.logo}
             level={program.level}
+            isTournament={program.isTournament}
           />
           <span className="dashboard-program-card__title">
             {program.title}
@@ -56,8 +57,9 @@ const DashboardProgram = ({
       <Link to={traderRoute}>
         <TraderAvatar
           className="dashboard-program-card__avatar"
-          imgUrl={program.logo}
+          url={program.logo}
           level={program.level}
+          isTournament={program.isTournament}
         />
         <span className="dashboard-program-card__title">{program.title}</span>
       </Link>

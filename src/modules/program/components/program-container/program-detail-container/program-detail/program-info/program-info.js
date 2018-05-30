@@ -1,6 +1,6 @@
 import React from "react";
 
-import TraderAvatar from "../../../../../../../components/program-avatar/program-avatar";
+import TraderAvatar from "../../../../../../../components/program-item/pi-avatar/pi-avatar";
 
 import "./program-info.css";
 
@@ -15,7 +15,11 @@ const ProgramInfo = ({
   return (
     <div className="program-info">
       <div className="program-info__avatar">
-        <TraderAvatar url={program.logo} />
+        <TraderAvatar
+          url={program.logo}
+          level={program.level}
+          isTournament={program.isTournament}
+        />
       </div>
       <div className="program-info__name">
         <div className="program-info__title">{program.title}</div>
