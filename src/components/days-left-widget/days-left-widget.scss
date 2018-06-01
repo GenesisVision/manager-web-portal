@@ -18,6 +18,19 @@
     width: 100%;
   }
 
+  &--column {
+    flex-direction: column;
+
+    .days-left-widget__text {
+      order: -1;
+      font-size: 1.17rem;
+    }
+
+    .days-left-widget__progress {
+      margin: 0.5rem;
+    }
+  }
+
   @include breakpoint-desktop() {
     &__progress {
       flex: 1;
