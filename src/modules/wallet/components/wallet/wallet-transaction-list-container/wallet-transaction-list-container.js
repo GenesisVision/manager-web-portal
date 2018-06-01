@@ -7,7 +7,7 @@ import WalletTransactionList from "./wallet-transaction-list/wallet-transaction-
 class WalletTransactionListContainer extends Component {
   getFilter = props => (props.queryParams ? props.queryParams.filter : "All");
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchTransactions(this.getFilter(this.props), this.props.paging);
   }
 

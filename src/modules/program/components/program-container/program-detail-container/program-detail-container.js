@@ -14,7 +14,7 @@ import {
 import programService from "../../../service/program-service";
 
 class TraderDetailContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchProgramDetail(this.props.programId);
   }
 

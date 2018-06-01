@@ -5,7 +5,7 @@ import walletActions from "../../../actions/wallet-actions";
 import WalletInfo from "./wallet-info/wallet-info";
 
 class WalletContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchWallet();
   }
 

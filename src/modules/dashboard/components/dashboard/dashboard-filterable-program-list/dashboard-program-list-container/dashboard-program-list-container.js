@@ -12,7 +12,7 @@ import {
 import dashboardService from "../../../../service/dashboard-service";
 
 class DashboardProgramListContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchDashboardPrograms();
   }
   render() {

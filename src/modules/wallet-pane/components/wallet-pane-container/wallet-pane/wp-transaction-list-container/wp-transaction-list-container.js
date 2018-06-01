@@ -5,7 +5,7 @@ import walletPaneActions from "../../../../actions/wallet-pane-actions";
 import WPTransactionList from "./wp-transaction-list/wp-transaction-list";
 
 class WPTransactionListContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchTransactions();
   }
 

@@ -7,7 +7,7 @@ import ProgramSettingsEditForm from "./program-settings-edit-form/program-settin
 import programSettingsService from "../../service/program-settings-service";
 
 class ProgramSettingsEditContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchProgramSettings();
   }
   render() {
@@ -81,9 +81,11 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
       dispatch(programActions.fetchProgramSettings(programId));
     },
     editProgram: (data, setSubmitting) => {
-      dispatch(programSettingsService.editProgram(programId, data)).catch(() => {
-        setSubmitting(false);
-      });
+      dispatch(programSettingsService.editProgram(programId, data)).catch(
+        () => {
+          setSubmitting(false);
+        }
+      );
     }
   };
 };

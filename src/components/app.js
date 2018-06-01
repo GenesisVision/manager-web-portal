@@ -16,7 +16,7 @@ import "./app.css";
 import AppRoutes from "./app.routes";
 
 class App extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { fetchPlatformSettings } = this.props;
     fetchPlatformSettings();
   }

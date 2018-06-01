@@ -6,7 +6,7 @@ import ProgramDeposit from "./program-deposit/program-deposit";
 import programDepositActions from "../../actions/program-deposit-actions";
 
 class ProgramDepositContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchDeposit(this.props.programId);
   }
 

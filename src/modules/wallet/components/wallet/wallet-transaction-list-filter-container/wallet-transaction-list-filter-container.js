@@ -8,7 +8,7 @@ import WalletTransactionListFilter from "./wallet-transaction-list-filter/wallet
 import walletService from "../../../service/wallet-service";
 
 class WalletTransactionListFilterContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchTransactionFilter();
   }
 

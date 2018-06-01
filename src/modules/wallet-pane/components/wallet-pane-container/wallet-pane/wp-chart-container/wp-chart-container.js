@@ -5,7 +5,7 @@ import walletPaneActions from "../../../../actions/wallet-pane-actions";
 import WPChart from "./wp-chart/wp-chart";
 
 class WPChartContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchChart();
   }
 

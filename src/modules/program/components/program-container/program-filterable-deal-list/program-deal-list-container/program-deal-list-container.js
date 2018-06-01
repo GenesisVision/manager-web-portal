@@ -4,7 +4,7 @@ import ProgramDealList from "./program-deal-list/trader-deal-list";
 import programService from "../../../../service/program-service";
 
 class ProgramDealListContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchProgramDealList(this.props.programId);
   }
 
