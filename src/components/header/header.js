@@ -23,10 +23,6 @@ const PAGES_WITH_FILTER = {
   [PROGRAMS_ROUTE]: {
     actionType: PROGRAMS,
     getStateData: state => state.programsData
-  },
-  [WALLET_ROUTE]: {
-    actionType: WALLET,
-    getStateData: state => state.walletData
   }
 };
 
