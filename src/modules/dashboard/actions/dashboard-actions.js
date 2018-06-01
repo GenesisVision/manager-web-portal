@@ -1,14 +1,12 @@
 import authService from "../../../services/auth-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
-
+import filteringActionsFactory from "../../filtering/actions/filtering-actions";
+import { composeApiFiltering } from "../../filtering/helpers/filtering-helpers";
 import * as actionTypes from "./dashboard-actions.constants";
 
 const fetchDashboardPrograms = () => (dispatch, getState) => {
   const { filtering } = getState().dashboardData.programs;
-  let filter = {};
-  if (filtering.type) {
-    filter.type = filtering.type;
-  }
+  let filter = { ...composeApiFiltering(filtering) };
 
   return dispatch({
     type: actionTypes.DASHBOARD_PROGRAMS,
@@ -28,10 +26,12 @@ const fetchDashboardInfo = () => {
   };
 };
 
-const dashboardFiltering = filter => ({
-  type: actionTypes.DASHBOARD_FILTERING,
-  filter
-});
+const dashboardFiltering = filter => {
+  const filteringActions = filteringActionsFactory(
+    actionTypes.DASHBOARD_PROGRAMS
+  );
+  return filteringActions.updateFilter(filter);
+};
 
 const updateFiltering = filter => dispatch => {
   dispatch(dashboardFiltering(filter));

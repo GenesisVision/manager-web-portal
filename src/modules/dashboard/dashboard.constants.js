@@ -9,6 +9,4 @@ export const COLORS = [
   "#76608a"
 ];
 
-export const DASHBOARD_FILTERS = {
-  type: "All"
-};
+export const TYPE_FILTER_NAME = "type";
