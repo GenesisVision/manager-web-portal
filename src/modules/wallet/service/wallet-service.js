@@ -14,19 +14,13 @@ import clearDataActionFactory from "../../../shared/actions/clear-data.factory";
 import { composeFilteringActionType } from "../../filtering/helpers/filtering-helpers";
 
 const getWalletTransactions = () => (dispatch, getState) => {
-  const { paging, filtering } = getState().walletData.transactions;
+  const { paging } = getState().walletData.transactions;
   const { skip, take } = calculateSkipAndTake(paging);
 
   let filter = {
     skip,
     take
   };
-  if (filtering.investmentProgramId) {
-    filter.investmentProgramId = filtering.investmentProgramId;
-  }
-  if (filtering.type) {
-    filter.type = filtering.type;
-  }
 
   dispatch({
     type: actionTypes.WALLET_TRANSACTIONS,

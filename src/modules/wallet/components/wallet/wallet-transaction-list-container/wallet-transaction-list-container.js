@@ -11,12 +11,6 @@ class WalletTransactionListContainer extends Component {
     this.props.fetchTransactions(this.getFilter(this.props), this.props.paging);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.getFilter(this.props) !== this.getFilter(nextProps)) {
-      this.props.fetchTransactions(this.getFilter(nextProps));
-    }
-  }
-
   render() {
     const { isPending, transactions } = this.props;
 
@@ -40,7 +34,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchTransactions: (filter, paging) => {
-    dispatch(walletService.getWalletTransactions(filter, paging));
+    dispatch(walletService.getWalletTransactions());
   }
 });
 
