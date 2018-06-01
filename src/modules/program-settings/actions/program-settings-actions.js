@@ -1,6 +1,5 @@
 import authService from "../../../services/auth-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
-import filesService from "../../../shared/services/file-service";
 import * as actionTypes from "./program-settings-actions.constants";
 
 const fetchProgramForm = () => {
