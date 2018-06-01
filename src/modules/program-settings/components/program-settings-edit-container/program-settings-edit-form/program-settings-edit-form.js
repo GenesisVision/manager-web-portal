@@ -59,17 +59,17 @@ const ProgramSettingsEditForm = ({
           <Field
             material
             readOnly
-            name="broker"
+            name="brokerTitle"
             label="Broker"
-            field={{ value: programSettings.broker }}
+            field={{ value: programSettings.brokerTitle }}
             component={InputText}
           />
           <Field
             material
             readOnly
-            name="brokerServer"
+            name="brokerTradeServerTitle"
             label="Broker Server"
-            field={{ value: programSettings.brokerServer }}
+            field={{ value: programSettings.brokerTradeServerTitle }}
             component={InputText}
           />
         </div>
@@ -90,9 +90,9 @@ const ProgramSettingsEditForm = ({
 export default withFormik({
   displayName: "programSettingsEditForm",
   mapPropsToValues: ({ programSettings }) => ({
-    logoId: programSettings.logoId,
+    logoId: programSettings.logo,
     logo: {
-      src: programSettings.logo || managerAvatar,
+      src: programSettings.logo,
       filename: "image.png",
       filetype: "image/png",
       cropped: null

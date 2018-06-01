@@ -2,7 +2,7 @@ import classnames from "classnames";
 import Cropper from "react-cropper";
 import Dropzone from "react-dropzone";
 import React, { PureComponent } from "react";
-
+import getFileUrlHOC from "../../../hoc/getFileUrlHOC";
 import "cropperjs/dist/cropper.css";
 
 import "./input-file.css";
@@ -50,7 +50,13 @@ class InputFile extends PureComponent {
   };
 
   render() {
-    const { label, className, field: { value } } = this.props;
+    const {
+      label,
+      className,
+      field: { value },
+      defaultImage
+    } = this.props;
+
     return (
       <div className={classnames("input-file", className)}>
         {label && <div className="input-file__label">{label}</div>}
@@ -80,8 +86,13 @@ class InputFile extends PureComponent {
                     imageSmoothingQuality="high"
                     crop={this.onCrop}
                   />
+                ) : value.src ? (
+                  React.createElement(getFileUrlHOC("img", "src"), {
+                    src: value.src,
+                    alt: "Program Avatar"
+                  })
                 ) : (
-                  <img src={value.src} alt="Program Avatar" />
+                  <img src={defaultImage} alt="Program Avatar" />
                 )}
                 <p className="input-file__text--big">
                   Drag the image here or click{" "}

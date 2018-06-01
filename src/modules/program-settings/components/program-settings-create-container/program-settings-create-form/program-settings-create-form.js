@@ -194,7 +194,6 @@ export default translate()(
     displayName: "programCreateForm",
     mapPropsToValues: () => ({
       logo: {
-        src: managerAvatar,
         filename: "image.png",
         filetype: "image/png",
         cropped: null
