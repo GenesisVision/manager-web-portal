@@ -9,7 +9,7 @@ import Header from "./header/header";
 import history from "../utils/history";
 import platformActions from "../actions/platform-action";
 import PopupContainer from "../modules/popup/components/popup-container";
-import Sidebar from "./sidebar/sidebar";
+import MobileNavContainer from "../components/mobile-nav/mobile-nav-container";
 import store from "../store/index";
 
 import "./app.css";
@@ -23,12 +23,13 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="app">
         <Route component={Header} />
+        <MobileNavContainer />
         <div className="app__main">
-          <div className="app__sidebar">
+          {/* <div className="app__sidebar">
             <Sidebar />
-          </div>
+          </div> */}
           <div className="app__body">
             <AppRoutes />
           </div>

@@ -22,6 +22,7 @@ import programWithdrawReducer from "../modules/program-withdraw/reducers/program
 import registerReducer from "../modules/register/reducers/register-reducers";
 import walletPaneReducer from "../modules/wallet-pane/reducers/wallet-pane-reducers";
 import walletReducer from "../modules/wallet/reducers/wallet-reducers";
+import navigationReducer from "../modules/navigation/reducer/navigation-reducer";
 
 export default combineReducers({
   routing: routerReducer,
@@ -45,5 +46,6 @@ export default combineReducers({
   programClosePeriodData: programClosePeriodReducer,
   popupData: popupReducer,
   programSettingsData: programSettingsReducer,
-  programTournamentData: programTournamentReducer
+  programTournamentData: programTournamentReducer,
+  navigationData: navigationReducer
 });
