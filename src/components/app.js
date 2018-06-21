@@ -27,9 +27,6 @@ class App extends Component {
         <Route component={Header} />
         <MobileNavContainer />
         <div className="app__main">
-          {/* <div className="app__sidebar">
-            <Sidebar />
-          </div> */}
           <div className="app__body">
             <AppRoutes />
           </div>
