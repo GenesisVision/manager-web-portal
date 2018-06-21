@@ -1,5 +1,6 @@
 import authService from "../../../services/auth-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
+import fileService from "../../../shared/services/file-service";
 import * as actionTypes from "./program-settings-actions.constants";
 
 const fetchProgramForm = () => {
@@ -16,10 +17,9 @@ const fetchProgramSettings = programId => {
 
   return {
     type: actionTypes.PROGRAM_SETTINGS,
-    payload: SwaggerManagerApi.apiManagerInvestmentProgramGet(
-      programId,
-      data
-    ).then(response => response.investmentProgram)
+    payload: SwaggerManagerApi.apiManagerInvestmentProgramGet(programId, data)
+      .then(fileService.addLogoSrc("investmentProgram"))
+      .then(response => response.investmentProgram)
   };
 };
 

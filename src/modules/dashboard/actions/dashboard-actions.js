@@ -2,6 +2,7 @@ import authService from "../../../services/auth-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 import filteringActionsFactory from "../../filtering/actions/filtering-actions";
 import { composeApiFiltering } from "../../filtering/helpers/filtering-helpers";
+import fileService from "../../../shared/services/file-service";
 import * as actionTypes from "./dashboard-actions.constants";
 
 const fetchDashboardPrograms = () => (dispatch, getState) => {
@@ -13,7 +14,7 @@ const fetchDashboardPrograms = () => (dispatch, getState) => {
     payload: SwaggerManagerApi.apiManagerDashboardProgramsPost(
       authService.getAuthArg(),
       { filter }
-    )
+    ).then(fileService.addLogoSrc("investmentPrograms"))
   });
 };
 

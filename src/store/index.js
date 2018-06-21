@@ -14,8 +14,18 @@ import SwaggerManagerApi from "../services/api-client/swagger-manager-api";
 const failureSuffix = "FAILURE";
 const suffixes = ["REQUEST", "SUCCESS", failureSuffix];
 
+const reduxDevTools =
+  process.env.NODE_ENV === "development" &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__();
+
 const initialState = {};
 const enhancers = [];
+
+if (reduxDevTools) {
+  enhancers.push(reduxDevTools);
+}
+
 const middleware = [
   thunk,
   refreshTokenMiddleware(

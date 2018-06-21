@@ -33,7 +33,7 @@ const ProgramItem = ({
       <Link to={programRoute}>
         <PIAvatar
           className="program-item__avatar"
-          url={program.logo}
+          url={program.logoSrc}
           level={program.level}
           isTournament={program.isTournament}
         />

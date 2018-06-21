@@ -16,7 +16,7 @@ const ProgramInfo = ({
     <div className="program-info">
       <div className="program-info__avatar">
         <TraderAvatar
-          url={program.logo}
+          url={program.logoSrc}
           level={program.level}
           isTournament={program.isTournament}
         />

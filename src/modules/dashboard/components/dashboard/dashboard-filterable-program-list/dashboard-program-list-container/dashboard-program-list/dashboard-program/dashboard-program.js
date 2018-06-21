@@ -31,7 +31,7 @@ const DashboardProgram = ({
         <span>
           <TraderAvatar
             className="dashboard-program-card__avatar"
-            url={program.logo}
+            url={program.logoSrc}
             level={program.level}
             isTournament={program.isTournament}
           />
@@ -57,7 +57,7 @@ const DashboardProgram = ({
       <Link to={traderRoute}>
         <TraderAvatar
           className="dashboard-program-card__avatar"
-          url={program.logo}
+          url={program.logoSrc}
           level={program.level}
           isTournament={program.isTournament}
         />

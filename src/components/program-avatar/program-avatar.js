@@ -1,7 +1,6 @@
 import React from "react";
 import classnames from "classnames";
 import avatarStub from "../../shared/media/manager-avatar.png";
-import getFileUrlHOC from "../../shared/hoc/getFileUrlHOC";
 
 import "./program-avatar.css";
 
@@ -14,4 +13,4 @@ const ProgramAvatar = ({ url, className }) => {
   );
 };
 
-export default getFileUrlHOC(ProgramAvatar, "url");
+export default ProgramAvatar;

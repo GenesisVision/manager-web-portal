@@ -1,4 +1,5 @@
 import authService from "../../../services/auth-service";
+import fileServices from "../../../shared/services/file-service";
 import filteringActionsFactory from "../../filtering/actions/filtering-actions";
 import filterPaneActionsFactory from "../../filter-pane/actions/filter-pane-actions";
 import programsActions from "../actions/programs-actions";
@@ -35,7 +36,7 @@ const getPrograms = () => (dispatch, getState) => {
       x.order = skip + idx + 1;
     });
 
-    return response;
+    return fileServices.addLogoSrc("investmentPrograms")(response);
   };
 
   return dispatch(programsActions.fetchPrograms(data, setLogoAndOrder)).then(

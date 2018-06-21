@@ -92,7 +92,7 @@ export default withFormik({
   mapPropsToValues: ({ programSettings }) => ({
     logoId: programSettings.logo,
     logo: {
-      src: programSettings.logo,
+      src: programSettings.logoSrc,
       filename: "image.png",
       filetype: "image/png",
       cropped: null
