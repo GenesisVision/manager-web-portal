@@ -98,16 +98,15 @@
 .h-button {
   height: 35px;
   width: 35px;
-  color: $alternate-color;
-  background-color: $main-color;
   svg path {
     fill: $main-color;
   }
   &--active,
+  &:active,
   &:hover {
-    color: white;
-    background: $main-color !important;
-    border-color: $main-color;
+    color: white !important;
+    background: $alternate-color !important;
+    border-color: $alternate-color !important;
 
     svg path {
       fill: white;
