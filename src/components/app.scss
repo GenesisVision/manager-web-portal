@@ -2,8 +2,10 @@
 
 .app__main {
   display: flex;
-  margin-top: 68px;
-  height: calc(100% - 68px);
+  @include media-breakpoint-tablet {
+    height: calc(100% - 68px);
+    margin-top: 68px;
+  }
 }
 
 .app__sidebar {
