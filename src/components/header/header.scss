@@ -104,10 +104,6 @@
   &--active,
   &:active,
   &:hover {
-    color: white !important;
-    background: $alternate-color !important;
-    border-color: $alternate-color !important;
-
     svg path {
       fill: white;
     }
@@ -119,6 +115,16 @@
   align-items: center;
   @include media-breakpoint-phone() {
     order: 3;
+  }
+
+  .h-button {
+    &--active,
+    &:active,
+    &:hover {
+      color: white !important;
+      background: $alternate-color !important;
+      border-color: $alternate-color !important;
+    }
   }
 }
 
