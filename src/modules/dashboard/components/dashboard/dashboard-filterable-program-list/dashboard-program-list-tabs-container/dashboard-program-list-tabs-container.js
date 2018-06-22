@@ -1,10 +1,11 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
-import dashboardActions from "../../../../actions/dashboard-actions";
-import DashboardProgramListTabs from "./dashboard-program-list-tabs/dashboard-program-list-tabs";
-import { normalizeFilteringSelector } from "../../../../../filtering/selectors/filtering-selectors";
+import { connect } from "react-redux";
 
+import { normalizeFilteringSelector } from "../../../../../filtering/selectors/filtering-selectors";
 import { TYPE_FILTER_NAME } from "../../../../dashboard.constants";
+import dashboardService from "../../../../service/dashboard-service";
+import DashboardProgramListTabs from "./dashboard-program-list-tabs/dashboard-program-list-tabs";
+
 class DashboardProgramListTabsContainer extends PureComponent {
   componentDidMount() {
     const {
@@ -36,7 +37,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   handleFilterChange: filter => {
-    dispatch(dashboardActions.updateFiltering(filter));
+    dispatch(dashboardService.updateFiltering(filter));
   }
 });
 

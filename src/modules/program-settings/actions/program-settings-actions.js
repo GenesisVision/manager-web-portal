@@ -1,5 +1,5 @@
-import authService from "../../../services/auth-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
+import authService from "../../../services/auth-service";
 import fileService from "../../../shared/services/file-service";
 import * as actionTypes from "./program-settings-actions.constants";
 
@@ -10,7 +10,7 @@ const fetchProgramForm = () => {
   };
 };
 
-const fetchProgramSettings = programId => {
+const fetchProgramSettings = (programId, onResolve = data => data) => {
   let data = {
     authorization: authService.getAuthArg()
   };
@@ -18,7 +18,7 @@ const fetchProgramSettings = programId => {
   return {
     type: actionTypes.PROGRAM_SETTINGS,
     payload: SwaggerManagerApi.apiManagerInvestmentProgramGet(programId, data)
-      .then(fileService.addLogoSrc("investmentProgram"))
+      .then(onResolve)
       .then(response => response.investmentProgram)
   };
 };

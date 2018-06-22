@@ -1,15 +1,13 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
-import dashboardActions from "../../../../actions/dashboard-actions";
-import DashboardProgramList from "./dashboard-program-list/dashboard-program-list";
 import popupActions from "../../../../../popup/actions/popup-actions";
-
 import {
   PROGRAM_DEPOSIT_POPUP,
   PROGRAM_WITHDRAW_POPUP
 } from "../../../../../popup/actions/popup-actions.constants";
 import dashboardService from "../../../../service/dashboard-service";
+import DashboardProgramList from "./dashboard-program-list/dashboard-program-list";
 
 class DashboardProgramListContainer extends PureComponent {
   componentDidMount() {
@@ -52,7 +50,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchDashboardPrograms: () => {
-    dispatch(dashboardActions.fetchDashboardPrograms());
+    dispatch(dashboardService.fetchDashboardPrograms());
   },
   dispatch
 });
