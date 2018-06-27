@@ -1,9 +1,10 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
 import { alertMessageActions } from "../../../../shared/modules/alert-message/actions/alert-message-actions";
-import ProgramDeposit from "./program-deposit/program-deposit";
 import programDepositActions from "../../actions/program-deposit-actions";
+import programDepositService from "../../service/program-deposit-service";
+import ProgramDeposit from "./program-deposit/program-deposit";
 
 class ProgramDepositContainer extends PureComponent {
   componentDidMount() {
@@ -63,7 +64,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchDeposit: programId => {
-    dispatch(programDepositActions.fetchProgramDeposit(programId));
+    dispatch(programDepositService.fetchProgramDeposit(programId));
   },
   dispatch
 });

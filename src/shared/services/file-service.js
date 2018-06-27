@@ -22,6 +22,10 @@ const addLogoSrc = key => data => {
     target.logoSrc = getFileUrl(target.logo);
   }
 
+  if (typeof target === "string") {
+    data.logoSrc = getFileUrl(target);
+  }
+
   return data;
 };
 
