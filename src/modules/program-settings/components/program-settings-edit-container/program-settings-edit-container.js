@@ -2,7 +2,6 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 
 import NotFoundPage from "../../../../shared/components/not-found/not-found";
-import programActions from "../../actions/program-settings-actions";
 import programSettingsService from "../../service/program-settings-service";
 import ProgramSettingsEditForm from "./program-settings-edit-form/program-settings-edit-form";
 
