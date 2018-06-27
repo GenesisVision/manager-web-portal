@@ -30,7 +30,7 @@ const ProgramWithdraw = ({
             <div className="program-withdraw__trader">
               <div className="trader-withdraw__avatar">
                 <TraderAvatar
-                  imgUrl={programWithdraw.logo}
+                  url={programWithdraw.logoSrc}
                   level={programWithdraw.level}
                 />
               </div>

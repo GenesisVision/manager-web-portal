@@ -96,6 +96,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         id: programDetail.id,
         title: programDetail.title,
         logo: programDetail.logo,
+        logoSrc: programDetail.logoSrc,
         level: programDetail.level,
         startOfPeriod: programDetail.startOfPeriod,
         periodDuration: programDetail.periodDuration,
