@@ -8,7 +8,7 @@ import replaceParams from "../../utils/replace-params";
 import Button from "../button/button";
 import "./program-item.css";
 import DaysLeft from "./pi-days-left/pi-days-left";
-import PIAvatar from "./pi-avatar/pi-avatar";
+import PIAvatar from "../program-avatar/program-avatar";
 
 const ProgramItem = ({
   program,

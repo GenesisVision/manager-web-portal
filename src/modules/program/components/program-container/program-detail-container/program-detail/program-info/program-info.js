@@ -1,8 +1,8 @@
+import "./program-info.css";
+
 import React from "react";
 
-import TraderAvatar from "../../../../../../../components/program-item/pi-avatar/pi-avatar";
-
-import "./program-info.css";
+import TraderAvatar from "../../../../../../../components/program-avatar/program-avatar";
 
 const ProgramInfo = ({
   program,

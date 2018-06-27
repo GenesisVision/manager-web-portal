@@ -1,15 +1,15 @@
-import { Link } from "react-router-dom";
-import { translate } from "react-i18next";
-import { UncontrolledTooltip } from "reactstrap";
-import React from "react";
+import "./dashboard-program.css";
 
+import React from "react";
+import { translate } from "react-i18next";
+import { Link } from "react-router-dom";
+import { UncontrolledTooltip } from "reactstrap";
+
+import TraderAvatar from "../../../../../../../../components/program-avatar/program-avatar";
+import replaceParams from "../../../../../../../../utils/replace-params";
+import { PROGRAM_ROUTE } from "../../../../../../../program/program.constants";
 import DPButtons from "./dp-buttons/dp-buttons";
 import DPStatistic from "./dp-statistic/dp-statistic";
-import replaceParams from "../../../../../../../../utils/replace-params";
-import TraderAvatar from "../../../../../../../../components/program-item/pi-avatar/pi-avatar";
-
-import "./dashboard-program.css";
-import { PROGRAM_ROUTE } from "../../../../../../../program/program.constants";
 
 const DashboardProgram = ({
   t,

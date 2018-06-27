@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
-import { withFormik, Field } from "formik";
-import React from "react";
+import "./login-form.css";
 
+import { Field, withFormik } from "formik";
+import React from "react";
+import { Link } from "react-router-dom";
+
+import Button from "../../../../components/button/button";
 import FormError from "../../../../shared/components/form/form-error/form-error";
 import InputText from "../../../../shared/components/form/input-text/input-text";
-import Button from "../../../../components/button/button";
-
-import "./login-form.css";
 import { FORGOT_PASSWORD_ROUTE } from "../../../password-reset/password-reset.constants";
 import { REGISTER_ROUTE } from "../../../register/register.constants";
 import validationSchema from "./login-form.validators";
@@ -61,6 +61,7 @@ const LoginForm = ({
           href={process.env.REACT_APP_INVESTOR_PORTAL_URL}
           className="login__btn"
           secondary
+          isExternal
           label="Login as Investor"
         />
         <Button
