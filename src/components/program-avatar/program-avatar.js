@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import avatarStub from "../../shared/media/manager-avatar.png";
-import fileService from "../../shared/services/file-service";
 import "./program-avatar.css";
 
 const ProgramAvatar = ({ url, level, isTournament, className }) => {
