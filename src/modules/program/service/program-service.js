@@ -1,20 +1,29 @@
+import clearDataActionFactory from "../../../shared/actions/clear-data.factory";
+import fileServices from "../../../shared/services/file-service";
+import history from "../../../utils/history";
+import replaceParams from "../../../utils/replace-params";
+import pagingActionsFactory from "../../paging/actions/paging-actions";
 import {
   calculateSkipAndTake,
   calculateTotalPages,
   composePaingActionType
 } from "../../paging/helpers/paging-helpers";
-import history from "../../../utils/history";
-import pagingActionsFactory from "../../paging/actions/paging-actions";
-import programActions from "../actions/program-actions";
-import replaceParams from "../../../utils/replace-params";
-
 import { PROGRAM_SETTINGS_EDIT_ROUTE } from "../../program-settings/program-settings.constants";
+import programActions from "../actions/program-actions";
 import * as actionTypes from "../actions/program-actions.constants";
-import clearDataActionFactory from "../../../shared/actions/clear-data.factory";
+
+const fetchProgram = programId => dispatch => {
+  return dispatch(
+    programActions.fetchProgram(
+      programId,
+      fileServices.addLogoSrc("investmentProgram")
+    )
+  );
+};
 
 const updateAfterInvestment = programId => dispatch => {
   return Promise.all([
-    dispatch(programActions.fetchProgram(programId)),
+    dispatch(fetchProgram(programId)),
     dispatch(getProgramRequests(programId))
   ]);
 };
@@ -74,7 +83,7 @@ const changeProgramDealsPage = (programId, paging) => dispatch => {
 const cancelProgramRequest = (programId, requestId) => dispatch => {
   return dispatch(programActions.cancelProgramRequest(requestId))
     .then(() => dispatch(getProgramRequests(programId)))
-    .then(() => dispatch(programActions.fetchProgram(programId)));
+    .then(() => dispatch(fetchProgram(programId)));
 };
 
 const openEditProgramPage = programId => {
@@ -106,6 +115,7 @@ const programService = {
   changeProgramDealsPage,
   cancelProgramRequest,
   openEditProgramPage,
-  clearProgram
+  clearProgram,
+  fetchProgram
 };
 export default programService;

@@ -1,23 +1,24 @@
 import fileService from "../../../shared/services/file-service";
 import history from "../../../utils/history";
 import replaceParams from "../../../utils/replace-params";
+import { composeApiFiltering } from "../../filtering/helpers/filtering-helpers";
 import { PROGRAM_SETTINGS_EDIT_ROUTE } from "../../program-settings/program-settings.constants";
 import dashboardActions from "../actions/dashboard-actions";
 
-const updateLogo = (() => fileService.addLogoSrc("investmentPrograms"))();
-
-const fetchDashboardPrograms = () => dispatch => {
-  return dispatch(dashboardActions.fetchDashboardPrograms(updateLogo));
+const fetchDashboardPrograms = () => (dispatch, getState) => {
+  const { filtering } = getState().dashboardData.programs;
+  let filter = { ...composeApiFiltering(filtering) };
+  return dispatch(
+    dashboardActions.fetchDashboardPrograms(
+      filter,
+      fileService.addLogoSrc("investmentPrograms")
+    )
+  );
 };
 
 const updateFiltering = filter => dispatch => {
-  return dispatch(dashboardActions.updateFiltering(filter, updateLogo));
-};
-
-const updateAfterInvestment = programId => dispatch => {
-  return Promise.all([
-    dispatch(dashboardActions.fetchDashboardPrograms(updateLogo))
-  ]);
+  dispatch(dashboardActions.updateFiltering(filter));
+  dispatch(fetchDashboardPrograms());
 };
 
 const openEditProgramPage = programId => {
@@ -29,7 +30,6 @@ const openEditProgramPage = programId => {
 };
 
 const dashboardService = {
-  updateAfterInvestment,
   openEditProgramPage,
   fetchDashboardPrograms,
   updateFiltering

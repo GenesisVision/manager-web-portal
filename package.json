@@ -74,7 +74,7 @@
     "eject": "react-scripts eject"
   },
   "lint-staged": {
-    "*.js": ["import-sort --write"],
+    "*.js": ["import-sort --write", "git add"],
     "*.{js,json,scss,md}": ["prettier --write", "git add"]
   },
   "importSort": {

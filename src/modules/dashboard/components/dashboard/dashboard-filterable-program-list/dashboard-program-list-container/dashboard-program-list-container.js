@@ -57,8 +57,8 @@ const mapDispatchToProps = dispatch => ({
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const { dispatch, ...otherDispatchProps } = dispatchProps;
-  const closeInvestPopup = programId => () => {
-    return dashboardService.updateAfterInvestment(programId);
+  const closeInvestPopup = () => () => {
+    return dashboardService.fetchDashboardPrograms();
   };
 
   return {
@@ -80,7 +80,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
       const traderWithdraw = {
         id: program.id,
         title: program.title,
-        logo: program.logo,
+        logoSrc: program.logoSrc,
         level: program.level,
         startOfPeriod: program.startOfPeriod,
         periodDuration: program.periodDuration,

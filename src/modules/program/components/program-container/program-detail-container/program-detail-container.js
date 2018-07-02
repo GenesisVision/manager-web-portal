@@ -1,17 +1,15 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
 import popupActions from "../../../../popup/actions/popup-actions";
-import programActions from "../../../actions/program-actions";
-import ProgramDetail from "./program-detail/program-detail";
-
 import {
-  PROGRAM_DEPOSIT_POPUP,
-  PROGRAM_WITHDRAW_POPUP,
+  PROGRAM_CLOSE_PERIOD_POPUP,
   PROGRAM_CLOSE_POPUP,
-  PROGRAM_CLOSE_PERIOD_POPUP
+  PROGRAM_DEPOSIT_POPUP,
+  PROGRAM_WITHDRAW_POPUP
 } from "../../../../popup/actions/popup-actions.constants";
 import programService from "../../../service/program-service";
+import ProgramDetail from "./program-detail/program-detail";
 
 class TraderDetailContainer extends PureComponent {
   componentDidMount() {
@@ -64,7 +62,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchProgramDetail: programId => {
-    dispatch(programActions.fetchProgram(programId));
+    dispatch(programService.fetchProgram(programId));
   },
   dispatch
 });

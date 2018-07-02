@@ -1,9 +1,8 @@
-import authService from "../../../services/auth-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
-import fileService from "../../../shared/services/file-service";
+import authService from "../../../services/auth-service";
 import * as actionTypes from "./program-actions.constants";
 
-const fetchProgram = programId => {
+const fetchProgram = (programId, onResolve = data => data) => {
   let data = {};
   if (authService.getAuthArg()) {
     data.authorization = authService.getAuthArg();
@@ -14,7 +13,7 @@ const fetchProgram = programId => {
     payload: SwaggerManagerApi.apiManagerInvestmentProgramGet(
       programId,
       data
-    ).then(fileService.addLogoSrc("investmentProgram"))
+    ).then(onResolve)
   };
 };
 

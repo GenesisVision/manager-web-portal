@@ -1,23 +1,16 @@
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
 import authService from "../../../services/auth-service";
 import filteringActionsFactory from "../../filtering/actions/filtering-actions";
-import { composeApiFiltering } from "../../filtering/helpers/filtering-helpers";
 import * as actionTypes from "./dashboard-actions.constants";
 
-const fetchDashboardPrograms = (onResolve = data => data) => (
-  dispatch,
-  getState
-) => {
-  const { filtering } = getState().dashboardData.programs;
-  let filter = { ...composeApiFiltering(filtering) };
-
-  return dispatch({
+const fetchDashboardPrograms = (filter, onResolve = data => data) => {
+  return {
     type: actionTypes.DASHBOARD_PROGRAMS,
     payload: SwaggerManagerApi.apiManagerDashboardProgramsPost(
       authService.getAuthArg(),
       { filter }
     ).then(onResolve)
-  });
+  };
 };
 
 const fetchDashboardInfo = () => {
@@ -36,9 +29,8 @@ const dashboardFiltering = filter => {
   return filteringActions.updateFilter(filter);
 };
 
-const updateFiltering = (filter, onResolve = data => data) => dispatch => {
+const updateFiltering = filter => dispatch => {
   dispatch(dashboardFiltering(filter));
-  dispatch(fetchDashboardPrograms(onResolve));
 };
 
 const dashboardActions = {
