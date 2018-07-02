@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../../../../components/button/button";
 
 import "./popup-buttons.css";
 
@@ -11,21 +12,21 @@ const PopupButtons = ({
 }) => {
   return (
     <div className="popup-buttons">
-      <button
+      <Button
+        label={submitLabel}
         type="submit"
         id={submitButtonId}
-        className="popup-button gv-btn gv-btn-primary"
+        className="popup-button"
+        primary
         onClick={onSubmit}
         disabled={isSubmitting}
-      >
-        {submitLabel}
-      </button>
-      <button
-        className="popup-button gv-btn gv-btn-secondary"
+      />
+      <Button
+        label="Cancel"
+        className="popup-button"
+        secondary
         onClick={onCancel}
-      >
-        Cancel
-      </button>
+      />
     </div>
   );
 };

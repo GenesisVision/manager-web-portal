@@ -14,7 +14,7 @@ import {
 } from "./profile/profile.type";
 
 class ProfileContainer extends Component<IProfileFullProps> {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchProfile();
   }
 

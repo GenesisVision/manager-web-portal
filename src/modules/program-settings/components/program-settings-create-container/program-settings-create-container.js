@@ -6,7 +6,7 @@ import ProgramCreateForm from "./program-settings-create-form/program-settings-c
 import programSettingsSevice from "../../service/program-settings-service";
 
 class ProgramSettingsCreateContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchProgramForm();
   }
   render() {

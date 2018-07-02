@@ -1,20 +1,29 @@
-import classnames from "classnames";
 import React from "react";
-
+import PropTypes from "prop-types";
+import classnames from "classnames";
 import "./program-avatar.css";
-import avatarStub from "../../shared/media/manager-avatar.png";
 
-const ProgramAvatar = ({ imgUrl, level, className }) => {
+const ProgramAvatar = ({ url, level, isTournament, className }) => {
   return (
     <div className={classnames("program-avatar", className)}>
-      <img
-        className="program-avatar__image"
-        src={imgUrl || avatarStub}
-        alt="Trader Avatar"
-      />
-      <span className="program-avatar__level">{level}</span>
+      {isTournament && (
+        <span className="program-avatar__label program-avatar__label--tournament">
+          <i className="fas fa-trophy" />
+        </span>
+      )}
+      <img className="program-avatar__image" src={url} alt="Trader Avatar" />
+      <span className="program-avatar__label program-avatar__label--level">
+        {level}
+      </span>
     </div>
   );
+};
+
+ProgramAvatar.protoTypes = {
+  url: PropTypes.string.isRequired,
+  level: PropTypes.number.isRequired,
+  isTournament: PropTypes.bool,
+  className: PropTypes.string
 };
 
 export default ProgramAvatar;

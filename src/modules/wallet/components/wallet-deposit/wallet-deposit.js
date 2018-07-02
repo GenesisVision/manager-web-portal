@@ -6,6 +6,7 @@ import QRCode from "qrcode.react";
 
 import { alertMessageActions } from "../../../../shared/modules/alert-message/actions/alert-message-actions";
 import walletActions from "../../actions/wallet-actions";
+import Button from "../../../../components/button/button";
 
 import "./wallet-deposit.css";
 
@@ -37,9 +38,7 @@ const WalletDeposit = ({
       </div>
       <h2>Your wallet address</h2>
       <p>{address.address}</p>
-      <button className="btn btn-primary" onClick={handleCopyAddress}>
-        Copy
-      </button>
+      <Button label="Copy" primary onClick={handleCopyAddress} />
     </div>
   );
 };

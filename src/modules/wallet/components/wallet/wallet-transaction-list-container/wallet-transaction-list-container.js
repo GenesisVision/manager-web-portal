@@ -7,14 +7,8 @@ import WalletTransactionList from "./wallet-transaction-list/wallet-transaction-
 class WalletTransactionListContainer extends Component {
   getFilter = props => (props.queryParams ? props.queryParams.filter : "All");
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchTransactions(this.getFilter(this.props), this.props.paging);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.getFilter(this.props) !== this.getFilter(nextProps)) {
-      this.props.fetchTransactions(this.getFilter(nextProps));
-    }
   }
 
   render() {
@@ -40,7 +34,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchTransactions: (filter, paging) => {
-    dispatch(walletService.getWalletTransactions(filter, paging));
+    dispatch(walletService.getWalletTransactions());
   }
 });
 

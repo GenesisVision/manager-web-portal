@@ -1,5 +1,6 @@
 import React from "react";
 import { translate } from "react-i18next";
+import Button from "../../../../../../../components/button/button";
 
 import "./program-buttons.css";
 
@@ -18,41 +19,41 @@ const TraderButtons = ({
 }) => {
   return (
     <div className="program-buttons">
-      <button
-        className="program-button gv-btn gv-btn-primary"
+      <Button
+        label={t("program-actions.invest")}
+        className="program-button"
+        primary
         onClick={openInvestPopup(programId)}
         disabled={!isInvestEnable}
-      >
-        {t("program-actions.invest")}
-      </button>
-      <button
-        className="program-button gv-btn gv-btn-secondary"
+      />
+      <Button
+        label={t("program-actions.withdraw")}
+        className="program-button"
+        secondary
         onClick={openWithdrawPopup}
         disabled={!isWithdrawEnable}
-      >
-        {t("program-actions.withdraw")}
-      </button>
-      <button
-        className="program-button gv-btn gv-btn-secondary"
+      />
+      <Button
+        label={t("program-actions.edit-program")}
+        className="program-button"
+        secondary
         onClick={openEditProgramPage(programId)}
         disabled={!canCloseProgram}
-      >
-        {t("program-actions.edit-program")}
-      </button>
-      <button
-        className="program-button gv-btn gv-btn-secondary"
+      />
+      <Button
+        label={t("program-actions.close-period")}
+        className="program-button"
+        secondary
         onClick={openClosePeriodPopup(programId)}
         disabled={!canClosePeriod}
-      >
-        {t("program-actions.close-period")}
-      </button>
-      <button
-        className="program-button gv-btn gv-btn-secondary"
+      />
+      <Button
+        label={t("program-actions.close-program")}
+        secondary
+        className="program-button"
         onClick={openCloseProgramPopup(programId)}
         disabled={!canCloseProgram}
-      >
-        {t("program-actions.close-program")}
-      </button>
+      />
     </div>
   );
 };

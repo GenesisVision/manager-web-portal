@@ -10,7 +10,7 @@ import ProfileModel, {
 } from "../profile-container/profile/profile.model";
 
 class ProfileFormContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.profile === undefined) {
       this.props.fetchProfile();
     }

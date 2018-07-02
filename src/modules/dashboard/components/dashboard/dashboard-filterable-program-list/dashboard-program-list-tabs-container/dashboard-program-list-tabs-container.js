@@ -1,28 +1,43 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
-import dashboardActions from "../../../../actions/dashboard-actions";
+import { connect } from "react-redux";
+
+import { normalizeFilteringSelector } from "../../../../../filtering/selectors/filtering-selectors";
+import { TYPE_FILTER_NAME } from "../../../../dashboard.constants";
+import dashboardService from "../../../../service/dashboard-service";
 import DashboardProgramListTabs from "./dashboard-program-list-tabs/dashboard-program-list-tabs";
 
 class DashboardProgramListTabsContainer extends PureComponent {
-  render() {
-    const { type, handleFilterChange } = this.props;
+  componentDidMount() {
+    const {
+      filtering: { defaultFilters }
+    } = this.props;
+    this.handleFilterChange(defaultFilters[TYPE_FILTER_NAME])();
+  }
 
-    const onFilterChange = type => () => {
-      handleFilterChange({ type });
-    };
+  handleFilterChange = value => () => {
+    this.props.handleFilterChange({
+      name: TYPE_FILTER_NAME,
+      value
+    });
+  };
+
+  render() {
     return (
-      <DashboardProgramListTabs type={type} onFilterChange={onFilterChange} />
+      <DashboardProgramListTabs
+        type={TYPE_FILTER_NAME}
+        onFilterChange={this.handleFilterChange}
+      />
     );
   }
 }
 const mapStateToProps = state => {
-  const { type } = state.dashboardData.programs.filtering;
-  return { type };
+  const filtering = normalizeFilteringSelector(state.dashboardData.programs);
+  return { filtering };
 };
 
 const mapDispatchToProps = dispatch => ({
   handleFilterChange: filter => {
-    dispatch(dashboardActions.updateFiltering(filter));
+    dispatch(dashboardService.updateFiltering(filter));
   }
 });
 

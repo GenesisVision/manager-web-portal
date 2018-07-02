@@ -1,16 +1,17 @@
 import React from "react";
 import "./filter-pane.css";
+import classnames from "classnames";
 
-const FilterPane = ({ isOpen, onFilterClose, children }) => {
+const FilterPane = ({ isOpen, children, className, onBackdropClick }) => {
   if (!isOpen) {
     return null;
   }
 
   return (
-    <div className="filter-pane-wrapper">
-      <div className="filter-pane">{children}</div>
-      <div className="filter-pane-backdrop" onClick={onFilterClose} />
-    </div>
+    <React.Fragment>
+      <div className={classnames("filter-pane", className)}>{children}</div>
+      <div className="filter-pane-backdrop" onClick={onBackdropClick} />
+    </React.Fragment>
   );
 };
 

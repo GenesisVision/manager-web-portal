@@ -5,6 +5,7 @@ import FormError from "../../../../../shared/components/form/form-error/form-err
 import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
+import Button from "../../../../../components/button/button";
 
 import managerAvatar from "../../../../../shared/media/manager-avatar.png";
 import programSettingsEditFormValidationSchema from "./program-settings-edit-form.validators";
@@ -58,30 +59,30 @@ const ProgramSettingsEditForm = ({
           <Field
             material
             readOnly
-            name="broker"
+            name="brokerTitle"
             label="Broker"
-            field={{ value: programSettings.broker }}
+            field={{ value: programSettings.brokerTitle }}
             component={InputText}
           />
           <Field
             material
             readOnly
-            name="brokerServer"
+            name="brokerTradeServerTitle"
             label="Broker Server"
-            field={{ value: programSettings.brokerServer }}
+            field={{ value: programSettings.brokerTradeServerTitle }}
             component={InputText}
           />
         </div>
       </div>
       <FormError error={error} />
-      <button
+      <Button
+        label="Edit Program"
         type="submit"
         id="editProgramSubmit"
         disabled={isSubmitting}
-        className="btn btn-primary create-program-form__submit"
-      >
-        Edit Program
-      </button>
+        className="create-program-form__submit"
+        primary
+      />
     </form>
   );
 };
@@ -89,9 +90,9 @@ const ProgramSettingsEditForm = ({
 export default withFormik({
   displayName: "programSettingsEditForm",
   mapPropsToValues: ({ programSettings }) => ({
-    logoId: programSettings.logoId,
+    logoId: programSettings.logo,
     logo: {
-      src: programSettings.logo || managerAvatar,
+      src: programSettings.logoSrc,
       filename: "image.png",
       filetype: "image/png",
       cropped: null

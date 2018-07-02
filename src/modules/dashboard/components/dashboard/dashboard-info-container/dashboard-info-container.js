@@ -8,7 +8,7 @@ import DashboardStatistic from "./dashboard-statistic/dashboard-statistic";
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 
 class DashboardContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchDashboardInfo();
   }
   render() {

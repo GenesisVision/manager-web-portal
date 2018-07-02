@@ -1,8 +1,8 @@
+import "./program-info.css";
+
 import React from "react";
 
 import TraderAvatar from "../../../../../../../components/program-avatar/program-avatar";
-
-import "./program-info.css";
 
 const ProgramInfo = ({
   program,
@@ -15,7 +15,11 @@ const ProgramInfo = ({
   return (
     <div className="program-info">
       <div className="program-info__avatar">
-        <TraderAvatar imgUrl={program.logo} level={program.level} />
+        <TraderAvatar
+          url={program.logoSrc}
+          level={program.level}
+          isTournament={program.isTournament}
+        />
       </div>
       <div className="program-info__name">
         <div className="program-info__title">{program.title}</div>

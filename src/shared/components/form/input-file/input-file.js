@@ -36,7 +36,9 @@ class InputFile extends PureComponent {
     if (!croppedCanvas) return;
 
     croppedCanvas.toBlob(blob => {
-      blob.name = value.filename;
+      if (blob !== null) {
+        blob.name = value.filename;
+      }
       const img = {
         ...value,
         cropped: blob
@@ -50,7 +52,11 @@ class InputFile extends PureComponent {
   };
 
   render() {
-    const { label, className, field: { value } } = this.props;
+    const {
+      label,
+      className,
+      field: { value }
+    } = this.props;
     return (
       <div className={classnames("input-file", className)}>
         {label && <div className="input-file__label">{label}</div>}

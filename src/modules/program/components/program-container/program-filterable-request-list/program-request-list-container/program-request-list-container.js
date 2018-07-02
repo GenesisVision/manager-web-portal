@@ -5,7 +5,7 @@ import ProgramRequestList from "./program-request-list/program-request-list";
 import programService from "../../../../service/program-service";
 
 class ProgramRequestListContainer extends PureComponent {
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate() {
     const {
       isOwnProgram,
       isPending,
@@ -13,7 +13,7 @@ class ProgramRequestListContainer extends PureComponent {
       errorMessage,
       programId,
       fetchTraderRequests
-    } = nextProps;
+    } = this.props;
     if (isOwnProgram && !isPending && !errorMessage && !programRequests) {
       fetchTraderRequests(programId);
     }
