@@ -12,6 +12,10 @@ const uploadFile = file => {
 const addLogoSrc = key => data => {
   const target = data[key];
 
+  if (target === null || target === undefined) {
+    return data;
+  }
+
   if (Array.isArray(target)) {
     target.forEach(ip => {
       ip.logoSrc = getFileUrl(ip.logo);
