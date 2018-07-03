@@ -20,6 +20,12 @@
     }
   }
 
+  &__label {
+    @media (min-width: 1200px) and (max-width: 1350px) {
+      display: none;
+    }
+  }
+
   &__auth {
     display: none;
   }

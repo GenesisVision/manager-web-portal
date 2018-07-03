@@ -1,15 +1,14 @@
-import classnames from "classnames";
-import { NavLink } from "react-router-dom";
-import React, { Component } from "react";
-
 import "./navigation.css";
+
+import classnames from "classnames";
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+
 import { DASHBOARD_ROUTE } from "../../modules/dashboard/dashboard.constants";
+import { LOGIN_ROUTE } from "../../modules/login/login.constants";
 import { PROGRAMS_ROUTE } from "../../modules/programs/programs.constants";
 import { WALLET_ROUTE } from "../../modules/wallet/wallet.constants";
-
-import { DashboardIcon, WalletIcon, TradersIcon } from "./media/icons.js";
-
-import { LOGIN_ROUTE } from "../../modules/login/login.constants";
+import { DashboardIcon, TradersIcon, WalletIcon } from "./media/icons.js";
 
 class Navigation extends Component {
   render() {
@@ -25,7 +24,7 @@ class Navigation extends Component {
             <i className="navigation__icon nav-traders">
               <TradersIcon />
             </i>
-            Traders
+            <div className="navigation__label">Traders</div>
           </NavLink>
         </div>
         <div className="navigation__item">
@@ -38,7 +37,7 @@ class Navigation extends Component {
             <i className="navigation__icon nav-dashboard">
               <DashboardIcon />
             </i>
-            Dashboard
+            <div className="navigation__label">Dashboard</div>
           </NavLink>
         </div>
         <div className="navigation__item">
@@ -51,7 +50,7 @@ class Navigation extends Component {
             <i className="navigation__icon nav-wallet">
               <WalletIcon />
             </i>
-            Wallet
+            <div className="navigation__label">Wallet</div>
           </NavLink>
         </div>
         <div className="navigation__item navigation__auth">
@@ -64,7 +63,7 @@ class Navigation extends Component {
               <i className="navigation__icon nav-dashboard">
                 <i className="fas fa-sign-out-alt" />
               </i>
-              Sign Out
+              <div className="navigation__label">Sign Out</div>
             </button>
           ) : (
             <NavLink

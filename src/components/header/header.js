@@ -11,6 +11,7 @@ import filterPaneActionsFactory from "../../modules/filter-pane/actions/filter-p
 import loginService from "../../modules/login/service/login-service";
 import NavButton from "../../modules/navigation/nav-button/nav-button";
 import NavigationContainer from "../../modules/navigation/navigation-container";
+import ProgramSearchContainer from "../../modules/program-search/components/program-search-container";
 import { PROGRAMS } from "../../modules/programs/actions/programs-actions.constants";
 import { PROGRAMS_ROUTE } from "../../modules/programs/programs.constants";
 import { HOME_ROUTE } from "../app.constants";
@@ -59,6 +60,7 @@ const Header = ({ shouldShowFilterControl, isFilterOpen, toggleFilter }) => {
           <NavigationContainer />
         </div>
         <div className="header__filtering">
+          <ProgramSearchContainer />
           {filterPaneControl(
             shouldShowFilterControl,
             isFilterOpen,

@@ -12,6 +12,7 @@ import profileReducer from "../modules/profile/reducers/profile-reducers";
 import programClosePeriodReducer from "../modules/program-close-period/reducers/program-close-period-reducers";
 import programCloseReducer from "../modules/program-close/reducers/program-close-reducers";
 import programDepositReducer from "../modules/program-deposit/reducers/program-deposit-reducers";
+import programSearchReducer from "../modules/program-search/reducers/program-search-reducers";
 import programSettingsReducer from "../modules/program-settings/reducers/program-settings-reducers";
 import programTournamentReducer from "../modules/program-tournament/reducers/program-tournament-reducers";
 import programWithdrawReducer from "../modules/program-withdraw/reducers/program-withdraw-reducers";
@@ -27,6 +28,7 @@ export default combineReducers({
   routing: routerReducer,
   loadingBar: loadingBarReducer,
   platformData: platformReducer,
+  programSearchData: programSearchReducer,
   programsData: programsReducer,
   programData: programReducer,
   loginData: loginReducer,
