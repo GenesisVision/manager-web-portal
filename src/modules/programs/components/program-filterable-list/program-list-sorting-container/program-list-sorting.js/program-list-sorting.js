@@ -45,12 +45,7 @@ const ProgramListSorting = ({ sorting, onSortingChange }) => {
           );
         }}
       />
-      <div
-        className={classnames("sorting__order", {
-          "sorting__order--selected": isAsc
-        })}
-        onClick={() => handleDirectionChange()}
-      >
+      <div className="sorting__order" onClick={handleDirectionChange}>
         <i
           className={classnames("fas", {
             "fa-sort-amount-up": isAsc,
