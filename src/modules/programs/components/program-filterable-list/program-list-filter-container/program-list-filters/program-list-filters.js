@@ -1,12 +1,13 @@
-import { translate } from "react-i18next";
-import React from "react";
-
 import "rc-slider/assets/index.css";
+
 import "../../../../../../shared/components/form/gv-range/gv-range.css";
 
+import React from "react";
+import { translate } from "react-i18next";
+
+import Button from "../../../../../../components/button/button";
 // import AvailableInvestmentFilter from "./program-filters/available-investment-filter";
 import AvgProfitFilter from "./program-filters/avg-profit-filter";
-import Button from "../../../../../../components/button/button";
 import BalanceFilter from "./program-filters/balance-filter";
 import LevelFilter from "./program-filters/level-filter";
 import TotalProfitFilter from "./program-filters/total-profit-filter";

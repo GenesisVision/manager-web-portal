@@ -2,20 +2,12 @@
 
 .app__main {
   display: flex;
-}
-
-.app__sidebar {
-  flex: 1 0 65px;
-  max-width: 65px;
-  @include media-breakpoint-phone() {
-    display: none;
+  @include media-breakpoint-phone {
+    height: calc(100% - 68px);
+    margin-top: 68px;
   }
 }
 
 .app__body {
   flex: 1 1 100%;
-  width: calc(100% - 65px);
-  @include media-breakpoint-phone() {
-    max-width: 100%;
-  }
 }

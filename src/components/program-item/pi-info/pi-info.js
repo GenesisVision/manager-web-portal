@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import React from "react";
+import "./pi-info.css";
 
+import React from "react";
+import { Link } from "react-router-dom";
+
+import { PROGRAM_ROUTE } from "../../../modules/program/program.constants";
 import replaceParams from "../../../utils/replace-params";
 import TraderAvatar from "../../program-avatar/program-avatar";
-
-import "./pi-info.css";
-import { PROGRAM_ROUTE } from "../../../modules/program/program.constants";
 
 const PIInfo = ({ order, program, isAuthenticated, toggleFavoriteProgram }) => {
   const programRoute = replaceParams(PROGRAM_ROUTE, {

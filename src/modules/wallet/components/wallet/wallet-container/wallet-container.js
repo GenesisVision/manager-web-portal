@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import walletActions from "../../../actions/wallet-actions";
 import WalletInfo from "./wallet-info/wallet-info";

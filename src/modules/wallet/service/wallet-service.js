@@ -1,17 +1,16 @@
+import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
+import authService from "../../../services/auth-service";
+import clearDataActionFactory from "../../../shared/actions/clear-data.factory";
+import filterPaneActionsFactory from "../../filter-pane/actions/filter-pane-actions";
+import filteringActionsFactory from "../../filtering/actions/filtering-actions";
+import { composeFilteringActionType } from "../../filtering/helpers/filtering-helpers";
+import pagingActionsFactory from "../../paging/actions/paging-actions";
 import {
   calculateSkipAndTake,
   calculateTotalPages,
   composePaingActionType
 } from "../../paging/helpers/paging-helpers";
-import authService from "../../../services/auth-service";
-import filteringActionsFactory from "../../filtering/actions/filtering-actions";
-import filterPaneActionsFactory from "../../filter-pane/actions/filter-pane-actions";
-import pagingActionsFactory from "../../paging/actions/paging-actions";
-import SwaggerInvestorApi from "../../../services/api-client/swagger-investor-api";
-
 import * as actionTypes from "../actions/wallet-actions.constants";
-import clearDataActionFactory from "../../../shared/actions/clear-data.factory";
-import { composeFilteringActionType } from "../../filtering/helpers/filtering-helpers";
 
 const getWalletTransactions = () => (dispatch, getState) => {
   const { paging } = getState().walletData.transactions;

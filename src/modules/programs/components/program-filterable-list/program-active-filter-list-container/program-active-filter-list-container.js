@@ -1,10 +1,10 @@
-import { connect } from "react-redux";
-import React, { Component } from "react";
-import programsService from "../../../service/programs-service";
-
-import ProgramActiveFilterList from "./program-active-filter-list/program-active-filter-list";
-
 import "./program-active-filter-list-container.css";
+
+import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import programsService from "../../../service/programs-service";
+import ProgramActiveFilterList from "./program-active-filter-list/program-active-filter-list";
 
 class ProgramActiveFilterListContainer extends Component {
   render() {

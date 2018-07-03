@@ -1,15 +1,14 @@
 import { Range } from "rc-slider";
-import { translate } from "react-i18next";
 import React from "react";
+import { translate } from "react-i18next";
 
 import FilterItem from "../../../../../../filter-pane/components/filter-item/filter-item";
-
-import {
-  LEVEL_MIN_FILTER_VALUE,
-  LEVEL_FILTER_NAME,
-  LEVEL_MAX_FILTER_VALUE
-} from "../../../../../programs.constants";
 import { RANGE_FILTER_TYPE } from "../../../../../../filtering/filtering.constants";
+import {
+  LEVEL_FILTER_NAME,
+  LEVEL_MAX_FILTER_VALUE,
+  LEVEL_MIN_FILTER_VALUE
+} from "../../../../../programs.constants";
 
 const LevelFilter = ({ t, filtering, onFilterChange }) => {
   const handleFilterChange = value =>

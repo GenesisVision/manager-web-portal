@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import walletService from "../../../service/wallet-service";
 import WalletTransactionList from "./wallet-transaction-list/wallet-transaction-list";

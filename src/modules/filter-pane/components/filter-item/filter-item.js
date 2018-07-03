@@ -1,8 +1,10 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import Button from "../../../../components/button/button";
 import "./filter-item.css";
+
+import classnames from "classnames";
+import PropTypes from "prop-types";
+import React, { Component } from "react";
+
+import Button from "../../../../components/button/button";
 
 class FilterItem extends Component {
   getInitialValue = () => this.props.value || this.props.defaultValue;

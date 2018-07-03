@@ -1,8 +1,9 @@
+import "./program-buttons.css";
+
 import React from "react";
 import { translate } from "react-i18next";
-import Button from "../../../../../../../components/button/button";
 
-import "./program-buttons.css";
+import Button from "../../../../../../../components/button/button";
 
 const TraderButtons = ({
   t,

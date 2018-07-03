@@ -1,6 +1,6 @@
-import { connect } from "react-redux";
 import qs from "qs";
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
 import emailConfirmService from "../service/email-confirm-service";
 

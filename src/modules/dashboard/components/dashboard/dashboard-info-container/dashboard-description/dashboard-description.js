@@ -1,7 +1,9 @@
-import { translate } from "react-i18next";
-import React from "react";
-import Button from "../../../../../../components/button/button";
 import "./dashboard-description.css";
+
+import React from "react";
+import { translate } from "react-i18next";
+
+import Button from "../../../../../../components/button/button";
 import { PROGRAM_SETTINGS_CREATE_ROUTE } from "../../../../../program-settings/program-settings.constants";
 import { PROGRAM_SETTINGS_CREATE_TOURNAMENT_ROUTE } from "../../../../../program-tournament/program-tournament.constants";
 const DashboardDescription = ({ t, isTournamentActive }) => {

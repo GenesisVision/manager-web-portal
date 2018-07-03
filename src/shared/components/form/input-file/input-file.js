@@ -1,11 +1,11 @@
-import classnames from "classnames";
-import Cropper from "react-cropper";
-import Dropzone from "react-dropzone";
-import React, { PureComponent } from "react";
-
 import "cropperjs/dist/cropper.css";
 
 import "./input-file.css";
+
+import classnames from "classnames";
+import React, { PureComponent } from "react";
+import Cropper from "react-cropper";
+import Dropzone from "react-dropzone";
 
 class InputFile extends PureComponent {
   onDrop = files => {

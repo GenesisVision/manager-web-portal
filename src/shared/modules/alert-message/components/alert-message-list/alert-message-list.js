@@ -1,12 +1,13 @@
-import { Alert } from "reactstrap";
-import { connect } from "react-redux";
-import React, { Component } from "react";
-import classnames from "classnames";
 import "./alert-message-list.css";
 
-import { alertMessageActions } from "../../actions/alert-message-actions";
-import history from "../../../../../utils/history";
+import classnames from "classnames";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Alert } from "reactstrap";
+
 import Button from "../../../../../components/button/button";
+import history from "../../../../../utils/history";
+import { alertMessageActions } from "../../actions/alert-message-actions";
 
 const ClearAllButton = ({ onClick }) => (
   <div className="alert-message__clear-all">

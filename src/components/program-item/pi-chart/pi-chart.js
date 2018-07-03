@@ -1,16 +1,16 @@
+import "./pi-chart.css";
+
+import moment from "moment";
 import React from "react";
 import {
   Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
   LineChart,
-  ReferenceLine
+  ReferenceLine,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis
 } from "recharts";
-import moment from "moment";
-
-import "./pi-chart.css";
 
 const PIChart = ({ data }) => {
   const tooltipWrapperStyle = { opacity: 0.9 };

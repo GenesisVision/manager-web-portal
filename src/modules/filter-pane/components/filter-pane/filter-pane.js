@@ -1,6 +1,7 @@
-import React from "react";
 import "./filter-pane.css";
+
 import classnames from "classnames";
+import React from "react";
 
 const FilterPane = ({ isOpen, children, className, onBackdropClick }) => {
   if (!isOpen) {

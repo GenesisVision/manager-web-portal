@@ -1,12 +1,11 @@
-import { withFormik, Field } from "formik";
+import { Field, withFormik } from "formik";
 import React from "react";
 
+import Button from "../../../../../components/button/button";
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
-import Button from "../../../../../components/button/button";
-
 import managerAvatar from "../../../../../shared/media/manager-avatar.png";
 import programSettingsEditFormValidationSchema from "./program-settings-edit-form.validators";
 

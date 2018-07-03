@@ -1,5 +1,6 @@
-import React from "react";
 import "./wallet.css";
+
+import React from "react";
 
 import WalletChartContainer from "./wallet-chart-container/wallet-chart-container";
 import WalletContainer from "./wallet-container/wallet-container";

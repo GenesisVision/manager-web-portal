@@ -1,7 +1,8 @@
-import React from "react";
-import Button from "../../../../../../../components/button/button";
-
 import "./wallet-buttons.css";
+
+import React from "react";
+
+import Button from "../../../../../../../components/button/button";
 
 const WalletButtons = () => {
   return (

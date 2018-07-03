@@ -1,10 +1,10 @@
+import "./pi-statisctic.css";
+
 import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 
 import PIStat from "../../../../../../../../components/program-item/pi-stat/pi-stat";
-
-import "./pi-statisctic.css";
 
 const TIStatistic = ({ t, program, className = "" }) => {
   return (

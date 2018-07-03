@@ -1,14 +1,15 @@
+import "./program-item.css";
+
 import classnames from "classnames";
 import React from "react";
 import { Link } from "react-router-dom";
 
-import PIChart from "./pi-chart/pi-chart";
 import { PROGRAM_ROUTE } from "../../modules/program/program.constants";
 import replaceParams from "../../utils/replace-params";
 import Button from "../button/button";
-import "./program-item.css";
-import DaysLeft from "./pi-days-left/pi-days-left";
 import PIAvatar from "../program-avatar/program-avatar";
+import PIChart from "./pi-chart/pi-chart";
+import DaysLeft from "./pi-days-left/pi-days-left";
 
 const ProgramItem = ({
   program,

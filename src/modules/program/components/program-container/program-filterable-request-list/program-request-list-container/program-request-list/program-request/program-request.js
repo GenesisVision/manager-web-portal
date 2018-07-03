@@ -1,9 +1,9 @@
-import React from "react";
+import "./program-request.css";
+
 import moment from "moment";
+import React from "react";
 
 import Button from "../../../../../../../../components/button/button";
-
-import "./program-request.css";
 
 const ProgramRequest = ({ request, currency, cancelRequest }) => {
   const getRequestCurrency = () => {

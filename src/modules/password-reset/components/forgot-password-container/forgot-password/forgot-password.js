@@ -1,11 +1,11 @@
-import { withFormik, Field } from "formik";
+import "./forgot-password.css";
+
+import { Field, withFormik } from "formik";
 import React from "react";
 
+import Button from "../../../../../components/button/button";
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
-import Button from "../../../../../components/button/button";
-
-import "./forgot-password.css";
 import validationSchema from "./forgot-password.validators";
 
 const ForgotPasswordForm = ({ values, isSubmitting, handleSubmit, error }) => {

@@ -1,7 +1,7 @@
+import "./filter-badge.css";
+
 import React from "react";
 import { translate } from "react-i18next";
-
-import "./filter-badge.css";
 
 const FilterBadge = ({ t, filter, filtertype, onRemoveFilter }) => {
   const filterValue = t(`programs-filtering.${filter.name}.value-pattern`, {

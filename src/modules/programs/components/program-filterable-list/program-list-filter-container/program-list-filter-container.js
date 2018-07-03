@@ -1,12 +1,12 @@
-import { connect } from "react-redux";
-import React from "react";
-
-import { normalizeFilteringSelector } from "../../../../filtering/selectors/filtering-selectors";
-import FilterPane from "../../../../filter-pane/components/filter-pane/filter-pane";
-import ProgramFilters from "./program-list-filters/program-list-filters";
-import programsService from "../../../service/programs-service";
-
 import "./program-list-filter-container.css";
+
+import React from "react";
+import { connect } from "react-redux";
+
+import FilterPane from "../../../../filter-pane/components/filter-pane/filter-pane";
+import { normalizeFilteringSelector } from "../../../../filtering/selectors/filtering-selectors";
+import programsService from "../../../service/programs-service";
+import ProgramFilters from "./program-list-filters/program-list-filters";
 
 const ProgramListFilterContainer = ({
   isFilterOpen,

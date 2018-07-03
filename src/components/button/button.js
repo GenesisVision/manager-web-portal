@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import "./button.css";
+
 import classnames from "classnames";
 import PropTypes from "prop-types";
-import "./button.css";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 const GVLink = ({ isExternal, children, href, ...other }) => {
   const target = isExternal ? "_self" : null;

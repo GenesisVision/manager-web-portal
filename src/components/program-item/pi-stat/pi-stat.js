@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import "./pi-stat.css";
+
 import PropTypes from "prop-types";
+import React, { Component } from "react";
 import { UncontrolledTooltip } from "reactstrap";
 import uuid from "uuid";
-
-import "./pi-stat.css";
 
 export default class PIStat extends Component {
   static propTypes = {

@@ -1,20 +1,21 @@
-import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
-import classnames from "classnames";
-import LoadingBar from "react-redux-loading-bar";
-import React from "react";
+import "./header.css";
 
-import FilterIcon from "./filter-icon";
+import classnames from "classnames";
+import React from "react";
+import { connect } from "react-redux";
+import LoadingBar from "react-redux-loading-bar";
+import { NavLink } from "react-router-dom";
+
+import AuthControl from "../../modules/authorization-controls/authorization-controls";
 import filterPaneActionsFactory from "../../modules/filter-pane/actions/filter-pane-actions";
 import loginService from "../../modules/login/service/login-service";
-import MobileNav from "./mobile-nav";
-import Button from "../../components/button/button";
-
-import "./header.css";
-import { HOME_ROUTE } from "../app.constants";
-import { LOGIN_ROUTE } from "../../modules/login/login.constants";
+import NavButton from "../../modules/navigation/nav-button/nav-button";
+import NavigationContainer from "../../modules/navigation/navigation-container";
 import { PROGRAMS } from "../../modules/programs/actions/programs-actions.constants";
 import { PROGRAMS_ROUTE } from "../../modules/programs/programs.constants";
+import { HOME_ROUTE } from "../app.constants";
+import Button from "../button/button";
+import FilterIcon from "./filter-icon";
 import gvLogo from "./gv-logo.svg";
 
 const PAGES_WITH_FILTER = {
@@ -24,22 +25,6 @@ const PAGES_WITH_FILTER = {
   }
 };
 
-const authorizedControl = signOut => (
-  <ul className="navbar-nav px-3 flex-row">
-    <li className="nav-item text-nowrap">
-      <Button label="Sign Out" onClick={signOut} secondary />
-    </li>
-  </ul>
-);
-
-const unauthorizedControl = () => (
-  <ul className="navbar-nav px-3 flex-row">
-    <li className="nav-item text-nowrap">
-      <Button label="Sign In" secondary href={LOGIN_ROUTE} />
-    </li>
-  </ul>
-);
-
 const filterPaneControl = (
   shouldShowFilterControl,
   isFilterOpen,
@@ -47,34 +32,31 @@ const filterPaneControl = (
 ) => {
   if (!shouldShowFilterControl) return null;
   return (
-    <div className="h-filtering">
-      <span
-        className={classnames({
-          "h-filtering--open": isFilterOpen
-        })}
-        onClick={toggleFilter}
-      >
-        <FilterIcon />
-      </span>
-    </div>
+    <Button
+      icon={<FilterIcon />}
+      onClick={toggleFilter}
+      className={classnames("h-button", {
+        "h-button--active": isFilterOpen
+      })}
+      secondary
+    />
   );
 };
 
-const Header = ({
-  shouldShowFilterControl,
-  isAuthenticated,
-  signOut,
-  isFilterOpen,
-  toggleFilter
-}) => {
+const Header = ({ shouldShowFilterControl, isFilterOpen, toggleFilter }) => {
   return (
     <div className="header-wrapper">
       <header className="header">
-        <div className="header__sorting">
+        <div className="header__logo">
           <NavLink title="Home" to={HOME_ROUTE}>
             <img src={gvLogo} alt="Genesis Vision" />
           </NavLink>
-          <div className="h-sorting">Manager Portal</div>
+        </div>
+        <div className="header__nav-button">
+          <NavButton className="h-button" />
+        </div>
+        <div className="header__navigation">
+          <NavigationContainer />
         </div>
         <div className="header__filtering">
           {filterPaneControl(
@@ -82,10 +64,11 @@ const Header = ({
             isFilterOpen,
             toggleFilter
           )}
-          {isAuthenticated ? authorizedControl(signOut) : unauthorizedControl()}
+        </div>
+        <div className="header__auth">
+          <AuthControl />
         </div>
       </header>
-      <MobileNav />
       <LoadingBar className="header__loading-bar" />
     </div>
   );

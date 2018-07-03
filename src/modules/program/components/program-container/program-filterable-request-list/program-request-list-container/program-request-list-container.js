@@ -1,8 +1,8 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
-import ProgramRequestList from "./program-request-list/program-request-list";
 import programService from "../../../../service/program-service";
+import ProgramRequestList from "./program-request-list/program-request-list";
 
 class ProgramRequestListContainer extends PureComponent {
   componentDidUpdate() {

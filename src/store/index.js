@@ -1,15 +1,15 @@
-import { createStore, applyMiddleware, compose } from "redux";
 import { loadingBarMiddleware } from "react-redux-loading-bar";
 import { routerMiddleware } from "react-router-redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import promiseMiddleware from "redux-promise-middleware";
 import thunk from "redux-thunk";
 
-import history from "../utils/history";
 import rootReducer from "../reducers";
+import SwaggerManagerApi from "../services/api-client/swagger-manager-api";
+import authService from "../services/auth-service";
 import apiErrorHandlerMiddleware from "../shared/middlewares/api-error-handler-middleware/api-error-handler-middleware";
 import refreshTokenMiddleware from "../shared/middlewares/refresh-token-middleware/refresh-token-middleware";
-import authService from "../services/auth-service";
-import SwaggerManagerApi from "../services/api-client/swagger-manager-api";
+import history from "../utils/history";
 
 const failureSuffix = "FAILURE";
 const suffixes = ["REQUEST", "SUCCESS", failureSuffix];

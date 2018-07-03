@@ -1,5 +1,5 @@
-import { composeFilteringActionType } from "../helpers/filtering-helpers";
 import { composeClearDataActionType } from "../../../shared/actions/clear-data.factory";
+import { composeFilteringActionType } from "../helpers/filtering-helpers";
 
 export const dafaultState = {
   filters: [],

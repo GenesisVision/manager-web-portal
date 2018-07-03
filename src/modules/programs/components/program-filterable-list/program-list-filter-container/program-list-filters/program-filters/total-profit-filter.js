@@ -1,8 +1,8 @@
-import { translate } from "react-i18next";
+import { Handle, Range } from "rc-slider";
 import React from "react";
+import { translate } from "react-i18next";
 
 import FilterItem from "../../../../../../filter-pane/components/filter-item/filter-item";
-import { Range, Handle } from "rc-slider";
 import { RANGE_FILTER_TYPE } from "../../../../../../filtering/filtering.constants";
 import { TOTAL_PROFIT_FILTER_NAME } from "../../../../../programs.constants";
 

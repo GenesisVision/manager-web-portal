@@ -1,8 +1,8 @@
-import { withFormik, Field } from "formik";
+import { Field, withFormik } from "formik";
 import React from "react";
 
-import InputText from "../../../../../shared/components/form/input-text/input-text";
 import Button from "../../../../../components/button/button";
+import InputText from "../../../../../shared/components/form/input-text/input-text";
 
 const ProfileForm = ({
   profile,
