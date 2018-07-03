@@ -6,6 +6,7 @@ import ProgramActiveFilterListContainer from "./program-active-filter-list-conta
 import ProgramListContainer from "./program-list-container/program-list-container";
 import ProgramListFilterContainer from "./program-list-filter-container/program-list-filter-container";
 import ProgramListPagingContainer from "./program-list-paging-container/program-list-paging-container";
+import ProgramListSortingContainer from "./program-list-sorting-container/program-list-sorting-container";
 
 const ProgramFilterableList = () => {
   return (
@@ -13,6 +14,7 @@ const ProgramFilterableList = () => {
       <div className="program-filterable-list__wrapper">
         <div className="program-filterable-list__header">
           <ProgramActiveFilterListContainer />
+          <ProgramListSortingContainer />
         </div>
         <ProgramListContainer />
         <ProgramListPagingContainer />

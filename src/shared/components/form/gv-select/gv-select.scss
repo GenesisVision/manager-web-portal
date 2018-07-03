@@ -10,9 +10,8 @@ $select-option-focused-color: $alternate-color;
 $select-option-focused-bg: white;
 $select-menu-max-height: 210px;
 
-@import "node_modules/react-select/scss/default.scss";
-
 .gv-select {
+  @import "node_modules/react-select/scss/default.scss";
   position: relative;
   margin-bottom: 1rem;
 }

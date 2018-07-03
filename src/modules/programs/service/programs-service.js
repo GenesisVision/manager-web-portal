@@ -9,25 +9,36 @@ import {
   calculateSkipAndTake,
   calculateTotalPages
 } from "../../paging/helpers/paging-helpers";
+import sortingActionsFactory from "../../sorting/actions/sorting-actions";
 import programsActions from "../actions/programs-actions";
 import * as actionTypes from "../actions/programs-actions.constants";
+import { SORTING_FILTER_NAME } from "../programs.constants";
 import { composeProgramsFilters } from "./programs-helpers";
 
 const filteringActions = filteringActionsFactory(actionTypes.PROGRAMS);
 const filterPaneActions = filterPaneActionsFactory(actionTypes.PROGRAMS);
+const sortingActions = sortingActionsFactory(actionTypes.PROGRAMS);
 
 const getPrograms = () => (dispatch, getState) => {
   const { paging } = getState().programsData.programs;
   const { skip, take } = calculateSkipAndTake(paging);
   const { filtering } = getState().programsData.programs;
+  const { sorting } = getState().programsData.programs;
+  const programsFilters = composeProgramsFilters(filtering);
+
   let data = {
-    filter: { skip, take, equityChartLength: 365 }
+    filter: {
+      skip,
+      take,
+      equityChartLength: 365,
+      [SORTING_FILTER_NAME]: sorting.value || sorting.defaultValue,
+      ...programsFilters
+    }
   };
+
   if (authService.getAuthArg()) {
     data.authorization = authService.getAuthArg();
   }
-
-  data.filter = { ...data.filter, ...composeProgramsFilters(filtering) };
 
   const setLogoAndOrder = response => {
     response.investmentPrograms.forEach((x, idx) => {
@@ -58,6 +69,16 @@ const changeProgramListPage = paging => dispatch => {
 
 const changeProgramListFilter = filter => dispatch => {
   dispatch(filteringActions.updateFilter(filter));
+  dispatch(
+    updateProgramListPaging({
+      currentPage: 0
+    })
+  );
+  dispatch(getPrograms());
+};
+
+const changeProgramListSorting = sorting => dispatch => {
+  dispatch(sortingActions.updateSorting(sorting));
   dispatch(
     updateProgramListPaging({
       currentPage: 0
@@ -112,6 +133,7 @@ const programsService = {
   closeFilterPane,
   changeProgramListFilter,
   clearProgramListFilter,
-  clearProgramListFilters
+  clearProgramListFilters,
+  changeProgramListSorting
 };
 export default programsService;
