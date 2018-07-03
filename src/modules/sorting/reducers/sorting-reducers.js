@@ -1,5 +1,5 @@
-import { composeSortingActionType } from "../helpers/sorting-helpers";
 import { composeClearDataActionType } from "../../../shared/actions/clear-data.factory";
+import { composeSortingActionType } from "../helpers/sorting-helpers";
 
 export const dafaultState = {
   value: "",
