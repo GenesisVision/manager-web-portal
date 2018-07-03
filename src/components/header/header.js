@@ -1,33 +1,27 @@
-import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
-import classnames from "classnames";
-import LoadingBar from "react-redux-loading-bar";
-import React from "react";
+import "./header.css";
 
-import FilterIcon from "./filter-icon";
+import classnames from "classnames";
+import React from "react";
+import { connect } from "react-redux";
+import LoadingBar from "react-redux-loading-bar";
+import { NavLink } from "react-router-dom";
+
+import AuthControl from "../../modules/authorization-controls/authorization-controls";
 import filterPaneActionsFactory from "../../modules/filter-pane/actions/filter-pane-actions";
 import loginService from "../../modules/login/service/login-service";
-
-import "./header.css";
-import AuthControl from "../../modules/authorization-controls/authorization-controls";
-import { HOME_ROUTE } from "../app.constants";
 import NavButton from "../../modules/navigation/nav-button/nav-button";
+import NavigationContainer from "../../modules/navigation/navigation-container";
 import { PROGRAMS } from "../../modules/programs/actions/programs-actions.constants";
 import { PROGRAMS_ROUTE } from "../../modules/programs/programs.constants";
-import { WALLET } from "../../modules/wallet/actions/wallet-actions.constants";
-import { WALLET_ROUTE } from "../../modules/wallet/wallet.constants";
-import gvLogo from "./gv-logo.svg";
-import NavigationContainer from "../../modules/navigation/navigation-container";
+import { HOME_ROUTE } from "../app.constants";
 import Button from "../button/button";
+import FilterIcon from "./filter-icon";
+import gvLogo from "./gv-logo.svg";
 
 const PAGES_WITH_FILTER = {
   [PROGRAMS_ROUTE]: {
     actionType: PROGRAMS,
     getStateData: state => state.programsData
-  },
-  [WALLET_ROUTE]: {
-    actionType: WALLET,
-    getStateData: state => state.walletData
   }
 };
 

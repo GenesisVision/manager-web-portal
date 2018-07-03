@@ -1,22 +1,22 @@
+import "./app.css";
+
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ConnectedRouter } from "react-router-redux";
 import { Provider } from "react-redux";
 import { Route } from "react-router-dom";
-import React, { Component } from "react";
+import { ConnectedRouter } from "react-router-redux";
 
-import AlertMessageList from "../shared/modules/alert-message/components/alert-message-list/alert-message-list";
-import Header from "./header/header";
-import history from "../utils/history";
 import platformActions from "../actions/platform-action";
-import PopupContainer from "../modules/popup/components/popup-container";
 import MobileNavContainer from "../components/mobile-nav/mobile-nav-container";
+import PopupContainer from "../modules/popup/components/popup-container";
+import AlertMessageList from "../shared/modules/alert-message/components/alert-message-list/alert-message-list";
 import store from "../store/index";
-
-import "./app.css";
+import history from "../utils/history";
 import AppRoutes from "./app.routes";
+import Header from "./header/header";
 
 class App extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { fetchPlatformSettings } = this.props;
     fetchPlatformSettings();
   }

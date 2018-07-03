@@ -1,20 +1,18 @@
+import React, { Component } from "react";
 // @flow
 import { connect } from "react-redux";
-import React, { Component } from "react";
 
-import Profile from "./profile/profile";
 import profileActions from "../../actions/profile-actions";
-
+import Profile from "./profile/profile";
 import ProfileModel, { constructFromObject } from "./profile/profile.model";
-
 import {
-  IProfileProps,
   IProfileActions,
-  IProfileFullProps
+  IProfileFullProps,
+  IProfileProps
 } from "./profile/profile.type";
 
 class ProfileContainer extends Component<IProfileFullProps> {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchProfile();
   }
 

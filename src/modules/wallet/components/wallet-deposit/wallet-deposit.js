@@ -1,13 +1,13 @@
-import { connect } from "react-redux";
+import "./wallet-deposit.css";
+
 import copy from "copy-to-clipboard";
-import React from "react";
-
 import QRCode from "qrcode.react";
+import React from "react";
+import { connect } from "react-redux";
 
+import Button from "../../../../components/button/button";
 import { alertMessageActions } from "../../../../shared/modules/alert-message/actions/alert-message-actions";
 import walletActions from "../../actions/wallet-actions";
-
-import "./wallet-deposit.css";
 
 const WalletDeposit = ({
   isPending,
@@ -37,9 +37,7 @@ const WalletDeposit = ({
       </div>
       <h2>Your wallet address</h2>
       <p>{address.address}</p>
-      <button className="btn btn-primary" onClick={handleCopyAddress}>
-        Copy
-      </button>
+      <Button label="Copy" primary onClick={handleCopyAddress} />
     </div>
   );
 };

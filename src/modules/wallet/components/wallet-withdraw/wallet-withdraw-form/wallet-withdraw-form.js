@@ -1,10 +1,11 @@
-import { withFormik, Field } from "formik";
+import "./wallet-withdraw-form.css";
+
+import { Field, withFormik } from "formik";
 import React from "react";
 
+import Button from "../../../../../components/button/button";
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
-
-import "./wallet-withdraw-form.css";
 import walletWithdrawValidationSchema from "./wallet-withdraw-form.validators";
 
 const WalletWithdrawForm = ({
@@ -32,13 +33,12 @@ const WalletWithdrawForm = ({
           component={InputText}
         />
         <FormError error={error} />
-        <button
+        <Button
+          label="Withdraw"
           type="submit"
           disabled={isSubmitting}
-          className="btn btn-primary"
-        >
-          Withdraw
-        </button>
+          primary
+        />
       </form>
     </div>
   );

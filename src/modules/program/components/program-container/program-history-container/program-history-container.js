@@ -1,11 +1,11 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
 import programActions from "../../../actions/program-actions";
 import ProgramHistory from "./program-history/program-history";
 
 class TraderHistoryContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchProgramHistory(this.props.programId);
   }
 

@@ -8,5 +8,30 @@ const getFileUrl = id => {
 const uploadFile = file => {
   return SwaggerFileApi.apiFilesUploadPost(file).then(response => response.id);
 };
-const filesService = { getFileUrl, uploadFile };
+
+const addLogoSrc = key => data => {
+  const target = data[key];
+
+  if (target === null || target === undefined) {
+    return data;
+  }
+
+  if (Array.isArray(target)) {
+    target.forEach(ip => {
+      ip.logoSrc = getFileUrl(ip.logo);
+    });
+  }
+
+  if (typeof target === "object") {
+    target.logoSrc = getFileUrl(target.logo);
+  }
+
+  if (typeof target === "string") {
+    data.logoSrc = getFileUrl(target);
+  }
+
+  return data;
+};
+
+const filesService = { getFileUrl, uploadFile, addLogoSrc };
 export default filesService;

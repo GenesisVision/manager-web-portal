@@ -1,16 +1,15 @@
-import { connect } from "react-redux";
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import profileActions from "../../actions/profile-actions";
-import ProfileForm from "./profile-form/profile-form";
 import profileFormActions from "../../actions/profile-form-actions";
-
 import ProfileModel, {
   constructFromObject
 } from "../profile-container/profile/profile.model";
+import ProfileForm from "./profile-form/profile-form";
 
 class ProfileFormContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.profile === undefined) {
       this.props.fetchProfile();
     }

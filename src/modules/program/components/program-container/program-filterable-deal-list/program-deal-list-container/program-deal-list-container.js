@@ -1,10 +1,11 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
-import ProgramDealList from "./program-deal-list/trader-deal-list";
+import { connect } from "react-redux";
+
 import programService from "../../../../service/program-service";
+import ProgramDealList from "./program-deal-list/trader-deal-list";
 
 class ProgramDealListContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchProgramDealList(this.props.programId);
   }
 

@@ -1,13 +1,12 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
 import NotFoundPage from "../../../../shared/components/not-found/not-found";
-import programActions from "../../actions/program-settings-actions";
-import ProgramSettingsEditForm from "./program-settings-edit-form/program-settings-edit-form";
 import programSettingsService from "../../service/program-settings-service";
+import ProgramSettingsEditForm from "./program-settings-edit-form/program-settings-edit-form";
 
 class ProgramSettingsEditContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchProgramSettings();
   }
   render() {
@@ -61,7 +60,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   dispatch,
   fetchProgramSettings: programId => {
-    dispatch(programActions.fetchProgramSettings(programId));
+    dispatch(programSettingsService.fetchProgramSettings(programId));
   },
   editProgram: (data, setSubmitting) => {
     dispatch(programSettingsService.editProgram(data)).catch(() => {
@@ -78,12 +77,14 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     ...otherDispatchProps,
     ...ownProps,
     fetchProgramSettings: () => {
-      dispatch(programActions.fetchProgramSettings(programId));
+      dispatch(programSettingsService.fetchProgramSettings(programId));
     },
     editProgram: (data, setSubmitting) => {
-      dispatch(programSettingsService.editProgram(programId, data)).catch(() => {
-        setSubmitting(false);
-      });
+      dispatch(programSettingsService.editProgram(programId, data)).catch(
+        () => {
+          setSubmitting(false);
+        }
+      );
     }
   };
 };

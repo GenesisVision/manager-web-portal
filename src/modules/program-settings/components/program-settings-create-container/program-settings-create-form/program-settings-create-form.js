@@ -1,16 +1,17 @@
-import { translate } from "react-i18next";
-import { withFormik, Field } from "formik";
+import "./program-settings-create-form.css";
+
+import { Field, withFormik } from "formik";
 import moment from "moment";
 import React from "react";
+import { translate } from "react-i18next";
 
+import Button from "../../../../../components/button/button";
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 import GVDatePicker from "../../../../../shared/components/form/gv-datepicker/gv-datepicker";
 import GVSelect from "../../../../../shared/components/form/gv-select/gv-select";
 import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
-
-import "./program-settings-create-form.css";
 import managerAvatar from "../../../../../shared/media/manager-avatar.png";
 import programSettingsCreateFormValidationSchema from "./program-settings-create-form.validators";
 
@@ -176,14 +177,14 @@ const ProgramCreateForm = ({
         </div>
       </div>
       <FormError error={error} />
-      <button
+      <Button
+        label="Create Program"
         type="submit"
         id="createProgramSubmit"
         disabled={isSubmitting}
-        className="btn btn-primary create-program-form__submit"
-      >
-        Create Program
-      </button>
+        primary
+        className="create-program-form__submit"
+      />
     </form>
   );
 };

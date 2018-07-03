@@ -1,26 +1,41 @@
+@import "styles/_colors.scss";
+@import "styles/_breakpoint.scss";
+
 .days-left-widget {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-}
 
-.days-left-widget--row {
-  flex-direction: row;
-}
+  &__text {
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
 
-.days-left-widget--column {
-  flex-direction: column;
-}
+  &__progress {
+    flex: 1;
+    margin: 4px 0;
+    width: 100%;
+  }
 
-.days-left-widget__text {
-  font-size: 0.9em;
-  flex: 1;
-  white-space: nowrap;
-}
+  &--column {
+    flex-direction: column;
 
-.days-left-widget__progress {
-  flex: 1;
-  margin: 0.5rem 0;
-  width: 100%;
+    .days-left-widget__text {
+      order: -1;
+      font-size: 1.17rem;
+    }
+
+    .days-left-widget__progress {
+      margin: 0.5rem;
+    }
+  }
+
+  @include breakpoint-desktop() {
+    &__progress {
+      flex: 1;
+      margin: 1rem;
+      max-width: 122px;
+    }
+  }
 }

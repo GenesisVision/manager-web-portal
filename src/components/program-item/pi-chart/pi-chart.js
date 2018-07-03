@@ -1,17 +1,16 @@
-import React from "react";
+import "./pi-chart.css";
 
+import moment from "moment";
+import React from "react";
 import {
   Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
   LineChart,
-  ReferenceLine
+  ReferenceLine,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis
 } from "recharts";
-import moment from "moment";
-
-import "./pi-chart.css";
 
 const PIChart = ({ data }) => {
   const tooltipWrapperStyle = { opacity: 0.9 };
@@ -26,22 +25,21 @@ const PIChart = ({ data }) => {
           <ReferenceLine y={0} strokeDasharray="5 5" />
           <XAxis
             dataKey="date"
-            tick={false}
             domain={["dataMin", "dataMax"]}
             type="number"
-            axisLine={false}
+            hide
             tickFormatter={date => moment(date).format("MM/DD")}
           />
-          <YAxis dataKey="equity" tickCount={3} axisLine={false} hide/>
+          <YAxis dataKey="equity" axisLine={false} hide />
           <Tooltip
             wrapperStyle={tooltipWrapperStyle}
-            formatter={(value) => (`${value}%`)}
+            formatter={value => `${value}%`}
             labelFormatter={date => moment(date).format("MMMM Do HH:mm")}
           />
           <Line
             type="monotone"
             dataKey="equity"
-            strokeWidth={3}
+            strokeWidth={2}
             dot={false}
             activeDot={{ stroke: "#184f61" }}
             isAnimationActive={false}

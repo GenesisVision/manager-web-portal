@@ -1,18 +1,16 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
-import dashboardActions from "../../../../actions/dashboard-actions";
-import DashboardProgramList from "./dashboard-program-list/dashboard-program-list";
 import popupActions from "../../../../../popup/actions/popup-actions";
-
 import {
   PROGRAM_DEPOSIT_POPUP,
   PROGRAM_WITHDRAW_POPUP
 } from "../../../../../popup/actions/popup-actions.constants";
 import dashboardService from "../../../../service/dashboard-service";
+import DashboardProgramList from "./dashboard-program-list/dashboard-program-list";
 
 class DashboardProgramListContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchDashboardPrograms();
   }
   render() {
@@ -52,15 +50,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchDashboardPrograms: () => {
-    dispatch(dashboardActions.fetchDashboardPrograms());
+    dispatch(dashboardService.fetchDashboardPrograms());
   },
   dispatch
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const { dispatch, ...otherDispatchProps } = dispatchProps;
-  const closeInvestPopup = programId => () => {
-    return dashboardService.updateAfterInvestment(programId);
+  const closeInvestPopup = () => () => {
+    return dashboardService.fetchDashboardPrograms();
   };
 
   return {
@@ -82,7 +80,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
       const traderWithdraw = {
         id: program.id,
         title: program.title,
-        logo: program.logo,
+        logoSrc: program.logoSrc,
         level: program.level,
         startOfPeriod: program.startOfPeriod,
         periodDuration: program.periodDuration,

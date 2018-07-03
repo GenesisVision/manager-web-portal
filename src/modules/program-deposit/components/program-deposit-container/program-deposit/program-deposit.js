@@ -1,16 +1,16 @@
-import { translate } from "react-i18next";
-import { withFormik, Field } from "formik";
+import "./program-deposit.css";
+
+import { Field, withFormik } from "formik";
 import React from "react";
+import { translate } from "react-i18next";
 import Yup from "yup";
 
 import DaysLeftWidget from "../../../../../components/days-left-widget/days-left-widget";
+import TraderAvatar from "../../../../../components/program-avatar/program-avatar";
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
 import PopupButtons from "../../../../popup/components/popup-buttons/popup-buttons";
 import PopupHeader from "../../../../popup/components/popup-header/popup-header";
-import TraderAvatar from "../../../../../components/program-avatar/program-avatar";
-
-import "./program-deposit.css";
 
 const ProgramDeposit = ({
   t,
@@ -33,7 +33,7 @@ const ProgramDeposit = ({
             <div className="program-deposit__trader">
               <div className="trader-deposit__avatar">
                 <TraderAvatar
-                  imgUrl={programDeposit.logo}
+                  url={programDeposit.logoSrc}
                   level={programDeposit.level}
                 />
               </div>

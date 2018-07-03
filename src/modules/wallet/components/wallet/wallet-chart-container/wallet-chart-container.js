@@ -1,11 +1,11 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
-import WalletChart from "./wallet-chart/wallet-chart";
 import walletService from "../../../service/wallet-service";
+import WalletChart from "./wallet-chart/wallet-chart";
 
 class WalletChartContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchWalletChart();
   }
   render() {

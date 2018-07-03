@@ -1,7 +1,9 @@
-import React from "react";
-import moment from "moment";
-
 import "./program-request.css";
+
+import moment from "moment";
+import React from "react";
+
+import Button from "../../../../../../../../components/button/button";
 
 const ProgramRequest = ({ request, currency, cancelRequest }) => {
   const getRequestCurrency = () => {
@@ -25,12 +27,7 @@ const ProgramRequest = ({ request, currency, cancelRequest }) => {
       </div>
       <div className="trader-request__cancel program-request__cell">
         {request.canCancelRequest ? (
-          <button
-            className="gv-btn gv-btn-primary"
-            onClick={cancelRequest(request.id)}
-          >
-            Cancel
-          </button>
+          <Button label="Cancel" primary onClick={cancelRequest(request.id)} />
         ) : null}
       </div>
     </div>

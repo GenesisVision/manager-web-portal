@@ -1,13 +1,21 @@
 import moment from "moment";
 
+import { HOME_ROUTE } from "../../../components/app.constants";
 import { alertMessageActions } from "../../../shared/modules/alert-message/actions/alert-message-actions";
 import filesService from "../../../shared/services/file-service";
 import history from "../../../utils/history";
-import programSettingsActions from "../actions/program-settings-actions";
 import replaceParams from "../../../utils/replace-params";
-
-import { HOME_ROUTE } from "../../../components/app.constants";
 import { PROGRAM_ROUTE } from "../../program/program.constants";
+import programSettingsActions from "../actions/program-settings-actions";
+
+const fetchProgramSettings = programId => dispatch => {
+  return dispatch(
+    programSettingsActions.fetchProgramSettings(
+      programId,
+      filesService.addLogoSrc("investmentProgram")
+    )
+  );
+};
 
 const createProgram = programData => dispatch => {
   const data = {
@@ -72,5 +80,9 @@ const editProgram = (programId, programData) => dispatch => {
     );
 };
 
-const programSettingsService = { createProgram, editProgram };
+const programSettingsService = {
+  createProgram,
+  editProgram,
+  fetchProgramSettings
+};
 export default programSettingsService;

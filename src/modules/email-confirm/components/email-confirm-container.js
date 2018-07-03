@@ -1,11 +1,11 @@
-import { connect } from "react-redux";
 import qs from "qs";
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
 import emailConfirmService from "../service/email-confirm-service";
 
 class EmailConfirmContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     const queryParams = qs.parse(this.props.location.search.slice(1));
     if (queryParams.userId || queryParams.code) {
       this.props.emailConfirm(queryParams.userId, queryParams.code);

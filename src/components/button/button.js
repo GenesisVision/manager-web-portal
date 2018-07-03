@@ -1,12 +1,22 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import "./button.css";
+
 import classnames from "classnames";
 import PropTypes from "prop-types";
-import "./button.css";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
+const GVLink = ({ isExternal, children, href, ...other }) => {
+  const target = isExternal ? "_self" : null;
+  return (
+    <Link to={href} target={target} {...other}>
+      {children}
+    </Link>
+  );
+};
 
 export default class Button extends Component {
   static propTypes = {
-    label: PropTypes.string,
+    label: PropTypes.any,
     className: PropTypes.string,
     disabled: PropTypes.bool,
     fullWidth: PropTypes.bool,
@@ -14,6 +24,7 @@ export default class Button extends Component {
     secondary: PropTypes.bool,
     onClick: PropTypes.func,
     href: PropTypes.string,
+    isExternal: PropTypes.bool,
     icon: PropTypes.element
   };
 
@@ -23,6 +34,7 @@ export default class Button extends Component {
     fullWidth: false,
     primary: false,
     secondary: false,
+    isExternal: false,
     label: null,
     icon: null
   };
@@ -34,10 +46,10 @@ export default class Button extends Component {
       disabled,
       primary,
       secondary,
-      style,
       href,
       onClick,
       fullWidth,
+      isExternal,
       icon,
       ...other
     } = this.props;
@@ -48,15 +60,14 @@ export default class Button extends Component {
       "gv-btn--secondary": secondary
     });
     return href ? (
-      <Link className={cn} to={href} title={label} {...other}>
+      <GVLink isExternal={isExternal} className={cn} href={href} {...other}>
         {label}
-      </Link>
+      </GVLink>
     ) : (
       <button
         disabled={disabled}
         className={cn}
         onClick={onClick}
-        style={style}
         title={label}
         {...other}
       >

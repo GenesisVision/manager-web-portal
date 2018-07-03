@@ -1,6 +1,7 @@
-import { withFormik, Field } from "formik";
+import { Field, withFormik } from "formik";
 import React from "react";
 
+import Button from "../../../../../components/button/button";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
 
 const ProfileForm = ({
@@ -65,22 +66,21 @@ const ProfileForm = ({
 
       <span className="text-danger">{error && <strong>{error}</strong>}</span>
       <div>
-        <button
+        <Button
+          label="Submit"
           type="submit"
           id="editProfileSubmit"
           disabled={isSubmitting}
-          className="btn btn-primary"
-        >
-          Submit
-        </button>
+          primary
+        />
 
-        <button
+        <Button
+          label="Cancel"
           type="button"
-          className="btn btn-default ml-2"
+          className="ml-2"
+          secondary
           onClick={onCancel}
-        >
-          Cancel
-        </button>
+        />
       </div>
     </form>
   );

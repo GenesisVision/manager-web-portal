@@ -1,10 +1,11 @@
-import { withFormik, Field } from "formik";
+import "./reset-password.css";
+
+import { Field, withFormik } from "formik";
 import React from "react";
 
+import Button from "../../../../../components/button/button";
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
-
-import "./reset-password.css";
 import validationSchema from "./reset-password.validators";
 
 const ResetPassword = ({ isSubmitting, handleSubmit, error }) => {
@@ -27,13 +28,7 @@ const ResetPassword = ({ isSubmitting, handleSubmit, error }) => {
           component={InputText}
         />
         <FormError error={error} />
-        <button
-          type="submit"
-          id="resetPasswordSubmit"
-          className="gv-btn gv-btn-primary"
-        >
-          Submit
-        </button>
+        <Button type="submit" label="Submit" id="resetPasswordSubmit" primary />
       </div>
     </form>
   );

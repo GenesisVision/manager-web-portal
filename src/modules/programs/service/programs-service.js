@@ -1,23 +1,20 @@
 import authService from "../../../services/auth-service";
-import filteringActionsFactory from "../../filtering/actions/filtering-actions";
+import clearDataActionFactory from "../../../shared/actions/clear-data.factory";
+import fileServices from "../../../shared/services/file-service";
 import filterPaneActionsFactory from "../../filter-pane/actions/filter-pane-actions";
-import programsActions from "../actions/programs-actions";
-import walletActions from "../../wallet/actions/wallet-actions";
-import walletPaneActions from "../../wallet-pane/actions/wallet-pane-actions";
-
-import {
-  LEVEL_MAX,
-  LEVEL_MIN,
-  PROFIT_PROGRAM_PROCENT_MAX,
-  PROFIT_PROGRAM_PROCENT_MIN
-} from "../programs.constants";
-import * as actionTypes from "../actions/programs-actions.constants";
+import filteringActionsFactory from "../../filtering/actions/filtering-actions";
+import { composeFilteringActionType } from "../../filtering/helpers/filtering-helpers";
+import pagingActionsFactory from "../../paging/actions/paging-actions";
 import {
   calculateSkipAndTake,
   calculateTotalPages
 } from "../../paging/helpers/paging-helpers";
-import filesService from "../../../shared/services/file-service";
-import pagingActionsFactory from "../../paging/actions/paging-actions";
+import programsActions from "../actions/programs-actions";
+import * as actionTypes from "../actions/programs-actions.constants";
+import { composeProgramsFilters } from "./programs-helpers";
+
+const filteringActions = filteringActionsFactory(actionTypes.PROGRAMS);
+const filterPaneActions = filterPaneActionsFactory(actionTypes.PROGRAMS);
 
 const getPrograms = () => (dispatch, getState) => {
   const { paging } = getState().programsData.programs;
@@ -29,35 +26,15 @@ const getPrograms = () => (dispatch, getState) => {
   if (authService.getAuthArg()) {
     data.authorization = authService.getAuthArg();
   }
-  if (filtering.levelMin && filtering.levelMin !== LEVEL_MIN) {
-    data.filter.levelMin = filtering.levelMin;
-  }
-  if (filtering.levelMax && filtering.levelMax !== LEVEL_MAX) {
-    data.filter.levelMax = filtering.levelMax;
-  }
-  if (
-    filtering.profitAvgPercentMin &&
-    filtering.profitAvgPercentMin !== PROFIT_PROGRAM_PROCENT_MIN
-  ) {
-    data.filter.profitAvgPercentMin = filtering.profitAvgPercentMin;
-  }
-  if (
-    filtering.profitAvgPercentMax &&
-    filtering.profitAvgPercentMax !== PROFIT_PROGRAM_PROCENT_MAX
-  ) {
-    data.filter.profitAvgPercentMax = filtering.profitAvgPercentMax;
-  }
-  if (filtering.sorting) {
-    data.filter.sorting = filtering.sorting + filtering.sortingDirection;
-  }
+
+  data.filter = { ...data.filter, ...composeProgramsFilters(filtering) };
 
   const setLogoAndOrder = response => {
     response.investmentPrograms.forEach((x, idx) => {
-      x.logo = filesService.getFileUrl(x.logo);
       x.order = skip + idx + 1;
     });
 
-    return response;
+    return fileServices.addLogoSrc("investmentPrograms")(response);
   };
 
   return dispatch(programsActions.fetchPrograms(data, setLogoAndOrder)).then(
@@ -67,27 +44,6 @@ const getPrograms = () => (dispatch, getState) => {
       return response;
     }
   );
-};
-
-const composeFiltering = filter => {
-  const filteringActions = filteringActionsFactory(actionTypes.PROGRAMS);
-  let filtering = {};
-  switch (filter.name) {
-    case "traderLevel": {
-      filtering.levelMin = filter.value.min;
-      filtering.levelMax = filter.value.max;
-      break;
-    }
-    case "profitAvgPercent": {
-      filtering.profitAvgPercentMin = filter.value.min;
-      filtering.profitAvgPercentMax = filter.value.max;
-      break;
-    }
-    default: {
-      filtering[filter.name] = filter.value;
-    }
-  }
-  return filteringActions.updateFiltering(filtering);
 };
 
 const updateProgramListPaging = paging => {
@@ -100,22 +56,51 @@ const changeProgramListPage = paging => dispatch => {
   dispatch(getPrograms());
 };
 
-const updateFiltering = filter => dispatch => {
-  dispatch(composeFiltering(filter));
+const changeProgramListFilter = filter => dispatch => {
+  dispatch(filteringActions.updateFilter(filter));
+  dispatch(
+    updateProgramListPaging({
+      currentPage: 0
+    })
+  );
+  dispatch(getPrograms());
+};
+
+const clearProgramListFilter = filterName => (dispatch, getState) => {
+  const { filtering } = getState().programsData.programs;
+  const filter = filtering.defaultFilters.find(x => x.name === filterName);
+  dispatch(filteringActions.updateFilter(filter));
+  dispatch(
+    updateProgramListPaging({
+      currentPage: 0
+    })
+  );
+  dispatch(getPrograms());
+};
+
+const clearProgramListFilters = () => dispatch => {
+  dispatch(
+    clearDataActionFactory(
+      composeFilteringActionType(actionTypes.PROGRAMS)
+    ).clearData()
+  );
+  dispatch(
+    updateProgramListPaging({
+      currentPage: 0
+    })
+  );
   dispatch(getPrograms());
 };
 
 const updateAfterInvestment = () => dispatch => {
-  return Promise.all([
-    dispatch(programsActions.getPrograms()),
-    dispatch(walletPaneActions.fetchWalletPaneChart()),
-    dispatch(walletPaneActions.fetchWalletPaneTransactions()),
-    dispatch(walletActions.fetchWallet())
-  ]);
+  return Promise.all([dispatch(getPrograms())]);
+};
+
+const openFilterPane = () => {
+  return filterPaneActions.openFilter();
 };
 
 const closeFilterPane = () => {
-  const filterPaneActions = filterPaneActionsFactory(actionTypes.PROGRAMS);
   return filterPaneActions.closeFilter();
 };
 
@@ -123,7 +108,10 @@ const programsService = {
   getPrograms,
   changeProgramListPage,
   updateAfterInvestment,
+  openFilterPane,
   closeFilterPane,
-  updateFiltering
+  changeProgramListFilter,
+  clearProgramListFilter,
+  clearProgramListFilters
 };
 export default programsService;

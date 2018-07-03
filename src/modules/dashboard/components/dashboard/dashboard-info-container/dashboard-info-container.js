@@ -1,14 +1,14 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
+import FormError from "../../../../../shared/components/form/form-error/form-error";
 import dashboardActions from "../../../actions/dashboard-actions";
 import DashboardCharts from "./dashboard-charts/dashboard-charts";
 import DashboardDescription from "./dashboard-description/dashboard-description";
 import DashboardStatistic from "./dashboard-statistic/dashboard-statistic";
-import FormError from "../../../../../shared/components/form/form-error/form-error";
 
 class DashboardContainer extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchDashboardInfo();
   }
   render() {

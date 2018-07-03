@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
-import { withFormik, Field } from "formik";
-import React from "react";
+import "./login-form.css";
 
+import { Field, withFormik } from "formik";
+import React from "react";
+import { Link } from "react-router-dom";
+
+import Button from "../../../../components/button/button";
 import FormError from "../../../../shared/components/form/form-error/form-error";
 import InputText from "../../../../shared/components/form/input-text/input-text";
-
-import "./login-form.css";
 import { FORGOT_PASSWORD_ROUTE } from "../../../password-reset/password-reset.constants";
 import { REGISTER_ROUTE } from "../../../register/register.constants";
 import validationSchema from "./login-form.validators";
@@ -46,27 +47,30 @@ const LoginForm = ({
         </Link>
         <FormError error={error} />
 
-        <button
+        <Button
+          fullWidth
           type="submit"
           id="loginSubmit"
-          className="gv-btn gv-btn-primary"
+          primary
           disabled={isSubmitting}
-        >
-          Sign in
-        </button>
+          label="Sign in"
+        />
         <div className="login__separator" />
-        <a
+        <Button
+          fullWidth
           href={process.env.REACT_APP_INVESTOR_PORTAL_URL}
-          className="login__btn gv-btn gv-btn-secondary"
-        >
-          Login as Investor
-        </a>
-        <Link
-          to={REGISTER_ROUTE}
-          className="login__btn gv-btn gv-btn-secondary"
-        >
-          Don’t have an account? Sign Up!
-        </Link>
+          className="login__btn"
+          secondary
+          isExternal
+          label="Login as Investor"
+        />
+        <Button
+          href={REGISTER_ROUTE}
+          fullWidth
+          secondary
+          className="login__btn"
+          label="Don’t have an account? Sign Up!"
+        />
       </div>
     </form>
   );

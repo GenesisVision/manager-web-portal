@@ -1,10 +1,11 @@
-import { withFormik, Field } from "formik";
+import "./forgot-password.css";
+
+import { Field, withFormik } from "formik";
 import React from "react";
 
+import Button from "../../../../../components/button/button";
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
-
-import "./forgot-password.css";
 import validationSchema from "./forgot-password.validators";
 
 const ForgotPasswordForm = ({ values, isSubmitting, handleSubmit, error }) => {
@@ -20,14 +21,13 @@ const ForgotPasswordForm = ({ values, isSubmitting, handleSubmit, error }) => {
           component={InputText}
         />
         <FormError error={error} />
-        <button
+        <Button
+          label="Submit"
           type="submit"
           id="forgotPasswordSubmit"
-          className="gv-btn gv-btn-primary"
+          secondary
           disabled={isSubmitting}
-        >
-          Submit
-        </button>
+        />
       </div>
     </form>
   );

@@ -1,21 +1,23 @@
+import "./program-filterable-list.css";
+
 import React from "react";
 
+import ProgramActiveFilterListContainer from "./program-active-filter-list-container/program-active-filter-list-container";
 import ProgramListContainer from "./program-list-container/program-list-container";
 import ProgramListFilterContainer from "./program-list-filter-container/program-list-filter-container";
 import ProgramListPagingContainer from "./program-list-paging-container/program-list-paging-container";
-import WalletPaneContainer from "../../../wallet-pane/components/wallet-pane-container/wallet-pane-container";
 
 const ProgramFilterableList = () => {
   return (
-    <div>
-      <ProgramListFilterContainer />
-      <div className="wallet-pane-container">
-        <div className="wallet-pane-container__component">
-          <ProgramListContainer />
-          <ProgramListPagingContainer />
+    <div className="program-filterable-list">
+      <div className="program-filterable-list__wrapper">
+        <div className="program-filterable-list__header">
+          <ProgramActiveFilterListContainer />
         </div>
-        <WalletPaneContainer />
+        <ProgramListContainer />
+        <ProgramListPagingContainer />
       </div>
+      <ProgramListFilterContainer />
     </div>
   );
 };

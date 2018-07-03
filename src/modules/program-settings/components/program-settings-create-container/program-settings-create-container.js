@@ -1,12 +1,12 @@
-import { connect } from "react-redux";
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import programActions from "../../actions/program-settings-actions";
-import ProgramCreateForm from "./program-settings-create-form/program-settings-create-form";
 import programSettingsSevice from "../../service/program-settings-service";
+import ProgramCreateForm from "./program-settings-create-form/program-settings-create-form";
 
 class ProgramSettingsCreateContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchProgramForm();
   }
   render() {

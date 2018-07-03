@@ -1,11 +1,11 @@
-import { connect } from "react-redux";
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
-import ProgramRequestList from "./program-request-list/program-request-list";
 import programService from "../../../../service/program-service";
+import ProgramRequestList from "./program-request-list/program-request-list";
 
 class ProgramRequestListContainer extends PureComponent {
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate() {
     const {
       isOwnProgram,
       isPending,
@@ -13,7 +13,7 @@ class ProgramRequestListContainer extends PureComponent {
       errorMessage,
       programId,
       fetchTraderRequests
-    } = nextProps;
+    } = this.props;
     if (isOwnProgram && !isPending && !errorMessage && !programRequests) {
       fetchTraderRequests(programId);
     }

@@ -1,30 +1,16 @@
-import authService from "../../../services/auth-service";
-import filesService from "../../../shared/services/file-service";
 import SwaggerManagerApi from "../../../services/api-client/swagger-manager-api";
-
-import * as actionTypes from "./dashboard-actions.constants";
+import authService from "../../../services/auth-service";
 import filteringActionsFactory from "../../filtering/actions/filtering-actions";
+import * as actionTypes from "./dashboard-actions.constants";
 
-const fetchDashboardPrograms = () => (dispatch, getState) => {
-  const { filtering } = getState().dashboardData.programs;
-  let filter = {};
-  if (filtering.type) {
-    filter.type = filtering.type;
-  }
-
-  return dispatch({
+const fetchDashboardPrograms = (filter, onResolve = data => data) => {
+  return {
     type: actionTypes.DASHBOARD_PROGRAMS,
     payload: SwaggerManagerApi.apiManagerDashboardProgramsPost(
       authService.getAuthArg(),
       { filter }
-    ).then(response => {
-      response.investmentPrograms.forEach(x => {
-        x.logo = filesService.getFileUrl(x.logo);
-      });
-
-      return response;
-    })
-  });
+    ).then(onResolve)
+  };
 };
 
 const fetchDashboardInfo = () => {
@@ -36,17 +22,15 @@ const fetchDashboardInfo = () => {
   };
 };
 
-const updateFiltering = filter => dispatch => {
-  dispatch(updateWalletTransactionsFiltering(filter));
-  dispatch(fetchDashboardPrograms());
-};
-
-const updateWalletTransactionsFiltering = filter => {
+const dashboardFiltering = filter => {
   const filteringActions = filteringActionsFactory(
     actionTypes.DASHBOARD_PROGRAMS
   );
+  return filteringActions.updateFilter(filter);
+};
 
-  return filteringActions.updateFiltering(filter);
+const updateFiltering = filter => dispatch => {
+  dispatch(dashboardFiltering(filter));
 };
 
 const dashboardActions = {

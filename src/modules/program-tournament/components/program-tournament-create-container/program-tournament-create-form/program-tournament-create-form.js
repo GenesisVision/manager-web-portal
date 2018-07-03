@@ -1,13 +1,14 @@
-import { translate } from "react-i18next";
-import { withFormik, Field } from "formik";
-import React from "react";
+import "./program-tournament-create-form.css";
 
+import { Field, withFormik } from "formik";
+import React from "react";
+import { translate } from "react-i18next";
+
+import Button from "../../../../../components/button/button";
 import FormError from "../../../../../shared/components/form/form-error/form-error";
 import GVTextarea from "../../../../../shared/components/form/gv-textarea/gv-textarea";
 import InputFile from "../../../../../shared/components/form/input-file/input-file";
 import InputText from "../../../../../shared/components/form/input-text/input-text";
-
-import "./program-tournament-create-form.css";
 import managerAvatar from "../../../../../shared/media/manager-avatar.png";
 import validateSchema from "./program-tournament-create-form.validators";
 
@@ -123,14 +124,14 @@ const ProgramTournamentCreateForm = ({
         </div>
       </div>
       <FormError error={error} />
-      <button
+      <Button
+        label="Create Tournament Account"
         type="submit"
         id="tournamentFormSubmit"
         disabled={isSubmitting}
-        className="btn btn-primary create-program-form__submit tournament-form__submit"
-      >
-        Create Tournament Account
-      </button>
+        primary
+        className="create-program-form__submit tournament-form__submit"
+      />
     </form>
   );
 };
@@ -140,7 +141,6 @@ export default translate()(
     displayName: "tournamentForm",
     mapPropsToValues: () => ({
       logo: {
-        src: managerAvatar,
         filename: "image.png",
         filetype: "image/png",
         cropped: null
