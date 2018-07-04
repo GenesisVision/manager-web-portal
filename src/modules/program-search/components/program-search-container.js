@@ -39,7 +39,7 @@ const ProgramSearch = ({
     >
       <Button
         secondary
-        className="program-search__open header__button"
+        className="program-search__open header__button h-button "
         label={<i className="fas fa-search" title="Search" />}
         onClick={openSearchBar}
       />
