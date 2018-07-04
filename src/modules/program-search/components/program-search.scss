@@ -1,4 +1,5 @@
 @import "styles/_breakpoint.scss";
+@import "styles/_colors.scss";
 
 .program-search-wrapper {
   flex: 1;
@@ -6,7 +7,7 @@
   justify-content: flex-end;
 
   &:not(:last-child) {
-    padding-right: 0.5rem;
+    padding-right: 1rem;
   }
   .program-search {
     position: relative;
@@ -31,7 +32,14 @@
 
     &__loading-bar {
       left: 0;
-      bottom: -23px;
+      bottom: -20px;
+      background: $main-color;
+      background: linear-gradient(
+        to right,
+        transparent 1%,
+        $alternate-color 98%,
+        transparent
+      ) !important;
     }
   }
 
@@ -42,7 +50,7 @@
       left: 0;
       width: 100%;
       height: 50px;
-      background: white;
+      background: $main-color;
       align-items: center;
     }
 
@@ -53,7 +61,7 @@
       }
 
       @include media-breakpoint-phone() {
-        min-width: calc(100% - 65px);
+        min-width: calc(100% - 92px);
       }
 
       &__open {
@@ -65,7 +73,7 @@
       &__close {
         @include media-breakpoint-tablet() {
           display: inline-block;
-          margin-right: 0.5rem;
+          margin: 0 1rem;
         }
       }
     }

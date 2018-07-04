@@ -69,18 +69,6 @@
   display: flex;
 }
 
-.header__filtering {
-  display: flex;
-  align-items: center;
-}
-
-.header__link {
-  color: $text-color;
-  &:hover {
-    color: $text-color-light;
-  }
-}
-
 .header__loading-bar {
   position: absolute;
   height: 3px;
@@ -144,20 +132,6 @@
   color: $text-color;
   &:hover {
     color: $text-color-light;
-  }
-}
-
-.header__loading-bar {
-  position: absolute;
-  height: 3px;
-  background: $main-color;
-  background: linear-gradient(to right, $main-color, $alternate-color);
-}
-
-.nav-link__profile {
-  color: $text-color !important;
-  &:hover {
-    color: $text-color-light !important;
   }
 }
 
