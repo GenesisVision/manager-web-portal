@@ -1,8 +1,8 @@
 import authService from "../../../services/auth-service";
 import clearDataActionFactory from "../../../shared/actions/clear-data.factory";
+import fileServices from "../../../shared/services/file-service";
 import programSearchActions from "../actions/program-search-actions";
 import { PROGRAM_SEARCH } from "../actions/program-search-actions.constants";
-
 const getPrograms = query => (dispatch, getState) => {
   const [skip, take, sorting, name] = [0, 10, "ByTitleAsc", query];
 
@@ -19,7 +19,7 @@ const getPrograms = query => (dispatch, getState) => {
       x.order = skip + idx + 1;
     });
 
-    return response;
+    return fileServices.addLogoSrc("investmentPrograms")(response);
   };
 
   return dispatch(programSearchActions.fetchPrograms(data, setLogoAndOrder));

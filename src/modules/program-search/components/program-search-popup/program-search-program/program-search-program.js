@@ -21,7 +21,7 @@ const ProgramSearchProgram = ({ t, program, onProgramClick }) => {
       onClick={onProgramClick}
     >
       <ProgramAvatar
-        url={program.logo}
+        url={program.logoSrc}
         level={program.level}
         className="program-search-program__avatar"
       />
