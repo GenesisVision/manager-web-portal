@@ -5,6 +5,7 @@
   max-width: 300px;
   @include media-breakpoint-desktop() {
     position: fixed;
+    top: 68px;
     bottom: 0;
     right: 0;
     overflow-y: auto;
