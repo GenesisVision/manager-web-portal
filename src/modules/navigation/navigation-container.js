@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
-import Navigation from "./navigation";
+
 import loginService from "../../modules/login/service/login-service";
+import Navigation from "./navigation";
 
 const mapStateToProps = state => ({
   isAuthenticated: state.authData.isAuthenticated
@@ -12,8 +13,8 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const NavigationContainer = connect(mapStateToProps, mapDispatchToProps)(
-  Navigation
-);
+const NavigationContainer = connect(mapStateToProps, mapDispatchToProps, null, {
+  pure: false
+})(Navigation);
 
 export default NavigationContainer;

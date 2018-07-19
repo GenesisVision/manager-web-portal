@@ -16,6 +16,12 @@ class TraderDetailContainer extends PureComponent {
     this.props.fetchProgramDetail(this.props.programId);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.programId !== this.props.programId) {
+      this.props.fetchProgramDetail(this.props.programId);
+    }
+  }
+
   render() {
     const {
       isAuthenticated,

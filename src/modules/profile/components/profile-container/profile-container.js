@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// @flow
 import { connect } from "react-redux";
 
 import profileActions from "../../actions/profile-actions";
