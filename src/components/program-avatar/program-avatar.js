@@ -4,6 +4,8 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
+import avatarStub from "../../shared/media/manager-avatar.png";
+
 const ProgramAvatar = ({ url, level, isTournament, className }) => {
   return (
     <div className={classnames("program-avatar", className)}>
@@ -12,7 +14,11 @@ const ProgramAvatar = ({ url, level, isTournament, className }) => {
           <i className="fas fa-trophy" />
         </span>
       )}
-      <img className="program-avatar__image" src={url} alt="Trader Avatar" />
+      <img
+        className="program-avatar__image"
+        src={url || avatarStub}
+        alt="Trader Avatar"
+      />
       <span className="program-avatar__label program-avatar__label--level">
         {level}
       </span>
