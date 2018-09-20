@@ -7,7 +7,7 @@ const forgotPassword = fpForm => {
   const model = { ...fpForm };
   return {
     type: FORGOT_PASSWORD,
-    payload: AuthApi.v10AuthPasswordForgotInvestorPost({ model })
+    payload: AuthApi.v10AuthPasswordForgotManagerPost({ model })
   };
 };
 

@@ -5,7 +5,7 @@ export const RESEND_CONFIRMATION_LINK = "RESEND_CONFIRMATION_LINK";
 
 export const signUpUser = model => ({
   type: SIGN_UP,
-  payload: authApi.v10AuthSignupInvestorPost({ model })
+  payload: authApi.v10AuthSignupManagerPost({ model })
 });
 
 export const resendConfirmationLink = model => ({

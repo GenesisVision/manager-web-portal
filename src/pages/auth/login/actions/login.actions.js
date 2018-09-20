@@ -7,7 +7,7 @@ export const RECOVERY_CODE = "recoveryCode";
 
 export const loginUser = loginData => ({
   type: LOGIN,
-  payload: authApi.v10AuthSigninInvestorPost({
+  payload: authApi.v10AuthSigninManagerPost({
     model: loginData
   })
 });
