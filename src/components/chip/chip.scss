@@ -1,0 +1,36 @@
+@import "styles/_colors.scss";
+
+.chip {
+  display: inline-flex;
+  border-radius: 8px;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  background-color: $secondary-background-color;
+
+  &--negative {
+    color: $negative-color;
+    background-color: rgba($negative-color, 0.1);
+  }
+
+  &--positive {
+    color: $primary-color;
+    background-color: rgba($primary-color, 0.1);
+  }
+
+  &--pointer {
+    cursor: pointer;
+  }
+
+  &--rounded {
+    border-radius: 2rem;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+  }
+}

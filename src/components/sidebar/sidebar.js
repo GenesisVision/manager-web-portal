@@ -1,43 +1,32 @@
-import { NavLink } from "react-router-dom";
-import React from "react";
+import "./sidebar.scss";
 
-import "./sidebar.css";
-import { DASHBOARD_ROUTE } from "../../modules/dashboard/dashboard.constants";
-import { PROGRAMS_ROUTE } from "../../modules/programs/programs.constants";
-import { WALLET_ROUTE } from "../../modules/wallet/wallet.constants";
-//import { PROFILE_ROUTE } from "../../modules/profile/profile.constants";
-import {
-  DashboardIcon,
-  //SettingsIcon,
-  WalletIcon,
-  TradersIcon
-} from "./media/icons.js";
+import * as classnames from "classnames";
+import Modal from "components/modal/modal";
+import PropTypes from "prop-types";
+import React, { Component } from "react";
 
-const Sidebar = () => {
-  return (
-    <div className="sidebar">
-      <div className="nav-item sidebar__item">
-        <NavLink className="nav-link" title="Programs" to={PROGRAMS_ROUTE}>
-          <TradersIcon />
-        </NavLink>
-      </div>
-      <div className="nav-item sidebar__item">
-        <NavLink className="nav-link" title="Dashboard" to={DASHBOARD_ROUTE}>
-          <DashboardIcon />
-        </NavLink>
-      </div>
-      <div className="nav-item sidebar__item">
-        <NavLink className="nav-link" title="Wallet" to={WALLET_ROUTE}>
-          <WalletIcon />
-        </NavLink>
-      </div>
-      <div className="nav-item sidebar__item">
-        {/* <NavLink className="nav-link" title="Profile" to={PROFILE_ROUTE}>
-          <SettingsIcon />
-        </NavLink> */}
-      </div>
-    </div>
-  );
+class Sidebar extends Component {
+  render() {
+    return (
+      <Modal open={this.props.open} onClose={this.props.onClose}>
+        <div
+          className={classnames("sidebar", `sidebar--${this.props.position}`)}
+        >
+          {this.props.children}
+        </div>
+      </Modal>
+    );
+  }
+}
+
+Sidebar.propTypes = {
+  open: PropTypes.bool,
+  onClose: PropTypes.func,
+  position: PropTypes.oneOf(["left", "right"])
+};
+
+Sidebar.defaultProps = {
+  position: "left"
 };
 
 export default Sidebar;

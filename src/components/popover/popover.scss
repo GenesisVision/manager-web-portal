@@ -1,0 +1,11 @@
+@import "styles/_colors.scss";
+@import "styles/_constants.scss";
+.popover {
+  position: absolute;
+  background-color: #273642;
+  border-radius: $border-radius;
+  overflow: auto;
+
+  max-height: calc(100vh - 96px);
+  max-width: calc(100vw - 20px);
+}
