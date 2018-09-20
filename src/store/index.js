@@ -4,9 +4,9 @@ import { applyMiddleware, compose, createStore } from "redux";
 import debounceMiddleware from "redux-debounced";
 import promiseMiddleware from "redux-promise-middleware";
 import thunk from "redux-thunk";
+import authApi from "services/api-client/auth-api";
 
 import rootReducer from "../reducers";
-import SwaggerManagerApi from "../services/api-client/swagger-manager-api";
 import authService from "../services/auth-service";
 import apiErrorHandlerMiddleware from "../shared/middlewares/api-error-handler-middleware/api-error-handler-middleware";
 import clearOnceMetaMiddleware from "../shared/middlewares/clear-once-meta-middleware/clear-once-meta-middleware";
@@ -34,7 +34,7 @@ const middleware = [
   thunk,
   refreshTokenMiddleware(
     authService,
-    SwaggerManagerApi.apiManagerAuthUpdateTokenGet.bind(SwaggerManagerApi)
+    authApi.v10AuthTokenUpdatePost.bind(authApi)
   ),
   promiseMiddleware({ promiseTypeSuffixes: suffixes }),
   apiErrorHandlerMiddleware({ failureSuffix: failureSuffix }),

@@ -1,5 +1,5 @@
+import { UPDATE_TOKEN } from "../actions/auth-actions";
 import authService from "../services/auth-service";
-import {UPDATE_TOKEN} from "../actions/auth-actions";
 
 const initialState = {
   isAuthenticated: authService.isAuthenticated(),
