@@ -1,20 +1,66 @@
+@import "styles/_colors.scss";
+@import "styles/_breakpoint.scss";
+
 .create-program-broker {
   margin-top: 50px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
+  align-items: flex-start;
 
   &__list {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-content: flex-start;
     flex-wrap: wrap;
-    width: auto;
-    max-width: 640px;
+    width: 59%;
+    margin-right: 2%;
+    min-width: 324px;
   }
 
   &__description {
-    width: auto;
-    max-width: 300px;
+    box-sizing: border-box;
+    width: 30%;
+    min-width: 300px;
+    padding: 40px 32px;
+    margin-bottom: 20px;
+
+    &-heading {
+      color: $text-light-color;
+      font-weight: 600;
+    }
+  }
+
+  &__info-title {
+    margin-top: 32px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: $short-statistic-subheading-color;
+    letter-spacing: 0.4px;
+  }
+
+  &__info-text {
+    font-size: 14px;
+    line-height: 1.9;
+    letter-spacing: 0.2px;
+    color: $text-light-color;
+  }
+
+  @include media-breakpoint-landscape-phone() {
+    flex-direction: row;
+  }
+
+  @include media-breakpoint-tablet() {
+    &__list {
+      margin-right: 4%;
+    }
+  }
+
+  @include media-breakpoint-desktop() {
+    &__list {
+      min-width: 352px;
+      margin-right: 6%;
+    }
   }
 }

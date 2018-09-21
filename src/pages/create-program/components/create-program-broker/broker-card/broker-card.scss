@@ -1,15 +1,17 @@
 @import "styles/_colors.scss";
+@import "styles/_breakpoint.scss";
 
 .broker-card {
   box-sizing: border-box;
-  width: 134px;
-  height: 134px;
+  width: 137px;
+  height: 137px;
   border-radius: 10px;
   background-color: transparent;
   border: 1px solid $panel-background-color;
   margin-right: 25px;
   margin-bottom: 25px;
   position: relative;
+  cursor: pointer;
 
   &--active {
     background-color: $panel-background-color;
@@ -28,5 +30,11 @@
     content: "&#10004;";
     top: -8px;
     right: -8px;
+  }
+
+  @include media-breakpoint-desktop() {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
   }
 }
