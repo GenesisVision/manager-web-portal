@@ -1,6 +1,32 @@
+@import "styles/_colors.scss";
+
 .broker-card {
-  width: 300px;
-  height: 300px;
-  border-radius: 15px;
-  color: grey;
+  box-sizing: border-box;
+  width: 134px;
+  height: 134px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 1px solid $panel-background-color;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  position: relative;
+
+  &--active {
+    background-color: $panel-background-color;
+  }
+
+  &__active-mark {
+    display: inline-flex;
+    justify-content: center;
+    line-height: 34px;
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: $primary-color;
+    color: $text-light-color;
+    content: "&#10004;";
+    top: -8px;
+    right: -8px;
+  }
 }

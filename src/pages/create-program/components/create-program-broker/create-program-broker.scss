@@ -1,0 +1,20 @@
+.create-program-broker {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: auto;
+    max-width: 640px;
+  }
+
+  &__description {
+    width: auto;
+    max-width: 300px;
+  }
+}

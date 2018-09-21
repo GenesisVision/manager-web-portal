@@ -229,5 +229,15 @@
       "label": "Has Available Investment",
       "value-pattern": ""
     }
+  },
+  "create-program-page": {
+    "title": "Create Program",
+    "broker-info": {
+      "about": "About",
+      "terms": "Terms",
+      "leverage": "Leverage",
+      "fee": "Fee",
+      "assets": "Assets"
+    }
   }
 }
