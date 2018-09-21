@@ -1,6 +1,7 @@
 import "./create-program-broker.scss";
 
 import Surface from "components/surface/surface";
+import { GVButton } from "gv-react-components";
 import React from "react";
 import { translate } from "react-i18next";
 
@@ -9,7 +10,7 @@ import BrokerCard from "./broker-card/broker-card";
 const CreateProgramBroker = ({
   t,
   brokers,
-  handleGoToSettings,
+  navigateToSettings,
   choosedBroker,
   chooseBroker
 }) => (
@@ -62,6 +63,11 @@ const CreateProgramBroker = ({
         <div className="create-program-broker__info-text">USD, BTC, ETH</div>
       </div>
     </Surface>
+    <div className="create-program-broker__navigation">
+      <GVButton color="primary" type="contained" onClick={navigateToSettings}>
+        {t("buttons.continue")}
+      </GVButton>
+    </div>
   </div>
 );
 

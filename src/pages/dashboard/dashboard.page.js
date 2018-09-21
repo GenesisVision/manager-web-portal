@@ -16,7 +16,7 @@ const DashboardPage = ({ t }) => {
           to={CREATE_PROGRAM_PAGE_ROUTE}
           className="dashboard-page__create-program-btn"
         >
-          <GVButton variant="text" color="primary" type="contained">
+          <GVButton color="primary" type="contained">
             Create Program
           </GVButton>
         </Link>
