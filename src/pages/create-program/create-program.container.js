@@ -60,7 +60,10 @@ class CreateProgramContainer extends Component {
               />
             )}
             {tab === "settings" && (
-              <CreateProgramSettings navigateToBroker={navigateToBroker} />
+              <CreateProgramSettings
+                navigateToBroker={navigateToBroker}
+                broker={choosedBroker}
+              />
             )}
           </div>
         )}

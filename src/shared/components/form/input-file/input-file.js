@@ -1,6 +1,6 @@
 import "cropperjs/dist/cropper.css";
 
-import "./input-file.css";
+import "./input-file.scss";
 
 import classnames from "classnames";
 import React, { PureComponent } from "react";

@@ -232,16 +232,39 @@
   },
   "buttons": {
     "continue": "Continue",
-    "back": "Back"
+    "back": "Back",
+    "create-program": "Create Program"
   },
   "create-program-page": {
     "title": "Create Program",
+    "tabs": {
+      "select-broker": "Select broker",
+      "settings": "Settings"
+    },
     "broker-info": {
       "about": "About",
       "terms": "Terms",
       "leverage": "Leverage",
       "fee": "Fee",
       "assets": "Assets"
+    },
+    "settings": {
+      "main-settings": "Main settings",
+      "fees-settings": "Fees settings",
+      "deposit-details": "Deposit details",
+      "fields": {
+        "name": "Name",
+        "account-type": "Account type",
+        "description": "Description",
+        "brokers-leverage": "Broker's leverage",
+        "period": "Period",
+        "upload-logo": "Upload program logo",
+        "upload-logo-rules": "At least 300 x 300px PNG or JPG file",
+        "entry-fee": "Entry fee",
+        "success-fee": "Success fee",
+        "deposit-amount": "Deposit amount",
+        "available-in-wallet": "Available in wallet"
+      }
     }
   }
 }

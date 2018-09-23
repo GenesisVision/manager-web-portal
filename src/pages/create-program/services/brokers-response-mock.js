@@ -17,7 +17,7 @@ export const brokersResponseDataMock = {
           storeName: "string",
           host: "string",
           type: "Undefined",
-          leverages: [0]
+          leverages: [1, 2, 3, 5, 10, 16]
         }
       ]
     },
