@@ -1,6 +1,8 @@
 @import "styles/_colors.scss";
 
 .create-program-settings {
+  margin-top: 60px;
+
   &__form {
     color: $text-light-color;
   }
@@ -9,6 +11,7 @@
     text-transform: uppercase;
     font-weight: 600;
     font-size: 13px;
+    letter-spacing: 0.4px;
 
     margin-bottom: 16px;
     margin-top: 16px;
@@ -21,13 +24,17 @@
   &__fill-block {
     padding-left: 87px;
 
-    padding-top: 10px;
+    padding-top: 16px;
     padding-bottom: 60px;
 
     &--with-border {
-      border-left: 2px solid $short-statistic-subheading-color;
+      border-left: 2px solid $secondary-color;
       margin-left: 8px;
       padding-left: 76px;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
     }
   }
 
@@ -39,7 +46,76 @@
     }
   }
 
+  &__logo-title {
+    margin-top: 44px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+  }
+
+  &__logo-notice {
+    font-size: 12px;
+    color: $short-statistic-subheading-color;
+    letter-spacing: 0.2px;
+  }
+
+  &__logo-section {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__image {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+
+    &-info {
+      margin-left: 40px;
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    &-title {
+      margin-bottom: 8px;
+    }
+
+    &-author {
+      color: $primary-color;
+    }
+  }
+
+  &__available-amount {
+    font-size: 13px;
+    margin-top: 10px;
+    letter-spacing: 0.4px;
+
+    &-value {
+      color: $accent-color;
+      margin-right: 8px;
+      margin-left: 4px;
+    }
+
+    & .icon--refresh {
+      position: relative;
+      top: 6px;
+      cursor: pointer;
+    }
+  }
+
+  & input[name="depositAmount"] {
+    font-size: 24px;
+    letter-spacing: 0.4px;
+  }
+
+  & .gv-text-field__wrapper {
+    margin: 0 24px 0 0;
+  }
+
   &__navigation {
     margin-top: 80px;
+    margin-left: 84px;
+    margin-bottom: 40px;
   }
 }

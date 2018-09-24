@@ -1,6 +1,8 @@
 import { GVTab, GVTabs } from "gv-react-components";
 import React, { Component } from "react";
 import { translate } from "react-i18next";
+import { connect } from "react-redux";
+import { bindActionCreators, compose } from "redux";
 
 import CreateProgramBroker from "./components/create-program-broker/create-program-broker";
 import CreateProgramSettings from "./components/create-program-settings/create-program-settings";
@@ -40,9 +42,22 @@ class CreateProgramContainer extends Component {
     this.setState({ tab: "settings" });
   };
 
+  handleSubmit = (values, setSubmitting) => {
+    const { service } = this.props;
+    const tradingServerId = this.state.choosedBroker.servers[0].id;
+
+    service.createProgram({ ...values, tradingServerId }, setSubmitting);
+  };
+
   render() {
     const { tab, choosedBroker, isPending, brokers } = this.state;
-    const { navigateToSettings, navigateToBroker, chooseBroker } = this;
+    const {
+      navigateToSettings,
+      navigateToBroker,
+      chooseBroker,
+      handleSubmit
+    } = this;
+    const { headerData, service } = this.props;
     return (
       <div className="create-program-container">
         <GVTabs value={tab}>
@@ -59,12 +74,28 @@ class CreateProgramContainer extends Component {
                 chooseBroker={chooseBroker}
               />
             )}
-            {tab === "settings" && (
-              <CreateProgramSettings
-                navigateToBroker={navigateToBroker}
-                broker={choosedBroker}
-              />
-            )}
+            {/* {tab === "settings" &&
+              headerData && (
+                <CreateProgramSettings
+                  navigateToBroker={navigateToBroker}
+                  broker={choosedBroker}
+                  balance={headerData.totalBalanceGvt}
+                  updateBalance={fetchProfileHeaderInfo}
+                  onSubmit={handleSubmit}
+                  author={headerData && headerData.name}
+                />
+              )} */}
+            {tab === "settings" &&
+              true && (
+                <CreateProgramSettings
+                  navigateToBroker={navigateToBroker}
+                  broker={choosedBroker}
+                  balance={121}
+                  updateBalance={service.fetchBalance}
+                  onSubmit={handleSubmit}
+                  author={headerData && headerData.name}
+                />
+              )}
           </div>
         )}
       </div>
@@ -72,4 +103,17 @@ class CreateProgramContainer extends Component {
   }
 }
 
-export default translate()(CreateProgramContainer);
+const mapStateToProps = state => ({
+  headerData: state.profileHeader.info.data
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    service: bindActionCreators(service, dispatch)
+  };
+};
+
+export default compose(
+  translate(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(CreateProgramContainer);

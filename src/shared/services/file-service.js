@@ -1,12 +1,14 @@
-import SwaggerFileApi from "../../services/api-client/swagger-file-api";
+import FileApi from "services/api-client/file-api";
 
 const getFileUrl = id => {
   if (id === null) return "";
   return `${process.env.REACT_APP_API_URL}/api/files/${id}`;
 };
 
-const uploadFile = file => {
-  return SwaggerFileApi.apiFilesUploadPost(file).then(response => response.id);
+const uploadFile = (file, authorization) => {
+  return FileApi.v10FileUploadPost(file, { authorization }).then(
+    response => response.id
+  );
 };
 
 const addLogoSrc = key => data => {

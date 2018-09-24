@@ -10,4 +10,13 @@ const merge = function() {
   return result;
 };
 
-export { merge };
+const allowValuesNumberFormat = ({ from, to }) => values => {
+  const { formattedValue, floatValue } = values;
+  return (
+    formattedValue === "" ||
+    formattedValue === "0." ||
+    (floatValue >= from && floatValue <= to)
+  );
+};
+
+export { merge, allowValuesNumberFormat };
