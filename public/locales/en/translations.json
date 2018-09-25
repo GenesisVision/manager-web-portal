@@ -237,6 +237,8 @@
   },
   "create-program-page": {
     "title": "Create Program",
+    "navigation-back-text":
+      "All data will be deleted. Do you want to continue?",
     "tabs": {
       "select-broker": "Select broker",
       "settings": "Settings"
@@ -255,6 +257,7 @@
       "fields": {
         "name": "Name",
         "account-type": "Account type",
+        "currency": "Currency",
         "description": "Description",
         "brokers-leverage": "Broker's leverage",
         "period": "Period",

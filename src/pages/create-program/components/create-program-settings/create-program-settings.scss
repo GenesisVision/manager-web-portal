@@ -86,9 +86,22 @@
     }
   }
 
+  &__deposit-amount {
+    &-title {
+      font-size: 12px;
+      color: $label-color;
+      margin-bottom: 14px;
+    }
+
+    &-value {
+      font-size: 24px;
+      letter-spacing: 0.4px;
+    }
+  }
+
   &__available-amount {
     font-size: 13px;
-    margin-top: 10px;
+    margin-top: 4px;
     letter-spacing: 0.4px;
 
     &-value {
@@ -104,13 +117,8 @@
     }
   }
 
-  & input[name="depositAmount"] {
-    font-size: 24px;
-    letter-spacing: 0.4px;
-  }
-
   & .gv-text-field__wrapper {
-    margin: 0 24px 0 0;
+    margin: 16px 24px 16px 0;
   }
 
   &__navigation {

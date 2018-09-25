@@ -21,7 +21,7 @@ const percentNumberFormat = allowValuesNumberFormat({ from: 0, to: 100 });
 
 const CreateProgramSettings = ({
   t,
-  navigateToBroker,
+  navigateBack,
   broker,
   balance,
   author,
@@ -40,18 +40,6 @@ const CreateProgramSettings = ({
         {t("create-program-page.settings.main-settings")}
       </div>
       <div className="create-program-settings__fill-block create-program-settings__fill-block--with-border">
-        {/* <Field
-          type="text"
-          name="title"
-          label={t("create-program-page.settings.fields.name")}
-          component={({ field, form }) => (
-            <GVTextField
-              {...field}
-              label={t("create-program-page.settings.fields.deposit-amount")}
-              autoComplete="off"
-            />
-          )}
-        /> */}
         <GVFormikField
           type="text"
           name="title"
@@ -59,61 +47,69 @@ const CreateProgramSettings = ({
           autoComplete="off"
           component={GVTextField}
         />
-        <Field
-          name="currency"
-          label={t("create-program-page.settings.fields.account-type")}
-        >
-          {({ field, form }) => (
-            <Select className={"account-type-select"} {...field}>
-              {PROGRAM_SETTINGS_CURRENCY_OPTIONS.map(currency => {
-                return (
-                  <option value={currency} key={currency}>
-                    {currency}
-                  </option>
-                );
-              })}
-            </Select>
-          )}
-        </Field>
         <GVFormikField
-          type="text"
+          name="currency"
+          component={GVTextField}
+          label={t("create-program-page.settings.fields.currency")}
+          InputComponent={Select}
+        >
+          {PROGRAM_SETTINGS_CURRENCY_OPTIONS.map(currency => {
+            return (
+              <option value={currency} key={currency}>
+                {currency}
+              </option>
+            );
+          })}
+        </GVFormikField>
+        <GVFormikField
+          name="accountType"
+          component={GVTextField}
+          label={t("create-program-page.settings.fields.account-type")}
+          InputComponent={Select}
+        >
+          {PROGRAM_SETTINGS_CURRENCY_OPTIONS.map(currency => {
+            return (
+              <option value={currency} key={currency}>
+                {currency}
+              </option>
+            );
+          })}
+        </GVFormikField>
+        <GVFormikField
+          type="textarea"
           name="description"
           label={t("create-program-page.settings.fields.description")}
-          component={"textarea"}
+          component={GVTextField}
         />
-        <Field
+        <GVFormikField
           name="leverage"
-          label={t("create-program-page.settings.fields.account-type")}
+          component={GVTextField}
+          label={t("create-program-page.settings.fields.brokers-leverage")}
+          InputComponent={Select}
         >
-          {({ field, form }) => (
-            <Select className="leverage-select" {...field}>
-              {broker &&
-                broker.servers[0].leverages.map(leverage => {
-                  return (
-                    <option value={leverage} key={leverage}>
-                      {leverage}
-                    </option>
-                  );
-                })}
-            </Select>
-          )}
-        </Field>
-        <Field
+          {broker &&
+            broker.servers[0].leverages.map(leverage => {
+              return (
+                <option value={leverage} key={leverage}>
+                  {leverage}
+                </option>
+              );
+            })}
+        </GVFormikField>
+        <GVFormikField
           name="periodLength"
-          label={t("create-program-page.settings.fields.account-type")}
+          component={GVTextField}
+          label={t("create-program-page.settings.fields.period")}
+          InputComponent={Select}
         >
-          {({ field, form }) => (
-            <Select className="period-select" {...field}>
-              {PROGRAM_SETTINGS_PERIOD_VALUES.map(period => {
-                return (
-                  <option value={period} key={period}>
-                    {period + (period === 1 ? " day" : " days")}
-                  </option>
-                );
-              })}
-            </Select>
-          )}
-        </Field>
+          {PROGRAM_SETTINGS_PERIOD_VALUES.map(period => {
+            return (
+              <option value={period} key={period}>
+                {period + (period === 1 ? " day" : " days")}
+              </option>
+            );
+          })}
+        </GVFormikField>
         <div className="create-program-settings__logo-title">
           {t("create-program-page.settings.fields.upload-logo")}
         </div>
@@ -129,7 +125,7 @@ const CreateProgramSettings = ({
           />
           <div className="create-program-settings__image-info">
             <div className="create-program-settings__image-title">
-              Cypress Semiconductor
+              {values.title}
             </div>
             <div className="create-program-settings__image-author">
               {author}
@@ -142,19 +138,6 @@ const CreateProgramSettings = ({
         {t("create-program-page.settings.fees-settings")}
       </div>
       <div className="create-program-settings__fill-block create-program-settings__fill-block--with-border">
-        {/* <Field name="entryFee">
-          {({ field, form }) => (
-            <GVTextField
-              {...field}
-              label={t("create-program-page.settings.fields.entry-fee")}
-              suffix=" %"
-              isAllowed={percentNumberFormat}
-              InputComponent={NumberFormat}
-              autoComplete="off"
-              decimalScale={4}
-            />
-          )}
-        </Field> */}
         <GVFormikField
           name="entryFee"
           label={t("create-program-page.settings.fields.entry-fee")}
@@ -165,38 +148,28 @@ const CreateProgramSettings = ({
           autoComplete="off"
           decimalScale={4}
         />
-        <Field name="successFee">
-          {({ field, form }) => (
-            <GVTextField
-              {...field}
-              label={t("create-program-page.settings.fields.success-fee")}
-              suffix=" %"
-              isAllowed={percentNumberFormat}
-              InputComponent={NumberFormat}
-              autoComplete="off"
-              decimalScale={4}
-            />
-          )}
-        </Field>
+        <GVFormikField
+          name="successFee"
+          label={t("create-program-page.settings.fields.success-fee")}
+          suffix=" %"
+          isAllowed={percentNumberFormat}
+          component={GVTextField}
+          InputComponent={NumberFormat}
+          autoComplete="off"
+          decimalScale={4}
+        />
       </div>
       <div className="create-program-settings__subheading">
         <span className="create-program-settings__block-number">03</span>
         {t("create-program-page.settings.deposit-details")}
       </div>
       <div className="create-program-settings__fill-block">
-        <Field name="depositAmount">
-          {({ field, form }) => (
-            <GVTextField
-              {...field}
-              label={t("create-program-page.settings.fields.deposit-amount")}
-              InputComponent={NumberFormat}
-              autoComplete="off"
-              decimalScale={3}
-              suffix=" GVT"
-              thousandSeparator=" "
-            />
-          )}
-        </Field>
+        <div className="create-program-settings__deposit-amount-title">
+          {t("create-program-page.settings.fields.deposit-amount")}
+        </div>
+        <div className="create-program-settings__deposit-amount-value">
+          {100 + " mockGVT"}
+        </div>
         <div className="create-program-settings__available-amount">
           {t("create-program-page.settings.fields.available-in-wallet")}
           <span className="create-program-settings__available-amount-value">
@@ -222,7 +195,7 @@ const CreateProgramSettings = ({
       >
         {t("buttons.create-program")}
       </GVButton>
-      <GVButton variant="text" onClick={navigateToBroker}>
+      <GVButton variant="text" onClick={navigateBack}>
         &larr; {t("buttons.back")}
       </GVButton>
     </div>
@@ -233,22 +206,22 @@ export default translate()(
   withFormik({
     displayName: "CreateProgramSettingsForm",
     mapPropsToValues: () => ({
-      title: "My first company",
+      title: "My first company2",
       currency: "BTC",
       description: "string",
-      periodLength: 5,
-      leverage: 4,
+      accountType: "BTC",
+      periodLength: "5 days",
+      leverage: "10",
       logo: {
         src: managerAvatar,
         filename: "image.png",
         filetype: "image/png",
         cropped: null
       },
-      entryFee: "25 %",
-      successFee: "35 %",
-      tradingServerId: "string",
-      depositAmount: "",
-      stopOutLevel: 0
+      entryFee: "",
+      successFee: "",
+      tradingServerId: "1952cc62-38cd-47ab-85e4-8020cc498618",
+      stopOutLevel: 30
     }),
     // mapPropsToValues: () => ({
     //   title: "",

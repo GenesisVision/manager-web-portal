@@ -4,7 +4,6 @@ import managersApi from "services/api-client/managers-api";
 import authService from "services/auth-service";
 import filesService from "shared/services/file-service";
 
-import * as actions from "../actions/create-program.actions";
 import { brokersResponseDataMock } from "./brokers-response-mock";
 
 // import * as actions from "../actions/wallet.actions";
@@ -20,30 +19,37 @@ export const fetchBrokers = () => {
 export const fetchBalance = () => dispatch =>
   dispatch(fetchProfileHeaderInfo());
 
-export const createProgram = (createProgramData, setSubmitting) => dispatch => {
+export const createProgram = (createProgramData, setSubmitting) => {
+  debugger;
   const authorization = authService.getAuthArg();
-
-  // dispatch(actions.createProgram(authorization, createProgramData));
 
   const data = {
     ...createProgramData
   };
 
-  let promise = Promise.resolve(null);
-  if (data.logo.cropped) {
-    promise = filesService.uploadFile(data.logo.cropped, authorization);
-  }
-  debugger;
-  return promise
-    .then(response => {
-      const data = {
-        ...createProgramData,
-        logo: response
-      };
-      return dispatch(actions.createProgram(authorization, data));
+  managersApi
+    .v10ManagersProgramsCreatePost(authorization, {
+      request: { ...data, logo: "" }
     })
-    .then(response => {
-      // history.push(HOME_ROUTE);
-      return response;
-    });
+    .then(() => setSubmitting(false));
+
+  // let promise = Promise.resolve(null);
+  // if (data.logo.cropped) {
+  //   promise = filesService.uploadFile(data.logo.cropped, authorization);
+  // }
+  // return promise
+  //   .then(response => {
+  //     const data = {
+  //       ...createProgramData,
+  //       logo: response
+  //     };
+  //     return managersApi.v10ManagersProgramsCreatePost(authorization, {
+  //       request: { ...data, logo: "" }
+  //     });
+  //   })
+  //   .then(response => {
+  //     // history.push(HOME_ROUTE);
+  //     setSubmitting(false);
+  //     return response;
+  //   });
 };

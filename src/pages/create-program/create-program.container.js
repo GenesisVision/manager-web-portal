@@ -1,26 +1,29 @@
-import { GVTab, GVTabs } from "gv-react-components";
+import Dialog from "components/dialog/dialog";
+import { GVButton, GVTab, GVTabs } from "gv-react-components";
 import React, { Component } from "react";
 import { translate } from "react-i18next";
 import { connect } from "react-redux";
 import { bindActionCreators, compose } from "redux";
 
 import CreateProgramBroker from "./components/create-program-broker/create-program-broker";
+import CreateProgramNavigationDialog from "./components/create-program-navigation-dialog/create-program-navigation-dialog";
 import CreateProgramSettings from "./components/create-program-settings/create-program-settings";
-import * as service from "./services/create-program.service";
+import * as createProgramService from "./services/create-program.service";
 
 class CreateProgramContainer extends Component {
   state = {
     tab: "settings",
     choosedBroker: null,
     brokers: null,
-    isPending: true
+    isPending: true,
+    isNavigationDialogVisible: false
   };
 
   componentDidMount() {
     // service.fetchBrokers().then(data => {
     //   this.setState({ brokers: data.brokers });
     // });
-    const data = service.fetchBrokers();
+    const data = createProgramService.fetchBrokers();
     this.setState({
       brokers: data.brokers,
       isPending: false,
@@ -33,9 +36,7 @@ class CreateProgramContainer extends Component {
   };
 
   navigateToBroker = () => {
-    if (window.confirm("data will be deleted")) {
-      this.setState({ tab: "broker" });
-    }
+    this.setState({ tab: "broker", isNavigationDialogVisible: false });
   };
 
   navigateToSettings = () => {
@@ -43,21 +44,26 @@ class CreateProgramContainer extends Component {
   };
 
   handleSubmit = (values, setSubmitting) => {
-    const { service } = this.props;
     const tradingServerId = this.state.choosedBroker.servers[0].id;
 
-    service.createProgram({ ...values, tradingServerId }, setSubmitting);
+    createProgramService.createProgram({ ...values }, setSubmitting);
   };
 
   render() {
-    const { tab, choosedBroker, isPending, brokers } = this.state;
+    const {
+      tab,
+      choosedBroker,
+      isPending,
+      brokers,
+      isNavigationDialogVisible
+    } = this.state;
     const {
       navigateToSettings,
       navigateToBroker,
       chooseBroker,
       handleSubmit
     } = this;
-    const { headerData, service } = this.props;
+    const { t, headerData, service } = this.props;
     return (
       <div className="create-program-container">
         <GVTabs value={tab}>
@@ -88,7 +94,9 @@ class CreateProgramContainer extends Component {
             {tab === "settings" &&
               true && (
                 <CreateProgramSettings
-                  navigateToBroker={navigateToBroker}
+                  navigateBack={() => {
+                    this.setState({ isNavigationDialogVisible: true });
+                  }}
                   broker={choosedBroker}
                   balance={121}
                   updateBalance={service.fetchBalance}
@@ -96,6 +104,13 @@ class CreateProgramContainer extends Component {
                   author={headerData && headerData.name}
                 />
               )}
+            <CreateProgramNavigationDialog
+              open={isNavigationDialogVisible}
+              onClose={() =>
+                this.setState({ isNavigationDialogVisible: false })
+              }
+              onConfirm={navigateToBroker}
+            />
           </div>
         )}
       </div>
@@ -109,7 +124,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    service: bindActionCreators(service, dispatch)
+    service: bindActionCreators(createProgramService, dispatch)
   };
 };
 
