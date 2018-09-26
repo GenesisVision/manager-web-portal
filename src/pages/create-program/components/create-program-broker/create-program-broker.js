@@ -7,6 +7,18 @@ import { translate } from "react-i18next";
 
 import BrokerCard from "./broker-card/broker-card";
 
+const getLeverageDescription = ({ leverageMax, leverageMin }) => {
+  let result;
+
+  if (leverageMin === leverageMax) {
+    result = "1:" + leverageMin;
+  } else {
+    result = `1:${leverageMin} - 1:${leverageMax}`;
+  }
+
+  return result;
+};
+
 const CreateProgramBroker = ({
   t,
   brokers,
@@ -48,7 +60,9 @@ const CreateProgramBroker = ({
         <div className="create-program-broker__info-title">
           {t("create-program-page.broker-info.leverage")}
         </div>
-        <div className="create-program-broker__info-text">1:2 - 1:1000</div>
+        <div className="create-program-broker__info-text">
+          {getLeverageDescription(choosedBroker)}
+        </div>
       </div>
       <div className="create-program-broker__fee">
         <div className="create-program-broker__info-title">
@@ -60,7 +74,9 @@ const CreateProgramBroker = ({
         <div className="create-program-broker__info-title">
           {t("create-program-page.broker-info.assets")}
         </div>
-        <div className="create-program-broker__info-text">USD, BTC, ETH</div>
+        <div className="create-program-broker__info-text">
+          {choosedBroker.assets}
+        </div>
       </div>
     </Surface>
     <div className="create-program-broker__navigation">

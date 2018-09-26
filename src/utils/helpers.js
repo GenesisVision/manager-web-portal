@@ -19,4 +19,15 @@ const allowValuesNumberFormat = ({ from, to }) => values => {
   );
 };
 
-export { merge, allowValuesNumberFormat };
+const getNumberWithoutSuffix = str => {
+  let result = null;
+  let coincidence = str.match(/^[^\d]*(\d+)/);
+
+  if (coincidence) {
+    result = Number(coincidence[0]);
+  }
+
+  return result;
+};
+
+export { merge, allowValuesNumberFormat, getNumberWithoutSuffix };

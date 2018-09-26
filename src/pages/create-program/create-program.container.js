@@ -20,14 +20,12 @@ class CreateProgramContainer extends Component {
   };
 
   componentDidMount() {
-    // service.fetchBrokers().then(data => {
-    //   this.setState({ brokers: data.brokers });
-    // });
-    const data = createProgramService.fetchBrokers();
-    this.setState({
-      brokers: data.brokers,
-      isPending: false,
-      choosedBroker: data.brokers[0]
+    createProgramService.fetchBrokers().then(data => {
+      this.setState({
+        brokers: data.brokers,
+        isPending: false,
+        choosedBroker: data.brokers[0]
+      });
     });
   }
 
@@ -44,9 +42,14 @@ class CreateProgramContainer extends Component {
   };
 
   handleSubmit = (values, setSubmitting) => {
-    const tradingServerId = this.state.choosedBroker.servers[0].id;
+    const brokerAccountTypeId = this.state.choosedBroker.accountTypes.find(
+      type => type.type === values.accountType
+    ).id;
 
-    createProgramService.createProgram({ ...values }, setSubmitting);
+    createProgramService.createProgram(
+      { ...values, brokerAccountTypeId },
+      setSubmitting
+    );
   };
 
   render() {
@@ -67,8 +70,14 @@ class CreateProgramContainer extends Component {
     return (
       <div className="create-program-container">
         <GVTabs value={tab}>
-          <GVTab value={"broker"} label="Select broker" />
-          <GVTab value={"settings"} label="Settings" />
+          <GVTab
+            value={"broker"}
+            label={t("create-program-page.tabs.select-broker")}
+          />
+          <GVTab
+            value={"settings"}
+            label={t("create-program-page.tabs.settings")}
+          />
         </GVTabs>
         {!isPending && (
           <div>

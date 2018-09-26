@@ -49,12 +49,12 @@
   &__logo-title {
     margin-top: 44px;
     margin-bottom: 8px;
-    font-size: 14px;
-    letter-spacing: 0.4px;
+    font-size: 13px;
+    letter-spacing: 0.3px;
   }
 
   &__logo-notice {
-    font-size: 12px;
+    font-size: 11px;
     color: $short-statistic-subheading-color;
     letter-spacing: 0.2px;
   }
@@ -117,8 +117,16 @@
     }
   }
 
+  &__row {
+    margin-bottom: 8px;
+  }
+
   & .gv-text-field__wrapper {
     margin: 16px 24px 16px 0;
+  }
+
+  & .gv-text-field {
+    width: 230px;
   }
 
   &__navigation {

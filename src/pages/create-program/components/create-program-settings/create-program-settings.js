@@ -11,13 +11,40 @@ import InputFile from "shared/components/form/input-file/input-file";
 import managerAvatar from "shared/media/manager-avatar.png";
 import { allowValuesNumberFormat } from "utils/helpers";
 
-import {
-  PROGRAM_SETTINGS_CURRENCY_OPTIONS,
-  PROGRAM_SETTINGS_PERIOD_VALUES
-} from "./create-program-settings.constants";
+import { PROGRAM_SETTINGS_PERIOD_VALUES } from "./create-program-settings.constants";
 import createProgramSettingsValidationSchema from "./create-program-settings.validators";
 
 const percentNumberFormat = allowValuesNumberFormat({ from: 0, to: 100 });
+
+const getAccountTypes = broker =>
+  broker.accountTypes.map(accountType => accountType.type);
+
+const getAccountType = (broker, type) =>
+  broker.accountTypes.find(accountType => accountType.type === type);
+
+const getLeverages = (broker, type) => {
+  let result;
+  let accountType = getAccountType(broker, type);
+
+  if (accountType) {
+    result = accountType.leverages;
+  } else {
+    result = [];
+  }
+  return result;
+};
+
+const getCurrencies = (broker, type) => {
+  let result;
+  let accountType = getAccountType(broker, type);
+
+  if (accountType) {
+    result = accountType.currencies;
+  } else {
+    result = [];
+  }
+  return result;
+};
 
 const CreateProgramSettings = ({
   t,
@@ -40,76 +67,86 @@ const CreateProgramSettings = ({
         {t("create-program-page.settings.main-settings")}
       </div>
       <div className="create-program-settings__fill-block create-program-settings__fill-block--with-border">
-        <GVFormikField
-          type="text"
-          name="title"
-          label={t("create-program-page.settings.fields.name")}
-          autoComplete="off"
-          component={GVTextField}
-        />
-        <GVFormikField
-          name="currency"
-          component={GVTextField}
-          label={t("create-program-page.settings.fields.currency")}
-          InputComponent={Select}
-        >
-          {PROGRAM_SETTINGS_CURRENCY_OPTIONS.map(currency => {
-            return (
-              <option value={currency} key={currency}>
-                {currency}
-              </option>
-            );
-          })}
-        </GVFormikField>
-        <GVFormikField
-          name="accountType"
-          component={GVTextField}
-          label={t("create-program-page.settings.fields.account-type")}
-          InputComponent={Select}
-        >
-          {PROGRAM_SETTINGS_CURRENCY_OPTIONS.map(currency => {
-            return (
-              <option value={currency} key={currency}>
-                {currency}
-              </option>
-            );
-          })}
-        </GVFormikField>
-        <GVFormikField
-          type="textarea"
-          name="description"
-          label={t("create-program-page.settings.fields.description")}
-          component={GVTextField}
-        />
-        <GVFormikField
-          name="leverage"
-          component={GVTextField}
-          label={t("create-program-page.settings.fields.brokers-leverage")}
-          InputComponent={Select}
-        >
-          {broker &&
-            broker.servers[0].leverages.map(leverage => {
+        <div className="create-program-settings__row create-program-settings__row--couple-field">
+          <GVFormikField
+            type="text"
+            name="title"
+            label={t("create-program-page.settings.fields.name")}
+            autoComplete="off"
+            component={GVTextField}
+          />
+
+          <GVFormikField
+            name="accountType"
+            component={GVTextField}
+            label={t("create-program-page.settings.fields.account-type")}
+            InputComponent={Select}
+          >
+            {getAccountTypes(broker).map(accountType => {
+              return (
+                <option value={accountType} key={accountType}>
+                  {accountType}
+                </option>
+              );
+            })}
+          </GVFormikField>
+        </div>
+        <div className="create-program-settings__row">
+          <GVFormikField
+            name="currency"
+            component={GVTextField}
+            label={t("create-program-page.settings.fields.currency")}
+            InputComponent={Select}
+            disabled={!values["accountType"]}
+          >
+            {getCurrencies(broker, values["accountType"]).map(currency => {
+              return (
+                <option value={currency} key={currency}>
+                  {currency}
+                </option>
+              );
+            })}
+          </GVFormikField>
+        </div>
+        <div className="create-program-settings__row">
+          <GVFormikField
+            type="textarea"
+            name="description"
+            label={t("create-program-page.settings.fields.description")}
+            component={GVTextField}
+          />
+        </div>
+        <div className="create-program-settings__row create-program-settings__row--couple-field">
+          <GVFormikField
+            name="leverage"
+            component={GVTextField}
+            label={t("create-program-page.settings.fields.brokers-leverage")}
+            InputComponent={Select}
+            disabled={!values["accountType"]}
+          >
+            {getLeverages(broker, values["accountType"]).map(leverage => {
               return (
                 <option value={leverage} key={leverage}>
                   {leverage}
                 </option>
               );
             })}
-        </GVFormikField>
-        <GVFormikField
-          name="periodLength"
-          component={GVTextField}
-          label={t("create-program-page.settings.fields.period")}
-          InputComponent={Select}
-        >
-          {PROGRAM_SETTINGS_PERIOD_VALUES.map(period => {
-            return (
-              <option value={period} key={period}>
-                {period + (period === 1 ? " day" : " days")}
-              </option>
-            );
-          })}
-        </GVFormikField>
+          </GVFormikField>
+          <GVFormikField
+            name="periodLength"
+            component={GVTextField}
+            label={t("create-program-page.settings.fields.period")}
+            InputComponent={Select}
+          >
+            {PROGRAM_SETTINGS_PERIOD_VALUES.map(period => {
+              return (
+                <option value={period} key={period}>
+                  {period + (period === 1 ? " day" : " days")}
+                </option>
+              );
+            })}
+          </GVFormikField>
+        </div>
         <div className="create-program-settings__logo-title">
           {t("create-program-page.settings.fields.upload-logo")}
         </div>
@@ -206,35 +243,40 @@ export default translate()(
   withFormik({
     displayName: "CreateProgramSettingsForm",
     mapPropsToValues: () => ({
-      title: "My first company2",
-      currency: "BTC",
-      description: "string",
-      accountType: "BTC",
-      periodLength: "5 days",
-      leverage: "10",
+      periodLength: "7 days",
+      successFee: "25%",
+      stopOutLevel: 30,
+      leverage: "1",
+      title: "My best company",
+      description: "The best description",
       logo: {
         src: managerAvatar,
         filename: "image.png",
         filetype: "image/png",
         cropped: null
       },
-      entryFee: "",
-      successFee: "",
-      tradingServerId: "1952cc62-38cd-47ab-85e4-8020cc498618",
-      stopOutLevel: 30
+      brokerAccountTypeId: "",
+      entryFee: "25 %",
+      currency: "BTC",
+      accountType: "MetaTrader5"
     }),
     // mapPropsToValues: () => ({
-    //   title: "",
-    //   currency: "",
-    //   description: "",
-    //   periodLength: 0,
-    //   leverage: 0,
-    //   logo: "",
+    //   title: "My first company2",
+    //   currency: "BTC",
+    //   description: "string",
+    //   accountType: "BTC",
+    //   periodLength: "5 days",
+    //   leverage: "10",
+    //   logo: {
+    //     src: managerAvatar,
+    //     filename: "image.png",
+    //     filetype: "image/png",
+    //     cropped: null
+    //   },
     //   entryFee: "",
     //   successFee: "",
-    //   tradingServerId: "",
-    //   depositAmount: "",
-    //   stopOutLevel: 0
+    //   tradingServerId: "ea03ae46-89eb-481b-a02b-94b9fec548f1",
+    //   stopOutLevel: 30
     // }),
     validationSchema: createProgramSettingsValidationSchema,
     handleSubmit: (values, { props, setSubmitting }) => {
