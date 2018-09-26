@@ -67,7 +67,7 @@ const CreateProgramSettings = ({
         {t("create-program-page.settings.main-settings")}
       </div>
       <div className="create-program-settings__fill-block create-program-settings__fill-block--with-border">
-        <div className="create-program-settings__row create-program-settings__row--couple-field">
+        <div className="create-program-settings__row">
           <GVFormikField
             type="text"
             name="title"
@@ -108,13 +108,23 @@ const CreateProgramSettings = ({
             })}
           </GVFormikField>
         </div>
-        <div className="create-program-settings__row">
+        <div className="create-program-settings__row create-program-settings__row--description">
           <GVFormikField
             type="textarea"
             name="description"
             label={t("create-program-page.settings.fields.description")}
             component={GVTextField}
           />
+          <div className="create-program-settings__description-info">
+            <span className="create-program-settings__description-requirements">
+              {t(
+                "create-program-page.settings.fields.description-requirements"
+              )}
+            </span>
+            <span className="create-program-settings__description-chars">
+              {values.description.length > 0 && values.description.length}
+            </span>
+          </div>
         </div>
         <div className="create-program-settings__row create-program-settings__row--couple-field">
           <GVFormikField
@@ -175,26 +185,28 @@ const CreateProgramSettings = ({
         {t("create-program-page.settings.fees-settings")}
       </div>
       <div className="create-program-settings__fill-block create-program-settings__fill-block--with-border">
-        <GVFormikField
-          name="entryFee"
-          label={t("create-program-page.settings.fields.entry-fee")}
-          suffix=" %"
-          isAllowed={percentNumberFormat}
-          component={GVTextField}
-          InputComponent={NumberFormat}
-          autoComplete="off"
-          decimalScale={4}
-        />
-        <GVFormikField
-          name="successFee"
-          label={t("create-program-page.settings.fields.success-fee")}
-          suffix=" %"
-          isAllowed={percentNumberFormat}
-          component={GVTextField}
-          InputComponent={NumberFormat}
-          autoComplete="off"
-          decimalScale={4}
-        />
+        <div className="create-program-settings__row">
+          <GVFormikField
+            name="entryFee"
+            label={t("create-program-page.settings.fields.entry-fee")}
+            suffix=" %"
+            isAllowed={percentNumberFormat}
+            component={GVTextField}
+            InputComponent={NumberFormat}
+            autoComplete="off"
+            decimalScale={4}
+          />
+          <GVFormikField
+            name="successFee"
+            label={t("create-program-page.settings.fields.success-fee")}
+            suffix=" %"
+            isAllowed={percentNumberFormat}
+            component={GVTextField}
+            InputComponent={NumberFormat}
+            autoComplete="off"
+            decimalScale={4}
+          />
+        </div>
       </div>
       <div className="create-program-settings__subheading">
         <span className="create-program-settings__block-number">03</span>
@@ -205,7 +217,7 @@ const CreateProgramSettings = ({
           {t("create-program-page.settings.fields.deposit-amount")}
         </div>
         <div className="create-program-settings__deposit-amount-value">
-          {100 + " mockGVT"}
+          {broker.depositAmount + " GVT"}
         </div>
         <div className="create-program-settings__available-amount">
           {t("create-program-page.settings.fields.available-in-wallet")}
@@ -229,10 +241,15 @@ const CreateProgramSettings = ({
         color="secondary"
         type="submit"
         onClick={handleSubmit}
+        disabled={isSubmitting}
       >
         {t("buttons.create-program")}
       </GVButton>
-      <GVButton variant="text" onClick={navigateBack}>
+      <GVButton
+        variant="text"
+        onClick={navigateBack}
+        className="create-program-settings__navigation-back"
+      >
         &larr; {t("buttons.back")}
       </GVButton>
     </div>
@@ -247,7 +264,7 @@ export default translate()(
       successFee: "25%",
       stopOutLevel: 30,
       leverage: "1",
-      title: "My best company",
+      title: "My best program",
       description: "The best description",
       logo: {
         src: managerAvatar,
@@ -258,26 +275,8 @@ export default translate()(
       brokerAccountTypeId: "",
       entryFee: "25 %",
       currency: "BTC",
-      accountType: "MetaTrader5"
+      accountType: ""
     }),
-    // mapPropsToValues: () => ({
-    //   title: "My first company2",
-    //   currency: "BTC",
-    //   description: "string",
-    //   accountType: "BTC",
-    //   periodLength: "5 days",
-    //   leverage: "10",
-    //   logo: {
-    //     src: managerAvatar,
-    //     filename: "image.png",
-    //     filetype: "image/png",
-    //     cropped: null
-    //   },
-    //   entryFee: "",
-    //   successFee: "",
-    //   tradingServerId: "ea03ae46-89eb-481b-a02b-94b9fec548f1",
-    //   stopOutLevel: 30
-    // }),
     validationSchema: createProgramSettingsValidationSchema,
     handleSubmit: (values, { props, setSubmitting }) => {
       props.onSubmit(values, setSubmitting);

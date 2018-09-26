@@ -1,4 +1,6 @@
 import { fetchProfileHeaderInfo } from "modules/header/actions/header-actions";
+import { DASHBOARD_ROUTE } from "pages/dashboard/dashboard.routes";
+import { push } from "react-router-redux";
 import brokersApi from "services/api-client/brokers-api";
 import managersApi from "services/api-client/managers-api";
 import authService from "services/auth-service";
@@ -20,7 +22,7 @@ export const fetchBrokers = () => {
 export const fetchBalance = () => dispatch =>
   dispatch(fetchProfileHeaderInfo());
 
-export const createProgram = async (createProgramData, setSubmitting) => {
+export const createProgram = (createProgramData, setSubmitting) => dispatch => {
   const authorization = authService.getAuthArg();
 
   let data = getDataWithoutSuffixes(createProgramData, [
@@ -31,43 +33,28 @@ export const createProgram = async (createProgramData, setSubmitting) => {
   ]);
 
   let promise = Promise.resolve(null);
-
   if (data.logo.cropped) {
     promise = filesService.uploadFile(data.logo.cropped, authorization);
   }
+  promise
+    .then(response => {
+      data = {
+        ...data,
+        logo: response || ""
+      };
 
-  try {
-    let logo = await promise;
-    data = { ...data, logo };
-
-    await managersApi.v10ManagersProgramsCreatePost(authorization, {
-      request: data
+      managersApi
+        .v10ManagersProgramsCreatePost(authorization, {
+          request: data
+        })
+        .then(() => {
+          setSubmitting(false);
+          alert("Successful program creating.");
+          dispatch(push(DASHBOARD_ROUTE));
+        });
+    })
+    .catch(error => {
+      setSubmitting(false);
+      alert(error.message);
     });
-  } catch (error) {
-    alert(error.message);
-  }
-  debugger;
-
-  setSubmitting(false);
-
-  // let promise = Promise.resolve(null);
-  // if (data.logo.cropped) {
-  //   promise = filesService.uploadFile(data.logo.cropped, authorization);
-  // }
-  // return promise.then(response => {
-  //   const data = {
-  //     ...createProgramData,
-  //     logo: response
-  //   };
-  //   return managersApi
-  //     .v10ManagersProgramsCreatePost(authorization, {
-  //       request: { ...data, logo: "" }
-  //     })
-  //     .then(response => {
-  //       // history.push(HOME_ROUTE);
-  //       setSubmitting(false);
-  //       return response;
-  //     });
-  //   debugger;
-  // });
 };

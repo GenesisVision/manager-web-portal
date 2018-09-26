@@ -1,5 +1,4 @@
-import Dialog from "components/dialog/dialog";
-import { GVButton, GVTab, GVTabs } from "gv-react-components";
+import { GVTab, GVTabs } from "gv-react-components";
 import React, { Component } from "react";
 import { translate } from "react-i18next";
 import { connect } from "react-redux";
@@ -46,7 +45,7 @@ class CreateProgramContainer extends Component {
       type => type.type === values.accountType
     ).id;
 
-    createProgramService.createProgram(
+    this.props.service.createProgram(
       { ...values, brokerAccountTypeId },
       setSubmitting
     );
@@ -89,30 +88,18 @@ class CreateProgramContainer extends Component {
                 chooseBroker={chooseBroker}
               />
             )}
-            {/* {tab === "settings" &&
-              headerData && (
-                <CreateProgramSettings
-                  navigateToBroker={navigateToBroker}
-                  broker={choosedBroker}
-                  balance={headerData.totalBalanceGvt}
-                  updateBalance={fetchProfileHeaderInfo}
-                  onSubmit={handleSubmit}
-                  author={headerData && headerData.name}
-                />
-              )} */}
-            {tab === "settings" &&
-              true && (
-                <CreateProgramSettings
-                  navigateBack={() => {
-                    this.setState({ isNavigationDialogVisible: true });
-                  }}
-                  broker={choosedBroker}
-                  balance={121}
-                  updateBalance={service.fetchBalance}
-                  onSubmit={handleSubmit}
-                  author={headerData && headerData.name}
-                />
-              )}
+            {tab === "settings" && (
+              <CreateProgramSettings
+                navigateBack={() => {
+                  this.setState({ isNavigationDialogVisible: true });
+                }}
+                broker={choosedBroker}
+                balance={headerData.totalBalanceGvt}
+                updateBalance={service.fetchBalance}
+                onSubmit={handleSubmit}
+                author={headerData.name}
+              />
+            )}
             <CreateProgramNavigationDialog
               open={isNavigationDialogVisible}
               onClose={() =>

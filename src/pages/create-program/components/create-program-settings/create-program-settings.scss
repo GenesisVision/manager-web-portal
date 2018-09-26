@@ -1,7 +1,9 @@
 @import "styles/_colors.scss";
+@import "styles/_breakpoint.scss";
 
 .create-program-settings {
-  margin-top: 60px;
+  margin-top: 40px;
+  margin-left: 24px;
 
   &__form {
     color: $text-light-color;
@@ -22,16 +24,8 @@
   }
 
   &__fill-block {
-    padding-left: 87px;
-
     padding-top: 16px;
-    padding-bottom: 60px;
-
-    &--with-border {
-      border-left: 2px solid $secondary-color;
-      margin-left: 8px;
-      padding-left: 76px;
-    }
+    padding-bottom: 40px;
 
     &:last-child {
       padding-bottom: 0;
@@ -39,10 +33,26 @@
   }
 
   &__block-number {
-    margin-right: 70px;
+    display: none;
+  }
 
-    &:first-child {
-      // margin-right: 74px;
+  &__description {
+    &-info {
+      margin-top: -8px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &-requirements {
+      font-size: 12px;
+      color: $label-color;
+      letter-spacing: 0.4px;
+    }
+
+    &-chars {
+      color: $text-light-color;
+      font-size: 12px;
     }
   }
 
@@ -55,15 +65,15 @@
 
   &__logo-notice {
     font-size: 11px;
-    color: $short-statistic-subheading-color;
+    color: $label-color;
     letter-spacing: 0.2px;
   }
 
   &__logo-section {
     margin-top: 30px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   &__image {
@@ -72,9 +82,9 @@
     overflow: hidden;
 
     &-info {
-      margin-left: 40px;
       font-size: 14px;
       letter-spacing: 0.4px;
+      margin-top: 14px;
     }
 
     &-title {
@@ -119,19 +129,85 @@
 
   &__row {
     margin-bottom: 8px;
-  }
+    width: auto;
+    max-width: 230px;
 
-  & .gv-text-field__wrapper {
-    margin: 16px 24px 16px 0;
-  }
+    & .gv-text-field {
+      width: 230px;
+    }
 
-  & .gv-text-field {
-    width: 230px;
+    &--description {
+      & .gv-text-field,
+      & .gv-text-field__wrapper {
+        width: 100%;
+      }
+    }
+
+    & .gv-text-field__wrapper {
+      margin: 16px 0;
+    }
+
+    & .gv-text-field__wrapper:first-child {
+      margin: 16px 24px 16px 0;
+    }
   }
 
   &__navigation {
-    margin-top: 80px;
-    margin-left: 84px;
+    margin-top: 50px;
     margin-bottom: 40px;
+
+    &-back {
+      margin-top: 14px;
+    }
+  }
+
+  @media (min-width: 377px) {
+    &__navigation-back {
+      margin-top: 0;
+    }
+  }
+
+  @include media-breakpoint-landscape-phone() {
+    &__row {
+      max-width: 484px;
+    }
+
+    &__logo-section {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &__image {
+      &-info {
+        margin-top: 0;
+        margin-left: 40px;
+      }
+    }
+  }
+
+  @include media-breakpoint-tablet() {
+    margin-top: 60px;
+    margin-left: 0;
+
+    &__fill-block {
+      padding-left: 87px;
+      padding-bottom: 60px;
+
+      &--with-border {
+        border-left: 2px solid $secondary-color;
+        margin-left: 8px;
+        padding-left: 76px;
+      }
+    }
+
+    &__block-number {
+      margin-right: 70px;
+      display: inline;
+    }
+
+    &__navigation {
+      margin-left: 84px;
+      margin-top: 70px;
+    }
   }
 }

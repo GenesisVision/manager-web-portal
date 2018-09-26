@@ -233,7 +233,8 @@
   "buttons": {
     "continue": "Continue",
     "back": "Back",
-    "create-program": "Create Program"
+    "create-program": "Create Program",
+    "close": "Close"
   },
   "create-program-page": {
     "title": "Create Program",
@@ -259,6 +260,7 @@
         "account-type": "Account type",
         "currency": "Currency",
         "description": "Description",
+        "description-requirements": "Requirement from 20 to 500 symbols",
         "brokers-leverage": "Broker's leverage",
         "period": "Period",
         "upload-logo": "Upload program logo",
