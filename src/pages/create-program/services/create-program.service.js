@@ -10,11 +10,7 @@ import { getDataWithoutSuffixes } from "../helpers/create-program.helpers";
 import { brokersResponseDataMock } from "./brokers-response-mock";
 
 export const fetchBrokers = () => {
-  return brokersApi.v10BrokersGet().then(data => {
-    return {
-      brokers: brokersResponseDataMock.brokers
-    };
-  });
+  return brokersApi.v10BrokersGet();
 };
 
 export const fetchBalance = () => dispatch =>
