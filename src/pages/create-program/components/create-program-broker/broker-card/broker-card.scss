@@ -12,6 +12,9 @@
   margin-bottom: 25px;
   position: relative;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &--active {
     background-color: $panel-background-color;
@@ -33,8 +36,8 @@
   }
 
   & img {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 60%;
   }
 
   @include media-breakpoint-tablet() {
