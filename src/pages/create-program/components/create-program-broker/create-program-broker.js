@@ -31,6 +31,7 @@ const CreateProgramBroker = ({
       <div className="create-program-broker__list">
         {brokers.map(broker => (
           <BrokerCard
+            key={broker.name + broker.description}
             broker={broker}
             isActive={broker === choosedBroker}
             onChoose={chooseBroker}
