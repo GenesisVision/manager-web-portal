@@ -36,6 +36,16 @@ const CreateProgramBroker = ({
             onChoose={chooseBroker}
           />
         ))}
+
+        <div className="create-program-broker__navigation">
+          <GVButton
+            color="primary"
+            type="contained"
+            onClick={navigateToSettings}
+          >
+            {t("buttons.continue")}
+          </GVButton>
+        </div>
       </div>
       <Surface className="create-program-broker__description">
         <div className="create-program-broker__description-heading">
@@ -80,12 +90,6 @@ const CreateProgramBroker = ({
           </div>
         </div>
       </Surface>
-    </div>
-
-    <div className="create-program-broker__navigation">
-      <GVButton color="primary" type="contained" onClick={navigateToSettings}>
-        {t("buttons.continue")}
-      </GVButton>
     </div>
   </div>
 );

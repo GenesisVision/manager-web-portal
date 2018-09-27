@@ -8,9 +8,7 @@ import filesService from "shared/services/file-service";
 
 import { getDataWithoutSuffixes } from "../helpers/create-program.helpers";
 
-export const fetchBrokers = () => {
-  return brokersApi.v10BrokersGet();
-};
+export const fetchBrokers = () => brokersApi.v10BrokersGet();
 
 export const fetchBalance = () => dispatch =>
   dispatch(fetchProfileHeaderInfo());
