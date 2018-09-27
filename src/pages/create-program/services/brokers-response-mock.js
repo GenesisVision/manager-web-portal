@@ -2,8 +2,88 @@ export const brokersResponseDataMock = {
   brokers: [
     {
       name: "Genesis Markets",
+      description: "Alpari was  ",
+      logo: null,
+      terms: "Alpari was ",
+      assets: "BTC, ETH, USDT",
+      leverageMin: 1,
+      leverageMax: 5,
+      accountTypes: [
+        {
+          id: "ea03ae46-89eb-481b-a02b-94b9fec548f1",
+          name: "Base",
+          description: null,
+          type: "MetaTrader5",
+          leverages: [1],
+          currencies: ["BTC", "ETH"]
+        }
+      ]
+    },
+    {
+      name: "Genesis Markets",
       description:
         "Alpari was founded in 1998 and today is one of the largest brands in the global Forex industry, continuing to develop dynamically. Alpari was founded in 1998 and today is one of the largest brands.",
+      logo: null,
+      terms:
+        "Alpari was founded in 1998 and today is one of the largest brands in the global Forex industry, continuing to develop dynamically",
+      assets: "BTC, ETH, USDT",
+      leverageMin: 1,
+      leverageMax: 5,
+      accountTypes: [
+        {
+          id: "ea03ae46-89eb-481b-a02b-94b9fec548f1",
+          name: "Base",
+          description: null,
+          type: "MetaTrader5",
+          leverages: [1],
+          currencies: ["BTC", "ETH"]
+        }
+      ]
+    },
+
+    {
+      name: "Genesis Markets",
+      description: "Alpari was founded in 1998 ",
+      logo: null,
+      terms:
+        "Alpari was founded in 1998 and today is one of the largest brands in the global Forex industry, continuing to develop dynamically",
+      assets: "BTC, ETH, USDT",
+      leverageMin: 1,
+      leverageMax: 5,
+      accountTypes: [
+        {
+          id: "ea03ae46-89eb-481b-a02b-94b9fec548f1",
+          name: "Base",
+          description: null,
+          type: "MetaTrader5",
+          leverages: [1],
+          currencies: ["BTC", "ETH"]
+        }
+      ]
+    },
+    {
+      name: "Genesis Markets",
+      description: "Alpari was founded in 1998 ",
+      logo: null,
+      terms:
+        "Alpari was founded in 1998 and today is one of the largest brands in the global Forex industry, continuing to develop dynamically",
+      assets: "BTC, ETH, USDT",
+      leverageMin: 1,
+      leverageMax: 5,
+      accountTypes: [
+        {
+          id: "ea03ae46-89eb-481b-a02b-94b9fec548f1",
+          name: "Base",
+          description: null,
+          type: "MetaTrader5",
+          leverages: [1],
+          currencies: ["BTC", "ETH"]
+        }
+      ]
+    },
+    {
+      name: "Genesis Markets",
+      description: "Alpari was founded in 1998 ",
       logo: null,
       terms:
         "Alpari was founded in 1998 and today is one of the largest brands in the global Forex industry, continuing to develop dynamically",

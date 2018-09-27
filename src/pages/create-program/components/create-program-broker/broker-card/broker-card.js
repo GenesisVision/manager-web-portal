@@ -11,7 +11,13 @@ const BrokerCard = ({ broker, onChoose, isActive }) => {
 
   return (
     <div className={className} onClick={onChoose.bind(null, broker)}>
-      {broker.name}
+      <img
+        src={
+          broker.logo ||
+          "https://forex-scam.net/wp-content/uploads/2016/07/alpari-3.png"
+        }
+        alt={broker.name}
+      />
       {isActive && <div className="broker-card__active-mark"> &#10004;</div>}
     </div>
   );

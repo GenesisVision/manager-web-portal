@@ -3,9 +3,9 @@
 
 .broker-card {
   box-sizing: border-box;
-  width: 137px;
-  height: 137px;
-  border-radius: 10px;
+  width: 115px;
+  height: 115px;
+  border-radius: 8px;
   background-color: transparent;
   border: 1px solid $panel-background-color;
   margin-right: 25px;
@@ -30,6 +30,17 @@
     content: "&#10004;";
     top: -8px;
     right: -8px;
+  }
+
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+
+  @include media-breakpoint-tablet() {
+    width: 137px;
+    height: 137px;
+    border-radius: 10px;
   }
 
   @include media-breakpoint-desktop() {

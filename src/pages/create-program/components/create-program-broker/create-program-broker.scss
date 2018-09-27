@@ -2,8 +2,11 @@
 @import "styles/_breakpoint.scss";
 
 .create-program-broker {
+  &-container {
+    margin-bottom: 20px;
+  }
+
   margin-top: 50px;
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -17,13 +20,12 @@
     flex-wrap: wrap;
     width: 59%;
     margin-right: 1%;
-    min-width: 324px;
+    min-width: 280px;
   }
 
   &__description {
     box-sizing: border-box;
-    width: 30%;
-    min-width: 300px;
+    width: 300px;
     padding: 40px 32px;
 
     &-heading {
@@ -47,6 +49,24 @@
     color: $text-light-color;
   }
 
+  &__leverage,
+  &__fee {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+  }
+
+  &__navigation {
+    margin-top: 20px;
+
+    & .gv-btn {
+      box-sizing: border-box;
+      height: 40px;
+      width: 110px;
+      padding: 0;
+    }
+  }
+
   @include media-breakpoint-landscape-phone() {
     flex-direction: row;
   }
@@ -54,6 +74,7 @@
   @include media-breakpoint-tablet() {
     &__list {
       margin-right: 4%;
+      min-width: 324px;
     }
   }
 

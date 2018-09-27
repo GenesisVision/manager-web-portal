@@ -9,8 +9,6 @@ import filesService from "shared/services/file-service";
 import { getDataWithoutSuffixes } from "../helpers/create-program.helpers";
 import { brokersResponseDataMock } from "./brokers-response-mock";
 
-// import * as actions from "../actions/wallet.actions";
-
 export const fetchBrokers = () => {
   return brokersApi.v10BrokersGet().then(data => {
     return {
@@ -43,15 +41,14 @@ export const createProgram = (createProgramData, setSubmitting) => dispatch => {
         logo: response || ""
       };
 
-      managersApi
-        .v10ManagersProgramsCreatePost(authorization, {
-          request: data
-        })
-        .then(() => {
-          setSubmitting(false);
-          alert("Successful program creating.");
-          dispatch(push(DASHBOARD_ROUTE));
-        });
+      return managersApi.v10ManagersProgramsCreatePost(authorization, {
+        request: data
+      });
+    })
+    .then(() => {
+      setSubmitting(false);
+      alert("Successful program creating.");
+      dispatch(push(DASHBOARD_ROUTE));
     })
     .catch(error => {
       setSubmitting(false);

@@ -26,59 +26,62 @@ const CreateProgramBroker = ({
   choosedBroker,
   chooseBroker
 }) => (
-  <div className="create-program-broker">
-    <div className="create-program-broker__list">
-      {brokers.map(broker => (
-        <BrokerCard
-          broker={broker}
-          isActive={broker === choosedBroker}
-          onChoose={chooseBroker}
-        />
-      ))}
+  <div className="create-program-broker-container">
+    <div className="create-program-broker">
+      <div className="create-program-broker__list">
+        {brokers.map(broker => (
+          <BrokerCard
+            broker={broker}
+            isActive={broker === choosedBroker}
+            onChoose={chooseBroker}
+          />
+        ))}
+      </div>
+      <Surface className="create-program-broker__description">
+        <div className="create-program-broker__description-heading">
+          {choosedBroker.name}
+        </div>
+        <div className="create-program-broker__about">
+          <div className="create-program-broker__info-title">
+            {t("create-program-page.broker-info.about")}
+          </div>
+          <div className="create-program-broker__info-text">
+            {choosedBroker.description}
+          </div>
+        </div>
+        <div className="create-program-broker__terms">
+          <div className="create-program-broker__info-title">
+            {t("create-program-page.broker-info.terms")}
+          </div>
+          <div className="create-program-broker__info-text">
+            {choosedBroker.terms}
+          </div>
+        </div>
+        <div className="create-program-broker__leverage">
+          <div className="create-program-broker__info-title">
+            {t("create-program-page.broker-info.leverage")}
+          </div>
+          <div className="create-program-broker__info-text">
+            {getLeverageDescription(choosedBroker)}
+          </div>
+        </div>
+        <div className="create-program-broker__fee">
+          <div className="create-program-broker__info-title">
+            {t("create-program-page.broker-info.fee")}
+          </div>
+          <div className="create-program-broker__info-text">2.5%</div>
+        </div>
+        <div className="create-program-broker__assets">
+          <div className="create-program-broker__info-title">
+            {t("create-program-page.broker-info.assets")}
+          </div>
+          <div className="create-program-broker__info-text">
+            {choosedBroker.assets}
+          </div>
+        </div>
+      </Surface>
     </div>
-    <Surface className="create-program-broker__description">
-      <div className="create-program-broker__description-heading">
-        {choosedBroker.name}
-      </div>
-      <div className="create-program-broker__about">
-        <div className="create-program-broker__info-title">
-          {t("create-program-page.broker-info.about")}
-        </div>
-        <div className="create-program-broker__info-text">
-          {choosedBroker.description}
-        </div>
-      </div>
-      <div className="create-program-broker__terms">
-        <div className="create-program-broker__info-title">
-          {t("create-program-page.broker-info.terms")}
-        </div>
-        <div className="create-program-broker__info-text">
-          {choosedBroker.terms}
-        </div>
-      </div>
-      <div className="create-program-broker__leverage">
-        <div className="create-program-broker__info-title">
-          {t("create-program-page.broker-info.leverage")}
-        </div>
-        <div className="create-program-broker__info-text">
-          {getLeverageDescription(choosedBroker)}
-        </div>
-      </div>
-      <div className="create-program-broker__fee">
-        <div className="create-program-broker__info-title">
-          {t("create-program-page.broker-info.fee")}
-        </div>
-        <div className="create-program-broker__info-text">2.5%</div>
-      </div>
-      <div className="create-program-broker__assets">
-        <div className="create-program-broker__info-title">
-          {t("create-program-page.broker-info.assets")}
-        </div>
-        <div className="create-program-broker__info-text">
-          {choosedBroker.assets}
-        </div>
-      </div>
-    </Surface>
+
     <div className="create-program-broker__navigation">
       <GVButton color="primary" type="contained" onClick={navigateToSettings}>
         {t("buttons.continue")}

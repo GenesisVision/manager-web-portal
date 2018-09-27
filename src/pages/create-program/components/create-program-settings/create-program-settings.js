@@ -9,42 +9,15 @@ import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import InputFile from "shared/components/form/input-file/input-file";
 import managerAvatar from "shared/media/manager-avatar.png";
-import { allowValuesNumberFormat } from "utils/helpers";
 
+import {
+  getAccountTypes,
+  getCurrencies,
+  getLeverages,
+  percentNumberFormat
+} from "../../helpers/create-program.helpers";
 import { PROGRAM_SETTINGS_PERIOD_VALUES } from "./create-program-settings.constants";
 import createProgramSettingsValidationSchema from "./create-program-settings.validators";
-
-const percentNumberFormat = allowValuesNumberFormat({ from: 0, to: 100 });
-
-const getAccountTypes = broker =>
-  broker.accountTypes.map(accountType => accountType.type);
-
-const getAccountType = (broker, type) =>
-  broker.accountTypes.find(accountType => accountType.type === type);
-
-const getLeverages = (broker, type) => {
-  let result;
-  let accountType = getAccountType(broker, type);
-
-  if (accountType) {
-    result = accountType.leverages;
-  } else {
-    result = [];
-  }
-  return result;
-};
-
-const getCurrencies = (broker, type) => {
-  let result;
-  let accountType = getAccountType(broker, type);
-
-  if (accountType) {
-    result = accountType.currencies;
-  } else {
-    result = [];
-  }
-  return result;
-};
 
 const CreateProgramSettings = ({
   t,
@@ -164,12 +137,14 @@ const CreateProgramSettings = ({
           {t("create-program-page.settings.fields.upload-logo-rules")}
         </div>
         <div className="create-program-settings__logo-section">
-          <Field
-            name="logo"
-            className="create-program-settings__image"
-            component={InputFile}
-            defaultImage={managerAvatar}
-          />
+          <div className="create-program-settings__file-field-container">
+            <Field
+              name="logo"
+              className="create-program-settings__image"
+              component={InputFile}
+              defaultImage={managerAvatar}
+            />
+          </div>
           <div className="create-program-settings__image-info">
             <div className="create-program-settings__image-title">
               {values.title}
@@ -217,7 +192,7 @@ const CreateProgramSettings = ({
           {t("create-program-page.settings.fields.deposit-amount")}
         </div>
         <div className="create-program-settings__deposit-amount-value">
-          {broker.depositAmount + " GVT"}
+          {broker.depositAmount || 100 + " GVT"}
         </div>
         <div className="create-program-settings__available-amount">
           {t("create-program-page.settings.fields.available-in-wallet")}
@@ -260,10 +235,10 @@ export default translate()(
   withFormik({
     displayName: "CreateProgramSettingsForm",
     mapPropsToValues: () => ({
-      periodLength: "7 days",
-      successFee: "25%",
+      periodLength: "",
+      successFee: "",
       stopOutLevel: 30,
-      leverage: "1",
+      leverage: "",
       title: "My best program",
       description: "The best description",
       logo: {
@@ -273,8 +248,8 @@ export default translate()(
         cropped: null
       },
       brokerAccountTypeId: "",
-      entryFee: "25 %",
-      currency: "BTC",
+      entryFee: "",
+      currency: "",
       accountType: ""
     }),
     validationSchema: createProgramSettingsValidationSchema,

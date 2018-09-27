@@ -11,7 +11,7 @@ import * as createProgramService from "./services/create-program.service";
 
 class CreateProgramContainer extends Component {
   state = {
-    tab: "settings",
+    tab: "broker",
     choosedBroker: null,
     brokers: null,
     isPending: true,
