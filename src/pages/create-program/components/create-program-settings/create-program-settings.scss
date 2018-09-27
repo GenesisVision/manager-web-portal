@@ -38,7 +38,7 @@
 
   &__description {
     &-info {
-      margin-top: -8px;
+      margin-top: 4px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -51,8 +51,17 @@
     }
 
     &-chars {
+      width: 30px;
       color: $text-light-color;
       font-size: 12px;
+      position: relative;
+      left: -15px;
+
+      & .gv-program-period {
+        position: absolute;
+        top: -4px;
+        left: 25px;
+      }
     }
   }
 

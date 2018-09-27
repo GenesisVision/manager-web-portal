@@ -3,7 +3,12 @@ import "./create-program-settings.scss";
 import { RefreshIcon } from "components/icon/refresh-icon";
 import Select from "components/select/select";
 import { Field, withFormik } from "formik";
-import { GVButton, GVFormikField, GVTextField } from "gv-react-components";
+import {
+  GVButton,
+  GVFormikField,
+  GVProgramPeriod,
+  GVTextField
+} from "gv-react-components";
 import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
@@ -94,9 +99,16 @@ const CreateProgramSettings = ({
                 "create-program-page.settings.fields.description-requirements"
               )}
             </span>
-            <span className="create-program-settings__description-chars">
-              {values.description.length > 0 && values.description.length}
-            </span>
+            {values.description.length > 0 && (
+              <span className="create-program-settings__description-chars">
+                {values.description.length}
+                <GVProgramPeriod
+                  start={0}
+                  end={500}
+                  value={values.description.length}
+                />
+              </span>
+            )}
           </div>
         </div>
         <div className="create-program-settings__row create-program-settings__row--couple-field">
@@ -239,8 +251,8 @@ export default translate()(
       successFee: "",
       stopOutLevel: 30,
       leverage: "",
-      title: "My best program",
-      description: "The best description",
+      title: "",
+      description: "",
       logo: {
         src: managerAvatar,
         filename: "image.png",

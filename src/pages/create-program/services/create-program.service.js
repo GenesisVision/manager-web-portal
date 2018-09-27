@@ -7,7 +7,6 @@ import authService from "services/auth-service";
 import filesService from "shared/services/file-service";
 
 import { getDataWithoutSuffixes } from "../helpers/create-program.helpers";
-import { brokersResponseDataMock } from "./brokers-response-mock";
 
 export const fetchBrokers = () => {
   return brokersApi.v10BrokersGet();
