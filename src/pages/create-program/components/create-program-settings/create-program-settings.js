@@ -234,7 +234,7 @@ const CreateProgramSettings = ({
       </GVButton>
       <GVButton
         variant="text"
-        onClick={navigateBack}
+        onClick={() => navigateBack(values)}
         className="create-program-settings__navigation-back"
       >
         &larr; {t("buttons.back")}
@@ -249,7 +249,6 @@ export default translate()(
     mapPropsToValues: () => ({
       periodLength: "",
       successFee: "",
-      stopOutLevel: 30,
       leverage: "",
       title: "",
       description: "",
