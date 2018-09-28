@@ -1,14 +1,14 @@
 import { fetchProfileHeaderInfo } from "modules/header/actions/header-actions";
 import { DASHBOARD_ROUTE } from "pages/dashboard/dashboard.routes";
 import { push } from "react-router-redux";
-import brokersApi from "services/api-client/brokers-api";
-import managersApi from "services/api-client/managers-api";
+import { brokersApiProxy } from "services/api-client/brokers-api";
+import { managersApiProxy } from "services/api-client/managers-api";
 import authService from "services/auth-service";
 import filesService from "shared/services/file-service";
 
 import { getDataWithoutSuffixes } from "../helpers/create-program.helpers";
 
-export const fetchBrokers = () => brokersApi.v10BrokersGet();
+export const fetchBrokers = () => brokersApiProxy.v10BrokersGet();
 
 export const fetchBalance = () => dispatch =>
   dispatch(fetchProfileHeaderInfo());
@@ -25,7 +25,7 @@ export const createProgram = (createProgramData, setSubmitting) => dispatch => {
 
   let promise = Promise.resolve(null);
   if (data.logo.cropped) {
-    promise = filesService.uploadFile(data.logo.cropped, authorization);
+    promise = filesService.uploadFileProxy(data.logo.cropped, authorization);
   }
   promise
     .then(response => {
@@ -34,7 +34,7 @@ export const createProgram = (createProgramData, setSubmitting) => dispatch => {
         logo: response || ""
       };
 
-      return managersApi.v10ManagersProgramsCreatePost(authorization, {
+      return managersApiProxy.v10ManagersProgramsCreatePost(authorization, {
         request: data
       });
     })
@@ -45,6 +45,6 @@ export const createProgram = (createProgramData, setSubmitting) => dispatch => {
     })
     .catch(error => {
       setSubmitting(false);
-      alert(error.message);
+      alert(error.errorMessage);
     });
 };
