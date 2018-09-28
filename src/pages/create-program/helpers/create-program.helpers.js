@@ -1,3 +1,4 @@
+import managerAvatar from "shared/media/manager-avatar.png";
 import { getNumberWithoutSuffix } from "utils/helpers";
 import { allowValuesNumberFormat } from "utils/helpers";
 
@@ -50,4 +51,17 @@ export const getCurrencies = (broker, type) => {
     result = [];
   }
   return result;
+};
+
+export const checkIsModelFilled = values => {
+  if (values.logo && values.logo.src !== managerAvatar) {
+    return true;
+  }
+  let valuesToCheck = { ...values, logo: null };
+
+  for (var fieldName in valuesToCheck) {
+    if (valuesToCheck[fieldName]) {
+      return true;
+    }
+  }
 };

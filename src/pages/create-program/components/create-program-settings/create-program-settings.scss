@@ -30,10 +30,26 @@
     &:last-child {
       padding-bottom: 0;
     }
+
+    @include media-breakpoint-tablet() {
+      padding-left: 87px;
+      padding-bottom: 60px;
+
+      &--with-border {
+        border-left: 2px solid $secondary-color;
+        margin-left: 8px;
+        padding-left: 76px;
+      }
+    }
   }
 
   &__block-number {
     display: none;
+
+    @include media-breakpoint-tablet() {
+      margin-right: 70px;
+      display: inline;
+    }
   }
 
   &__description {
@@ -83,6 +99,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    @include media-breakpoint-landscape-phone() {
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   &__file-field-container {
@@ -114,6 +135,11 @@
       font-size: 14px;
       letter-spacing: 0.4px;
       margin-top: 14px;
+
+      @include media-breakpoint-landscape-phone() {
+        margin-top: 0;
+        margin-left: 40px;
+      }
     }
 
     &-title {
@@ -179,6 +205,10 @@
     & .gv-text-field__wrapper:first-child {
       margin: 16px 24px 16px 0;
     }
+
+    @include media-breakpoint-landscape-phone() {
+      max-width: 484px;
+    }
   }
 
   &__navigation {
@@ -187,29 +217,14 @@
 
     &-back {
       margin-top: 14px;
-    }
-  }
 
-  @media (min-width: 377px) {
-    &__navigation-back {
-      margin-top: 0;
-    }
-  }
-
-  @include media-breakpoint-landscape-phone() {
-    &__row {
-      max-width: 484px;
-    }
-
-    &__logo-section {
-      flex-direction: row;
-      align-items: center;
-    }
-
-    &__image {
-      &-info {
+      @media (min-width: 377px) {
         margin-top: 0;
-        margin-left: 40px;
+      }
+
+      @include media-breakpoint-tablet() {
+        margin-left: 24px;
+        margin-top: 70px;
       }
     }
   }
@@ -217,26 +232,5 @@
   @include media-breakpoint-tablet() {
     margin-top: 60px;
     margin-left: 0;
-
-    &__fill-block {
-      padding-left: 87px;
-      padding-bottom: 60px;
-
-      &--with-border {
-        border-left: 2px solid $secondary-color;
-        margin-left: 8px;
-        padding-left: 76px;
-      }
-    }
-
-    &__block-number {
-      margin-right: 70px;
-      display: inline;
-    }
-
-    &__navigation {
-      margin-left: 84px;
-      margin-top: 70px;
-    }
   }
 }

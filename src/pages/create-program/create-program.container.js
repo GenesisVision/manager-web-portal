@@ -7,6 +7,7 @@ import { bindActionCreators, compose } from "redux";
 import CreateProgramBroker from "./components/create-program-broker/create-program-broker";
 import CreateProgramNavigationDialog from "./components/create-program-navigation-dialog/create-program-navigation-dialog";
 import CreateProgramSettings from "./components/create-program-settings/create-program-settings";
+import { checkIsModelFilled } from "./helpers/create-program.helpers";
 import * as createProgramService from "./services/create-program.service";
 
 class CreateProgramContainer extends Component {
@@ -32,8 +33,16 @@ class CreateProgramContainer extends Component {
     this.setState({ choosedBroker: broker });
   };
 
-  navigateToBroker = () => {
+  confirmNavigateToBroker = () => {
     this.setState({ tab: "broker", isNavigationDialogVisible: false });
+  };
+
+  navigateToBroker = values => {
+    if (checkIsModelFilled(values)) {
+      this.setState({ isNavigationDialogVisible: true });
+    } else {
+      this.setState({ tab: "broker", isNavigationDialogVisible: false });
+    }
   };
 
   navigateToSettings = () => {
@@ -62,6 +71,7 @@ class CreateProgramContainer extends Component {
     const {
       navigateToSettings,
       navigateToBroker,
+      confirmNavigateToBroker,
       chooseBroker,
       handleSubmit
     } = this;
@@ -90,9 +100,7 @@ class CreateProgramContainer extends Component {
             )}
             {tab === "settings" && (
               <CreateProgramSettings
-                navigateBack={() => {
-                  this.setState({ isNavigationDialogVisible: true });
-                }}
+                navigateBack={navigateToBroker}
                 broker={choosedBroker}
                 balance={headerData.totalBalanceGvt}
                 updateBalance={service.fetchBalance}
@@ -105,7 +113,7 @@ class CreateProgramContainer extends Component {
               onClose={() =>
                 this.setState({ isNavigationDialogVisible: false })
               }
-              onConfirm={navigateToBroker}
+              onConfirm={confirmNavigateToBroker}
             />
           </div>
         )}
