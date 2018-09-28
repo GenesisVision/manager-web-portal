@@ -21,6 +21,16 @@
     width: 59%;
     margin-right: 1%;
     min-width: 280px;
+
+    @include media-breakpoint-tablet() {
+      margin-right: 4%;
+      min-width: 324px;
+    }
+
+    @include media-breakpoint-desktop() {
+      min-width: 352px;
+      margin-right: 6%;
+    }
   }
 
   &__description {
@@ -71,19 +81,5 @@
 
   @include media-breakpoint-landscape-phone() {
     flex-direction: row;
-  }
-
-  @include media-breakpoint-tablet() {
-    &__list {
-      margin-right: 4%;
-      min-width: 324px;
-    }
-  }
-
-  @include media-breakpoint-desktop() {
-    &__list {
-      min-width: 352px;
-      margin-right: 6%;
-    }
   }
 }
