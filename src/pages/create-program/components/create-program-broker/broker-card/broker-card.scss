@@ -1,0 +1,54 @@
+@import "styles/_colors.scss";
+@import "styles/_breakpoint.scss";
+
+.broker-card {
+  box-sizing: border-box;
+  width: 115px;
+  height: 115px;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 1px solid $panel-background-color;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--active {
+    background-color: $panel-background-color;
+  }
+
+  &__active-mark {
+    display: inline-flex;
+    justify-content: center;
+    line-height: 34px;
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: $primary-color;
+    color: $text-light-color;
+    content: "&#10004;";
+    top: -8px;
+    right: -8px;
+  }
+
+  & img {
+    width: 80%;
+    height: 60%;
+  }
+
+  @include media-breakpoint-tablet() {
+    width: 137px;
+    height: 137px;
+    border-radius: 10px;
+  }
+
+  @include media-breakpoint-desktop() {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+  }
+}

@@ -16,6 +16,14 @@ const SignUpForm = ({ isSubmitting, handleSubmit, error, t }) => {
       noValidate
     >
       <GVFormikField
+        type="text"
+        name="userName"
+        label={t("auth.signup.username-field-text")}
+        autoComplete="name"
+        component={GVTextField}
+      />
+
+      <GVFormikField
         type="email"
         name="email"
         label={t("auth.signup.email-field-text")}
@@ -57,6 +65,7 @@ const withTranslationAndFormik = compose(
   withFormik({
     displayName: "signup-form",
     mapPropsToValues: () => ({
+      userName: "",
       email: "",
       password: "",
       confirmPassword: ""

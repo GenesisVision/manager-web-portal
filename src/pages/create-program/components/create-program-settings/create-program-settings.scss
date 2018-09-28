@@ -1,0 +1,236 @@
+@import "styles/_colors.scss";
+@import "styles/_breakpoint.scss";
+
+.create-program-settings {
+  margin-top: 40px;
+  margin-left: 24px;
+
+  &__form {
+    color: $text-light-color;
+  }
+
+  &__subheading {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+
+    margin-bottom: 16px;
+    margin-top: 16px;
+
+    &:first-child {
+      margin-left: 2px;
+    }
+  }
+
+  &__fill-block {
+    padding-top: 16px;
+    padding-bottom: 40px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    @include media-breakpoint-tablet() {
+      padding-left: 87px;
+      padding-bottom: 60px;
+
+      &--with-border {
+        border-left: 2px solid $secondary-color;
+        margin-left: 8px;
+        padding-left: 76px;
+      }
+    }
+  }
+
+  &__block-number {
+    display: none;
+
+    @include media-breakpoint-tablet() {
+      margin-right: 70px;
+      display: inline;
+    }
+  }
+
+  &__description {
+    &-info {
+      margin-top: 4px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &-requirements {
+      font-size: 12px;
+      color: $label-color;
+      letter-spacing: 0.4px;
+    }
+
+    &-chars {
+      width: 30px;
+      color: $text-light-color;
+      font-size: 12px;
+      position: relative;
+      left: -15px;
+
+      & .gv-program-period {
+        position: absolute;
+        top: -4px;
+        left: 25px;
+      }
+    }
+  }
+
+  &__logo-title {
+    margin-top: 44px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+  }
+
+  &__logo-notice {
+    font-size: 11px;
+    color: $label-color;
+    letter-spacing: 0.2px;
+  }
+
+  &__logo-section {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include media-breakpoint-landscape-phone() {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__file-field-container {
+    position: relative;
+
+    &:after {
+      display: inline-block;
+      content: "1";
+      width: 17px;
+      height: 17px;
+      position: absolute;
+      top: 26.5px;
+      right: -10px;
+      border-radius: 10px;
+      background-color: $level-color-1;
+      line-height: 17px;
+      font-size: 11px;
+      text-align: center;
+    }
+  }
+
+  &__image {
+    box-sizing: border-box;
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+
+    &-info {
+      font-size: 14px;
+      letter-spacing: 0.4px;
+      margin-top: 14px;
+
+      @include media-breakpoint-landscape-phone() {
+        margin-top: 0;
+        margin-left: 40px;
+      }
+    }
+
+    &-title {
+      margin-bottom: 8px;
+    }
+
+    &-author {
+      color: $primary-color;
+    }
+  }
+
+  &__deposit-amount {
+    &-title {
+      font-size: 12px;
+      color: $label-color;
+      margin-bottom: 14px;
+    }
+
+    &-value {
+      font-size: 24px;
+      letter-spacing: 0.4px;
+    }
+  }
+
+  &__available-amount {
+    font-size: 13px;
+    margin-top: 4px;
+    letter-spacing: 0.4px;
+
+    &-value {
+      color: $accent-color;
+      margin-right: 8px;
+      margin-left: 4px;
+    }
+
+    & .icon--refresh {
+      position: relative;
+      top: 6px;
+      cursor: pointer;
+    }
+  }
+
+  &__row {
+    margin-bottom: 8px;
+    width: auto;
+    max-width: 230px;
+
+    & .gv-text-field {
+      width: 230px;
+    }
+
+    &--description {
+      & .gv-text-field,
+      & .gv-text-field__wrapper {
+        width: 100%;
+      }
+    }
+
+    & .gv-text-field__wrapper {
+      margin: 16px 0;
+    }
+
+    & .gv-text-field__wrapper:first-child {
+      margin: 16px 24px 16px 0;
+    }
+
+    @include media-breakpoint-landscape-phone() {
+      max-width: 484px;
+    }
+  }
+
+  &__navigation {
+    margin-top: 50px;
+    margin-bottom: 40px;
+
+    &-back {
+      margin-top: 14px;
+
+      @media (min-width: 377px) {
+        margin-top: 0;
+      }
+
+      @include media-breakpoint-tablet() {
+        margin-left: 24px;
+        margin-top: 70px;
+      }
+    }
+  }
+
+  @include media-breakpoint-tablet() {
+    margin-top: 60px;
+    margin-left: 0;
+  }
+}
