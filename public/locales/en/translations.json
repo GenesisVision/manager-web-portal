@@ -270,7 +270,7 @@
         "deposit-amount": "Deposit amount",
         "available-in-wallet": "Available in wallet"
       },
-      "vaidation": {
+      "validation": {
         "title-required": "Title is required",
         "title-is-long": "Title is too long",
         "description-is-long": "Description is too long",
