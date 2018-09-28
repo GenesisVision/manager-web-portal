@@ -274,6 +274,8 @@
         "title-required": "Title is required",
         "title-is-long": "Title is too long",
         "description-is-long": "Description is too long",
+        "description-is-short": "Description is too short",
+        "description-required": "Description is required",
         "currency-required": "Currency is required",
         "period-required": "Period is required",
         "leverage-required": "Leverage is required",

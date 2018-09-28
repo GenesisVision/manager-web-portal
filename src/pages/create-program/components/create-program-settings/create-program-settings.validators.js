@@ -7,10 +7,15 @@ const createProgramSettingsValidationSchema = ({ t }) =>
     title: Yup.string()
       .required(t("crete-program-page.settings.validation.title-required"))
       .max(20, t("crete-program-page.settings.validation.title-is-long")),
-    description: Yup.string().max(
-      500,
-      t("crete-program-page.settings.validation.description-is-long")
-    ),
+    description: Yup.string()
+      .required(
+        t("crete-program-page.settings.validation.description-required")
+      )
+      .min(20, t("crete-program-page.settings.validation.description-is-short"))
+      .max(
+        500,
+        t("crete-program-page.settings.validation.description-is-long")
+      ),
     currency: Yup.string().required(
       t("crete-program-page.settings.validation.currency-required")
     ),
