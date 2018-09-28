@@ -269,6 +269,17 @@
         "success-fee": "Success fee",
         "deposit-amount": "Deposit amount",
         "available-in-wallet": "Available in wallet"
+      },
+      "vaidation": {
+        "title-required": "Title is required",
+        "title-is-long": "Title is too long",
+        "description-is-long": "Description is too long",
+        "currency-required": "Currency is required",
+        "period-required": "Period is required",
+        "leverage-required": "Leverage is required",
+        "entry-fee-required": "Entry fee is required",
+        "success-fee-required": "Success fee is required",
+        "account-type-required": "Account type is required"
       }
     }
   }
