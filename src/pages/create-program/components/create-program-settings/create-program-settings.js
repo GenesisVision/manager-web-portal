@@ -158,12 +158,6 @@ class CreateProgramSettings extends React.Component {
             </div>
             <div className="create-program-settings__logo-section">
               <div className="create-program-settings__file-field-container">
-                {/* <Field
-                name="logo"
-                className="create-program-settings__image"
-                component={InputFile}
-                defaultImage={managerAvatar}
-              /> */}
                 <Field
                   name="logo"
                   render={({ field, form }) => (
@@ -275,8 +269,9 @@ export default translate()(
       description: "",
       logo: {
         cropped: null,
-        src:
-          "https://images.pexels.com/photos/449627/pexels-photo-449627.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+        src: "",
+        isNew: false,
+        isDefault: true
       },
       brokerAccountTypeId: "",
       entryFee: "",

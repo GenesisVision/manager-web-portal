@@ -9,7 +9,7 @@ import Dropzone from "react-dropzone";
 
 import InputImageDefault from "./input-image-default";
 
-class InputFile extends Component {
+class InputImage extends Component {
   constructor(props) {
     super(props);
     const { onChange, value, name } = this.props;
@@ -58,9 +58,6 @@ class InputFile extends Component {
       };
       onChange(name, img);
     }, value.filetype);
-    console.log(
-      "crop and isDefault :" + value.isDefault + " isNew:" + value.isNew
-    );
   };
 
   openFileDialog = () => {
@@ -148,4 +145,4 @@ class InputFile extends Component {
   }
 }
 
-export default InputFile;
+export default InputImage;
