@@ -23,7 +23,7 @@ const createProgramSettingsValidationSchema = ({ t }) =>
       t("create-program-page.settings.validation.currency-required")
     ),
     periodLength: Yup.string()
-      .oneOf(PROGRAM_SETTINGS_PERIOD_VALUES)
+      // .oneOf(PROGRAM_SETTINGS_PERIOD_VALUES)
       .required(t("create-program-page.settings.validation.period-required")),
     leverage: Yup.string().required(
       t("create-program-page.settings.validation.leverage-required")
