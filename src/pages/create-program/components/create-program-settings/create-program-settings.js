@@ -13,7 +13,6 @@ import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import InputImage from "shared/components/form/input-image/input-image";
-import managerAvatar from "shared/media/manager-avatar.png";
 
 import {
   getAccountTypes,
@@ -36,9 +35,6 @@ class CreateProgramSettings extends React.Component {
       updateBalance,
       isSubmitting,
       handleSubmit,
-      error,
-      touched,
-      errors,
       values,
       setFieldValue
     } = this.props;
