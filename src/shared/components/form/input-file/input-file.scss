@@ -3,8 +3,6 @@
 .input-file__avatar {
   position: relative;
   text-align: center;
-  border: 1px solid grey;
-  border-radius: 4px;
 }
 
 .input-file__avatar img {
@@ -38,7 +36,6 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  padding: 1rem;
 
   .cropper-modal {
     background-color: white;
@@ -68,7 +65,6 @@
 }
 
 .dropzone__text {
-  padding: 1em;
   font-size: 24px;
   color: $text-color;
 }
@@ -78,13 +74,11 @@
 }
 
 .dropzone__info {
-  padding: 0 1rem;
   align-self: flex-end;
 }
 
 @media screen and (max-width: 1380px) {
   .input-file {
-    padding: 1.1rem 1rem;
   }
   .input-file__avatar p {
     font-size: 12px;
@@ -95,7 +89,6 @@
 
 @media screen and (max-width: 768px) {
   .input-file {
-    padding: 1rem;
     flex-direction: column;
   }
   .input-file__avatar {

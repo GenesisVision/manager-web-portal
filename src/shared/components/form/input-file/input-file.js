@@ -33,6 +33,7 @@ class InputFile extends PureComponent {
     const { name, value } = this.props.field;
     const { setFieldValue } = this.props.form;
     const croppedCanvas = this.cropper.getCroppedCanvas();
+
     if (!croppedCanvas) return;
 
     croppedCanvas.toBlob(blob => {
