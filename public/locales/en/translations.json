@@ -1,6 +1,7 @@
 {
   "app": {
-    "header": "Manager Portal"
+    "header": "Manager Portal",
+    "title": "Investor Portal: "
   },
   "days-left-widget": {
     "text": "Day left",
@@ -230,11 +231,77 @@
       "value-pattern": ""
     }
   },
-  "buttons": {
-    "continue": "Continue",
-    "back": "Back",
-    "create-program": "Create Program",
-    "close": "Close"
+  "auth": {
+    "text": "A Brief History Of Creation",
+    "tabs": {
+      "investor": "Investor",
+      "manager": "Manager"
+    },
+    "signup": {
+      "username-field-text": "Name",
+      "footer-text": "Have an account already?",
+      "title": "Sign up",
+      "email-field-text": "Email address",
+      "password-field-text": "Password",
+      "password-confirm-field-text": "Confirm password",
+      "email-confirm-title": "Confirm your Email"
+    },
+    "login": {
+      "footer-text": "Don't have an account?",
+      "title": "Login",
+      "forgot": "Forgot?",
+      "confirm-button-text": "Login",
+      "placeholder": {
+        "email": "Email address",
+        "password": "Password"
+      },
+      "two-factor": {
+        "title": "Two-factor authentication",
+        "input-label": "Two factor code",
+        "verify": "Verify",
+        "recovery-info": "Don’t have access to the device?",
+        "link-to-recovery": "Enter a two-factor recovery code",
+        "text":
+          "Open the two-factor authentication app on your device to view your authentication code and verify your identity.",
+        "validation": {
+          "two-factor-6digits": "Authentication code should contain 6 digits.",
+          "two-factor-required": "Authentication code is required."
+        }
+      },
+      "recovery": {
+        "title": "Recovery",
+        "text":
+          "You can enter one of your recovery codes in case you lost access to your mobile device.",
+        "continue": "Continue",
+        "validation": {
+          "recovery-is-required": "Recovery code is required."
+        }
+      }
+    },
+    "password-restore": {
+      "title": "Restore password",
+      "forgot-password": {
+        "text": "Just enter the email address you used to create your account.",
+        "email-field-text": "Email address",
+        "confirm-button-text": "Restore",
+        "back-button-text": "Back"
+      },
+      "new-password": {
+        "text": "Just enter new password.",
+        "password-field-text": "Password",
+        "password-confirm-field-text": "Confirm password",
+        "confirm-button-text": "Submit",
+        "back-button-text": "Back"
+      }
+    },
+    "email-pending": {
+      "text-section-1":
+        "Please check your inbox for a confirmation email. Click the link in the email to create new password.",
+      "text-section-2": "After you confirm click Continue.",
+      "email-resend-button-text": "Resend email",
+      "confirm-button-text": "Continue",
+      "back-button-text": "Back"
+    }
   },
   "create-program-page": {
     "title": "Create Program",
@@ -284,5 +351,71 @@
         "account-type-required": "Account type is required"
       }
     }
+  },
+  "profile": {
+    "title": "Profile",
+    "settings": {
+      "title": "Settings",
+      "profile-image": "Profile image",
+      "image-requirements": "At least 300 x 300px PNG or JPG file.",
+      "save-photo": "Save photo"
+    }
+  },
+  "profile-widget": {
+    "personal-details": "Personal details",
+    "settings": "Settings",
+    "logout": "Log out"
+  },
+  "2fa": {
+    "title": "Two-factor authentication",
+    "none": "None",
+    "google": "Google Authenticator",
+    "type": "Type",
+    "download-app": "Download App",
+    "scan-code": "Scan code",
+    "enter-code": "Enter the 6-digit code it gives you here to activate:",
+    "alt-code":
+      "Or enter this secret key into your Goggle Authenticator device:",
+    "google-code": "6-digit code",
+    "password": "Enter your password",
+    "code-required": "Code is required",
+    "password-required": "Password is required",
+    "disable": {
+      "title": "Disable two-factor authentication",
+      "success":
+        "You have successfully disabled the two factor authentication. However, we strongly recommend you keep it enabled. This can protect your funds from being stolen."
+    },
+    "codes": {
+      "title": "Please read carefully",
+      "successfully":
+        "You have just successfully configured the two factor authentication. We will ask you for the 2FA Code in any potentially dangerous situation, such as logging in or withdrawing funds.",
+      "recovery_codes":
+        "You can find your recovery codes below. You can use them in case you lost your 2FA key or lost your phone with the 2FA application installed. Each recovery code can be used only once. Save these codes on paper and put it in a safe place. If you are not sure that you can provide a secure place for the recovery codes, it would be safier to just ignore these codes.",
+      "warning":
+        "WARNING: We do not store your recovery codes. If you lost the access to your 2FA, it is most likely that we couldn't help you to return the access to your account."
+    }
+  },
+  "buttons": {
+    "apply": "Apply",
+    "cancel": "Cancel",
+    "back": "Back",
+    "close": "Close",
+    "copy": "Copy",
+    "confirm": "Confirm",
+    "activate": "Activate",
+    "disable": "Disable",
+    "continue": "Continue",
+    "create-program": "Create Program"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "programs": "Programs",
+    "funds": "Funds",
+    "search": "Search",
+    "personal-details": "Personal details",
+    "wallet": "Wallet",
+    "settings": "Settings",
+    "logout": "Log out",
+    "login": "Login"
   }
 }

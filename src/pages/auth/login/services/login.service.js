@@ -1,3 +1,4 @@
+import { setTwoFactorRequirement } from "actions/2fa-actions";
 import authActions from "actions/auth-actions";
 import { HOME_ROUTE } from "pages/app/app.routes";
 import { LOGIN_ROUTE_TWO_FACTOR_ROUTE } from "pages/auth/login/login.routes";
@@ -17,9 +18,18 @@ import {
 export const login = (loginData, from, setSubmitting) => dispatch => {
   return dispatch(loginUser(loginData))
     .then(response => {
-      authService.storeToken(response.value);
-      dispatch(authActions.updateToken());
-      dispatch(push(from));
+      // authService.storeToken(response.value);
+      // dispatch(authActions.updateToken());
+      // dispatch(push(from));
+      dispatch(
+        storeTwoFactor({
+          email: loginData.email,
+          password: loginData.password,
+          from
+        })
+      );
+      dispatch(setTwoFactorRequirement(true));
+      dispatch(push(LOGIN_ROUTE_TWO_FACTOR_ROUTE));
     })
     .catch(e => {
       if (
@@ -34,6 +44,7 @@ export const login = (loginData, from, setSubmitting) => dispatch => {
             from
           })
         );
+        dispatch(setTwoFactorRequirement(true));
         dispatch(push(LOGIN_ROUTE_TWO_FACTOR_ROUTE));
       } else {
         setSubmitting(false);
@@ -59,7 +70,7 @@ export const twoFactorLogin = (code, type, setSubmitting) => (
 
   return dispatch(loginUser(model))
     .then(response => {
-      authService.storeToken(response.value.data);
+      authService.storeToken(response.value);
       dispatch(authActions.updateToken());
       dispatch(clearTwoFactorData());
       dispatch(push(from));

@@ -10,14 +10,14 @@ import Page from "../../components/page/page";
 
 const DashboardPage = ({ t }) => {
   return (
-    <Page title={t("dashboard-page.title")}>
+    <Page title={t("dashboard.title")}>
       <div className="dashboard">
         <Link
           to={CREATE_PROGRAM_PAGE_ROUTE}
           className="dashboard-page__create-program-btn"
         >
           <GVButton color="primary" type="contained">
-            Create Program
+            {t("buttons.create-program")}
           </GVButton>
         </Link>
       </div>
