@@ -11,7 +11,6 @@ const apiErrorHandlerMiddleware = (
 
   if (isRejected && action.error) {
     const handledError = handleErrorMessage(action.payload.response);
-    debugger;
 
     if (handledError.isServerConnectionError) {
       dispatch(alertMessageActions.error("alerts.server-error", true));

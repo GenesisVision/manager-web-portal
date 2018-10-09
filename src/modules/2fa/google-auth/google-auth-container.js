@@ -24,7 +24,6 @@ class GoogleAuthContainer extends Component {
   handleSubmit = (values, setSubmitting) => {
     if (!this.state.data) return;
     const { sharedKey } = this.state.data;
-    debugger;
     this.setState({ isPending: true });
     authApiProxy
       .v10Auth2faConfirmPost(authService.getAuthArg(), {
