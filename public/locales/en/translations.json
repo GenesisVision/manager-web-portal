@@ -280,6 +280,7 @@
     },
     "password-restore": {
       "title": "Restore password",
+      "success-alert-message": "Your password changed successfully!",
       "forgot-password": {
         "text": "Just enter the email address you used to create your account.",
         "email-field-text": "Email address",
@@ -358,7 +359,9 @@
       "title": "Settings",
       "profile-image": "Profile image",
       "image-requirements": "At least 300 x 300px PNG or JPG file.",
-      "save-photo": "Save photo"
+      "save-photo": "Save photo",
+      "image-success-save-message":
+        "The photo has just been successfully changed."
     }
   },
   "profile-widget": {
@@ -417,5 +420,25 @@
     "settings": "Settings",
     "logout": "Log out",
     "login": "Login"
+  },
+  "alerts": {
+    "clear-all": "Clear all",
+    "server-error": "Server Error. Please contact administrator."
+  },
+  "wallet-widget": {
+    "total-balance": "Total balance",
+    "invested-value": "Invested value",
+    "available": "Available",
+    "details": "Details"
+  },
+  "wallet-add-funds": {
+    "title": "Add funds",
+    "select-currency": "Select a wallet currency",
+    "will-send": "You will send",
+    "will-get": "You'll get",
+    "deposit-address": "Deposit address",
+    "copy-to-clipboard-success":
+      "Your wallet-pane number was copied to the clipboard successfully.",
+    "copy-to-clipboard-error": "Failed to copy data to the clipboard."
   }
 }

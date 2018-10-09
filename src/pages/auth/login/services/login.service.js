@@ -18,18 +18,9 @@ import {
 export const login = (loginData, from, setSubmitting) => dispatch => {
   return dispatch(loginUser(loginData))
     .then(response => {
-      // authService.storeToken(response.value);
-      // dispatch(authActions.updateToken());
-      // dispatch(push(from));
-      dispatch(
-        storeTwoFactor({
-          email: loginData.email,
-          password: loginData.password,
-          from
-        })
-      );
-      dispatch(setTwoFactorRequirement(true));
-      dispatch(push(LOGIN_ROUTE_TWO_FACTOR_ROUTE));
+      authService.storeToken(response.value);
+      dispatch(authActions.updateToken());
+      dispatch(push(from));
     })
     .catch(e => {
       if (
