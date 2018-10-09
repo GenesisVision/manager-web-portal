@@ -2,7 +2,7 @@ import FileApi, { fileApiProxy } from "services/api-client/file-api";
 
 const getFileUrl = id => {
   if (id === null) return "";
-  return `${process.env.REACT_APP_API_URL}/api/files/${id}`;
+  return `${process.env.REACT_APP_API_URL}/v1.0/file/${id}`;
 };
 
 const uploadFile = (file, authorization) => {

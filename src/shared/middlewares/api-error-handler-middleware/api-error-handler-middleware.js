@@ -1,4 +1,5 @@
-import { alertMessageActions } from "../../modules/alert-message/actions/alert-message-actions";
+import { alertMessageActions } from "shared/modules/alert-message/actions/alert-message-actions";
+import handleErrorMessage from "utils/handle-error-message";
 
 const REJECTED_SUFFIX = "FAILURE";
 
@@ -9,17 +10,15 @@ const apiErrorHandlerMiddleware = (
   var isRejected = new RegExp(REJECTED + "$", "g");
 
   if (isRejected && action.error) {
-    if (
-      action.payload.response !== undefined &&
-      action.payload.response.body !== null
-    ) {
-      action.payload = action.payload.response.body.errors;
-    } else {
-      const error = "Server Error. Please contact administrator.";
-      const defaultError = [{ error, code: null }];
+    const handledError = handleErrorMessage(action.payload.response);
 
-      dispatch(alertMessageActions.error(error));
-      action.payload = defaultError;
+    if (handledError.isServerConnectionError) {
+      dispatch(alertMessageActions.error("alerts.server-error", true));
+      action.payload = { code: handledError.code };
+    }
+
+    if (!handledError.isServerConnectionError) {
+      action.payload = handledError;
     }
   }
 
