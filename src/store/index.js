@@ -12,10 +12,14 @@ import authService from "../services/auth-service";
 import apiErrorHandlerMiddleware from "../shared/middlewares/api-error-handler-middleware/api-error-handler-middleware";
 import clearOnceMetaMiddleware from "../shared/middlewares/clear-once-meta-middleware/clear-once-meta-middleware";
 import refreshTokenMiddleware from "../shared/middlewares/refresh-token-middleware/refresh-token-middleware";
+import {
+  FAILURE_SUFFIX,
+  REQUEST_SUFFIX,
+  SUCCESS_SUFFIX
+} from "../shared/reducers/api-reducer/api-reducer";
 import history from "../utils/history";
 
-const failureSuffix = "FAILURE";
-const suffixes = ["REQUEST", "SUCCESS", failureSuffix];
+const suffixes = [REQUEST_SUFFIX, SUCCESS_SUFFIX, FAILURE_SUFFIX];
 
 const reduxDevTools =
   process.env.NODE_ENV === "development" &&
@@ -24,11 +28,9 @@ const reduxDevTools =
 
 const initialState = {};
 const enhancers = [];
-
 if (reduxDevTools) {
   enhancers.push(reduxDevTools);
 }
-
 const middleware = [
   debounceMiddleware(),
   clearOnceMetaMiddleware(),
@@ -38,7 +40,7 @@ const middleware = [
     authApi.v10AuthTokenUpdatePost.bind(authApi)
   ),
   promiseMiddleware({ promiseTypeSuffixes: suffixes }),
-  apiErrorHandlerMiddleware({ failureSuffix: failureSuffix }),
+  apiErrorHandlerMiddleware({ failureSuffix: FAILURE_SUFFIX }),
   routerMiddleware(history),
   loadingBarMiddleware({
     promiseTypeSuffixes: suffixes
