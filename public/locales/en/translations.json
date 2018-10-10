@@ -246,6 +246,12 @@
       "password-confirm-field-text": "Confirm password",
       "email-confirm-title": "Confirm your Email"
     },
+    "email-confirm": {
+      "title": "Email confirm",
+      "success-alert-message": "Email address successfully verified",
+      "error-during-confirmation":
+        "An error occurred during confirmation of email:"
+    },
     "login": {
       "footer-text": "Don't have an account?",
       "title": "Login",
@@ -293,14 +299,20 @@
         "password-confirm-field-text": "Confirm password",
         "confirm-button-text": "Submit",
         "back-button-text": "Back"
+      },
+      "validators": {
+        "password-weak": "Password is weak.",
+        "password-required": "Password is required.",
+        "password-dont-match": "Passwords don't match.",
+        "confirm-password-required": "Confirm password is required",
+        "email-invalid": "Invalid email address.",
+        "email-required": "Email is required."
       }
     },
     "email-pending": {
       "text-section-1":
         "Please check your inbox for a confirmation email. Click the link in the email to create new password.",
-      "text-section-2": "After you confirm click Continue.",
       "email-resend-button-text": "Resend email",
-      "confirm-button-text": "Continue",
       "back-button-text": "Back"
     }
   },
@@ -440,5 +452,9 @@
     "copy-to-clipboard-success":
       "Your wallet-pane number was copied to the clipboard successfully.",
     "copy-to-clipboard-error": "Failed to copy data to the clipboard."
+  },
+  "not-found-page": {
+    "title": "Page Not Found",
+    "body": "Page Not Found"
   }
 }
