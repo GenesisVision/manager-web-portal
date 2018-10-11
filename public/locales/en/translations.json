@@ -246,11 +246,10 @@
       "password-confirm-field-text": "Confirm password",
       "email-confirm-title": "Confirm your Email"
     },
-    "email-confirm": {
-      "title": "Email confirm",
-      "success-alert-message": "Email address successfully verified",
-      "error-during-confirmation":
-        "An error occurred during confirmation of email:"
+    "signup-email-pending": {
+      "text-section":
+        "Please check your inbox for a confirmation email. Click the link in the email to confirm your email.",
+      "resend-button-text": "Resend email"
     },
     "login": {
       "footer-text": "Don't have an account?",
@@ -287,6 +286,8 @@
     "password-restore": {
       "title": "Restore password",
       "success-alert-message": "Your password changed successfully!",
+      "resend-email-alert-message":
+        "Information has been re-sent to your email address.",
       "forgot-password": {
         "text": "Just enter the email address you used to create your account.",
         "email-field-text": "Email address",
@@ -307,13 +308,20 @@
         "confirm-password-required": "Confirm password is required",
         "email-invalid": "Invalid email address.",
         "email-required": "Email is required."
+      },
+      "email-pending": {
+        "text-section-1":
+          "Please check your inbox for a confirmation email. Click the link in the email to create new password.",
+        "email-resend-button-text": "Resend email",
+        "confirm-button-text": "Continue",
+        "back-button-text": "Back"
       }
     },
-    "email-pending": {
-      "text-section-1":
-        "Please check your inbox for a confirmation email. Click the link in the email to create new password.",
-      "email-resend-button-text": "Resend email",
-      "back-button-text": "Back"
+    "email-confirm": {
+      "title": "Email confirm",
+      "success-alert-message": "Email address successfully verified",
+      "error-during-confirmation":
+        "An error occurred during confirmation of email:"
     }
   },
   "create-program-page": {

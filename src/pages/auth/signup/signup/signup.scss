@@ -14,5 +14,14 @@
       margin-top: auto;
       align-self: flex-start;
     }
+
+    & .gv-text-field__wrapper {
+      // margin-bottom: 14px;
+    }
+
+    & .form-error {
+      margin-top: -4px;
+      margin-bottom: 6px;
+    }
   }
 }
