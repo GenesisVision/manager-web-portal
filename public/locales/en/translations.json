@@ -532,5 +532,10 @@
       "end": "End",
       "today": "Today"
     }
+  },
+  "notifications-aside": {
+    "header": "Notifications",
+    "today": "today",
+    "yesterday": "yesterday"
   }
 }
