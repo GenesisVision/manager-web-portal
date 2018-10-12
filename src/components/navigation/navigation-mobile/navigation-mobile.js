@@ -10,11 +10,11 @@ import NavigationItem, {
 } from "components/navigation/navigation-item";
 import Sidebar from "components/sidebar/sidebar";
 import { PROFILE_ROUTE } from "modules/profile/profile.constants";
-import { WALLET_ROUTE } from "modules/wallet/wallet.constants";
 import { LOGIN_ROUTE } from "pages/auth/login/login.routes";
 import { DASHBOARD_ROUTE } from "pages/dashboard/dashboard.routes";
 import { GLOBAL_SEARCH_ROUTE } from "pages/global-search/global-search.routes";
 import { PROGRAMS_ROUTE } from "pages/programs/programs.routes";
+import { WALLET_PAGE_ROUTE } from "pages/wallet/wallet-page";
 import PropTypes from "prop-types";
 import React from "react";
 import { translate } from "react-i18next";
@@ -64,7 +64,10 @@ const NavigationMobile = ({
           <NavigationItem icon={<DetailsIcon primary />} href={PROFILE_ROUTE}>
             {t("navigation.personal-details")}
           </NavigationItem>
-          <NavigationItem icon={<WalletIcon primary />} href={WALLET_ROUTE}>
+          <NavigationItem
+            icon={<WalletIcon primary />}
+            href={WALLET_PAGE_ROUTE}
+          >
             {t("navigation.wallet")}
           </NavigationItem>
           <NavigationItem icon={<SettingsIcon primary />} href={"/settings"}>
