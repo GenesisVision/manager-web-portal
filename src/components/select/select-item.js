@@ -4,8 +4,11 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 class SelectItem extends Component {
-  handleClick = () => {
-    this.props.onClick(this.props.value);
+  handleClick = event => {
+    if (this.props.isSelected) {
+      return;
+    }
+    this.props.onClick(event);
   };
   render() {
     const { isSelected } = this.props;
@@ -17,6 +20,7 @@ class SelectItem extends Component {
           "select__option--selected": isSelected
         })}
         onClick={this.handleClick}
+        name={this.props.name}
       >
         {this.props.children}
       </GVButton>
