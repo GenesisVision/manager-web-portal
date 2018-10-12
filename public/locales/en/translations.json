@@ -246,6 +246,11 @@
       "password-confirm-field-text": "Confirm password",
       "email-confirm-title": "Confirm your Email"
     },
+    "signup-email-pending": {
+      "text-section":
+        "Please check your inbox for a confirmation email. Click the link in the email to confirm your email.",
+      "resend-button-text": "Resend email"
+    },
     "login": {
       "footer-text": "Don't have an account?",
       "title": "Login",
@@ -281,6 +286,8 @@
     "password-restore": {
       "title": "Restore password",
       "success-alert-message": "Your password changed successfully!",
+      "resend-email-alert-message":
+        "Information has been re-sent to your email address.",
       "forgot-password": {
         "text": "Just enter the email address you used to create your account.",
         "email-field-text": "Email address",
@@ -293,15 +300,28 @@
         "password-confirm-field-text": "Confirm password",
         "confirm-button-text": "Submit",
         "back-button-text": "Back"
+      },
+      "validators": {
+        "password-weak": "Password is weak.",
+        "password-required": "Password is required.",
+        "password-dont-match": "Passwords don't match.",
+        "confirm-password-required": "Confirm password is required",
+        "email-invalid": "Invalid email address.",
+        "email-required": "Email is required."
+      },
+      "email-pending": {
+        "text-section-1":
+          "Please check your inbox for a confirmation email. Click the link in the email to create new password.",
+        "email-resend-button-text": "Resend email",
+        "confirm-button-text": "Continue",
+        "back-button-text": "Back"
       }
     },
-    "email-pending": {
-      "text-section-1":
-        "Please check your inbox for a confirmation email. Click the link in the email to create new password.",
-      "text-section-2": "After you confirm click Continue.",
-      "email-resend-button-text": "Resend email",
-      "confirm-button-text": "Continue",
-      "back-button-text": "Back"
+    "email-confirm": {
+      "title": "Email confirm",
+      "success-alert-message": "Email address successfully verified",
+      "error-during-confirmation":
+        "An error occurred during confirmation of email:"
     }
   },
   "create-program-page": {
@@ -440,5 +460,82 @@
     "copy-to-clipboard-success":
       "Your wallet-pane number was copied to the clipboard successfully.",
     "copy-to-clipboard-error": "Failed to copy data to the clipboard."
+  },
+  "wallet": {
+    "title": "Wallet",
+    "total-balance": "Total balance",
+    "invested-value": "Invested value",
+    "available": "Available",
+    "add-funds": "Add funds",
+    "withdraw": "Withdraw",
+    "transactions": {
+      "date": "Date",
+      "type": "Type",
+      "amount": "Amount"
+    },
+    "transactions-types": {
+      "wallet": "Wallet",
+      "program": "Program",
+      "fund": "Fund",
+      "program-request": "Program request",
+      "withdrawal-request": "Withdrawal request",
+      "payment-transaction": "Payment transaction"
+    }
+  },
+  "wallet-withdraw": {
+    "title": "Withdraw",
+    "available": "Available in wallet",
+    "select-currency": "Select a wallet currency",
+    "amount": "Enter correct amount",
+    "will-get": "You'll get",
+    "address": "Withdraw address",
+    "fee": "Fee",
+    "withdrawing": "Withdrawing",
+    "info":
+      "Amount of withdrawals can be changed depending on the exchange rate.",
+    "withdraw-request":
+      "Please approve the withdrawal request via the link in the confirmation email.",
+    "two-factor-code-label": "Two factor code",
+    "confirmation": {
+      "page-title": "Wallet withdraw confirm",
+      "error": "An error occurred during confirmation of email: ",
+      "success": "Successful Email Verification"
+    },
+    "validation": {
+      "amount-more-than-available":
+        "Amount is more than available in your wallet",
+      "amount-is-required": "Amount is required",
+      "address-is-required": "Address is required.",
+      "two-factor-6digits": "Authentication code should contain 6 digits.",
+      "two-factor-required": "Authentication code is required."
+    }
+  },
+  "not-found-page": {
+    "title": "Page Not Found",
+    "body": "Page Not Found"
+  },
+  "filters": {
+    "level": {
+      "label": "Level"
+    },
+    "currency": {
+      "label": "Currency"
+    },
+    "date-range": {
+      "label": "Date range",
+      "all-time": "All time",
+      "last-month": "Last month",
+      "last-week": "Last week",
+      "custom": "Custom",
+      "program-start": "Program start",
+      "start": "Start",
+      "end": "End",
+      "today": "Today"
+    }
+  },
+  "notifications-aside": {
+    "header": "Notifications",
+    "today": "today",
+    "yesterday": "yesterday"
   }
 }

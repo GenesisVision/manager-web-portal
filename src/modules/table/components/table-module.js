@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { merge } from "utils/helpers";
 
 import { calculateTotalPages } from "../helpers/paging.helpers";
@@ -6,36 +6,49 @@ import { updateFilter } from "../reducers/table-filtering.reducer";
 import { composeRequestFilters } from "../services/table.service";
 import Table from "./table";
 
-class TableModule extends Component {
+const defaultData = { items: null, total: 0 };
+
+class TableModule extends PureComponent {
   constructor(props) {
     super(props);
 
     const { paging, sorting, filtering } = this.props;
 
     this.state = {
-      paging: { ...paging },
+      paging: paging,
       sorting: sorting,
       filtering: { ...filtering },
-      data: {},
-      isPending: true
+      data: defaultData,
+      isPending: true,
+      errorCode: null,
+      prevData: defaultData
     };
   }
 
-  state = {
-    paging: null,
-    sorting: null,
-    filtering: null,
-    data: { items: null },
-    isPending: null
-  };
+  static getDerivedStateFromProps(props, state) {
+    let newState = {};
+    if (props.data !== undefined && state.prevData !== props.data) {
+      state.prevData = props.data;
+      newState.data = props.data;
+
+      const totalPages = calculateTotalPages(
+        props.data.total,
+        props.paging.itemsOnPage
+      );
+      newState.paging = merge(state.paging, { totalPages });
+    }
+    return newState;
+  }
 
   componentDidMount() {
-    this.updateItems();
+    if (this.props.fetchOnMount) {
+      this.updateItems();
+    }
   }
+
   updateItems = () => {
     const { paging, sorting, filtering } = this.state;
     const { defaultFilters, getItems } = this.props;
-
     this.setState({ isPending: true });
 
     const filters = composeRequestFilters({
@@ -50,11 +63,15 @@ class TableModule extends Component {
         const totalPages = calculateTotalPages(data.total, paging.itemsOnPage);
         this.setState(prevState => ({
           data,
-          paging: merge(prevState.paging, { totalPages }),
-          isPending: false
+          paging: merge(prevState.paging, { totalPages })
         }));
       })
-      .catch();
+      .catch(e => {
+        this.setState({ errorCode: e.errorCode });
+      })
+      .finally(() => {
+        this.setState({ isPending: false });
+      });
   };
 
   handleUpdateSorting = sorting => {
@@ -62,7 +79,7 @@ class TableModule extends Component {
       prevState => ({
         sorting: sorting,
         paging: merge(prevState.paging, {
-          currentPage: 0
+          currentPage: 1
         })
       }),
       this.updateItems
@@ -74,7 +91,7 @@ class TableModule extends Component {
       return {
         filtering: updateFilter(prevState.filtering, filter),
         paging: merge(prevState.paging, {
-          currentPage: 0
+          currentPage: 1
         })
       };
     }, this.updateItems);
@@ -84,7 +101,7 @@ class TableModule extends Component {
     this.setState(
       prevState => ({
         paging: merge(prevState.paging, {
-          currentPage: nextPageIndex
+          currentPage: nextPageIndex + 1
         })
       }),
       this.updateItems
@@ -107,5 +124,9 @@ class TableModule extends Component {
     );
   }
 }
+
+TableModule.defaultProps = {
+  fetchOnMount: true
+};
 
 export default TableModule;
