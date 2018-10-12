@@ -49,7 +49,6 @@ class TableModule extends PureComponent {
   updateItems = () => {
     const { paging, sorting, filtering } = this.state;
     const { defaultFilters, getItems } = this.props;
-
     this.setState({ isPending: true });
 
     const filters = composeRequestFilters({
