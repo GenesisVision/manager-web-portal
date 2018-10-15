@@ -322,6 +322,9 @@
       "success-alert-message": "Email address successfully verified",
       "error-during-confirmation":
         "An error occurred during confirmation of email:"
+    },
+    "logout-from-another-devices": {
+      "success-message": "Successful logout on another devices."
     }
   },
   "create-program-page": {
@@ -381,7 +384,9 @@
       "image-requirements": "At least 300 x 300px PNG or JPG file.",
       "save-photo": "Save photo",
       "image-success-save-message":
-        "The photo has just been successfully changed."
+        "The photo has just been successfully changed.",
+      "logout-from-another-devices": "Logout from another devices",
+      "change-password": "Change password"
     }
   },
   "profile-widget": {
