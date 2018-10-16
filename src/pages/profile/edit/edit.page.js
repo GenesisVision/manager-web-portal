@@ -1,19 +1,20 @@
 import Page from "components/page/page";
-import Profile from "modules/profile/profile";
 import ProfileContainer from "modules/profile/profile-container";
+import ProfileForm from "modules/profile/profile-form";
 import React from "react";
 import { translate } from "react-i18next";
 
-const ProfilePage = ({ t }) => {
+import NavigationBackButton from "../../../modules/navigation-back-button/navigation-back-button";
+
+const ProfileEditPage = ({ t }) => {
   return (
     <Page title={t("profile.title")}>
+      <NavigationBackButton />
       <ProfileContainer>
-        <Profile />
+        <ProfileForm />
       </ProfileContainer>
     </Page>
   );
 };
 
-ProfilePage.propTypes = {};
-
-export default translate()(ProfilePage);
+export default translate()(ProfileEditPage);

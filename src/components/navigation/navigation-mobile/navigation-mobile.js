@@ -9,7 +9,6 @@ import NavigationItem, {
   NavigationButton
 } from "components/navigation/navigation-item";
 import Sidebar from "components/sidebar/sidebar";
-import { PROFILE_ROUTE } from "modules/profile/profile.constants";
 import { LOGIN_ROUTE } from "pages/auth/login/login.routes";
 import { DASHBOARD_ROUTE } from "pages/dashboard/dashboard.routes";
 import { GLOBAL_SEARCH_ROUTE } from "pages/global-search/global-search.routes";
@@ -20,6 +19,8 @@ import React from "react";
 import { translate } from "react-i18next";
 import UserIcon from "shared/media/user-avatar.svg";
 import fileService from "shared/services/file-service";
+
+import { PROFILE_ROUTE } from "../../../pages/profile/profile.constants";
 
 const NavigationMobile = ({
   t,
