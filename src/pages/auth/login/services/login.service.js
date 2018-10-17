@@ -15,8 +15,10 @@ import {
   storeTwoFactor
 } from "../actions/login.actions";
 
+export const CLIENT_WEB = "Web";
+
 export const login = (loginData, from, setSubmitting) => dispatch => {
-  return dispatch(loginUser(loginData))
+  return dispatch(loginUser({ ...loginData, client: CLIENT_WEB }))
     .then(response => {
       authService.storeToken(response.value);
       dispatch(authActions.updateToken());
@@ -30,8 +32,7 @@ export const login = (loginData, from, setSubmitting) => dispatch => {
       ) {
         dispatch(
           storeTwoFactor({
-            email: loginData.email,
-            password: loginData.password,
+            ...loginData,
             from
           })
         );
@@ -50,7 +51,8 @@ export const twoFactorLogin = (code, type, setSubmitting) => (
   const { email, password, from } = getState().loginData.twoFactor;
   const model = {
     email,
-    password
+    password,
+    client: CLIENT_WEB
   };
   if (type === TWO_FACTOR_CODE) {
     model.twoFactorCode = code;
