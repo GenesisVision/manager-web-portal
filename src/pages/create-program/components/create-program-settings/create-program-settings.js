@@ -13,6 +13,7 @@ import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import InputImage from "shared/components/form/input-image/input-image";
+import { formatValue } from "utils/formatter";
 
 import {
   getAccountTypes,
@@ -219,7 +220,7 @@ class CreateProgramSettings extends React.Component {
               {t("create-program-page.settings.fields.available-in-wallet")}
               <span className="create-program-settings__available-amount-value">
                 <NumberFormat
-                  value={balance}
+                  value={formatValue(balance)}
                   thousandSeparator=" "
                   displayType="text"
                   suffix=" GVT"
