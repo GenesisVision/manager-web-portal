@@ -4,8 +4,12 @@ import GoogleAuthCodes from "modules/2fa/google-auth/google-auth-codes";
 import GoogleAuthStepsContainer from "modules/2fa/google-auth/google-auth-steps/google-auth-steps";
 import React, { Component } from "react";
 import { translate } from "react-i18next";
+import { connect } from "react-redux";
+import { bindActionCreators, compose } from "redux";
 import { authApiProxy } from "services/api-client/auth-api";
 import authService from "services/auth-service";
+
+import * as twoFactorServices from "../services/2fa.service.js";
 
 class GoogleAuthContainer extends Component {
   state = {
@@ -21,22 +25,21 @@ class GoogleAuthContainer extends Component {
     });
   }
 
-  handleSubmit = (values, setSubmitting) => {
+  handleSubmit = values => {
     if (!this.state.data) return;
     const { sharedKey } = this.state.data;
+
     this.setState({ isPending: true });
-    authApiProxy
-      .v10Auth2faConfirmPost(authService.getAuthArg(), {
-        model: {
-          ...values,
-          sharedKey
-        }
+    this.props.service
+      .confirm2fa({
+        ...values,
+        sharedKey
       })
       .then(data => {
-        this.setState({ ...data, isSubmitting: false }, this.props.onSubmit);
+        this.setState({ ...data }, this.props.onSubmit);
       })
-      .catch(() => {
-        this.setState({ isSubmitting: false });
+      .catch(data => {
+        this.setState({ ...data });
       });
   };
 
@@ -57,4 +60,10 @@ class GoogleAuthContainer extends Component {
   }
 }
 
-export default translate()(GoogleAuthContainer);
+const mapDispatchToProps = dispatch => ({
+  service: bindActionCreators(twoFactorServices, dispatch)
+});
+
+export default compose(translate(), connect(null, mapDispatchToProps))(
+  GoogleAuthContainer
+);
