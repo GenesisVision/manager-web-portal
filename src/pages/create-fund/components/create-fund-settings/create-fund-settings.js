@@ -24,12 +24,6 @@ import { RefreshIcon } from "components/icon/refresh-icon";
 class CreateFundSettings extends React.Component {
   state = {
     anchor: null,
-    assetsMock: [
-      { percent: 0, asset: "BTC", type: "short" },
-      { percent: 0, asset: "ETH", type: "short" },
-      { percent: 0, asset: "USD", type: "short" },
-      { percent: 0, asset: "XRP", type: "short" }
-    ],
     assets: this.props.assets.map(asset => {
       return {
         ...asset,
