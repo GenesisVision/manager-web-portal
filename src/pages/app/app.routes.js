@@ -1,5 +1,7 @@
 import { CREATE_PROGRAM_PAGE_ROUTE } from "pages/create-program/create-program.constants";
+import { CREATE_FUND_PAGE_ROUTE } from "pages/create-fund/create-fund.constants";
 import createProgramPage from "pages/create-program/create-program.page";
+import createFundPage from "pages/create-fund/create-fund.page";
 import { DASHBOARD_ROUTE } from "pages/dashboard/dashboard.routes";
 import DashboardRoutes from "pages/dashboard/dashboard.routes";
 import NotFoundPage from "pages/not-found/not-found.routes";
@@ -31,6 +33,10 @@ const AppRoutes = () => {
         <PrivateRoute
           path={CREATE_PROGRAM_PAGE_ROUTE}
           component={createProgramPage}
+        />
+        <PrivateRoute
+          path={CREATE_FUND_PAGE_ROUTE}
+          component={createFundPage}
         />
         <PrivateRoute path={WALLET_PAGE_ROUTE} component={WalletPage} />
         <Route component={NotFoundPage} />
