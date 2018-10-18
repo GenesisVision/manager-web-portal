@@ -27,6 +27,9 @@ class About extends Component {
   }
 }
 
-About.propTypes = {};
+About.propTypes = {
+  userName: PropTypes.string,
+  about: PropTypes.string
+};
 
 export default About;

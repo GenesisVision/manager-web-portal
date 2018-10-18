@@ -1,7 +1,5 @@
 import Yup from "yup";
 
-import { PROGRAM_SETTINGS_PERIOD_VALUES } from "./create-program-settings.constants";
-
 const createProgramSettingsValidationSchema = ({ t }) =>
   Yup.object().shape({
     title: Yup.string()

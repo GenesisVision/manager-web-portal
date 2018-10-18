@@ -1,7 +1,6 @@
 import "./navigation-back-button.scss";
 
 import { GVButton } from "gv-react-components";
-import PropTypes from "prop-types";
 import React from "react";
 import { translate } from "react-i18next";
 import connect from "react-redux/es/connect/connect";
@@ -18,8 +17,6 @@ const BackButton = ({ t, service }) => {
     </div>
   );
 };
-
-BackButton.propTypes = {};
 
 const mapDispatchToProps = dispatch => ({
   service: bindActionCreators({ goBack }, dispatch)
