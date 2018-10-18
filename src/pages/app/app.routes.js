@@ -13,6 +13,8 @@ import WalletPage, { WALLET_PAGE_ROUTE } from "pages/wallet/wallet-page";
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
+import { NOTIFICATIONS_ROUTE } from "../notifications/notifications.routes";
+import NotificationRoutes from "../notifications/notifications.routes";
 import AppLayout from "./components/app-layout/app-layout";
 
 export const HOME_ROUTE = "/";
@@ -31,6 +33,10 @@ const AppRoutes = () => {
         <PrivateRoute
           path={CREATE_PROGRAM_PAGE_ROUTE}
           component={createProgramPage}
+        />
+        <PrivateRoute
+          path={NOTIFICATIONS_ROUTE}
+          component={NotificationRoutes}
         />
         <PrivateRoute path={WALLET_PAGE_ROUTE} component={WalletPage} />
         <Route component={NotFoundPage} />

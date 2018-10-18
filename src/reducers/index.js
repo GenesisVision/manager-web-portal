@@ -1,4 +1,5 @@
 import headerReducer from "modules/header/reducer/header-reducer";
+import notificationSettingsReducer from "modules/notification-settings/reducers/notification-settings.reducers";
 import notificationsReducer from "pages/app/components/notifications/reducers/notifications.reducers";
 import walletReducer from "pages/wallet/reducers/wallet.reducers.js";
 import { loadingBarReducer } from "react-redux-loading-bar";
@@ -33,5 +34,6 @@ export default combineReducers({
   accountSettings: accountSettingsReducer,
   ui: uiReducer,
   wallet: walletReducer,
-  emailPending: emailPendingReducer
+  emailPending: emailPendingReducer,
+  notificationSettings: notificationSettingsReducer
 });
