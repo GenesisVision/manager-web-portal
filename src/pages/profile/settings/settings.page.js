@@ -7,6 +7,7 @@ import React from "react";
 import { translate } from "react-i18next";
 import { Link } from "react-router-dom";
 
+import { PASSWORD_ROUTE } from "../profile.constants";
 import LogoutButtonContainer from "./logout-button/logout-button-container";
 import ProfileImageContainer from "./profile-image/profile-image-container";
 
@@ -18,7 +19,7 @@ const SettingsPage = ({ t }) => {
         <TwoFactorAuthContainer />
         <ProfileImageContainer />
         <div className="profile-settings__aside-actions">
-          <Link to={HOME_ROUTES}>
+          <Link to={PASSWORD_ROUTE}>
             <GVButton
               variant="text"
               color="secondary"
@@ -30,9 +31,6 @@ const SettingsPage = ({ t }) => {
 
           <LogoutButtonContainer />
         </div>
-        <Link to={PASSWORD_ROUTE} className={"profile-settings__password"}>
-          {`${t("profile.settings.change-password")} >`}
-        </Link>
       </div>
     </Page>
   );
