@@ -374,6 +374,9 @@
         "success-fee-required": "Success fee is required",
         "account-type-required": "Account type is required"
       }
+    },
+    "notifications": {
+      "create-success": "Successful program creating."
     }
   },
   "password-page": {
@@ -471,6 +474,8 @@
     "confirm": "Confirm",
     "activate": "Activate",
     "disable": "Disable",
+    "create-program": "Create program",
+    "continue": "Continue",
     "create": "Create",
     "delete": "Delete",
     "edit": "Edit",

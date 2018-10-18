@@ -126,7 +126,7 @@ class CreateProgramSettings extends React.Component {
               >
                 {getLeverages(broker, values["accountType"]).map(leverage => {
                   return (
-                    <option value={leverage} key={leverage}>
+                    <option value={leverage.toString()} key={leverage}>
                       {leverage}
                     </option>
                   );
@@ -140,7 +140,7 @@ class CreateProgramSettings extends React.Component {
               >
                 {PROGRAM_SETTINGS_PERIOD_VALUES.map(period => {
                   return (
-                    <option value={period} key={period}>
+                    <option value={period.toString()} key={period}>
                       {period + (period === 1 ? " day" : " days")}
                     </option>
                   );
