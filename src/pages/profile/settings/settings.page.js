@@ -6,6 +6,7 @@ import React from "react";
 import { translate } from "react-i18next";
 import { Link } from "react-router-dom";
 
+import About from "../../../modules/about/about";
 import { PASSWORD_ROUTE } from "../profile.constants";
 import ProfileImageContainer from "./profile-image/profile-image-container";
 

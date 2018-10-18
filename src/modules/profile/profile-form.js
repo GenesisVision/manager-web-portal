@@ -1,17 +1,18 @@
 import "./profile.scss";
 
 import Chip from "components/chip/chip";
+import Dialog from "components/dialog/dialog";
 import FileLabel from "components/file-label/file-label";
 import GVDatePicker from "components/gv-datepicker/gv-datepicker";
 import { withFormik } from "formik";
 import { GVButton, GVFormikField, GVTextField } from "gv-react-components";
-import UploadButton from "modules/upload-button/upload-button";
-import moment from "moment";
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import { translate } from "react-i18next";
-import Dialog from "components/dialog/dialog";
 import PhoneVerification from "modules/phone-verification/phone-verification";
+import UploadButton from "modules/upload-button/upload-button";
+import PropTypes from "prop-types";
+import React, { Component, Fragment } from "react";
+import { translate } from "react-i18next";
+
+import About from "../about/about";
 
 class Profile extends Component {
   state = {
@@ -42,7 +43,7 @@ class Profile extends Component {
     const { t, info, handleSubmit } = this.props;
     console.info("e");
     return (
-      <>
+      <Fragment>
         {
           <Dialog
             open={this.state.isOpenVerify}
@@ -54,6 +55,7 @@ class Profile extends Component {
             />
           </Dialog>
         }
+        <About about={info.about} userName={info.userName} />
         <form
           id="profile-form"
           className="profile__container"
@@ -227,7 +229,7 @@ class Profile extends Component {
             </tbody>
           </table>
         </form>
-      </>
+      </Fragment>
     );
   }
 }

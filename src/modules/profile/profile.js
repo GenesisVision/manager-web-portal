@@ -10,9 +10,15 @@ import { Link } from "react-router-dom";
 
 import { PROFILE_EDIT_ROUTE } from "../../pages/profile/profile.constants";
 
-const ProfileField = ({ name, value, label, disabled = true }) => {
+const ProfileField = ({ name, value, label, disabled = true, type }) => {
   return value || !disabled ? (
-    <GVTextField name={name} value={value} label={label} disabled={disabled} />
+    <GVTextField
+      type={type}
+      name={name}
+      value={value}
+      label={label}
+      disabled={disabled}
+    />
   ) : null;
 };
 
@@ -23,6 +29,35 @@ class Profile extends Component {
       <div className="profile__container">
         <table className="profile profile--is-disabled">
           <tbody>
+            <tr className="profile__content">
+              <td className="profile__left" />
+              <td className="profile__center" />
+              <td className="profile__right">
+                <div className="profile__row">
+                  <ProfileField
+                    label={t("profile.id")}
+                    value={info.id}
+                    name="id"
+                  />
+                </div>
+                <div className="profile__row">
+                  <ProfileField
+                    label={t("profile.login")}
+                    value={info.userName}
+                    name="userName"
+                  />
+                </div>
+                <div className="profile__row">
+                  <ProfileField
+                    disabled
+                    type="textarea"
+                    name="about"
+                    value={info.about}
+                    label={t("profile.about")}
+                  />
+                </div>
+              </td>
+            </tr>
             <tr className="profile__title">
               <td className="profile__left">
                 <h4>01</h4>

@@ -383,6 +383,9 @@
     "success-alert": "Password was changed"
   },
   "profile": {
+    "id": "id",
+    "login": "Login",
+    "about": "About",
     "title": "Profile",
     "contacts": "Contacts",
     "not-verified": "Not verified",
@@ -463,8 +466,11 @@
     "confirm": "Confirm",
     "activate": "Activate",
     "disable": "Disable",
-    "continue": "Continue",
-    "create-program": "Create Program"
+    "create": "Create",
+    "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save",
+    "verify": "Verify"
   },
   "navigation": {
     "dashboard": "Dashboard",
