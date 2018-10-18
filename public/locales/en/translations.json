@@ -376,9 +376,48 @@
       }
     }
   },
+  "password-page": {
+    "title": "Change password"
+  },
+  "password-change": {
+    "current-password": "Current password",
+    "password": "Password",
+    "confirm-password": "Confirm password",
+    "success-alert": "Password was changed"
+  },
   "profile": {
+    "id": "id",
+    "login": "Login",
+    "about": "About",
     "title": "Profile",
+    "contacts": "Contacts",
+    "not-verified": "Not verified",
+    "phone-number": "Phone number",
+    "email": "Email address",
+    "personal-info": "Personal info",
+    "forename": "Forename",
+    "family-name": "Family name",
+    "birthday": "Date of birth",
+    "citizen": "Citizenship",
+    "residential-address": "Residential address",
+    "country": "Country",
+    "city": "City",
+    "address": "Address",
+    "index": "Index",
+    "success-edit": "Profile update is successful",
+    "success-verify": "Phone number verification is successful",
+    "verification": {
+      "phone": {
+        "required": "Code is required",
+        "title": "Verify phone number",
+        "description": "We have sent you a verification code",
+        "number": "Phone number",
+        "code": "Verification code",
+        "resend": "Resend code"
+      }
+    },
     "settings": {
+      "change-password": "Change password",
       "title": "Settings",
       "profile-image": "Profile image",
       "image-requirements": "At least 300 x 300px PNG or JPG file.",
@@ -432,8 +471,11 @@
     "confirm": "Confirm",
     "activate": "Activate",
     "disable": "Disable",
-    "continue": "Continue",
-    "create-program": "Create Program"
+    "create": "Create",
+    "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save",
+    "verify": "Verify"
   },
   "navigation": {
     "dashboard": "Dashboard",
@@ -542,5 +584,100 @@
     "header": "Notifications",
     "today": "today",
     "yesterday": "yesterday"
+  },
+  "notifications": {
+    "title": "Notification settings",
+    "general": {
+      "title": "GENERAL",
+      "news-updates": "News and updates",
+      "emergency": "Emergency notifications",
+      "PlatformEmergency": {
+        "enabled-alert": "Enabled emergency notifications",
+        "disabled-alert": "Disabled emergency notifications"
+      },
+      "PlatformNewsAndUpdates": {
+        "enabled-alert": "Enabled news and updates notifications",
+        "disabled-alert": "Disabled news and updates notifications"
+      }
+    },
+    "programs": "PROGRAMS",
+    "program": {
+      "title": "Program notifications",
+      "general": {
+        "title": "GENERAL",
+        "news-updates": "Program news and updates",
+        "end-of-period": "Notifications for the end of the period",
+        "ProgramNewsAndUpdates": {
+          "enabled-alert": "Enabled program news and updates notifications",
+          "disabled-alert": "Disabled program news and updates notifications"
+        },
+        "ProgramEndOfPeriod": {
+          "enabled-alert": "Enabled the end of period notifications",
+          "disabled-alert": "Disabled the end of period notifications"
+        }
+      },
+      "custom": {
+        "title": "CUSTOM",
+        "profit": "Profit notification",
+        "create": "Create notification",
+        "enabled-alert": "Enabled custom notification",
+        "disabled-alert": "Disabled custom notification",
+        "delete-alert": "Custom notification was deleted",
+        "create-alert": "Custom notification was created"
+      },
+      "create": {
+        "title": "Create notification",
+        "type-label": "Type",
+        "amount-label": "Enter amount",
+        "amount-required": "Amount is required",
+        "Level": {
+          "title": "Level notification",
+          "label": "Level"
+        },
+        "Profit": {
+          "title": "Profit notification",
+          "label": "Profit"
+        }
+      }
+    },
+    "fund": {
+      "title": "Fund notifications",
+      "general": {
+        "title": "GENERAL",
+        "news-updates": "Fund news and updates",
+        "end-of-period": "Notifications for the end of the period",
+        "FundNewsAndUpdates": {
+          "disabled-alert": "Enabled fund news and updates notifications",
+          "enabled-alert": "Disabled fund news and updates notifications"
+        },
+        "FundEndOfPeriod": {
+          "disabled-alert": "Enabled the end of period notifications",
+          "enabled-alert": "Disabled the end of period notifications"
+        }
+      },
+      "custom": {
+        "title": "CUSTOM",
+        "profit": "Profit notification",
+        "create": "Create notification",
+        "enabled-alert": "Enabled custom notification",
+        "disabled-alert": "Disabled custom notification",
+        "delete-alert": "Custom notification was deleted",
+        "create-alert": "Custom notification was created"
+      },
+      "create": {
+        "title": "Create notification",
+        "type-label": "Type",
+        "amount-label": "Enter amount",
+        "amount-required": "Amount is required",
+        "Level": {
+          "title": "Level notification",
+          "label": "Level"
+        },
+        "Profit": {
+          "title": "Profit notification",
+          "label": "Profit"
+        }
+      }
+    }
   }
 }
