@@ -41,10 +41,9 @@ class Profile extends Component {
   };
   render() {
     const { t, info, handleSubmit } = this.props;
-    console.info("e");
     return (
       <Fragment>
-        {
+        {info.phone && (
           <Dialog
             open={this.state.isOpenVerify}
             onClose={this.handleCloseVerify}
@@ -54,7 +53,7 @@ class Profile extends Component {
               onVerify={this.handleVerify}
             />
           </Dialog>
-        }
+        )}
         <About about={info.about} userName={info.userName} />
         <form
           id="profile-form"
@@ -88,14 +87,15 @@ class Profile extends Component {
                         name="phoneNumber"
                         component={GVTextField}
                       />
-                      {info.phoneNumberConfirmed || (
-                        <GVButton
-                          variant="text"
-                          onClick={this.handleOpenVerify}
-                        >
-                          {t("buttons.verify")}
-                        </GVButton>
-                      )}
+                      {info.phoneNumberConfirmed ||
+                        (info.phone && (
+                          <GVButton
+                            variant="text"
+                            onClick={this.handleOpenVerify}
+                          >
+                            {t("buttons.verify")}
+                          </GVButton>
+                        ))}
                     </div>
                     <GVFormikField
                       label={t("profile.email")}
