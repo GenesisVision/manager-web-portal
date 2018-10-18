@@ -51,10 +51,6 @@ class CreateFundSettings extends React.Component {
     asset.percent++;
     this.updateAssets();
   };
-  handleRemoveAsset = asset => {
-    asset.percent = 0;
-    this.updateAssets();
-  };
   getRemainder = () => {
     return 100 - this.state.assets.reduce((sum, item) => sum + item.percent, 0);
   };
@@ -78,14 +74,6 @@ class CreateFundSettings extends React.Component {
       "assets",
       this.state.assets.filter(item => item.percent > 0)
     );
-  };
-  addAsset = () => {
-    this.setState({
-      assets: [
-        ...this.state.assets,
-        { percent: 50, asset: "BTC", type: "short" }
-      ]
-    });
   };
   removeHandle = currency => () => {
     this.state.assets.find(item => item.asset === currency).percent = 0;
