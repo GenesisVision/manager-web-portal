@@ -1,5 +1,7 @@
 import "./create-fund-settings.scss";
 
+import classNames from "classnames";
+import { RefreshIcon } from "components/icon/refresh-icon";
 import { Field, withFormik } from "formik";
 import {
   GVButton,
@@ -11,15 +13,14 @@ import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import InputImage from "shared/components/form/input-image/input-image";
-import { percentNumberFormat } from "../../helpers/create-fund.helpers";
-import createFundSettingsValidationSchema from "./create-fund-settings.validators";
-import FundDefaultImage from "./fund-default-image";
+
 import AddButton from "../../../../components/add-button/add-button";
-import classNames from "classnames";
-import CreateFundSettingsAssetsComponent from "./create-fund-settings-assets-block/create-fund-settings-assets-block";
+import { percentNumberFormat } from "../../helpers/create-fund.helpers";
 import CreateFundSettingsAddAsset from "./create-fund-settings-add-asset/create-fund-settings-add-asset";
+import CreateFundSettingsAssetsComponent from "./create-fund-settings-assets-block/create-fund-settings-assets-block";
+import createFundSettingsValidationSchema from "./create-fund-settings.validators";
 import ErrorNotifier from "./error-notifier/error-notifier";
-import { RefreshIcon } from "components/icon/refresh-icon";
+import FundDefaultImage from "./fund-default-image";
 
 class CreateFundSettings extends React.Component {
   state = {

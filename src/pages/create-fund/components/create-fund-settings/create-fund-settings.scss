@@ -46,7 +46,7 @@ $asset-height-mobile: $asset-height/$divider-text;
   &__remainder {
     box-sizing: border-box;
     width: 65px;
-    background: rgba(59, 205, 189, .1);
+    background: rgba(59, 205, 189, 0.1);
     color: #14beb4;
     display: flex;
     justify-content: center;
@@ -82,7 +82,6 @@ $asset-height-mobile: $asset-height/$divider-text;
     }
   }
   &__regulator-indicator {
-
   }
   &__line {
     width: 100%;
@@ -134,7 +133,8 @@ $asset-height-mobile: $asset-height/$divider-text;
       &--with-border {
         border-left: 2px solid $secondary-color;
       }
-      &--with-border, &--without-border{
+      &--with-border,
+      &--without-border {
         margin-left: 8px;
       }
     }
@@ -185,7 +185,6 @@ $asset-height-mobile: $asset-height/$divider-text;
     @include media-breakpoint-landscape-phone() {
       font-size: $font-size-small;
     }
-
   }
 
   &__logo-title {
@@ -279,7 +278,6 @@ $asset-height-mobile: $asset-height/$divider-text;
   }
 
   &__row {
-
     & .gv-text-field {
       width: 250px;
     }
@@ -332,7 +330,7 @@ $asset-height-mobile: $asset-height/$divider-text;
   &__regulator-indicator {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
   &__regulator-input {
     width: 23px;
@@ -348,7 +346,7 @@ $asset-height-mobile: $asset-height/$divider-text;
       outline-width: 0;
     }
     &--mute {
-      color: rgba(255, 255, 255, .3)
+      color: rgba(255, 255, 255, 0.3);
     }
     @include media-breakpoint-landscape-phone() {
       font-size: $font-size-middle;
@@ -356,9 +354,10 @@ $asset-height-mobile: $asset-height/$divider-text;
     }
   }
   &__asset-currency-short {
-    opacity: .4;
+    opacity: 0.4;
   }
-  &__assets, &__search {
+  &__assets,
+  &__search {
     padding: 0 $padding-small;
   }
   &__assets {

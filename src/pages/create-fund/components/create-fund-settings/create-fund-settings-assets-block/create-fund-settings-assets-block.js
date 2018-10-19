@@ -1,6 +1,8 @@
 import "../create-fund-settings.scss";
-import React from "react";
+
 import FundAssetContainer from "components/fund-asset/fund-asset-container";
+import React from "react";
+
 import FundAssetRatio from "../../../../../components/fund-asset-ratio/fund-asset-ratio";
 class CreateFundSettingsAssetsComponent extends React.Component {
   state = {

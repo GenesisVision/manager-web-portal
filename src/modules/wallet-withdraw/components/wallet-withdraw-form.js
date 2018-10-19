@@ -31,6 +31,7 @@ const WalletWithdrawForm = ({
     convertFromCurrency(amount, rateToGvt) - commission,
     0
   );
+
   return (
     <form
       id="wallet-withdraw"

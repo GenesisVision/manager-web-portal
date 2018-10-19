@@ -20,14 +20,15 @@ $add-button-button-font-size: 28px;
   &:hover {
     background: rgb(21, 187, 175);
     color: $text-accent-color;
-    &__button{
+    &__button {
     }
   }
   @include media-breakpoint-landscape-phone() {
     width: $add-button-height;
     height: $add-button-height;
   }
-  &, & div {
+  &,
+  & div {
     box-sizing: border-box;
   }
   &__button {

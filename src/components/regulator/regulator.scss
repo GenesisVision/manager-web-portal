@@ -4,7 +4,7 @@
 
 $regulator-width: 120px;
 $regulator-height: 25px;
-$regulator-button-font-size:28px;
+$regulator-button-font-size: 28px;
 
 .regulator {
   padding: 0 5px;
@@ -15,16 +15,17 @@ $regulator-button-font-size:28px;
   background-color: #2d373f;
   min-width: $regulator-width/$divider-text;
   height: $regulator-height/1.2;
-  @include media-breakpoint-landscape-phone(){
+  @include media-breakpoint-landscape-phone() {
     min-width: $regulator-width;
     height: $regulator-height;
   }
-  &, & div {
+  &,
+  & div {
     box-sizing: border-box;
   }
-  &--mute{
+  &--mute {
     background-color: #202b34;
-    color: rgba(255,255,255,.3);
+    color: rgba(255, 255, 255, 0.3);
   }
   &__button {
     padding: 0 7px;
@@ -33,13 +34,13 @@ $regulator-button-font-size:28px;
     font-weight: 100;
     user-select: none;
     cursor: pointer;
-    @include media-breakpoint-landscape-phone(){
+    @include media-breakpoint-landscape-phone() {
       font-size: $regulator-button-font-size;
     }
   }
   &__indicator {
     font-size: $font-size-middle-mobile;
-    @include media-breakpoint-landscape-phone(){
+    @include media-breakpoint-landscape-phone() {
       font-size: $font-size-middle;
     }
   }
