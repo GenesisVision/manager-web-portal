@@ -13,7 +13,7 @@ class GVDatePicker extends Component {
       this.props.onChange({
         persist: () => {},
         target: {
-          value: data.format(),
+          value: data && data.format(),
           name: this.props.name
         }
       });
@@ -25,6 +25,7 @@ class GVDatePicker extends Component {
     if (disabled) return;
     if (onBlur) {
       onBlur({
+        persist: () => {},
         target: {
           name
         }
