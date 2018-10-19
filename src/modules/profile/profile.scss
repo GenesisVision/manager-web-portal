@@ -11,10 +11,9 @@
   }
   &__container {
     width: 100%;
-    overflow: scroll;
+    overflow: auto;
   }
   &__left {
-    min-width: 23px;
     position: relative;
   }
 

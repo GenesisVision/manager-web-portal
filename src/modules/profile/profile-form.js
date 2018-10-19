@@ -259,17 +259,18 @@ Profile.propTypes = {
 const ProfileForm = withFormik({
   displayName: "profile-form",
   mapPropsToValues: ({ info }) => ({
-    firstName: info.firstName,
-    lastName: info.lastName,
+    firstName: info.firstName || undefined,
+    middleName: info.middleName || undefined,
+    lastName: info.lastName || undefined,
     birthday: info.birthday ? moment(info.birthday).format() : undefined,
-    citizenship: info.citizenship,
-    gender: info.gender,
-    documentId: "",
-    phoneNumber: info.phone,
-    country: info.country,
-    city: info.city,
-    address: info.address,
-    index: info.index
+    citizenship: info.citizenship || undefined,
+    gender: info.gender || undefined,
+    documentId: null,
+    phoneNumber: info.phone || undefined,
+    country: info.country || undefined,
+    city: info.city || undefined,
+    address: info.address || undefined,
+    index: info.index || undefined
   }),
   handleSubmit: (values, { props }) => {
     props.onSubmit(values);
