@@ -64,7 +64,7 @@
 
     &__item {
       padding: 0;
-      margin-right: 40px;
+      margin-right: 20px;
     }
 
     &__icon {
@@ -80,7 +80,7 @@
 
   @include media-breakpoint-large-desktop() {
     &__item:first-child {
-      margin-right: 100px;
+      margin-right: 50px;
     }
     &__item {
       margin-right: 70px;
@@ -109,14 +109,7 @@
 
   &__avatar {
     flex-shrink: 0;
-    width: 44px;
-    height: 44px;
-    display: flex;
     margin-right: 15px;
-    align-items: center;
-    justify-content: center;
-    background-color: $secondary-background-color;
-    border-radius: 100%;
   }
 
   &__email {

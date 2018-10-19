@@ -4,12 +4,13 @@ import copy from "copy-to-clipboard";
 import { withFormik } from "formik";
 import { GVButton, GVFormikField, GVTextField } from "gv-react-components";
 import PropTypes from "prop-types";
-import QRCode from "qrcode.react";
 import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { compose } from "redux";
 import { convertToCurrency } from "utils/currency-converter";
+
+import GVqr from "../../../components/gv-qr/gv-qr";
 
 const WalletAddFundsForm = ({
   t,
@@ -78,14 +79,7 @@ const WalletAddFundsForm = ({
         </div>
       </div>
       <div className="dialog__bottom wallet-add-funds-popup__bottom">
-        <QRCode
-          className="wallet-add-funds-popup__qr"
-          value={address}
-          bgColor={"transparent"}
-          fgColor={"white"}
-          size={150}
-          level={"H"}
-        />
+        <GVqr className="wallet-add-funds-popup__qr" value={address} />
         <div className="wallet-add-funds-popup__title">
           {t("wallet-add-funds.deposit-address")}
         </div>

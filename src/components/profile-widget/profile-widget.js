@@ -51,13 +51,13 @@ class ProfileWidget extends Component {
             <div className="profile-menu__header">{email}</div>
             <div className="profile-menu__container">
               <div className="profile-menu__item profile-menu__item--details">
-                <Link to={PROFILE_ROUTE}>
+                <Link to={PROFILE_ROUTE} onClick={this.handleClose}>
                   <DetailsIcon />
                   {t("profile-widget.personal-details")}
                 </Link>
               </div>
               <div className="profile-menu__item profile-menu__item--settings">
-                <Link to={SETTINGS_ROUTE}>
+                <Link to={SETTINGS_ROUTE} onClick={this.handleClose}>
                   <SettingsIcon />
                   {t("profile-widget.settings")}
                 </Link>
