@@ -10,7 +10,13 @@ import DatePicker from "react-datepicker";
 class GVDatePicker extends Component {
   handleChange = data => {
     if (this.props.onChange) {
-      this.props.onChange(data.format());
+      this.props.onChange({
+        persist: () => {},
+        target: {
+          value: data.format(),
+          name: this.props.name
+        }
+      });
     }
   };
 
@@ -19,7 +25,6 @@ class GVDatePicker extends Component {
     if (disabled) return;
     if (onBlur) {
       onBlur({
-        persist: () => {},
         target: {
           name
         }
@@ -36,8 +41,7 @@ class GVDatePicker extends Component {
   };
 
   render() {
-    const date =
-      this.props.value === null ? undefined : moment(this.props.value);
+    const date = this.props.value && moment(this.props.value);
     return (
       <div className="gv-datepicker">
         <DatePicker

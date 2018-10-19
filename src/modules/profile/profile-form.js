@@ -8,6 +8,7 @@ import { withFormik } from "formik";
 import { GVButton, GVFormikField, GVTextField } from "gv-react-components";
 import PhoneVerification from "modules/phone-verification/phone-verification";
 import UploadButton from "modules/upload-button/upload-button";
+import moment from "moment";
 import PropTypes from "prop-types";
 import React, { Component, Fragment } from "react";
 import { translate } from "react-i18next";
@@ -142,9 +143,6 @@ class Profile extends Component {
                       name="birthday"
                       component={GVTextField}
                       InputComponent={GVDatePicker}
-                      onChange={date => {
-                        this.props.setFieldValue("birthday", date);
-                      }}
                     />
                     <GVFormikField
                       label={t("profile.citizen")}
@@ -248,7 +246,7 @@ Profile.propTypes = {
     address: PropTypes.string,
     phone: PropTypes.string,
     phoneNumberConfirmed: PropTypes.bool,
-    birthday: PropTypes.instanceOf(Date),
+    birthday: PropTypes.string,
     gender: PropTypes.bool,
     avatar: PropTypes.string,
     userName: PropTypes.string,
@@ -261,18 +259,17 @@ Profile.propTypes = {
 const ProfileForm = withFormik({
   displayName: "profile-form",
   mapPropsToValues: ({ info }) => ({
-    firstName: info.firstName || "",
-    phoneNumber: info.phone || "",
-    email: info.email,
-    lastName: info.lastName || "",
-    birthday: info.birthday || "",
-    citizenship: info.citizenship || "",
+    firstName: info.firstName,
+    lastName: info.lastName,
+    birthday: info.birthday ? moment(info.birthday).format() : undefined,
+    citizenship: info.citizenship,
     gender: info.gender,
     documentId: "",
-    country: info.country || "",
-    city: info.city || "",
-    address: info.address || "",
-    index: info.index || ""
+    phoneNumber: info.phone,
+    country: info.country,
+    city: info.city,
+    address: info.address,
+    index: info.index
   }),
   handleSubmit: (values, { props }) => {
     props.onSubmit(values);
