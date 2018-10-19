@@ -8,6 +8,7 @@ import { withFormik } from "formik";
 import { GVButton, GVFormikField, GVTextField } from "gv-react-components";
 import PhoneVerification from "modules/phone-verification/phone-verification";
 import UploadButton from "modules/upload-button/upload-button";
+import moment from "moment";
 import PropTypes from "prop-types";
 import React, { Component, Fragment } from "react";
 import { translate } from "react-i18next";
@@ -142,9 +143,6 @@ class Profile extends Component {
                       name="birthday"
                       component={GVTextField}
                       InputComponent={GVDatePicker}
-                      onChange={date => {
-                        this.props.setFieldValue("birthday", date);
-                      }}
                     />
                     <GVFormikField
                       label={t("profile.citizen")}
@@ -261,18 +259,18 @@ Profile.propTypes = {
 const ProfileForm = withFormik({
   displayName: "profile-form",
   mapPropsToValues: ({ info }) => ({
-    firstName: info.firstName || "",
-    phoneNumber: info.phone || "",
-    email: info.email,
-    lastName: info.lastName || "",
-    birthday: info.birthday || "",
-    citizenship: info.citizenship || "",
-    gender: info.gender,
+    firstName: info.firstName || undefined,
+    middleName: info.middleName || undefined,
+    lastName: info.lastName || undefined,
+    birthday: info.birthday ? moment(info.birthday).format() : undefined,
+    citizenship: info.citizenship || undefined,
+    gender: info.gender || undefined,
     documentId: "",
-    country: info.country || "",
-    city: info.city || "",
-    address: info.address || "",
-    index: info.index || ""
+    phoneNumber: info.phone || undefined,
+    country: info.country || undefined,
+    city: info.city || undefined,
+    address: info.address || undefined,
+    index: info.index || undefined
   }),
   handleSubmit: (values, { props }) => {
     props.onSubmit(values);
