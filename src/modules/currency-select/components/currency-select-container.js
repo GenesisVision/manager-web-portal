@@ -1,8 +1,8 @@
 import "./currency-select.scss";
 
 import classnames from "classnames";
-import Select from "components/select/select";
-import { CURRENCY_VALUES } from "modules/currency-select/currency-select.constants";
+import CurrencySelect from "modules/currency-select/components/currency-select";
+import { HEADER_CURRENCY_VALUES } from "modules/currency-select/currency-select.constants";
 import { updateCurrency } from "modules/currency-select/services/currency-select.service";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
@@ -10,30 +10,30 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 class CurrencySelectContainer extends Component {
+  handleChange = event => {
+    this.props.service.updateCurrency(event.target.value);
+  };
   render() {
     return (
-      <Select
+      <CurrencySelect
         className={classnames("currency-select", this.props.className)}
         value={this.props.currency}
-        onSelect={this.props.service.updateCurrency}
-      >
-        {Object.keys(CURRENCY_VALUES).map(currency => {
-          return (
-            <option value={currency} key={currency}>
-              {CURRENCY_VALUES[currency]}
-            </option>
-          );
-        })}
-      </Select>
+        onChange={this.handleChange}
+        currencyValues={this.props.currencyValues}
+      />
     );
   }
 }
 
 CurrencySelectContainer.propTypes = {
-  currency: PropTypes.oneOf(Object.keys(CURRENCY_VALUES)),
+  currency: PropTypes.string,
   service: PropTypes.shape({
     updateCurrency: PropTypes.func
   })
+};
+
+CurrencySelectContainer.defaultProps = {
+  currencyValues: HEADER_CURRENCY_VALUES
 };
 
 const mapStateToProps = ({ accountSettings }) => ({

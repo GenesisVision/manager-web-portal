@@ -33,7 +33,10 @@
     letter-spacing: 0.3px;
     color: $main-color;
     margin-top: 16px;
-    padding: 0;
+
+    @include media-breakpoint-landscape-tablet() {
+      margin-left: auto;
+    }
   }
 
   &__aside-actions {

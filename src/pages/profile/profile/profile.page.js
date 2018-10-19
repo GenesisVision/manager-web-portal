@@ -1,13 +1,17 @@
-import Page from "components/page/page";
+import Profile from "modules/profile/profile";
+import ProfileContainer from "modules/profile/profile-container";
 import React from "react";
-import { translate } from "react-i18next";
 
-export const PROFILE_ROUTE = "/profile";
+import ProfileLayout from "../profile-layout";
 
-const ProfilePage = ({ t }) => {
-  return <Page title={t("profile.title")} />;
+const ProfilePage = () => {
+  return (
+    <ProfileLayout route="details">
+      <ProfileContainer>
+        <Profile />
+      </ProfileContainer>
+    </ProfileLayout>
+  );
 };
 
-ProfilePage.propTypes = {};
-
-export default translate()(ProfilePage);
+export default ProfilePage;

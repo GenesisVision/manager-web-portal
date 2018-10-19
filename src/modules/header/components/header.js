@@ -12,6 +12,7 @@ import CurrencySelectContainer from "modules/currency-select/components/currency
 import { LOGIN_ROUTE } from "pages/auth/login/login.routes";
 import { SIGNUP_ROUTE } from "pages/auth/signup/signup.routes";
 import { GLOBAL_SEARCH_ROUTE } from "pages/global-search/global-search.routes";
+import PropTypes from "prop-types";
 import React, { Component, Fragment } from "react";
 import { translate } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -106,5 +107,23 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  avatar: PropTypes.string,
+  email: PropTypes.string,
+  notificationsCount: PropTypes.number,
+  totalBalanceGvt: PropTypes.number,
+  availableGvt: PropTypes.number,
+  investedGvt: PropTypes.number
+};
+
+Header.defaultProps = {
+  avatar: "",
+  email: "",
+  notificationsCount: 0,
+  totalBalanceGvt: 0,
+  availableGvt: 0,
+  investedGvt: 0
+};
 
 export default translate()(Header);
