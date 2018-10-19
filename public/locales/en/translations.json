@@ -376,6 +376,56 @@
       }
     }
   },
+  "create-fund-page": {
+    "title": "Create Fund",
+    "navigation-back-text":
+      "All data will be deleted. Do you want to continue?",
+    "tabs": {
+      "select-broker": "Select broker",
+      "settings": "Settings"
+    },
+    "broker-info": {
+      "about": "About",
+      "terms": "Terms",
+      "leverage": "Leverage",
+      "fee": "Fee",
+      "assets": "Assets"
+    },
+    "settings": {
+      "main-settings": "Main settings",
+      "asset-selection": "Asset selection",
+      "fees-settings": "Fees settings",
+      "deposit-details": "Deposit details",
+      "fields": {
+        "asset-description":
+          "Total share of all assets should be equal to 100%",
+        "name": "Name",
+        "account-type": "Account type",
+        "currency": "Currency",
+        "description": "Description",
+        "description-requirements": "Requirement from 20 to 500 symbols",
+        "brokers-leverage": "Broker's leverage",
+        "period": "Period",
+        "upload-logo": "Upload fund logo",
+        "upload-logo-rules": "At least 300 x 300px PNG or JPG file",
+        "entry-fee": "Entry fee",
+        "success-fee": "Success fee",
+        "deposit-amount": "Deposit amount",
+        "available-in-wallet": "Available in wallet"
+      },
+      "validation": {
+        "title-required": "Title is required",
+        "title-is-long": "Title is too long",
+        "description-is-long": "Description is too long",
+        "description-is-short": "Description is too short",
+        "description-required": "Description is required",
+        "entry-fee-required": "Entry fee is required",
+        "success-fee-required": "Success fee is required",
+        "assets-share": "Total share of all assets should be equal to 100%",
+        "assets-count": "Must be at least two assets."
+      }
+    }
+  },
   "password-page": {
     "title": "Change password"
   },
@@ -421,7 +471,6 @@
       }
     },
     "settings": {
-      "change-password": "Change password",
       "title": "Settings",
       "profile-image": "Profile image",
       "image-requirements": "At least 300 x 300px PNG or JPG file.",
@@ -475,6 +524,10 @@
     "confirm": "Confirm",
     "activate": "Activate",
     "disable": "Disable",
+    "continue": "Continue",
+    "create-program": "Create Program",
+    "create-fund": "Create Fund",
+    "add-assets": "Add assets",
     "create": "Create",
     "delete": "Delete",
     "edit": "Edit",
