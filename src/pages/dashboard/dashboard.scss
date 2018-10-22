@@ -1,27 +1,48 @@
 @import "styles/_sizes.scss";
+@import "styles/_breakpoint.scss";
 
 .dashboard {
   &__row {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    @include media-breakpoint-landscape-phone() {
+      flex-direction: row;
+      padding-left: $padding-middle;
+    }
   }
 
   &__chart {
+    display: flex;
     flex: 3;
   }
 
   &__portfolio-events-aside {
-    flex: 1;
-    margin-left: 2rem;
-    width: 315px;
+    display: flex;
+    min-width: 315px;
+    @include media-breakpoint-landscape-phone() {
+      margin-left: 2rem;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    padding-left: $padding-middle-mobile;
+    @include media-breakpoint-landscape-phone() {
+      padding-left: $padding-middle;
+    }
+    & .gv-btn {
+      font-size: $font-size-middle-mobile;
+      font-weight: 600;
+      padding: 0;
+      @include media-breakpoint-landscape-phone() {
+        font-size: $font-size-middle;
+      }
+    }
   }
 
   &__assets {
     margin-top: 2rem;
-  }
-  &__buttons {
-    display: flex;
-  }
-  &__button {
-    padding-right: $padding-middle;
   }
 }
