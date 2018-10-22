@@ -40,39 +40,7 @@ class DashboardPortfolioEventsContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  // const { isPending, data } = state.dashboard.eventsData;
-  const { isPending, data } = {
-    data: {
-      events: [
-        {
-          assetId: "1",
-          date: "2018-10-22T11:09:35.148Z",
-          title: "string",
-          value: 0,
-          type: "All",
-          logo: "string"
-        },
-        {
-          assetId: "2",
-          date: "2018-10-22T11:09:35.148Z",
-          title: "string",
-          value: 0,
-          type: "All",
-          logo: "string"
-        },
-        {
-          assetId: "3",
-          date: "2018-10-22T11:09:35.148Z",
-          title: "string",
-          value: 0,
-          type: "All",
-          logo: "string"
-        }
-      ],
-      total: 3
-    },
-    isPending: false
-  };
+  const { isPending, data } = state.dashboard.eventsData;
   return { isPending, data };
 };
 
