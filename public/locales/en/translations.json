@@ -159,11 +159,60 @@
         "Management fee - is an obligatory annual fee, charged at the end of the reporting period from the total amount of funds invested in this investment program."
     }
   },
+  "dashboard-page": {
+    "title": "Dashboard",
+    "requests": {
+      "success-cancel-request": "Request canceled successfully",
+      "failure-cancel-request": "Failed to cancel request"
+    },
+    "programs-header": {
+      "title": "Name",
+      "share": "Share",
+      "currency": "Curr.",
+      "time-left": "T. Left",
+      "value": "Value",
+      "profit": "Profit",
+      "chart": "Chart",
+      "status": "Status"
+    },
+    "funds-header": {
+      "title": "Name",
+      "balance": "Balance",
+      "assets": "Assets",
+      "investors": "Investors",
+      "drawdown": "D.down",
+      "profit": "Profit",
+      "chart": "Chart"
+    }
+  },
   "dashboard": {
     "title": "Dashboard",
     "analytics": "Analytics",
     "programs": "Programs",
-    "pending-tooltip": "The program is being created."
+    "pending-tooltip": "The program is being created.",
+    "portfolio": "Portfolio",
+    "favorite-programs": "Favorite programs",
+    "portfolio-events": {
+      "title": "Portfolio Events",
+      "see-all-button": "See All",
+      "table-title": "Operations",
+      "table-header": {
+        "date": "Date",
+        "type": "Type",
+        "description": "Description",
+        "amount": "Amount, GVT"
+      },
+      "types": {
+        "all": "All",
+        "invest": "Invest",
+        "withdraw": "Withdraw",
+        "profit": "Profit",
+        "loss": "Loss",
+        "reinvest": "Reinvest",
+        "canceled": "Canceled",
+        "ended": "Ended"
+      }
+    }
   },
   "dashboard-statistic": {
     "funds": {
