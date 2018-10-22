@@ -14,7 +14,7 @@
   }
   &__value {
     font-size: $font-size-small-mobile;
-    opacity: .4;
+    opacity: 0.4;
     @include media-breakpoint-phone() {
       font-size: $font-size-small;
     }

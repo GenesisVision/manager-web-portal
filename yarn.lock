@@ -2245,7 +2245,7 @@ babel-helpers@^6.24.1:
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-jest@22.4.3, babel-jest@^22.4.3:
+babel-jest@22.4.3:
   version "22.4.3"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-22.4.3.tgz#4b7a0b6041691bbd422ab49b3b73654a49a6627a"
   integrity sha512-BgSjmtl3mW3i+VeVHEr9d2zFSAT66G++pJcHQiUjd00pkW+voYXFctIm/indcqOWWXw5a1nUpR1XWszD9fJ1qg==
@@ -10214,12 +10214,11 @@ react-lifecycles-compat@^3.0.2:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.2.tgz#7279047275bd727a912e25f734c0559527e84eff"
   integrity sha512-pbZOSMVVkvppW7XRn9fcHK5OgEDnYLwMva7P6TgS44/SN9uGGjfh3Z1c8tomO+y4IsHQ6Fsz2EGwmE7sMeNZgQ==
 
-react-number-format@^3.3.4:
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-3.3.4.tgz#377f6682484e1659c6706eb04fa019ef27e8df2c"
-  integrity sha512-xxvgBN6o0xJN5ngR3HyQT12yMOCNKgk6qbjnTavwGUwaQOWdjIC7cOtEVltzq4fK7NN/mYnjWVw/lgpZ4eG1Dg==
+react-number-format@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-3.6.2.tgz#46fb692a88ed25808f0cb08fd12aeae4ae68295a"
+  integrity sha512-HsO11fH6WiugtJflrMQn3/Yhq2J4uEWLxrKCQbI1gSGAOwIhUsOGJJeP8Vci/U4A7xK5SjC95ngZU8//Nuz3Gg==
   dependencies:
-    babel-runtime "^6.26.0"
     prop-types "^15.6.0"
 
 react-onclickoutside@^6.7.1:

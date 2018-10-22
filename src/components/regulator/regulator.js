@@ -1,6 +1,6 @@
 import "./regulator.scss";
-import classNames from "classnames";
 
+import classNames from "classnames";
 import React from "react";
 
 const Regulator = ({ value, handleUp, handleDown, children }) => {

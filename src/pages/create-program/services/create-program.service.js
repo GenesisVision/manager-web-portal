@@ -4,6 +4,7 @@ import { push } from "react-router-redux";
 import { brokersApiProxy } from "services/api-client/brokers-api";
 import { managersApiProxy } from "services/api-client/managers-api";
 import authService from "services/auth-service";
+import { alertMessageActions } from "shared/modules/alert-message/actions/alert-message-actions";
 import filesService from "shared/services/file-service";
 
 import { getDataWithoutSuffixes } from "../helpers/create-program.helpers";
@@ -40,11 +41,16 @@ export const createProgram = (createProgramData, setSubmitting) => dispatch => {
     })
     .then(() => {
       setSubmitting(false);
-      alert("Successful program creating.");
+      dispatch(
+        alertMessageActions.success(
+          "create-program-page.notifications.create-success",
+          true
+        )
+      );
       dispatch(push(DASHBOARD_ROUTE));
     })
     .catch(error => {
       setSubmitting(false);
-      alert(error.errorMessage);
+      dispatch(alertMessageActions.error(error.errorMessage));
     });
 };

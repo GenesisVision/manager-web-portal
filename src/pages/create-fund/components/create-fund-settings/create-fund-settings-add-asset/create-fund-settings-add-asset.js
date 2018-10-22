@@ -1,12 +1,13 @@
 import "../create-fund-settings.scss";
 
-import { GVTextField } from "gv-react-components";
-import { SearchIcon } from "../../../../../components/icon/search-icon";
-import FundAssetImage from "../../../../../components/avatar/fund-asset-image/fund-asset-image";
-import Regulator from "../../../../../components/regulator/regulator";
 import classNames from "classnames";
-import React from "react";
 import Popover from "components/popover/popover";
+import { GVTextField } from "gv-react-components";
+import React from "react";
+
+import FundAssetImage from "../../../../../components/avatar/fund-asset-image/fund-asset-image";
+import { SearchIcon } from "../../../../../components/icon/search-icon";
+import Regulator from "../../../../../components/regulator/regulator";
 
 class CreateFundSettingsAddAsset extends React.Component {
   state = {

@@ -1,12 +1,12 @@
 import { fetchProfileHeaderInfo } from "modules/header/actions/header-actions";
 import { DASHBOARD_ROUTE } from "pages/dashboard/dashboard.routes";
 import { push } from "react-router-redux";
+import FundsApi from "services/api-client/funds-api";
+import { managersApiProxy } from "services/api-client/managers-api";
 import authService from "services/auth-service";
 import filesService from "shared/services/file-service";
-import FundsApi from "services/api-client/funds-api";
 
 import { getDataWithoutSuffixes } from "../helpers/create-fund.helpers";
-import { managersApiProxy } from "services/api-client/managers-api";
 
 export const fetchBalance = () => dispatch =>
   dispatch(fetchProfileHeaderInfo());
