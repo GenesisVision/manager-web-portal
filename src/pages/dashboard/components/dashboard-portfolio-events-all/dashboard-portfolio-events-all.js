@@ -7,7 +7,6 @@ import { translate } from "react-i18next";
 import connect from "react-redux/es/connect/connect";
 import { goBack } from "react-router-redux";
 import { bindActionCreators, compose } from "redux";
-
 import PortfolioEventsAllNavigation from "./dashboard-portfolio-events-all-navigation";
 import PortfolioEventsTableComponent from "./dashboard-portfolio-events-table/dashboard-portfolio-events-all-table";
 

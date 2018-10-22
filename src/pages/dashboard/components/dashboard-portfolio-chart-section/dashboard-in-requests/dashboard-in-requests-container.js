@@ -7,7 +7,6 @@ import React, { PureComponent } from "react";
 import { translate } from "react-i18next";
 import { connect } from "react-redux";
 import { bindActionCreators, compose } from "redux";
-
 import {
   cancelRequest,
   getInRequests

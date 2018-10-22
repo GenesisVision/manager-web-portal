@@ -32,6 +32,7 @@
     @include media-breakpoint-landscape-phone() {
       padding-left: $padding-middle;
     }
+
     & .gv-btn {
       font-size: $font-size-middle-mobile;
       font-weight: 600;

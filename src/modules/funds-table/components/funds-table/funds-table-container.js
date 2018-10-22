@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { bindActionCreators, compose } from "redux";
-
 import { toggleFavoriteFundDispatchable } from "../../../favorite-asset/services/favorite-fund.service";
 import * as fundsService from "../../services/funds-table.service";
 import FundsTable from "./funds-table";

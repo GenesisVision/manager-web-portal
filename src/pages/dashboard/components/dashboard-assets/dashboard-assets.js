@@ -8,7 +8,6 @@ import { CREATE_PROGRAM_PAGE_ROUTE } from "pages/create-program/create-program.c
 import React, { Component } from "react";
 import { translate } from "react-i18next";
 import { Link } from "react-router-dom";
-
 import DashboardFunds from "./dashboard-funds/dashboard-funds";
 import DashboardPrograms from "./dashboard-programs/dashboard-programs";
 
