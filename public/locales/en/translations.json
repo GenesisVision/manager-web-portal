@@ -195,6 +195,27 @@
       }
     }
   },
+  "program-statuses": {
+    "Active": "Active",
+    "Investing": "Investing",
+    "Withdrawing": "Withdrawing",
+    "Ended": "Ended"
+  },
+  "withdraw-program": {
+    "title": "Withdraw",
+    "available-to-withdraw": "Available to withdraw",
+    "amount-to-withdraw": "Amount to withdraw",
+    "next": "Next",
+    "info": "Amount of withdrawals can be changed depending on the exchange rate or the success of the Manager",
+    "withdrawing": "Withdrawing",
+    "payout-date": "Payout date",
+    "back": "Back",
+    "submit": "Submit",
+    "validation": {
+      "amount-more-than-available": "Amount is more than available for withdraw",
+      "amount-is-required": "Amount is required."
+    }
+  },
   "days-left-widget": {
     "text": "Day left",
     "text_plural": "Days left"
