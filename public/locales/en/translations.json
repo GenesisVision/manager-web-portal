@@ -3,6 +3,198 @@
     "header": "Manager Portal",
     "title": "Investor Portal: "
   },
+  "global-search-page": {
+    "title": "Search",
+    "heading": "Search Results",
+    "programs": "Programs",
+    "funds": "Funds",
+    "managers": "Managers"
+  },
+  "programs-page": {
+    "title": "Programs",
+    "tabs": {
+      "explore": "Explore",
+      "favorites": "Favorites"
+    },
+    "programs-header": {
+      "title": "Name",
+      "balance": "Balance",
+      "currency": "Curr.",
+      "investors": "Investors",
+      "available-to-invest": "Av. to invest",
+      "trades": "Trades",
+      "period": "Period",
+      "drawdown": "D.down",
+      "profit": "Profit",
+      "chart": "Chart",
+      "strategy": "Strategy"
+    }
+  },
+  "funds-page": {
+    "title": "Funds",
+    "tabs": {
+      "explore": "Explore",
+      "favorites": "Favorites"
+    },
+    "funds-header": {
+      "title": "Name",
+      "balance": "Balance",
+      "assets": "Assets",
+      "investors": "Investors",
+      "drawdown": "D.down",
+      "profit": "Profit",
+      "chart": "Chart"
+    }
+  },
+  "managers-table": {
+    "username": "Username",
+    "assets": "Assets",
+    "memberSince": "Member Since"
+  },
+  "program-details-page": {
+    "title": "Program detail",
+    "description": {
+      "strategy": "Strategy",
+      "addToFavorites": "Add to favorites",
+      "notifications": "Notifications",
+      "avToInvest": "Av. to invest",
+      "entryFee": "Entry fee",
+      "successFee": "Success fee",
+      "invest": "Invest",
+      "reinvest": "Reinvest",
+      "yourInvestment": "Your investment",
+      "invested": "Invested",
+      "value": "Value",
+      "profit": "Profit",
+      "status": "Status",
+      "withdraw": "Withdraw",
+      "withdraw-notice-text": "You can withdraw only the invested funds, the profit will be withdrawn to your account at the end of the period automatically"
+    },
+    "statistics": {
+      "heading": "Statistics",
+      "current": "Current",
+      "for": "For",
+      "balance": "Balance",
+      "investors": "Investors",
+      "trades": "Trades",
+      "success-trades": "Success trades",
+      "profit-factor": "Profit factor",
+      "sharpe-ratio": "Sharpe ratio",
+      "sortino-ratio": "Sortino ratio",
+      "max-drawdown": "Max Drawdown",
+      "start-day": "Start day",
+      "period-end": "Period end",
+      "period": "Period"
+    },
+    "popover": {
+      "genesis-level": "Genesis Level",
+      "invest-limit": "Invest limit",
+      "text": "Genesis level shows the experience and reliability of the Manager",
+      "about-levels": "About levels"
+    },
+    "history": {
+      "heading": "History",
+      "tabs": {
+        "trades": "Trades",
+        "events": "Events"
+      },
+      "trades": {
+        "direction": "Dir",
+        "ticket": "Ticket",
+        "symbol": "Symbol",
+        "volume": "Volume",
+        "profit": "Profit",
+        "price": "Price",
+        "entry": "Entry",
+        "date": "Date"
+      }
+    },
+    "chart": {
+      "heading": "Chart",
+      "tabs": {
+        "profit": "Profit",
+        "balance": "Balance"
+      }
+    }
+  },
+  "chart-period": {
+    "day-short": "1D",
+    "day": "a Day",
+    "week-short": "1W",
+    "week": "a Week",
+    "month-short": "1M",
+    "month": "a Month",
+    "quarter-short": "3M",
+    "quarter": "a Quarter",
+    "year-short": "1Y",
+    "year": "a Year",
+    "all-short": "All",
+    "all": "All Time"
+  },
+  "fund-details-page": {
+    "title": "Program detail",
+    "description": {
+      "strategy": "Strategy",
+      "assets": "Assets",
+      "addToFavorites": "Add to favorites",
+      "notifications": "Notifications",
+      "avToInvest": "Av. to invest",
+      "entryFee": "Entry fee",
+      "invest": "Invest",
+      "reinvest": "Reinvest",
+      "yourInvestment": "Your investment",
+      "invested": "Invested",
+      "value": "Value",
+      "profit": "Profit",
+      "status": "Status",
+      "withdraw": "Withdraw",
+      "withdraw-notice-text": "You can withdraw only the invested funds, the profit will be withdrawn to your account at the end of the period automatically"
+    },
+    "statistics": {
+      "heading": "Statistics",
+      "current": "Current",
+      "calmarRatio": "Calmar ratio",
+      "rebalances": "Rebalances",
+      "profit-change": "Profit change",
+      "for": "For",
+      "balance": "Balance",
+      "investors": "Investors",
+      "sharpe-ratio": "Sharpe ratio",
+      "sortino-ratio": "Sortino ratio",
+      "max-drawdown": "Max Drawdown",
+      "start-day": "Start day",
+      "period-end": "Period end",
+      "period": "Period"
+    },
+    "history": {
+      "heading": "History",
+      "subheading": "Rebalancing",
+      "rebalances": {
+        "assets": "Assets",
+        "from": "From",
+        "to": "To"
+      }
+    },
+    "chart": {
+      "heading": "Chart",
+      "tabs": {
+        "profit": "Profit",
+        "balance": "Balance"
+      }
+    }
+  },
+  "manager": {
+    "title": "Manager",
+    "about": "About",
+    "assets": "Assets",
+    "member-since": "Member since",
+    "history": {
+      "tabs": {
+        "programs": "Programs",
+        "funds": "Funds"
+      }
+    }
+  },
   "days-left-widget": {
     "text": "Day left",
     "text_plural": "Days left"
@@ -163,7 +355,30 @@
     "title": "Dashboard",
     "analytics": "Analytics",
     "programs": "Programs",
-    "pending-tooltip": "The program is being created."
+    "pending-tooltip": "The program is being created.",
+    "portfolio": "Portfolio",
+    "favorite-programs": "Favorite programs",
+    "portfolio-events": {
+      "title": "Portfolio Events",
+      "see-all-button": "See All",
+      "table-title": "Operations",
+      "table-header": {
+        "date": "Date",
+        "type": "Type",
+        "description": "Description",
+        "amount": "Amount, GVT"
+      },
+      "types": {
+        "all": "All",
+        "invest": "Invest",
+        "withdraw": "Withdraw",
+        "profit": "Profit",
+        "loss": "Loss",
+        "reinvest": "Reinvest",
+        "canceled": "Canceled",
+        "ended": "Ended"
+      }
+    }
   },
   "dashboard-statistic": {
     "funds": {
