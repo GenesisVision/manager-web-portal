@@ -36,8 +36,5 @@ const mapDispatchToProps = dispatch => ({
 export default compose(
   isAuthenticated,
   withRouter,
-  connect(
-    null,
-    mapDispatchToProps
-  )
+  connect(null, mapDispatchToProps)
 )(FundsNavigationTabsContainer);

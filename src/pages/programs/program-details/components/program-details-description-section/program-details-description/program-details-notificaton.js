@@ -18,7 +18,4 @@ const ProgramDetailsNotificaton = ({ t, url }) => {
   );
 };
 
-export default compose(
-  translate(),
-  isAuthenticated
-)(ProgramDetailsNotificaton);
+export default compose(translate(), isAuthenticated)(ProgramDetailsNotificaton);

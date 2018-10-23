@@ -39,9 +39,6 @@ const mapDispatchToProps = dispatch => ({
   service: bindActionCreators({ goBack }, dispatch)
 });
 
-export default compose(
-  connect(
-    null,
-    mapDispatchToProps
-  )
-)(translate()(PortfolioEventsAllComponent));
+export default compose(connect(null, mapDispatchToProps))(
+  translate()(PortfolioEventsAllComponent)
+);

@@ -126,9 +126,6 @@ const mapDispatchToProps = dispatch => ({
   )
 });
 
-export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
-)(FundDetailsPage);
+export default compose(connect(mapStateToProps, mapDispatchToProps))(
+  FundDetailsPage
+);

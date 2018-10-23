@@ -6,9 +6,7 @@ const FacetCardsStub = () => {
   return (
     <div className="facets-shadow">
       <div className="facets">
-        {facetsStub.map(x => (
-          <Surface key={x} className="facet facet--stub" />
-        ))}
+        {facetsStub.map(x => <Surface key={x} className="facet facet--stub" />)}
       </div>
     </div>
   );

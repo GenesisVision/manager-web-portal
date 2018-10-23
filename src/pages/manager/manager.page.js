@@ -69,8 +69,5 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default translate()(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ManagerPage)
+  connect(mapStateToProps, mapDispatchToProps)(ManagerPage)
 );

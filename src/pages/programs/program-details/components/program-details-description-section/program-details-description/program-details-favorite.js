@@ -31,7 +31,4 @@ class ProgramDetailsFavorite extends Component {
   }
 }
 
-export default compose(
-  translate(),
-  isAuthenticated
-)(ProgramDetailsFavorite);
+export default compose(translate(), isAuthenticated)(ProgramDetailsFavorite);

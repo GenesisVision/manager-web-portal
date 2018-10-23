@@ -157,8 +157,5 @@ const mapDispatchToProps = dispatch => {
 
 export default compose(
   translate(),
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(ManagerHistorySection);
