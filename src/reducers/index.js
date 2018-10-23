@@ -8,6 +8,10 @@ import accountSettingsReducer from "reducers/account-settings";
 import uiReducer from "reducers/ui-reducer";
 import { combineReducers } from "redux";
 
+import programDepositReducer from "modules/program-deposit/reducer/program-deposit.reducer";
+import managerReducer from "../pages/manager/reducers/manager.reducers";
+import programsReducer from "../modules/programs-table/reducers/programs-table.reducers";
+import fundsReducer from "../modules/funds-table/reducers/funds-table.reducers";
 import navigationReducer from "../modules/navigation/reducer/navigation-reducer";
 import programSettingsReducer from "../modules/program-settings/reducers/program-settings-reducers";
 import passwordRestoreReducer from "../pages/auth/forgot-password/reducers/password-restore-reducers";
@@ -19,6 +23,10 @@ import emailPendingReducer from "./email-pending-reducer";
 import platformReducer from "./platform-reducer";
 
 export default combineReducers({
+  programDeposit: programDepositReducer,
+  manager: managerReducer,
+  programsData: programsReducer,
+  fundsData: fundsReducer,
   routing: routerReducer,
   loadingBar: loadingBarReducer,
   platformData: platformReducer,
