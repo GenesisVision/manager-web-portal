@@ -18,6 +18,13 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { NOTIFICATIONS_ROUTE } from "../notifications/notifications.routes";
 import NotificationRoutes from "../notifications/notifications.routes";
 import AppLayout from "./components/app-layout/app-layout";
+import GlobalSearchPage from "pages/global-search/global-search.page.js";
+import { GLOBAL_SEARCH_ROUTE } from "../global-search/global-search.routes";
+import ProgramsRoutes, { PROGRAMS_ROUTE } from "../programs/programs.routes";
+import FundsRoutes, { FUNDS_ROUTE } from "../funds/funds.routes";
+import ManagerPage, {
+  MANAGER_DETAILS_ROUTE_REGEXP
+} from "pages/manager/manager.page";
 
 export const HOME_ROUTE = "/";
 
@@ -26,6 +33,10 @@ const AppRoutes = () => {
     <AppLayout>
       <Switch>
         <Redirect exact from={HOME_ROUTE} to={DASHBOARD_ROUTE} />
+        <Route path={PROGRAMS_ROUTE} component={ProgramsRoutes} />
+        <Route path={GLOBAL_SEARCH_ROUTE} component={GlobalSearchPage} />
+        <Route path={FUNDS_ROUTE} component={FundsRoutes} />
+        <Route path={MANAGER_DETAILS_ROUTE_REGEXP} component={ManagerPage} />
         <Route path={PROFILE_ROUTE} component={ProfileRoutes} />
         <Route
           path={WALLET_WITHDRAW_CONFIRM_ROUTE}
