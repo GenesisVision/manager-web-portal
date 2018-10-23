@@ -351,6 +351,32 @@
         "Management fee - is an obligatory annual fee, charged at the end of the reporting period from the total amount of funds invested in this investment program."
     }
   },
+  "dashboard-page": {
+    "title": "Dashboard",
+    "requests": {
+      "success-cancel-request": "Request canceled successfully",
+      "failure-cancel-request": "Failed to cancel request"
+    },
+    "programs-header": {
+      "title": "Name",
+      "share": "Share",
+      "currency": "Curr.",
+      "time-left": "T. Left",
+      "value": "Value",
+      "profit": "Profit",
+      "chart": "Chart",
+      "status": "Status"
+    },
+    "funds-header": {
+      "title": "Name",
+      "balance": "Balance",
+      "assets": "Assets",
+      "investors": "Investors",
+      "drawdown": "D.down",
+      "profit": "Profit",
+      "chart": "Chart"
+    }
+  },
   "dashboard": {
     "title": "Dashboard",
     "analytics": "Analytics",
