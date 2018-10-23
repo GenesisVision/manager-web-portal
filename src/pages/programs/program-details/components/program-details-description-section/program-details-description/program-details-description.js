@@ -63,7 +63,8 @@ class ProgramDetailsDescription extends PureComponent {
       onFavoriteClick,
       isReinvestPending,
       isFavoritePending,
-      composeInvestmentData
+      composeInvestmentData,
+      onChangeInvestmentStatus
     } = this.props;
 
     const isFavorite =
@@ -203,6 +204,7 @@ class ProgramDetailsDescription extends PureComponent {
               <ProgramDetailsInvestment
                 className={"program-details-description__your-investment"}
                 {...composeInvestmentData(programDescription)}
+                onChangeInvestmentStatus={onChangeInvestmentStatus}
               />
             )}
 

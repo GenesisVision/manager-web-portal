@@ -104,7 +104,11 @@ class ProgramDetailsDescriptionSection extends PureComponent {
   };
 
   render() {
-    const { isAuthenticated, redirectToLogin } = this.props;
+    const {
+      isAuthenticated,
+      redirectToLogin,
+      onChangeInvestmentStatus
+    } = this.props;
     const { programDescription, ui } = this.state;
     if (!programDescription) return null;
     const isInvested =
@@ -126,6 +130,7 @@ class ProgramDetailsDescriptionSection extends PureComponent {
           onFavoriteClick={this.handleOnFavoriteClick}
           isFavoritePending={ui.isFavoritePending}
           composeInvestmentData={composeInvestmentData}
+          onChangeInvestmentStatus={onChangeInvestmentStatus}
         />
       </Fragment>
     );

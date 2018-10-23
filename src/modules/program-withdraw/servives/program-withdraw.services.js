@@ -1,10 +1,11 @@
 import { investorApiProxy } from "services/api-client/investor-api";
 import authService from "services/auth-service";
 import { alertMessageActions } from "shared/modules/alert-message/actions/alert-message-actions";
+import { managersApiProxy } from "services/api-client/managers-api";
 
 export const getProgramWithdrawInfo = id => (dispatch, getState) => {
   const { accountSettings } = getState();
-  return investorApiProxy.v10InvestorProgramsByIdWithdrawInfoByCurrencyGet(
+  return managersApiProxy.v10ManagersProgramsByIdWithdrawInfoByCurrencyGet(
     id,
     accountSettings.currency,
     authService.getAuthArg()
@@ -12,8 +13,8 @@ export const getProgramWithdrawInfo = id => (dispatch, getState) => {
 };
 
 export const withdrawProgramById = (id, amount) => {
-  return investorApiProxy
-    .v10InvestorProgramsByIdWithdrawByAmountPost(
+  return managersApiProxy
+    .v10ManagersProgramsByIdWithdrawByAmountPost(
       id,
       amount,
       authService.getAuthArg()
