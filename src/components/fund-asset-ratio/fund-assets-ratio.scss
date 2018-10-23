@@ -2,7 +2,7 @@
 @import "styles/_sizes.scss";
 @import "styles/_breakpoint.scss";
 
-.multi-line-period {
+.fund-asset-ratio {
   display: block;
   position: relative;
 
@@ -34,7 +34,7 @@
     border-radius: 0.25rem;
     width: 100%;
 
-    .multi-line-period__value {
+    .fund-asset-ratio__value {
       height: 3px;
       border-radius: 0.25rem;
     }

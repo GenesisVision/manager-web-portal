@@ -31,10 +31,10 @@ const FundAssetRatio: React.SFC<GVProgramPeriodProps> = ({
   let ZIndex = values.length;
   let newLevel = 0;
   return (
-    <div className="multi-line-period-container">
+    <div className="fund-asset-ratio-container">
       <div
         className={classnames(
-          "multi-line-period multi-line-period--line",
+          "fund-asset-ratio fund-asset-ratio--line",
           className
         )}
       >
@@ -45,7 +45,7 @@ const FundAssetRatio: React.SFC<GVProgramPeriodProps> = ({
             <div
               key={idx}
               className={classnames(
-                "multi-line-period--item-line",
+                "fund-asset-ratio--item-line",
                 valueClassName
               )}
               onMouseOver={handleHover(item.asset)}
@@ -59,11 +59,11 @@ const FundAssetRatio: React.SFC<GVProgramPeriodProps> = ({
           );
         })}
       </div>
-      <div className="multi-line-period__values">
-        <div className="multi-line-period__value">0%</div>
+      <div className="fund-asset-ratio__values">
+        <div className="fund-asset-ratio__value">0%</div>
         <div
-          className={classnames("multi-line-period__value", {
-            "multi-line-period__value--full":
+          className={classnames("fund-asset-ratio__value", {
+            "fund-asset-ratio__value--full":
               values.reduce((sum, item) => sum + item.percent, 0) === 100
           })}
         >

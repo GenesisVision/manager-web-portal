@@ -1,39 +1,27 @@
 import "./dashboard.scss";
 
-import { GVButton } from "gv-react-components";
-import { CREATE_FUND_PAGE_ROUTE } from "pages/create-fund/create-fund.constants";
-import { CREATE_PROGRAM_PAGE_ROUTE } from "pages/create-program/create-program.constants";
 import React from "react";
 import { translate } from "react-i18next";
-import { Link } from "react-router-dom";
 
 import Page from "../../components/page/page";
+import DashboardAssets from "./components/dashboard-assets/dashboard-assets";
+import DashboardChartSection from "./components/dashboard-portfolio-chart-section/dashboard-portfolio-chart-section";
+import DashboardPortfolioEventsContainer from "./components/dashboard-portfolio-events/dashboard-portfolio-events-container";
 
 const DashboardPage = ({ t }) => {
   return (
-    <Page title={t("dashboard.title")}>
+    <Page title={t("dashboard-page.title")}>
       <div className="dashboard">
-        <div className="dashboard__buttons">
-          <div className="dashboard__button">
-            <Link
-              to={CREATE_PROGRAM_PAGE_ROUTE}
-              className="dashboard-page__create-program-btn"
-            >
-              <GVButton color="primary" type="contained">
-                {t("buttons.create-program")}
-              </GVButton>
-            </Link>
+        <div className="dashboard__row">
+          <div className="dashboard__chart">
+            {/*<DashboardChartSection />*/}
           </div>
-          <div className="dashboard__button">
-            <Link
-              to={CREATE_FUND_PAGE_ROUTE}
-              className="dashboard-page__create-program-btn"
-            >
-              <GVButton color="primary" type="contained">
-                {t("buttons.create-fund")}
-              </GVButton>
-            </Link>
+          <div className="dashboard__portfolio-events-aside">
+            <DashboardPortfolioEventsContainer />
           </div>
+        </div>
+        <div className="dashboard__assets">
+          <DashboardAssets />
         </div>
       </div>
     </Page>

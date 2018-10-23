@@ -37,6 +37,7 @@ class Table extends Component {
           updateSorting={this.props.updateSorting}
           renderHeader={this.props.renderHeader}
           isViewSwitchEnabled={this.isViewSwitchEnabled}
+          createButton={this.props.createButton}
         />
         <Scrollbars autoHeight autoHeightMax={14000}>
           {view === CARDS_VIEW && (
