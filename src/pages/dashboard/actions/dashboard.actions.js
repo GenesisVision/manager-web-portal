@@ -1,4 +1,5 @@
 import investorApi from "services/api-client/investor-api";
+import { managerApiProxy } from "services/api-client/manager-api";
 
 export const DASHBOARD_PORTFOLIO_CHART = "DASHBOARD_PORTFOLIO_CHART";
 export const DASHBOARD_PORTFOLIO_EVENTS = "DASHBOARD_PORTFOLIO_EVENTS";
@@ -17,7 +18,7 @@ export const fetchPortfolioChart = (auth, filters) => {
 export const fetchPortfolioEvents = (auth, filters) => {
   return {
     type: DASHBOARD_PORTFOLIO_EVENTS,
-    payload: investorApi.v10InvestorPortfolioEventsGet(auth, filters)
+    payload: managerApiProxy.v10ManagerEventsGet(auth, filters)
   };
 };
 
