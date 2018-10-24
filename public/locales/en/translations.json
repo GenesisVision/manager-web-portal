@@ -645,6 +645,9 @@
     "title": "Create Fund",
     "navigation-back-text":
       "All data will be deleted. Do you want to continue?",
+    "notifications": {
+      "create-success": "Successful program creating."
+    },
     "tabs": {
       "select-broker": "Select broker",
       "settings": "Settings"
