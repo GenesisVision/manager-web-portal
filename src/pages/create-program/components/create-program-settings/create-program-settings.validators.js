@@ -4,6 +4,7 @@ const createProgramSettingsValidationSchema = ({ t }) =>
   Yup.object().shape({
     title: Yup.string()
       .required(t("create-program-page.settings.validation.title-required"))
+      .min(4, t("create-program-page.settings.validation.title-is-short"))
       .max(20, t("create-program-page.settings.validation.title-is-long")),
     description: Yup.string()
       .required(

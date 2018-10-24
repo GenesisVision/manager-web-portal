@@ -49,13 +49,18 @@ class CreateProgramSettings extends React.Component {
           </div>
           <div className="create-program-settings__fill-block create-program-settings__fill-block--with-border">
             <div className="create-program-settings__row">
-              <GVFormikField
-                type="text"
-                name="title"
-                label={t("create-program-page.settings.fields.name")}
-                autoComplete="off"
-                component={GVTextField}
-              />
+              <div className="create-program-settings__name">
+                <GVFormikField
+                  type="text"
+                  name="title"
+                  label={t("create-program-page.settings.fields.name")}
+                  autoComplete="off"
+                  component={GVTextField}
+                />
+                <div className="create-program-settings__name-requirements">
+                  {t("create-program-page.settings.fields.name-requirements")}
+                </div>
+              </div>
 
               <GVFormikField
                 name="accountType"
