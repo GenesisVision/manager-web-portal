@@ -19,18 +19,17 @@ const ProgramDepositForm = ({
   currency,
   disabled,
   handleSubmit,
-  errorMessage,
-  type
+  errorMessage
 }) => {
-  const fee = calculateValueOfEntryFee(values.amount, info.entryFee);
-  const due = parseFloat(values.amount || 0) + parseFloat(fee);
+  const gvFee = calculateValueOfEntryFee(values.amount, info.gvCommission);
+
+  const investAmount = parseFloat(values.amount || 0) - parseFloat(gvFee);
 
   const isAllow = values => {
     const { floatValue, formattedValue } = values;
     const { availableInWallet, availableToInvest } = info;
     const fee = calculateValueOfEntryFee(floatValue, info.entryFee);
-    const validateAvailableToInvest = () =>
-      type === "program" ? floatValue <= availableToInvest : true;
+    const validateAvailableToInvest = () => floatValue <= availableToInvest;
     return (
       formattedValue === "" ||
       (floatValue <= parseFloat(availableInWallet - fee) &&
@@ -62,12 +61,12 @@ const ProgramDepositForm = ({
       <ul className="dialog-list">
         <li className="dialog-list__item">
           <span className="dialog-list__title">
-            {t("deposit-program.entry-fee")}
+            {t("deposit-program.gv-commission")}
           </span>
           <span className="dialog-list__value">
-            {info.entryFee} %{" "}
+            {info.gvCommission} %{" "}
             <NumberFormat
-              value={formatValue(fee)}
+              value={formatValue(gvFee)}
               prefix="("
               suffix={` GVT)`}
               displayType="text"
@@ -76,11 +75,11 @@ const ProgramDepositForm = ({
         </li>
         <li className="dialog-list__item">
           <span className="dialog-list__title">
-            {t("deposit-program.amount-due")}
+            {t("deposit-program.investment-amount")}
           </span>
           <span className="dialog-list__value">
             <NumberFormat
-              value={formatValue(due)}
+              value={formatValue(investAmount)}
               suffix={` GVT`}
               displayType="text"
             />
@@ -99,9 +98,9 @@ const ProgramDepositForm = ({
         </GVButton>
       </div>
       <div className="dialog__info">
-        {`${t("deposit-program.period")} ${moment(info.periodEnds).format(
-          "DD.MM.YYYY, HH:mm"
-        )}`}
+        {t("deposit-program.disclaimer", {
+          currency
+        })}
       </div>
     </form>
   );

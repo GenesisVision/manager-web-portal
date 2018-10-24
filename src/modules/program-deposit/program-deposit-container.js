@@ -36,10 +36,7 @@ const ProgramDepositContainer = props => {
         currency={props.currency}
         info={props.info.data}
         id={props.id}
-        fetchInfo={
-          (type === "program" && props.service.getDepositProgramInfoById) ||
-          (type === "fund" && props.service.getDepositFundInfoById)
-        }
+        fetchInfo={props.service.getDepositProgramInfoById}
         invest={handleInvest}
         type={type}
       />
@@ -71,7 +68,6 @@ const mapDispatchToProps = dispatch => ({
   service: bindActionCreators(
     {
       getDepositProgramInfoById,
-      getDepositFundInfoById,
       clearDepositProgramInfo,
       investServiceInvestById,
       clearInvestSubmit

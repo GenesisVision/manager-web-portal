@@ -11,16 +11,17 @@ class ProgramDepositPopup extends Component {
   }
 
   render() {
+    const { info, submitInfo, currency, invest, type } = this.props;
     return this.props.info ? (
       <Fragment>
-        <ProgramDepositTop info={this.props.info} type={this.props.type} />
+        <ProgramDepositTop info={info.data} type={type} />
         <ProgramDepositForm
-          errorMessage={this.props.submitInfo.errorMessage}
-          currency={this.props.currency}
-          info={this.props.info}
-          disabled={this.props.submitInfo.isPending}
-          onSubmit={this.props.invest}
-          type={this.props.type}
+          errorMessage={submitInfo.errorMessage}
+          currency={currency}
+          info={info.data}
+          disabled={submitInfo.isPending}
+          onSubmit={invest}
+          type={type}
         />
       </Fragment>
     ) : null;
