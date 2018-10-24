@@ -5,24 +5,13 @@ import {
   INVEST_TO_PROGRAM_BY_ID_CLEAR
 } from "modules/program-deposit/program-deposit.constants";
 import { investorApiProxy } from "services/api-client/investor-api";
-import investorApi from "services/api-client/investor-api";
+import { managerApiProxy } from "services/api-client/manager-api";
 import authService from "services/auth-service";
 
 export const fetchDepositProgramInfoById = (id, currency) => {
   return {
     type: FETCH_DEPOSIT_PROGRAM_INFO,
-    payload: investorApi.v10InvestorProgramsByIdInvestInfoByCurrencyGet(
-      id,
-      currency,
-      authService.getAuthArg()
-    )
-  };
-};
-
-export const fetchDepositFundInfoById = (id, currency) => {
-  return {
-    type: FETCH_DEPOSIT_PROGRAM_INFO,
-    payload: investorApi.v10InvestorFundsByIdInvestInfoByCurrencyGet(
+    payload: managerApiProxy.v10ManagerProgramsByIdInvestInfoByCurrencyGet(
       id,
       currency,
       authService.getAuthArg()
@@ -39,7 +28,7 @@ export const clearDepositProgramInfo = () => {
 export const investToProgramById = (id, amount) => {
   return {
     type: INVEST_TO_PROGRAM_BY_ID,
-    payload: investorApiProxy.v10InvestorProgramsByIdInvestByAmountPost(
+    payload: managerApiProxy.v10ManagerProgramsByIdInvestByAmountPost(
       id,
       amount,
       authService.getAuthArg()
