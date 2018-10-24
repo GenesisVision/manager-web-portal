@@ -8,6 +8,7 @@ import accountSettingsReducer from "reducers/account-settings";
 import uiReducer from "reducers/ui-reducer";
 import { combineReducers } from "redux";
 
+import dashboardReducer from "../pages/dashboard/reducers/dashboard.reducers";
 import navigationReducer from "../modules/navigation/reducer/navigation-reducer";
 import programSettingsReducer from "../modules/program-settings/reducers/program-settings-reducers";
 import passwordRestoreReducer from "../pages/auth/forgot-password/reducers/password-restore-reducers";
@@ -19,6 +20,7 @@ import emailPendingReducer from "./email-pending-reducer";
 import platformReducer from "./platform-reducer";
 
 export default combineReducers({
+  dashboard: dashboardReducer,
   routing: routerReducer,
   loadingBar: loadingBarReducer,
   platformData: platformReducer,
