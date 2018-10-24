@@ -9,6 +9,7 @@ import uiReducer from "reducers/ui-reducer";
 import { combineReducers } from "redux";
 
 import programDepositReducer from "modules/program-deposit/reducer/program-deposit.reducer";
+import fundDepositReducer from "modules/fund-deposit/reducer/fund-deposit.reducer";
 import managerReducer from "../pages/manager/reducers/manager.reducers";
 import programsReducer from "../modules/programs-table/reducers/programs-table.reducers";
 import fundsReducer from "../modules/funds-table/reducers/funds-table.reducers";
@@ -24,6 +25,7 @@ import platformReducer from "./platform-reducer";
 
 export default combineReducers({
   programDeposit: programDepositReducer,
+  fundDeposit: fundDepositReducer,
   manager: managerReducer,
   programsData: programsReducer,
   fundsData: fundsReducer,
