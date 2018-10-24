@@ -2,6 +2,7 @@ import { DashboardIcon } from "components/icon/dashboard-icon";
 import { DetailsIcon } from "components/icon/details-icon";
 import { LogoutIcon } from "components/icon/logout-icon";
 import { ProgramsIcon } from "components/icon/programs-icon";
+import { FundsIcon } from "components/icon/funds-icon";
 import { SearchIcon } from "components/icon/search-icon";
 import { SettingsIcon } from "components/icon/settings-icon";
 import { WalletIcon } from "components/icon/wallet-icon";
@@ -13,6 +14,7 @@ import { LOGIN_ROUTE } from "pages/auth/login/login.routes";
 import { DASHBOARD_ROUTE } from "pages/dashboard/dashboard.routes";
 import { GLOBAL_SEARCH_ROUTE } from "pages/global-search/global-search.routes";
 import { PROGRAMS_ROUTE } from "pages/programs/programs.routes";
+import { FUNDS_ROUTE } from "pages/funds/funds.routes";
 import { WALLET_PAGE_ROUTE } from "pages/wallet/wallet-page";
 import PropTypes from "prop-types";
 import React from "react";
@@ -55,6 +57,9 @@ const NavigationMobile = ({
           </NavigationItem>
           <NavigationItem icon={<ProgramsIcon primary />} href={PROGRAMS_ROUTE}>
             {t("navigation.programs")}
+          </NavigationItem>
+          <NavigationItem icon={<FundsIcon primary />} href={FUNDS_ROUTE}>
+            {t("navigation.funds")}
           </NavigationItem>
           <NavigationItem
             icon={<SearchIcon primary />}
