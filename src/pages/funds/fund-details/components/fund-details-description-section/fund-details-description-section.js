@@ -112,9 +112,9 @@ class FundDetailsDescriptionSection extends PureComponent {
     const isInvested =
       fundDescription.personalFundDetails &&
       fundDescription.personalFundDetails.isInvested;
-    const isOwnFund =
+    const isOwnProgram =
       fundDescription.personalFundDetails &&
-      fundDescription.personalFundDetails.isOwnFund;
+      fundDescription.personalFundDetails.isOwnProgram;
     return (
       <Fragment>
         <FundDetailsDescription
@@ -126,7 +126,7 @@ class FundDetailsDescriptionSection extends PureComponent {
           isReinvestPending={ui.isReinvestPending}
           onFavoriteClick={this.handleOnFavoriteClick}
           isFavoritePending={ui.isFavoritePending}
-          isOwnFund={isOwnFund}
+          isOwnProgram={isOwnProgram}
           composeInvestmentData={composeInvestmentData}
           onChangeInvestmentStatus={onChangeInvestmentStatus}
         />

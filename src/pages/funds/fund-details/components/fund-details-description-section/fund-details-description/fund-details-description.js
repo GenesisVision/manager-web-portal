@@ -53,7 +53,7 @@ class FundDetailsDescription extends PureComponent {
       isFavoritePending,
       composeInvestmentData,
       onChangeInvestmentStatus,
-      isOwnFund
+      isOwnProgram
     } = this.props;
     const isFavorite =
       fundDescription.personalFundDetails &&
@@ -121,7 +121,7 @@ class FundDetailsDescription extends PureComponent {
                 />
               </div>
             </div>
-            {isOwnFund && (
+            {isOwnProgram && (
               <div className="fund-details-description__invest-button-container">
                 <GVButton
                   className="fund-details-description__invest-btn"
@@ -129,7 +129,7 @@ class FundDetailsDescription extends PureComponent {
                 >
                   {t("fund-details-page.description.invest")}
                 </GVButton>
-                <ProgramDepositContainer
+                <FundDepositContainer
                   open={isOpenInvestmentPopup}
                   id={fundDescription.id}
                   type={"fund"}
