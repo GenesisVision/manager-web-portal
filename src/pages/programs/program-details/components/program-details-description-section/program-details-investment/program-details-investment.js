@@ -3,7 +3,9 @@ import "./program-details-investment.scss";
 import ProgramStatus from "components/program-status/program-status";
 import Surface from "components/surface/surface";
 import { GVButton } from "gv-react-components";
-import ProgramWithdrawContainer from "modules/program-withdraw/program-withdraw-container";
+import ProgramWithdrawContainer, {
+  WITHDRAW_PROGRAM
+} from "modules/program-withdraw/program-withdraw-container";
 import React, { PureComponent } from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
@@ -94,6 +96,7 @@ class ProgramDetailsInvestment extends PureComponent {
             open={this.state.isOpenWithdrawalPopup}
             id={programId}
             onClose={this.handleCloseWithdrawalPopup}
+            type={WITHDRAW_PROGRAM}
           />
           <p className="program-details-investment__withdraw-notice">
             {t("program-details-page.description.withdraw-notice-text")}

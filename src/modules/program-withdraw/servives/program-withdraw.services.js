@@ -12,9 +12,34 @@ export const getProgramWithdrawInfo = id => (dispatch, getState) => {
   );
 };
 
+export const getFundWithdrawInfo = id => (dispatch, getState) => {
+  const { accountSettings } = getState();
+  return managersApiProxy.v10ManagersFundsByIdWithdrawInfoByCurrencyGet(
+    id,
+    accountSettings.currency,
+    authService.getAuthArg()
+  );
+};
+
 export const withdrawProgramById = (id, amount) => {
   return managersApiProxy
     .v10ManagersProgramsByIdWithdrawByAmountPost(
+      id,
+      amount,
+      authService.getAuthArg()
+    )
+    .then(response => {
+      alertMessageActions.success(
+        "program-withdraw.success-alert-message",
+        true
+      );
+      return response;
+    });
+};
+
+export const withdrawFundById = (id, amount) => {
+  return managersApiProxy
+    .v10ManagersFundsByIdWithdrawByAmountPost(
       id,
       amount,
       authService.getAuthArg()

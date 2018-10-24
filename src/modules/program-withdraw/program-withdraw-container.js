@@ -2,7 +2,9 @@ import Dialog from "components/dialog/dialog";
 import ProgramWithdrawPopup from "modules/program-withdraw/components/program-withdraw-popup";
 import {
   getProgramWithdrawInfo,
-  withdrawProgramById
+  withdrawProgramById,
+  getFundWithdrawInfo,
+  withdrawFundById
 } from "modules/program-withdraw/servives/program-withdraw.services";
 import PropTypes from "prop-types";
 import React from "react";
@@ -10,11 +12,24 @@ import { translate } from "react-i18next";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { compose } from "redux";
+export const WITHDRAW_PROGRAM = "withdraw-program";
+export const WITHDRAW_FUND = "withdraw-fund";
 
 const ProgramWithdrawContainer = props => {
-  const { open, onClose, currency, services, id } = props;
+  const { open, onClose, currency, services, id, type } = props;
+  let fetchMethod, handleMethod;
+  switch (type) {
+    case WITHDRAW_FUND:
+      fetchMethod = services.getFundWithdrawInfo;
+      handleMethod = services.withdrawFundById;
+      break;
+    case WITHDRAW_PROGRAM:
+    default:
+      fetchMethod = services.getProgramWithdrawInfo;
+      handleMethod = services.withdrawProgramById;
+  }
   const handleWithdraw = (id, amount) => {
-    return withdrawProgramById(id, amount).then(res => {
+    return handleMethod(id, amount).then(res => {
       onClose();
       return res;
     });
@@ -23,7 +38,7 @@ const ProgramWithdrawContainer = props => {
     <Dialog open={open} onClose={onClose}>
       <ProgramWithdrawPopup
         currency={currency}
-        fetchInfo={() => services.getProgramWithdrawInfo(id)}
+        fetchInfo={() => fetchMethod(id)}
         withdraw={amount => handleWithdraw(id, amount)}
       />
     </Dialog>
@@ -43,7 +58,10 @@ const mapStateToProps = state => ({
 const mapDispathToProps = dispatch => ({
   services: bindActionCreators(
     {
-      getProgramWithdrawInfo
+      getProgramWithdrawInfo,
+      withdrawProgramById,
+      getFundWithdrawInfo,
+      withdrawFundById
     },
     dispatch
   )
