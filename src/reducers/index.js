@@ -1,6 +1,8 @@
 import headerReducer from "modules/header/reducer/header-reducer";
 import notificationSettingsReducer from "modules/notification-settings/reducers/notification-settings.reducers";
 import notificationsReducer from "pages/app/components/notifications/reducers/notifications.reducers";
+import programNotificationsReducer from "modules/program-notifications/reducers/program-notifications.reducers";
+import fundNotificationsReducer from "modules/fund-notifications/reducers/fund-notifications.reducers";
 import walletReducer from "pages/wallet/reducers/wallet.reducers.js";
 import { loadingBarReducer } from "react-redux-loading-bar";
 import { routerReducer } from "react-router-redux";
@@ -24,6 +26,8 @@ import emailPendingReducer from "./email-pending-reducer";
 import platformReducer from "./platform-reducer";
 
 export default combineReducers({
+  programNotifications: programNotificationsReducer,
+  fundNotifications: fundNotificationsReducer,
   programDeposit: programDepositReducer,
   fundDeposit: fundDepositReducer,
   manager: managerReducer,

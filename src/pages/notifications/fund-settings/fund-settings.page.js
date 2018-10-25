@@ -1,18 +1,19 @@
 import Page from "components/page/page";
-import NotificationSettingsContainer from "modules/notification-settings/notification-settings-container";
+import FundNotificationsContainer from "modules/fund-notifications/fund-notifications-container";
 import ProgramDetailsNavigation from "pages/programs/program-details/components/program-details-navigation/program-details-navigation";
 import React from "react";
 import { translate } from "react-i18next";
-import { connect } from "react-redux";
+import connect from "react-redux/es/connect/connect";
 import { goBack } from "react-router-redux";
 import { bindActionCreators, compose } from "redux";
 
-const NotificationsPage = ({ t, service }) => {
+const FundNotificationPage = ({ t, match, service }) => {
+  const { id } = match.params;
   return (
-    <Page title={t("notifications.title")}>
+    <Page title={t("notifications.fund.title")}>
       <ProgramDetailsNavigation goBack={service.goBack} />
-      <h1>{t("notifications.title")}</h1>
-      <NotificationSettingsContainer />
+      <h1>{t("notifications.fund.title")}</h1>
+      <FundNotificationsContainer id={id} />
     </Page>
   );
 };
@@ -27,4 +28,4 @@ export default compose(
     null,
     mapDispatchToProps
   )
-)(NotificationsPage);
+)(FundNotificationPage);
