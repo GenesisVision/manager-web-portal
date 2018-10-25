@@ -1,5 +1,6 @@
 import "./create-program-settings.scss";
 
+import Hint from "components/hint/hint";
 import { RefreshIcon } from "components/icon/refresh-icon";
 import Select from "components/select/select";
 import { Field, withFormik } from "formik";
@@ -198,26 +199,46 @@ class CreateProgramSettings extends React.Component {
           </div>
           <div className="create-program-settings__fill-block create-program-settings__fill-block--with-border">
             <div className="create-program-settings__row">
-              <GVFormikField
-                name="entryFee"
-                label={t("create-program-page.settings.fields.entry-fee")}
-                suffix=" %"
-                isAllowed={percentNumberFormat}
-                component={GVTextField}
-                InputComponent={NumberFormat}
-                autoComplete="off"
-                decimalScale={4}
-              />
-              <GVFormikField
-                name="successFee"
-                label={t("create-program-page.settings.fields.success-fee")}
-                suffix=" %"
-                isAllowed={percentNumberFormat}
-                component={GVTextField}
-                InputComponent={NumberFormat}
-                autoComplete="off"
-                decimalScale={4}
-              />
+              <div className="create-program-settings__fee">
+                <GVFormikField
+                  name="entryFee"
+                  label={t("create-program-page.settings.fields.entry-fee")}
+                  suffix=" %"
+                  isAllowed={percentNumberFormat}
+                  component={GVTextField}
+                  InputComponent={NumberFormat}
+                  autoComplete="off"
+                  decimalScale={4}
+                />
+                <Hint
+                  content={t("create-program-page.settings.hints.entry-fee")}
+                  className="create-program-settings__fee-hint"
+                  vertical={"bottom"}
+                  tooltipContent={t(
+                    "create-program-page.settings.hints.entry-fee-description"
+                  )}
+                />
+              </div>
+              <div className="create-program-settings__fee">
+                <GVFormikField
+                  name="successFee"
+                  label={t("create-program-page.settings.fields.success-fee")}
+                  suffix=" %"
+                  isAllowed={percentNumberFormat}
+                  component={GVTextField}
+                  InputComponent={NumberFormat}
+                  autoComplete="off"
+                  decimalScale={4}
+                />
+                <Hint
+                  content={t("create-program-page.settings.hints.success-fee")}
+                  className="create-program-settings__fee-hint"
+                  vertical={"bottom"}
+                  tooltipContent={t(
+                    "create-program-page.settings.hints.success-fee-description"
+                  )}
+                />
+              </div>
             </div>
           </div>
           <div className="create-program-settings__subheading">
