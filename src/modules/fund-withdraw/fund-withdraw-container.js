@@ -14,7 +14,7 @@ import authService from "services/auth-service";
 import { managerApiProxy } from "services/api-client/manager-api";
 
 const FundWithdrawContainer = props => {
-  const { open, onClose, currency, services, id, type } = props;
+  const { open, onClose, currency, services, id } = props;
   const handleWithdraw = (id, percent) => {
     return managerApiProxy
       .v10ManagerFundsByIdWithdrawByPercentPost(
@@ -37,7 +37,6 @@ const FundWithdrawContainer = props => {
         currency={currency}
         fetchInfo={() => services.getFundWithdrawInfo(id)}
         withdraw={percent => handleWithdraw(id, percent)}
-        type={type}
       />
     </Dialog>
   );
