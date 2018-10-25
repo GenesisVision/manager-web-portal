@@ -5908,8 +5908,8 @@ growly@^1.3.0:
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
 "gv-api-web@git+https://github.com/GenesisVision/gv-api-web.git":
-  version "1.0.93"
-  resolved "git+https://github.com/GenesisVision/gv-api-web.git#ce16eb72055399da00e2f25043e5dfe1f01f2c00"
+  version "1.0.96"
+  resolved "git+https://github.com/GenesisVision/gv-api-web.git#0cbe9656ce0f1acbe29d5d61a8302b7e59b1c4d5"
   dependencies:
     superagent "^3.8.3"
 
