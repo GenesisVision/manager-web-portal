@@ -41,7 +41,8 @@ class CreateProgramSettings extends React.Component {
       values,
       setFieldValue,
       setLeverageChooseAvailable,
-      isLeverageChooseAvailable
+      isLeverageChooseAvailable,
+      programsInfo
     } = this.props;
 
     return (
@@ -154,10 +155,18 @@ class CreateProgramSettings extends React.Component {
                 label={t("create-program-page.settings.fields.period")}
                 InputComponent={Select}
               >
-                {PROGRAM_SETTINGS_PERIOD_VALUES.map(period => {
+                {programsInfo.periods.map(period => {
                   return (
                     <option value={period.toString()} key={period}>
-                      {period + (period === 1 ? " day" : " days")}
+                      {period +
+                        " " +
+                        (period === 1
+                          ? t(
+                              "create-program-page.settings.fields.period-option-notation.day"
+                            )
+                          : t(
+                              "create-program-page.settings.fields.period-option-notation.day_plural"
+                            ))}
                     </option>
                   );
                 })}
@@ -250,7 +259,7 @@ class CreateProgramSettings extends React.Component {
               {t("create-program-page.settings.fields.deposit-amount")}
             </div>
             <div className="create-program-settings__deposit-amount-value">
-              {broker.depositAmount || 100 + " GVT"}
+              {programsInfo.managerProgramInvestment + " GVT"}
             </div>
             <div className="create-program-settings__available-amount">
               {t("create-program-page.settings.fields.available-in-wallet")}

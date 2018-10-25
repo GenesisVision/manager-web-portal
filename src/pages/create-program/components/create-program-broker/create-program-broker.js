@@ -39,7 +39,7 @@ const CreateProgramBroker = ({
           />
         ))}
         {comingSoonBrokers.map(broker => (
-          <BrokerCard key={broker.name} broker={broker} disabled={true} />
+          <BrokerCard key={broker.name} broker={broker} isComingSoon={true} />
         ))}
 
         <div className="create-program-broker__navigation">

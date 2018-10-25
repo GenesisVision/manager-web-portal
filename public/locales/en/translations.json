@@ -427,6 +427,10 @@
         "description-requirements": "Requirement from 20 to 500 symbols",
         "brokers-leverage": "Broker's leverage",
         "period": "Period",
+        "period-option-notation": {
+          "day": "Day",
+          "day_plural": "Days"
+        },
         "upload-logo": "Upload program logo",
         "upload-logo-rules": "At least 300 x 300px PNG or JPG file",
         "entry-fee": "Entry fee",

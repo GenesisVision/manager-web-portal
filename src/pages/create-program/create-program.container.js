@@ -82,7 +82,8 @@ class CreateProgramContainer extends Component {
       handleSubmit,
       setLeverageChooseAvailable
     } = this;
-    const { t, headerData, service } = this.props;
+    const { t, headerData, service, platformSettings } = this.props;
+    if (!platformSettings) return null;
     return (
       <div className="create-program-container">
         <GVTabs value={tab}>
@@ -115,6 +116,7 @@ class CreateProgramContainer extends Component {
                 author={headerData.name}
                 setLeverageChooseAvailable={setLeverageChooseAvailable}
                 isLeverageChooseAvailable={isLeverageChooseAvailable}
+                programsInfo={platformSettings.programsInfo}
               />
             )}
             <CreateProgramNavigationDialog
@@ -132,7 +134,8 @@ class CreateProgramContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  headerData: state.profileHeader.info.data
+  headerData: state.profileHeader.info.data,
+  platformSettings: state.platformData.settings.data
 });
 
 const mapDispatchToProps = dispatch => {

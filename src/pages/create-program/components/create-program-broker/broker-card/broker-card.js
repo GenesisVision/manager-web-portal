@@ -4,18 +4,22 @@ import classnames from "classnames";
 import React from "react";
 import { translate } from "react-i18next";
 
-const BrokerCard = ({ broker, onChoose, isActive, disabled }) => {
+const BrokerCard = ({ broker, onChoose, isActive, isComingSoon }) => {
   const className = classnames("broker-card", {
     "broker-card--active": isActive,
-    "broker-card--disabled": disabled
+    "broker-card--coming-soon": isComingSoon
+  });
+  let logoClassName = classnames("broker-card__logo", {
+    ["broker-card__logo--" + broker.name]: isComingSoon
   });
 
   return (
     <div
       className={className}
-      onClick={!disabled && onChoose.bind(null, broker)}
+      onClick={!isComingSoon && onChoose.bind(null, broker)}
     >
       <img
+        className={logoClassName}
         src={
           broker.logo ||
           "https://forex-scam.net/wp-content/uploads/2016/07/alpari-3.png"

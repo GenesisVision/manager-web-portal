@@ -5,9 +5,9 @@ import OKExLogo from "../../media/okex.png";
 import RoboforexLogo from "../../media/roboforex.png";
 
 export const comingSoonBrokers = [
-  { name: "OKEx", logo: OKExLogo },
-  { name: "Huobi", logo: HuobiLogo },
-  { name: "Just2trade", logo: Just2tradeLogo },
-  { name: "Roboforex", logo: RoboforexLogo },
-  { name: "IDEX", logo: IDEXLogo }
+  { name: "okex", logo: OKExLogo },
+  { name: "huobi", logo: HuobiLogo },
+  { name: "just2trade", logo: Just2tradeLogo },
+  { name: "roboforex", logo: RoboforexLogo },
+  { name: "idex", logo: IDEXLogo }
 ];
