@@ -75,7 +75,7 @@ class ProgramDetailsPage extends PureComponent {
       .finally(() => {
         this.setState({ isPending: false });
       });
-  }
+  };
 
   changeInvestmentStatus = () => {
     this.setState({ isPending: true });
@@ -152,9 +152,6 @@ const mapDispatchToProps = dispatch => ({
   )
 });
 
-export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
-)(ProgramDetailsPage);
+export default compose(connect(mapStateToProps, mapDispatchToProps))(
+  ProgramDetailsPage
+);

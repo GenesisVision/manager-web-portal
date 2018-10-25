@@ -3,9 +3,7 @@ import "./fund-details-investment.scss";
 import ProgramStatus from "components/program-status/program-status";
 import Surface from "components/surface/surface";
 import { GVButton } from "gv-react-components";
-import ProgramWithdrawContainer, {
-  WITHDRAW_FUND
-} from "modules/program-withdraw/program-withdraw-container";
+import FundWithdrawContainer from "modules/fund-withdraw/fund-withdraw-container";
 import React, { PureComponent } from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
@@ -20,6 +18,7 @@ class FundDetailsInvestment extends PureComponent {
   };
 
   handleCloseWithdrawalPopup = () => {
+    this.props.onChangeInvestmentStatus();
     this.setState({ isOpenWithdrawalPopup: false });
   };
 
@@ -86,11 +85,10 @@ class FundDetailsInvestment extends PureComponent {
           >
             {t("fund-details-page.description.withdraw")}
           </GVButton>
-          <ProgramWithdrawContainer
+          <FundWithdrawContainer
             open={this.state.isOpenWithdrawalPopup}
             id={fundId}
             onClose={this.handleCloseWithdrawalPopup}
-            type={WITHDRAW_FUND}
           />
           <p className="fund-details-investment__withdraw-notice">
             {t("fund-details-page.description.withdraw-notice-text")}
