@@ -361,6 +361,14 @@ $asset-height-mobile: $asset-height/$divider-text;
     padding: 0 $padding-small;
   }
   &__assets {
+    &:after {
+      content: " ";
+      background: linear-gradient(
+                      90deg,
+                      rgba($background-color, 0),
+                      $background-color
+      );
+    }
     padding-bottom: $padding-small;
     table {
       border-spacing: 0;
