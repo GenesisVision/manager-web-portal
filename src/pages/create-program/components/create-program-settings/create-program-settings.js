@@ -21,6 +21,7 @@ import {
   getLeverages,
   percentNumberFormat
 } from "../../helpers/create-program.helpers";
+import AccountTypeField from "../account-type-field/account-type-field";
 import { PROGRAM_SETTINGS_PERIOD_VALUES } from "./create-program-settings.constants";
 import createProgramSettingsValidationSchema from "./create-program-settings.validators";
 import ProgramDefaultImage from "./program-default-image";
@@ -37,7 +38,9 @@ class CreateProgramSettings extends React.Component {
       isSubmitting,
       handleSubmit,
       values,
-      setFieldValue
+      setFieldValue,
+      setLeverageChooseAvailable,
+      isLeverageChooseAvailable
     } = this.props;
 
     return (
@@ -61,8 +64,14 @@ class CreateProgramSettings extends React.Component {
                   {t("create-program-page.settings.fields.name-requirements")}
                 </div>
               </div>
-
-              <GVFormikField
+              <AccountTypeField
+                accountTypes={getAccountTypes(broker)}
+                label={t("create-program-page.settings.fields.account-type")}
+                setLeverageChooseAvailable={setLeverageChooseAvailable}
+                setFieldValue={setFieldValue}
+                broker={broker}
+              />
+              {/* <GVFormikField
                 name="accountType"
                 component={GVTextField}
                 label={t("create-program-page.settings.fields.account-type")}
@@ -75,7 +84,7 @@ class CreateProgramSettings extends React.Component {
                     </option>
                   );
                 })}
-              </GVFormikField>
+              </GVFormikField> */}
             </div>
             <div className="create-program-settings__row">
               <GVFormikField
@@ -127,7 +136,8 @@ class CreateProgramSettings extends React.Component {
                   "create-program-page.settings.fields.brokers-leverage"
                 )}
                 InputComponent={Select}
-                disabled={!values["accountType"]}
+                disabled={!values["accountType"] || !isLeverageChooseAvailable}
+                className="create-program-settings__leverage"
               >
                 {getLeverages(broker, values["accountType"]).map(leverage => {
                   return (

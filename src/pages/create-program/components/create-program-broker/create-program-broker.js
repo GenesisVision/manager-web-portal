@@ -80,7 +80,9 @@ const CreateProgramBroker = ({
           <div className="create-program-broker__info-title">
             {t("create-program-page.broker-info.fee")}
           </div>
-          <div className="create-program-broker__info-text">2.5%</div>
+          <div className="create-program-broker__info-text">
+            {choosedBroker.fee} %
+          </div>
         </div>
         <div className="create-program-broker__assets">
           <div className="create-program-broker__info-title">
