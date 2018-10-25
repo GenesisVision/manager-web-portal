@@ -42,7 +42,7 @@ $padding: 33px;
     justify-content: flex-end;
     width: 100%;
     align-items: center;
-    padding: 10px $padding/2 $padding/2;
+    padding: 10px 0 $padding/2;
   }
 
   &__toggle {
@@ -184,7 +184,7 @@ $padding: 33px;
       font-size: $td-font-size;
     }
     &__toolbar {
-      padding: 10px $padding $padding;
+      padding: 10px 0 $padding;
     }
     &__toggle {
       display: flex;
