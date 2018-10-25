@@ -20,6 +20,10 @@
     background-color: $panel-background-color;
   }
 
+  &--disabled {
+    cursor: not-allowed;
+  }
+
   &__active-mark {
     display: inline-flex;
     justify-content: center;

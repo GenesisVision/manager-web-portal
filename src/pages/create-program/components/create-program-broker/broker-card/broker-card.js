@@ -4,13 +4,17 @@ import classnames from "classnames";
 import React from "react";
 import { translate } from "react-i18next";
 
-const BrokerCard = ({ broker, onChoose, isActive }) => {
+const BrokerCard = ({ broker, onChoose, isActive, disabled }) => {
   const className = classnames("broker-card", {
-    "broker-card--active": isActive
+    "broker-card--active": isActive,
+    "broker-card--disabled": disabled
   });
 
   return (
-    <div className={className} onClick={onChoose.bind(null, broker)}>
+    <div
+      className={className}
+      onClick={!disabled && onChoose.bind(null, broker)}
+    >
       <img
         src={
           broker.logo ||

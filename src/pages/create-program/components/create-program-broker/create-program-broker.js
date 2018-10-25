@@ -6,6 +6,7 @@ import React from "react";
 import { translate } from "react-i18next";
 
 import BrokerCard from "./broker-card/broker-card";
+import { comingSoonBrokers } from "./coming-soon-brokers";
 
 const getLeverageDescription = ({ leverageMax, leverageMin }) => {
   let result;
@@ -36,6 +37,9 @@ const CreateProgramBroker = ({
             isActive={broker === choosedBroker}
             onChoose={chooseBroker}
           />
+        ))}
+        {comingSoonBrokers.map(broker => (
+          <BrokerCard key={broker.name} broker={broker} disabled={true} />
         ))}
 
         <div className="create-program-broker__navigation">
