@@ -2,7 +2,7 @@ import { fetchProfileHeaderInfo } from "modules/header/actions/header-actions";
 import { DASHBOARD_ROUTE } from "pages/dashboard/dashboard.routes";
 import { push } from "react-router-redux";
 import FundsApi from "services/api-client/funds-api";
-import { managersApiProxy } from "services/api-client/managers-api";
+import { managerApiProxy } from "services/api-client/manager-api";
 import authService from "services/auth-service";
 import filesService from "shared/services/file-service";
 
@@ -15,9 +15,7 @@ export const fetchAssets = () =>
   FundsApi.v10FundsAssetsGet(authService.getAuthArg());
 
 export const fetchInvestmentAmount = () =>
-  managersApiProxy.v10ManagersFundsInvestmentAmountGet(
-    authService.getAuthArg()
-  );
+  managerApiProxy.v10ManagerFundsInvestmentAmountGet(authService.getAuthArg());
 
 export const createFund = (createFundData, setSubmitting) => dispatch => {
   const authorization = authService.getAuthArg();
@@ -39,7 +37,7 @@ export const createFund = (createFundData, setSubmitting) => dispatch => {
         logo: response || ""
       };
 
-      return managersApiProxy.v10ManagersFundsCreatePost(authorization, {
+      return managerApiProxy.v10ManagerFundsCreatePost(authorization, {
         request: data
       });
     })
