@@ -1,6 +1,5 @@
 import "./profile.scss";
 
-import Chip from "components/chip/chip";
 import Dialog from "components/dialog/dialog";
 import FileLabel from "components/file-label/file-label";
 import GVDatePicker from "components/gv-datepicker/gv-datepicker";
@@ -13,6 +12,7 @@ import PropTypes from "prop-types";
 import React, { Component, Fragment } from "react";
 import { translate } from "react-i18next";
 
+import VerificationStatus from "../../components/verification-status/verification-status";
 import About from "../about/about";
 
 class Profile extends Component {
@@ -70,9 +70,7 @@ class Profile extends Component {
                 <td className="profile__center" />
                 <td className="profile__right">
                   <h4>{t("profile.contacts")}</h4>
-                  {info.phoneNumberConfirmed || (
-                    <Chip type="negative">{t("profile.not-verified")}</Chip>
-                  )}
+                  <VerificationStatus checked={info.phoneNumberConfirmed} />
                 </td>
               </tr>
               <tr className="profile__content">
@@ -114,9 +112,9 @@ class Profile extends Component {
                 <td className="profile__center" />
                 <td className="profile__right">
                   <h4>{t("profile.personal-info")}</h4>
-                  {info.documentsConfirmed || (
-                    <Chip type="negative">{t("profile.not-verified")}</Chip>
-                  )}
+                  <VerificationStatus
+                    verificationStatus={info.verificationStatus}
+                  />
                 </td>
               </tr>
               <tr className="profile__content">

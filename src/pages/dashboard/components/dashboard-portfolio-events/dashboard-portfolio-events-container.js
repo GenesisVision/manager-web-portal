@@ -19,10 +19,12 @@ class DashboardPortfolioEventsContainer extends Component {
     const { isPending, data } = this.props;
     if (isPending || data === undefined) return null;
     return (
-      <DashboardPortfolioEvents
-        events={data.events}
-        fullEventsUrl={DASHBOARD_EVENTS_ROUTE}
-      />
+      (data.events && (
+        <DashboardPortfolioEvents
+          events={data.events}
+          fullEventsUrl={DASHBOARD_EVENTS_ROUTE}
+        />
+      )) || <div className="dashboard__empty-events">There are no items.</div>
     );
   };
   render() {
@@ -40,39 +42,7 @@ class DashboardPortfolioEventsContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  // const { isPending, data } = state.dashboard.eventsData;
-  const { isPending, data } = {
-    data: {
-      events: [
-        {
-          assetId: "1",
-          date: "2018-10-22T11:09:35.148Z",
-          title: "string",
-          value: 0,
-          type: "All",
-          logo: "string"
-        },
-        {
-          assetId: "2",
-          date: "2018-10-22T11:09:35.148Z",
-          title: "string",
-          value: 0,
-          type: "All",
-          logo: "string"
-        },
-        {
-          assetId: "3",
-          date: "2018-10-22T11:09:35.148Z",
-          title: "string",
-          value: 0,
-          type: "All",
-          logo: "string"
-        }
-      ],
-      total: 3
-    },
-    isPending: false
-  };
+  const { isPending, data } = state.dashboard.eventsData;
   return { isPending, data };
 };
 
