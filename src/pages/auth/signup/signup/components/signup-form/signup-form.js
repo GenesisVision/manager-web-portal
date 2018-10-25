@@ -1,3 +1,4 @@
+import GVCheckbox from "components/gv-checkbox/gv-checkbox";
 import { withFormik } from "formik";
 import { GVButton, GVFormikField, GVTextField } from "gv-react-components";
 import React from "react";
@@ -19,7 +20,8 @@ const SignUpForm = ({ isSubmitting, handleSubmit, error, t }) => {
         type="text"
         name="userName"
         label={t("auth.signup.username-field-text")}
-        autoComplete="name"
+        autoComplete="off"
+        className="signup-form__username"
         component={GVTextField}
       />
 
@@ -36,7 +38,7 @@ const SignUpForm = ({ isSubmitting, handleSubmit, error, t }) => {
         name="password"
         label={t("auth.signup.password-field-text")}
         component={GVTextField}
-        autocomplete="new-password"
+        autoComplete="new-password"
       />
 
       <GVFormikField
@@ -44,7 +46,47 @@ const SignUpForm = ({ isSubmitting, handleSubmit, error, t }) => {
         name="confirmPassword"
         label={t("auth.signup.password-confirm-field-text")}
         component={GVTextField}
-        autocomplete="new-password"
+        autoComplete="new-password"
+      />
+
+      <GVFormikField
+        type="checkbox"
+        color="primary"
+        name="privacyPolicy"
+        label={
+          <span>
+            {t("auth.signup.i-accept-text")}{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://genesis.vision/privacy-policy.html"
+              onClick={e => e.stopPropagation()}
+            >
+              {t("auth.signup.privacy-policy-text")}
+            </a>
+          </span>
+        }
+        component={GVCheckbox}
+      />
+
+      <GVFormikField
+        type="checkbox"
+        color="primary"
+        name="acceptTerms"
+        label={
+          <span>
+            {t("auth.signup.i-accept-text")}{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://genesis.vision/terms.html"
+              onClick={e => e.stopPropagation()}
+            >
+              {t("auth.signup.accept-terms-text")}
+            </a>
+          </span>
+        }
+        component={GVCheckbox}
       />
 
       <FormError error={error} />
@@ -68,7 +110,9 @@ const withTranslationAndFormik = compose(
       userName: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      privacyPolicy: false,
+      acceptTerms: false
     }),
     validationSchema: validationSchema,
     handleSubmit: (values, { props, setSubmitting }) => {
