@@ -18,12 +18,12 @@ import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
 
 import replaceParams from "../../../../../utils/replace-params";
-/*import {
-  FUNDS_SLUG_URL_PARAM_NAME,
-  FUND_DETAILS_ROUTE
-} from "../../../../funds/funds.routes";*/
 import { DASHBOARD_PROGRAMS_SORTING } from "../../../dashboard.constants";
 import { getDashboardFunds } from "../../../services/dashboard-funds.service";
+
+const FUNDS_SLUG_URL_PARAM_NAME = "fundsSlugUrl";
+const FUNDS_ROUTE = "/funds";
+const FUND_DETAILS_ROUTE = `${FUNDS_ROUTE}/:${FUNDS_SLUG_URL_PARAM_NAME}`;
 
 class DashboardFunds extends Component {
   fetchFunds = filters => {
@@ -33,11 +33,10 @@ class DashboardFunds extends Component {
   };
 
   render() {
-    /*const fundDetailsUrl = fundUrl =>
+    const fundDetailsUrl = fundUrl =>
       replaceParams(FUND_DETAILS_ROUTE, {
         [`:${FUNDS_SLUG_URL_PARAM_NAME}`]: fundUrl
-      });*/
-    const fundDetailsUrl = fundUrl => "";
+      });
     const { t, createButton } = this.props;
     return (
       <TableModule

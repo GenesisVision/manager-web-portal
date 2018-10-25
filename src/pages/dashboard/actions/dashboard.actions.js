@@ -1,4 +1,5 @@
 import investorApi from "services/api-client/investor-api";
+import { managerApiProxy } from "services/api-client/manager-api";
 
 export const DASHBOARD_PORTFOLIO_CHART = "DASHBOARD_PORTFOLIO_CHART";
 export const DASHBOARD_PORTFOLIO_EVENTS = "DASHBOARD_PORTFOLIO_EVENTS";
@@ -17,27 +18,27 @@ export const fetchPortfolioChart = (auth, filters) => {
 export const fetchPortfolioEvents = (auth, filters) => {
   return {
     type: DASHBOARD_PORTFOLIO_EVENTS,
-    payload: investorApi.v10InvestorPortfolioEventsGet(auth, filters)
+    payload: managerApiProxy.v10ManagerEventsGet(auth, filters)
   };
 };
 
 export const fetchInRequests = (auth, skip, take) => {
   return {
     type: DASHBOARD_IN_REQUESTS,
-    payload: investorApi.v10InvestorRequestsBySkipByTakeGet(skip, take, auth)
+    payload: managerApiProxy.v10ManagerRequestsBySkipByTakeGet(skip, take, auth)
   };
 };
 
 export const cancelFundRequest = (auth, id) => {
   return {
     type: DASHBOARD_CANCEL_FUND_REQUESTS,
-    payload: investorApi.v10InvestorFundsRequestsByIdCancelPost(id, auth)
+    payload: managerApiProxy.v10ManagerFundsRequestsByIdCancelPost(id, auth)
   };
 };
 
 export const cancelProgramRequest = (auth, id) => {
   return {
     type: DASHBOARD_CANCEL_PROGRAM_REQUESTS,
-    payload: investorApi.v10InvestorProgramsRequestsByIdCancelPost(id, auth)
+    payload: managerApiProxy.v10ManagerProgramsRequestsByIdCancelPost(id, auth)
   };
 };

@@ -16,9 +16,7 @@ export const fetchAssets = () =>
   FundsApi.v10FundsAssetsGet(authService.getAuthArg());
 
 export const fetchInvestmentAmount = () =>
-  managerApiProxy.v10ManagerFundsInvestmentAmountGet(
-    authService.getAuthArg()
-  );
+  managerApiProxy.v10ManagerFundsInvestmentAmountGet(authService.getAuthArg());
 
 export const createFund = (createFundData, setSubmitting) => dispatch => {
   const authorization = authService.getAuthArg();
