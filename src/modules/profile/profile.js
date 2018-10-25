@@ -1,6 +1,5 @@
 import "./profile.scss";
 
-import Chip from "components/chip/chip";
 import { GVButton, GVTextField } from "gv-react-components";
 import moment from "moment";
 import PropTypes from "prop-types";
@@ -8,6 +7,7 @@ import React, { Component } from "react";
 import { translate } from "react-i18next";
 import { Link } from "react-router-dom";
 
+import VerificationStatus from "../../components/verification-status/verification-status";
 import { PROFILE_EDIT_ROUTE } from "../../pages/profile/profile.constants";
 
 const ProfileField = ({ name, value, label, disabled = true, type }) => {
@@ -65,9 +65,7 @@ class Profile extends Component {
               <td className="profile__center" />
               <td className="profile__right">
                 <h4>{t("profile.contacts")}</h4>
-                {info.phoneNumberConfirmed || (
-                  <Chip type="negative">{t("profile.not-verified")}</Chip>
-                )}
+                <VerificationStatus checked={info.phoneNumberConfirmed} />
               </td>
             </tr>
             <tr className="profile__content">
@@ -95,9 +93,9 @@ class Profile extends Component {
               <td className="profile__center" />
               <td className="profile__right">
                 <h4>{t("profile.personal-info")}</h4>
-                {info.documentsConfirmed || (
-                  <Chip type="negative">{t("profile.not-verified")}</Chip>
-                )}
+                <VerificationStatus
+                  verificationStatus={info.verificationStatus}
+                />
               </td>
             </tr>
             <tr className="profile__content">

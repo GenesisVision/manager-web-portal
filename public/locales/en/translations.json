@@ -68,7 +68,8 @@
       "profit": "Profit",
       "status": "Status",
       "withdraw": "Withdraw",
-      "withdraw-notice-text": "You can withdraw only the invested funds, the profit will be withdrawn to your account at the end of the period automatically"
+      "withdraw-notice-text":
+        "You can withdraw only the invested funds, the profit will be withdrawn to your account at the end of the period automatically"
     },
     "statistics": {
       "heading": "Statistics",
@@ -89,7 +90,8 @@
     "popover": {
       "genesis-level": "Genesis Level",
       "invest-limit": "Invest limit",
-      "text": "Genesis level shows the experience and reliability of the Manager",
+      "text":
+        "Genesis level shows the experience and reliability of the Manager",
       "about-levels": "About levels"
     },
     "history": {
@@ -148,7 +150,8 @@
       "profit": "Profit",
       "status": "Status",
       "withdraw": "Withdraw",
-      "withdraw-notice-text": "You can withdraw only the invested funds, the profit will be withdrawn to your account at the end of the period automatically"
+      "withdraw-notice-text":
+        "You can withdraw only the invested funds, the profit will be withdrawn to your account at the end of the period automatically"
     },
     "statistics": {
       "heading": "Statistics",
@@ -206,19 +209,27 @@
     "available-to-withdraw": "Current investment value",
     "amount-to-withdraw": "Amount to withdraw",
     "next": "Next",
-    "info": "Your request will be processed at the end of the reporting period. The requested amount will be converted to GVT and transferred to your wallet",
+    "info":
+      "Your request will be processed at the end of the reporting period. The requested amount will be converted to GVT and transferred to your wallet",
     "withdrawing": "Withdrawing",
     "payout-date": "Payout date",
     "back": "Back",
     "submit": "Submit",
     "validation": {
-      "amount-more-than-available": "Amount is more than available for withdraw",
+      "amount-more-than-available":
+        "Amount is more than available for withdraw",
       "amount-is-required": "Amount is required."
     }
   },
   "days-left-widget": {
     "text": "Day left",
     "text_plural": "Days left"
+  },
+  "verification-status": {
+    "verified": "Verified",
+    "not-verified": "Not verified",
+    "under-review": "Under Review",
+    "rejected": "Rejected"
   },
   "program-period": {
     "day": "day",
@@ -475,11 +486,14 @@
     "amount": "Amount to invest",
     "entry-fee": "Entry fee",
     "investment-amount": "Investment amount",
-    "disclaimer": "After clicking the \"Confirm\" button, the invested GVT will be immediately converted to {{currency}}. Accrual of {{currency}} to the account manager will only occur at the end of the reporting period.",
+    "disclaimer":
+      "After clicking the \"Confirm\" button, the invested GVT will be immediately converted to {{currency}}. Accrual of {{currency}} to the account manager will only occur at the end of the reporting period.",
     "confirm": "Confirm",
-    "success-alert-message": "Successful request for investment in the program.",
+    "success-alert-message":
+      "Successful request for investment in the program.",
     "validation": {
-      "amount-more-than-available": "Amount is more than available in your wallet",
+      "amount-more-than-available":
+        "Amount is more than available in your wallet",
       "amount-is-required": "Amount is required.",
       "amount-min-value": "Min amount is {{min}} GVT"
     }
@@ -492,11 +506,14 @@
     "amount": "Amount to invest",
     "entry-fee": "Entry fee",
     "investment-amount": "Investment amount",
-    "disclaimer": "After clicking the \"Confirm\" button, the invested GVT will be immediately converted to {{currency}}. Accrual of {{currency}} to the account manager will only occur at the end of the reporting period.",
+    "disclaimer":
+      "After clicking the \"Confirm\" button, the invested GVT will be immediately converted to {{currency}}. Accrual of {{currency}} to the account manager will only occur at the end of the reporting period.",
     "confirm": "Confirm",
-    "success-alert-message": "Successful request for investment in the program.",
+    "success-alert-message":
+      "Successful request for investment in the program.",
     "validation": {
-      "amount-more-than-available": "Amount is more than available in your wallet",
+      "amount-more-than-available":
+        "Amount is more than available in your wallet",
       "amount-is-required": "Amount is required.",
       "amount-min-value": "Min amount is {{min}} GVT"
     }
@@ -527,13 +544,15 @@
     "available-to-withdraw": "You invested in fund",
     "amount-to-withdraw": "Amount to withdraw",
     "next": "Next",
-    "info": "Amount of withdrawals can be changed depending on the exchange rate or the success of the Manager",
+    "info":
+      "Amount of withdrawals can be changed depending on the exchange rate or the success of the Manager",
     "withdrawing": "Withdrawing",
     "payout-date": "Payout date",
     "back": "Back",
     "submit": "Submit",
     "validation": {
-      "amount-more-than-available": "Amount is more than available for withdraw",
+      "amount-more-than-available":
+        "Amount is more than available for withdraw",
       "amount-is-required": "Amount is required."
     }
   },
