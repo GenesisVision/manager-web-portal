@@ -485,6 +485,7 @@
         "upload-logo-rules": "At least 300 x 300px PNG or JPG file",
         "entry-fee": "Entry fee",
         "success-fee": "Success fee",
+        "exit-fee": "Exit fee",
         "deposit-amount": "Deposit amount",
         "available-in-wallet": "Available in wallet"
       },
