@@ -7,6 +7,12 @@
     "text": "Day left",
     "text_plural": "Days left"
   },
+  "verification-status": {
+    "verified": "Verified",
+    "not-verified": "Not verified",
+    "under-review": "Under Review",
+    "rejected": "Rejected"
+  },
   "program-period": {
     "day": "day",
     "day_plural": "days",
