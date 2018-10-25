@@ -13,7 +13,12 @@ const apiErrorHandlerMiddleware = (
     const handledError = handleErrorMessage(action.payload.response);
 
     if (handledError.isServerConnectionError) {
-      dispatch(alertMessageActions.error("alerts.server-error", true));
+      dispatch(
+        alertMessageActions.error(
+          action.payload.errorMessage || "alerts.server-error",
+          true
+        )
+      );
       action.payload = { code: handledError.code };
     }
 
