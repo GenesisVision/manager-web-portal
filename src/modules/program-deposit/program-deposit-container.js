@@ -15,7 +15,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 const ProgramDepositContainer = props => {
-  const { service, id, type } = props;
+  const { service, id, type, onInvest } = props;
   const handleClose = () => {
     props.onClose();
     props.service.clearDepositProgramInfo();
@@ -27,7 +27,12 @@ const ProgramDepositContainer = props => {
         id,
         amount
       })
-      .then(handleClose);
+      .then(() => {
+        handleClose();
+        if (onInvest) {
+          onInvest();
+        }
+      });
   };
   return (
     <Dialog open={props.open} onClose={handleClose}>
@@ -49,6 +54,7 @@ ProgramDepositContainer.propTypes = {
   id: PropTypes.string.isRequired,
   currency: PropTypes.string,
   onClose: PropTypes.func,
+  onInvest: PropTypes.func,
   service: PropTypes.shape({
     getDepositProgramInfoById: PropTypes.func,
     getDepositFundInfoById: PropTypes.func,
@@ -76,6 +82,7 @@ const mapDispatchToProps = dispatch => ({
   )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  ProgramDepositContainer
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProgramDepositContainer);

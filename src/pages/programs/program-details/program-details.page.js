@@ -18,6 +18,10 @@ import {
   getProgramStatistic
 } from "./services/program-details.service";
 
+export const ProgramDetailContext = React.createContext({
+  updateDetails: () => {}
+});
+
 class ProgramDetailsPage extends PureComponent {
   state = {
     errorCode: null,
@@ -34,6 +38,10 @@ class ProgramDetailsPage extends PureComponent {
   }
 
   componentDidMount() {
+    this.updateDetails();
+  }
+
+  updateDetails = () => {
     const { service, currency } = this.props;
     this.setState({ isPending: true });
     service
@@ -87,36 +95,43 @@ class ProgramDetailsPage extends PureComponent {
     }
 
     if (!this.description.data) return null;
+
     return (
       <Page title={this.description.data.title}>
-        <div className="program-details">
-          <div className="program-details__section">
-            <ProgramDetailsNavigation goBack={service.goBack} />
-            <ProgramDetailsDescriptionSection
-              programDescriptionData={this.description}
-              isAuthenticated={isAuthenticated}
-              redirectToLogin={service.redirectToLogin}
-              onChangeInvestmentStatus={this.changeInvestmentStatus}
-            />
+        <ProgramDetailContext.Provider
+          value={{
+            updateDetails: this.updateDetails
+          }}
+        >
+          <div className="program-details">
+            <div className="program-details__section">
+              <ProgramDetailsNavigation goBack={service.goBack} />
+              <ProgramDetailsDescriptionSection
+                programDescriptionData={this.description}
+                isAuthenticated={isAuthenticated}
+                redirectToLogin={service.redirectToLogin}
+                onChangeInvestmentStatus={this.changeInvestmentStatus}
+              />
+            </div>
+            <div className="program-details__section">
+              <ProgramDetailsStatisticSection
+                programId={this.description.data.id}
+                currency={currency}
+                statisticData={this.statistic}
+                profitChartData={this.profitChart}
+                balanceChartData={this.balanceChart}
+              />
+            </div>
+            <div className="program-details__history">
+              <ProgramDetailsHistorySection
+                programId={this.description.data.id}
+                currency={currency}
+                tradesData={this.trades}
+                eventsData={this.events}
+              />
+            </div>
           </div>
-          <div className="program-details__section">
-            <ProgramDetailsStatisticSection
-              programId={this.description.data.id}
-              currency={currency}
-              statisticData={this.statistic}
-              profitChartData={this.profitChart}
-              balanceChartData={this.balanceChart}
-            />
-          </div>
-          <div className="program-details__history">
-            <ProgramDetailsHistorySection
-              programId={this.description.data.id}
-              currency={currency}
-              tradesData={this.trades}
-              eventsData={this.events}
-            />
-          </div>
-        </div>
+        </ProgramDetailContext.Provider>
       </Page>
     );
   }
@@ -137,6 +152,9 @@ const mapDispatchToProps = dispatch => ({
   )
 });
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(
-  ProgramDetailsPage
-);
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(ProgramDetailsPage);
