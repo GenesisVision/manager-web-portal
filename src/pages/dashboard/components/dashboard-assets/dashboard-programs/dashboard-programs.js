@@ -16,13 +16,22 @@ import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
 import { formatValue } from "utils/formatter";
-
 import {
   DASHBOARD_PROGRAMS_COLUMNS,
   DASHBOARD_PROGRAMS_FILTERS,
   DASHBOARD_PROGRAMS_SORTING
 } from "../../../dashboard.constants";
 import { getDashboardPrograms } from "../../../services/dashboard-programs.service";
+import replaceParams from "utils/replace-params";
+
+const PROGRAM_SLUG_URL_PARAM_NAME = "programSlugUrl";
+const PROGRAMS_ROUTE = "/programs";
+const PROGRAM_DETAILS_ROUTE = `${PROGRAMS_ROUTE}/:${PROGRAM_SLUG_URL_PARAM_NAME}`;
+
+export const composeProgramDetailsUrl = slugUrl =>
+  replaceParams(PROGRAM_DETAILS_ROUTE, {
+    [`:${PROGRAM_SLUG_URL_PARAM_NAME}`]: slugUrl
+  });
 
 class DashboardPrograms extends Component {
   fetchPrograms = filters => {
@@ -69,8 +78,7 @@ class DashboardPrograms extends Component {
                   alt={program.title}
                   color={program.color}
                 />
-                {/*<Link to={composeProgramDetailsUrl(program.url)}>*/}
-                <Link to={""}>
+                <Link to={composeProgramDetailsUrl(program.url)}>
                   <GVButton variant="text" color="secondary">
                     {program.title}
                   </GVButton>
