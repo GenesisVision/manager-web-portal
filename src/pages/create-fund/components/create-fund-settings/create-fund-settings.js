@@ -234,7 +234,7 @@ class CreateFundSettings extends React.Component {
               />
               <GVFormikField
                 name="successFee"
-                label={t("create-fund-page.settings.fields.success-fee")}
+                label={t("create-fund-page.settings.fields.exit-fee")}
                 suffix=" %"
                 isAllowed={percentNumberFormat}
                 component={GVTextField}
