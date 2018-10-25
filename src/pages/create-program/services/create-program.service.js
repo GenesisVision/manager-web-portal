@@ -35,7 +35,7 @@ export const createProgram = (createProgramData, setSubmitting) => dispatch => {
         logo: response || ""
       };
 
-      return managerApiProxy.v10ManagersProgramsCreatePost(authorization, {
+      return managerApiProxy.v10ManagerProgramsCreatePost(authorization, {
         request: data
       });
     })
