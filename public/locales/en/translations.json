@@ -203,10 +203,10 @@
   },
   "withdraw-program": {
     "title": "Withdraw",
-    "available-to-withdraw": "Available to withdraw",
+    "available-to-withdraw": "Current investment value",
     "amount-to-withdraw": "Amount to withdraw",
     "next": "Next",
-    "info": "Amount of withdrawals can be changed depending on the exchange rate or the success of the Manager",
+    "info": "Your request will be processed at the end of the reporting period. The requested amount will be converted to GVT and transferred to your wallet",
     "withdrawing": "Withdrawing",
     "payout-date": "Payout date",
     "back": "Back",
@@ -487,12 +487,41 @@
       "amount-min-value": "Min amount is {{min}} GVT"
     }
   },
+  "program-period": {
+    "day": "day",
+    "day_plural": "days",
+    "hour": "hour",
+    "hour_plural": "hours",
+    "minute": "minute",
+    "minute_plural": "minutes",
+    "second": "second",
+    "second_plural": "seconds",
+    "period-is-over": "The period is over.",
+    "time-left": "Time left",
+    "period-ends": "Period ends",
+    "left": "left"
+  },
   "program-withdraw": {
     "header": "Withdraw",
     "your-balance": "Your balance",
     "how-much-withdraw": "How much would you like to withdraw?",
     "enter-amount": "Enter {{currency}} amount",
     "minimal-balance": "Minimal remaining balance is"
+  },
+  "withdraw-fund": {
+    "title": "Withdraw",
+    "available-to-withdraw": "You invested in fund",
+    "amount-to-withdraw": "Amount to withdraw",
+    "next": "Next",
+    "info": "Amount of withdrawals can be changed depending on the exchange rate or the success of the Manager",
+    "withdrawing": "Withdrawing",
+    "payout-date": "Payout date",
+    "back": "Back",
+    "submit": "Submit",
+    "validation": {
+      "amount-more-than-available": "Amount is more than available for withdraw",
+      "amount-is-required": "Amount is required."
+    }
   },
   "programs-filtering": {
     "level": {
