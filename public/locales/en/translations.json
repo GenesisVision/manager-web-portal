@@ -220,6 +220,20 @@
     "text": "Day left",
     "text_plural": "Days left"
   },
+  "program-period": {
+    "day": "day",
+    "day_plural": "days",
+    "hour": "hour",
+    "hour_plural": "hours",
+    "minute": "minute",
+    "minute_plural": "minutes",
+    "second": "second",
+    "second_plural": "seconds",
+    "period-is-over": "The period is over.",
+    "time-left": "Time left",
+    "period-ends": "Period ends",
+    "left": "left"
+  },
   "program-actions": {
     "invest": "Invest",
     "withdraw": "Withdraw",

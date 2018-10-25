@@ -1,3 +1,6 @@
+@import "styles/_sizes.scss";
+@import "styles/_breakpoint.scss";
+
 .dashboard-funds {
   &__cell {
     &--avatar-title {
@@ -31,6 +34,54 @@
     }
     &--status {
       width: 13%;
+    }
+  }
+}
+
+.funds-table__cell {
+  & .fund-assets {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  &--avatar-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    .gv-btn {
+      font-size: $font-size-middle-mobile;
+      padding: 0;
+    }
+    .program-avatar {
+      width: 20px;
+      margin: 0;
+      padding-right: $padding-mini-mobile;
+      @include media-breakpoint-landscape-phone() {
+        width: 40px;
+        padding-right: $padding-mini;
+      }
+    }
+    @include media-breakpoint-landscape-phone() {
+      .gv-btn {
+        font-size: $font-size-middle;
+      }
+    }
+  }
+  &--title {
+    min-width: 50px;
+    div {
+      padding: $padding-small/10;
+    }
+  }
+  &--bottom {
+    opacity: 0.3;
+  }
+  &--chart {
+    min-width: 50px;
+    max-width: 100px;
+    @include media-breakpoint-landscape-phone() {
+      min-width: 100px;
+      max-width: 200px;
     }
   }
 }

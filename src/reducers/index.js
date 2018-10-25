@@ -10,6 +10,7 @@ import accountSettingsReducer from "reducers/account-settings";
 import uiReducer from "reducers/ui-reducer";
 import { combineReducers } from "redux";
 
+import dashboardReducer from "../pages/dashboard/reducers/dashboard.reducers";
 import programDepositReducer from "modules/program-deposit/reducer/program-deposit.reducer";
 import fundDepositReducer from "modules/fund-deposit/reducer/fund-deposit.reducer";
 import managerReducer from "../pages/manager/reducers/manager.reducers";
@@ -26,6 +27,7 @@ import emailPendingReducer from "./email-pending-reducer";
 import platformReducer from "./platform-reducer";
 
 export default combineReducers({
+  dashboard: dashboardReducer,
   programNotifications: programNotificationsReducer,
   fundNotifications: fundNotificationsReducer,
   programDeposit: programDepositReducer,

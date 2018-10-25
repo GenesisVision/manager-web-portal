@@ -2,6 +2,11 @@
 @import "styles/_breakpoint.scss";
 
 .dashboard {
+  &__empty-events{
+    height: 100%;
+    text-align: center;
+  }
+
   &__row {
     display: flex;
     flex-wrap: wrap;
