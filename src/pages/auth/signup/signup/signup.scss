@@ -11,17 +11,17 @@
     flex: 1 0 70%;
 
     &__submit-button {
-      margin-top: auto;
+      margin-top: 20px;
       align-self: flex-start;
-    }
-
-    & .gv-text-field__wrapper {
-      // margin-bottom: 14px;
     }
 
     & .form-error {
       margin-top: -4px;
       margin-bottom: 6px;
+    }
+
+    .signup-form__username {
+      margin-bottom: 29px;
     }
   }
 }

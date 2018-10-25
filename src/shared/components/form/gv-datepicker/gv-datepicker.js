@@ -1,9 +1,7 @@
-import { UncontrolledTooltip } from "reactstrap";
 import classnames from "classnames";
-import DatePicker from "react-datepicker";
 import React, { PureComponent } from "react";
-
-import "./gv-datepicker.css";
+import DatePicker from "react-datepicker";
+import { UncontrolledTooltip } from "reactstrap";
 
 class GVDatePicker extends PureComponent {
   state = { isOpen: false };
