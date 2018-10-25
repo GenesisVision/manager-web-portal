@@ -1,5 +1,6 @@
 @import "styles/_colors.scss";
 @import "styles/_breakpoint.scss";
+@import "styles/_sizes.scss";
 
 $th-font-size: 12px;
 $td-font-size: 13px;
@@ -16,12 +17,14 @@ $padding: 33px;
 }
 
 .table {
-  padding-bottom: 16px;
   width: 100%;
   border-spacing: 0;
   .message {
     padding: $padding;
     text-align: center;
+  }
+  &__vertical-track {
+    display: none;
   }
   &__footer {
     display: flex;
@@ -42,7 +45,7 @@ $padding: 33px;
     justify-content: flex-end;
     width: 100%;
     align-items: center;
-    padding: 10px 0 $padding/2;
+    padding: 0 $padding/2 $padding/2;
   }
 
   &__toggle {
@@ -113,28 +116,24 @@ $padding: 33px;
     box-sizing: border-box;
     align-items: center;
     flex-grow: 1;
-    padding: $padding/4;
+    padding: $padding-small-mobile;
     overflow: hidden; // Or flex might break
     list-style: none;
-    font-weight: 300;
-    letter-spacing: 0.4px;
+    font-weight: normal;
+    font-size: 13px;
+    letter-spacing: 0.433333px;
+
     &#{&} {
       &--head {
         padding-right: 15px;
-        span {
-          opacity: 0.5;
-        }
+        opacity: 0.3;
       }
       &--sortable {
         cursor: pointer;
         padding-right: 15px;
-        font-weight: 500;
-        span {
-          opacity: 0.6;
-        }
+        opacity: 0.6;
         .table__cell--sortable-asc,
         .table__cell--sortable-desc {
-          font-weight: 600;
           span {
             opacity: 1;
           }
@@ -171,6 +170,9 @@ $padding: 33px;
     &__head {
       font-size: $th-font-size;
     }
+    &__cell {
+      padding: $padding-small;
+    }
     &__body {
       font-size: $td-font-size;
     }
@@ -184,7 +186,7 @@ $padding: 33px;
       font-size: $td-font-size;
     }
     &__toolbar {
-      padding: 10px 0 $padding;
+      padding: 0 $padding $padding;
     }
     &__toggle {
       display: flex;
