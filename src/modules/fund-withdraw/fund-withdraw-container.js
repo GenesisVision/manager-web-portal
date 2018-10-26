@@ -5,7 +5,7 @@ import {
   alert
 } from "modules/fund-withdraw/servives/fund-withdraw.services";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { PureComponent } from "react";
 import { translate } from "react-i18next";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -13,34 +13,44 @@ import { compose } from "redux";
 import authService from "services/auth-service";
 import { managerApiProxy } from "services/api-client/manager-api";
 
-const FundWithdrawContainer = props => {
-  const { open, onClose, currency, services, id } = props;
-  const handleWithdraw = (id, percent) => {
+class FundWithdrawContainer extends PureComponent {
+  state = { error: "" };
+
+  handleWithdraw = (id, percent) => {
     return managerApiProxy
       .v10ManagerFundsByIdWithdrawByPercentPost(
         id,
         percent,
         authService.getAuthArg()
       )
-      .then(() => {
-        onClose();
-        services.alert("success", "fund-withdraw.success-alert-message", true);
+      .then(res => {
+        this.props.onClose();
+        this.props.services.alert(
+          "success",
+          "fund-withdraw.success-alert-message",
+          true
+        );
+        return res;
       })
       .catch(error => {
-        onClose();
-        services.alert("error", error.errorMessage || error.message);
+        this.setState({ error: error.errorMessage || error.error });
       });
   };
-  return (
-    <Dialog open={open} onClose={onClose}>
-      <FundWithdrawPopup
-        currency={currency}
-        fetchInfo={() => services.getFundWithdrawInfo(id)}
-        withdraw={percent => handleWithdraw(id, percent)}
-      />
-    </Dialog>
-  );
-};
+
+  render() {
+    const { open, onClose, currency, services, id } = this.props;
+    return (
+      <Dialog open={open} onClose={onClose}>
+        <FundWithdrawPopup
+          currency={currency}
+          fetchInfo={() => services.getFundWithdrawInfo(id)}
+          withdraw={percent => this.handleWithdraw(id, percent)}
+          error={this.state.error}
+        />
+      </Dialog>
+    );
+  }
+}
 
 FundWithdrawContainer.propTypes = {
   open: PropTypes.bool,

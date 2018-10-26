@@ -1,4 +1,5 @@
-import { HOME_ROUTE } from "../components/app.constants";
+import { HOME_ROUTE } from "pages/app/app.constants";
+
 import authService from "../services/auth-service";
 import history from "../utils/history";
 
