@@ -20,7 +20,6 @@ const FundDepositForm = ({
   handleSubmit,
   errorMessage
 }) => {
-  // const fee = calculateValueOfEntryFee(values.amount, info.entryFee);
   const gvFee = calculateValueOfEntryFee(values.amount, info.gvCommission);
   const investAmount = parseFloat(values.amount || 0) - parseFloat(gvFee);
   const isAllow = values => {
@@ -59,7 +58,7 @@ const FundDepositForm = ({
             {t("deposit-fund.gv-commission")}
           </span>
           <span className="dialog-list__value">
-            {info.gvCommission * 100}%
+            {info.gvCommission}%
             <NumberFormat
               value={formatValue(gvFee)}
               prefix={" ("}
