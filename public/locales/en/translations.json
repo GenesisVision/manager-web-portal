@@ -453,6 +453,7 @@
         "title-required": "Title is required",
         "title-is-long": "Title is too long",
         "title-is-short": "Title is too short",
+        "title-is-latin-and-numbers": "Latin letters and numbers only.",
         "description-is-long": "Description is too long",
         "description-is-short": "Description is too short",
         "description-required": "Description is required",

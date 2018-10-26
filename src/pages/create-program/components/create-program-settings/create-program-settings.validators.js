@@ -5,7 +5,11 @@ const createProgramSettingsValidationSchema = ({ t }) =>
     title: Yup.string()
       .required(t("create-program-page.settings.validation.title-required"))
       .min(4, t("create-program-page.settings.validation.title-is-short"))
-      .max(20, t("create-program-page.settings.validation.title-is-long")),
+      .max(20, t("create-program-page.settings.validation.title-is-long"))
+      .matches(
+        /^[-a-zA-Z0-9\s]{1,99}$/,
+        t("create-program-page.settings.validation.title-is-latin-and-numbers")
+      ),
     description: Yup.string()
       .required(
         t("create-program-page.settings.validation.description-required")
