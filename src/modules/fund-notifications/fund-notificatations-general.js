@@ -86,7 +86,7 @@ FundNotificationsGeneral.defaultProps = {
 const mapDispatchToProps = dispatch => ({
   services: bindActionCreators(
     {
-      addFundNotificationsService,
+      addFundNotificationService,
       removeFundNotificationService
     },
     dispatch

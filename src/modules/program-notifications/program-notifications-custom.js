@@ -1,6 +1,7 @@
 import Chip from "components/chip/chip";
 import Dialog from "components/dialog/dialog";
 import { GVButton } from "gv-react-components";
+import { addErrorMessage } from "modules/program-notifications/actions/program-notifications.actions";
 import CustomNotification from "modules/program-notifications/custom-notification";
 import { addProgramNotificationService } from "modules/program-notifications/services/program-notifications.services";
 import PropTypes from "prop-types";
@@ -46,7 +47,7 @@ class ProgramNotificationsCustom extends Component {
   };
 
   render() {
-    const { t, program } = this.props;
+    const { t, program, errorMessage } = this.props;
     return (
       <div className="notification-settings custom-notifications">
         <h3>{t("notifications.program.custom.title")}</h3>
@@ -65,6 +66,7 @@ class ProgramNotificationsCustom extends Component {
         >
           <ProgramNotificationCreateForm
             program={program}
+            errorMessage={errorMessage}
             onSubmit={this.handleSubmit}
           />
         </Dialog>
@@ -76,6 +78,10 @@ class ProgramNotificationsCustom extends Component {
 ProgramNotificationsCustom.propTypes = {
   settings: PropTypes.array
 };
+
+const mapStateToProps = state => ({
+  errorMessage: state.programNotifications.errorMessage
+});
 
 const mapDispatchToProps = dispatch => ({
   services: bindActionCreators({ addProgramNotificationService }, dispatch),
