@@ -233,6 +233,9 @@
     "left": "left"
   },
   "program-actions": {
+    "remove-from-favorites": "Remove from favorites",
+    "add-to-favorites": "Add to favorites",
+    "details": "Details",
     "invest": "Invest",
     "withdraw": "Withdraw",
     "create-program": "Create Program",
@@ -554,6 +557,7 @@
     "payout-date": "Payout date",
     "back": "Back",
     "submit": "Submit",
+    "success-alert-message": "Request to withdrawal sent successfully.",
     "validation": {
       "amount-more-than-available":
         "Amount is more than available for withdraw",
@@ -962,10 +966,13 @@
     "select-currency": "Select a wallet currency",
     "will-send": "You will send",
     "will-get": "You'll get",
+    "will-get-gvt": "You will get",
     "deposit-address": "Deposit address",
     "copy-to-clipboard-success":
       "Your wallet-pane number was copied to the clipboard successfully.",
-    "copy-to-clipboard-error": "Failed to copy data to the clipboard."
+    "copy-to-clipboard-error": "Failed to copy data to the clipboard.",
+    "disclaimer":
+      "After processing the {{currency}} transaction, your transferred funds will be converted to GVT, according to the current market price. The exact amount of GVT received will be determined at the time of conversion in the market."
   },
   "wallet": {
     "title": "Wallet",

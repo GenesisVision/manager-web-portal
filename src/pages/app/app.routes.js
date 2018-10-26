@@ -4,6 +4,10 @@ import { CREATE_PROGRAM_PAGE_ROUTE } from "pages/create-program/create-program.c
 import createProgramPage from "pages/create-program/create-program.page";
 import { DASHBOARD_ROUTE } from "pages/dashboard/dashboard.routes";
 import DashboardRoutes from "pages/dashboard/dashboard.routes";
+import GlobalSearchPage from "pages/global-search/global-search.page.js";
+import ManagerPage, {
+  MANAGER_DETAILS_ROUTE_REGEXP
+} from "pages/manager/manager.page";
 import NotFoundPage from "pages/not-found/not-found.routes";
 import PrivateRoute from "pages/private-route";
 import { PROFILE_ROUTE } from "pages/profile/profile.constants";
@@ -15,16 +19,12 @@ import WalletPage, { WALLET_PAGE_ROUTE } from "pages/wallet/wallet-page";
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
+import FundsRoutes, { FUNDS_ROUTE } from "../funds/funds.routes";
+import { GLOBAL_SEARCH_ROUTE } from "../global-search/global-search.routes";
 import { NOTIFICATIONS_ROUTE } from "../notifications/notifications.routes";
 import NotificationRoutes from "../notifications/notifications.routes";
-import AppLayout from "./components/app-layout/app-layout";
-import GlobalSearchPage from "pages/global-search/global-search.page.js";
-import { GLOBAL_SEARCH_ROUTE } from "../global-search/global-search.routes";
 import ProgramsRoutes, { PROGRAMS_ROUTE } from "../programs/programs.routes";
-import FundsRoutes, { FUNDS_ROUTE } from "../funds/funds.routes";
-import ManagerPage, {
-  MANAGER_DETAILS_ROUTE_REGEXP
-} from "pages/manager/manager.page";
+import AppLayout from "./components/app-layout/app-layout";
 
 export const HOME_ROUTE = "/";
 
@@ -32,7 +32,7 @@ const AppRoutes = () => {
   return (
     <AppLayout>
       <Switch>
-        <Redirect exact from={HOME_ROUTE} to={DASHBOARD_ROUTE} />
+        <Redirect exact from={HOME_ROUTE} to={FUNDS_ROUTE} />
         <Route path={PROGRAMS_ROUTE} component={ProgramsRoutes} />
         <Route path={GLOBAL_SEARCH_ROUTE} component={GlobalSearchPage} />
         <Route path={FUNDS_ROUTE} component={FundsRoutes} />
