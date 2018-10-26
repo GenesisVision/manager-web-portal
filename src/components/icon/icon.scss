@@ -37,7 +37,6 @@
       stroke: $primary-color;
     }
   }
-
   &--rotate {
     transform: rotate(180deg);
   }
@@ -56,6 +55,9 @@
       fill: transparent;
     }
   }
+  &--close {
+    height: 10px;
+  }
   &--controls {
     height: 20px;
     background-image: url("../../shared/media/controls.svg");
@@ -72,5 +74,30 @@
     height: 15px;
     width: 16px;
     background-image: url("../../shared/media/menu.svg");
+  }
+
+  &--funds {
+    height: 18px;
+  }
+
+  &--copy {
+    width: 14px;
+  }
+
+  &--actions-circle {
+    circle[fill] {
+      fill: rgba($label-color, 0.3);
+    }
+    g[fill] {
+      fill: white;
+    }
+    &.icon--primary {
+      g[fill] {
+        fill: $panel-background-color;
+      }
+      circle[fill] {
+        fill: white;
+      }
+    }
   }
 }

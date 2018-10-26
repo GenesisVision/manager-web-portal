@@ -233,6 +233,9 @@
     "left": "left"
   },
   "program-actions": {
+    "remove-from-favorites": "Remove from favorites",
+    "add-to-favorites": "Add to favorites",
+    "details": "Details",
     "invest": "Invest",
     "withdraw": "Withdraw",
     "create-program": "Create Program",
