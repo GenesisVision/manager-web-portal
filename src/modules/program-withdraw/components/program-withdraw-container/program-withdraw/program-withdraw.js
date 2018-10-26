@@ -23,7 +23,7 @@ const ProgramWithdraw = ({
 }) => {
   return (
     <div className="popup">
-      <PopupHeader header={t("program-withdraw.header")} onClose={closePopup} />
+      <PopupHeader header={t("withdraw-program.header")} onClose={closePopup} />
       <form id="programWithdrawForm" onSubmit={handleSubmit}>
         <div className="program-withdraw__info">
           <div className="program-withdraw__info-cell">
@@ -51,14 +51,14 @@ const ProgramWithdraw = ({
             <div className="metric">
               <div className="metric__value">{programWithdraw.ownBalance}</div>
               <div className="metric__description">
-                {t("program-withdraw.your-balance")} {programWithdraw.currency}
+                {t("withdraw-program.your-balance")} {programWithdraw.currency}
               </div>
             </div>
           </div>
         </div>
         <div className="program-withdraw__calculator">
           <div className="program-withdraw__calculator-header">
-            {t("program-withdraw.how-much-withdraw")}
+            {t("withdraw-program.how-much-withdraw")}
           </div>
           <div className="program-withdraw__calculator-cell input-token">
             <div className="input-gvt__token">
@@ -72,14 +72,14 @@ const ProgramWithdraw = ({
               />
             </div>
             <div className="input-token__description">
-              {t("program-withdraw.enter-amount", {
+              {t("withdraw-program.enter-amount", {
                 currency: programWithdraw.currency
               })}
             </div>
           </div>
           <div>
             <span>
-              {t("program-withdraw.minimal-balance")} ${
+              {t("withdraw-program.minimal-balance")} ${
                 programWithdraw.minAccountBalanceUsd
               }{" "}
               ({programWithdraw.minAccountBalance} {programWithdraw.currency})

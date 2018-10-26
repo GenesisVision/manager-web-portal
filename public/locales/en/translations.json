@@ -1,7 +1,212 @@
 {
   "app": {
     "header": "Manager Portal",
-    "title": "Investor Portal: "
+    "title": "Manager Portal: "
+  },
+  "global-search-page": {
+    "title": "Search",
+    "heading": "Search Results",
+    "programs": "Programs",
+    "funds": "Funds",
+    "managers": "Managers"
+  },
+  "programs-page": {
+    "title": "Programs",
+    "tabs": {
+      "explore": "Explore",
+      "favorites": "Favorites"
+    },
+    "programs-header": {
+      "title": "Name",
+      "balance": "Balance",
+      "currency": "Curr.",
+      "investors": "Investors",
+      "available-to-invest": "Av. to invest",
+      "trades": "Trades",
+      "period": "Period",
+      "drawdown": "D.down",
+      "profit": "Profit",
+      "chart": "Chart",
+      "strategy": "Strategy"
+    }
+  },
+  "funds-page": {
+    "title": "Funds",
+    "tabs": {
+      "explore": "Explore",
+      "favorites": "Favorites"
+    },
+    "funds-header": {
+      "title": "Name",
+      "balance": "Balance",
+      "assets": "Assets",
+      "investors": "Investors",
+      "drawdown": "D.down",
+      "profit": "Profit",
+      "chart": "Chart"
+    }
+  },
+  "managers-table": {
+    "username": "Username",
+    "assets": "Assets",
+    "memberSince": "Member Since"
+  },
+  "program-details-page": {
+    "title": "Program detail",
+    "description": {
+      "strategy": "Strategy",
+      "addToFavorites": "Add to favorites",
+      "notifications": "Notifications",
+      "avToInvest": "Av. to invest",
+      "entryFee": "Entry fee",
+      "successFee": "Success fee",
+      "invest": "Invest",
+      "reinvest": "Reinvest",
+      "yourInvestment": "Current period investment",
+      "pending-input": "Pending input",
+      "pending-output": "Pending output",
+      "invested": "Invested",
+      "value": "Value",
+      "profit": "Profit",
+      "status": "Status",
+      "withdraw": "Withdraw",
+      "withdraw-notice-text":
+        "You can withdraw only the invested funds, the profit will be withdrawn to your account at the end of the period automatically"
+    },
+    "statistics": {
+      "heading": "Statistics",
+      "current": "Current",
+      "for": "For",
+      "balance": "Balance",
+      "investors": "Investors",
+      "trades": "Trades",
+      "success-trades": "Success trades",
+      "profit-factor": "Profit factor",
+      "sharpe-ratio": "Sharpe ratio",
+      "sortino-ratio": "Sortino ratio",
+      "max-drawdown": "Max Drawdown",
+      "start-day": "Start day",
+      "period-end": "Period end",
+      "period": "Period"
+    },
+    "popover": {
+      "genesis-level": "Genesis Level",
+      "invest-limit": "Invest limit",
+      "text":
+        "Genesis level shows the experience and reliability of the Manager",
+      "about-levels": "About levels"
+    },
+    "history": {
+      "heading": "History",
+      "tabs": {
+        "trades": "Trades",
+        "events": "Events"
+      },
+      "trades": {
+        "direction": "Dir",
+        "ticket": "Ticket",
+        "symbol": "Symbol",
+        "volume": "Volume",
+        "profit": "Profit",
+        "price": "Price",
+        "entry": "Entry",
+        "date": "Date"
+      }
+    },
+    "chart": {
+      "heading": "Chart",
+      "tabs": {
+        "profit": "Profit",
+        "balance": "Balance"
+      }
+    }
+  },
+  "chart-period": {
+    "day-short": "1D",
+    "day": "a Day",
+    "week-short": "1W",
+    "week": "a Week",
+    "month-short": "1M",
+    "month": "a Month",
+    "quarter-short": "3M",
+    "quarter": "a Quarter",
+    "year-short": "1Y",
+    "year": "a Year",
+    "all-short": "All",
+    "all": "All Time"
+  },
+  "fund-details-page": {
+    "title": "Program detail",
+    "description": {
+      "strategy": "Strategy",
+      "assets": "Assets",
+      "addToFavorites": "Add to favorites",
+      "notifications": "Notifications",
+      "avToInvest": "Av. to invest",
+      "entryFee": "Entry fee",
+      "invest": "Invest",
+      "reinvest": "Reinvest",
+      "yourInvestment": "Current period investment",
+      "pending-input": "Pending input",
+      "pending-output": "Pending output",
+      "invested": "Invested",
+      "value": "Value",
+      "profit": "Profit",
+      "status": "Status",
+      "withdraw": "Withdraw",
+      "withdraw-notice-text":
+        "You can withdraw only the invested funds, the profit will be withdrawn to your account at the end of the period automatically"
+    },
+    "statistics": {
+      "heading": "Statistics",
+      "current": "Current",
+      "calmarRatio": "Calmar ratio",
+      "rebalances": "Rebalances",
+      "profit-change": "Profit change",
+      "for": "For",
+      "balance": "Balance",
+      "investors": "Investors",
+      "sharpe-ratio": "Sharpe ratio",
+      "sortino-ratio": "Sortino ratio",
+      "max-drawdown": "Max Drawdown",
+      "start-day": "Start day",
+      "period-end": "Period end",
+      "period": "Period"
+    },
+    "history": {
+      "heading": "History",
+      "subheading": "Rebalancing",
+      "rebalances": {
+        "assets": "Assets",
+        "from": "From",
+        "to": "To"
+      }
+    },
+    "chart": {
+      "heading": "Chart",
+      "tabs": {
+        "profit": "Profit",
+        "balance": "Balance"
+      }
+    }
+  },
+  "manager": {
+    "title": "Manager",
+    "about": "About",
+    "assets": "Assets",
+    "member-since": "Member since",
+    "history": {
+      "tabs": {
+        "programs": "Programs",
+        "funds": "Funds"
+      }
+    }
+  },
+  "program-statuses": {
+    "Active": "Active",
+    "Investing": "Investing",
+    "Withdrawing": "Withdrawing",
+    "Ended": "Ended"
   },
   "days-left-widget": {
     "text": "Day left",
@@ -28,6 +233,9 @@
     "left": "left"
   },
   "program-actions": {
+    "remove-from-favorites": "Remove from favorites",
+    "add-to-favorites": "Add to favorites",
+    "details": "Details",
     "invest": "Invest",
     "withdraw": "Withdraw",
     "create-program": "Create Program",
@@ -259,18 +467,102 @@
       "tooltip": "My profit is the total profit earned by all programs."
     }
   },
-  "program-deposit": {
-    "header": "Deposit",
-    "available-gvt": "Available GVT",
-    "enter-gvt-amount": "Enter GVT amount",
-    "amount-in": "Amount in"
+  "deposit-program": {
+    "title": "Invest",
+    "gv-commission": "GV commission",
+    "available-to-invest-in-program": "Available to invest in program",
+    "available-to-invest-in-fund": "Available to invest in fund",
+    "available-in-wallet": "Available in wallet",
+    "amount": "Amount to invest",
+    "entry-fee": "Entry fee",
+    "investment-amount": "Investment amount",
+    "disclaimer":
+      "After clicking the \"Confirm\" button, the invested GVT will be immediately converted to {{currency}}. Accrual of {{currency}} to the account manager will only occur at the end of the reporting period.",
+    "confirm": "Confirm",
+    "success-alert-message":
+      "Successful request for investment in the program.",
+    "validation": {
+      "amount-more-than-available":
+        "Amount is more than available in your wallet",
+      "amount-is-required": "Amount is required.",
+      "amount-min-value": "Min amount is {{min}} GVT"
+    }
   },
-  "program-withdraw": {
+  "deposit-fund": {
+    "title": "Invest",
+    "gv-commission": "GV commission",
+    "available-to-invest-in-fund": "Available to invest in fund",
+    "available-in-wallet": "Available in wallet",
+    "amount": "Amount to invest",
+    "entry-fee": "Entry fee",
+    "investment-amount": "Investment amount",
+    "disclaimer":
+      "After clicking the \"Confirm\" button, the invested GVT will be immediately converted to {{currency}}. Accrual of {{currency}} to the account manager will only occur at the end of the reporting period.",
+    "confirm": "Confirm",
+    "success-alert-message":
+      "Successful request for investment in the program.",
+    "validation": {
+      "amount-more-than-available":
+        "Amount is more than available in your wallet",
+      "amount-is-required": "Amount is required.",
+      "amount-min-value": "Min amount is {{min}} GVT"
+    }
+  },
+  "program-period": {
+    "day": "day",
+    "day_plural": "days",
+    "hour": "hour",
+    "hour_plural": "hours",
+    "minute": "minute",
+    "minute_plural": "minutes",
+    "second": "second",
+    "second_plural": "seconds",
+    "period-is-over": "The period is over.",
+    "time-left": "Time left",
+    "period-ends": "Period ends",
+    "left": "left"
+  },
+  "withdraw-program": {
     "header": "Withdraw",
     "your-balance": "Your balance",
     "how-much-withdraw": "How much would you like to withdraw?",
     "enter-amount": "Enter {{currency}} amount",
-    "minimal-balance": "Minimal remaining balance is"
+    "minimal-balance": "Minimal remaining balance is",
+    "success-alert-message":
+      "Successful request for investment in the program.",
+    "title": "Withdraw",
+    "available-to-withdraw": "Current investment value",
+    "amount-to-withdraw": "Amount to withdraw",
+    "next": "Next",
+    "info":
+      "Your request will be processed at the end of the reporting period. The requested amount will be converted to GVT and transferred to your wallet",
+    "withdrawing": "Withdrawing",
+    "payout-date": "Payout date",
+    "back": "Back",
+    "submit": "Submit",
+    "validation": {
+      "amount-more-than-available":
+        "Amount is more than available for withdraw",
+      "amount-is-required": "Amount is required."
+    }
+  },
+  "withdraw-fund": {
+    "title": "Withdraw",
+    "available-to-withdraw": "You invested in fund",
+    "amount-to-withdraw": "Amount to withdraw",
+    "next": "Next",
+    "info":
+      "Amount of withdrawals can be changed depending on the exchange rate or the success of the Manager",
+    "withdrawing": "Withdrawing",
+    "payout-date": "Payout date",
+    "back": "Back",
+    "submit": "Submit",
+    "success-alert-message": "Request to withdrawal sent successfully.",
+    "validation": {
+      "amount-more-than-available":
+        "Amount is more than available for withdraw",
+      "amount-is-required": "Amount is required."
+    }
   },
   "programs-filtering": {
     "level": {
@@ -301,7 +593,37 @@
     }
   },
   "auth": {
-    "text": "A Brief History Of Creation",
+    "quotes": {
+      "0": {
+        "quote":
+          "Rule No. 1: Never lose money. Rule No. 2: Never forget rule No.1",
+        "author": "Warren Buffet"
+      },
+      "1": {
+        "quote":
+          "Successful investing is about managing risk, not avoiding it.",
+        "author": "Benjamin Graham"
+      },
+      "2": {
+        "quote":
+          "Money is always eager and ready to work for anyone who is ready to employ it.",
+        "author": "Idowu Koyenikan"
+      },
+      "3": {
+        "quote":
+          "Investing isn’t about beating others at their game. It’s about controlling yourself at your own game.",
+        "author": "Benjamin Graham"
+      },
+      "4": {
+        "quote":
+          "The greatest investment we can ever make is to invest our life in the life of someone else.",
+        "author": "Scott Lee"
+      },
+      "5": {
+        "quote": "In any investment, you expect to have fun and make money.",
+        "author": "Michael Jordan"
+      }
+    },
     "tabs": {
       "investor": "Investor",
       "manager": "Manager"
@@ -603,6 +925,10 @@
         "You have successfully disabled the two factor authentication. However, we strongly recommend you keep it enabled. This can protect your funds from being stolen."
     },
     "codes": {
+      "copy-success":
+        "Recovery codes was copied to the clipboard successfully.",
+      "copy-error": "Failed to copy data to the clipboard.",
+      "generate-recovery-codes": "Generate recovery codes",
       "title": "Please read carefully",
       "successfully":
         "You have just successfully configured the two factor authentication. We will ask you for the 2FA Code in any potentially dangerous situation, such as logging in or withdrawing funds.",
@@ -613,6 +939,7 @@
     }
   },
   "buttons": {
+    "generate": "Generate",
     "apply": "Apply",
     "cancel": "Cancel",
     "back": "Back",
@@ -657,10 +984,13 @@
     "select-currency": "Select a wallet currency",
     "will-send": "You will send",
     "will-get": "You'll get",
+    "will-get-gvt": "You will get",
     "deposit-address": "Deposit address",
     "copy-to-clipboard-success":
       "Your wallet-pane number was copied to the clipboard successfully.",
-    "copy-to-clipboard-error": "Failed to copy data to the clipboard."
+    "copy-to-clipboard-error": "Failed to copy data to the clipboard.",
+    "disclaimer":
+      "After processing the {{currency}} transaction, your transferred funds will be converted to GVT, according to the current market price. The exact amount of GVT received will be determined at the time of conversion in the market."
   },
   "wallet": {
     "title": "Wallet",
