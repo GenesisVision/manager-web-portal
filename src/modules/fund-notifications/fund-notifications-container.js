@@ -10,6 +10,7 @@ class FundNotificationsContainer extends Component {
   componentDidMount() {
     this.props.services.fetchFundNotificationsService(this.props.id);
   }
+
   render() {
     const { fund } = this.props;
     if (!fund) return null;
