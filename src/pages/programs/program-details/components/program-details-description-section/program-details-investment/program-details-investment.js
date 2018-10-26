@@ -61,7 +61,7 @@ class ProgramDetailsInvestment extends PureComponent {
                 {t("program-details-page.description.value")}
               </span>
               <NumberFormat
-                value={formatValue(balanceAmount)}
+                value={formatValue(value)}
                 suffix={` ${balanceCurrency}`}
                 displayType="text"
               />
