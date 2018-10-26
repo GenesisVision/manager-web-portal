@@ -31,7 +31,8 @@ class FundWithdrawForm extends Component {
       rate,
       availableToWithdraw,
       periodEnds,
-      currency,
+      fundCurrency,
+      accountCurrency,
       errors
     } = this.props;
     return (
@@ -44,7 +45,8 @@ class FundWithdrawForm extends Component {
           <FundWithdrawEnterPercentStep
             percent={values.percent}
             rate={rate}
-            currency={currency}
+            fundCurrency={fundCurrency}
+            accountCurrency={accountCurrency}
             availableToWithdraw={availableToWithdraw}
             onClick={this.goToConfirmStep}
             disabled={errors.percent !== undefined}
