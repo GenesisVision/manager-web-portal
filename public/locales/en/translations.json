@@ -407,6 +407,9 @@
       "select-broker": "Select broker",
       "settings": "Settings"
     },
+    "broker-card": {
+      "coming-soon": "Coming soon"
+    },
     "broker-info": {
       "about": "About",
       "terms": "Terms",

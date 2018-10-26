@@ -33,6 +33,17 @@
     }
   }
 
+  &__coming-soon-text {
+    font-size: 11px;
+    color: $text-color;
+    letter-spacing: 0.14px;
+    font-weight: 600;
+    opacity: 0.3;
+    position: absolute;
+    bottom: 12%;
+    left: 12%;
+  }
+
   &--coming-soon &__logo {
     &--okex {
       width: 61.6%;

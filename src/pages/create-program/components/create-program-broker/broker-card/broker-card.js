@@ -4,7 +4,7 @@ import classnames from "classnames";
 import React from "react";
 import { translate } from "react-i18next";
 
-const BrokerCard = ({ broker, onChoose, isActive, isComingSoon }) => {
+const BrokerCard = ({ t, broker, onChoose, isActive, isComingSoon }) => {
   const className = classnames("broker-card", {
     "broker-card--active": isActive,
     "broker-card--coming-soon": isComingSoon
@@ -26,6 +26,11 @@ const BrokerCard = ({ broker, onChoose, isActive, isComingSoon }) => {
         }
         alt={broker.name}
       />
+      {isComingSoon && (
+        <div className="broker-card__coming-soon-text">
+          {t("create-program-page.broker-card.coming-soon")}
+        </div>
+      )}
       {isActive && <div className="broker-card__active-mark"> &#10004;</div>}
     </div>
   );
