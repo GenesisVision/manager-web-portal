@@ -589,7 +589,37 @@
     }
   },
   "auth": {
-    "text": "A Brief History Of Creation",
+    "quotes": {
+      "0": {
+        "quote":
+          "Rule No. 1: Never lose money. Rule No. 2: Never forget rule No.1",
+        "author": "Warren Buffet"
+      },
+      "1": {
+        "quote":
+          "Successful investing is about managing risk, not avoiding it.",
+        "author": "Benjamin Graham"
+      },
+      "2": {
+        "quote":
+          "Money is always eager and ready to work for anyone who is ready to employ it.",
+        "author": "Idowu Koyenikan"
+      },
+      "3": {
+        "quote":
+          "Investing isn’t about beating others at their game. It’s about controlling yourself at your own game.",
+        "author": "Benjamin Graham"
+      },
+      "4": {
+        "quote":
+          "The greatest investment we can ever make is to invest our life in the life of someone else.",
+        "author": "Scott Lee"
+      },
+      "5": {
+        "quote": "In any investment, you expect to have fun and make money.",
+        "author": "Michael Jordan"
+      }
+    },
     "tabs": {
       "investor": "Investor",
       "manager": "Manager"
