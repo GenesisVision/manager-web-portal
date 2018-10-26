@@ -9,9 +9,8 @@ import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { compose } from "redux";
 import { convertFromCurrency } from "utils/currency-converter";
+import { formatValue } from "utils/formatter";
 import { number, object, string } from "yup";
-
-import { formatValue } from "../../../utils/formatter";
 
 const WalletWithdrawForm = ({
   t,
@@ -23,9 +22,10 @@ const WalletWithdrawForm = ({
   errorMessage
 }) => {
   const { currency, amount } = values;
-  const { commission, rateToGvt } = wallets.find(
-    wallet => wallet.currency === currency
-  );
+  const currentWallet =
+    wallets.find(wallet => wallet.currency === currency) || {};
+
+  const { commission = null, rateToGvt = null } = currentWallet;
 
   const willGet = Math.max(
     convertFromCurrency(amount, rateToGvt) - commission,
@@ -164,12 +164,13 @@ export default compose(
   translate(),
   withFormik({
     displayName: "wallet-withdraw",
-    mapPropsToValues: () => ({
-      amount: "",
-      currency: "BTC",
-      address: "",
-      twoFactorCode: ""
-    }),
+    mapPropsToValues: props => {
+      let currency = "GVT";
+      if (!props.wallets.find(wallet => wallet.currency === currency)) {
+        currency = props.wallets[0] ? props.wallets[0].currency : "";
+      }
+      return { currency, amount: "", address: "", twoFactorCode: "" };
+    },
     validationSchema: ({ t, availableToWithdrawal }) =>
       object().shape({
         amount: number()

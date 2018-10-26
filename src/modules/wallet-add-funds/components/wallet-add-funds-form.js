@@ -1,3 +1,4 @@
+import GVqr from "components/gv-qr/gv-qr";
 import CopyIcon from "components/icon/copy-icon";
 import Select from "components/select/select";
 import copy from "copy-to-clipboard";
@@ -9,8 +10,7 @@ import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { compose } from "redux";
 import { convertToCurrency } from "utils/currency-converter";
-
-import GVqr from "../../../components/gv-qr/gv-qr";
+import { formatValue } from "utils/formatter";
 
 const WalletAddFundsForm = ({
   t,
@@ -19,8 +19,8 @@ const WalletAddFundsForm = ({
   values,
   wallets
 }) => {
-  const selected = wallets.find(w => w.currency === values.currency);
-  const { address, currency, rateToGVT } = selected;
+  const selected = wallets.find(w => w.currency === values.currency) || {};
+  const { address = "", currency = null, rateToGVT = null } = selected;
 
   const onCopy = () => {
     try {
@@ -69,9 +69,8 @@ const WalletAddFundsForm = ({
           <div className="gv-text-field wallet-add-funds-popup__will-get">
             <div className="gv-text-field__input dialog-field__value">
               <NumberFormat
-                value={convertToCurrency(values.amount, rateToGVT)}
+                value={formatValue(convertToCurrency(values.amount, rateToGVT))}
                 suffix=" GVT"
-                decimalScale={8}
                 displayType="text"
               />
             </div>
@@ -84,11 +83,18 @@ const WalletAddFundsForm = ({
           {t("wallet-add-funds.deposit-address")}
         </div>
         <div className="wallet-add-funds-popup__value">{address}</div>
-        <GVButton color="secondary" onClick={onCopy}>
+        <GVButton color="secondary" onClick={onCopy} disabled={!address}>
           <CopyIcon />
           &nbsp;
           {t("buttons.copy")}
         </GVButton>
+        <div className="dialog__info">
+          {currency !== "GVT" &&
+            (currency !== null &&
+              t("wallet-add-funds.disclaimer", {
+                currency
+              }))}
+        </div>
       </div>
     </form>
   );
@@ -111,10 +117,15 @@ export default compose(
   translate(),
   withFormik({
     displayName: "add-funds",
-    mapPropsToValues: () => ({
-      currency: "BTC",
-      amount: ""
-    }),
-    onSubmit: values => console.info(values)
+    mapPropsToValues: props => {
+      let currency = "GVT";
+      if (!props.wallets.find(wallet => wallet.currency === currency)) {
+        currency = props.wallets[0] ? props.wallets[0].currency : "";
+      }
+      return {
+        currency,
+        amount: ""
+      };
+    }
   })
 )(WalletAddFundsForm);
