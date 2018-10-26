@@ -3,6 +3,228 @@
     "header": "Manager Portal",
     "title": "Investor Portal: "
   },
+  "global-search-page": {
+    "title": "Search",
+    "heading": "Search Results",
+    "programs": "Programs",
+    "funds": "Funds",
+    "managers": "Managers"
+  },
+  "programs-page": {
+    "title": "Programs",
+    "tabs": {
+      "explore": "Explore",
+      "favorites": "Favorites"
+    },
+    "programs-header": {
+      "title": "Name",
+      "balance": "Balance",
+      "currency": "Curr.",
+      "investors": "Investors",
+      "available-to-invest": "Av. to invest",
+      "trades": "Trades",
+      "period": "Period",
+      "drawdown": "D.down",
+      "profit": "Profit",
+      "chart": "Chart",
+      "strategy": "Strategy"
+    }
+  },
+  "funds-page": {
+    "title": "Funds",
+    "tabs": {
+      "explore": "Explore",
+      "favorites": "Favorites"
+    },
+    "funds-header": {
+      "title": "Name",
+      "balance": "Balance",
+      "assets": "Assets",
+      "investors": "Investors",
+      "drawdown": "D.down",
+      "profit": "Profit",
+      "chart": "Chart"
+    }
+  },
+  "managers-table": {
+    "username": "Username",
+    "assets": "Assets",
+    "memberSince": "Member Since"
+  },
+  "program-details-page": {
+    "title": "Program detail",
+    "description": {
+      "strategy": "Strategy",
+      "addToFavorites": "Add to favorites",
+      "notifications": "Notifications",
+      "avToInvest": "Av. to invest",
+      "entryFee": "Entry fee",
+      "successFee": "Success fee",
+      "invest": "Invest",
+      "reinvest": "Reinvest",
+      "yourInvestment": "Current period investment",
+      "pending-input": "Pending input",
+      "pending-output": "Pending output",
+      "invested": "Invested",
+      "value": "Value",
+      "profit": "Profit",
+      "status": "Status",
+      "withdraw": "Withdraw",
+      "withdraw-notice-text":
+        "You can withdraw only the invested funds, the profit will be withdrawn to your account at the end of the period automatically"
+    },
+    "statistics": {
+      "heading": "Statistics",
+      "current": "Current",
+      "for": "For",
+      "balance": "Balance",
+      "investors": "Investors",
+      "trades": "Trades",
+      "success-trades": "Success trades",
+      "profit-factor": "Profit factor",
+      "sharpe-ratio": "Sharpe ratio",
+      "sortino-ratio": "Sortino ratio",
+      "max-drawdown": "Max Drawdown",
+      "start-day": "Start day",
+      "period-end": "Period end",
+      "period": "Period"
+    },
+    "popover": {
+      "genesis-level": "Genesis Level",
+      "invest-limit": "Invest limit",
+      "text":
+        "Genesis level shows the experience and reliability of the Manager",
+      "about-levels": "About levels"
+    },
+    "history": {
+      "heading": "History",
+      "tabs": {
+        "trades": "Trades",
+        "events": "Events"
+      },
+      "trades": {
+        "direction": "Dir",
+        "ticket": "Ticket",
+        "symbol": "Symbol",
+        "volume": "Volume",
+        "profit": "Profit",
+        "price": "Price",
+        "entry": "Entry",
+        "date": "Date"
+      }
+    },
+    "chart": {
+      "heading": "Chart",
+      "tabs": {
+        "profit": "Profit",
+        "balance": "Balance"
+      }
+    }
+  },
+  "chart-period": {
+    "day-short": "1D",
+    "day": "a Day",
+    "week-short": "1W",
+    "week": "a Week",
+    "month-short": "1M",
+    "month": "a Month",
+    "quarter-short": "3M",
+    "quarter": "a Quarter",
+    "year-short": "1Y",
+    "year": "a Year",
+    "all-short": "All",
+    "all": "All Time"
+  },
+  "fund-details-page": {
+    "title": "Program detail",
+    "description": {
+      "strategy": "Strategy",
+      "assets": "Assets",
+      "addToFavorites": "Add to favorites",
+      "notifications": "Notifications",
+      "avToInvest": "Av. to invest",
+      "entryFee": "Entry fee",
+      "invest": "Invest",
+      "reinvest": "Reinvest",
+      "yourInvestment": "Current period investment",
+      "pending-input": "Pending input",
+      "pending-output": "Pending output",
+      "invested": "Invested",
+      "value": "Value",
+      "profit": "Profit",
+      "status": "Status",
+      "withdraw": "Withdraw",
+      "withdraw-notice-text":
+        "You can withdraw only the invested funds, the profit will be withdrawn to your account at the end of the period automatically"
+    },
+    "statistics": {
+      "heading": "Statistics",
+      "current": "Current",
+      "calmarRatio": "Calmar ratio",
+      "rebalances": "Rebalances",
+      "profit-change": "Profit change",
+      "for": "For",
+      "balance": "Balance",
+      "investors": "Investors",
+      "sharpe-ratio": "Sharpe ratio",
+      "sortino-ratio": "Sortino ratio",
+      "max-drawdown": "Max Drawdown",
+      "start-day": "Start day",
+      "period-end": "Period end",
+      "period": "Period"
+    },
+    "history": {
+      "heading": "History",
+      "subheading": "Rebalancing",
+      "rebalances": {
+        "assets": "Assets",
+        "from": "From",
+        "to": "To"
+      }
+    },
+    "chart": {
+      "heading": "Chart",
+      "tabs": {
+        "profit": "Profit",
+        "balance": "Balance"
+      }
+    }
+  },
+  "manager": {
+    "title": "Manager",
+    "about": "About",
+    "assets": "Assets",
+    "member-since": "Member since",
+    "history": {
+      "tabs": {
+        "programs": "Programs",
+        "funds": "Funds"
+      }
+    }
+  },
+  "program-statuses": {
+    "Active": "Active",
+    "Investing": "Investing",
+    "Withdrawing": "Withdrawing",
+    "Ended": "Ended"
+  },
+  "withdraw-program": {
+    "title": "Withdraw",
+    "available-to-withdraw": "Current investment value",
+    "amount-to-withdraw": "Amount to withdraw",
+    "next": "Next",
+    "info":
+      "Your request will be processed at the end of the reporting period. The requested amount will be converted to GVT and transferred to your wallet",
+    "withdrawing": "Withdrawing",
+    "payout-date": "Payout date",
+    "back": "Back",
+    "submit": "Submit",
+    "validation": {
+      "amount-more-than-available":
+        "Amount is more than available for withdraw",
+      "amount-is-required": "Amount is required."
+    }
+  },
   "days-left-widget": {
     "text": "Day left",
     "text_plural": "Days left"
@@ -259,11 +481,60 @@
       "tooltip": "My profit is the total profit earned by all programs."
     }
   },
-  "program-deposit": {
-    "header": "Deposit",
-    "available-gvt": "Available GVT",
-    "enter-gvt-amount": "Enter GVT amount",
-    "amount-in": "Amount in"
+  "deposit-program": {
+    "title": "Invest",
+    "gv-commission": "GV commission",
+    "available-to-invest-in-program": "Available to invest in program",
+    "available-to-invest-in-fund": "Available to invest in fund",
+    "available-in-wallet": "Available in wallet",
+    "amount": "Amount to invest",
+    "entry-fee": "Entry fee",
+    "investment-amount": "Investment amount",
+    "disclaimer":
+      "After clicking the \"Confirm\" button, the invested GVT will be immediately converted to {{currency}}. Accrual of {{currency}} to the account manager will only occur at the end of the reporting period.",
+    "confirm": "Confirm",
+    "success-alert-message":
+      "Successful request for investment in the program.",
+    "validation": {
+      "amount-more-than-available":
+        "Amount is more than available in your wallet",
+      "amount-is-required": "Amount is required.",
+      "amount-min-value": "Min amount is {{min}} GVT"
+    }
+  },
+  "deposit-fund": {
+    "title": "Invest",
+    "gv-commission": "GV commission",
+    "available-to-invest-in-fund": "Available to invest in fund",
+    "available-in-wallet": "Available in wallet",
+    "amount": "Amount to invest",
+    "entry-fee": "Entry fee",
+    "investment-amount": "Investment amount",
+    "disclaimer":
+      "After clicking the \"Confirm\" button, the invested GVT will be immediately converted to {{currency}}. Accrual of {{currency}} to the account manager will only occur at the end of the reporting period.",
+    "confirm": "Confirm",
+    "success-alert-message":
+      "Successful request for investment in the program.",
+    "validation": {
+      "amount-more-than-available":
+        "Amount is more than available in your wallet",
+      "amount-is-required": "Amount is required.",
+      "amount-min-value": "Min amount is {{min}} GVT"
+    }
+  },
+  "program-period": {
+    "day": "day",
+    "day_plural": "days",
+    "hour": "hour",
+    "hour_plural": "hours",
+    "minute": "minute",
+    "minute_plural": "minutes",
+    "second": "second",
+    "second_plural": "seconds",
+    "period-is-over": "The period is over.",
+    "time-left": "Time left",
+    "period-ends": "Period ends",
+    "left": "left"
   },
   "program-withdraw": {
     "header": "Withdraw",
@@ -271,6 +542,23 @@
     "how-much-withdraw": "How much would you like to withdraw?",
     "enter-amount": "Enter {{currency}} amount",
     "minimal-balance": "Minimal remaining balance is"
+  },
+  "withdraw-fund": {
+    "title": "Withdraw",
+    "available-to-withdraw": "You invested in fund",
+    "amount-to-withdraw": "Amount to withdraw",
+    "next": "Next",
+    "info":
+      "Amount of withdrawals can be changed depending on the exchange rate or the success of the Manager",
+    "withdrawing": "Withdrawing",
+    "payout-date": "Payout date",
+    "back": "Back",
+    "submit": "Submit",
+    "validation": {
+      "amount-more-than-available":
+        "Amount is more than available for withdraw",
+      "amount-is-required": "Amount is required."
+    }
   },
   "programs-filtering": {
     "level": {
@@ -313,7 +601,10 @@
       "email-field-text": "Email address",
       "password-field-text": "Password",
       "password-confirm-field-text": "Confirm password",
-      "email-confirm-title": "Confirm your Email"
+      "email-confirm-title": "Confirm your Email",
+      "i-accept-text": "I accept the",
+      "accept-terms-text": "Terms of Service",
+      "privacy-policy-text": "Privacy Policy"
     },
     "signup-email-pending": {
       "text-section":
