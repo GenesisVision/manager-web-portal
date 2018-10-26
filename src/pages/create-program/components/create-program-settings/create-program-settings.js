@@ -160,13 +160,10 @@ class CreateProgramSettings extends React.Component {
                     <option value={period.toString()} key={period}>
                       {period +
                         " " +
-                        (period === 1
-                          ? t(
-                              "create-program-page.settings.fields.period-option-notation.day"
-                            )
-                          : t(
-                              "create-program-page.settings.fields.period-option-notation.day_plural"
-                            ))}
+                        t(
+                          "create-program-page.settings.fields.period-option-notation.day",
+                          { count: period }
+                        )}
                     </option>
                   );
                 })}

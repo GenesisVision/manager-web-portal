@@ -7,7 +7,7 @@ const createProgramSettingsValidationSchema = ({ t }) =>
       .min(4, t("create-program-page.settings.validation.title-is-short"))
       .max(20, t("create-program-page.settings.validation.title-is-long"))
       .matches(
-        /^[-a-zA-Z0-9\s]{1,99}$/,
+        /^[-a-zA-Z0-9\s]{4,20}$/,
         t("create-program-page.settings.validation.title-is-latin-and-numbers")
       ),
     description: Yup.string()
@@ -25,9 +25,9 @@ const createProgramSettingsValidationSchema = ({ t }) =>
     currency: Yup.string().required(
       t("create-program-page.settings.validation.currency-required")
     ),
-    periodLength: Yup.string()
-      // .oneOf(PROGRAM_SETTINGS_PERIOD_VALUES)
-      .required(t("create-program-page.settings.validation.period-required")),
+    periodLength: Yup.string().required(
+      t("create-program-page.settings.validation.period-required")
+    ),
     leverage: Yup.string().required(
       t("create-program-page.settings.validation.leverage-required")
     ),
