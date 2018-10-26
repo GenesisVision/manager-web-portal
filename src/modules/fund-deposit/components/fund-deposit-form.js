@@ -10,6 +10,7 @@ import {
 } from "utils/currency-converter";
 import { formatValue } from "utils/formatter";
 import { number, object } from "yup";
+import FormError from "shared/components/form/form-error/form-error";
 
 const FundDepositForm = ({
   t,
@@ -20,7 +21,6 @@ const FundDepositForm = ({
   handleSubmit,
   errorMessage
 }) => {
-  // const fee = calculateValueOfEntryFee(values.amount, info.entryFee);
   const gvFee = calculateValueOfEntryFee(values.amount, info.gvCommission);
   const investAmount = parseFloat(values.amount || 0) - parseFloat(gvFee);
   const isAllow = values => {
@@ -81,7 +81,9 @@ const FundDepositForm = ({
           </span>
         </li>
       </ul>
-      <div className="form-error">{errorMessage}</div>
+      <div className="form-error">
+        <FormError error={errorMessage} />
+      </div>
       <div className="dialog__buttons">
         <GVButton
           type="submit"
