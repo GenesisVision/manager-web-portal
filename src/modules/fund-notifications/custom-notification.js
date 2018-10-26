@@ -34,7 +34,11 @@ class CustomNotification extends Component {
         enabled: status
       })
       .then(() => {
-        this.success(t(`fund.custom.${status ? "enabled" : "disabled"}-alert`));
+        this.success(
+          t(
+            `notifications.fund.custom.${status ? "enabled" : "disabled"}-alert`
+          )
+        );
       })
       .finally(() => this.setState({ isPending: false }));
   };
@@ -45,7 +49,7 @@ class CustomNotification extends Component {
     this.props.services
       .removeFundNotificationService(settings)
       .then(() => {
-        this.success(t(`fund.custom.delete-alert`));
+        this.success(t(`notifications.fund.custom.delete-alert`));
       })
       .finally(() => this.setState({ isPending: false }));
   };
@@ -64,7 +68,7 @@ class CustomNotification extends Component {
             onChange={this.handleSwitch}
           />
           <span className="notification-setting__label">
-            {t(`fund.create.${settings.conditionType}.title`)}
+            {t(`notifications.fund.create.${settings.conditionType}.title`)}
           </span>
         </label>
         <div className="custom-notification__offset">
@@ -72,8 +76,10 @@ class CustomNotification extends Component {
             name="conditionAmount"
             value={settings.conditionAmount.toString()}
             disabled
-            label={t(`fund.create.${settings.conditionType}.label`)}
-            adornment="%"
+            label={t(
+              `notifications.fund.create.${settings.conditionType}.label`
+            )}
+            adornment={settings.conditionType === "Profit" ? "%" : undefined}
             autoComplete="off"
             InputComponent={NumberFormat}
           />
@@ -106,10 +112,6 @@ const mapStateToProps = dispatch => ({
   dispatch
 });
 
-export default compose(
-  translate(),
-  connect(
-    undefined,
-    mapStateToProps
-  )
-)(CustomNotification);
+export default compose(translate(), connect(undefined, mapStateToProps))(
+  CustomNotification
+);

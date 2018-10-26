@@ -36,7 +36,9 @@ class ProgramNotificationsCustom extends Component {
   };
 
   handleClosePopup = () => {
-    this.setState({ isOpenCreatePopup: false });
+    this.setState({ isOpenCreatePopup: false }, () => {
+      this.props.dispatch(addErrorMessage());
+    });
   };
 
   handleOpenPopup = () => {
@@ -80,6 +82,7 @@ const mapDispatchToProps = dispatch => ({
   dispatch
 });
 
-export default compose(translate(), connect(undefined, mapDispatchToProps))(
-  ProgramNotificationsCustom
-);
+export default compose(
+  translate(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(ProgramNotificationsCustom);
