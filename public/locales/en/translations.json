@@ -971,7 +971,8 @@
     "copy-to-clipboard-success":
       "Your wallet-pane number was copied to the clipboard successfully.",
     "copy-to-clipboard-error": "Failed to copy data to the clipboard.",
-    "disclaimer": "After processing the {{currency}} transaction, your transferred funds will be converted to GVT, according to the current market price. The exact amount of GVT received will be determined at the time of conversion in the market."
+    "disclaimer":
+      "After processing the {{currency}} transaction, your transferred funds will be converted to GVT, according to the current market price. The exact amount of GVT received will be determined at the time of conversion in the market."
   },
   "wallet": {
     "title": "Wallet",
