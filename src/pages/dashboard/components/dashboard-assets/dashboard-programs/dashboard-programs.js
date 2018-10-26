@@ -6,23 +6,23 @@ import ProgramSimpleChart from "components/program-simple-chart/program-simple-c
 import { GVButton } from "gv-react-components";
 import { TableCell, TableRow } from "modules/table/components";
 import DateRangeFilter from "modules/table/components/filtering/date-range-filter/date-range-filter";
-import { DEFAULT_DATE_RANGE_FILTER_VALUE } from "modules/table/components/filtering/date-range-filter/date-range-filter.constants";
 import { DATE_RANGE_FILTER_NAME } from "modules/table/components/filtering/date-range-filter/date-range-filter.constants";
-import TableModule from "modules/table/components/table-module";
+import { DEFAULT_DATE_RANGE_FILTER_VALUE } from "modules/table/components/filtering/date-range-filter/date-range-filter.constants";
+import TableContainer from "modules/table/components/table-container";
 import { DEFAULT_PAGING } from "modules/table/reducers/table-paging.reducer";
-// import { composeProgramDetailsUrl } from "pages/programs/programs.routes";
 import React, { Component, Fragment } from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
 import { formatValue } from "utils/formatter";
+import replaceParams from "utils/replace-params";
+
 import {
   DASHBOARD_PROGRAMS_COLUMNS,
   DASHBOARD_PROGRAMS_FILTERS,
   DASHBOARD_PROGRAMS_SORTING
 } from "../../../dashboard.constants";
 import { getDashboardPrograms } from "../../../services/dashboard-programs.service";
-import replaceParams from "utils/replace-params";
 
 const PROGRAM_SLUG_URL_PARAM_NAME = "programSlugUrl";
 const PROGRAMS_ROUTE = "/programs";
@@ -34,16 +34,26 @@ export const composeProgramDetailsUrl = slugUrl =>
   });
 
 class DashboardPrograms extends Component {
-  fetchPrograms = filters => {
-    return getDashboardPrograms(filters).then(({ data }) => {
-      return { items: data.programs, total: data.total };
-    });
+  getDashboardProgramsPlace = state => {
+    const itemsData = {
+      ...state.dashboard.programsData,
+      data: {
+        ...state.dashboard.programsData.data,
+        items:
+          state.dashboard.programsData.data && state.dashboard.data.programs
+      }
+    };
+
+    return {
+      ...state.wallet.transactions,
+      itemsData: itemsData
+    };
   };
 
   render() {
     const { t, createButton } = this.props;
     return (
-      <TableModule
+      <TableContainer
         createButton={createButton}
         paging={DEFAULT_PAGING}
         sorting={DASHBOARD_PROGRAMS_SORTING}
@@ -51,7 +61,9 @@ class DashboardPrograms extends Component {
           dateRange: DEFAULT_DATE_RANGE_FILTER_VALUE
         }}
         defaultFilters={DASHBOARD_PROGRAMS_FILTERS}
-        getItems={this.fetchPrograms}
+        getItems={getDashboardPrograms}
+        getStorePlace={this.getDashboardProgramsPlace}
+        isFetchOnMount={true}
         columns={DASHBOARD_PROGRAMS_COLUMNS}
         renderFilters={(updateFilter, filtering) => (
           <Fragment>

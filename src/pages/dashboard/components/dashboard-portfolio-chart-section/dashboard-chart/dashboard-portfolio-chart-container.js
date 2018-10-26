@@ -3,7 +3,8 @@ import { DEFAULT_PERIOD } from "components/chart/chart-period/chart-period.helpe
 import React, { Fragment, PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getPortfolioChart } from "../../../services/dashboard-chart.service";
+
+//import { getPortfolioChart } from "../../../services/dashboard-chart.service";
 import DashboardPortfolioChart from "./dashboard-portfolio-chart";
 import DashboardPortfolioChartStat from "./dashboard-portfolio-chart-stat";
 
@@ -84,12 +85,12 @@ class DashboardPortfolioChartContainer extends PureComponent {
           changeValueCurrency={data.changeValueCurrency}
         />
         <ChartPeriod period={period} onChange={this.handleChangePeriod} />
-        <div className="dashboard-portfolio-chart-section__chart">
+        {/* <div className="dashboard-portfolio-chart-section__chart">
           <DashboardPortfolioChart
             assets={composeAssetsChartData(data.investedProgramsInfo)}
             balance={composeBalanceChartData(data.balanceChart)}
           />
-        </div>
+        </div> */}
       </Fragment>
     );
   }
