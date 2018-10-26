@@ -1,9 +1,9 @@
+import GVDatePicker from "components/gv-datepicker/gv-datepicker";
 import { GVTextField } from "gv-react-components";
 import moment from "moment";
 import React, { Component, Fragment } from "react";
 import { translate } from "react-i18next";
 
-import GVDatePicker from "../../../../../shared/components/form/gv-datepicker/gv-datepicker";
 import { DateRangeFilterTypes } from "./date-range-filter.constants";
 
 class DateRangeFilterValues extends Component {
