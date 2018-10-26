@@ -557,6 +557,7 @@
     "payout-date": "Payout date",
     "back": "Back",
     "submit": "Submit",
+    "success-alert-message": "Request to withdrawal sent successfully.",
     "validation": {
       "amount-more-than-available":
         "Amount is more than available for withdraw",
