@@ -9,12 +9,29 @@ import EventReinvestIcon from "shared/media/event-reinvest.svg";
 
 import { EventLogoType } from "./dashboard-portfolio-event-logo.helper";
 
+// import EventCancelledIcon from "shared/media/event-cancelled.svg";
+// import EventEndedIcon from "shared/media/event-ended.svg";
+// import EventInvestIcon from "shared/media/event-invest.svg";
+// import EventLossIcon from "shared/media/event-loss.svg";
+// import EventProfitIcon from "shared/media/event-profit.svg";
+// import EventReinvestIcon from "shared/media/event-reinvest.svg";
+// import EventWithdrawIcon from "shared/media/event-withdraw.svg";
+
 const EvenLogoIcon = ({ type }) => {
   if (type === EventLogoType.profit)
     return <img src={EventProfitIcon} alt="profit" />;
   if (type === EventLogoType.loss)
     return <img src={EventLossIcon} alt="loss" />;
-  return <img src={EventReinvestIcon} alt="reinvest" />;
+  if (type === EventLogoType.reinvest)
+    return <img src={EventReinvestIcon} alt="reinvest" />;
+  // if (type === EventLogoType.ended)
+  //   return <img src={EventEndedIcon} alt="ended" />;
+  // if (type === EventLogoType.withdraw)
+  //   return <img src={EventWithdrawIcon} alt="withdraw" />;
+  // if (type === EventLogoType.invest)
+  //   return <img src={EventInvestIcon} alt="invest" />;
+  // if (type === EventLogoType.cancelled)
+  //   return <img src={EventCancelledIcon} alt="cancelled" />;
 };
 
 const PortfolioEventLogo = ({ type, logo, color }) => {

@@ -1,7 +1,11 @@
 export const EventLogoType = {
-  profit: "profit",
-  loss: "loss",
-  reinvest: "reinvest"
+  profit: "Profit",
+  loss: "Loss",
+  reinvest: "Reinvest",
+  cancelled: "Cancelled",
+  invest: "Invest",
+  withdraw: "Withdraw",
+  ended: "Ended"
 };
 
 export const composeEventLogoType = eventType => {

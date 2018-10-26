@@ -15,12 +15,12 @@
   }
 
   & .table__toolbar {
+    padding-top: 40px;
     flex-direction: column;
     align-items: flex-start;
   }
 
   & .table__filters {
-    margin-top: 16px;
     margin-left: 0;
   }
 
@@ -28,20 +28,28 @@
     padding: 0 32px;
   }
 
+  & .table__row .table__cell:last-child {
+    padding-right: 36px;
+  }
+
   &__cell {
     color: $text-light-color;
 
     &--date {
-      width: 33%;
-      min-width: 180px;
+      width: 25%;
+      min-width: 200px;
     }
-    &--type {
-      width: 40%;
-      min-width: 230px;
+    &--information {
+      width: 51%;
+      min-width: 300px;
+    }
+    &--status {
+      width: 13%;
+      min-width: 110px;
     }
     &--amount {
-      width: 27%;
-      min-width: 110px;
+      width: 13%;
+      min-width: 140px;
     }
   }
 
@@ -53,6 +61,10 @@
     &__value {
       color: $text-light-color;
     }
+  }
+
+  & .icon.icon--actions-circle {
+    cursor: pointer;
   }
 
   @include media-breakpoint-tablet() {
