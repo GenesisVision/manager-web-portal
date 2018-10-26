@@ -1,3 +1,4 @@
+import GVqr from "components/gv-qr/gv-qr";
 import CopyIcon from "components/icon/copy-icon";
 import Select from "components/select/select";
 import copy from "copy-to-clipboard";
@@ -9,8 +10,7 @@ import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { compose } from "redux";
 import { convertToCurrency } from "utils/currency-converter";
-
-import GVqr from "../../../components/gv-qr/gv-qr";
+import { formatValue } from "utils/formatter";
 
 const WalletAddFundsForm = ({
   t,
@@ -64,14 +64,15 @@ const WalletAddFundsForm = ({
         />
         <div className="gv-text-field__wrapper">
           <label className="gv-text-field__label gv-text-field__label--shrink">
-            {t("wallet-add-funds.will-get")}
+            {currency === "GVT"
+              ? t("wallet-add-funds.will-get-gvt")
+              : t("wallet-add-funds.will-get")}
           </label>
           <div className="gv-text-field wallet-add-funds-popup__will-get">
             <div className="gv-text-field__input dialog-field__value">
               <NumberFormat
-                value={convertToCurrency(values.amount, rateToGVT)}
+                value={formatValue(convertToCurrency(values.amount, rateToGVT))}
                 suffix=" GVT"
-                decimalScale={8}
                 displayType="text"
               />
             </div>
@@ -89,6 +90,12 @@ const WalletAddFundsForm = ({
           &nbsp;
           {t("buttons.copy")}
         </GVButton>
+        <div className="dialog__info">
+          {currency !== "GVT" &&
+            t("wallet-add-funds.disclaimer", {
+              currency
+            })}
+        </div>
       </div>
     </form>
   );
@@ -112,9 +119,8 @@ export default compose(
   withFormik({
     displayName: "add-funds",
     mapPropsToValues: () => ({
-      currency: "BTC",
+      currency: "GVT",
       amount: ""
-    }),
-    onSubmit: values => console.info(values)
+    })
   })
 )(WalletAddFundsForm);
