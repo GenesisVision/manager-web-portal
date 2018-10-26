@@ -17,12 +17,12 @@
 
   &__profile {
     display: none;
-    margin-left: 45px;
+    margin-left: auto;
   }
 
   &__wallet {
     display: none !important;
-    margin-right: 40px;
+    margin-right: auto;
   }
 
   &__right,
@@ -35,7 +35,6 @@
 
   &__search {
     display: none;
-    margin-left: 30px;
 
     a {
       display: inline-flex;
@@ -43,10 +42,14 @@
   }
 
   &__separator {
-    display: none;
-    border-left: 2px solid #1f2b36;
-    margin: 0 60px;
+    flex-grow: 2;
+    justify-content: center;
     align-self: stretch;
+    display: none;
+    &:before {
+      content: "";
+      border-left: 2px solid #1f2b36;
+    }
   }
 
   &__buttons {
@@ -57,7 +60,16 @@
 
   @include media-breakpoint-landscape-tablet() {
     &__center {
-      margin-left: auto;
+      flex-grow: 2;
+      justify-content: space-between;
+
+      .select {
+        min-width: 100px;
+      }
+    }
+    &__right {
+      flex-grow: 2;
+      justify-content: flex-end;
     }
     &__menu {
       display: flex;
