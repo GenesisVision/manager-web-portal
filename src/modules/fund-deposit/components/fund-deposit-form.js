@@ -58,7 +58,7 @@ const FundDepositForm = ({
             {t("deposit-fund.gv-commission")}
           </span>
           <span className="dialog-list__value">
-            {info.gvCommission}%
+            {info.gvCommission} %
             <NumberFormat
               value={formatValue(gvFee)}
               prefix={" ("}
