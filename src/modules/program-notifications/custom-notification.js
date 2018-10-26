@@ -30,7 +30,7 @@ class CustomNotification extends Component {
     services
       .toggleProgramNotificationsService({
         id: settings.id,
-        programId: settings.programId,
+        assetId: settings.assetId,
         enabled: status
       })
       .then(() => {
@@ -81,7 +81,7 @@ class CustomNotification extends Component {
             label={t(
               `notifications.program.create.${settings.conditionType}.label`
             )}
-            adornment="%"
+            adornment={settings.conditionType === "Profit" ? "%" : undefined}
             autoComplete="off"
             InputComponent={NumberFormat}
           />

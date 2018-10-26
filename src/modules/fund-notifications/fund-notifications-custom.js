@@ -80,10 +80,6 @@ const mapDispatchToProps = dispatch => ({
   dispatch
 });
 
-export default compose(
-  translate(),
-  connect(
-    undefined,
-    mapDispatchToProps
-  )
-)(FundNotificationsCustom);
+export default compose(translate(), connect(undefined, mapDispatchToProps))(
+  FundNotificationsCustom
+);
