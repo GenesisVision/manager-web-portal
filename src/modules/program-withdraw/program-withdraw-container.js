@@ -18,7 +18,7 @@ class ProgramWithdrawContainer extends PureComponent {
 
   handleWithdraw = (id, percent) => {
     return managerApiProxy
-      .v10ManagerFundsByIdWithdrawByPercentPost(
+      .v10ManagerProgramsByIdWithdrawByAmountPost(
         id,
         percent,
         authService.getAuthArg()
