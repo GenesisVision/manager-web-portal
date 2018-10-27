@@ -98,40 +98,11 @@ const FundDetailsStatistics = ({ t, statisticData, period }) => {
 
           <div className="fund-details-statistics__item fund-details-statistics__item--half fund-details-statistics__item--secondary">
             <span className="fund-details-statistics__label">
-              {t("fund-details-page.statistics.rebalances")}
-            </span>
-            <span className="fund-details-statistics__value">
-              <NumberFormat
-                value={statistic.rebalances}
-                decimalScale={2}
-                displayType="text"
-              />
-            </span>
-          </div>
-
-          <div className="fund-details-statistics__item fund-details-statistics__item--half fund-details-statistics__item--secondary">
-            <span className="fund-details-statistics__label">
               {t("fund-details-page.statistics.profit-change")}
             </span>
             <span className="fund-details-statistics__value">
               <NumberFormat
                 value={statistic.profitChangePercent}
-                displayType="text"
-                suffix="%"
-                decimalScale={2}
-              />
-            </span>
-          </div>
-        </div>
-
-        <div className="fund-details-statistics__column">
-          <div className="fund-details-statistics__item fund-details-statistics__item--half fund-details-statistics__item--secondary">
-            <span className="fund-details-statistics__label">
-              {t("fund-details-page.statistics.sharpe-ratio")}
-            </span>
-            <span className="fund-details-statistics__value">
-              <NumberFormat
-                value={statistic.sharpeRatio}
                 displayType="text"
                 suffix="%"
                 decimalScale={2}
@@ -146,6 +117,35 @@ const FundDetailsStatistics = ({ t, statisticData, period }) => {
             <span className="fund-details-statistics__value">
               <NumberFormat
                 value={statistic.maxDrawdown}
+                displayType="text"
+                suffix="%"
+                decimalScale={2}
+              />
+            </span>
+          </div>
+        </div>
+
+        <div className="fund-details-statistics__column">
+          <div className="fund-details-statistics__item fund-details-statistics__item--half fund-details-statistics__item--secondary">
+            <span className="fund-details-statistics__label">
+              {t("fund-details-page.statistics.rebalances")}
+            </span>
+            <span className="fund-details-statistics__value">
+              <NumberFormat
+                value={statistic.rebalances}
+                decimalScale={2}
+                displayType="text"
+              />
+            </span>
+          </div>
+
+          <div className="fund-details-statistics__item fund-details-statistics__item--half fund-details-statistics__item--secondary">
+            <span className="fund-details-statistics__label">
+              {t("fund-details-page.statistics.sharpe-ratio")}
+            </span>
+            <span className="fund-details-statistics__value">
+              <NumberFormat
+                value={statistic.sharpeRatio}
                 displayType="text"
                 suffix="%"
                 decimalScale={2}
