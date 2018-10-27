@@ -36,15 +36,17 @@ export const composeProgramDetailsUrl = slugUrl =>
 class DashboardPrograms extends Component {
   fetchPrograms = filters => {
     return getDashboardPrograms(filters).then(({ data }) => {
-      return { items: data.programs, total: data.total };
+      return { items: [], total: data.total };
     });
   };
 
   render() {
-    const { t, createButton } = this.props;
+    const { t, createButtonToolbar, createButtonBody, createText } = this.props;
     return (
       <TableModule
-        createButton={createButton}
+        createButtonToolbar={createButtonToolbar}
+        createButtonBody={createButtonBody}
+        createText={createText}
         paging={DEFAULT_PAGING}
         sorting={DASHBOARD_PROGRAMS_SORTING}
         filtering={{
@@ -64,7 +66,11 @@ class DashboardPrograms extends Component {
           </Fragment>
         )}
         renderHeader={column => (
-          <span className={`dashboard-programs__cell--${column.name}`}>
+          <span
+            className={`dashboard-programs__cell dashboard-programs__cell--${
+              column.name
+            }`}
+          >
             {t(`dashboard-page.programs-header.${column.name}`)}
           </span>
         )}
