@@ -37,10 +37,12 @@ class DashboardFunds extends Component {
       replaceParams(FUND_DETAILS_ROUTE, {
         [`:${FUNDS_SLUG_URL_PARAM_NAME}`]: fundUrl
       });
-    const { t, createButton } = this.props;
+    const { t, createButtonToolbar, createButtonBody, createText } = this.props;
     return (
       <TableModule
-        createButton={createButton}
+        createButtonToolbar={createButtonToolbar}
+        createButtonBody={createButtonBody}
+        createText={createText}
         paging={DEFAULT_PAGING}
         sorting={DASHBOARD_PROGRAMS_SORTING}
         filtering={{
@@ -59,7 +61,11 @@ class DashboardFunds extends Component {
           </Fragment>
         )}
         renderHeader={column => (
-          <span className={`dashboard-funds__cell--${column.name}`}>
+          <span
+            className={`dashboard-funds__cell dashboard-funds__cell--${
+              column.name
+            }`}
+          >
             {t(`dashboard-page.funds-header.${column.name}`)}
           </span>
         )}
