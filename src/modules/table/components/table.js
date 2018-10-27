@@ -21,6 +21,8 @@ class Table extends Component {
   isViewSwitchEnabled = this.props.renderBodyRow !== undefined &&
   this.props.renderBodyCard !== undefined;
 
+  renderTrackVertical = () => <span className="table__vertical-track" />;
+
   render() {
     const { view } = this.state;
     return (
@@ -37,9 +39,12 @@ class Table extends Component {
           updateSorting={this.props.updateSorting}
           renderHeader={this.props.renderHeader}
           isViewSwitchEnabled={this.isViewSwitchEnabled}
-          createButton={this.props.createButton}
         />
-        <Scrollbars autoHeight autoHeightMax={14000}>
+        <Scrollbars
+          autoHeight
+          autoHeightMax={14000}
+          renderTrackVertical={this.renderTrackVertical}
+        >
           {view === CARDS_VIEW && (
             <div className="table">
               <TableBody

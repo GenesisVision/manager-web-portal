@@ -7,7 +7,7 @@ import dashboardProgramsReducer from "./dashboard-programs.reducer";
 const dashboardReducer = combineReducers({
   inRequestsData: dashboardInRequestsReducer,
   eventsData: dashboardEventsReducer,
-  programsData: dashboardProgramsReducer
+  programs: dashboardProgramsReducer
 });
 
 export default dashboardReducer;
