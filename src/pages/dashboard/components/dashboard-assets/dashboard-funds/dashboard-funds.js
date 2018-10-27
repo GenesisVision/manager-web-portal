@@ -51,7 +51,7 @@ class DashboardFunds extends Component {
         createButton={createButton}
         getItems={getDashboardFunds}
         getStorePlace={this.getDashboardFundsPlace}
-        isFetchOnMount={true}
+        isFetchOnMount={false}
         columns={DASHBOARD_FUNDS_COLUMNS}
         renderFilters={(updateFilter, filtering) => (
           <Fragment>

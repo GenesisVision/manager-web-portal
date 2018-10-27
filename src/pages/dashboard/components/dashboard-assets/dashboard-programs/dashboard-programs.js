@@ -52,7 +52,7 @@ class DashboardPrograms extends Component {
         createButton={createButton}
         getItems={getDashboardPrograms}
         getStorePlace={this.getDashboardProgramsPlace}
-        isFetchOnMount={true}
+        isFetchOnMount={false}
         columns={DASHBOARD_PROGRAMS_COLUMNS}
         renderFilters={(updateFilter, filtering) => (
           <Fragment>

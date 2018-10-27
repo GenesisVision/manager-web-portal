@@ -24,7 +24,6 @@ class DashboardChartAssetsContainer extends PureComponent {
   handleCloseDropdown = () => this.setState({ anchor: null });
 
   renderActionsIcon = () => {
-    if (this.props.programsData.programs.length === 0) return null;
     return (
       <ActionsCircleIcon
         className="dashboard-chart-assets__icon"
@@ -35,11 +34,13 @@ class DashboardChartAssetsContainer extends PureComponent {
   };
 
   render() {
-    const { programsData, fundsData, chartData } = this.props;
-    if (!programsData) return null;
+    const { programsData, fundsData } = this.props;
+    if (!programsData || !fundsData) return null;
     const programs = programsData.programs;
-    const funds = []; //fundsData.funds;
-
+    const funds = fundsData.funds;
+    const hasPrograms = programs.length > 0;
+    const hasFunds = funds.length > 0;
+    if (!hasPrograms && !hasFunds) return null;
     return (
       <div className="dashboard-chart-assets">
         <div className="dashboard-chart-assets__title">
@@ -53,8 +54,21 @@ class DashboardChartAssetsContainer extends PureComponent {
           onClose={this.handleCloseDropdown}
         >
           <div className="dashboard-chart-assets-popover">
+            {hasPrograms && (
+              <div className="dashboard-chart-assets-popover__header">
+                Programs
+              </div>
+            )}
             {programs.map(x => (
-              <DashboardChartAsset key={x.id} chartAsset={x} />
+              <DashboardChartAsset key={x.id} chartAsset={x} type="Program" />
+            ))}
+            {hasFunds && (
+              <div className="dashboard-chart-assets-popover__header">
+                Funds
+              </div>
+            )}
+            {funds.map(x => (
+              <DashboardChartAsset key={x.id} chartAsset={x} type="Fund" />
             ))}
           </div>
         </Popover>
@@ -65,7 +79,10 @@ class DashboardChartAssetsContainer extends PureComponent {
 
 const mapStateToProps = state => {
   const { programs, funds } = state.dashboard;
-  return { programsData: programs.itemsData.data, funds: funds.itemsData.data };
+  return {
+    programsData: programs.itemsData.data,
+    fundsData: funds.itemsData.data
+  };
 };
 
 export default compose(translate(), connect(mapStateToProps))(

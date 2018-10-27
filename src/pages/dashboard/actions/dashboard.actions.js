@@ -68,16 +68,9 @@ export const cancelProgramRequest = (auth, id) => {
   };
 };
 
-export const fetchProgramProfitChart = (programId, chartFilter) => {
+export const dashboardChart = assetChart => {
   return {
     type: DASHBOARD_ASSET_CHART,
-    payload: programsApi.v10ProgramsByIdChartsProfitGet(programId, chartFilter)
-  };
-};
-
-export const fetchFundProfitChart = (fundId, chartFilter) => {
-  return {
-    type: DASHBOARD_ASSET_CHART,
-    payload: fundsApi.v10FundsByIdChartsProfitGet(fundId, chartFilter)
+    payload: assetChart
   };
 };

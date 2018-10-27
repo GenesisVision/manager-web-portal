@@ -46,6 +46,12 @@
     }
   }
 
+  &__header {
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: $text-color;
+  }
+
   &__title {
     font-weight: bold;
     line-height: 22px;
