@@ -88,7 +88,7 @@ class ProgramCard extends Component {
             >
               <div className="popover-list">
                 {program.personalDetails &&
-                  program.personalDetails.isInvested && (
+                  program.personalDetails.isOwnProgram && (
                     <GVButton
                       variant="text"
                       color="secondary"
