@@ -5,6 +5,8 @@ export const DASHBOARD_PORTFOLIO_EVENTS = "DASHBOARD_PORTFOLIO_EVENTS";
 export const DASHBOARD_IN_REQUESTS = "DASHBOARD_IN_REQUESTS";
 export const DASHBOARD_PROGRAMS = "DASHBOARD_PROGRAMS";
 export const DASHBOARD_PROGRAMS_FILTERS = "DASHBOARD_PROGRAMS_FILTERS";
+export const DASHBOARD_FUNDS = "DASHBOARD_FUNDS";
+export const DASHBOARD_FUNDS_FILTERS = "DASHBOARD_FUNDS_FILTERS";
 export const DASHBOARD_CANCEL_FUND_REQUESTS = "DASHBOARD_CANCEL_FUND_REQUESTS";
 export const DASHBOARD_CANCEL_PROGRAM_REQUESTS =
   "DASHBOARD_CANCEL_PROGRAM_REQUESTS";
@@ -32,6 +34,18 @@ export const fetchDashboardPrograms = (auth, filters) => {
 
 export const updateDashboardProgramsFilters = filters => ({
   type: DASHBOARD_PROGRAMS_FILTERS,
+  payload: filters
+});
+
+export const fetchDashboardFunds = (auth, filters) => {
+  return {
+    type: DASHBOARD_FUNDS,
+    payload: managerApi.v10ManagerFundsGet(auth, filters)
+  };
+};
+
+export const updateDashboardFundsFilters = filters => ({
+  type: DASHBOARD_FUNDS_FILTERS,
   payload: filters
 });
 
