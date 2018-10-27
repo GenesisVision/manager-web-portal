@@ -52,7 +52,7 @@ class ProgramDetailsInvestment extends PureComponent {
 
               <NumberFormat
                 value={formatValue(investedAmount)}
-                suffix={" GVT"}
+                suffix={` ${balanceCurrency}`}
                 displayType="text"
               />
             </div>
