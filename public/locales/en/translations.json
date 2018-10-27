@@ -420,6 +420,8 @@
     "pending-tooltip": "The program is being created.",
     "portfolio": "Portfolio",
     "favorite-programs": "Favorite programs",
+    "create-program-text": "Do not have any programs yet",
+    "create-fund-text": "Do not have any fund yet",
     "portfolio-events": {
       "title": "Portfolio Events",
       "see-all-button": "See All",
