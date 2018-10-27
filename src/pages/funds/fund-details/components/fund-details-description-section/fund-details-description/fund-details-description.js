@@ -7,7 +7,7 @@ import FundDepositContainer from "modules/fund-deposit/fund-deposit-container";
 import ProgramReinvestingWidget from "modules/program-reinvesting/components/program-reinvesting-widget";
 import { FUND_NOTIFICATIONS_ROUTE } from "pages/notifications/notifications.routes";
 import { FundDetailContext } from "pages/funds/fund-details/fund-details.page";
-import React, { PureComponent } from "react";
+import React, { Fragment, PureComponent } from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import replaceParams from "utils/replace-params";
@@ -123,43 +123,33 @@ class FundDetailsDescription extends PureComponent {
               </div>
             </div>
             {isOwnProgram && (
-              <div className="fund-details-description__invest-button-container">
-                <GVButton
-                  className="fund-details-description__invest-btn"
-                  onClick={this.handleOpenInvestmentPopup}
-                >
-                  {t("fund-details-page.description.invest")}
-                </GVButton>
-                <FundDetailContext.Consumer>
-                  {({ updateDetails }) => (
-                    <FundDepositContainer
-                      open={isOpenInvestmentPopup}
-                      id={fundDescription.id}
-                      type={"fund"}
-                      onClose={this.handleCloseInvestmentPopup}
-                      onInvest={updateDetails}
-                    />
-                  )}
-                </FundDetailContext.Consumer>
-                {isInvested && (
-                  <ProgramReinvestingWidget
-                    className="fund-details-description__reinvest"
-                    toggleReinvesting={onReinvestingClick}
-                    isReinvesting={
-                      fundDescription.personalFundDetails.isReinvest
-                    }
-                    disabled={isReinvestPending}
-                  />
-                )}
-              </div>
-            )}
-            {isInvested && (
-              <FundDetailsInvestment
-                className={"fund-details-description__your-investment"}
-                programCurrency={fundDescription.currency}
-                {...composeInvestmentData(fundDescription)}
-                onChangeInvestmentStatus={onChangeInvestmentStatus}
-              />
+              <Fragment>
+                <div className="fund-details-description__invest-button-container">
+                  <GVButton
+                    className="fund-details-description__invest-btn"
+                    onClick={this.handleOpenInvestmentPopup}
+                  >
+                    {t("fund-details-page.description.invest")}
+                  </GVButton>
+                  <FundDetailContext.Consumer>
+                    {({ updateDetails }) => (
+                      <FundDepositContainer
+                        open={isOpenInvestmentPopup}
+                        id={fundDescription.id}
+                        type={"fund"}
+                        onClose={this.handleCloseInvestmentPopup}
+                        onInvest={updateDetails}
+                      />
+                    )}
+                  </FundDetailContext.Consumer>
+                </div>
+                <FundDetailsInvestment
+                  className={"fund-details-description__your-investment"}
+                  programCurrency={fundDescription.currency}
+                  {...composeInvestmentData(fundDescription)}
+                  onChangeInvestmentStatus={onChangeInvestmentStatus}
+                />
+              </Fragment>
             )}
           </div>
         </div>
