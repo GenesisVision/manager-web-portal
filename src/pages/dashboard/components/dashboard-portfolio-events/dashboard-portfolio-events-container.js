@@ -24,7 +24,8 @@ class DashboardPortfolioEventsContainer extends Component {
           events={data.events}
           fullEventsUrl={DASHBOARD_EVENTS_ROUTE}
         />
-      )) || <div className="dashboard__empty-events">There are no items.</div>
+      )) ||
+      this.emptyEvents()
     );
   };
   render() {
@@ -32,9 +33,9 @@ class DashboardPortfolioEventsContainer extends Component {
 
     return (
       <Surface className="dashboard-portfolio-events">
-        <h2 className="dashboard-portfolio-events__title">
+        <div className="dashboard-portfolio-events__title">
           {t("dashboard.portfolio-events.title")}
-        </h2>
+        </div>
         {this.renderEvents()}
       </Surface>
     );
