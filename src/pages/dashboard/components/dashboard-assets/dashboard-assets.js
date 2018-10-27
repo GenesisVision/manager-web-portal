@@ -33,18 +33,28 @@ class DashboardAssets extends Component {
         <div className="dashboard-assets">
           {tab === "programs" && (
             <DashboardPrograms
-              createButton={createButton(
+              createButtonToolbar={createButtonToolbar(
                 t("buttons.create-program"),
                 CREATE_PROGRAM_PAGE_ROUTE
               )}
+              createButtonBody={createButtonBody(
+                t("buttons.create-program"),
+                CREATE_PROGRAM_PAGE_ROUTE
+              )}
+              createText={t("dashboard.create-program-text")}
             />
           )}
           {tab === "funds" && (
             <DashboardFunds
-              createButton={createButton(
+              createButtonToolbar={createButtonToolbar(
                 t("buttons.create-fund"),
                 CREATE_FUND_PAGE_ROUTE
               )}
+              createButtonBody={createButtonBody(
+                t("buttons.create-fund"),
+                CREATE_FUND_PAGE_ROUTE
+              )}
+              createText={t("dashboard.create-fund-text")}
             />
           )}
         </div>
@@ -52,7 +62,8 @@ class DashboardAssets extends Component {
     );
   }
 }
-const createButton = (text, route) => (
+
+const createButtonToolbar = (text, route) => (
   <div className="dashboard__button-container">
     <Link to={route} className="dashboard__button">
       <GVButton color="primary" variant="text">
@@ -60,6 +71,12 @@ const createButton = (text, route) => (
       </GVButton>
     </Link>
   </div>
+);
+
+const createButtonBody = (text, route) => (
+  <Link to={route} className="dashboard__body-button">
+    <GVButton color="primary">{text}</GVButton>
+  </Link>
 );
 
 export default translate()(DashboardAssets);

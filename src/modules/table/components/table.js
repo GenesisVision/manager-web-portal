@@ -37,7 +37,7 @@ class Table extends Component {
           updateSorting={this.props.updateSorting}
           renderHeader={this.props.renderHeader}
           isViewSwitchEnabled={this.isViewSwitchEnabled}
-          createButton={this.props.createButton}
+          createButtonToolbar={this.props.createButtonToolbar}
         />
         <Scrollbars autoHeight autoHeightMax={14000}>
           {view === CARDS_VIEW && (
@@ -46,6 +46,8 @@ class Table extends Component {
                 items={this.props.items}
                 className="programs-cards"
                 tag="div"
+                createButtonBody={this.props.createButtonBody}
+                createText={this.props.createText}
               >
                 {this.props.renderBodyCard}
               </TableBody>
@@ -64,6 +66,8 @@ class Table extends Component {
                 items={this.props.items}
                 className="table__body"
                 tag="tbody"
+                createButtonBody={this.props.createButtonBody}
+                createText={this.props.createText}
               >
                 {this.props.renderBodyRow}
               </TableBody>
