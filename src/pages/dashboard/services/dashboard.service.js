@@ -7,3 +7,18 @@ export const getPortfolioEvents = () => (dispatch, getState) => {
 
   dispatch(actions.fetchPortfolioEvents(authorization, { take: 5 }));
 };
+
+export const getAssetChart = (assetId, assetType) => (dispatch, getState) => {
+  const { currency } = getState().accountSettings;
+  const chartFilter = {
+    currency,
+    // dateFrom: period.start,
+    // dateTo: period.end,
+    maxPointCount: 100
+  };
+  if (assetType === "Program") {
+    dispatch(actions.fetchProgramProfitChart(assetId, chartFilter));
+  } else {
+    dispatch(actions.fetchFundProfitChart(assetId, chartFilter));
+  }
+};
