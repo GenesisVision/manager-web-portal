@@ -36,7 +36,7 @@ export const composeProgramDetailsUrl = slugUrl =>
 class DashboardPrograms extends Component {
   fetchPrograms = filters => {
     return getDashboardPrograms(filters).then(({ data }) => {
-      return { items: [], total: data.total };
+      return { items: data.programs, total: data.total };
     });
   };
 
