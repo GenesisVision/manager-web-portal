@@ -142,16 +142,6 @@ class FundDetailsDescription extends PureComponent {
                       />
                     )}
                   </FundDetailContext.Consumer>
-                  {isInvested && (
-                    <ProgramReinvestingWidget
-                      className="fund-details-description__reinvest"
-                      toggleReinvesting={onReinvestingClick}
-                      isReinvesting={
-                        fundDescription.personalFundDetails.isReinvest
-                      }
-                      disabled={isReinvestPending}
-                    />
-                  )}
                 </div>
                 <FundDetailsInvestment
                   className={"fund-details-description__your-investment"}
