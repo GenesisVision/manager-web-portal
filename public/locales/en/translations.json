@@ -227,7 +227,8 @@
     "minute_plural": "minutes",
     "second": "second",
     "second_plural": "seconds",
-    "period-is-over": "The period is over.",
+    "waiting-period-start": "Waiting for the period start",
+    "period-is-over": "The period is over",
     "time-left": "Time left",
     "period-ends": "Period ends",
     "left": "left"
@@ -517,20 +518,6 @@
       "amount-is-required": "Amount is required.",
       "amount-min-value": "Min amount is {{min}} GVT"
     }
-  },
-  "program-period": {
-    "day": "day",
-    "day_plural": "days",
-    "hour": "hour",
-    "hour_plural": "hours",
-    "minute": "minute",
-    "minute_plural": "minutes",
-    "second": "second",
-    "second_plural": "seconds",
-    "period-is-over": "The period is over.",
-    "time-left": "Time left",
-    "period-ends": "Period ends",
-    "left": "left"
   },
   "withdraw-program": {
     "header": "Withdraw",
