@@ -25,13 +25,13 @@ class DashboardPortfolioEventsContainer extends Component {
           {t("dashboard.portfolio-events.empty-events.text")}
         </div>
         <div className="dashboard__empty-events-item dashboard__empty-events-item--secondary">
-          <EvenLogoIcon type={EventLogoType.ended} />
+          <EvenLogoIcon type={EventLogoType.endedRed} />
           <div className="dashboard__empty-events-item-label">
             {t("dashboard.portfolio-events.empty-events.finished")}
           </div>
         </div>
         <div className="dashboard__empty-events-item">
-          <EvenLogoIcon type={EventLogoType.ended} />
+          <EvenLogoIcon type={EventLogoType.started} />
           <div className="dashboard__empty-events-item-label">
             {t("dashboard.portfolio-events.empty-events.started")}
           </div>
@@ -49,7 +49,7 @@ class DashboardPortfolioEventsContainer extends Component {
           </div>
         </div>
         <div className="dashboard__empty-events-item">
-          <EvenLogoIcon type={EventLogoType.cancelled} />
+          <EvenLogoIcon type={EventLogoType.cancelledRed} />
           <div className="dashboard__empty-events-item-label">
             {t("dashboard.portfolio-events.empty-events.interrupted")}
           </div>
