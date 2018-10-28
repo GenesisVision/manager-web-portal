@@ -1,6 +1,5 @@
 import { fetchProfileHeaderInfo } from "modules/header/actions/header-actions";
 import {
-  fetchDepositFundInfoById,
   fetchDepositProgramInfoById,
   investToProgramById
 } from "modules/program-deposit/actions/program-deposit.actions";
