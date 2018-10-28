@@ -15,12 +15,14 @@ class CurrencySelectContainer extends Component {
   };
   render() {
     return (
-      <CurrencySelect
-        className={classnames("currency-select", this.props.className)}
-        value={this.props.currency}
-        onChange={this.handleChange}
-        currencyValues={this.props.currencyValues}
-      />
+      this.props.currencyValues && (
+        <CurrencySelect
+          className={classnames("currency-select", this.props.className)}
+          value={this.props.currency}
+          onChange={this.handleChange}
+          currencyValues={this.props.currencyValues}
+        />
+      )
     );
   }
 }
@@ -36,7 +38,10 @@ CurrencySelectContainer.defaultProps = {
   currencyValues: HEADER_CURRENCY_VALUES
 };
 
-const mapStateToProps = ({ accountSettings }) => ({
+const mapStateToProps = ({ accountSettings, platformData }) => ({
+  currencyValues: platformData.settings.data
+    ? platformData.settings.data.currencies
+    : null,
   currency: accountSettings.currency
 });
 
