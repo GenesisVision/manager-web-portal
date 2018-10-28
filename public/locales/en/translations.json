@@ -420,6 +420,8 @@
     "pending-tooltip": "The program is being created.",
     "portfolio": "Portfolio",
     "favorite-programs": "Favorite programs",
+    "create-program-text": "Do not have any programs yet",
+    "create-fund-text": "Do not have any fund yet",
     "portfolio-events": {
       "title": "Portfolio Events",
       "see-all-button": "See All",
@@ -729,6 +731,9 @@
       "select-broker": "Select broker",
       "settings": "Settings"
     },
+    "broker-card": {
+      "coming-soon": "Coming soon"
+    },
     "broker-info": {
       "about": "About",
       "terms": "Terms",
@@ -742,12 +747,17 @@
       "deposit-details": "Deposit details",
       "fields": {
         "name": "Name",
+        "name-requirements": "Requirement from 4 to 20 symbols",
         "account-type": "Account type",
         "currency": "Currency",
         "description": "Description",
         "description-requirements": "Requirement from 20 to 500 symbols",
         "brokers-leverage": "Broker's leverage",
         "period": "Period",
+        "period-option-notation": {
+          "day": "Day",
+          "day_plural": "Days"
+        },
         "upload-logo": "Upload program logo",
         "upload-logo-rules": "At least 300 x 300px PNG or JPG file",
         "entry-fee": "Entry fee",
@@ -755,9 +765,19 @@
         "deposit-amount": "Deposit amount",
         "available-in-wallet": "Available in wallet"
       },
+      "hints": {
+        "success-fee": "Description about success fee is here",
+        "success-fee-description":
+          "A success fee is paid to a manager at the end of the reporting period for successfully closing the period at a profit.",
+        "entry-fee": "Description about entry fee is here",
+        "entry-fee-description":
+          "An entry fee is a fee charged to investors upon their investment to an investment program or a GV Fund."
+      },
       "validation": {
         "title-required": "Title is required",
         "title-is-long": "Title is too long",
+        "title-is-short": "Title is too short",
+        "title-is-latin-and-numbers": "Latin letters and numbers only.",
         "description-is-long": "Description is too long",
         "description-is-short": "Description is too short",
         "description-required": "Description is required",
@@ -965,11 +985,10 @@
     "title": "Add funds",
     "select-currency": "Select a wallet currency",
     "will-send": "You will send",
-    "will-get": "You'll get",
+    "will-get": "Approximate amount",
     "will-get-gvt": "You will get",
     "deposit-address": "Deposit address",
-    "copy-to-clipboard-success":
-      "Your wallet-pane number was copied to the clipboard successfully.",
+    "copy-to-clipboard-success": "Address is copied to the clipboard.",
     "copy-to-clipboard-error": "Failed to copy data to the clipboard.",
     "disclaimer":
       "After processing the {{currency}} transaction, your transferred funds will be converted to GVT, according to the current market price. The exact amount of GVT received will be determined at the time of conversion in the market."
@@ -983,16 +1002,28 @@
     "withdraw": "Withdraw",
     "transactions": {
       "date": "Date",
-      "type": "Type",
-      "amount": "Amount"
+      "information": "Information",
+      "status": "Status",
+      "amount": "Amount",
+      "actions": "Actions"
     },
-    "transactions-types": {
-      "wallet": "Wallet",
-      "program": "Program",
-      "fund": "Fund",
-      "program-request": "Program request",
-      "withdrawal-request": "Withdrawal request",
-      "payment-transaction": "Payment transaction"
+    "transaction-actions": {
+      "resend-email": "Resend confirmation email",
+      "cancel-request": "Cancel request"
+    },
+    "transaction-statuses": {
+      "Done": "Completed",
+      "InProcess": "Processing",
+      "New": "New",
+      "Error": "Error",
+      "Rejected": "Rejected",
+      "Cancelled": "Cancelled"
+    },
+    "alert-messages": {
+      "resend-email-success":
+        "A withdrawal confirmation letter has just been resent to your email address.",
+      "cancel-request-success":
+        "The withdrawal request was successfully canceled"
     }
   },
   "wallet-withdraw": {

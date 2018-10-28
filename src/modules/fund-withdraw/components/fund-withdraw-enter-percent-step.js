@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
-import { convertToCurrency } from "utils/currency-converter";
+import { calculateValueOfEntryFee } from "utils/currency-converter";
 import { formatValue } from "utils/formatter";
 
 const FundWithdrawEnterPercentStep = props => {
@@ -20,6 +20,16 @@ const FundWithdrawEnterPercentStep = props => {
         InputComponent={NumberFormat}
         allowNegative={false}
       />
+      <div className="invest-popup__currency">
+        <NumberFormat
+          value={formatValue(
+            calculateValueOfEntryFee(props.availableToWithdraw, props.percent)
+          )}
+          prefix="&asymp; "
+          suffix={` GVT`}
+          displayType="text"
+        />
+      </div>
       <div className="dialog__buttons">
         <GVButton
           onClick={props.onClick}

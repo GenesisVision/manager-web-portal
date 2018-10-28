@@ -46,10 +46,12 @@ class DashboardPrograms extends Component {
   };
 
   render() {
-    const { t, createButton } = this.props;
+    const { t, createButtonToolbar, createButtonBody, createText } = this.props;
     return (
       <TableContainer
-        createButton={createButton}
+        createButtonToolbar={createButtonToolbar}
+        createButtonBody={createButtonBody}
+        createText={createText}
         getItems={getDashboardPrograms}
         getStorePlace={this.getDashboardProgramsPlace}
         isFetchOnMount={false}
@@ -65,7 +67,11 @@ class DashboardPrograms extends Component {
           </Fragment>
         )}
         renderHeader={column => (
-          <span className={`dashboard-programs__cell--${column.name}`}>
+          <span
+            className={`dashboard-programs__cell dashboard-programs__cell--${
+              column.name
+            }`}
+          >
             {t(`dashboard-page.programs-header.${column.name}`)}
           </span>
         )}

@@ -7,9 +7,27 @@ import { updateFilter } from "../helpers/filtering.helpers";
 import Table from "./table";
 
 class TableContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    const { paging, sorting, filtering } = this.props;
+
+    this.state.defaultFilters = { paging, sorting, filtering };
+  }
+
+  state = {
+    defaultFilters: null
+  };
+
   componentDidMount() {
     if (this.props.isFetchOnMount) {
       this.updateItems();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.isResetToDefaultOnUnmount) {
+      this.props.updateFilters(this.state.defaultFilters);
     }
   }
 
@@ -74,7 +92,6 @@ class TableContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   let storePlace = ownProps.getStorePlace(state);
-  var t = storePlace;
   const {
     itemsData = { isPending: false, data: { items: [] } },
     filters
@@ -90,8 +107,8 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, { getItems }) => ({
-  ...bindActionCreators({ getItems }, dispatch)
+const mapDispatchToProps = (dispatch, { getItems, updateFilters }) => ({
+  ...bindActionCreators({ getItems, updateFilters }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableContainer);

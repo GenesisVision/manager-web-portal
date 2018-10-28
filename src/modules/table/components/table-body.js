@@ -1,15 +1,43 @@
+import { ChartIcon } from "components/icon/chart-icon";
 import React, { Fragment } from "react";
 
-const TableBody = ({ items, children, tag: Tag, className }) => {
+const TableBody = ({
+  t,
+  items,
+  children,
+  tag: Tag,
+  className,
+  createButtonBody,
+  createText
+}) => {
+  const createAsset = (createButtonBody, createText) => {
+    return (
+      <div className="create-asset">
+        <div className="create-asset__create-icon">
+          <ChartIcon />
+        </div>
+        <div className="create-asset__text">{createText}</div>
+        <div className="create-asset__button">{createButtonBody}</div>
+      </div>
+    );
+  };
   const setMessage = message => {
     return Tag === "tbody" ? (
       <tr>
         <td colSpan="11">
-          <div className="message">{message}</div>
+          {(createButtonBody &&
+            message !== "Loading..." &&
+            createAsset(createButtonBody, createText)) || (
+            <div className="message">{message}</div>
+          )}
         </td>
       </tr>
     ) : (
-      <div className="message">{message}</div>
+      (createButtonBody &&
+        message !== "Loading..." &&
+        createAsset(createButtonBody, createText)) || (
+        <div className="message">{message}</div>
+      )
     );
   };
   const renderItems = () => {

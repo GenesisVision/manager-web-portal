@@ -16,7 +16,8 @@ class CreateProgramContainer extends Component {
     choosedBroker: null,
     brokers: null,
     isPending: true,
-    isNavigationDialogVisible: false
+    isNavigationDialogVisible: false,
+    isLeverageChooseAvailable: false
   };
 
   componentDidMount() {
@@ -60,22 +61,29 @@ class CreateProgramContainer extends Component {
     );
   };
 
+  setLeverageChooseAvailable = isAvailable => {
+    this.setState({ isLeverageChooseAvailable: isAvailable });
+  };
+
   render() {
     const {
       tab,
       choosedBroker,
       isPending,
       brokers,
-      isNavigationDialogVisible
+      isNavigationDialogVisible,
+      isLeverageChooseAvailable
     } = this.state;
     const {
       navigateToSettings,
       navigateToBroker,
       confirmNavigateToBroker,
       chooseBroker,
-      handleSubmit
+      handleSubmit,
+      setLeverageChooseAvailable
     } = this;
-    const { t, headerData, service } = this.props;
+    const { t, headerData, service, platformSettings } = this.props;
+    if (!platformSettings) return null;
     return (
       <div className="create-program-container">
         <GVTabs value={tab}>
@@ -106,6 +114,9 @@ class CreateProgramContainer extends Component {
                 updateBalance={service.fetchBalance}
                 onSubmit={handleSubmit}
                 author={headerData.name}
+                setLeverageChooseAvailable={setLeverageChooseAvailable}
+                isLeverageChooseAvailable={isLeverageChooseAvailable}
+                programsInfo={platformSettings.programsInfo}
               />
             )}
             <CreateProgramNavigationDialog
@@ -123,7 +134,8 @@ class CreateProgramContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  headerData: state.profileHeader.info.data
+  headerData: state.profileHeader.info.data,
+  platformSettings: state.platformData.settings.data
 });
 
 const mapDispatchToProps = dispatch => {

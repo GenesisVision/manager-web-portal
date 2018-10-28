@@ -1,7 +1,6 @@
 import { withFormik } from "formik";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { translate } from "react-i18next";
 import { compose } from "redux";
 import { number, object } from "yup";
 
@@ -23,7 +22,6 @@ class FundWithdrawForm extends Component {
   };
   render() {
     const {
-      t,
       values,
       disabled,
       handleSubmit,
@@ -31,7 +29,8 @@ class FundWithdrawForm extends Component {
       rate,
       availableToWithdraw,
       periodEnds,
-      currency,
+      fundCurrency,
+      accountCurrency,
       errors
     } = this.props;
     return (
@@ -44,7 +43,8 @@ class FundWithdrawForm extends Component {
           <FundWithdrawEnterPercentStep
             percent={values.percent}
             rate={rate}
-            currency={currency}
+            fundCurrency={fundCurrency}
+            accountCurrency={accountCurrency}
             availableToWithdraw={availableToWithdraw}
             onClick={this.goToConfirmStep}
             disabled={errors.percent !== undefined}
@@ -59,7 +59,6 @@ class FundWithdrawForm extends Component {
             disabled={disabled}
           />
         )}
-        <div className="dialog__info">{t("withdraw-fund.info")}</div>
       </form>
     );
   }
@@ -74,13 +73,12 @@ FundWithdrawForm.propTypes = {
 };
 
 export default compose(
-  translate(),
   withFormik({
     displayName: "withdraw-form",
     mapPropsToValues: () => ({
       percent: ""
     }),
-    validationSchema: ({ t, availableToWithdraw }) =>
+    validationSchema: ({ t }) =>
       object().shape({
         percent: number()
           .min(0)

@@ -35,27 +35,41 @@ class DashboardAssets extends Component {
     const { tab } = this.state;
     const { t } = this.props;
     return (
-      <Surface className="dashboard-assets-container">
-        <div className="dashboard-assets-container__title">Assets</div>
-        <GVTabs value={tab} onChange={this.handleTabChange}>
-          <GVTab value={"programs"} label="Programs" />
-          <GVTab value={"funds"} label="Funds" />
-        </GVTabs>
+      <Surface className="dashboard-assets">
+        <div className="dashboard-assets__head">
+          <div className="dashboard-assets__title">Assets</div>
+          <div className="dashboard-assets__tabs">
+            <GVTabs value={tab} onChange={this.handleTabChange}>
+              <GVTab value={"programs"} label="Programs" />
+              <GVTab value={"funds"} label="Funds" />
+            </GVTabs>
+          </div>
+        </div>
         <div className="dashboard-assets">
           {tab === "programs" && (
             <DashboardPrograms
-              createButton={createButton(
+              createButtonToolbar={createButtonToolbar(
                 t("buttons.create-program"),
                 CREATE_PROGRAM_PAGE_ROUTE
               )}
+              createButtonBody={createButtonBody(
+                t("buttons.create-program"),
+                CREATE_PROGRAM_PAGE_ROUTE
+              )}
+              createText={t("dashboard.create-program-text")}
             />
           )}
           {tab === "funds" && (
             <DashboardFunds
-              createButton={createButton(
+              createButtonToolbar={createButtonToolbar(
                 t("buttons.create-fund"),
                 CREATE_FUND_PAGE_ROUTE
               )}
+              createButtonBody={createButtonBody(
+                t("buttons.create-fund"),
+                CREATE_FUND_PAGE_ROUTE
+              )}
+              createText={t("dashboard.create-fund-text")}
             />
           )}
         </div>
@@ -63,7 +77,8 @@ class DashboardAssets extends Component {
     );
   }
 }
-const createButton = (text, route) => (
+
+const createButtonToolbar = (text, route) => (
   <div className="dashboard__button-container">
     <Link to={route} className="dashboard__button">
       <GVButton color="primary" variant="text">
@@ -71,6 +86,12 @@ const createButton = (text, route) => (
       </GVButton>
     </Link>
   </div>
+);
+
+const createButtonBody = (text, route) => (
+  <Link to={route} className="dashboard__body-button">
+    <GVButton color="primary">{text}</GVButton>
+  </Link>
 );
 
 const mapDispatchToProps = dispatch => ({
