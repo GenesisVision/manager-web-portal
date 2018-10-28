@@ -2,9 +2,9 @@
 @import "styles/_breakpoint.scss";
 
 .dashboard-assets {
-  padding-top: $padding-middle-mobile;
+  padding: $padding-middle-mobile 0;
   @include media-breakpoint-landscape-phone() {
-    padding-top: $padding-middle;
+    padding: $padding-middle 0;
   }
   &__head {
     padding-left: $padding-middle-mobile;
