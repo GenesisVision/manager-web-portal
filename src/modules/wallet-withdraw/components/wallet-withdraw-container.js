@@ -37,6 +37,7 @@ class WalletWithdrawContainer extends Component {
     if (!this.state.data) return null;
     const { isPending, data, errorMessage, success } = this.state;
     const { wallets, availableToWithdrawal } = data;
+    const { twoFactorEnabled } = this.props;
 
     return success ? (
       <WalletWithdrawRequest />
@@ -47,6 +48,7 @@ class WalletWithdrawContainer extends Component {
         disabled={isPending}
         errorMessage={errorMessage}
         onSubmit={this.handleSubmit}
+        twoFactorEnabled={twoFactorEnabled}
       />
     );
   }
