@@ -37,15 +37,6 @@ export const WALLET_TRANSACTIONS_DEFAULT_FILTERING = {
   txAction: undefined
 };
 
-export const WALLET_TRANSACTIONS_TYPES_ENUM = {
-  Wallet: "wallet",
-  Program: "program",
-  Fund: "fund",
-  ProgramRequest: "program-request",
-  WithdrawalRequest: "withdrawal-request",
-  PaymentTransaction: "payment-transaction"
-};
-
 export const WALLET_TRANSACTION_ACTIONS_VALUES = [
   { value: undefined, label: "All" },
   { value: "Transfer", label: "Transfer" },

@@ -1,5 +1,5 @@
+import chartXAxis from "components/chart/chart-components/chart-xaxis";
 import { GVColors } from "gv-react-components";
-import moment from "moment";
 import React, { PureComponent } from "react";
 import {
   Area,
@@ -7,7 +7,6 @@ import {
   CartesianGrid,
   ResponsiveContainer,
   Tooltip,
-  XAxis,
   YAxis
 } from "recharts";
 
@@ -24,15 +23,10 @@ class ProgramBalanceChart extends PureComponent {
     return (
       <ResponsiveContainer>
         <AreaChart data={chart}>
-          <XAxis
-            dataKey="date"
-            domain={["dataMin", "dataMax"]}
-            type="number"
-            tick={{ fill: GVColors.$labelColor, fontSize: "12" }}
-            tickFormatter={(date, i) => moment(date).format("ll")}
-            allowDuplicatedCategory={false}
-            axisLine={false}
-          />
+          {chartXAxis(
+            balanceChart[0].date,
+            balanceChart[balanceChart.length - 1].date
+          )}
           <YAxis
             axisLine={false}
             orientation="right"
@@ -52,6 +46,7 @@ class ProgramBalanceChart extends PureComponent {
             dot={false}
             unit={currency}
             stackId="1"
+            isAnimationActive={false}
           />
           <Area
             dataKey="investorsFunds"
@@ -63,6 +58,7 @@ class ProgramBalanceChart extends PureComponent {
             dot={false}
             unit={currency}
             stackId="1"
+            isAnimationActive={false}
           />
           <Area
             dataKey="profit"
@@ -74,6 +70,7 @@ class ProgramBalanceChart extends PureComponent {
             dot={false}
             unit={currency}
             stackId="1"
+            isAnimationActive={false}
           />
           <Tooltip content={ProgramBalanceTooltip} />
         </AreaChart>

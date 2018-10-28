@@ -44,7 +44,7 @@ class ProgramsFacetContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  const { data } = state.platformData;
+  const { data } = state.platformData.settings;
   let facets = null;
   if (data) facets = data.programsFacets;
   return { facets };

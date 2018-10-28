@@ -1,5 +1,6 @@
 import "./create-program-settings.scss";
 
+import Hint from "components/hint/hint";
 import { RefreshIcon } from "components/icon/refresh-icon";
 import Select from "components/select/select";
 import { Field, withFormik } from "formik";
@@ -21,7 +22,7 @@ import {
   getLeverages,
   percentNumberFormat
 } from "../../helpers/create-program.helpers";
-import { PROGRAM_SETTINGS_PERIOD_VALUES } from "./create-program-settings.constants";
+import AccountTypeField from "../account-type-field/account-type-field";
 import createProgramSettingsValidationSchema from "./create-program-settings.validators";
 import ProgramDefaultImage from "./program-default-image";
 
@@ -37,7 +38,10 @@ class CreateProgramSettings extends React.Component {
       isSubmitting,
       handleSubmit,
       values,
-      setFieldValue
+      setFieldValue,
+      setLeverageChooseAvailable,
+      isLeverageChooseAvailable,
+      programsInfo
     } = this.props;
 
     return (
@@ -61,8 +65,14 @@ class CreateProgramSettings extends React.Component {
                   {t("create-program-page.settings.fields.name-requirements")}
                 </div>
               </div>
-
-              <GVFormikField
+              <AccountTypeField
+                accountTypes={getAccountTypes(broker)}
+                label={t("create-program-page.settings.fields.account-type")}
+                setLeverageChooseAvailable={setLeverageChooseAvailable}
+                setFieldValue={setFieldValue}
+                broker={broker}
+              />
+              {/* <GVFormikField
                 name="accountType"
                 component={GVTextField}
                 label={t("create-program-page.settings.fields.account-type")}
@@ -75,7 +85,7 @@ class CreateProgramSettings extends React.Component {
                     </option>
                   );
                 })}
-              </GVFormikField>
+              </GVFormikField> */}
             </div>
             <div className="create-program-settings__row">
               <GVFormikField
@@ -127,7 +137,8 @@ class CreateProgramSettings extends React.Component {
                   "create-program-page.settings.fields.brokers-leverage"
                 )}
                 InputComponent={Select}
-                disabled={!values["accountType"]}
+                disabled={!values["accountType"] || !isLeverageChooseAvailable}
+                className="create-program-settings__leverage"
               >
                 {getLeverages(broker, values["accountType"]).map(leverage => {
                   return (
@@ -143,10 +154,15 @@ class CreateProgramSettings extends React.Component {
                 label={t("create-program-page.settings.fields.period")}
                 InputComponent={Select}
               >
-                {PROGRAM_SETTINGS_PERIOD_VALUES.map(period => {
+                {programsInfo.periods.map(period => {
                   return (
                     <option value={period.toString()} key={period}>
-                      {period + (period === 1 ? " day" : " days")}
+                      {period +
+                        " " +
+                        t(
+                          "create-program-page.settings.fields.period-option-notation.day",
+                          { count: period }
+                        )}
                     </option>
                   );
                 })}
@@ -188,26 +204,46 @@ class CreateProgramSettings extends React.Component {
           </div>
           <div className="create-program-settings__fill-block create-program-settings__fill-block--with-border">
             <div className="create-program-settings__row">
-              <GVFormikField
-                name="entryFee"
-                label={t("create-program-page.settings.fields.entry-fee")}
-                suffix=" %"
-                isAllowed={percentNumberFormat}
-                component={GVTextField}
-                InputComponent={NumberFormat}
-                autoComplete="off"
-                decimalScale={4}
-              />
-              <GVFormikField
-                name="successFee"
-                label={t("create-program-page.settings.fields.success-fee")}
-                suffix=" %"
-                isAllowed={percentNumberFormat}
-                component={GVTextField}
-                InputComponent={NumberFormat}
-                autoComplete="off"
-                decimalScale={4}
-              />
+              <div className="create-program-settings__fee">
+                <GVFormikField
+                  name="entryFee"
+                  label={t("create-program-page.settings.fields.entry-fee")}
+                  suffix=" %"
+                  isAllowed={percentNumberFormat}
+                  component={GVTextField}
+                  InputComponent={NumberFormat}
+                  autoComplete="off"
+                  decimalScale={4}
+                />
+                <Hint
+                  content={t("create-program-page.settings.hints.entry-fee")}
+                  className="create-program-settings__fee-hint"
+                  vertical={"bottom"}
+                  tooltipContent={t(
+                    "create-program-page.settings.hints.entry-fee-description"
+                  )}
+                />
+              </div>
+              <div className="create-program-settings__fee">
+                <GVFormikField
+                  name="successFee"
+                  label={t("create-program-page.settings.fields.success-fee")}
+                  suffix=" %"
+                  isAllowed={percentNumberFormat}
+                  component={GVTextField}
+                  InputComponent={NumberFormat}
+                  autoComplete="off"
+                  decimalScale={4}
+                />
+                <Hint
+                  content={t("create-program-page.settings.hints.success-fee")}
+                  className="create-program-settings__fee-hint"
+                  vertical={"bottom"}
+                  tooltipContent={t(
+                    "create-program-page.settings.hints.success-fee-description"
+                  )}
+                />
+              </div>
             </div>
           </div>
           <div className="create-program-settings__subheading">
@@ -219,7 +255,7 @@ class CreateProgramSettings extends React.Component {
               {t("create-program-page.settings.fields.deposit-amount")}
             </div>
             <div className="create-program-settings__deposit-amount-value">
-              {broker.depositAmount || 100 + " GVT"}
+              {programsInfo.managerProgramInvestment + " GVT"}
             </div>
             <div className="create-program-settings__available-amount">
               {t("create-program-page.settings.fields.available-in-wallet")}

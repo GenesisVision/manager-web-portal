@@ -25,7 +25,7 @@ class FacetCardsContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  const { isPending, data } = state.platformData;
+  const { isPending, data } = state.platformData.settings;
   let facets = null;
   if (data) facets = data.programsFacets;
   return { isPending, facets };

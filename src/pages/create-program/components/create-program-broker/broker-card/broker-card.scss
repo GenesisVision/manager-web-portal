@@ -20,6 +20,63 @@
     background-color: $panel-background-color;
   }
 
+  &--coming-soon {
+    overflow: hidden;
+    cursor: not-allowed;
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.008);
+    }
+  }
+
+  &__coming-soon-text {
+    font-size: 11px;
+    color: $text-color;
+    letter-spacing: 0.14px;
+    font-weight: 600;
+    opacity: 0.3;
+    position: absolute;
+    bottom: 12%;
+    left: 12%;
+  }
+
+  &__logo {
+    width: 70%;
+    height: 30%;
+
+    &--gm {
+      width: 70%;
+      height: 13.4%;
+    }
+  }
+
+  &--coming-soon &__logo {
+    &--okex {
+      width: 61.6%;
+      height: 23%;
+    }
+    &--huobi {
+      width: 70%;
+      height: 17.5%;
+    }
+    &--just2trade {
+      width: 79%;
+      height: 11.6%;
+    }
+    &--roboforex {
+      width: 70%;
+      height: 15%;
+    }
+    &--idex {
+      width: 65.7%;
+      height: 16.2%;
+    }
+  }
+
   &__active-mark {
     display: inline-flex;
     justify-content: center;
@@ -33,11 +90,6 @@
     content: "&#10004;";
     top: -8px;
     right: -8px;
-  }
-
-  & img {
-    width: 80%;
-    height: 60%;
   }
 
   @include media-breakpoint-tablet() {

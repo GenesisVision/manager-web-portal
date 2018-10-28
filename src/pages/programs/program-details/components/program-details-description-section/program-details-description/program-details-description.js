@@ -9,7 +9,7 @@ import AboutLevelsContainerComponent from "pages/app/components/about-levels/abo
 import { composeManagerDetailsUrl } from "pages/manager/manager.page";
 import { PROGRAM_NOTIFICATIONS_ROUTE } from "pages/notifications/notifications.routes";
 import { ProgramDetailContext } from "pages/programs/program-details/program-details.page";
-import React, { PureComponent } from "react";
+import React, { Fragment, PureComponent } from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
@@ -155,7 +155,7 @@ class ProgramDetailsDescription extends PureComponent {
                 <NumberFormat
                   value={formatValue(programDescription.availableInvestment)}
                   displayType="text"
-                  suffix={` ${programDescription.currency}`}
+                  suffix={` GVT`}
                 />
               </div>
               <div className="program-details-description__short-statistic-item">
@@ -180,34 +180,34 @@ class ProgramDetailsDescription extends PureComponent {
               </div>
             </div>
             {isOwnProgram && (
-              <div className="program-details-description__investing-container">
-                <div className="program-details-description__invest-button-container">
-                  <GVButton
-                    className="program-details-description__invest-btn"
-                    onClick={this.handleOpenInvestmentPopup}
-                  >
-                    {t("program-details-page.description.invest")}
-                  </GVButton>
+              <Fragment>
+                <div className="program-details-description__investing-container">
+                  <div className="program-details-description__invest-button-container">
+                    <GVButton
+                      className="program-details-description__invest-btn"
+                      onClick={this.handleOpenInvestmentPopup}
+                    >
+                      {t("program-details-page.description.invest")}
+                    </GVButton>
+                  </div>
+                  {isInvested && (
+                    <ProgramReinvestingWidget
+                      className="program-details-description__reinvest"
+                      toggleReinvesting={onReinvestingClick}
+                      isReinvesting={
+                        programDescription.personalProgramDetails.isReinvest
+                      }
+                      disabled={isReinvestPending}
+                    />
+                  )}
                 </div>
-                {isInvested && (
-                  <ProgramReinvestingWidget
-                    className="program-details-description__reinvest"
-                    toggleReinvesting={onReinvestingClick}
-                    isReinvesting={
-                      programDescription.personalProgramDetails.isReinvest
-                    }
-                    disabled={isReinvestPending}
-                  />
-                )}
-              </div>
-            )}
-            {isInvested && (
-              <ProgramDetailsInvestment
-                className={"program-details-description__your-investment"}
-                programCurrency={programDescription.currency}
-                {...composeInvestmentData(programDescription)}
-                onChangeInvestmentStatus={onChangeInvestmentStatus}
-              />
+                <ProgramDetailsInvestment
+                  className={"program-details-description__your-investment"}
+                  programCurrency={programDescription.currency}
+                  {...composeInvestmentData(programDescription)}
+                  onChangeInvestmentStatus={onChangeInvestmentStatus}
+                />
+              </Fragment>
             )}
             <ProgramDetailContext.Consumer>
               {({ updateDetails }) => (

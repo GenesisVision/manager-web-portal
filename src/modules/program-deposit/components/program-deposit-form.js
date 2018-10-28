@@ -1,17 +1,13 @@
 import { withFormik } from "formik";
 import { GVButton, GVFormikField, GVTextField } from "gv-react-components";
-import moment from "moment";
 import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { compose } from "redux";
-import {
-  calculateValueOfEntryFee,
-  convertToCurrency
-} from "utils/currency-converter";
+import FormError from "shared/components/form/form-error/form-error";
+import { calculateValueOfEntryFee } from "utils/currency-converter";
 import { formatValue } from "utils/formatter";
 import { number, object } from "yup";
-import FormError from "shared/components/form/form-error/form-error";
 
 const ProgramDepositForm = ({
   t,

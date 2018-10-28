@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 import { Fragment } from "react";
 import React from "react";
 import { translate } from "react-i18next";
-import { formatValue } from "utils/formatter";
 import FormError from "shared/components/form/form-error/form-error";
+import { formatValue } from "utils/formatter";
 
 const WithdrawConfirmStep = props => {
   const {
     t,
-    currency,
+    programCurrency,
     amount,
     periodEnds,
     onPrevClick,
@@ -23,7 +23,7 @@ const WithdrawConfirmStep = props => {
         <li className="dialog-list__item">
           {t("withdraw-program.withdrawing")}
           <span className="dialog-list__value">
-            {formatValue(amount)} {currency}
+            {formatValue(amount)} {programCurrency}
           </span>
         </li>
         <li className="dialog-list__item">

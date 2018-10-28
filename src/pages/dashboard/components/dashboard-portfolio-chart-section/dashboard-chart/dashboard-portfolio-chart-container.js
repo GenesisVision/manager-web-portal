@@ -3,92 +3,74 @@ import { DEFAULT_PERIOD } from "components/chart/chart-period/chart-period.helpe
 import React, { Fragment, PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getPortfolioChart } from "../../../services/dashboard-chart.service";
-import DashboardPortfolioChart from "./dashboard-portfolio-chart";
-import DashboardPortfolioChartStat from "./dashboard-portfolio-chart-stat";
 
-const composeBalanceChartData = balanceChart => {
-  const balance = balanceChart.map(x => ({
-    date: x.date.getTime(),
-    balance: x.value
-  }));
-  return balance;
-};
-
-const composeAssetsChartData = assetsChart => {
-  const assets = assetsChart.map(x => {
-    let assetsCount = 0;
-    const newAsset = {
-      date: x.date.getTime(),
-      value: x.value
-    };
-    x.topAssets.forEach(asset => {
-      newAsset[`asset${assetsCount++}`] = {
-        value: asset.value,
-        asset
-      };
-    });
-    if (x.otherAssetsValue) {
-      newAsset[`asset${assetsCount}`] = {
-        value: x.otherAssetsValue.value,
-        asset: {
-          title: "Others",
-          value: x.otherAssetsValue.value,
-          changePercent: x.otherAssetsValue.changePercent,
-          changeValue: x.otherAssetsValue.changeValue
-        }
-      };
-    }
-
-    return newAsset;
-  });
-
-  return assets;
-};
+import FundProfitChart from "../../../../funds/fund-details/components/fund-details-statistic-section/fund-details-chart-section/fund-profit-chart-section/fund-profit-chart";
+import ProgramProfitChart from "../../../../programs/program-details/components/program-details-statistic-section/program-details-chart-section/program-profit-chart-section/program-profit-chart";
+import { getAssetChart } from "../../../services/dashboard.service";
 
 class DashboardPortfolioChartContainer extends PureComponent {
   state = {
     period: DEFAULT_PERIOD
   };
 
-  componentDidMount() {
-    const { period } = this.state;
-    this.props.service.getPortfolioChart(period.start, period.end);
-  }
+  getAssets = () => {
+    const { programsData, fundsData } = this.props;
+
+    if (programsData && fundsData) {
+      return { programs: programsData.programs, funds: fundsData.funds };
+    }
+    return null;
+  };
+
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.currency !== this.props.currency) {
-      this.props.service.getPortfolioChart(
-        this.state.period.start,
-        this.state.period.end
+    const assets = this.getAssets();
+
+    if (!this.props.assetChart && assets !== null) {
+      const { programs, funds } = assets;
+      const asset = programs.length > 0 ? programs[0] : funds[0];
+      this.props.service.getAssetChart(
+        asset.id,
+        asset.title,
+        "Program",
+        this.state.period
       );
     }
   }
 
   handleChangePeriod = period => {
-    this.props.service.getPortfolioChart(period.start, period.end);
+    this.props.service.getAssetChart(
+      this.props.assetChart.id,
+      this.props.assetChart.title,
+      this.props.assetChart.type,
+      period
+    );
     this.setState({ period });
   };
 
   render() {
-    const { data, currency } = this.props;
+    const { assetChart, currency } = this.props;
     const { period } = this.state;
-    if (data === undefined) return null;
+    if (!assetChart || assetChart.isPending) return null;
     return (
       <Fragment>
-        <DashboardPortfolioChartStat
-          currency={currency}
-          value={data.value}
-          valueCurrency={data.valueCurrency}
-          changePercent={data.changePercent}
-          changeValue={data.changeValue}
-          changeValueCurrency={data.changeValueCurrency}
-        />
+        <h2>{assetChart.title}</h2>
         <ChartPeriod period={period} onChange={this.handleChangePeriod} />
         <div className="dashboard-portfolio-chart-section__chart">
-          <DashboardPortfolioChart
-            assets={composeAssetsChartData(data.investedProgramsInfo)}
-            balance={composeBalanceChartData(data.balanceChart)}
-          />
+          {assetChart.type === "Program" && (
+            <ProgramProfitChart
+              equityChart={assetChart.equityChart}
+              pnlChart={assetChart.pnLChart}
+              currency={currency}
+              period={period}
+            />
+          )}
+          {assetChart.type === "Fund" && (
+            <FundProfitChart
+              equityChart={assetChart.equityChart}
+              currency={currency}
+              period={period}
+            />
+          )}
         </div>
       </Fragment>
     );
@@ -96,14 +78,20 @@ class DashboardPortfolioChartContainer extends PureComponent {
 }
 
 const mapStateToProps = state => {
-  const { data, isPending } = state.dashboard.portfolioChartData;
+  const { assetChart } = state.dashboard;
   const { currency } = state.accountSettings;
-  return { data, isPending, currency };
+  const { programs, funds } = state.dashboard;
+  return {
+    assetChart,
+    currency,
+    programsData: programs.itemsData.data,
+    fundsData: funds.itemsData.data
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    service: bindActionCreators({ getPortfolioChart }, dispatch)
+    service: bindActionCreators({ getAssetChart }, dispatch)
   };
 };
 
