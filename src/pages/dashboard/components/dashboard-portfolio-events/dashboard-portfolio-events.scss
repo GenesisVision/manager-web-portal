@@ -8,12 +8,12 @@
     box-sizing: border-box;
   }
   flex: 1;
-  min-height: 683px;
   padding: 0 $padding-middle-mobile;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   @include media-breakpoint-landscape-phone() {
+    min-height: 683px;
     padding: 0 $padding-middle;
   }
 
