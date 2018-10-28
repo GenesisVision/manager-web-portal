@@ -5,8 +5,9 @@ import Popover from "components/popover/popover";
 import React, { PureComponent } from "react";
 import { translate } from "react-i18next";
 import { connect } from "react-redux";
-import { compose } from "redux";
+import { bindActionCreators, compose } from "redux";
 
+import { getAssetChart } from "../../../services/dashboard.service";
 import DashboardChartAsset from "./dashboard-chart-asset";
 
 class DashboardChartAssetsContainer extends PureComponent {
@@ -14,15 +15,12 @@ class DashboardChartAssetsContainer extends PureComponent {
     anchor: null
   };
 
-  componentDidUpdate() {
-    const { chartData } = this.props;
-    if (!chartData || !chartData.isPending) {
-    }
-  }
-
   handleOpenDropdown = event => this.setState({ anchor: event.currentTarget });
   handleCloseDropdown = () => this.setState({ anchor: null });
-
+  handleSelectAsset = (id, title, type) => {
+    this.props.service.getAssetChart(id, title, type);
+    this.handleCloseDropdown();
+  };
   renderActionsIcon = () => {
     return (
       <ActionsCircleIcon
@@ -60,7 +58,12 @@ class DashboardChartAssetsContainer extends PureComponent {
               </div>
             )}
             {programs.map(x => (
-              <DashboardChartAsset key={x.id} chartAsset={x} type="Program" />
+              <DashboardChartAsset
+                key={x.id}
+                chartAsset={x}
+                type="Program"
+                selectAsset={this.handleSelectAsset}
+              />
             ))}
             {hasFunds && (
               <div className="dashboard-chart-assets-popover__header">
@@ -68,7 +71,12 @@ class DashboardChartAssetsContainer extends PureComponent {
               </div>
             )}
             {funds.map(x => (
-              <DashboardChartAsset key={x.id} chartAsset={x} type="Fund" />
+              <DashboardChartAsset
+                key={x.id}
+                chartAsset={x}
+                type="Fund"
+                selectAsset={this.handleSelectAsset}
+              />
             ))}
           </div>
         </Popover>
@@ -85,6 +93,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default compose(translate(), connect(mapStateToProps))(
-  DashboardChartAssetsContainer
-);
+const mapDispatchToProps = dispatch => {
+  return {
+    service: bindActionCreators({ getAssetChart }, dispatch)
+  };
+};
+
+export default compose(
+  translate(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(DashboardChartAssetsContainer);

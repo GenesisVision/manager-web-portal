@@ -4,6 +4,7 @@ import React, { Fragment, PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
+import FundProfitChart from "../../../../funds/fund-details/components/fund-details-statistic-section/fund-details-chart-section/fund-profit-chart-section/fund-profit-chart";
 import ProgramProfitChart from "../../../../programs/program-details/components/program-details-statistic-section/program-details-chart-section/program-profit-chart-section/program-profit-chart";
 import { getAssetChart } from "../../../services/dashboard.service";
 
@@ -25,9 +26,11 @@ class DashboardPortfolioChartContainer extends PureComponent {
     const assets = this.getAssets();
 
     if (!this.props.assetChart && assets !== null) {
+      const { programs, funds } = assets;
+      const asset = programs.length > 0 ? programs[0] : funds[0];
       this.props.service.getAssetChart(
-        assets.programs[0].id,
-        assets.programs[0].title,
+        asset.id,
+        asset.title,
         "Program",
         this.state.period
       );
@@ -53,12 +56,21 @@ class DashboardPortfolioChartContainer extends PureComponent {
         <h2>{assetChart.title}</h2>
         <ChartPeriod period={period} onChange={this.handleChangePeriod} />
         <div className="dashboard-portfolio-chart-section__chart">
-          <ProgramProfitChart
-            equityChart={assetChart.equityChart}
-            pnlChart={assetChart.pnLChart}
-            currency={currency}
-            period={period}
-          />
+          {assetChart.type === "Program" && (
+            <ProgramProfitChart
+              equityChart={assetChart.equityChart}
+              pnlChart={assetChart.pnLChart}
+              currency={currency}
+              period={period}
+            />
+          )}
+          {assetChart.type === "Fund" && (
+            <FundProfitChart
+              equityChart={assetChart.equityChart}
+              currency={currency}
+              period={period}
+            />
+          )}
         </div>
       </Fragment>
     );

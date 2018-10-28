@@ -43,11 +43,13 @@ export const getAssetChart = (
   } else {
     fundsApiProxy
       .v10FundsByIdChartsProfitGet(assetId, chartFilter)
-      .then(data => {
+      .then(({ data }) => {
         dispatch(
           actions.dashboardChart({
             type: assetType,
-            id: assetId
+            id: assetId,
+            title: assetTitle,
+            equityChart: data.equityChart
           })
         );
       });
