@@ -1,13 +1,18 @@
 import "./dashboard-assets.scss";
 
 import Surface from "components/surface/surface";
-import { GVTab, GVTabs } from "gv-react-components";
 import { GVButton } from "gv-react-components";
+import { GVTab, GVTabs } from "gv-react-components";
 import { CREATE_FUND_PAGE_ROUTE } from "pages/create-fund/create-fund.constants";
 import { CREATE_PROGRAM_PAGE_ROUTE } from "pages/create-program/create-program.constants";
 import React, { Component } from "react";
 import { translate } from "react-i18next";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { bindActionCreators, compose } from "redux";
+
+import { getDashboardFunds } from "../../services/dashboard-funds.service";
+import { getDashboardPrograms } from "../../services/dashboard-programs.service";
 import DashboardFunds from "./dashboard-funds/dashboard-funds";
 import DashboardPrograms from "./dashboard-programs/dashboard-programs";
 
@@ -15,6 +20,12 @@ class DashboardAssets extends Component {
   state = {
     tab: "programs"
   };
+
+  componentDidMount() {
+    const { service } = this.props;
+    service.getDashboardFunds();
+    service.getDashboardPrograms();
+  }
 
   handleTabChange = (e, tab) => {
     this.setState({ tab });
@@ -83,4 +94,13 @@ const createButtonBody = (text, route) => (
   </Link>
 );
 
-export default translate()(DashboardAssets);
+const mapDispatchToProps = dispatch => ({
+  service: bindActionCreators(
+    { getDashboardFunds, getDashboardPrograms },
+    dispatch
+  )
+});
+
+export default compose(translate(), connect(null, mapDispatchToProps))(
+  DashboardAssets
+);

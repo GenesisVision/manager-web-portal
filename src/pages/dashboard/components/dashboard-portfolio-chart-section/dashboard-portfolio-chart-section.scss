@@ -16,6 +16,10 @@
     margin-bottom: 20px;
   }
 
+  &__chart {
+    max-height: 500px;
+  }
+
   .dashboard-portfolio-chart-stat {
     &__statistic-item {
       margin-top: 15px;

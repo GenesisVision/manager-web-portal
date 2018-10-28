@@ -4,7 +4,8 @@
 @import "styles/_breakpoint.scss";
 
 .dashboard-portfolio-events {
-  &, & div {
+  &,
+  & div {
     box-sizing: border-box;
   }
   flex: 1;

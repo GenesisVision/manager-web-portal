@@ -88,10 +88,6 @@ const mapDispatchToProps = dispatch => ({
   service: bindActionCreators(walletService, dispatch)
 });
 
-export default compose(
-  translate(),
-  connect(
-    null,
-    mapDispatchToProps
-  )
-)(WalletTransactionActions);
+export default compose(translate(), connect(null, mapDispatchToProps))(
+  WalletTransactionActions
+);

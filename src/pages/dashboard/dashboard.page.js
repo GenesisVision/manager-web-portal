@@ -14,7 +14,7 @@ const DashboardPage = ({ t }) => {
       <div className="dashboard">
         <div className="dashboard__row">
           <div className="dashboard__chart">
-            {/*<DashboardChartSection />*/}
+            <DashboardChartSection />
           </div>
           <div className="dashboard__portfolio-events-aside">
             <DashboardPortfolioEventsContainer />

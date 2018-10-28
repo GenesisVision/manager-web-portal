@@ -47,7 +47,6 @@
     flex-direction: column;
     @include media-breakpoint-landscape-phone() {
       flex-direction: row;
-      padding-left: $padding-middle;
     }
   }
 

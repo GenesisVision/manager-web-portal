@@ -45,11 +45,9 @@ const withTableContainer = (service, getStorePlace) => TableComponent => {
     };
   };
 
-  return connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    mergeProps
-  )(TableContainer);
+  return connect(mapStateToProps, mapDispatchToProps, mergeProps)(
+    TableContainer
+  );
 };
 
 export default withTableContainer;
