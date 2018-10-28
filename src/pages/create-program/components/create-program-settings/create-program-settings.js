@@ -23,7 +23,6 @@ import {
   percentNumberFormat
 } from "../../helpers/create-program.helpers";
 import AccountTypeField from "../account-type-field/account-type-field";
-import { PROGRAM_SETTINGS_PERIOD_VALUES } from "./create-program-settings.constants";
 import createProgramSettingsValidationSchema from "./create-program-settings.validators";
 import ProgramDefaultImage from "./program-default-image";
 

@@ -30,7 +30,6 @@ class FundDetailsInvestment extends PureComponent {
       className,
       fundId,
       investedAmount,
-      balanceAmount,
       balanceCurrency,
       profitPercent,
       status,

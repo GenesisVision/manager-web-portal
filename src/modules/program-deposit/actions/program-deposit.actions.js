@@ -4,7 +4,6 @@ import {
   INVEST_TO_PROGRAM_BY_ID,
   INVEST_TO_PROGRAM_BY_ID_CLEAR
 } from "modules/program-deposit/program-deposit.constants";
-import { investorApiProxy } from "services/api-client/investor-api";
 import { managerApiProxy } from "services/api-client/manager-api";
 import authService from "services/auth-service";
 
