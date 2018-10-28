@@ -1,9 +1,10 @@
+import { formartChartMinValue } from "components/chart/chart-components/chart-components.helpers";
+import chartXAxis from "components/chart/chart-components/chart-xaxis";
 import ProgramChartGradient, {
   gradientOffset
 } from "components/chart/chart-gradient/chart-gradient";
 import { getStrokeColor } from "components/chart/chart-gradient/chart-gradient";
 import { GVColors } from "gv-react-components";
-import moment from "moment";
 import React, { PureComponent } from "react";
 import {
   Area,
@@ -12,95 +13,43 @@ import {
   ComposedChart,
   ResponsiveContainer,
   Tooltip,
-  XAxis,
   YAxis
 } from "recharts";
 
-import { ChartPeriodType } from "../../../../../../../components/chart/chart-period/chart-period.helpers";
 import ProgramProfitTooltip from "./program-profit-tooltip";
-
-const dateTickFormatter = periodType => date => {
-  let dateFormat;
-  switch (periodType) {
-    case ChartPeriodType.day:
-      dateFormat = "LT";
-      break;
-    case ChartPeriodType.week:
-    case ChartPeriodType.month:
-    case ChartPeriodType.quarter:
-      dateFormat = "MMM Do";
-      break;
-    default:
-      dateFormat = "ll";
-  }
-  return moment(date).format(dateFormat);
-};
-
-const composeTicks = (periodStart, periodEnd) => {
-  const diff = (periodEnd - periodStart) / 6;
-  return [...Array(7).keys()].map(x => periodStart + diff * x);
-};
-
-const MIN_CHART_VALUE = 1e-6;
-const formartChartValue = value => {
-  return Math.abs(value) < MIN_CHART_VALUE ? 0 : value;
-};
 
 class ProgramProfitChart extends PureComponent {
   render() {
-    const { equityChart, pnlChart, currency, period } = this.props;
+    const { equityChart, pnlChart, currency } = this.props;
     if (equityChart.length === 0 || pnlChart.length === 0) return null;
     const equity = equityChart.map(x => ({
       date: x.date.getTime(),
-      value: formartChartValue(x.value)
+      value: formartChartMinValue(x.value)
     }));
     const pnl = pnlChart.map(x => ({
       date: x.date.getTime(),
-      value: formartChartValue(x.value)
+      value: formartChartMinValue(x.value)
     }));
     const equityValues = equity.map(x => x.value);
     const off = gradientOffset(equityValues);
-    const areaStrokeColor = getStrokeColor(
-      equityValues,
-      `url(#equityProgramChartStroke)`
-    );
+    const areaStrokeColor = getStrokeColor(equityValues);
 
-    const periodStart = period.start ? period.start.getTime() : equity[0].date;
     return (
       <ResponsiveContainer>
         <ComposedChart data={pnl}>
           <defs>
             <ProgramChartGradient
               offset={off}
-              name="equityProgramChartStroke"
-              positiveColor={GVColors.$positiveColor}
-              negativeColor={GVColors.$negativeColor}
-              startOpacity={1}
-              stopOpacity={1}
-            />
-            <ProgramChartGradient
-              offset={off}
               name="equityProgramChartFill"
-              positiveColor={GVColors.$positiveColor}
-              negativeColor={GVColors.$negativeColor}
+              color={areaStrokeColor}
               startOpacity={0.1}
               stopOpacity={0.01}
             />
           </defs>
-          <XAxis
-            dataKey="date"
-            domain={[periodStart, period.end.getTime()]}
-            type="number"
-            tick={{
-              fill: GVColors.$labelColor,
-              fontSize: "12",
-              transform: "translate(0, 8)"
-            }}
-            tickFormatter={dateTickFormatter(period.type)}
-            allowDuplicatedCategory={false}
-            axisLine={false}
-            ticks={composeTicks(periodStart, period.end.getTime())}
-          />
+          {chartXAxis(
+            equityChart[0].date,
+            equityChart[equityChart.length - 1].date
+          )}
           <YAxis
             yAxisId="left"
             dataKey="value"

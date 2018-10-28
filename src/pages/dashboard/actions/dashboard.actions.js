@@ -1,8 +1,5 @@
 import managerApi, { managerApiProxy } from "services/api-client/manager-api";
 
-import fundsApi from "../../../services/api-client/funds-api";
-import programsApi from "../../../services/api-client/programs-api";
-
 export const DASHBOARD_PORTFOLIO_CHART = "DASHBOARD_PORTFOLIO_CHART";
 export const DASHBOARD_PORTFOLIO_EVENTS = "DASHBOARD_PORTFOLIO_EVENTS";
 export const DASHBOARD_IN_REQUESTS = "DASHBOARD_IN_REQUESTS";

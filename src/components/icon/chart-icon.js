@@ -1,4 +1,3 @@
-import { Icon } from "components/icon/icon";
 import React from "react";
 
 export const ChartIcon = props => {
