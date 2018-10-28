@@ -7,6 +7,7 @@ import React, { PureComponent } from "react";
 import { translate } from "react-i18next";
 import { connect } from "react-redux";
 import { bindActionCreators, compose } from "redux";
+
 import {
   cancelRequest,
   getInRequests
@@ -84,5 +85,8 @@ const mapDispatchToProps = dispatch => {
 
 export default compose(
   translate(),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(DashboardInRequestsContainer);

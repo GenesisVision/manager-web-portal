@@ -1,4 +1,5 @@
 @import "styles/_colors.scss";
+@import "styles/_breakpoint.scss";
 @import "styles/_sizes.scss";
 @import "styles/_breakpoint.scss";
 
@@ -7,21 +8,22 @@
     box-sizing: border-box;
   }
   flex: 1;
-  min-height: 683px;
   padding: 0 $padding-middle-mobile;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   @include media-breakpoint-landscape-phone() {
+    min-height: 683px;
     padding: 0 $padding-middle;
   }
 
   &__title {
     font-size: $font-size-subtitle-mobile;
-    padding: $padding-middle-mobile 0;
+    padding-top: $padding-middle-mobile;
+    font-weight: 600;
     @include media-breakpoint-landscape-phone() {
       font-size: $font-size-subtitle;
-      padding: $padding-middle 0;
+      padding-top: $padding-middle;
     }
   }
 
