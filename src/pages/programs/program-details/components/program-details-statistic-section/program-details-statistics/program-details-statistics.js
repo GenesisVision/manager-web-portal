@@ -10,11 +10,11 @@ import NumberFormat from "react-number-format";
 import { formatValue } from "utils/formatter";
 
 const ProgramDetailsStatistics = ({
-                                    t,
-                                    statisticData,
-                                    profitChartData,
-                                    period
-                                  }) => {
+  t,
+  statisticData,
+  profitChartData,
+  period
+}) => {
   const { data: statistic, isPendingStatistic } = statisticData;
   const { data: profitChart, isPendingProfitChart } = profitChartData;
 

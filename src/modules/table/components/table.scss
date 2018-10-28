@@ -180,7 +180,9 @@ $create-icon-width: 140px;
     }
 
     &__create-icon {
-      &, & svg, & .icon {
+      &,
+      & svg,
+      & .icon {
         width: $create-icon-width/$divider-text;
         height: $create-icon-height/$divider-text;
         @include media-breakpoint-landscape-phone() {
@@ -211,7 +213,6 @@ $create-icon-width: 140px;
         }
       }
     }
-
   }
   @include media-breakpoint-landscape-phone() {
     &__head {

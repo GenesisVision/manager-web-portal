@@ -4,10 +4,10 @@ import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { compose } from "redux";
+import FormError from "shared/components/form/form-error/form-error";
 import { calculateValueOfEntryFee } from "utils/currency-converter";
 import { formatValue } from "utils/formatter";
 import { number, object } from "yup";
-import FormError from "shared/components/form/form-error/form-error";
 
 const ProgramDepositForm = ({
   t,

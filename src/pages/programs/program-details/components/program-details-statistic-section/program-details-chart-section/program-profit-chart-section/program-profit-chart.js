@@ -51,7 +51,7 @@ class ProgramProfitChart extends PureComponent {
     }));
     const pnl = pnlChart.map(x => ({
       date: x.date.getTime(),
-      value: x.value
+      value: Math.abs(x.value) < 0.000001 ? 0 : x.value
     }));
     const equityValues = equity.map(x => x.value);
     const off = gradientOffset(equityValues);

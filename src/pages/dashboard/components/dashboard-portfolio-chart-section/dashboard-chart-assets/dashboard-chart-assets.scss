@@ -1,11 +1,12 @@
 @import "styles/_breakpoint.scss";
 @import "styles/_colors.scss";
 
-.dashboard-request {
+.dashboard-chart-assets {
   float: right;
   margin-top: 10px;
-  .statistic-item {
-    margin-right: 0;
+  &__title {
+    display: flex;
+    align-items: center;
   }
 
   &__icon {
@@ -14,20 +15,17 @@
   }
 }
 
-.dashboard-request-popover {
-  min-width: 300px;
+.dashboard-chart-assets-popover {
+  min-width: 200px;
   max-height: 200px;
   padding: 20px;
 
-  @include media-breakpoint-landscape-phone() {
-    min-width: 400px;
-  }
-
-  &__request {
+  &__chart-asset {
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: $text-accent-color;
+    cursor: pointer;
     & > * {
       flex: 1;
     }
@@ -39,7 +37,7 @@
   }
 
   &__info {
-    flex: 2;
+    flex: 1;
   }
 
   &__btns {
@@ -47,6 +45,12 @@
     .gv-btn {
       padding: 0;
     }
+  }
+
+  &__header {
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: $text-color;
   }
 
   &__title {

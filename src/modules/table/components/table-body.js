@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
 import { ChartIcon } from "components/icon/chart-icon";
+import React, { Fragment } from "react";
 
 const TableBody = ({
   t,
@@ -43,7 +43,9 @@ const TableBody = ({
   const renderItems = () => {
     if (items === null || items === undefined) return setMessage("Loading...");
     if (items.length === 0) return setMessage("There are no items.");
-    return items.map((x, idx) => <Fragment key={idx}>{children(x)}</Fragment>);
+    return items.map((x, idx) => (
+      <Fragment key={x.id || idx}>{children(x)}</Fragment>
+    ));
   };
 
   return <Tag className={className}>{renderItems()}</Tag>;

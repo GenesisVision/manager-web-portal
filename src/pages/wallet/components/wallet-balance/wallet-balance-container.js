@@ -78,7 +78,6 @@ const mapDispatchToProps = dispatch => ({
   service: bindActionCreators(WalletServices, dispatch)
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WalletBalanceContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  WalletBalanceContainer
+);
