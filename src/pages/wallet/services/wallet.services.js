@@ -22,22 +22,22 @@ export const fetchWalletTransactions = filters => (dispatch, getState) => {
     defaultFilters: WALLET_TRANSACTIONS_FILTERS_DEFAULT
   });
 
-  dispatch(actions.fetchWalletTransactions(authorization, requestFilters)).then(
-    response => {
-      dispatch(
-        actions.updateWalletTransactionsFilters({
-          ...filters,
-          paging: {
-            ...filters.paging,
-            totalPages: calculateTotalPages(
-              response.value.total,
-              filters.paging.itemsOnPage
-            )
-          }
-        })
-      );
-    }
-  );
+  dispatch(
+    actions.fetchWalletTransactionsDispatch(authorization, requestFilters)
+  ).then(response => {
+    dispatch(
+      actions.updateWalletTransactionsFilters({
+        ...filters,
+        paging: {
+          ...filters.paging,
+          totalPages: calculateTotalPages(
+            response.value.total,
+            filters.paging.itemsOnPage
+          )
+        }
+      })
+    );
+  });
 };
 
 export const updateWalletTransactionsFilters = filters => dispatch => {
@@ -70,6 +70,12 @@ export const resendWithdrawRequest = txId => (dispatch, getState) => {
   return walletApiProxy
     .v10WalletWithdrawRequestResendByTxIdPost(txId, authorization)
     .then(response => {
+      dispatch(
+        alertMessageActions.success(
+          "wallet.alert-messages.resend-email-success",
+          true
+        )
+      );
       dispatch(fetchWalletTransactions());
       return response;
     })

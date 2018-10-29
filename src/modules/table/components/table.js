@@ -2,12 +2,12 @@ import "./table.scss";
 
 import React, { Component } from "react";
 import Scrollbars from "react-custom-scrollbars";
+import { loadData, saveData } from "utils/localstorage";
 
 import TableBody from "./table-body";
 import TableFooter from "./table-footer";
 import TableHeader from "./table-header";
 import TableToolbar from "./table-toolbar";
-import { loadData, saveData } from "utils/localstorage";
 
 export const TABLE_VIEW = "table_view";
 export const CARDS_VIEW = "cards_view";
@@ -15,7 +15,7 @@ export const PROGRAMS_VIEW = "programs_view";
 
 class Table extends Component {
   state = {
-    view: loadData(PROGRAMS_VIEW) || TABLE_VIEW
+    view: (this.isViewSwitchEnabled && loadData(PROGRAMS_VIEW)) || TABLE_VIEW
   };
 
   changeView = view => {
