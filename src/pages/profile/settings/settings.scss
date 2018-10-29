@@ -34,6 +34,11 @@
     color: $main-color;
     margin-top: 16px;
 
+    &-arrow {
+      font-size: 6px;
+      margin-left: 6px;
+    }
+
     @include media-breakpoint-landscape-tablet() {
       margin-left: auto;
     }
