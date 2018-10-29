@@ -7,19 +7,26 @@ import TableBody from "./table-body";
 import TableFooter from "./table-footer";
 import TableHeader from "./table-header";
 import TableToolbar from "./table-toolbar";
+import { loadData, saveData } from "utils/localstorage";
 
 export const TABLE_VIEW = "table_view";
 export const CARDS_VIEW = "cards_view";
+export const PROGRAMS_VIEW = "programs_view";
 
 class Table extends Component {
   state = {
-    view: TABLE_VIEW
+    view: loadData(PROGRAMS_VIEW) || TABLE_VIEW
   };
 
-  changeView = view => this.setState({ view });
+  changeView = view => {
+    saveData(PROGRAMS_VIEW, view);
+    this.setState({ view });
+  };
 
   isViewSwitchEnabled = this.props.renderBodyRow !== undefined &&
   this.props.renderBodyCard !== undefined;
+
+  renderTrackVertical = () => <span className="table__vertical-track" />;
 
   render() {
     const { view } = this.state;
@@ -37,15 +44,21 @@ class Table extends Component {
           updateSorting={this.props.updateSorting}
           renderHeader={this.props.renderHeader}
           isViewSwitchEnabled={this.isViewSwitchEnabled}
-          createButton={this.props.createButton}
+          createButtonToolbar={this.props.createButtonToolbar}
         />
-        <Scrollbars autoHeight autoHeightMax={14000}>
+        <Scrollbars
+          autoHeight
+          autoHeightMax={14000}
+          renderTrackVertical={this.renderTrackVertical}
+        >
           {view === CARDS_VIEW && (
             <div className="table">
               <TableBody
                 items={this.props.items}
                 className="programs-cards"
                 tag="div"
+                createButtonBody={this.props.createButtonBody}
+                createText={this.props.createText}
               >
                 {this.props.renderBodyCard}
               </TableBody>
@@ -64,6 +77,8 @@ class Table extends Component {
                 items={this.props.items}
                 className="table__body"
                 tag="tbody"
+                createButtonBody={this.props.createButtonBody}
+                createText={this.props.createText}
               >
                 {this.props.renderBodyRow}
               </TableBody>

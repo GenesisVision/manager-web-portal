@@ -8,12 +8,11 @@ import Spinner from "components/spiner/spiner";
 import moment from "moment";
 import NotificationsGroup from "pages/app/components/notifications/components/notification-group/notification-group";
 import { notificationProps } from "pages/app/components/notifications/components/notification/notification";
+import { NOTIFICATIONS_ROUTE } from "pages/notifications/notifications.routes";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { translate } from "react-i18next";
 import { Link } from "react-router-dom";
-
-import { NOTIFICATIONS_ROUTE } from "../../../../notifications/notifications.routes";
 
 class Notifications extends Component {
   state = {
@@ -75,7 +74,9 @@ class Notifications extends Component {
       <div className="notifications">
         <InfinityScroll loadMore={this.fetchNotification} hasMore={hasMore}>
           <div className="notifications__header">
-            <RingIcon />
+            <div className="notifications__ring">
+              <RingIcon />
+            </div>
             {t("notifications-aside.header")}
             <div className="notifications__count">
               <Chip type={hasNotifications ? "negative" : null}>{count}</Chip>

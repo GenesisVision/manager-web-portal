@@ -31,13 +31,16 @@ class FundAssetContainer extends Component {
             idx < (size || assets.length) && (
               <Tooltip
                 key={idx}
-                render={() => <FundAssetTooltip currency={asset.asset} />}
+                render={() => (
+                  <FundAssetTooltip name={asset.name} currency={asset.asset} />
+                )}
               >
                 <div>
                   <FundAsset
                     icon={asset.icon}
                     percent={asset.percent}
                     currency={asset.asset}
+                    name={asset.name}
                     type={type}
                     last={idx === assets.length - 1}
                     removable={removable}

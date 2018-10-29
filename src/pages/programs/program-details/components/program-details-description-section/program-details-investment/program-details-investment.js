@@ -29,7 +29,6 @@ class ProgramDetailsInvestment extends PureComponent {
       className,
       programId,
       investedAmount,
-      balanceAmount,
       balanceCurrency,
       profitPercent,
       status,
@@ -52,7 +51,7 @@ class ProgramDetailsInvestment extends PureComponent {
 
               <NumberFormat
                 value={formatValue(investedAmount)}
-                suffix={" GVT"}
+                suffix={` ${balanceCurrency}`}
                 displayType="text"
               />
             </div>

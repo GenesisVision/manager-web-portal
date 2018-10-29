@@ -61,7 +61,11 @@ class ProgramCard extends Component {
             </Link>
           </div>
           <div className="programs-cards__names">
-            <div className="programs-cards__title">{program.title}</div>
+            <div className="programs-cards__title">
+              <Link to={composeProgramDetailsUrl(program.url)}>
+                {program.title}
+              </Link>
+            </div>
             <div className="programs-cards__name">
               <Link to={composeManagerDetailsUrl(program.manager.url)}>
                 <GVButton variant="text" color="primary">
@@ -84,7 +88,7 @@ class ProgramCard extends Component {
             >
               <div className="popover-list">
                 {program.personalDetails &&
-                  program.personalDetails.isInvested && (
+                  program.personalDetails.isOwnProgram && (
                     <GVButton
                       variant="text"
                       color="secondary"

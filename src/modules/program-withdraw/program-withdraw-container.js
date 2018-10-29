@@ -1,8 +1,8 @@
 import Dialog from "components/dialog/dialog";
 import ProgramWithdrawPopup from "modules/program-withdraw/components/program-withdraw-popup";
 import {
-  getProgramWithdrawInfo,
-  alert
+  alert,
+  getProgramWithdrawInfo
 } from "modules/program-withdraw/servives/program-withdraw.services";
 import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
@@ -10,15 +10,15 @@ import { translate } from "react-i18next";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { compose } from "redux";
-import authService from "services/auth-service";
 import { managerApiProxy } from "services/api-client/manager-api";
+import authService from "services/auth-service";
 
 class ProgramWithdrawContainer extends PureComponent {
   state = { error: "" };
 
   handleWithdraw = (id, percent) => {
     return managerApiProxy
-      .v10ManagerFundsByIdWithdrawByPercentPost(
+      .v10ManagerProgramsByIdWithdrawByAmountPost(
         id,
         percent,
         authService.getAuthArg()
@@ -37,11 +37,19 @@ class ProgramWithdrawContainer extends PureComponent {
   };
 
   render() {
-    const { open, onClose, services, id, programCurrency } = this.props;
+    const {
+      open,
+      onClose,
+      services,
+      id,
+      programCurrency,
+      accountCurrency
+    } = this.props;
     return (
       <Dialog open={open} onClose={onClose}>
         <ProgramWithdrawPopup
-          currency={programCurrency}
+          programCurrency={programCurrency}
+          accountCurrency={accountCurrency}
           fetchInfo={() => services.getProgramWithdrawInfo(id)}
           withdraw={amount => this.handleWithdraw(id, amount)}
           error={this.state.error}
@@ -58,7 +66,7 @@ ProgramWithdrawContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  currency: state.accountSettings.currency
+  accountCurrency: state.accountSettings.currency
 });
 
 const mapDispathToProps = dispatch => ({

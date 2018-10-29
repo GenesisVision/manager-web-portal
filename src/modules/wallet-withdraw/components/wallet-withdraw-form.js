@@ -11,9 +11,11 @@ import { compose } from "redux";
 import { convertFromCurrency } from "utils/currency-converter";
 import { formatValue } from "utils/formatter";
 import { number, object, string } from "yup";
+import { ethWalletValidator } from "shared/utils/validators/validators";
 
 const WalletWithdrawForm = ({
   t,
+  twoFactorEnabled,
   handleSubmit,
   availableToWithdrawal,
   wallets,
@@ -91,13 +93,15 @@ const WalletWithdrawForm = ({
           component={GVTextField}
           autoComplete="off"
         />
-        <GVFormikField
-          type="text"
-          name="twoFactorCode"
-          label={t("wallet-withdraw.two-factor-code-label")}
-          autoComplete="off"
-          component={GVTextField}
-        />
+        {twoFactorEnabled && (
+          <GVFormikField
+            type="text"
+            name="twoFactorCode"
+            label={t("wallet-withdraw.two-factor-code-label")}
+            autoComplete="off"
+            component={GVTextField}
+          />
+        )}
         <ul className="dialog-list">
           <li className="dialog-list__item">
             <span className="dialog-list__title">
@@ -135,7 +139,9 @@ const WalletWithdrawForm = ({
             {t("buttons.confirm")}
           </GVButton>
         </div>
-        <div className="dialog__info">{t("wallet-withdraw.info")}</div>
+        {currency !== "GVT" && (
+          <div className="dialog__info">{t("wallet-withdraw.info")}</div>
+        )}
       </div>
     </form>
   );
@@ -160,6 +166,17 @@ WalletWithdrawForm.propTypes = {
   onSubmit: PropTypes.func
 };
 
+const twoFactorvalidator = (t, twoFactorEnabled) => {
+  return twoFactorEnabled
+    ? string()
+        .trim()
+        .matches(/^\d{6}$/, t("wallet-withdraw.validation.two-factor-6digits"))
+        .required(t("wallet-withdraw.validation.two-factor-required"))
+    : string()
+        .trim()
+        .matches(/^\d{6}$/, t("wallet-withdraw.validation.two-factor-6digits"));
+};
+
 export default compose(
   translate(),
   withFormik({
@@ -171,7 +188,7 @@ export default compose(
       }
       return { currency, amount: "", address: "", twoFactorCode: "" };
     },
-    validationSchema: ({ t, availableToWithdrawal }) =>
+    validationSchema: ({ t, availableToWithdrawal, twoFactorEnabled }) =>
       object().shape({
         amount: number()
           .max(
@@ -179,16 +196,10 @@ export default compose(
             t("wallet-withdraw.validation.amount-more-than-available")
           )
           .required(t("wallet-withdraw.validation.amount-is-required")),
-        address: string().required(
+        address: ethWalletValidator.required(
           t("wallet-withdraw.validation.address-is-required")
         ),
-        twoFactorCode: string()
-          .trim()
-          .matches(
-            /^\d{6}$/,
-            t("wallet-withdraw.validation.two-factor-6digits")
-          )
-          .required(t("wallet-withdraw.validation.two-factor-required"))
+        twoFactorCode: twoFactorvalidator(t, twoFactorEnabled)
       }),
     handleSubmit: (values, { props }) => props.onSubmit(values)
   })

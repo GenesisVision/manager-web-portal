@@ -22,7 +22,7 @@ class TableToolbar extends Component {
       updateSorting,
       renderHeader,
       isViewSwitchEnabled,
-      createButton
+      createButtonToolbar
     } = this.props;
     return (
       <div className="table__toolbar">
@@ -53,7 +53,7 @@ class TableToolbar extends Component {
             </div>
           </div>
         )}
-        {createButton}
+        {createButtonToolbar}
       </div>
     );
   }
