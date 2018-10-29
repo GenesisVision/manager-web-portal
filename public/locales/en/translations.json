@@ -838,7 +838,8 @@
         "entry-fee-required": "Entry fee is required",
         "success-fee-required": "Success fee is required",
         "assets-share": "Total share of all assets should be equal to 100%",
-        "assets-count": "Must be at least two assets."
+        "assets-count": "Must be at least two assets.",
+        "deposit-min": "Not enought money."
       }
     }
   },
