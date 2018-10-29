@@ -29,3 +29,7 @@ export const getDashboardFunds = filters => (dispatch, getState) => {
     }
   );
 };
+
+export const updateDashboardFundsFilters = filters => dispatch => {
+  dispatch(actions.updateDashboardFundsFilters(filters));
+};

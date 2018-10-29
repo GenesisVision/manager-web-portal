@@ -29,3 +29,7 @@ export const getDashboardPrograms = filters => (dispatch, getState) => {
     }
   );
 };
+
+export const updateDashboardProgramsFilters = filters => dispatch => {
+  dispatch(actions.updateDashboardProgramsFilters(filters));
+};
