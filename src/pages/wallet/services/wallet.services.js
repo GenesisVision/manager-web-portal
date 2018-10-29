@@ -70,6 +70,12 @@ export const resendWithdrawRequest = txId => (dispatch, getState) => {
   return walletApiProxy
     .v10WalletWithdrawRequestResendByTxIdPost(txId, authorization)
     .then(response => {
+      dispatch(
+        alertMessageActions.success(
+          "wallet.alert-messages.resend-email-success",
+          true
+        )
+      );
       dispatch(fetchWalletTransactions());
       return response;
     })
