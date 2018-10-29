@@ -12,7 +12,7 @@ const createFundSettingsValidationSchema = ({ t }) =>
     entryFee: Yup.string().required(
       t("create-fund-page.settings.validation.entry-fee-required")
     ),
-    successFee: Yup.string().required(
+    exitFee: Yup.string().required(
       t("create-fund-page.settings.validation.success-fee-required")
     ),
     remainder: Yup.number()

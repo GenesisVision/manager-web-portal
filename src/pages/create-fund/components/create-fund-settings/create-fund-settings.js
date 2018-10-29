@@ -233,7 +233,7 @@ class CreateFundSettings extends React.Component {
                 decimalScale={4}
               />
               <GVFormikField
-                name="successFee"
+                name="exitFee"
                 label={t("create-fund-page.settings.fields.exit-fee")}
                 suffix=" %"
                 isAllowed={percentNumberFormat}
@@ -317,7 +317,7 @@ export default translate()(
         assets: [],
         balance: props.balance,
         remainder: 100,
-        successFee: "",
+        exitFee: "",
         title: "",
         description: "",
         logo: {
