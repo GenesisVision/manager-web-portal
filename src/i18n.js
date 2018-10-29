@@ -20,6 +20,7 @@ i18n
       wait: true
     },
     backend: {
+      loadPath: "/manager/locales/{{lng}}/{{ns}}.json",
       queryStringParams: { v: "0.0.2" }
     }
   });
