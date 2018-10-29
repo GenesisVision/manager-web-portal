@@ -5,7 +5,7 @@ import React from "react";
 import { translate } from "react-i18next";
 import { Link } from "react-router-dom";
 
-import { PROFILE_ROUTE, SETTINGS_ROUTE } from "./profile.constants";
+import { KYC_ROUTE, PROFILE_ROUTE, SETTINGS_ROUTE } from "./profile.constants";
 
 const ProfileLayout = ({ route, children, t }) => {
   return (
@@ -17,6 +17,10 @@ const ProfileLayout = ({ route, children, t }) => {
             <Link to={PROFILE_ROUTE}>{t("profile.tabs.personal-details")}</Link>
           }
           value="details"
+        />
+        <GVTab
+          label={<Link to={KYC_ROUTE}>{t("profile.tabs.verify")}</Link>}
+          value="verify"
         />
         <GVTab
           label={<Link to={SETTINGS_ROUTE}>{t("profile.tabs.settings")}</Link>}
