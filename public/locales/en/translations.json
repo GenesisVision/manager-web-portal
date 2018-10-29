@@ -874,7 +874,8 @@
     "success-verify": "Phone number verification is successful",
     "tabs": {
       "personal-details": "Personal details",
-      "settings": "Settings"
+      "settings": "Settings",
+      "verify": "Verify"
     },
     "verification": {
       "phone": {
@@ -997,7 +998,7 @@
     "withdraw": "Withdraw",
     "transactions": {
       "title": "Transactions",
-      "empty-transactions":"There are no transactions",
+      "empty-transactions": "There are no transactions",
       "date": "Date",
       "information": "Information",
       "status": "Status",
