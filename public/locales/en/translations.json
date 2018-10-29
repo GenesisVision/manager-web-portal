@@ -997,6 +997,8 @@
     "add-funds": "Add funds",
     "withdraw": "Withdraw",
     "transactions": {
+      "title": "Transactions",
+      "empty-transactions":"There are no transactions",
       "date": "Date",
       "information": "Information",
       "status": "Status",
@@ -1067,6 +1069,8 @@
       "last-month": "Last month",
       "last-week": "Last week",
       "custom": "Custom",
+      "account-creation": "Account creation",
+      "fund-start": "Fund start",
       "program-start": "Program start",
       "start": "Start",
       "end": "End",

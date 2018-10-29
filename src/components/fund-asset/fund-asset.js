@@ -15,6 +15,7 @@ export const FUND_ASSET_TYPE = {
 class FundAsset extends Component {
   render() {
     const {
+      name,
       percent,
       currency,
       type,
@@ -49,7 +50,7 @@ class FundAsset extends Component {
             <div className="fund-asset__currencies">
               {type === FUND_ASSET_TYPE.large && (
                 <div className="fund-asset__currency-full">
-                  {CURRENCY_VALUES[currency]}
+                  {name || CURRENCY_VALUES[currency]}
                 </div>
               )}
               {type !== FUND_ASSET_TYPE.short && (

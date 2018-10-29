@@ -5,7 +5,7 @@ export const emailValidator = Yup.string()
   .required("Email is required.");
 
 export const passwordValidator = Yup.string()
-  .min(6, "Password is weak.")
+  .min(8, "Password is weak.")
   .required("Password is required.");
 
 export const ethWalletValidator = Yup.string()
