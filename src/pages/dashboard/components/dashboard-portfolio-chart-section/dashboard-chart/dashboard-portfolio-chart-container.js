@@ -27,13 +27,20 @@ class DashboardPortfolioChartContainer extends PureComponent {
 
     if (!this.props.assetChart && assets !== null) {
       const { programs, funds } = assets;
-      const asset = programs.length > 0 ? programs[0] : funds[0];
-      this.props.service.getAssetChart(
-        asset.id,
-        asset.title,
-        "Program",
-        this.state.period
-      );
+      let asset;
+      if (programs.length > 0) {
+        asset = programs[0];
+      } else {
+        asset = funds[0];
+      }
+      if (asset) {
+        this.props.service.getAssetChart(
+          asset.id,
+          asset.title,
+          "Program",
+          this.state.period
+        );
+      }
     }
   }
 

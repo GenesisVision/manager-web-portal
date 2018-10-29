@@ -9,11 +9,6 @@ import NumberFormat from "react-number-format";
 
 // import ProgramPeriodLine from "components/program-period/program-period-line/program-period-line";
 
-
-
-
-
-
 const FundDetailsStatistics = ({ t, statisticData, period }) => {
   const { data: statistic, isPending } = statisticData;
   if (!statistic || isPending) return null;
