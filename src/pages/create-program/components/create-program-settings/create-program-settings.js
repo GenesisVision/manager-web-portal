@@ -41,7 +41,8 @@ class CreateProgramSettings extends React.Component {
       setFieldValue,
       setLeverageChooseAvailable,
       isLeverageChooseAvailable,
-      programsInfo
+      programsInfo,
+      notifyError
     } = this.props;
 
     return (
@@ -72,20 +73,6 @@ class CreateProgramSettings extends React.Component {
                 setFieldValue={setFieldValue}
                 broker={broker}
               />
-              {/* <GVFormikField
-                name="accountType"
-                component={GVTextField}
-                label={t("create-program-page.settings.fields.account-type")}
-                InputComponent={Select}
-              >
-                {getAccountTypes(broker).map(accountType => {
-                  return (
-                    <option value={accountType} key={accountType}>
-                      {accountType}
-                    </option>
-                  );
-                })}
-              </GVFormikField> */}
             </div>
             <div className="create-program-settings__row">
               <GVFormikField
@@ -183,6 +170,7 @@ class CreateProgramSettings extends React.Component {
                       {...field}
                       defaultImage={ProgramDefaultImage}
                       onChange={setFieldValue}
+                      notifyError={notifyError}
                       alt="Program logo"
                     />
                   )}

@@ -19,23 +19,54 @@ class InputImage extends Component {
     }
   }
 
+  validateImageSize = file => {
+    let imageTest = new Image();
+
+    imageTest.src = file.preview;
+    this.rootElement.appendChild(imageTest);
+    imageTest.style.display = "none";
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let width = imageTest.naturalWidth;
+        let height = imageTest.naturalHeight;
+        this.rootElement.removeChild(imageTest);
+
+        if (width < 300 || height < 300) {
+          reject();
+        } else {
+          resolve();
+        }
+      }, 100);
+    });
+  };
+
   onDrop = files => {
     const { name, onChange } = this.props;
     if (files.length === 0) return;
 
-    const img = files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      const data = {
-        src: reader.result,
-        filename: img.name,
-        filetype: img.type,
-        isNew: true,
-        isDefault: false
-      };
-      onChange(name, data);
-    };
-    reader.readAsDataURL(img);
+    this.validateImageSize(files[0])
+      .then(() => {
+        const img = files[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+          const data = {
+            src: reader.result,
+            filename: img.name,
+            filetype: img.type,
+            isNew: true,
+            isDefault: false
+          };
+          onChange(name, data);
+        };
+        reader.readAsDataURL(img);
+      })
+      .catch(() => {
+        this.props.notifyError(
+          "create-program-page.settings.validation.image-size-incorrect",
+          true
+        );
+      });
   };
 
   onCrop = () => {
@@ -76,7 +107,12 @@ class InputImage extends Component {
     const { isDefault, isNew, src } = value;
     const { onDrop, onCrop, clear } = this;
     return (
-      <div className={classnames("input-image", className)}>
+      <div
+        className={classnames("input-image", className)}
+        ref={rootElement => {
+          this.rootElement = rootElement;
+        }}
+      >
         <Dropzone
           disableClick
           className="input-image__dropzone"

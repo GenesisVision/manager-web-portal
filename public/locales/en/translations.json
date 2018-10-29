@@ -781,7 +781,8 @@
         "leverage-required": "Leverage is required",
         "entry-fee-required": "Entry fee is required",
         "success-fee-required": "Success fee is required",
-        "account-type-required": "Account type is required"
+        "account-type-required": "Account type is required",
+        "image-size-incorrect": "Incorrect size of the uploaded image"
       }
     },
     "notifications": {
