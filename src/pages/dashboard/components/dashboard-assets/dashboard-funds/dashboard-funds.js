@@ -16,7 +16,10 @@ import { Link } from "react-router-dom";
 
 import replaceParams from "../../../../../utils/replace-params";
 import { DASHBOARD_FUNDS_COLUMNS } from "../../../dashboard.constants";
-import { getDashboardFunds } from "../../../services/dashboard-funds.service";
+import {
+  getDashboardFunds,
+  updateDashboardFundsFilters
+} from "../../../services/dashboard-funds.service";
 
 const FUNDS_SLUG_URL_PARAM_NAME = "fundsSlugUrl";
 const FUNDS_ROUTE = "/funds";
@@ -53,6 +56,8 @@ class DashboardFunds extends Component {
         createText={createText}
         getItems={getDashboardFunds}
         getStorePlace={this.getDashboardFundsPlace}
+        updateFilters={updateDashboardFundsFilters}
+        isResetToDefaultOnUnmount={true}
         isFetchOnMount={false}
         columns={DASHBOARD_FUNDS_COLUMNS}
         renderFilters={(updateFilter, filtering) => (

@@ -16,7 +16,10 @@ import { formatValue } from "utils/formatter";
 import replaceParams from "utils/replace-params";
 
 import { DASHBOARD_PROGRAMS_COLUMNS } from "../../../dashboard.constants";
-import { getDashboardPrograms } from "../../../services/dashboard-programs.service";
+import {
+  getDashboardPrograms,
+  updateDashboardProgramsFilters
+} from "../../../services/dashboard-programs.service";
 
 const PROGRAM_SLUG_URL_PARAM_NAME = "programSlugUrl";
 const PROGRAMS_ROUTE = "/programs";
@@ -53,6 +56,8 @@ class DashboardPrograms extends Component {
         createButtonBody={createButtonBody}
         createText={createText}
         getItems={getDashboardPrograms}
+        isResetToDefaultOnUnmount={true}
+        updateFilters={updateDashboardProgramsFilters}
         getStorePlace={this.getDashboardProgramsPlace}
         isFetchOnMount={false}
         columns={DASHBOARD_PROGRAMS_COLUMNS}
