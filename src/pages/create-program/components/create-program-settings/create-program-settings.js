@@ -42,8 +42,14 @@ class CreateProgramSettings extends React.Component {
       setLeverageChooseAvailable,
       isLeverageChooseAvailable,
       programsInfo,
-      notifyError
+      notifyError,
+      errors
     } = this.props;
+
+    const imageInputError =
+      errors &&
+      errors.logo &&
+      (errors.logo.width || errors.logo.height || errors.logo.size);
 
     return (
       <div className="create-program-settings">
@@ -172,6 +178,7 @@ class CreateProgramSettings extends React.Component {
                       onChange={setFieldValue}
                       notifyError={notifyError}
                       alt="Program logo"
+                      error={imageInputError}
                     />
                   )}
                 />
@@ -297,7 +304,10 @@ export default translate()(
         cropped: null,
         src: "",
         isNew: false,
-        isDefault: true
+        isDefault: true,
+        width: 0,
+        height: 0,
+        size: 0
       },
       brokerAccountTypeId: "",
       entryFee: "",

@@ -19,54 +19,23 @@ class InputImage extends Component {
     }
   }
 
-  validateImageSize = file => {
-    let imageTest = new Image();
-
-    imageTest.src = file.preview;
-    this.rootElement.appendChild(imageTest);
-    imageTest.style.display = "none";
-
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        let width = imageTest.naturalWidth;
-        let height = imageTest.naturalHeight;
-        this.rootElement.removeChild(imageTest);
-
-        if (width < 300 || height < 300) {
-          reject();
-        } else {
-          resolve();
-        }
-      }, 100);
-    });
-  };
-
   onDrop = files => {
     const { name, onChange } = this.props;
     if (files.length === 0) return;
 
-    this.validateImageSize(files[0])
-      .then(() => {
-        const img = files[0];
-        const reader = new FileReader();
-        reader.onload = () => {
-          const data = {
-            src: reader.result,
-            filename: img.name,
-            filetype: img.type,
-            isNew: true,
-            isDefault: false
-          };
-          onChange(name, data);
-        };
-        reader.readAsDataURL(img);
-      })
-      .catch(() => {
-        this.props.notifyError(
-          "create-program-page.settings.validation.image-size-incorrect",
-          true
-        );
-      });
+    const img = files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      const data = {
+        src: reader.result,
+        filename: img.name,
+        filetype: img.type,
+        isNew: true,
+        isDefault: false
+      };
+      onChange(name, data);
+    };
+    reader.readAsDataURL(img);
   };
 
   onCrop = () => {
@@ -85,7 +54,10 @@ class InputImage extends Component {
       }
       const img = {
         ...value,
-        cropped: blob
+        cropped: blob,
+        width: croppedCanvas.width,
+        height: croppedCanvas.height,
+        size: blob.size
       };
       onChange(name, img);
     }, value.filetype);
@@ -103,12 +75,14 @@ class InputImage extends Component {
   };
 
   render() {
-    const { className, value, defaultImage } = this.props;
+    const { className, value, defaultImage, error } = this.props;
     const { isDefault, isNew, src } = value;
     const { onDrop, onCrop, clear } = this;
     return (
       <div
-        className={classnames("input-image", className)}
+        className={classnames("input-image", className, {
+          "input-image--error": error
+        })}
         ref={rootElement => {
           this.rootElement = rootElement;
         }}
@@ -136,7 +110,8 @@ class InputImage extends Component {
                   autoCropArea={1}
                   imageSmoothingEnabled={false}
                   imageSmoothingQuality="high"
-                  crop={onCrop}
+                  ready={onCrop}
+                  cropend={onCrop}
                 />
               )}
 
@@ -176,6 +151,7 @@ class InputImage extends Component {
             &#10006;
           </div>
         )}
+        {error && <div className="input-image__error">{error}</div>}
       </div>
     );
   }

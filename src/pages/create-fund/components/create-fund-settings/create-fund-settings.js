@@ -96,8 +96,15 @@ class CreateFundSettings extends React.Component {
       handleSubmit,
       values,
       setFieldValue,
-      deposit
+      deposit,
+      errors
     } = this.props;
+
+    const imageInputError =
+      errors &&
+      errors.logo &&
+      (errors.logo.width || errors.logo.height || errors.logo.size);
+
     return (
       <div className="create-fund-settings">
         <form className="create-fund-settings__form">
@@ -158,6 +165,7 @@ class CreateFundSettings extends React.Component {
                       defaultImage={FundDefaultImage}
                       onChange={setFieldValue}
                       alt="Fund logo"
+                      error={imageInputError}
                     />
                   )}
                 />
@@ -324,7 +332,10 @@ export default translate()(
           cropped: null,
           src: "",
           isNew: false,
-          isDefault: true
+          isDefault: true,
+          size: 0,
+          width: 0,
+          height: 0
         },
         entryFee: ""
       };

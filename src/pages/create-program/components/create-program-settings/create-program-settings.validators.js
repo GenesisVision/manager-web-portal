@@ -2,6 +2,20 @@ import Yup from "yup";
 
 const createProgramSettingsValidationSchema = ({ t }) =>
   Yup.object().shape({
+    logo: Yup.object().shape({
+      width: Yup.number().min(
+        300,
+        t("create-program-page.settings.validation.image-resolution-incorrect")
+      ),
+      height: Yup.number().min(
+        300,
+        t("create-program-page.settings.validation.image-resolution-incorrect")
+      ),
+      size: Yup.number().max(
+        2097152,
+        t("create-program-page.settings.validation.image-file-is-large")
+      )
+    }),
     title: Yup.string()
       .required(t("create-program-page.settings.validation.title-required"))
       .min(4, t("create-program-page.settings.validation.title-is-short"))
