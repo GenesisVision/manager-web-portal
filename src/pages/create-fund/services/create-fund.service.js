@@ -23,7 +23,7 @@ export const createFund = (createFundData, setSubmitting) => dispatch => {
 
   let data = getDataWithoutSuffixes(createFundData, [
     "periodLength",
-    "successFee",
+    "exitFee",
     "entryFee",
     "leverage"
   ]);

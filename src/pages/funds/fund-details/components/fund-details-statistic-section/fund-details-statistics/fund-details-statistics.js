@@ -1,12 +1,18 @@
 import "./fund-details-statistics.scss";
 
 import { ChartPeriodType } from "components/chart/chart-period/chart-period.helpers";
-import ProgramPeriodLine from "components/program-period/program-period-line/program-period-line";
 import Surface from "components/surface/surface";
 import moment from "moment";
 import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
+
+// import ProgramPeriodLine from "components/program-period/program-period-line/program-period-line";
+
+
+
+
+
 
 const FundDetailsStatistics = ({ t, statisticData, period }) => {
   const { data: statistic, isPending } = statisticData;
@@ -30,6 +36,7 @@ const FundDetailsStatistics = ({ t, statisticData, period }) => {
                 value={statistic.balance}
                 thousandSeparator={" "}
                 displayType="text"
+                decimalScale={2}
                 suffix={" GVT"}
               />
             </span>
@@ -56,18 +63,18 @@ const FundDetailsStatistics = ({ t, statisticData, period }) => {
               />
             </span>
           </div>
-          <div className="fund-details-statistics__item fund-details-statistics__item--secondary">
+          {/* <div className="fund-details-statistics__item fund-details-statistics__item--secondary">
             <span className="fund-details-statistics__label">
               {t("fund-details-page.statistics.period-end")}
             </span>
             <span className="fund-details-statistics__value">
               {moment(statistic.periodEnds).format("D MMM YYYY")}
             </span>
-          </div>
+          </div>*/}
         </div>
       </div>
 
-      <div className="fund-details-statistics__period">
+      {/*<div className="fund-details-statistics__period">
         <span className="fund-details-statistics__label">
           {t("fund-details-page.statistics.period")}
         </span>
@@ -75,7 +82,7 @@ const FundDetailsStatistics = ({ t, statisticData, period }) => {
           start={statistic.periodStarts}
           end={statistic.periodEnds}
         />
-      </div>
+      </div>*/}
       <div className="fund-details-statistics__subheading">
         {t("fund-details-page.statistics.for")}{" "}
         {t(`chart-period.${ChartPeriodType[period.type]}`)}
@@ -91,7 +98,7 @@ const FundDetailsStatistics = ({ t, statisticData, period }) => {
               <NumberFormat
                 value={statistic.calmarRatio}
                 displayType="text"
-                suffix="%"
+                decimalScale={2}
               />
             </span>
           </div>
@@ -126,7 +133,7 @@ const FundDetailsStatistics = ({ t, statisticData, period }) => {
         </div>
 
         <div className="fund-details-statistics__column">
-          <div className="fund-details-statistics__item fund-details-statistics__item--half fund-details-statistics__item--secondary">
+          {/*<div className="fund-details-statistics__item fund-details-statistics__item--half fund-details-statistics__item--secondary">
             <span className="fund-details-statistics__label">
               {t("fund-details-page.statistics.rebalances")}
             </span>
@@ -137,7 +144,7 @@ const FundDetailsStatistics = ({ t, statisticData, period }) => {
                 displayType="text"
               />
             </span>
-          </div>
+          </div>*/}
 
           <div className="fund-details-statistics__item fund-details-statistics__item--half fund-details-statistics__item--secondary">
             <span className="fund-details-statistics__label">
@@ -147,7 +154,6 @@ const FundDetailsStatistics = ({ t, statisticData, period }) => {
               <NumberFormat
                 value={statistic.sharpeRatio}
                 displayType="text"
-                suffix="%"
                 decimalScale={2}
               />
             </span>
@@ -161,7 +167,6 @@ const FundDetailsStatistics = ({ t, statisticData, period }) => {
               <NumberFormat
                 value={statistic.sortinoRatio}
                 displayType="text"
-                suffix="%"
                 decimalScale={2}
               />
             </span>
