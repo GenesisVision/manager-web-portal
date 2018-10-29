@@ -8,10 +8,10 @@ import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { compose } from "redux";
+import { ethWalletValidator } from "shared/utils/validators/validators";
 import { convertFromCurrency } from "utils/currency-converter";
 import { formatValue } from "utils/formatter";
 import { number, object, string } from "yup";
-import { ethWalletValidator } from "shared/utils/validators/validators";
 
 const WalletWithdrawForm = ({
   t,
