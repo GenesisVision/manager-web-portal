@@ -123,8 +123,9 @@ const addOne = item => [
   +item[1] === 0 ? item[1].slice(0, -1) + "1" : item[1]
 ];
 const cleanNulls = item => [item[0], reverseString(+reverseString(item[1]))];
-const formatValue = (value, decimalScale) => {
+const formatValue = (value, decimalScale, abs) => {
   value = typeof value !== "number" ? +value : value;
+  value = abs ? Math.abs(value) : value;
   if (value === undefined || isNaN(value) || value.toFixed(0) == value)
     return value;
   return [...[value.toFixed(decimalScale || 19).split(".")]]
