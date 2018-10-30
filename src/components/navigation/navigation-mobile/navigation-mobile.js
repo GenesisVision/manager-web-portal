@@ -22,7 +22,10 @@ import { translate } from "react-i18next";
 import UserIcon from "shared/media/user-avatar.svg";
 import fileService from "shared/services/file-service";
 
-import { PROFILE_ROUTE } from "../../../pages/profile/profile.constants";
+import {
+  PROFILE_ROUTE,
+  SETTINGS_ROUTE
+} from "../../../pages/profile/profile.constants";
 
 const NavigationMobile = ({
   t,
@@ -80,7 +83,7 @@ const NavigationMobile = ({
           >
             {t("navigation.wallet")}
           </NavigationItem>
-          <NavigationItem icon={<SettingsIcon primary />} href={"/settings"}>
+          <NavigationItem icon={<SettingsIcon primary />} href={SETTINGS_ROUTE}>
             {t("navigation.settings")}
           </NavigationItem>
           {isAuthenticated ? (
