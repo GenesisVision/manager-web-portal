@@ -206,7 +206,8 @@
     "Active": "Active",
     "Investing": "Investing",
     "Withdrawing": "Withdrawing",
-    "Ended": "Ended"
+    "Ended": "Ended",
+    "Pending": "Pending"
   },
   "days-left-widget": {
     "text": "Day left",
@@ -423,6 +424,12 @@
     "favorite-programs": "Favorite programs",
     "create-program-text": "Do not have any programs yet",
     "create-fund-text": "Do not have any fund yet",
+    "get-started": {
+      "title": "Get started",
+      "text-1": "There's no data right now.",
+      "text-2": "Create your first program or fund",
+      "deposit": "Deposit"
+    },
     "portfolio-events": {
       "title": "Portfolio Events",
       "see-all-button": "See All",
@@ -439,7 +446,7 @@
         "date": "Date",
         "type": "Type",
         "description": "Description",
-        "amount": "Amount, GVT"
+        "amount": "Amount"
       },
       "types": {
         "all": "All",
@@ -449,7 +456,14 @@
         "loss": "Loss",
         "reinvest": "Reinvest",
         "canceled": "Canceled",
-        "ended": "Ended"
+        "ended": "Ended",
+        "ManagerInvest": "Manager invest",
+        "EntranceFee": "Entrance fee",
+        "AssetStarted": "Asset started",
+        "InvestorInvest": "Investor invest",
+        "AssetFinished": "Asset finished",
+        "ProgramPeriodStats": "Program period stats",
+        "ProgramPeriodEnds": "Programp period ends"
       }
     }
   },
@@ -528,7 +542,7 @@
     "success-alert-message":
       "Successful request for investment in the program.",
     "title": "Withdraw",
-    "available-to-withdraw": "Available to invest",
+    "available-to-withdraw": "Available to withdraw",
     "amount-to-withdraw": "Amount to withdraw",
     "next": "Next",
     "info":

@@ -32,13 +32,13 @@ class DashboardChartAssetsContainer extends PureComponent {
   };
 
   render() {
-    const { programsData, fundsData } = this.props;
-    if (!programsData || !fundsData) return null;
-    const programs = programsData.programs;
-    const funds = fundsData.funds;
+    const { assets } = this.props;
+    if (!assets) return null;
+    const programs = assets.programs;
+    const funds = assets.funds;
     const hasPrograms = programs.length > 0;
     const hasFunds = funds.length > 0;
-    if (!hasPrograms && !hasFunds) return null;
+
     return (
       <div className="dashboard-chart-assets">
         <div className="dashboard-chart-assets__title">
