@@ -99,6 +99,7 @@ class ProgramTrades extends Component {
                 <NumberFormat
                   value={Math.abs(formatValue(trade.profit))}
                   thousandSeparator=" "
+                  allowNegative={false}
                   displayType="text"
                 />
               </Profitability>
