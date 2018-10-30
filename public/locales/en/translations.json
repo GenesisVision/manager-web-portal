@@ -423,6 +423,12 @@
     "favorite-programs": "Favorite programs",
     "create-program-text": "Do not have any programs yet",
     "create-fund-text": "Do not have any fund yet",
+    "get-started": {
+      "title": "Get started",
+      "text-1": "There's no data right now.",
+      "text-2": "Create your first program or fund",
+      "deposit": "Deposit"
+    },
     "portfolio-events": {
       "title": "Portfolio Events",
       "see-all-button": "See All",
