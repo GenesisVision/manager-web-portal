@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-const createFundSettingsValidationSchema = ({ t }) =>
+const createFundSettingsValidationSchema = ({ t, ...props }) =>
   Yup.object().shape({
     logo: Yup.object().shape({
       width: Yup.number().min(
@@ -37,7 +37,7 @@ const createFundSettingsValidationSchema = ({ t }) =>
       .min(2, t("create-fund-page.settings.validation.assets-count")),
     balance: Yup.number()
       .required()
-      .min(100)
+      .min(props.deposit, t("create-fund-page.settings.validation.deposit-min"))
   });
 
 export default createFundSettingsValidationSchema;

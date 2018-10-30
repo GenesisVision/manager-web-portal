@@ -69,7 +69,15 @@ class InputImage extends Component {
 
   clear = event => {
     const { onChange, name } = this.props;
-    onChange(name, { cropped: null, src: "", isDefault: true, isNew: false });
+    onChange(name, {
+      cropped: null,
+      src: "",
+      isDefault: true,
+      isNew: false,
+      width: undefined,
+      height: undefined,
+      size: undefined
+    });
     event.preventDefault();
     event.stopPropagation();
   };

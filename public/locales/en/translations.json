@@ -846,7 +846,8 @@
         "assets-count": "Must be at least two assets.",
         "image-resolution-incorrect":
           "The resolution of the uploaded image is too low.",
-        "image-file-is-large": "The uploaded image file is too large."
+        "image-file-is-large": "The uploaded image file is too large.",
+        "deposit-min": "Not enought money."
       }
     }
   },

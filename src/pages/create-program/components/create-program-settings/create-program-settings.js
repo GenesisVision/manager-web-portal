@@ -305,9 +305,9 @@ export default translate()(
         src: "",
         isNew: false,
         isDefault: true,
-        width: 0,
-        height: 0,
-        size: 0
+        width: undefined,
+        height: undefined,
+        size: undefined
       },
       brokerAccountTypeId: "",
       entryFee: "",

@@ -333,9 +333,9 @@ export default translate()(
           src: "",
           isNew: false,
           isDefault: true,
-          size: 0,
-          width: 0,
-          height: 0
+          size: undefined,
+          width: undefined,
+          height: undefined
         },
         entryFee: ""
       };
