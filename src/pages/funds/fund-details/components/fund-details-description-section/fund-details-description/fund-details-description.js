@@ -151,7 +151,7 @@ class FundDetailsDescription extends PureComponent {
                 </div>
                 <FundDetailsInvestment
                   className={"fund-details-description__your-investment"}
-                  programCurrency={fundDescription.currency}
+                  fundCurrency={"GVT"}
                   {...composeInvestmentData(fundDescription)}
                   onChangeInvestmentStatus={onChangeInvestmentStatus}
                 />
