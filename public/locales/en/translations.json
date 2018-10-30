@@ -206,7 +206,8 @@
     "Active": "Active",
     "Investing": "Investing",
     "Withdrawing": "Withdrawing",
-    "Ended": "Ended"
+    "Ended": "Ended",
+    "Pending": "Pending"
   },
   "days-left-widget": {
     "text": "Day left",
@@ -456,7 +457,7 @@
         "reinvest": "Reinvest",
         "canceled": "Canceled",
         "ended": "Ended",
-        "ManagerInvest":"Manager invest",
+        "ManagerInvest": "Manager invest",
         "EntranceFee": "Entrance fee",
         "AssetStarted": "Asset started",
         "InvestorInvest": "Investor invest",
