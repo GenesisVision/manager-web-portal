@@ -528,7 +528,7 @@
     "success-alert-message":
       "Successful request for investment in the program.",
     "title": "Withdraw",
-    "available-to-withdraw": "Current investment value",
+    "available-to-withdraw": "Available to invest",
     "amount-to-withdraw": "Amount to withdraw",
     "next": "Next",
     "info":
