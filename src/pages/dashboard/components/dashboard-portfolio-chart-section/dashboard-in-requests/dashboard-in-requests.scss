@@ -2,17 +2,10 @@
 @import "styles/_colors.scss";
 
 .dashboard-request {
-  display: flex;
+  float: right;
   margin-top: 10px;
   .statistic-item {
     margin-right: 0;
-    &__heading {
-      margin-bottom: 0;
-    }
-
-    &__value {
-      font-size: 13px;
-    }
   }
 
   &__icon {
@@ -22,9 +15,11 @@
 }
 
 .dashboard-request-popover {
+  display: flex;
+  flex-direction: column;
   min-width: 300px;
-  max-height: 200px;
   padding: 20px;
+  overflow: hidden;
 
   @include media-breakpoint-landscape-phone() {
     min-width: 400px;
