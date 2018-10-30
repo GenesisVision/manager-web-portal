@@ -71,7 +71,10 @@ const WalletAddFundsForm = ({
           <div className="gv-text-field wallet-add-funds-popup__will-get">
             <div className="gv-text-field__input dialog-field__value">
               <NumberFormat
-                value={formatValue(convertToCurrency(values.amount, rateToGVT))}
+                value={formatValue(
+                  convertToCurrency(values.amount, rateToGVT),
+                  2
+                )}
                 suffix=" GVT"
                 displayType="text"
               />
