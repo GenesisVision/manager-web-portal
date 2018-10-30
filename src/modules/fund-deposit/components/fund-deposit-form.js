@@ -114,7 +114,7 @@ export default compose(
               min: info.minInvestmentAmount
             })
           )
-          .lessThan(
+          .max(
             info.availableInWallet,
             t("deposit-fund.validation.amount-more-than-available")
           )
