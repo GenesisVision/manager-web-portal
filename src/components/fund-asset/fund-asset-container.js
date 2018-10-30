@@ -36,7 +36,7 @@ class FundAssetContainer extends Component {
       >
         {assets.map(
           (asset, idx) =>
-            idx < size && (
+            idx < (size || assets.length) && (
               <Tooltip
                 key={idx}
                 render={() => (
