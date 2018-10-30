@@ -11,17 +11,32 @@ export const NavigationButton = ({ icon, title, children, onClick }) => {
   );
 };
 
-const NavigationItem = ({ href, icon, title, children }) => {
+const NavigationItem = ({
+  href,
+  icon,
+  title,
+  children,
+  className,
+  disabled
+}) => {
   return (
-    <NavLink
-      className="navigation__item"
-      activeClassName="navigation__item--active"
-      to={href}
-      title={title}
-    >
-      {<icon.type {...icon.props} className="navigation__icon" />}
-      <span className="navigation__link">{children}</span>
-    </NavLink>
+    (disabled && (
+      <div className="navigation__item navigation-disabled">
+        {" "}
+        {<icon.type {...icon.props} className="navigation__icon" />}
+        <span className="navigation__link">{children}</span>
+      </div>
+    )) || (
+      <NavLink
+        className="navigation__item"
+        activeClassName="navigation__item--active"
+        to={href}
+        title={title}
+      >
+        {<icon.type {...icon.props} className="navigation__icon" />}
+        <span className="navigation__link">{children}</span>
+      </NavLink>
+    )
   );
 };
 

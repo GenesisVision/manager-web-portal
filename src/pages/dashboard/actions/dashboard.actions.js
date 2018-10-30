@@ -23,7 +23,7 @@ export const fetchPortfolioEvents = (auth, filters) => {
 export const fetchInRequests = (auth, skip, take) => {
   return {
     type: DASHBOARD_IN_REQUESTS,
-    payload: managerApiProxy.v10ManagerRequestsBySkipByTakeGet(skip, take, auth)
+    payload: managerApi.v10ManagerRequestsBySkipByTakeGet(skip, take, auth)
   };
 };
 

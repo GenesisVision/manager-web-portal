@@ -4,10 +4,12 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 import NumberFormat from "react-number-format";
+import { formatValue } from "utils/formatter";
 
 const StatisticItem = ({
   heading,
   value,
+  adornment,
   equivalent,
   currency,
   className,
@@ -22,11 +24,12 @@ const StatisticItem = ({
       </div>
       <div className={classnames("statistic-item__value", valueClassName)}>
         <NumberFormat
-          value={value}
+          value={formatValue(value)}
           thousandSeparator={" "}
           displayType="text"
           suffix={" GVT"}
         />
+        {adornment}
       </div>
       <div
         className={classnames(
@@ -35,7 +38,7 @@ const StatisticItem = ({
         )}
       >
         <NumberFormat
-          value={equivalent}
+          value={formatValue(equivalent)}
           thousandSeparator={" "}
           displayType="text"
           suffix={` ${currency}`}
@@ -47,10 +50,9 @@ const StatisticItem = ({
 
 StatisticItem.propTypes = {
   heading: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  equivalent: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    .isRequired,
-  currency: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  equivalent: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  currency: PropTypes.string,
   className: PropTypes.string,
   headingClassName: PropTypes.string,
   valueClassName: PropTypes.string,

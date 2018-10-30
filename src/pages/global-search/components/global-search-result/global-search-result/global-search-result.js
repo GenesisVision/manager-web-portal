@@ -51,10 +51,12 @@ class GlobalSearchResult extends PureComponent {
             value={PROGRAMS_TABLE_TAB}
             label={t("global-search-page.programs")}
           />
-          <GVTab
-            value={FUNDS_TABLE_TAB}
-            label={t("global-search-page.funds")}
-          />
+          <span className="tab-disabled">
+            <GVTab
+              value={FUNDS_TABLE_TAB}
+              label={t("global-search-page.funds")}
+            />
+          </span>
           <GVTab
             value={MANAGERS_TABLE_TAB}
             label={t("global-search-page.managers")}

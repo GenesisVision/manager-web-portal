@@ -124,3 +124,10 @@
     font-size: 14px;
   }
 }
+
+.navigation-disabled {
+  opacity: 0.1;
+  &, & div {
+    cursor: unset;
+  }
+}
