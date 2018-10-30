@@ -22,3 +22,9 @@
     }
   }
 }
+.tab-disabled{
+  opacity: 0.1;
+  &, & div{
+    cursor: unset;
+  }
+}

@@ -118,12 +118,16 @@ class FundDetailsDescriptionSection extends PureComponent {
     const isOwnProgram =
       fundDescription.personalFundDetails &&
       fundDescription.personalFundDetails.isOwnProgram;
+    const canWithdraw =
+      fundDescription.personalFundDetails &&
+      fundDescription.personalFundDetails.canWithdraw;
     return (
       <Fragment>
         <FundDetailsDescription
           isAuthenticated={isAuthenticated}
           redirectToLogin={redirectToLogin}
           isInvested={isInvested}
+          canWithdraw={canWithdraw}
           fundDescription={fundDescription}
           onReinvestingClick={this.handleOnReinvestingClick}
           isReinvestPending={ui.isReinvestPending}
