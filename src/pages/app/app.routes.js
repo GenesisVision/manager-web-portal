@@ -32,10 +32,10 @@ const AppRoutes = () => {
   return (
     <AppLayout>
       <Switch>
-        <Redirect exact from={HOME_ROUTE} to={FUNDS_ROUTE} />
+        <Redirect exact from={HOME_ROUTE} to={PROGRAMS_ROUTE} />
         <Route path={PROGRAMS_ROUTE} component={ProgramsRoutes} />
         <Route path={GLOBAL_SEARCH_ROUTE} component={GlobalSearchPage} />
-        <Route path={FUNDS_ROUTE} component={FundsRoutes} />
+        {/* <Route path={FUNDS_ROUTE} component={FundsRoutes} /> */}
         <Route path={MANAGER_DETAILS_ROUTE_REGEXP} component={ManagerPage} />
         <Route path={PROFILE_ROUTE} component={ProfileRoutes} />
         <Route
@@ -47,10 +47,10 @@ const AppRoutes = () => {
           path={CREATE_PROGRAM_PAGE_ROUTE}
           component={createProgramPage}
         />
-        <PrivateRoute
+        {/* <PrivateRoute
           path={CREATE_FUND_PAGE_ROUTE}
           component={createFundPage}
-        />
+        /> */}
         <PrivateRoute
           path={NOTIFICATIONS_ROUTE}
           component={NotificationRoutes}
