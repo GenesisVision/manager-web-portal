@@ -96,7 +96,7 @@ class ProgramTrades extends Component {
             </TableCell>
             <TableCell className="program-details-trades__cell program-details-trades__cell--profit">
               <Profitability value={+formatValue(trade.profit)} prefix="sign">
-                {Math.abs(formatValue(trade.profit))}
+                {formatValue(trade.profit, null, true)}
               </Profitability>
             </TableCell>
             <TableCell className="program-details-trades__cell program-details-trades__cell--date">
