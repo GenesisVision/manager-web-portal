@@ -107,7 +107,7 @@ class DashboardPrograms extends Component {
               <ProgramPeriodEnd periodEnds={program.periodEnds} />
             </TableCell>
             <TableCell className="dashboard-programs__cell--value">
-              {formatValue(program.statistic.currentValue)}
+              {formatValue(program.personalDetails.value)}
             </TableCell>
             <TableCell className="dashboard-programs__cell--profit">
               <NumberFormat
