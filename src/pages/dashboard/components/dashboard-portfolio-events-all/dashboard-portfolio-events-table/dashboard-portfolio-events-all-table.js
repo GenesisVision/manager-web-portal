@@ -23,6 +23,7 @@ import {
   PORTFOLIO_EVENTS_FILTERS,
   PORTFOLIO_EVENTS_TYPES_ENUM
 } from "./dashboard-portfolio-events-all-table.constants";
+import { isUseProfitability } from "../../helpers/dashboard-portfolio.helpers";
 
 class PortfolioEventsTableComponent extends Component {
   render() {
@@ -96,16 +97,26 @@ class PortfolioEventsTableComponent extends Component {
                   )}
               </TableCell>*/}
               <TableCell className="portfolio-events-all-table__cell portfolio-events-all-table__cell--type">
-                {event.title}
+                {event.description}
               </TableCell>
               <TableCell className="portfolio-events-all-table__cell portfolio-events-all-table__cell--amount">
-                <Profitability value={event.value}>
+                {isUseProfitability(event) ? (
+                  <Profitability value={formatValue(event.value)} prefix="sign">
+                    <NumberFormat
+                      value={formatValue(event.value)}
+                      thousandSeparator=" "
+                      displayType="text"
+                      suffix={" " + event.currency}
+                    />
+                  </Profitability>
+                ) : (
                   <NumberFormat
                     value={formatValue(event.value)}
                     thousandSeparator=" "
                     displayType="text"
+                    suffix={" " + event.currency}
                   />
-                </Profitability>
+                )}
               </TableCell>
             </TableRow>
           )}
