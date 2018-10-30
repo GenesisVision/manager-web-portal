@@ -25,6 +25,7 @@ import {
 import AccountTypeField from "../account-type-field/account-type-field";
 import createProgramSettingsValidationSchema from "./create-program-settings.validators";
 import ProgramDefaultImage from "./program-default-image";
+import classNames from "classnames";
 
 class CreateProgramSettings extends React.Component {
   render() {
@@ -259,7 +260,15 @@ class CreateProgramSettings extends React.Component {
             </div>
             <div className="create-program-settings__available-amount">
               {t("create-program-page.settings.fields.available-in-wallet")}
-              <span className="create-program-settings__available-amount-value">
+              <span
+                className={classNames(
+                  "create-program-settings__available-amount-value",
+                  {
+                    "create-program-settings__available-amount-value--error":
+                      balance < programsInfo.managerProgramInvestment
+                  }
+                )}
+              >
                 <NumberFormat
                   value={formatValue(balance)}
                   thousandSeparator=" "
