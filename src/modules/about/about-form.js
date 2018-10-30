@@ -12,7 +12,7 @@ const AboutForm = ({ t, handleSubmit, disabled, errorMessage }) => {
     <form id="about-manager" onSubmit={handleSubmit} className={styles.about}>
       <table className={"profile"}>
         <tbody>
-          <tr className="profile__title">
+          <tr className="profile__content">
             <td className="profile__left" />
             <td className="profile__center" />
             <td className="profile__right">
@@ -21,6 +21,7 @@ const AboutForm = ({ t, handleSubmit, disabled, errorMessage }) => {
                   label={t("profile.login")}
                   component={GVTextField}
                   name="userName"
+                  disabled={disabled}
                 />
               </div>
               <div className="profile__row">
@@ -29,9 +30,16 @@ const AboutForm = ({ t, handleSubmit, disabled, errorMessage }) => {
                   component={GVTextField}
                   type="textarea"
                   name="about"
+                  disabled={disabled}
                 />
               </div>
               <div className="form-error">{errorMessage}</div>
+            </td>
+          </tr>
+          <tr className="profile__content">
+            <td />
+            <td />
+            <td className="profile__right">
               <div className="profile__row">
                 <GVButton type="submit" disabled={disabled}>
                   {t("buttons.save")}
