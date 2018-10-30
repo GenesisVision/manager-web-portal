@@ -23,6 +23,10 @@
     max-height: 500px;
   }
 
+  &__actions {
+    float: right;
+  }
+
   .dashboard-portfolio-chart-stat {
     &__statistic-item {
       margin-top: 15px;
