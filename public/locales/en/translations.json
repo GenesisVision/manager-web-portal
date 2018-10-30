@@ -445,7 +445,7 @@
         "date": "Date",
         "type": "Type",
         "description": "Description",
-        "amount": "Amount, GVT"
+        "amount": "Amount"
       },
       "types": {
         "all": "All",
@@ -455,7 +455,11 @@
         "loss": "Loss",
         "reinvest": "Reinvest",
         "canceled": "Canceled",
-        "ended": "Ended"
+        "ended": "Ended",
+        "ManagerInvest":"Manager invest",
+        "EntranceFee": "Entrance fee",
+        "AssetStarted": "Asset started",
+        "InvestorInvest": "Investor invest"
       }
     }
   },
