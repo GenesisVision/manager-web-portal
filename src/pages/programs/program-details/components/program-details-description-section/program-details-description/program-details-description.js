@@ -59,6 +59,7 @@ class ProgramDetailsDescription extends PureComponent {
       t,
       isOwnProgram,
       isInvested,
+      canWithdraw,
       programDescription,
       onReinvestingClick,
       onFavoriteClick,
@@ -202,6 +203,7 @@ class ProgramDetailsDescription extends PureComponent {
                   )}
                 </div>
                 <ProgramDetailsInvestment
+                  canWithdraw={canWithdraw}
                   className={"program-details-description__your-investment"}
                   programCurrency={programDescription.currency}
                   {...composeInvestmentData(programDescription)}
