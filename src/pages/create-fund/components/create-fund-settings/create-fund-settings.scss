@@ -199,6 +199,8 @@ $asset-height-mobile: $asset-height/$divider-text;
     font-size: 11px;
     color: $label-color;
     letter-spacing: 0.2px;
+    width: 210px;
+    line-height: 1.4;
   }
 
   &__logo-section {

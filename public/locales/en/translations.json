@@ -768,7 +768,8 @@
           "day_plural": "Days"
         },
         "upload-logo": "Upload program logo",
-        "upload-logo-rules": "At least 300 x 300px PNG or JPG file",
+        "upload-logo-rules":
+          "At least 300 x 300px PNG or JPG file. The maximum file size is 2MB.",
         "entry-fee": "Entry fee",
         "success-fee": "Success fee",
         "deposit-amount": "Deposit amount",
@@ -795,7 +796,10 @@
         "leverage-required": "Leverage is required",
         "entry-fee-required": "Entry fee is required",
         "success-fee-required": "Success fee is required",
-        "account-type-required": "Account type is required"
+        "account-type-required": "Account type is required",
+        "image-resolution-incorrect":
+          "The resolution of the uploaded image is too low.",
+        "image-file-is-large": "The uploaded image file is too large."
       }
     },
     "notifications": {
@@ -836,7 +840,8 @@
         "brokers-leverage": "Broker's leverage",
         "period": "Period",
         "upload-logo": "Upload fund logo",
-        "upload-logo-rules": "At least 300 x 300px PNG or JPG file",
+        "upload-logo-rules":
+          "At least 300 x 300px PNG or JPG file. The maximum file size is 2MB.",
         "entry-fee": "Entry fee",
         "success-fee": "Success fee",
         "exit-fee": "Exit fee",
@@ -853,6 +858,9 @@
         "success-fee-required": "Success fee is required",
         "assets-share": "Total share of all assets should be equal to 100%",
         "assets-count": "Must be at least two assets.",
+        "image-resolution-incorrect":
+          "The resolution of the uploaded image is too low.",
+        "image-file-is-large": "The uploaded image file is too large.",
         "deposit-min": "Not enought money."
       }
     }
@@ -905,12 +913,18 @@
     "settings": {
       "title": "Settings",
       "profile-image": "Profile image",
-      "image-requirements": "At least 300 x 300px PNG or JPG file.",
+      "image-requirements":
+        "At least 300 x 300px PNG or JPG file. The maximum file size is 2MB.",
       "save-photo": "Save photo",
       "image-success-save-message":
         "The photo has just been successfully changed.",
       "logout-from-another-devices": "Logout from other devices",
-      "change-password": "Change password"
+      "change-password": "Change password",
+      "validation": {
+        "image-resolution-incorrect":
+          "The resolution of the uploaded image is too low.",
+        "image-file-is-large": "The uploaded image file is too large."
+      }
     }
   },
   "profile-widget": {

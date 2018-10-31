@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { translate } from "react-i18next";
 import { connect } from "react-redux";
 import { bindActionCreators, compose } from "redux";
+import { alertMessageActions } from "shared/modules/alert-message/actions/alert-message-actions";
 
 import CreateProgramBroker from "./components/create-program-broker/create-program-broker";
 import CreateProgramNavigationDialog from "./components/create-program-navigation-dialog/create-program-navigation-dialog";
@@ -117,6 +118,7 @@ class CreateProgramContainer extends Component {
                 setLeverageChooseAvailable={setLeverageChooseAvailable}
                 isLeverageChooseAvailable={isLeverageChooseAvailable}
                 programsInfo={platformSettings.programsInfo}
+                notifyError={service.notifyError}
               />
             )}
             <CreateProgramNavigationDialog
@@ -140,7 +142,14 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    service: bindActionCreators(createProgramService, dispatch)
+    service: bindActionCreators(
+      {
+        ...createProgramService,
+        notifyError: (text, isUseLocalization) =>
+          alertMessageActions.error(text, isUseLocalization)
+      },
+      dispatch
+    )
   };
 };
 

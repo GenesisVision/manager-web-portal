@@ -1,5 +1,6 @@
 import "./create-program-settings.scss";
 
+import classNames from "classnames";
 import Hint from "components/hint/hint";
 import { RefreshIcon } from "components/icon/refresh-icon";
 import Select from "components/select/select";
@@ -25,7 +26,6 @@ import {
 import AccountTypeField from "../account-type-field/account-type-field";
 import createProgramSettingsValidationSchema from "./create-program-settings.validators";
 import ProgramDefaultImage from "./program-default-image";
-import classNames from "classnames";
 
 class CreateProgramSettings extends React.Component {
   render() {
@@ -42,8 +42,15 @@ class CreateProgramSettings extends React.Component {
       setFieldValue,
       setLeverageChooseAvailable,
       isLeverageChooseAvailable,
-      programsInfo
+      programsInfo,
+      notifyError,
+      errors
     } = this.props;
+
+    const imageInputError =
+      errors &&
+      errors.logo &&
+      (errors.logo.width || errors.logo.height || errors.logo.size);
 
     return (
       <div className="create-program-settings">
@@ -73,20 +80,6 @@ class CreateProgramSettings extends React.Component {
                 setFieldValue={setFieldValue}
                 broker={broker}
               />
-              {/* <GVFormikField
-                name="accountType"
-                component={GVTextField}
-                label={t("create-program-page.settings.fields.account-type")}
-                InputComponent={Select}
-              >
-                {getAccountTypes(broker).map(accountType => {
-                  return (
-                    <option value={accountType} key={accountType}>
-                      {accountType}
-                    </option>
-                  );
-                })}
-              </GVFormikField> */}
             </div>
             <div className="create-program-settings__row">
               <GVFormikField
@@ -184,7 +177,9 @@ class CreateProgramSettings extends React.Component {
                       {...field}
                       defaultImage={ProgramDefaultImage}
                       onChange={setFieldValue}
+                      notifyError={notifyError}
                       alt="Program logo"
+                      error={imageInputError}
                     />
                   )}
                 />
@@ -318,7 +313,10 @@ export default translate()(
         cropped: null,
         src: "",
         isNew: false,
-        isDefault: true
+        isDefault: true,
+        width: undefined,
+        height: undefined,
+        size: undefined
       },
       brokerAccountTypeId: "",
       entryFee: "",

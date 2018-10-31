@@ -127,7 +127,8 @@
 
 .navigation-disabled {
   opacity: 0.1;
-  &, & div {
+  &,
+  & div {
     cursor: unset;
   }
 }
