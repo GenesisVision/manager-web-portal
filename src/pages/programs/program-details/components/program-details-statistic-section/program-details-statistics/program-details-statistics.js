@@ -132,6 +132,7 @@ const ProgramDetailsStatistics = ({
                   statistic.maxDrawdown !== null ? statistic.maxDrawdown : "-"
                 }
                 displayType="text"
+                suffix="%"
                 decimalScale={2}
               />
             </span>
