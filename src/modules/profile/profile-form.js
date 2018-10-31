@@ -5,6 +5,7 @@ import { GVFormikField, GVTextField } from "gv-react-components";
 import moment from "moment";
 import PropTypes from "prop-types";
 import React, { Component, Fragment } from "react";
+import Scrollbars from "react-custom-scrollbars";
 import { translate } from "react-i18next";
 
 import VerificationStatus from "../../components/verification-status/verification-status";
@@ -45,49 +46,51 @@ class Profile extends Component {
           className="profile__container"
           onSubmit={handleSubmit}
         >
-          <table className={"profile"}>
-            <tbody>
-              <tr className="profile__title">
-                <td className="profile__left">
-                  <h4>01</h4>
-                </td>
-                <td className="profile__center" />
-                <td className="profile__right">
-                  <h4>{t("profile.contacts")}</h4>
-                  <VerificationStatus checked={info.phoneNumberConfirmed} />
-                </td>
-              </tr>
-              <tr className="profile__content">
-                <td className="profile__left">
-                  <span className="profile__stick" />
-                </td>
-                <td className="profile__center" />
-                <td className="profile__right">
-                  <div className="profile__row">
-                    <GVFormikField
-                      disabled
-                      label={t("profile.email")}
-                      value={info.email}
-                      component={GVTextField}
-                      name="email"
+          <Scrollbars autoHeight autoHeightMax={14000}>
+            <table className={"profile"}>
+              <tbody>
+                <tr className="profile__title">
+                  <td className="profile__left">
+                    <h4>01</h4>
+                  </td>
+                  <td className="profile__center" />
+                  <td className="profile__right">
+                    <h4>{t("profile.contacts")}</h4>
+                    <VerificationStatus checked={info.phoneNumberConfirmed} />
+                  </td>
+                </tr>
+                <tr className="profile__content">
+                  <td className="profile__left">
+                    <span className="profile__stick" />
+                  </td>
+                  <td className="profile__center" />
+                  <td className="profile__right">
+                    <div className="profile__row">
+                      <GVFormikField
+                        disabled
+                        label={t("profile.email")}
+                        value={info.email}
+                        component={GVTextField}
+                        name="email"
+                      />
+                    </div>
+                  </td>
+                </tr>
+                <tr className="profile__title">
+                  <td className="profile__left">
+                    <h4>02</h4>
+                  </td>
+                  <td className="profile__center" />
+                  <td className="profile__right">
+                    <h4>{t("profile.personal-info")}</h4>
+                    <VerificationStatus
+                      verificationStatus={info.verificationStatus}
                     />
-                  </div>
-                </td>
-              </tr>
-              <tr className="profile__title">
-                <td className="profile__left">
-                  <h4>02</h4>
-                </td>
-                <td className="profile__center" />
-                <td className="profile__right">
-                  <h4>{t("profile.personal-info")}</h4>
-                  <VerificationStatus
-                    verificationStatus={info.verificationStatus}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </Scrollbars>
         </form>
       </Fragment>
     );

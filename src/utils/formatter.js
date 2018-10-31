@@ -72,7 +72,11 @@ const removeSign = x => {
   return x;
 };
 
-const formatValue = (x, roundType = roundTypeEnum.FLOOR, isShowSign = true) => {
+const formatValueOld = (
+  x,
+  roundType = roundTypeEnum.FLOOR,
+  isShowSign = true
+) => {
   x = typeof x !== "number" ? +x : x;
   if (!x) return x;
   x = filterNum(x);
@@ -101,6 +105,35 @@ const formatValue = (x, roundType = roundTypeEnum.FLOOR, isShowSign = true) => {
   if (!isShowSign) return removeSign(result);
 
   return result;
+};
+
+const reverseString = value =>
+  String(value)
+    .split("")
+    .reverse()
+    .join("");
+const sliceFraction = item => {
+  if (item[0] < 10) return [item[0], item[1].slice(0, 8)];
+  if (item[0] < 100) return [item[0], item[1].slice(0, 6)];
+  if (item[0] < 1000) return [item[0], item[1].slice(0, 4)];
+  if (item[0] >= 1000) return [item[0], item[1].slice(0, 2)];
+};
+const addOne = item => [
+  item[0],
+  +item[1] === 0 ? item[1].slice(0, -1) + "1" : item[1]
+];
+const cleanNulls = item => [item[0], reverseString(+reverseString(item[1]))];
+const formatValue = (value, decimalScale, abs) => {
+  value = typeof value !== "number" ? +value : value;
+  value = abs ? Math.abs(value) : value;
+  if (value === undefined || isNaN(value) || value.toFixed(0) == value)
+    return value;
+  return [...[value.toFixed(decimalScale || 19).split(".")]]
+    .map(sliceFraction)
+    .map(addOne)
+    .map(cleanNulls)
+    .map(item => item.join("."))
+    .join();
 };
 
 export { dateFormat, formatValue, roundTypeEnum };

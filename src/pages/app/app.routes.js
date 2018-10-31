@@ -37,7 +37,7 @@ const AppRoutes = () => {
         <Route path={GLOBAL_SEARCH_ROUTE} component={GlobalSearchPage} />
         <Route path={FUNDS_ROUTE} component={FundsRoutes} />
         <Route path={MANAGER_DETAILS_ROUTE_REGEXP} component={ManagerPage} />
-        <Route path={PROFILE_ROUTE} component={ProfileRoutes} />
+        <PrivateRoute path={PROFILE_ROUTE} component={ProfileRoutes} />
         <Route
           path={WALLET_WITHDRAW_CONFIRM_ROUTE}
           component={WalletWithdrawConfirmPage}

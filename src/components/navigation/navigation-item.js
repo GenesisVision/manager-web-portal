@@ -11,7 +11,14 @@ export const NavigationButton = ({ icon, title, children, onClick }) => {
   );
 };
 
-const NavigationItem = ({ href, icon, title, children }) => {
+const NavigationItem = ({
+  href,
+  icon,
+  title,
+  children,
+  className,
+  disabled
+}) => {
   return (
     <NavLink
       className="navigation__item"
