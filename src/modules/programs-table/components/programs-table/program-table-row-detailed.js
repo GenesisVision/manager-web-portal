@@ -11,6 +11,7 @@ import { PROGRAM_DETAILS_ROUTE } from "pages/programs/programs.routes";
 import { composeProgramDetailsUrl } from "pages/programs/programs.routes";
 import { PROGRAM_SLUG_URL_PARAM_NAME } from "pages/programs/programs.routes";
 import React, { Component } from "react";
+import { Scrollbars } from "react-custom-scrollbars";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
@@ -18,7 +19,6 @@ import { formatValue } from "utils/formatter";
 import replaceParams from "utils/replace-params";
 
 import ProgramBigChart from "../program-big-chart/program-big-chart";
-import { Scrollbars } from "react-custom-scrollbars";
 
 class ProgramTableRowDetailed extends Component {
   state = {
@@ -160,9 +160,11 @@ class ProgramTableRowDetailed extends Component {
                     </div>
                     <div className="program-detailed__statistic-data--value">
                       <NumberFormat
-                        value={program.statistic.drawdownPercent}
+                        value={formatValue(
+                          program.statistic.drawdownPercent,
+                          2
+                        )}
                         suffix="%"
-                        decimalScale={2}
                         displayType="text"
                       />
                     </div>
@@ -177,10 +179,12 @@ class ProgramTableRowDetailed extends Component {
                         prefix="sign"
                       >
                         <NumberFormat
-                          value={program.statistic.profitPercent}
+                          value={formatValue(
+                            program.statistic.profitPercent,
+                            2
+                          )}
                           suffix="%"
                           allowNegative={false}
-                          decimalScale={2}
                           displayType="text"
                         />
                       </Profitability>

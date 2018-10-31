@@ -54,7 +54,10 @@ class InputImage extends Component {
       }
       const img = {
         ...value,
-        cropped: blob
+        cropped: blob,
+        width: croppedCanvas.width,
+        height: croppedCanvas.height,
+        size: blob.size
       };
       onChange(name, img);
     }, value.filetype);
@@ -66,17 +69,32 @@ class InputImage extends Component {
 
   clear = event => {
     const { onChange, name } = this.props;
-    onChange(name, { cropped: null, src: "", isDefault: true, isNew: false });
+    onChange(name, {
+      cropped: null,
+      src: "",
+      isDefault: true,
+      isNew: false,
+      width: undefined,
+      height: undefined,
+      size: undefined
+    });
     event.preventDefault();
     event.stopPropagation();
   };
 
   render() {
-    const { className, value, defaultImage } = this.props;
+    const { className, value, defaultImage, error } = this.props;
     const { isDefault, isNew, src } = value;
     const { onDrop, onCrop, clear } = this;
     return (
-      <div className={classnames("input-image", className)}>
+      <div
+        className={classnames("input-image", className, {
+          "input-image--error": error
+        })}
+        ref={rootElement => {
+          this.rootElement = rootElement;
+        }}
+      >
         <Dropzone
           disableClick
           className="input-image__dropzone"
@@ -100,7 +118,8 @@ class InputImage extends Component {
                   autoCropArea={1}
                   imageSmoothingEnabled={false}
                   imageSmoothingQuality="high"
-                  crop={onCrop}
+                  ready={onCrop}
+                  cropend={onCrop}
                 />
               )}
 
@@ -140,6 +159,7 @@ class InputImage extends Component {
             &#10006;
           </div>
         )}
+        {error && <div className="input-image__error">{error}</div>}
       </div>
     );
   }

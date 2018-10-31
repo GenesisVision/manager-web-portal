@@ -41,9 +41,7 @@ class DashboardAssets extends Component {
           <div className="dashboard-assets__tabs">
             <GVTabs value={tab} onChange={this.handleTabChange}>
               <GVTab value={"programs"} label="Programs" />
-              <span className="tab-disabled">
-                <GVTab value={"funds"} label="Funds" />
-              </span>
+              <GVTab value={"funds"} label="Funds" />
             </GVTabs>
           </div>
         </div>

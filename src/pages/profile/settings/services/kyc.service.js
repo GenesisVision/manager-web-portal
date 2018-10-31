@@ -31,8 +31,8 @@ export const loadKycIFrame = () => {
                 required: true
               },
               {
-                 "name": "phone",
-                 "required": true
+                name: "phone",
+                required: true
               },
               {
                 name: "country",

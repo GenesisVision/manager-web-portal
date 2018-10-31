@@ -6,7 +6,20 @@
   height: 200px;
   position: relative;
 
+  &--error {
+    border-color: $text-error;
+  }
+
   border: 2px solid $separator-color;
+
+  &__error {
+    position: absolute;
+    bottom: -34px;
+    color: $text-error;
+    font-size: 0.7em;
+    width: 100%;
+    text-align: center;
+  }
 
   & .cropper-face {
     opacity: 0;

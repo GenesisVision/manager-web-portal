@@ -34,6 +34,10 @@
     color: $main-color;
     margin-top: 16px;
 
+    &-arrow {
+      margin-left: 6px;
+    }
+
     @include media-breakpoint-landscape-tablet() {
       margin-left: auto;
     }
@@ -46,6 +50,7 @@
     @include media-breakpoint-landscape-tablet() {
       margin-top: 0;
       margin-left: auto;
+      align-items: flex-end;
     }
   }
 
