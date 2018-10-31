@@ -11,7 +11,7 @@ import { composeManagerDetailsUrl } from "pages/manager/manager.page";
 import { PROGRAM_SLUG_URL_PARAM_NAME } from "pages/programs/programs.routes";
 import { composeProgramDetailsUrl } from "pages/programs/programs.routes";
 import { PROGRAM_DETAILS_ROUTE } from "pages/programs/programs.routes";
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
@@ -89,23 +89,23 @@ class ProgramCard extends Component {
               <div className="popover-list">
                 {program.personalDetails &&
                   program.personalDetails.isOwnProgram && (
-                    <GVButton
-                      variant="text"
-                      color="secondary"
-                      onClick={this.handleOpenWithdrawalPopup}
-                    >
-                      {t("program-actions.withdraw")}
-                    </GVButton>
+                    <Fragment>
+                      <GVButton
+                        variant="text"
+                        color="secondary"
+                        onClick={this.handleOpenWithdrawalPopup}
+                      >
+                        {t("program-actions.withdraw")}
+                      </GVButton>
+                      <GVButton
+                        variant="text"
+                        color="secondary"
+                        onClick={this.handleOpenInvestmentPopup}
+                      >
+                        {t("program-actions.invest")}
+                      </GVButton>
+                    </Fragment>
                   )}
-                {program.personalDetails && (
-                  <GVButton
-                    variant="text"
-                    color="secondary"
-                    onClick={this.handleOpenInvestmentPopup}
-                  >
-                    {t("program-actions.invest")}
-                  </GVButton>
-                )}
                 <Link to={programDetailsUrl}>
                   <GVButton
                     variant="text"

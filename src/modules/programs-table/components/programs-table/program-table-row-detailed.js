@@ -18,6 +18,7 @@ import { formatValue } from "utils/formatter";
 import replaceParams from "utils/replace-params";
 
 import ProgramBigChart from "../program-big-chart/program-big-chart";
+import { Scrollbars } from "react-custom-scrollbars";
 
 class ProgramTableRowDetailed extends Component {
   state = {
@@ -84,9 +85,15 @@ class ProgramTableRowDetailed extends Component {
                 <div className="program-detailed__strategy">
                   {t("programs-page.programs-header.strategy")}
                 </div>
-                <div className="program-detailed__description">
-                  {program.description}
-                </div>
+                <Scrollbars
+                  autoHide
+                  autoHideTimeout={1000}
+                  style={{ width: "100%", height: "100%" }}
+                >
+                  <div className="program-detailed__description">
+                    {program.description}
+                  </div>
+                </Scrollbars>
               </div>
               <div className="program-detailed__statistic">
                 <div className="program-detailed__chart">
@@ -194,9 +201,12 @@ class ProgramTableRowDetailed extends Component {
                     </div>
                   )}
                 <div className="program-detailed__bottom-block">
-                  <GVButton onClick={this.handleOpenInvest}>
-                    {t("program-actions.invest")}
-                  </GVButton>
+                  {program.personalDetails &&
+                    program.personalDetails.isOwnProgram && (
+                      <GVButton onClick={this.handleOpenInvest}>
+                        {t("program-actions.invest")}
+                      </GVButton>
+                    )}
                   <ProgramDepositContainer
                     type="program"
                     id={program.id}

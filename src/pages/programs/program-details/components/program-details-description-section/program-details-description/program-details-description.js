@@ -104,8 +104,7 @@ class ProgramDetailsDescription extends PureComponent {
                   {t("program-details-page.popover.invest-limit")}
                 </div>
                 <div className="popover-levels__balance">
-                  {programDescription.availableInvestment}{" "}
-                  {programDescription.currency}
+                  {`${programDescription.availableInvestment} GVT`}
                 </div>
               </div>
               <div className="popover-levels__block popover-levels__text-block">
@@ -191,16 +190,6 @@ class ProgramDetailsDescription extends PureComponent {
                       {t("program-details-page.description.invest")}
                     </GVButton>
                   </div>
-                  {isInvested && (
-                    <ProgramReinvestingWidget
-                      className="program-details-description__reinvest"
-                      toggleReinvesting={onReinvestingClick}
-                      isReinvesting={
-                        programDescription.personalProgramDetails.isReinvest
-                      }
-                      disabled={isReinvestPending}
-                    />
-                  )}
                 </div>
                 <ProgramDetailsInvestment
                   canWithdraw={canWithdraw}
