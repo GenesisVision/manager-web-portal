@@ -1,6 +1,10 @@
 @import "styles/_colors.scss";
 
 .profile {
+  width: 100%;
+  .gv-text-field {
+    min-width: 340px;
+  }
   &__edit-link {
     display: inline-flex;
     margin-bottom: 45px;
