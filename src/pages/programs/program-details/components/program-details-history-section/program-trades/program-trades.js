@@ -81,11 +81,7 @@ class ProgramTrades extends Component {
               {trade.symbol}
             </TableCell>
             <TableCell className="program-details-trades__cell program-details-trades__cell--volume">
-              <NumberFormat
-                value={formatValue(trade.volume)}
-                displayType="text"
-                thousandSeparator=" "
-              />
+              {formatValue(trade.volume)}
             </TableCell>
             <TableCell className="program-details-trades__cell program-details-trades__cell--price">
               <NumberFormat
