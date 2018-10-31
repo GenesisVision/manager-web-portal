@@ -52,7 +52,7 @@ const FundAssetRatio: React.SFC<GVProgramPeriodProps> = ({
               onMouseLeave={handleLeave}
               style={{
                 width: `${calcPercent(newLevel, start, end)}%`,
-                background: `#${item.color}`,
+                background: item.color,
                 zIndex: ZIndex
               }}
             />

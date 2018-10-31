@@ -24,4 +24,4 @@ const mapDispatchToProps = dispatch => ({
   service: bindActionCreators({ ...managerService, goBack }, dispatch)
 });
 
-export default connect(mapDispatchToProps)(ManagerDescriptionContainer);
+export default connect(null, mapDispatchToProps)(ManagerDescriptionContainer);

@@ -1,5 +1,6 @@
 import "./create-program-settings.scss";
 
+import classNames from "classnames";
 import Hint from "components/hint/hint";
 import { RefreshIcon } from "components/icon/refresh-icon";
 import Select from "components/select/select";
@@ -259,7 +260,15 @@ class CreateProgramSettings extends React.Component {
             </div>
             <div className="create-program-settings__available-amount">
               {t("create-program-page.settings.fields.available-in-wallet")}
-              <span className="create-program-settings__available-amount-value">
+              <span
+                className={classNames(
+                  "create-program-settings__available-amount-value",
+                  {
+                    "create-program-settings__available-amount-value--error":
+                      balance < programsInfo.managerProgramInvestment
+                  }
+                )}
+              >
                 <NumberFormat
                   value={formatValue(balance)}
                   thousandSeparator=" "
