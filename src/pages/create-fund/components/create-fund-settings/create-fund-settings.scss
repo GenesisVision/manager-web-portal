@@ -356,13 +356,13 @@ $asset-height-mobile: $asset-height/$divider-text;
   &__asset-currency-short {
     opacity: 0.4;
   }
-  &__assets,
   &__search {
     padding: 0 $padding-small;
   }
   &__assets {
     padding-bottom: $padding-small;
     table {
+      padding: 0 $padding-small;
       border-spacing: 0;
     }
     td {

@@ -6,6 +6,12 @@
   margin-top: 10px;
   .statistic-item {
     margin-right: 0;
+    &__heading {
+      margin-bottom: 0;
+    }
+    &__value {
+      font-size: 13px;
+    }
   }
 
   &__icon {
