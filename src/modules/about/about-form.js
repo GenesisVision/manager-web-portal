@@ -2,6 +2,7 @@ import { withFormik } from "formik";
 import { GVButton, GVFormikField, GVTextField } from "gv-react-components";
 import PropTypes from "prop-types";
 import React from "react";
+import Scrollbars from "react-custom-scrollbars";
 import { translate } from "react-i18next";
 import { compose } from "redux";
 
@@ -10,45 +11,47 @@ import styles from "./About.module.scss";
 const AboutForm = ({ t, handleSubmit, disabled, errorMessage }) => {
   return (
     <form id="about-manager" onSubmit={handleSubmit} className={styles.about}>
-      <table className={"profile"}>
-        <tbody>
-          <tr className="profile__content">
-            <td className="profile__left" />
-            <td className="profile__center" />
-            <td className="profile__right">
-              <div className="profile__row">
-                <GVFormikField
-                  label={t("profile.login")}
-                  component={GVTextField}
-                  name="userName"
-                  disabled={disabled}
-                />
-              </div>
-              <div className="profile__row">
-                <GVFormikField
-                  label={t("profile.about")}
-                  component={GVTextField}
-                  type="textarea"
-                  name="about"
-                  disabled={disabled}
-                />
-              </div>
-              <div className="form-error">{errorMessage}</div>
-            </td>
-          </tr>
-          <tr className="profile__content">
-            <td />
-            <td />
-            <td className="profile__right">
-              <div className="profile__row">
-                <GVButton type="submit" disabled={disabled}>
-                  {t("buttons.save")}
-                </GVButton>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <Scrollbars autoHeight autoHeightMax={14000}>
+        <table className={"profile"}>
+          <tbody>
+            <tr className="profile__content">
+              <td className="profile__left" />
+              <td className="profile__center" />
+              <td className="profile__right">
+                <div className="profile__row">
+                  <GVFormikField
+                    label={t("profile.login")}
+                    component={GVTextField}
+                    name="userName"
+                    disabled={disabled}
+                  />
+                </div>
+                <div className="profile__row">
+                  <GVFormikField
+                    label={t("profile.about")}
+                    component={GVTextField}
+                    type="textarea"
+                    name="about"
+                    disabled={disabled}
+                  />
+                </div>
+                <div className="form-error">{errorMessage}</div>
+              </td>
+            </tr>
+            <tr className="profile__content">
+              <td />
+              <td />
+              <td className="profile__right">
+                <div className="profile__row">
+                  <GVButton type="submit" disabled={disabled}>
+                    {t("buttons.save")}
+                  </GVButton>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </Scrollbars>
     </form>
   );
 };
