@@ -104,8 +104,7 @@ class ProgramDetailsDescription extends PureComponent {
                   {t("program-details-page.popover.invest-limit")}
                 </div>
                 <div className="popover-levels__balance">
-                  {programDescription.availableInvestment}{" "}
-                  {programDescription.currency}
+                  {`${programDescription.availableInvestment} GVT`}
                 </div>
               </div>
               <div className="popover-levels__block popover-levels__text-block">
