@@ -81,7 +81,7 @@ class DashboardFunds extends Component {
         )}
         renderBodyRow={fund => (
           <TableRow>
-            <TableCell className="funds-table__cell--name">
+            <TableCell className="funds-table__cell funds-table__cell--name">
               <div className="funds-table__cell--avatar-title">
                 <AssetAvatar
                   url={fund.logo}
@@ -97,10 +97,10 @@ class DashboardFunds extends Component {
                 </div>
               </div>
             </TableCell>
-            <TableCell className="funds-table__cell">
+            <TableCell className="funds-table__cell funds-table__cell">
               {fund.statistic.balanceGVT.amount} GVT
             </TableCell>
-            <TableCell className="funds-table__cell">
+            <TableCell className="funds-table__cell funds-table__cell">
               <FundAssetContainer
                 assets={fund.topFundAssets}
                 type={"short"}
@@ -108,10 +108,10 @@ class DashboardFunds extends Component {
                 length={fund.totalAssetsCount}
               />
             </TableCell>
-            <TableCell className="funds-table__cell--investors">
+            <TableCell className="funds-table__cell funds-table__cell--investors">
               {fund.statistic.investorsCount}
             </TableCell>
-            <TableCell className="funds-table__cell--drawdown">
+            <TableCell className="funds-table__cell funds-table__cell--drawdown">
               <NumberFormat
                 value={fund.statistic.drawdownPercent}
                 suffix="%"
@@ -119,7 +119,7 @@ class DashboardFunds extends Component {
                 displayType="text"
               />
             </TableCell>
-            <TableCell className="funds-table__cell--profit">
+            <TableCell className="funds-table__cell funds-table__cell--profit">
               <Profitability value={fund.statistic.profitPercent} prefix="sign">
                 <NumberFormat
                   value={fund.statistic.profitPercent}
@@ -130,7 +130,7 @@ class DashboardFunds extends Component {
                 />
               </Profitability>
             </TableCell>
-            <TableCell className="funds-table__cell--chart">
+            <TableCell className="funds-table__cell funds-table__cell--chart">
               <ProgramSimpleChart data={fund.chart} programId={fund.id} />
             </TableCell>
           </TableRow>
