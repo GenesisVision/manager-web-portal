@@ -11,7 +11,7 @@ const confirmPasswordValidator = string()
 const validationSchema = object().shape({
   userName: string()
     .matches(
-      /^[-a-z0-9]{1,99}$/,
+      /^[-A-Za-z0-9]{1,99}$/,
       "Name must contain from 1 to 99 letters, numbers or dashes"
     )
     .required("Name is required"),

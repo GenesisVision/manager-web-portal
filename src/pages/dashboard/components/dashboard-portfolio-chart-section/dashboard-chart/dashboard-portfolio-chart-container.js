@@ -13,19 +13,10 @@ class DashboardPortfolioChartContainer extends PureComponent {
     period: DEFAULT_PERIOD
   };
 
-  getAssets = () => {
-    const { programsData, fundsData } = this.props;
+  componentDidMount() {
+    const { assets } = this.props;
 
-    if (programsData && fundsData) {
-      return { programs: programsData.programs, funds: fundsData.funds };
-    }
-    return null;
-  };
-
-  componentDidUpdate(prevProps, prevState) {
-    const assets = this.getAssets();
-
-    if (!this.props.assetChart && assets !== null) {
+    if (assets !== null) {
       const { programs, funds } = assets;
       let asset;
       if (programs.length > 0) {

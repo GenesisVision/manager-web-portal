@@ -3,6 +3,7 @@ import "./dashboard-chart-assets.scss";
 import { ActionsCircleIcon } from "components/icon/actions-circle-icon";
 import Popover from "components/popover/popover";
 import React, { PureComponent } from "react";
+import Scrollbars from "react-custom-scrollbars";
 import { translate } from "react-i18next";
 import { connect } from "react-redux";
 import { bindActionCreators, compose } from "redux";
@@ -32,13 +33,13 @@ class DashboardChartAssetsContainer extends PureComponent {
   };
 
   render() {
-    const { programsData, fundsData } = this.props;
-    if (!programsData || !fundsData) return null;
-    const programs = programsData.programs;
-    const funds = fundsData.funds;
+    const { assets } = this.props;
+    if (!assets) return null;
+    const programs = assets.programs;
+    const funds = assets.funds;
     const hasPrograms = programs.length > 0;
     const hasFunds = funds.length > 0;
-    if (!hasPrograms && !hasFunds) return null;
+
     return (
       <div className="dashboard-chart-assets">
         <div className="dashboard-chart-assets__title">
@@ -51,34 +52,36 @@ class DashboardChartAssetsContainer extends PureComponent {
           noPadding
           onClose={this.handleCloseDropdown}
         >
-          <div className="dashboard-chart-assets-popover">
-            {hasPrograms && (
-              <div className="dashboard-chart-assets-popover__header">
-                Programs
-              </div>
-            )}
-            {programs.map(x => (
-              <DashboardChartAsset
-                key={x.id}
-                chartAsset={x}
-                type="Program"
-                selectAsset={this.handleSelectAsset}
-              />
-            ))}
-            {hasFunds && (
-              <div className="dashboard-chart-assets-popover__header">
-                Funds
-              </div>
-            )}
-            {funds.map(x => (
-              <DashboardChartAsset
-                key={x.id}
-                chartAsset={x}
-                type="Fund"
-                selectAsset={this.handleSelectAsset}
-              />
-            ))}
-          </div>
+          <Scrollbars autoHeight autoHeightMax="260px">
+            <div className="dashboard-chart-assets-popover">
+              {hasPrograms && (
+                <div className="dashboard-chart-assets-popover__header">
+                  Programs
+                </div>
+              )}
+              {programs.map(x => (
+                <DashboardChartAsset
+                  key={x.id}
+                  chartAsset={x}
+                  type="Program"
+                  selectAsset={this.handleSelectAsset}
+                />
+              ))}
+              {hasFunds && (
+                <div className="dashboard-chart-assets-popover__header">
+                  Funds
+                </div>
+              )}
+              {funds.map(x => (
+                <DashboardChartAsset
+                  key={x.id}
+                  chartAsset={x}
+                  type="Fund"
+                  selectAsset={this.handleSelectAsset}
+                />
+              ))}
+            </div>
+          </Scrollbars>
         </Popover>
       </div>
     );

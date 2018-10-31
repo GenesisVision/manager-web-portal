@@ -117,6 +117,9 @@ class ProgramDetailsDescriptionSection extends PureComponent {
     const isInvested =
       programDescription.personalProgramDetails &&
       programDescription.personalProgramDetails.isInvested;
+    const canWithdraw =
+      programDescription.personalProgramDetails &&
+      programDescription.personalProgramDetails.canWithdraw;
     const isOwnProgram =
       programDescription.personalProgramDetails &&
       programDescription.personalProgramDetails.isOwnProgram;
@@ -126,6 +129,7 @@ class ProgramDetailsDescriptionSection extends PureComponent {
           isAuthenticated={isAuthenticated}
           redirectToLogin={redirectToLogin}
           isInvested={isInvested}
+          canWithdraw={canWithdraw}
           isOwnProgram={isOwnProgram}
           programDescription={programDescription}
           onReinvestingClick={this.handleOnReinvestingClick}

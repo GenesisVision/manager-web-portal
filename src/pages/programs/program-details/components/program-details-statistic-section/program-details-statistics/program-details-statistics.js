@@ -111,9 +111,12 @@ const ProgramDetailsStatistics = ({
             </span>
             <span className="program-details-statistics__value">
               <NumberFormat
-                value={statistic.profitFactor}
+                value={
+                  statistic.profitFactor !== undefined
+                    ? statistic.profitFactor
+                    : "-"
+                }
                 displayType="text"
-                suffix="%"
                 decimalScale={2}
               />
             </span>
@@ -125,9 +128,10 @@ const ProgramDetailsStatistics = ({
             </span>
             <span className="program-details-statistics__value">
               <NumberFormat
-                value={statistic.maxDrawdown}
+                value={
+                  statistic.maxDrawdown !== null ? statistic.maxDrawdown : "-"
+                }
                 displayType="text"
-                suffix="%"
                 decimalScale={2}
               />
             </span>
@@ -141,7 +145,11 @@ const ProgramDetailsStatistics = ({
             </span>
             <span className="program-details-statistics__value">
               <NumberFormat
-                value={statistic.successTradesPercent}
+                value={
+                  statistic.successTradesPercent !== null
+                    ? statistic.successTradesPercent
+                    : "-"
+                }
                 decimalScale={2}
                 displayType="text"
                 suffix="%"
@@ -155,9 +163,10 @@ const ProgramDetailsStatistics = ({
             </span>
             <span className="program-details-statistics__value">
               <NumberFormat
-                value={statistic.sharpeRatio}
+                value={
+                  statistic.sharpeRatio !== null ? statistic.sharpeRatio : "-"
+                }
                 displayType="text"
-                suffix="%"
                 decimalScale={2}
               />
             </span>
@@ -169,9 +178,10 @@ const ProgramDetailsStatistics = ({
             </span>
             <span className="program-details-statistics__value">
               <NumberFormat
-                value={statistic.sortinoRatio}
+                value={
+                  statistic.sortinoRatio !== null ? statistic.sortinoRatio : "-"
+                }
                 displayType="text"
-                suffix="%"
                 decimalScale={2}
               />
             </span>
