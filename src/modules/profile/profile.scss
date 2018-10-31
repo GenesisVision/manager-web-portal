@@ -2,9 +2,7 @@
 
 .profile {
   width: 100%;
-  .gv-text-field {
-    min-width: 340px;
-  }
+
   &__edit-link {
     display: inline-flex;
     margin-bottom: 45px;
@@ -74,7 +72,7 @@
   }
 
   .gv-text-field {
-    min-width: 310px;
+    min-width: 350px;
 
     &__wrapper {
       margin-left: 0;

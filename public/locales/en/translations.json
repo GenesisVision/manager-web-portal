@@ -868,7 +868,7 @@
   },
   "profile": {
     "id": "id",
-    "login": "Login",
+    "login": "Username",
     "about": "About",
     "title": "Profile",
     "contacts": "Contacts",
