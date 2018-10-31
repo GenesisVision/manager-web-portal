@@ -82,7 +82,12 @@ class ManagerHistorySection extends PureComponent {
                 value={"programs"}
                 label={t("manager.history.tabs.programs")}
               />
-              <GVTab value={"funds"} label={t("manager.history.tabs.funds")} />
+              <span className="tab-disabled">
+                <GVTab
+                  value={"funds"}
+                  label={t("manager.history.tabs.funds")}
+                />
+              </span>
             </GVTabs>
           </div>
         </div>
