@@ -640,7 +640,7 @@
       "manager": "Manager"
     },
     "signup": {
-      "username-field-text": "Name",
+      "username-field-text": "Username",
       "footer-text": "Have an account already?",
       "title": "Sign up",
       "email-field-text": "Email address",
@@ -868,7 +868,7 @@
   },
   "profile": {
     "id": "id",
-    "login": "Login",
+    "login": "Username",
     "about": "About",
     "title": "Profile",
     "contacts": "Contacts",
