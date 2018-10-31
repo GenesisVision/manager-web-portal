@@ -35,7 +35,6 @@
     margin-top: 16px;
 
     &-arrow {
-      font-size: 6px;
       margin-left: 6px;
     }
 
@@ -51,6 +50,7 @@
     @include media-breakpoint-landscape-tablet() {
       margin-top: 0;
       margin-left: auto;
+      align-items: flex-end;
     }
   }
 
