@@ -61,11 +61,7 @@ const NavigationMobile = ({
           <NavigationItem icon={<ProgramsIcon primary />} href={PROGRAMS_ROUTE}>
             {t("navigation.programs")}
           </NavigationItem>
-          <NavigationItem
-            disabled
-            icon={<FundsIcon primary />}
-            href={FUNDS_ROUTE}
-          >
+          <NavigationItem icon={<FundsIcon primary />} href={FUNDS_ROUTE}>
             {t("navigation.funds")}
           </NavigationItem>
           <NavigationItem
