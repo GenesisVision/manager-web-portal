@@ -82,7 +82,7 @@ class DashboardPrograms extends Component {
         )}
         renderBodyRow={program => (
           <TableRow>
-            <TableCell className="dashboard-programs__cell--title">
+            <TableCell className="programs-table__cell dashboard-programs__cell--title">
               <div className="dashboard-programs__cell--avatar-title">
                 <AssetAvatar
                   url={program.logo}
@@ -97,19 +97,19 @@ class DashboardPrograms extends Component {
                 </Link>
               </div>
             </TableCell>
-            <TableCell className="dashboard-programs__cell--share">
+            <TableCell className="programs-table__cell dashboard-programs__cell--share">
               {formatValue(program.dashboardAssetsDetails.share)}
             </TableCell>
-            <TableCell className="dashboard-programs__cell--currency">
+            <TableCell className="programs-table__cell dashboard-programs__cell--currency">
               {program.currency}
             </TableCell>
-            <TableCell className="dashboard-programs__cell--period">
+            <TableCell className="programs-table__cell dashboard-programs__cell--period">
               <ProgramPeriodEnd periodEnds={program.periodEnds} />
             </TableCell>
-            <TableCell className="dashboard-programs__cell--value">
+            <TableCell className="programs-table__cell dashboard-programs__cell--value">
               {formatValue(program.personalDetails.value)}
             </TableCell>
-            <TableCell className="dashboard-programs__cell--profit">
+            <TableCell className="programs-table__cell dashboard-programs__cell--profit">
               <NumberFormat
                 value={program.statistic.profitPercent}
                 suffix="%"
@@ -117,10 +117,10 @@ class DashboardPrograms extends Component {
                 displayType="text"
               />
             </TableCell>
-            <TableCell className="dashboard-programs__cell--chart">
+            <TableCell className="programs-table__cell dashboard-programs__cell--chart">
               <ProgramSimpleChart data={program.chart} programId={program.id} />
             </TableCell>
-            <TableCell className="dashboard-programs__cell--status">
+            <TableCell className="programs-table__cell dashboard-programs__cell--status">
               {program.status}
             </TableCell>
           </TableRow>
