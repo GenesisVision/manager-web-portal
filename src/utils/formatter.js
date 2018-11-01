@@ -112,10 +112,12 @@ const reverseString = value =>
     .split("")
     .reverse()
     .join("");
+
 const addOne = item =>
   item[1]
     ? [item[0], +item[1] === 0 ? item[1].slice(0, -1) + "1" : item[1]]
     : item;
+
 const cleanNulls = item =>
   item[1] ? [item[0], reverseString(+reverseString(item[1]))] : item;
 const formatValue = (value, decimalScale, abs) => {
@@ -142,3 +144,5 @@ const formatPercent = value => {
   if (value < 0.1 && value > -0.1) return 0;
   return formatValue(value, value > 1 || value < -1 ? 0 : 1);
 };
+
+export { dateFormat, formatValue, roundTypeEnum, formatPercent };
