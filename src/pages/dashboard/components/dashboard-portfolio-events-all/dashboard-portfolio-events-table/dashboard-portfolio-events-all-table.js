@@ -17,13 +17,13 @@ import NumberFormat from "react-number-format";
 import { formatValue } from "utils/formatter";
 
 import { fetchPortfolioEvents } from "../../../services/dashboard-events.services";
+import { isUseProfitability } from "../../helpers/dashboard-portfolio.helpers";
 import {
   PORTFOLIO_EVENTS_COLUMNS,
   PORTFOLIO_EVENTS_DEFAULT_FILTERING,
   PORTFOLIO_EVENTS_FILTERS,
   PORTFOLIO_EVENTS_TYPES_ENUM
 } from "./dashboard-portfolio-events-all-table.constants";
-import { isUseProfitability } from "../../helpers/dashboard-portfolio.helpers";
 
 class PortfolioEventsTableComponent extends Component {
   render() {

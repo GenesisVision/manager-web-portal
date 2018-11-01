@@ -81,11 +81,7 @@ class ProgramTrades extends Component {
               {trade.symbol}
             </TableCell>
             <TableCell className="program-details-trades__cell program-details-trades__cell--volume">
-              <NumberFormat
-                value={formatValue(trade.volume)}
-                displayType="text"
-                thousandSeparator=" "
-              />
+              {formatValue(trade.volume)}
             </TableCell>
             <TableCell className="program-details-trades__cell program-details-trades__cell--price">
               <NumberFormat
@@ -96,12 +92,7 @@ class ProgramTrades extends Component {
             </TableCell>
             <TableCell className="program-details-trades__cell program-details-trades__cell--profit">
               <Profitability value={+formatValue(trade.profit)} prefix="sign">
-                <NumberFormat
-                  value={Math.abs(formatValue(trade.profit))}
-                  thousandSeparator=" "
-                  allowNegative={false}
-                  displayType="text"
-                />
+                {formatValue(trade.profit, null, true)}
               </Profitability>
             </TableCell>
             <TableCell className="program-details-trades__cell program-details-trades__cell--date">

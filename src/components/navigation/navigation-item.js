@@ -20,23 +20,15 @@ const NavigationItem = ({
   disabled
 }) => {
   return (
-    (disabled && (
-      <div className="navigation__item navigation-disabled">
-        {" "}
-        {<icon.type {...icon.props} className="navigation__icon" />}
-        <span className="navigation__link">{children}</span>
-      </div>
-    )) || (
-      <NavLink
-        className="navigation__item"
-        activeClassName="navigation__item--active"
-        to={href}
-        title={title}
-      >
-        {<icon.type {...icon.props} className="navigation__icon" />}
-        <span className="navigation__link">{children}</span>
-      </NavLink>
-    )
+    <NavLink
+      className="navigation__item"
+      activeClassName="navigation__item--active"
+      to={href}
+      title={title}
+    >
+      {<icon.type {...icon.props} className="navigation__icon" />}
+      <span className="navigation__link">{children}</span>
+    </NavLink>
   );
 };
 

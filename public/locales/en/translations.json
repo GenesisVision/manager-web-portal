@@ -176,6 +176,13 @@
     "history": {
       "heading": "History",
       "subheading": "Rebalancing",
+      "structure": {
+        "title": "Structure",
+        "asset": "Asset",
+        "symbol": "Symbol",
+        "target": "Target",
+        "current": "Current"
+      },
       "rebalances": {
         "assets": "Assets",
         "from": "From",
@@ -640,7 +647,7 @@
       "manager": "Manager"
     },
     "signup": {
-      "username-field-text": "Name",
+      "username-field-text": "Username",
       "footer-text": "Have an account already?",
       "title": "Sign up",
       "email-field-text": "Email address",
@@ -768,7 +775,8 @@
           "day_plural": "Days"
         },
         "upload-logo": "Upload program logo",
-        "upload-logo-rules": "At least 300 x 300px PNG or JPG file",
+        "upload-logo-rules":
+          "At least 300 x 300px PNG or JPG file. The maximum file size is 2MB.",
         "entry-fee": "Entry fee",
         "success-fee": "Success fee",
         "deposit-amount": "Deposit amount",
@@ -795,7 +803,10 @@
         "leverage-required": "Leverage is required",
         "entry-fee-required": "Entry fee is required",
         "success-fee-required": "Success fee is required",
-        "account-type-required": "Account type is required"
+        "account-type-required": "Account type is required",
+        "image-resolution-incorrect":
+          "The resolution of the uploaded image is too low.",
+        "image-file-is-large": "The uploaded image file is too large."
       }
     },
     "notifications": {
@@ -836,7 +847,8 @@
         "brokers-leverage": "Broker's leverage",
         "period": "Period",
         "upload-logo": "Upload fund logo",
-        "upload-logo-rules": "At least 300 x 300px PNG or JPG file",
+        "upload-logo-rules":
+          "At least 300 x 300px PNG or JPG file. The maximum file size is 2MB.",
         "entry-fee": "Entry fee",
         "success-fee": "Success fee",
         "exit-fee": "Exit fee",
@@ -853,6 +865,9 @@
         "success-fee-required": "Success fee is required",
         "assets-share": "Total share of all assets should be equal to 100%",
         "assets-count": "Must be at least two assets.",
+        "image-resolution-incorrect":
+          "The resolution of the uploaded image is too low.",
+        "image-file-is-large": "The uploaded image file is too large.",
         "deposit-min": "Not enought money."
       }
     }
@@ -868,7 +883,7 @@
   },
   "profile": {
     "id": "id",
-    "login": "Login",
+    "login": "Username",
     "about": "About",
     "title": "Profile",
     "contacts": "Contacts",
@@ -905,12 +920,18 @@
     "settings": {
       "title": "Settings",
       "profile-image": "Profile image",
-      "image-requirements": "At least 300 x 300px PNG or JPG file.",
+      "image-requirements":
+        "At least 300 x 300px PNG or JPG file. The maximum file size is 2MB.",
       "save-photo": "Save photo",
       "image-success-save-message":
         "The photo has just been successfully changed.",
-      "logout-from-another-devices": "Logout from another devices",
-      "change-password": "Change password"
+      "logout-from-another-devices": "Logout from other devices",
+      "change-password": "Change password",
+      "validation": {
+        "image-resolution-incorrect":
+          "The resolution of the uploaded image is too low.",
+        "image-file-is-large": "The uploaded image file is too large."
+      }
     }
   },
   "profile-widget": {

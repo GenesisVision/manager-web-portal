@@ -1,7 +1,21 @@
 import * as Yup from "yup";
 
-const createFundSettingsValidationSchema = ({ t, ...props }) => {
-  return Yup.object().shape({
+const createFundSettingsValidationSchema = ({ t, ...props }) =>
+  Yup.object().shape({
+    logo: Yup.object().shape({
+      width: Yup.number().min(
+        300,
+        t("create-fund-page.settings.validation.image-resolution-incorrect")
+      ),
+      height: Yup.number().min(
+        300,
+        t("create-fund-page.settings.validation.image-resolution-incorrect")
+      ),
+      size: Yup.number().max(
+        2097152,
+        t("create-fund-page.settings.validation.image-file-is-large")
+      )
+    }),
     title: Yup.string()
       .required(t("create-fund-page.settings.validation.title-required"))
       .max(20, t("create-fund-page.settings.validation.title-is-long")),
@@ -25,6 +39,5 @@ const createFundSettingsValidationSchema = ({ t, ...props }) => {
       .required()
       .min(props.deposit, t("create-fund-page.settings.validation.deposit-min"))
   });
-};
 
 export default createFundSettingsValidationSchema;

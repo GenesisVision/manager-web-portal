@@ -1,7 +1,11 @@
 .notifications-widget {
   display: flex;
   align-items: center;
-
+  cursor: pointer;
+  &__count {
+    height: 32px;
+    cursor: pointer !important;
+  }
   &__ring {
     margin-right: 10px;
   }

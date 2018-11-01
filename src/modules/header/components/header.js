@@ -12,7 +12,6 @@ import CurrencySelectContainer from "modules/currency-select/components/currency
 import { LOGIN_ROUTE } from "pages/auth/login/login.routes";
 import { SIGNUP_ROUTE } from "pages/auth/signup/signup.routes";
 import { GLOBAL_SEARCH_ROUTE } from "pages/global-search/global-search.routes";
-import PropTypes from "prop-types";
 import React, { Component, Fragment } from "react";
 import { translate } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -41,14 +40,12 @@ class Header extends Component {
     return (
       <div className="header">
         <div className="header__left">
-          <GVButton
+          <div
             onClick={this.handleOpenMenu}
-            variant="text"
-            color="secondary"
-            className="navigation__menu"
+            className="navigation__menu profile-avatar"
           >
             <MenuIcon />
-          </GVButton>
+          </div>
           <Navigation className="header__navigation" />
         </div>
         <div className="header__center">
@@ -107,23 +104,5 @@ class Header extends Component {
     );
   }
 }
-
-Header.propTypes = {
-  avatar: PropTypes.string,
-  email: PropTypes.string,
-  notificationsCount: PropTypes.number,
-  totalBalanceGvt: PropTypes.number,
-  availableGvt: PropTypes.number,
-  investedGvt: PropTypes.number
-};
-
-Header.defaultProps = {
-  avatar: "",
-  email: "",
-  notificationsCount: 0,
-  totalBalanceGvt: 0,
-  availableGvt: 0,
-  investedGvt: 0
-};
 
 export default translate()(Header);

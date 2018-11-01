@@ -1,10 +1,11 @@
 import { GVTab, GVTabs } from "gv-react-components";
-import React, { Fragment, PureComponent } from "react";
+import React, { PureComponent } from "react";
 import { translate } from "react-i18next";
 
 import FundsTable from "./funds-table";
 import ManagersTable from "./managers-table";
 import ProgramsTable from "./programs-table";
+import Surface from "components/surface/surface";
 
 const PROGRAMS_TABLE_TAB = "investors";
 const FUNDS_TABLE_TAB = "funds";
@@ -44,28 +45,30 @@ class GlobalSearchResult extends PureComponent {
     const { t } = this.props;
     const { tab } = this.state;
     return (
-      <Fragment>
-        <h2>{t("global-search-page.heading")}</h2>
-        <GVTabs value={tab} onChange={this.handleTabChange}>
-          <GVTab
-            value={PROGRAMS_TABLE_TAB}
-            label={t("global-search-page.programs")}
-          />
-          <span className="tab-disabled">
+      <Surface className="global-search-result">
+        <div className="global-search-result__heading">
+          {t("global-search-page.heading")}
+        </div>
+        <div className="global-search-result__tabs">
+          <GVTabs value={tab} onChange={this.handleTabChange}>
+            <GVTab
+              value={PROGRAMS_TABLE_TAB}
+              label={t("global-search-page.programs")}
+            />
             <GVTab
               value={FUNDS_TABLE_TAB}
               label={t("global-search-page.funds")}
             />
-          </span>
-          <GVTab
-            value={MANAGERS_TABLE_TAB}
-            label={t("global-search-page.managers")}
-          />
-        </GVTabs>
+            <GVTab
+              value={MANAGERS_TABLE_TAB}
+              label={t("global-search-page.managers")}
+            />
+          </GVTabs>
+        </div>
         {this.renderProgramsTab()}
         {this.renderManagersTab()}
         {this.renderFundsTab()}
-      </Fragment>
+      </Surface>
     );
   }
 }
