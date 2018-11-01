@@ -1,11 +1,15 @@
 import "./dashboard-portfolio-chart-section.scss";
 
 import Surface from "components/surface/surface";
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { translate } from "react-i18next";
 import { connect } from "react-redux";
+import { compose } from "redux";
 
+import Dashboard from "../../../../modules/dashboard/components/dashboard/dashboard";
 import DashboardChartAssetsContainer from "./dashboard-chart-assets/dashboard-chart-assets-container";
 import DashboardPortfolioChartContainer from "./dashboard-chart/dashboard-portfolio-chart-container";
+import DashboardPortfolioChartLoader from "./dashboard-chart/dashboard-portfolio-chart-loader";
 import DashboardGetStarted from "./dashboard-get-started";
 import DashboardInRequestsContainer from "./dashboard-in-requests/dashboard-in-requests-container";
 
@@ -24,25 +28,24 @@ class DashboardPortfolioChartSection extends Component {
     return assets && (assets.programs.length > 0 || assets.funds.length > 0);
   };
   render() {
+    const { t } = this.props;
     const assets = this.getAssets();
-    if (!assets) return null;
-    if (assets.programs.length > 0 || assets.funds.length > 0)
-      return (
-        <Surface className="dashboard-portfolio-chart-section">
-          <div className="dashboard-portfolio-chart-section__heading">
-            Chart
-          </div>
-          <div className="dashboard-portfolio-chart-section__actions">
-            <DashboardChartAssetsContainer assets={this.getAssets()} />
-            <DashboardInRequestsContainer />
-          </div>
-          <DashboardPortfolioChartContainer assets={this.getAssets()} />
-        </Surface>
-      );
-
     return (
       <Surface className="dashboard-portfolio-chart-section">
-        <DashboardGetStarted />
+        <div className="dashboard-portfolio-chart-section__heading">
+          {t("chart.title")}
+        </div>
+        {this.hasAssets() ? (
+          <Fragment>
+            <div className="dashboard-portfolio-chart-section__actions">
+              <DashboardChartAssetsContainer assets={assets} />
+              <DashboardInRequestsContainer />
+            </div>
+            <DashboardPortfolioChartContainer assets={assets} />
+          </Fragment>
+        ) : (
+          <DashboardGetStarted />
+        )}
       </Surface>
     );
   }
@@ -52,8 +55,11 @@ const mapStateToProps = state => {
   const { programs, funds } = state.dashboard;
   return {
     programsData: programs.itemsData.data,
-    fundsData: funds.itemsData.data
+    fundsData: funds.itemsData.data,
+    isPending: funds.itemsData.isPending && programs.itemsData.isPending
   };
 };
 
-export default connect(mapStateToProps)(DashboardPortfolioChartSection);
+export default compose(translate(), connect(mapStateToProps))(
+  DashboardPortfolioChartSection
+);

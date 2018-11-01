@@ -40,17 +40,16 @@ class DashboardInRequestsContainer extends PureComponent {
   };
 
   render() {
-    const { inRequests, isPending, service } = this.props;
+    const { inRequests, isPending, service, t } = this.props;
     if (!inRequests || isPending) return null;
 
     return (
       <div className="dashboard-request">
         <StatisticItem
-          heading={"In Requests"}
+          heading={t("chart.requests.title")}
           value={inRequests.totalValue}
           adornment={this.renderActionsIcon()}
         />
-
         <Popover
           horizontal="right"
           vertical="bottom"

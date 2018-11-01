@@ -33,7 +33,7 @@ class DashboardChartAssetsContainer extends PureComponent {
   };
 
   render() {
-    const { assets } = this.props;
+    const { assets, t } = this.props;
     if (!assets) return null;
     const programs = assets.programs;
     const funds = assets.funds;
@@ -43,7 +43,7 @@ class DashboardChartAssetsContainer extends PureComponent {
     return (
       <div className="dashboard-chart-assets">
         <div className="dashboard-chart-assets__title">
-          My Assets {this.renderActionsIcon()}
+          {t("chart.assets.title")} {this.renderActionsIcon()}
         </div>
         <Popover
           horizontal="right"
@@ -56,7 +56,7 @@ class DashboardChartAssetsContainer extends PureComponent {
             <div className="dashboard-chart-assets-popover">
               {hasPrograms && (
                 <div className="dashboard-chart-assets-popover__header">
-                  Programs
+                  {t("chart.assets.programs")}
                 </div>
               )}
               {programs.map(x => (
@@ -69,7 +69,7 @@ class DashboardChartAssetsContainer extends PureComponent {
               ))}
               {hasFunds && (
                 <div className="dashboard-chart-assets-popover__header">
-                  Funds
+                  {t("chart.assets.funds")}
                 </div>
               )}
               {funds.map(x => (
@@ -90,9 +90,11 @@ class DashboardChartAssetsContainer extends PureComponent {
 
 const mapStateToProps = state => {
   const { programs, funds } = state.dashboard;
+  console.info(programs, funds);
   return {
     programsData: programs.itemsData.data,
-    fundsData: funds.itemsData.data
+    fundsData: funds.itemsData.data,
+    isPending: funds.itemsData.isPending && programs.itemsData.isPending
   };
 };
 

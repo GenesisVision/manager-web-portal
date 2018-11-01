@@ -7,6 +7,7 @@ import { bindActionCreators } from "redux";
 import FundProfitChart from "../../../../funds/fund-details/components/fund-details-statistic-section/fund-details-chart-section/fund-profit-chart-section/fund-profit-chart";
 import ProgramProfitChart from "../../../../programs/program-details/components/program-details-statistic-section/program-details-chart-section/program-profit-chart-section/program-profit-chart";
 import { getAssetChart } from "../../../services/dashboard.service";
+import DashboardPortfolioChartLoader from "./dashboard-portfolio-chart-loader";
 
 class DashboardPortfolioChartContainer extends PureComponent {
   state = {
@@ -46,9 +47,10 @@ class DashboardPortfolioChartContainer extends PureComponent {
   };
 
   render() {
-    const { assetChart, currency } = this.props;
+    const { assetChart, currency, isPending } = this.props;
     const { period } = this.state;
-    if (!assetChart || assetChart.isPending) return null;
+    if (!assetChart || assetChart.isPending)
+      return <DashboardPortfolioChartLoader />;
     return (
       <Fragment>
         <div className="dashboard-portfolio-chart-section__heading">
@@ -85,7 +87,8 @@ const mapStateToProps = state => {
     assetChart,
     currency,
     programsData: programs.itemsData.data,
-    fundsData: funds.itemsData.data
+    fundsData: funds.itemsData.data,
+    isPending: programs.itemsData.isPending && funds.itemsData.isPending
   };
 };
 

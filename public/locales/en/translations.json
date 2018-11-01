@@ -880,6 +880,9 @@
   "password-page": {
     "title": "Change password"
   },
+  "chart": {
+    "title": "Chart"
+  },
   "password-change": {
     "current-password": "Current password",
     "password": "Password",

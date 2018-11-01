@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 
-import { normalizeFilteringSelector } from "../../../../../filtering/selectors/filtering-selectors";
+// import { normalizeFilteringSelector } from "../../../../../filtering/selectors/filtering-selectors";
 import { TYPE_FILTER_NAME } from "../../../../dashboard.constants";
 import dashboardService from "../../../../service/dashboard-service";
 import DashboardProgramListTabs from "./dashboard-program-list-tabs/dashboard-program-list-tabs";
