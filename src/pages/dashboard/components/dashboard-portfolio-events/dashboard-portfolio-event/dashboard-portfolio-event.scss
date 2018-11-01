@@ -6,10 +6,6 @@
   display: flex;
   padding-top: 24px;
   align-items: center;
-  //width: 252px;
-  @include media-breakpoint-landscape-phone() {
-    width: 252px;
-  }
 
   &:not(:last-of-type) {
     border-bottom: 2px solid $separator-color;

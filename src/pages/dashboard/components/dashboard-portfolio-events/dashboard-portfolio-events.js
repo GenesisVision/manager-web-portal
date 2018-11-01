@@ -13,18 +13,21 @@ import DashboardPortfolioEvent, {
 
 const DashboardPortfolioEvents = ({ t, events, fullEventsUrl }) => (
   <Fragment>
-    <Scrollbars
-      autoHide
-      autoHideTimeout={1000}
-      style={{ height: "541px", paddingRight: "10px" }}
-      className="dashboard-portfolio-events__scroll-container"
-    >
-      <div className="dashboard-portfolio-events__list">
-        {events.map((event, idx) => (
-          <DashboardPortfolioEvent event={event} key={idx} />
-        ))}
-      </div>
-    </Scrollbars>
+    <div className="dashboard-portfolio-events__scroll-container">
+      <Scrollbars
+        autoHide
+        autoHideTimeout={1000}
+        autoHeight
+        autoHeightMax="541px"
+      >
+        <div className="dashboard-portfolio-events__list">
+          {events.map((event, idx) => (
+            <DashboardPortfolioEvent event={event} key={idx} />
+          ))}
+        </div>
+      </Scrollbars>
+    </div>
+
     <Link to={fullEventsUrl} className="dashboard-portfolio-events__see-all">
       <GVButton variant="text" color="secondary">
         {t("dashboard.portfolio-events.see-all-button")} &#8250;

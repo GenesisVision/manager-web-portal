@@ -44,10 +44,7 @@
   &__row {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    @include media-breakpoint-landscape-phone() {
-      flex-direction: row;
-    }
+    flex-direction: row;
   }
 
   &__chart {
@@ -58,8 +55,10 @@
   &__portfolio-events-aside {
     display: flex;
     margin-top: $padding-small;
-    @include media-breakpoint-landscape-phone() {
-      min-width: 315px;
+    width: 100%;
+    margin-left: 0;
+    @include media-breakpoint-tablet() {
+      width: 315px;
       margin-left: 2rem;
       margin-top: 0;
     }
