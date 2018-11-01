@@ -249,7 +249,7 @@ class CreateFundSettings extends React.Component {
                   name="entryFee"
                   label={t("create-fund-page.settings.fields.entry-fee")}
                   suffix=" %"
-                  isAllowed={this.allowEntryFee}
+                  //isAllowed={this.allowEntryFee}
                   component={GVTextField}
                   InputComponent={NumberFormat}
                   autoComplete="off"
@@ -270,7 +270,7 @@ class CreateFundSettings extends React.Component {
                   name="exitFee"
                   label={t("create-fund-page.settings.fields.exit-fee")}
                   suffix=" %"
-                  isAllowed={this.allowExitFee}
+                  //isAllowed={this.allowExitFee}
                   component={GVTextField}
                   InputComponent={NumberFormat}
                   autoComplete="off"

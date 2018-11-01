@@ -1,6 +1,6 @@
 import Yup from "yup";
 
-const createProgramSettingsValidationSchema = ({ t }) =>
+const createProgramSettingsValidationSchema = ({ t, ...props }) =>
   Yup.object().shape({
     logo: Yup.object().shape({
       width: Yup.number().min(
@@ -45,12 +45,24 @@ const createProgramSettingsValidationSchema = ({ t }) =>
     leverage: Yup.string().required(
       t("create-program-page.settings.validation.leverage-required")
     ),
-    entryFee: Yup.string().required(
-      t("create-program-page.settings.validation.entry-fee-required")
-    ),
-    successFee: Yup.string().required(
-      t("create-program-page.settings.validation.success-fee-required")
-    ),
+    entryFee: Yup.number()
+      .required(t("create-program-page.settings.validation.entry-fee-required"))
+      .max(
+        props.programsInfo.managerMaxEntryFee,
+        "Entry fee must be less than  " +
+          props.programsInfo.managerMaxEntryFee +
+          " %"
+      ),
+    successFee: Yup.number()
+      .required(
+        t("create-program-page.settings.validation.success-fee-required")
+      )
+      .max(
+        props.programsInfo.managerMaxSuccessFee,
+        "Success fee must be less than  " +
+          props.programsInfo.managerMaxSuccessFee +
+          " %"
+      ),
     accountType: Yup.string().required(
       t("create-program-page.settings.validation.account-type-required")
     )

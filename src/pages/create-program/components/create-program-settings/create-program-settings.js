@@ -219,7 +219,7 @@ class CreateProgramSettings extends React.Component {
                   name="entryFee"
                   label={t("create-program-page.settings.fields.entry-fee")}
                   suffix=" %"
-                  isAllowed={this.allowEntryFee}
+                  //isAllowed={this.allowEntryFee}
                   component={GVTextField}
                   InputComponent={NumberFormat}
                   autoComplete="off"
@@ -242,7 +242,7 @@ class CreateProgramSettings extends React.Component {
                   name="successFee"
                   label={t("create-program-page.settings.fields.success-fee")}
                   suffix=" %"
-                  isAllowed={this.allowSuccessFee}
+                  //isAllowed={this.allowSuccessFee}
                   component={GVTextField}
                   InputComponent={NumberFormat}
                   autoComplete="off"
