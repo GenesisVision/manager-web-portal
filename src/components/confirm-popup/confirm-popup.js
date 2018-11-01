@@ -17,6 +17,7 @@ const ConfirmPopup = ({
   body,
   applyButtonText,
   cancelButtonText,
+  dialogClassName,
   className,
   headerClassName,
   bodyClassName
@@ -24,7 +25,7 @@ const ConfirmPopup = ({
   applyButtonText = applyButtonText || t("buttons.apply");
   cancelButtonText = cancelButtonText || t("buttons.cancel");
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} className={dialogClassName}>
       <div className={classnames("confirm-popup", className)}>
         <div className={classnames("confirm-popup__header", headerClassName)}>
           {header}
