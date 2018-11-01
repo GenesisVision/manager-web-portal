@@ -1,7 +1,6 @@
 import "./program-details-description.scss";
 
 import AssetAvatar from "components/avatar/asset-avatar/asset-avatar";
-import ConfirmPopup from "components/confirm-popup/confirm-popup";
 import Popover from "components/popover/popover";
 import { GVButton } from "gv-react-components";
 import ProgramDepositContainer from "modules/program-deposit/program-deposit-container";
@@ -12,14 +11,12 @@ import { ProgramDetailContext } from "pages/programs/program-details/program-det
 import React, { Fragment, PureComponent } from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { bindActionCreators, compose } from "redux";
 import { formatValue } from "utils/formatter";
 import replaceParams from "utils/replace-params";
 
-import { closeProgram } from "../../../services/program-details.service";
 import ProgramDetailsInvestment from "../program-details-investment/program-details-investment";
+import CloseProgramContainer from "./close-program/close-program-container";
 import ProgramDetailsFavorite from "./program-details-favorite";
 import ProgramDetailsNotification from "./program-details-notificaton";
 
@@ -62,9 +59,7 @@ class ProgramDetailsDescription extends PureComponent {
     this.setState({ isOpenCloseProgramPopup: false });
   };
   handleApplyCloseProgramPopup = updateDetails => () => {
-    const { service, programDescription } = this.props;
-    service.closeProgram(programDescription.id, updateDetails);
-    this.handleCloseCloseProgramPopup();
+    updateDetails();
   };
 
   render() {
@@ -209,7 +204,9 @@ class ProgramDetailsDescription extends PureComponent {
                     <GVButton
                       className="program-details-description__invest-btn"
                       onClick={this.handleOpenInvestmentPopup}
-                      disabled={!programDescription.canInvest}
+                      disabled={
+                        !programDescription.personalProgramDetails.canInvest
+                      }
                     >
                       {t("program-details-page.description.invest")}
                     </GVButton>
@@ -218,7 +215,10 @@ class ProgramDetailsDescription extends PureComponent {
                       color="secondary"
                       variant="outlined"
                       onClick={this.handleOpenCloseProgramPopup}
-                      disabled={programDescription.canCloseProgram}
+                      disabled={
+                        !programDescription.personalProgramDetails
+                          .canCloseProgram
+                      }
                     >
                       {t("program-details-page.description.close-program")}
                     </GVButton>
@@ -245,19 +245,12 @@ class ProgramDetailsDescription extends PureComponent {
                     onInvest={updateDetails}
                   />
 
-                  <ConfirmPopup
-                    dialogClassName="program-details-description__close-program-popup"
+                  <CloseProgramContainer
                     open={isOpenCloseProgramPopup}
                     onClose={this.handleCloseCloseProgramPopup}
                     onCancel={this.handleCloseCloseProgramPopup}
                     onApply={this.handleApplyCloseProgramPopup(updateDetails)}
-                    header={t("program-details-page.description.close-program")}
-                    body={t(
-                      "program-details-page.description.close-program-notification"
-                    )}
-                    applyButtonText={t(
-                      "program-details-page.description.close-program"
-                    )}
+                    id={programDescription.id}
                   />
                 </Fragment>
               )}
@@ -281,10 +274,4 @@ class ProgramDetailsDescription extends PureComponent {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  service: bindActionCreators({ closeProgram }, dispatch)
-});
-
-export default compose(translate(), connect(null, mapDispatchToProps))(
-  ProgramDetailsDescription
-);
+export default translate()(ProgramDetailsDescription);
