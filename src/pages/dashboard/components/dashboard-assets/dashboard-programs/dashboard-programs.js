@@ -12,7 +12,7 @@ import React, { Component, Fragment } from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
-import { formatPercent } from "utils/formatter";
+import { formatPercent, formatValue } from "utils/formatter";
 import replaceParams from "utils/replace-params";
 
 import { DASHBOARD_PROGRAMS_COLUMNS } from "../../../dashboard.constants";
