@@ -207,7 +207,10 @@ class ProgramTableRowDetailed extends Component {
                 <div className="program-detailed__bottom-block">
                   {program.personalDetails &&
                     program.personalDetails.isOwnProgram && (
-                      <GVButton onClick={this.handleOpenInvest}>
+                      <GVButton
+                        onClick={this.handleOpenInvest}
+                        disabled={!program.personalDetails.canInvest}
+                      >
                         {t("program-actions.invest")}
                       </GVButton>
                     )}
