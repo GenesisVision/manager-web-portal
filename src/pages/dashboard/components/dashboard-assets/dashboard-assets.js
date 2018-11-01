@@ -45,7 +45,7 @@ class DashboardAssets extends Component {
             </GVTabs>
           </div>
         </div>
-        <div className="dashboard-assets">
+        <div className="dashboard-assets__table">
           {tab === "programs" && (
             <DashboardPrograms
               createButtonToolbar={createButtonToolbar(

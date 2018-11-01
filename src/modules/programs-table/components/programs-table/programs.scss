@@ -1,5 +1,6 @@
 @import "styles/_colors.scss";
 @import "styles/_breakpoint.scss";
+@import "styles/_sizes.scss";
 
 $padding: 32px;
 $text-size: 13px;
@@ -164,20 +165,22 @@ $description-block-width: 250px;
 }
 
 .programs-table__cell {
+  padding: 0 $padding-small;
   &--avatar-title {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    padding-left: 0;
     .program-avatar {
       min-width: 40px;
     }
   }
   &--title {
-    padding-left: 9px;
     word-break: break-all;
     min-width: 100px;
     max-width: 170px;
+    padding: 0;
     div {
       padding: $padding/10;
     }
@@ -266,6 +269,7 @@ $description-block-width: 250px;
     letter-spacing: 0.4px;
     color: #fff;
     margin-bottom: $padding/2/1.5;
+    font-weight: 600;
   }
 
   &__description {
