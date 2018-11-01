@@ -1,6 +1,7 @@
 import "./create-fund-settings.scss";
 
 import classNames from "classnames";
+import Hint from "components/hint/hint";
 import { RefreshIcon } from "components/icon/refresh-icon";
 import { Field, withFormik } from "formik";
 import {
@@ -13,9 +14,9 @@ import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import InputImage from "shared/components/form/input-image/input-image";
+import { allowValuesNumberFormat } from "utils/helpers";
 
 import AddButton from "../../../../components/add-button/add-button";
-import { percentNumberFormat } from "../../helpers/create-fund.helpers";
 import CreateFundSettingsAddAsset from "./create-fund-settings-add-asset/create-fund-settings-add-asset";
 import CreateFundSettingsAssetsComponent from "./create-fund-settings-assets-block/create-fund-settings-assets-block";
 import createFundSettingsValidationSchema from "./create-fund-settings.validators";
@@ -23,6 +24,18 @@ import ErrorNotifier from "./error-notifier/error-notifier";
 import FundDefaultImage from "./fund-default-image";
 
 class CreateFundSettings extends React.Component {
+  allowEntryFee = values => {
+    const { managerMaxEntryFee } = this.props.programsInfo;
+
+    return allowValuesNumberFormat({ from: 0, to: managerMaxEntryFee })(values);
+  };
+
+  allowExitFee = values => {
+    const { managerMaxExitFee } = this.props.programsInfo;
+
+    return allowValuesNumberFormat({ from: 0, to: managerMaxExitFee })(values);
+  };
+
   state = {
     anchor: null,
     assets: this.props.assets.map(asset => {
@@ -97,7 +110,8 @@ class CreateFundSettings extends React.Component {
       values,
       setFieldValue,
       deposit,
-      errors
+      errors,
+      programsInfo
     } = this.props;
 
     const imageInputError =
@@ -230,26 +244,50 @@ class CreateFundSettings extends React.Component {
           </div>
           <div className="create-fund-settings__fill-block create-fund-settings__fill-block--with-border">
             <div className="create-fund-settings__row">
-              <GVFormikField
-                name="entryFee"
-                label={t("create-fund-page.settings.fields.entry-fee")}
-                suffix=" %"
-                isAllowed={percentNumberFormat}
-                component={GVTextField}
-                InputComponent={NumberFormat}
-                autoComplete="off"
-                decimalScale={4}
-              />
-              <GVFormikField
-                name="exitFee"
-                label={t("create-fund-page.settings.fields.exit-fee")}
-                suffix=" %"
-                isAllowed={percentNumberFormat}
-                component={GVTextField}
-                InputComponent={NumberFormat}
-                autoComplete="off"
-                decimalScale={4}
-              />
+              <div className="create-fund-settings__fee">
+                <GVFormikField
+                  name="entryFee"
+                  label={t("create-fund-page.settings.fields.entry-fee")}
+                  suffix=" %"
+                  isAllowed={this.allowEntryFee}
+                  component={GVTextField}
+                  InputComponent={NumberFormat}
+                  autoComplete="off"
+                  decimalScale={4}
+                />
+                <Hint
+                  content={t("create-program-page.settings.hints.entry-fee")}
+                  className="create-fund-settings__fee-hint"
+                  vertical={"bottom"}
+                  tooltipContent={t(
+                    "create-fund-page.settings.hints.entry-fee-description",
+                    { maxFee: programsInfo.managerMaxEntryFee }
+                  )}
+                />
+              </div>
+              <div className="create-fund-settings__fee">
+                <GVFormikField
+                  name="exitFee"
+                  label={t("create-fund-page.settings.fields.exit-fee")}
+                  suffix=" %"
+                  isAllowed={this.allowExitFee}
+                  component={GVTextField}
+                  InputComponent={NumberFormat}
+                  autoComplete="off"
+                  decimalScale={4}
+                />
+                <Hint
+                  content={t("create-fund-page.settings.hints.exit-fee")}
+                  className="create-fund-settings__fee-hint"
+                  vertical={"bottom"}
+                  tooltipContent={t(
+                    "create-fund-page.settings.hints.exit-fee-description",
+                    {
+                      maxFee: programsInfo.managerMaxExitFee
+                    }
+                  )}
+                />
+              </div>
             </div>
           </div>
           <div className="create-fund-settings__subheading">

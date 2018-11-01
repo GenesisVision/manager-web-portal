@@ -48,7 +48,8 @@ class CreateFundContainer extends Component {
       deposit
     } = this.state;
     const { navigateBack, handleSubmit } = this;
-    const { headerData, service } = this.props;
+    const { headerData, service, platformSettings } = this.props;
+    if (!platformSettings) return null;
     return (
       <div className="create-fund-container">
         <div>
@@ -61,6 +62,7 @@ class CreateFundContainer extends Component {
               author={(headerData && headerData.name) || null} //headerData.name
               assets={assets}
               deposit={deposit}
+              programsInfo={platformSettings.programsInfo}
             />
           )}
           <CreateFundNavigationDialog
@@ -76,7 +78,8 @@ class CreateFundContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    headerData: state.profileHeader.info.data
+    headerData: state.profileHeader.info.data,
+    platformSettings: state.platformData.settings.data
   };
 };
 

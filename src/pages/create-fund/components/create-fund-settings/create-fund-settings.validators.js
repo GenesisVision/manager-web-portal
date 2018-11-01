@@ -27,7 +27,7 @@ const createFundSettingsValidationSchema = ({ t, ...props }) =>
       t("create-fund-page.settings.validation.entry-fee-required")
     ),
     exitFee: Yup.string().required(
-      t("create-fund-page.settings.validation.success-fee-required")
+      t("create-fund-page.settings.validation.exit-fee-required")
     ),
     remainder: Yup.number()
       .required(t("create-fund-page.settings.validation.assets-share"))

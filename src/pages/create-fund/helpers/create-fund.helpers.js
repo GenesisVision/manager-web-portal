@@ -1,5 +1,4 @@
 import { getNumberWithoutSuffix } from "utils/helpers";
-import { allowValuesNumberFormat } from "utils/helpers";
 
 export const getDataWithoutSuffixes = (data, fields) => {
   let result = { ...data };
@@ -16,8 +15,3 @@ export const getDataWithoutSuffixes = (data, fields) => {
 
   return result;
 };
-
-export const percentNumberFormat = allowValuesNumberFormat({
-  from: 0,
-  to: 100
-});
