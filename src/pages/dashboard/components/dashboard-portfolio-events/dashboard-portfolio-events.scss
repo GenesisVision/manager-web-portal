@@ -22,10 +22,14 @@
     padding-top: $padding-middle;
   }
 
+  &__list {
+    padding: 0 24px;
+  }
+
   &__scroll-container {
     flex: 1;
     position: relative;
-    margin-top: 24px;
+    margin: 24px -24px;
     &:after {
       position: absolute;
       z-index: 3;
@@ -47,7 +51,7 @@
 
   &__see-all {
     width: 60px;
-    margin: 24px auto;
+    margin: 0 auto 24px;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.1px;

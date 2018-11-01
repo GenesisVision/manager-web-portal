@@ -10,6 +10,7 @@ import { getPortfolioEvents } from "../../services/dashboard.service";
 import { EvenLogoIcon } from "./dashboard-portfolio-event-logo/dashboard-portfolio-event-logo";
 import { EventLogoType } from "./dashboard-portfolio-event-logo/dashboard-portfolio-event-logo.helper";
 import DashboardPortfolioEvents from "./dashboard-portfolio-events";
+import DashboardPortfolioEventsLoader from "./dashboard-portfolio-events-loader";
 
 class DashboardPortfolioEventsContainer extends Component {
   componentDidMount() {
@@ -60,7 +61,8 @@ class DashboardPortfolioEventsContainer extends Component {
 
   renderEvents = () => {
     const { isPending, data } = this.props;
-    if (isPending || data === undefined) return null;
+    if (isPending && !data) return <DashboardPortfolioEventsLoader />;
+    if (data === undefined) return null;
     return (
       (data.data.total && (
         <DashboardPortfolioEvents
