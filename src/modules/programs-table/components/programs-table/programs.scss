@@ -50,6 +50,9 @@ $description-block-width: 250px;
     padding: $padding 20px;
     border-radius: 8px;
     background-color: #212c34;
+    & .program-avatar__level {
+      border-color: #212c34 !important;
+    }
     &--title {
       @include table-title;
     }
@@ -171,7 +174,6 @@ $description-block-width: 250px;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 0;
     .program-avatar {
       min-width: 40px;
     }
@@ -394,6 +396,7 @@ $description-block-width: 250px;
     }
   }
 }
+
 .popover-list {
   display: flex;
   flex-direction: column;

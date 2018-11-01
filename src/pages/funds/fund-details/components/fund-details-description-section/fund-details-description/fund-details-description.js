@@ -13,6 +13,7 @@ import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
 import replaceParams from "utils/replace-params";
 
+import { formatValue } from "../../../../../../utils/formatter";
 import FundDetailsInvestment from "../fund-details-investment/fund-details-investment";
 import FundDetailsFavorite from "./fund-details-favorite";
 import FundDetailsNotification from "./fund-details-notificaton";
@@ -113,7 +114,7 @@ class FundDetailsDescription extends PureComponent {
                   {t("fund-details-page.description.entryFee")}
                 </span>
                 <NumberFormat
-                  value={fundDescription.entryFee}
+                  value={formatValue(fundDescription.entryFee)}
                   displayType="text"
                   suffix=" %"
                 />
@@ -123,7 +124,7 @@ class FundDetailsDescription extends PureComponent {
                   Exit fee
                 </span>
                 <NumberFormat
-                  value={fundDescription.exitFee}
+                  value={formatValue(fundDescription.exitFee)}
                   displayType="text"
                   suffix=" %"
                 />
@@ -135,6 +136,7 @@ class FundDetailsDescription extends PureComponent {
                   <GVButton
                     className="fund-details-description__invest-btn"
                     onClick={this.handleOpenInvestmentPopup}
+                    disabled={!fundDescription.canInvest}
                   >
                     {t("fund-details-page.description.invest")}
                   </GVButton>

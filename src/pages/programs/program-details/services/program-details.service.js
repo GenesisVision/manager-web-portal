@@ -102,21 +102,24 @@ export const getProgramEvents = () => {
   return Promise.resolve();
 };
 
-export const closeProgram = (programId, onSuccess) => dispatch => {
+export const closeProgram = (programId, opts) => dispatch => {
   const authorization = authService.getAuthArg();
 
-  return managerApiProxy
-    .v10ManagerProgramsByIdPeriodClosePost(programId, authorization)
-    .then(() => {
-      onSuccess();
-      dispatch(
-        alertMessageActions.success(
-          "program-details-page.description.close-program-notification-success",
-          true
-        )
-      );
-    })
-    .catch(error => {
-      dispatch(alertMessageActions.error(error.errorMessage));
-    });
+  return managerApiProxy.v10ManagerProgramsByIdClosePost(
+    programId,
+    authorization,
+    opts
+  );
+  // .then(() => {
+  //   onSuccess();
+  //   dispatch(
+  //     alertMessageActions.success(
+  //       "program-details-page.description.close-program-notification-success",
+  //       true
+  //     )
+  //   );
+  // })
+  // .catch(error => {
+  //   dispatch(alertMessageActions.error(error.errorMessage));
+  // });
 };
