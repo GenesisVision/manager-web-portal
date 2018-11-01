@@ -6,12 +6,53 @@
   position: relative;
 
   .chart-loader {
-    position: absolute;
+    position: relative;
+    padding: 0 10px;
     bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column-reverse;
+
+    @include media-breakpoint-landscape-phone() {
+      padding: 0 32px 0;
+    }
+
+    @include media-breakpoint-tablet() {
+      height: 579px;
+    }
+
+    &__title {
+      max-width: 270px;
+      width: 100%;
+      float: left;
+    }
+
+    &__actions {
+      max-width: 180px;
+      width: 100%;
+      float: right;
+    }
+
+    &__chart {
+      position: absolute;
+      bottom: 0;
+      left: -300px;
+      right: 0;
+      display: flex;
+      flex-direction: column-reverse;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    &__container {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+      width: 100%;
+
+      @include media-breakpoint-tablet() {
+        width: calc(100% - 64px);
+        position: absolute;
+        bottom: 0;
+      }
+    }
   }
 
   & div {
@@ -20,10 +61,9 @@
   flex: 1;
   box-sizing: border-box;
   padding: $padding-middle-mobile 0;
-  width: 300px;
+
   @include media-breakpoint-landscape-phone() {
     padding: $padding-middle 0;
-    min-height: 683px;
   }
   & .chart-period {
     padding: 0 $padding-middle-mobile;

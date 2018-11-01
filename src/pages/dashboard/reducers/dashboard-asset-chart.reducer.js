@@ -6,6 +6,7 @@ const dashboardAssetChartReducer = (state = initialState, action) => {
   switch (action.type) {
     case DASHBOARD_ASSET_CHART:
       return {
+        ...state,
         ...action.payload
       };
     default:

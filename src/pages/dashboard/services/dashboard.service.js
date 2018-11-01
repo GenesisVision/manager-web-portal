@@ -36,7 +36,8 @@ export const getAssetChart = (
             id: assetId,
             title: assetTitle,
             pnLChart: data.pnLChart,
-            equityChart: data.equityChart
+            equityChart: data.equityChart,
+            isPending: false
           })
         );
       });

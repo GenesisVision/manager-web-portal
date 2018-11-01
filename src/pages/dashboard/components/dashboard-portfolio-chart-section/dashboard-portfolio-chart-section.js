@@ -6,7 +6,6 @@ import { translate } from "react-i18next";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
-import Dashboard from "../../../../modules/dashboard/components/dashboard/dashboard";
 import DashboardChartAssetsContainer from "./dashboard-chart-assets/dashboard-chart-assets-container";
 import DashboardPortfolioChartContainer from "./dashboard-chart/dashboard-portfolio-chart-container";
 import DashboardPortfolioChartLoader from "./dashboard-chart/dashboard-portfolio-chart-loader";
@@ -28,7 +27,7 @@ class DashboardPortfolioChartSection extends Component {
     return assets && (assets.programs.length > 0 || assets.funds.length > 0);
   };
   render() {
-    const { t } = this.props;
+    const { t, isPending } = this.props;
     const assets = this.getAssets();
     return (
       <Surface className="dashboard-portfolio-chart-section">
@@ -43,6 +42,8 @@ class DashboardPortfolioChartSection extends Component {
             </div>
             <DashboardPortfolioChartContainer assets={assets} />
           </Fragment>
+        ) : isPending ? (
+          <DashboardPortfolioChartLoader />
         ) : (
           <DashboardGetStarted />
         )}
