@@ -106,7 +106,7 @@ export const closeProgram = (programId, onSuccess) => dispatch => {
   const authorization = authService.getAuthArg();
 
   return managerApiProxy
-    .v10ManagerProgramsByIdPeriodClosePost(programId, authorization)
+    .v10ManagerProgramsByIdClosePost(programId, authorization)
     .then(() => {
       onSuccess();
       dispatch(
