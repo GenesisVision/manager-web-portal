@@ -1,10 +1,10 @@
 import "./program-details-description.scss";
 
 import AssetAvatar from "components/avatar/asset-avatar/asset-avatar";
+import ConfirmPopup from "components/confirm-popup/confirm-popup";
 import Popover from "components/popover/popover";
 import { GVButton } from "gv-react-components";
 import ProgramDepositContainer from "modules/program-deposit/program-deposit-container";
-import ProgramReinvestingWidget from "modules/program-reinvesting/components/program-reinvesting-widget";
 import AboutLevelsContainerComponent from "pages/app/components/about-levels/about-levels-container";
 import { composeManagerDetailsUrl } from "pages/manager/manager.page";
 import { PROGRAM_NOTIFICATIONS_ROUTE } from "pages/notifications/notifications.routes";
@@ -12,10 +12,13 @@ import { ProgramDetailContext } from "pages/programs/program-details/program-det
 import React, { Fragment, PureComponent } from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { bindActionCreators, compose } from "redux";
 import { formatValue } from "utils/formatter";
 import replaceParams from "utils/replace-params";
 
+import { closeProgram } from "../../../services/program-details.service";
 import ProgramDetailsInvestment from "../program-details-investment/program-details-investment";
 import ProgramDetailsFavorite from "./program-details-favorite";
 import ProgramDetailsNotification from "./program-details-notificaton";
@@ -29,6 +32,7 @@ export const composeProgramNotificationsUrl = url => {
 class ProgramDetailsDescription extends PureComponent {
   state = {
     isOpenInvestmentPopup: false,
+    isOpenCloseProgramPopup: false,
     isOpenAboutLevels: false,
     anchor: null
   };
@@ -48,22 +52,34 @@ class ProgramDetailsDescription extends PureComponent {
       redirectToLogin();
     }
   };
-
   handleCloseInvestmentPopup = () => {
     this.setState({ isOpenInvestmentPopup: false });
   };
+  handleOpenCloseProgramPopup = () => {
+    this.setState({ isOpenCloseProgramPopup: true });
+  };
+  handleCloseCloseProgramPopup = () => {
+    this.setState({ isOpenCloseProgramPopup: false });
+  };
+  handleApplyCloseProgramPopup = updateDetails => () => {
+    const { service, programDescription } = this.props;
+    service.closeProgram(programDescription.id, updateDetails);
+    this.handleCloseCloseProgramPopup();
+  };
 
   render() {
-    const { isOpenInvestmentPopup, isOpenAboutLevels, anchor } = this.state;
+    const {
+      isOpenInvestmentPopup,
+      isOpenCloseProgramPopup,
+      isOpenAboutLevels,
+      anchor
+    } = this.state;
     const {
       t,
       isOwnProgram,
-      isInvested,
       canWithdraw,
       programDescription,
-      onReinvestingClick,
       onFavoriteClick,
-      isReinvestPending,
       isFavoritePending,
       composeInvestmentData,
       onChangeInvestmentStatus
@@ -189,6 +205,15 @@ class ProgramDetailsDescription extends PureComponent {
                     >
                       {t("program-details-page.description.invest")}
                     </GVButton>
+                    <GVButton
+                      className="program-details-description__invest-btn"
+                      color="secondary"
+                      variant="outlined"
+                      onClick={this.handleOpenCloseProgramPopup}
+                      disabled={programDescription.canCloseProgram}
+                    >
+                      {t("program-details-page.description.close-program")}
+                    </GVButton>
                   </div>
                 </div>
                 <ProgramDetailsInvestment
@@ -202,14 +227,31 @@ class ProgramDetailsDescription extends PureComponent {
             )}
             <ProgramDetailContext.Consumer>
               {({ updateDetails }) => (
-                <ProgramDepositContainer
-                  currency={programDescription.currency}
-                  open={isOpenInvestmentPopup}
-                  type={"program"}
-                  id={programDescription.id}
-                  onClose={this.handleCloseInvestmentPopup}
-                  onInvest={updateDetails}
-                />
+                <Fragment>
+                  <ProgramDepositContainer
+                    currency={programDescription.currency}
+                    open={isOpenInvestmentPopup}
+                    type={"program"}
+                    id={programDescription.id}
+                    onClose={this.handleCloseInvestmentPopup}
+                    onInvest={updateDetails}
+                  />
+
+                  <ConfirmPopup
+                    dialogClassName="program-details-description__close-program-popup"
+                    open={isOpenCloseProgramPopup}
+                    onClose={this.handleCloseCloseProgramPopup}
+                    onCancel={this.handleCloseCloseProgramPopup}
+                    onApply={this.handleApplyCloseProgramPopup(updateDetails)}
+                    header={t("program-details-page.description.close-program")}
+                    body={t(
+                      "program-details-page.description.close-program-notification"
+                    )}
+                    applyButtonText={t(
+                      "program-details-page.description.close-program"
+                    )}
+                  />
+                </Fragment>
               )}
             </ProgramDetailContext.Consumer>
           </div>
@@ -231,4 +273,10 @@ class ProgramDetailsDescription extends PureComponent {
   }
 }
 
-export default translate()(ProgramDetailsDescription);
+const mapDispatchToProps = dispatch => ({
+  service: bindActionCreators({ closeProgram }, dispatch)
+});
+
+export default compose(translate(), connect(null, mapDispatchToProps))(
+  ProgramDetailsDescription
+);
