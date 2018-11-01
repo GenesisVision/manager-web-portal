@@ -20,7 +20,7 @@
 
   &__title {
     font-size: $font-size-subtitle-mobile;
-    padding-top: $padding-middle-mobile;
+    padding: $padding-middle-mobile 0;
     font-weight: 600;
     @include media-breakpoint-landscape-phone() {
       font-size: $font-size-subtitle;
