@@ -212,12 +212,12 @@
     justify-content: center;
     cursor: pointer;
     color: $label-color;
-    .icon path {
-      stroke: $label-color;
-    }
     .icon--ring {
       width: 27px;
       height: 27px;
+    }
+    &-icon svg [stroke] {
+      stroke: $label-color;
     }
     &:hover {
       path {
@@ -235,6 +235,17 @@
       letter-spacing: 0.3px;
       color: $main-color;
       text-align: center;
+    }
+
+    & &-icon--active path {
+      fill: $primary-color;
+      stroke: $primary-color;
+    }
+    &:hover &-icon--active path {
+      stroke: $text-accent-color;
+    }
+    &-icon-notification path {
+      stroke: $label-color;
     }
   }
 
