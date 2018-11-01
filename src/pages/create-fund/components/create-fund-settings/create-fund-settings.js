@@ -259,11 +259,10 @@ class CreateFundSettings extends React.Component {
                   content={t("create-program-page.settings.hints.entry-fee")}
                   className="create-fund-settings__fee-hint"
                   vertical={"bottom"}
-                  tooltipContent={
-                    t("create-fund-page.settings.hints.entry-fee-description") +
-                    programsInfo.managerMaxEntryFee +
-                    " %"
-                  }
+                  tooltipContent={t(
+                    "create-fund-page.settings.hints.entry-fee-description",
+                    { maxFee: programsInfo.managerMaxEntryFee }
+                  )}
                 />
               </div>
               <div className="create-fund-settings__fee">
@@ -281,11 +280,12 @@ class CreateFundSettings extends React.Component {
                   content={t("create-fund-page.settings.hints.exit-fee")}
                   className="create-fund-settings__fee-hint"
                   vertical={"bottom"}
-                  tooltipContent={
-                    t("create-fund-page.settings.hints.exit-fee-description") +
-                    programsInfo.managerMaxExitFee +
-                    " %"
-                  }
+                  tooltipContent={t(
+                    "create-fund-page.settings.hints.exit-fee-description",
+                    {
+                      maxFee: programsInfo.managerMaxExitFee
+                    }
+                  )}
                 />
               </div>
             </div>

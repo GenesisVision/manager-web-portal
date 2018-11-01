@@ -229,13 +229,12 @@ class CreateProgramSettings extends React.Component {
                   content={t("create-program-page.settings.hints.entry-fee")}
                   className="create-program-settings__fee-hint"
                   vertical={"bottom"}
-                  tooltipContent={
-                    t(
-                      "create-program-page.settings.hints.entry-fee-description"
-                    ) +
-                    programsInfo.managerMaxEntryFee +
-                    " %"
-                  }
+                  tooltipContent={t(
+                    "create-program-page.settings.hints.entry-fee-description",
+                    {
+                      maxFee: programsInfo.managerMaxEntryFee
+                    }
+                  )}
                 />
               </div>
               <div className="create-program-settings__fee">
@@ -253,13 +252,12 @@ class CreateProgramSettings extends React.Component {
                   content={t("create-program-page.settings.hints.success-fee")}
                   className="create-program-settings__fee-hint"
                   vertical={"bottom"}
-                  tooltipContent={
-                    t(
-                      "create-program-page.settings.hints.success-fee-description"
-                    ) +
-                    programsInfo.managerMaxSuccessFee +
-                    " %"
-                  }
+                  tooltipContent={t(
+                    "create-program-page.settings.hints.success-fee-description",
+                    {
+                      maxFee: programsInfo.managerMaxSuccessFee
+                    }
+                  )}
                 />
               </div>
             </div>
