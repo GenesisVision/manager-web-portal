@@ -128,7 +128,7 @@ const formatValue = (value, decimalScale, abs) => {
   value = abs ? Math.abs(value) : value;
   if (value === undefined || isNaN(value) || value.toFixed(0) == value)
     return value;
-  return [...[value.toFixed(decimalScale || 19).split(".")]]
+  return [...[value.toFixed(decimalScale || 10).split(".")]]
     .map(sliceFraction)
     .map(addOne)
     .map(cleanNulls)
