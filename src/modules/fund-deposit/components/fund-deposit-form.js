@@ -63,7 +63,7 @@ const FundDepositForm = ({
             <NumberFormat
               value={formatValue(gvFee)}
               prefix={" ("}
-              suffix={` GVT)`}
+              suffix={" GVT)"}
               displayType="text"
             />
           </span>
@@ -75,7 +75,7 @@ const FundDepositForm = ({
           <span className="dialog-list__value">
             <NumberFormat
               value={formatValue(investAmount)}
-              suffix={` GVT`}
+              suffix={" GVT"}
               displayType="text"
             />
           </span>
