@@ -68,21 +68,15 @@
     "redux-devtools": "^3.4.1"
   },
   "scripts": {
-    "precommit": "git add",
-    "start": "PORT=3002 react-scripts start",
+    "precommit": "lint-staged",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "lint-staged": {
-    "*.js": [
-      "import-sort --write",
-      "git add"
-    ],
-    "*.{js,json,scss,md}": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["import-sort --write", "git add"],
+    "*.{js,json,scss,md}": ["prettier --write", "git add"]
   },
   "importSort": {
     ".js": {
@@ -96,10 +90,6 @@
       "last 2 firefox versions",
       "last 2 edge versions"
     ],
-    "production": [
-      ">0.25%",
-      "not op_mini all",
-      "ie 11"
-    ]
+    "production": [">0.25%", "not op_mini all", "ie 11"]
   }
 }
