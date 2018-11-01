@@ -20,6 +20,7 @@ import {
   getDashboardFunds,
   updateDashboardFundsFilters
 } from "../../../services/dashboard-funds.service";
+import { formatValue } from "utils/formatter";
 
 const FUNDS_SLUG_URL_PARAM_NAME = "fundsSlugUrl";
 const FUNDS_ROUTE = "/funds";
@@ -72,7 +73,7 @@ class DashboardFunds extends Component {
         )}
         renderHeader={column => (
           <span
-            className={`dashboard-funds__cell dashboard-funds__cell--${
+            className={`funds-table__cell dashboard-funds__cell dashboard-funds__cell--${
               column.name
             }`}
           >
@@ -97,10 +98,10 @@ class DashboardFunds extends Component {
                 </div>
               </div>
             </TableCell>
-            <TableCell className="funds-table__cell funds-table__cell">
-              {fund.statistic.balanceGVT.amount} GVT
+            <TableCell className="funds-table__cell funds-table__cell--amount">
+              {formatValue(fund.statistic.balanceGVT.amount)} GVT
             </TableCell>
-            <TableCell className="funds-table__cell funds-table__cell">
+            <TableCell className="funds-table__cell">
               <FundAssetContainer
                 assets={fund.topFundAssets}
                 type={"short"}
@@ -113,19 +114,17 @@ class DashboardFunds extends Component {
             </TableCell>
             <TableCell className="funds-table__cell funds-table__cell--drawdown">
               <NumberFormat
-                value={fund.statistic.drawdownPercent}
+                value={formatValue(fund.statistic.drawdownPercent, 2)}
                 suffix="%"
-                decimalScale={2}
                 displayType="text"
               />
             </TableCell>
             <TableCell className="funds-table__cell funds-table__cell--profit">
               <Profitability value={fund.statistic.profitPercent} prefix="sign">
                 <NumberFormat
-                  value={fund.statistic.profitPercent}
+                  value={formatValue(fund.statistic.profitPercent, 2)}
                   suffix="%"
                   allowNegative={false}
-                  decimalScale={2}
                   displayType="text"
                 />
               </Profitability>

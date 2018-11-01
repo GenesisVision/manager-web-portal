@@ -16,18 +16,32 @@ import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import InputImage from "shared/components/form/input-image/input-image";
 import { formatValue } from "utils/formatter";
+import { allowValuesNumberFormat } from "utils/helpers";
 
 import {
   getAccountTypes,
   getCurrencies,
-  getLeverages,
-  percentNumberFormat
+  getLeverages
 } from "../../helpers/create-program.helpers";
 import AccountTypeField from "../account-type-field/account-type-field";
 import createProgramSettingsValidationSchema from "./create-program-settings.validators";
 import ProgramDefaultImage from "./program-default-image";
 
 class CreateProgramSettings extends React.Component {
+  allowEntryFee = values => {
+    const { managerMaxEntryFee } = this.props.programsInfo;
+
+    return allowValuesNumberFormat({ from: 0, to: managerMaxEntryFee })(values);
+  };
+
+  allowSuccessFee = values => {
+    const { managerMaxSuccessFee } = this.props.programsInfo;
+
+    return allowValuesNumberFormat({ from: 0, to: managerMaxSuccessFee })(
+      values
+    );
+  };
+
   render() {
     const {
       t,
@@ -205,7 +219,7 @@ class CreateProgramSettings extends React.Component {
                   name="entryFee"
                   label={t("create-program-page.settings.fields.entry-fee")}
                   suffix=" %"
-                  isAllowed={percentNumberFormat}
+                  isAllowed={this.allowEntryFee}
                   component={GVTextField}
                   InputComponent={NumberFormat}
                   autoComplete="off"
@@ -216,7 +230,10 @@ class CreateProgramSettings extends React.Component {
                   className="create-program-settings__fee-hint"
                   vertical={"bottom"}
                   tooltipContent={t(
-                    "create-program-page.settings.hints.entry-fee-description"
+                    "create-program-page.settings.hints.entry-fee-description",
+                    {
+                      maxFee: programsInfo.managerMaxEntryFee
+                    }
                   )}
                 />
               </div>
@@ -225,7 +242,7 @@ class CreateProgramSettings extends React.Component {
                   name="successFee"
                   label={t("create-program-page.settings.fields.success-fee")}
                   suffix=" %"
-                  isAllowed={percentNumberFormat}
+                  isAllowed={this.allowSuccessFee}
                   component={GVTextField}
                   InputComponent={NumberFormat}
                   autoComplete="off"
@@ -236,7 +253,10 @@ class CreateProgramSettings extends React.Component {
                   className="create-program-settings__fee-hint"
                   vertical={"bottom"}
                   tooltipContent={t(
-                    "create-program-page.settings.hints.success-fee-description"
+                    "create-program-page.settings.hints.success-fee-description",
+                    {
+                      maxFee: programsInfo.managerMaxSuccessFee
+                    }
                   )}
                 />
               </div>

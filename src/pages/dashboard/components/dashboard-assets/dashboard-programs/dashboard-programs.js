@@ -111,9 +111,8 @@ class DashboardPrograms extends Component {
             </TableCell>
             <TableCell className="programs-table__cell dashboard-programs__cell--profit">
               <NumberFormat
-                value={program.statistic.profitPercent}
+                value={formatValue(program.statistic.profitPercent)}
                 suffix="%"
-                decimalScale={2}
                 displayType="text"
               />
             </TableCell>

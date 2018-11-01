@@ -4,7 +4,6 @@ import AssetAvatar from "components/avatar/asset-avatar/asset-avatar";
 import Popover from "components/popover/popover";
 import { GVButton } from "gv-react-components";
 import ProgramDepositContainer from "modules/program-deposit/program-deposit-container";
-import ProgramReinvestingWidget from "modules/program-reinvesting/components/program-reinvesting-widget";
 import AboutLevelsContainerComponent from "pages/app/components/about-levels/about-levels-container";
 import { composeManagerDetailsUrl } from "pages/manager/manager.page";
 import { PROGRAM_NOTIFICATIONS_ROUTE } from "pages/notifications/notifications.routes";
@@ -17,6 +16,7 @@ import { formatValue } from "utils/formatter";
 import replaceParams from "utils/replace-params";
 
 import ProgramDetailsInvestment from "../program-details-investment/program-details-investment";
+import CloseProgramContainer from "./close-program/close-program-container";
 import ProgramDetailsFavorite from "./program-details-favorite";
 import ProgramDetailsNotification from "./program-details-notificaton";
 
@@ -29,6 +29,7 @@ export const composeProgramNotificationsUrl = url => {
 class ProgramDetailsDescription extends PureComponent {
   state = {
     isOpenInvestmentPopup: false,
+    isOpenCloseProgramPopup: false,
     isOpenAboutLevels: false,
     anchor: null
   };
@@ -48,22 +49,32 @@ class ProgramDetailsDescription extends PureComponent {
       redirectToLogin();
     }
   };
-
   handleCloseInvestmentPopup = () => {
     this.setState({ isOpenInvestmentPopup: false });
   };
+  handleOpenCloseProgramPopup = () => {
+    this.setState({ isOpenCloseProgramPopup: true });
+  };
+  handleCloseCloseProgramPopup = () => {
+    this.setState({ isOpenCloseProgramPopup: false });
+  };
+  handleApplyCloseProgramPopup = updateDetails => () => {
+    updateDetails();
+  };
 
   render() {
-    const { isOpenInvestmentPopup, isOpenAboutLevels, anchor } = this.state;
+    const {
+      isOpenInvestmentPopup,
+      isOpenCloseProgramPopup,
+      isOpenAboutLevels,
+      anchor
+    } = this.state;
     const {
       t,
       isOwnProgram,
-      isInvested,
       canWithdraw,
       programDescription,
-      onReinvestingClick,
       onFavoriteClick,
-      isReinvestPending,
       isFavoritePending,
       composeInvestmentData,
       onChangeInvestmentStatus
@@ -72,6 +83,10 @@ class ProgramDetailsDescription extends PureComponent {
     const isFavorite =
       programDescription.personalProgramDetails &&
       programDescription.personalProgramDetails.isFavorite;
+
+    const hasNotifications =
+      programDescription.personalProgramDetails &&
+      programDescription.personalProgramDetails.hasNotifications;
     return (
       <div className="program-details-description">
         <div className="program-details-description__left">
@@ -104,7 +119,14 @@ class ProgramDetailsDescription extends PureComponent {
                   {t("program-details-page.popover.invest-limit")}
                 </div>
                 <div className="popover-levels__balance">
-                  {`${programDescription.availableInvestment} GVT`}
+                  <NumberFormat
+                    value={formatValue(
+                      programDescription.availableInvestment,
+                      5
+                    )}
+                    displayType="text"
+                    suffix={` GVT`}
+                  />
                 </div>
               </div>
               <div className="popover-levels__block popover-levels__text-block">
@@ -153,7 +175,7 @@ class ProgramDetailsDescription extends PureComponent {
                   {t("program-details-page.description.avToInvest")}
                 </span>
                 <NumberFormat
-                  value={formatValue(programDescription.availableInvestment)}
+                  value={formatValue(programDescription.availableInvestment, 2)}
                   displayType="text"
                   suffix={` GVT`}
                 />
@@ -163,7 +185,7 @@ class ProgramDetailsDescription extends PureComponent {
                   {t("program-details-page.description.entryFee")}
                 </span>
                 <NumberFormat
-                  value={programDescription.entryFee}
+                  value={formatValue(programDescription.entryFee, 2)}
                   displayType="text"
                   suffix=" %"
                 />
@@ -173,7 +195,7 @@ class ProgramDetailsDescription extends PureComponent {
                   {t("program-details-page.description.successFee")}
                 </span>
                 <NumberFormat
-                  value={programDescription.successFee}
+                  value={formatValue(programDescription.successFee, 2)}
                   displayType="text"
                   suffix=" %"
                 />
@@ -186,8 +208,23 @@ class ProgramDetailsDescription extends PureComponent {
                     <GVButton
                       className="program-details-description__invest-btn"
                       onClick={this.handleOpenInvestmentPopup}
+                      disabled={
+                        !programDescription.personalProgramDetails.canInvest
+                      }
                     >
                       {t("program-details-page.description.invest")}
+                    </GVButton>
+                    <GVButton
+                      className="program-details-description__invest-btn"
+                      color="secondary"
+                      variant="outlined"
+                      onClick={this.handleOpenCloseProgramPopup}
+                      disabled={
+                        !programDescription.personalProgramDetails
+                          .canCloseProgram
+                      }
+                    >
+                      {t("program-details-page.description.close-program")}
                     </GVButton>
                   </div>
                 </div>
@@ -202,14 +239,24 @@ class ProgramDetailsDescription extends PureComponent {
             )}
             <ProgramDetailContext.Consumer>
               {({ updateDetails }) => (
-                <ProgramDepositContainer
-                  currency={programDescription.currency}
-                  open={isOpenInvestmentPopup}
-                  type={"program"}
-                  id={programDescription.id}
-                  onClose={this.handleCloseInvestmentPopup}
-                  onInvest={updateDetails}
-                />
+                <Fragment>
+                  <ProgramDepositContainer
+                    currency={programDescription.currency}
+                    open={isOpenInvestmentPopup}
+                    type={"program"}
+                    id={programDescription.id}
+                    onClose={this.handleCloseInvestmentPopup}
+                    onInvest={updateDetails}
+                  />
+
+                  <CloseProgramContainer
+                    open={isOpenCloseProgramPopup}
+                    onClose={this.handleCloseCloseProgramPopup}
+                    onCancel={this.handleCloseCloseProgramPopup}
+                    onApply={this.handleApplyCloseProgramPopup(updateDetails)}
+                    id={programDescription.id}
+                  />
+                </Fragment>
               )}
             </ProgramDetailContext.Consumer>
           </div>
@@ -223,7 +270,7 @@ class ProgramDetailsDescription extends PureComponent {
           />
           <ProgramDetailsNotification
             url={composeProgramNotificationsUrl(programDescription.url)}
-            disabled={isFavoritePending}
+            hasNotifications={hasNotifications}
           />
         </div>
       </div>
