@@ -73,7 +73,7 @@ class DashboardPrograms extends Component {
         )}
         renderHeader={column => (
           <span
-            className={`dashboard-programs__cell dashboard-programs__cell--${
+            className={`programs-table__cell dashboard-programs__cell dashboard-programs__cell--${
               column.name
             }`}
           >
