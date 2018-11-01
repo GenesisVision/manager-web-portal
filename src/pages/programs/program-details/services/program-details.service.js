@@ -2,10 +2,12 @@ import { DEFAULT_PERIOD } from "components/chart/chart-period/chart-period.helpe
 import { DEFAULT_PAGING } from "modules/table/reducers/table-paging.reducer";
 import { composeRequestFilters } from "modules/table/services/table.service";
 import { PROGRAM_DETAILS_ROUTE } from "pages/programs/programs.routes";
+import { managerApiProxy } from "services/api-client/manager-api";
 import { programsApiProxy } from "services/api-client/programs-api";
 import authService from "services/auth-service";
 import getParams from "utils/get-params";
 
+import { alertMessageActions } from "../../../../shared/modules/alert-message/actions/alert-message-actions";
 import { PROGRAM_SLUG_URL_PARAM_NAME } from "../../programs.routes";
 import {
   PROGRAM_TRADES_DEFAULT_FILTERS,
@@ -98,4 +100,23 @@ export const getProgramTrades = ({ programId, currency, filters }) => {
 
 export const getProgramEvents = () => {
   return Promise.resolve();
+};
+
+export const closeProgram = (programId, onSuccess) => dispatch => {
+  const authorization = authService.getAuthArg();
+
+  return managerApiProxy
+    .v10ManagerProgramsByIdPeriodClosePost(programId, authorization)
+    .then(() => {
+      onSuccess();
+      dispatch(
+        alertMessageActions.success(
+          "program-details-page.description.close-program-notification-success",
+          true
+        )
+      );
+    })
+    .catch(error => {
+      dispatch(alertMessageActions.error(error.errorMessage));
+    });
 };
