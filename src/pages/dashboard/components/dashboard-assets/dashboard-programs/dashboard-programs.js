@@ -12,7 +12,7 @@ import React, { Component, Fragment } from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
-import { formatValue } from "utils/formatter";
+import { formatPercent } from "utils/formatter";
 import replaceParams from "utils/replace-params";
 
 import { DASHBOARD_PROGRAMS_COLUMNS } from "../../../dashboard.constants";
@@ -98,7 +98,7 @@ class DashboardPrograms extends Component {
               </div>
             </TableCell>
             <TableCell className="programs-table__cell dashboard-programs__cell--share">
-              {formatValue(program.dashboardAssetsDetails.share)}
+              {formatPercent(program.dashboardAssetsDetails.share)}%
             </TableCell>
             <TableCell className="programs-table__cell dashboard-programs__cell--currency">
               {program.currency}
@@ -107,7 +107,7 @@ class DashboardPrograms extends Component {
               <ProgramPeriodEnd periodEnds={program.periodEnds} />
             </TableCell>
             <TableCell className="programs-table__cell dashboard-programs__cell--value">
-              {formatValue(program.personalDetails.value)}
+              {formatPercent(program.personalDetails.value)} GVT
             </TableCell>
             <TableCell className="programs-table__cell dashboard-programs__cell--profit">
               <NumberFormat
