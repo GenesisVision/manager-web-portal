@@ -19,6 +19,8 @@ import ProgramDetailsInvestment from "../program-details-investment/program-deta
 import CloseProgramContainer from "./close-program/close-program-container";
 import ProgramDetailsFavorite from "./program-details-favorite";
 import ProgramDetailsNotification from "./program-details-notificaton";
+import AssetEditContainer from "../../../../../../modules/asset-edit/asset-edit-container";
+import { PROGRAM } from "../../../../../../modules/asset-edit/asset-edit.constants";
 
 export const composeProgramNotificationsUrl = url => {
   return replaceParams(PROGRAM_NOTIFICATIONS_ROUTE, {
@@ -30,6 +32,7 @@ class ProgramDetailsDescription extends PureComponent {
   state = {
     isOpenInvestmentPopup: false,
     isOpenCloseProgramPopup: false,
+    isOpenEditProgramPopup: false,
     isOpenAboutLevels: false,
     anchor: null
   };
@@ -61,11 +64,21 @@ class ProgramDetailsDescription extends PureComponent {
   handleApplyCloseProgramPopup = updateDetails => () => {
     updateDetails();
   };
+  handleOpenEditProgramPopup = () => {
+    this.setState({ isOpenEditProgramPopup: true });
+  };
+  handleCloseEditProgramPopup = () => {
+    this.setState({ isOpenEditProgramPopup: false });
+  };
+  handleApplyEditProgramPopup = updateDetails => () => {
+    updateDetails();
+  };
 
   render() {
     const {
       isOpenInvestmentPopup,
       isOpenCloseProgramPopup,
+      isOpenEditProgramPopup,
       isOpenAboutLevels,
       anchor
     } = this.state;
@@ -84,9 +97,23 @@ class ProgramDetailsDescription extends PureComponent {
       programDescription.personalProgramDetails &&
       programDescription.personalProgramDetails.isFavorite;
 
+    const canCloseProgram =
+      programDescription.personalProgramDetails &&
+      programDescription.personalProgramDetails.canCloseProgram;
+
     const hasNotifications =
       programDescription.personalProgramDetails &&
       programDescription.personalProgramDetails.hasNotifications;
+
+    const composeEditInfo = {
+      id: programDescription.id,
+      title: programDescription.title,
+      description: programDescription.description,
+      logo: {
+        src: programDescription.logo
+      }
+    };
+
     return (
       <div className="program-details-description">
         <div className="program-details-description__left">
@@ -220,12 +247,17 @@ class ProgramDetailsDescription extends PureComponent {
                       color="secondary"
                       variant="outlined"
                       onClick={this.handleOpenCloseProgramPopup}
-                      disabled={
-                        !programDescription.personalProgramDetails
-                          .canCloseProgram
-                      }
+                      disabled={!canCloseProgram}
                     >
                       {t("program-details-page.description.close-program")}
+                    </GVButton>
+                    <GVButton
+                      className="program-details-description__invest-btn"
+                      color="secondary"
+                      variant="outlined"
+                      onClick={this.handleOpenEditProgramPopup}
+                    >
+                      {t("program-details-page.description.edit-program")}
                     </GVButton>
                   </div>
                 </div>
@@ -256,6 +288,13 @@ class ProgramDetailsDescription extends PureComponent {
                     onCancel={this.handleCloseCloseProgramPopup}
                     onApply={this.handleApplyCloseProgramPopup(updateDetails)}
                     id={programDescription.id}
+                  />
+                  <AssetEditContainer
+                    open={isOpenEditProgramPopup}
+                    info={composeEditInfo}
+                    onClose={this.handleCloseEditProgramPopup}
+                    onApply={this.handleApplyEditProgramPopup(updateDetails)}
+                    type={PROGRAM}
                   />
                 </Fragment>
               )}

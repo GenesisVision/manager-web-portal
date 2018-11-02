@@ -72,6 +72,7 @@
       "withdraw": "Withdraw",
       "withdraw-notice-text":
         "You can withdraw only the invested funds, the profit will be withdrawn to your account at the end of the period automatically",
+      "edit-program": "Edit Program",
       "close-program": "Close Program",
       "close-program-notification":
         "Investment program will be closed after this reporting period. Current investment requests will be cancelled and new requests won’t be accepted. Profit and funds from the trading account will be deposited to GVT wallets of investors and manager according to their shares.",
@@ -143,6 +144,7 @@
   "fund-details-page": {
     "title": "Program detail",
     "description": {
+      "edit-fund": "Edit fund",
       "strategy": "Strategy",
       "assets": "Assets",
       "addToFavorites": "Add to favorites",
@@ -816,6 +818,72 @@
     },
     "notifications": {
       "create-success": "Successful program creating."
+    }
+  },
+  "edit-program": {
+    "title": "Edit fund",
+    "navigation-back-text": "All data will be deleted. Do you want to continue?",
+    "confirm": "Confirm",
+    "settings": {
+      "fields": {
+        "name": "Name",
+        "name-requirements": "Requirement from 4 to 20 symbols",
+        "description": "Description",
+        "description-requirements": "Requirement from 20 to 500 symbols",
+        "upload-logo": "Upload program logo",
+        "upload-logo-rules": "At least 300 x 300px PNG or JPG file. The maximum file size is 2MB."
+      },
+      "hints": {
+        "entry-fee": "Description about entry fee is here"
+      },
+      "validation": {
+        "title-required": "Title is required",
+        "title-is-long": "Title is too long",
+        "title-is-short": "Title is too short",
+        "title-is-latin-and-numbers": "Latin letters and numbers only.",
+        "description-is-long": "Description is too long",
+        "description-is-short": "Description is too short",
+        "description-required": "Description is required",
+        "account-type-required": "Account type is required",
+        "image-resolution-incorrect": "The resolution of the uploaded image is too low.",
+        "image-file-is-large": "The uploaded image file is too large."
+      }
+    },
+    "notifications": {
+      "edit-success": "Successful program editing."
+    }
+  },
+  "edit-fund": {
+    "title": "Edit fund",
+    "navigation-back-text": "All data will be deleted. Do you want to continue?",
+    "confirm": "Confirm",
+    "settings": {
+      "fields": {
+        "name": "Name",
+        "name-requirements": "Requirement from 4 to 20 symbols",
+        "description": "Description",
+        "description-requirements": "Requirement from 20 to 500 symbols",
+        "upload-logo": "Upload fund logo",
+        "upload-logo-rules": "At least 300 x 300px PNG or JPG file. The maximum file size is 2MB."
+      },
+      "hints": {
+        "entry-fee": "Description about entry fee is here"
+      },
+      "validation": {
+        "title-required": "Title is required",
+        "title-is-long": "Title is too long",
+        "title-is-short": "Title is too short",
+        "title-is-latin-and-numbers": "Latin letters and numbers only.",
+        "description-is-long": "Description is too long",
+        "description-is-short": "Description is too short",
+        "description-required": "Description is required",
+        "account-type-required": "Account type is required",
+        "image-resolution-incorrect": "The resolution of the uploaded image is too low.",
+        "image-file-is-large": "The uploaded image file is too large."
+      }
+    },
+    "notifications": {
+      "edit-success": "Successful fund editing."
     }
   },
   "create-fund-page": {

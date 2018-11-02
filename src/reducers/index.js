@@ -3,6 +3,7 @@ import fundNotificationsReducer from "modules/fund-notifications/reducers/fund-n
 import headerReducer from "modules/header/reducer/header-reducer";
 import notificationSettingsReducer from "modules/notification-settings/reducers/notification-settings.reducers";
 import programDepositReducer from "modules/program-deposit/reducer/program-deposit.reducer";
+import assetEditReducer from "modules/asset-edit/reducer/asset-edit.reducer";
 import programNotificationsReducer from "modules/program-notifications/reducers/program-notifications.reducers";
 import notificationsReducer from "pages/app/components/notifications/reducers/notifications.reducers";
 import walletReducer from "pages/wallet/reducers/wallet.reducers.js";
@@ -30,6 +31,7 @@ export default combineReducers({
   programNotifications: programNotificationsReducer,
   fundNotifications: fundNotificationsReducer,
   programDeposit: programDepositReducer,
+  assetEdit: assetEditReducer,
   fundDeposit: fundDepositReducer,
   manager: managerReducer,
   programsData: programsReducer,
