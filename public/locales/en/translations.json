@@ -748,8 +748,8 @@
       "error-during-confirmation":
         "An error occurred during confirmation of email:"
     },
-    "logout-from-another-devices": {
-      "success-message": "Successful logout on another devices."
+    "logout-from-other-devices": {
+      "success-message": "Successful logout from other devices."
     }
   },
   "create-program-page": {
@@ -1018,7 +1018,7 @@
       "save-photo": "Save photo",
       "image-success-save-message":
         "The photo has just been successfully changed.",
-      "logout-from-another-devices": "Logout from other devices",
+      "logout-from-other-devices": "Logout from other devices",
       "change-password": "Change password",
       "validation": {
         "image-resolution-incorrect":
