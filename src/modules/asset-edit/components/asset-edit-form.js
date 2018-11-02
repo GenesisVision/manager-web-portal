@@ -16,6 +16,7 @@ import { FUND, PROGRAM } from "../asset-edit.constants";
 
 const AssetEditForm = ({
   t,
+  dirty,
   values,
   info,
   currency,
@@ -90,7 +91,7 @@ const AssetEditForm = ({
           type="submit"
           id="signUpFormSubmit"
           className="invest-form__submit-button"
-          disabled={disabled}
+          disabled={disabled || !dirty}
         >
           {t("edit-program.confirm")}
         </GVButton>
@@ -111,7 +112,7 @@ export default compose(
         src: filesService.getFileUrl(props.info.logo.src),
         id: props.info.logo.src,
         isNew: false,
-        isDefault: true,
+        isDefault: !!!props.info.logo.src,
         width: undefined,
         height: undefined,
         size: undefined
