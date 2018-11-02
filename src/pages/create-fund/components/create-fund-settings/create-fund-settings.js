@@ -14,7 +14,7 @@ import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import InputImage from "shared/components/form/input-image/input-image";
-import { allowValuesNumberFormat } from "utils/helpers";
+import { allowPercent } from "utils/helpers";
 
 import AddButton from "../../../../components/add-button/add-button";
 import CreateFundSettingsAddAsset from "./create-fund-settings-add-asset/create-fund-settings-add-asset";
@@ -24,18 +24,6 @@ import ErrorNotifier from "./error-notifier/error-notifier";
 import FundDefaultImage from "./fund-default-image";
 
 class CreateFundSettings extends React.Component {
-  allowEntryFee = values => {
-    const { managerMaxEntryFee } = this.props.programsInfo;
-
-    return allowValuesNumberFormat({ from: 0, to: managerMaxEntryFee })(values);
-  };
-
-  allowExitFee = values => {
-    const { managerMaxExitFee } = this.props.programsInfo;
-
-    return allowValuesNumberFormat({ from: 0, to: managerMaxExitFee })(values);
-  };
-
   state = {
     anchor: null,
     assets: this.props.assets.map(asset => {
@@ -249,7 +237,7 @@ class CreateFundSettings extends React.Component {
                   name="entryFee"
                   label={t("create-fund-page.settings.fields.entry-fee")}
                   suffix=" %"
-                  isAllowed={this.allowEntryFee}
+                  isAllowed={allowPercent}
                   component={GVTextField}
                   InputComponent={NumberFormat}
                   autoComplete="off"
@@ -270,7 +258,7 @@ class CreateFundSettings extends React.Component {
                   name="exitFee"
                   label={t("create-fund-page.settings.fields.exit-fee")}
                   suffix=" %"
-                  isAllowed={this.allowExitFee}
+                  isAllowed={allowPercent}
                   component={GVTextField}
                   InputComponent={NumberFormat}
                   autoComplete="off"

@@ -16,7 +16,7 @@ import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import InputImage from "shared/components/form/input-image/input-image";
 import { formatValue } from "utils/formatter";
-import { allowValuesNumberFormat } from "utils/helpers";
+import { allowPercent } from "utils/helpers";
 
 import {
   getAccountTypes,
@@ -28,20 +28,6 @@ import createProgramSettingsValidationSchema from "./create-program-settings.val
 import ProgramDefaultImage from "./program-default-image";
 
 class CreateProgramSettings extends React.Component {
-  allowEntryFee = values => {
-    const { managerMaxEntryFee } = this.props.programsInfo;
-
-    return allowValuesNumberFormat({ from: 0, to: managerMaxEntryFee })(values);
-  };
-
-  allowSuccessFee = values => {
-    const { managerMaxSuccessFee } = this.props.programsInfo;
-
-    return allowValuesNumberFormat({ from: 0, to: managerMaxSuccessFee })(
-      values
-    );
-  };
-
   render() {
     const {
       t,
@@ -219,7 +205,7 @@ class CreateProgramSettings extends React.Component {
                   name="entryFee"
                   label={t("create-program-page.settings.fields.entry-fee")}
                   suffix=" %"
-                  isAllowed={this.allowEntryFee}
+                  isAllowed={allowPercent}
                   component={GVTextField}
                   InputComponent={NumberFormat}
                   autoComplete="off"
@@ -242,7 +228,7 @@ class CreateProgramSettings extends React.Component {
                   name="successFee"
                   label={t("create-program-page.settings.fields.success-fee")}
                   suffix=" %"
-                  isAllowed={this.allowSuccessFee}
+                  isAllowed={allowPercent}
                   component={GVTextField}
                   InputComponent={NumberFormat}
                   autoComplete="off"

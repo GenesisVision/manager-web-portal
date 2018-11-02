@@ -19,6 +19,8 @@ const allowValuesNumberFormat = ({ from, to }) => values => {
   );
 };
 
+const allowPercent = allowValuesNumberFormat({ from: 0, to: 100 });
+
 const getNumberWithoutSuffix = str => {
   let result = null;
   let coincidence = str.match(/^[^\d]*(\d+)/);
@@ -30,4 +32,4 @@ const getNumberWithoutSuffix = str => {
   return result;
 };
 
-export { merge, allowValuesNumberFormat, getNumberWithoutSuffix };
+export { merge, allowValuesNumberFormat, getNumberWithoutSuffix, allowPercent };
