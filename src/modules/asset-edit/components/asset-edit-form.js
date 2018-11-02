@@ -34,7 +34,7 @@ const AssetEditForm = ({
     errors.logo &&
     (errors.logo.width || errors.logo.height || errors.logo.size);
   return (
-    <form className="dialog__bottom" id="invest-form" onSubmit={handleSubmit}>
+    <form className="dialog__bottom" id="edit-form" onSubmit={handleSubmit}>
       <GVFormikField
         type="text"
         name="title"
