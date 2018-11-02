@@ -53,6 +53,12 @@
   },
   "program-details-page": {
     "title": "Program detail",
+    "close-period": {
+      "title": "Close Period",
+      "body": "Do you really want to restart current period?",
+      "notification-success":
+        "Request to close the period was sent successfully."
+    },
     "description": {
       "strategy": "Strategy",
       "addToFavorites": "Add to favorites",
@@ -822,7 +828,8 @@
   },
   "edit-program": {
     "title": "Edit fund",
-    "navigation-back-text": "All data will be deleted. Do you want to continue?",
+    "navigation-back-text":
+      "All data will be deleted. Do you want to continue?",
     "confirm": "Confirm",
     "settings": {
       "fields": {
@@ -831,7 +838,8 @@
         "description": "Description",
         "description-requirements": "Requirement from 20 to 500 symbols",
         "upload-logo": "Upload program logo",
-        "upload-logo-rules": "At least 300 x 300px PNG or JPG file. The maximum file size is 2MB."
+        "upload-logo-rules":
+          "At least 300 x 300px PNG or JPG file. The maximum file size is 2MB."
       },
       "hints": {
         "entry-fee": "Description about entry fee is here"
@@ -845,7 +853,8 @@
         "description-is-short": "Description is too short",
         "description-required": "Description is required",
         "account-type-required": "Account type is required",
-        "image-resolution-incorrect": "The resolution of the uploaded image is too low.",
+        "image-resolution-incorrect":
+          "The resolution of the uploaded image is too low.",
         "image-file-is-large": "The uploaded image file is too large."
       }
     },
@@ -855,7 +864,8 @@
   },
   "edit-fund": {
     "title": "Edit fund",
-    "navigation-back-text": "All data will be deleted. Do you want to continue?",
+    "navigation-back-text":
+      "All data will be deleted. Do you want to continue?",
     "confirm": "Confirm",
     "settings": {
       "fields": {
@@ -864,7 +874,8 @@
         "description": "Description",
         "description-requirements": "Requirement from 20 to 500 symbols",
         "upload-logo": "Upload fund logo",
-        "upload-logo-rules": "At least 300 x 300px PNG or JPG file. The maximum file size is 2MB."
+        "upload-logo-rules":
+          "At least 300 x 300px PNG or JPG file. The maximum file size is 2MB."
       },
       "hints": {
         "entry-fee": "Description about entry fee is here"
@@ -878,7 +889,8 @@
         "description-is-short": "Description is too short",
         "description-required": "Description is required",
         "account-type-required": "Account type is required",
-        "image-resolution-incorrect": "The resolution of the uploaded image is too low.",
+        "image-resolution-incorrect":
+          "The resolution of the uploaded image is too low.",
         "image-file-is-large": "The uploaded image file is too large."
       }
     },
