@@ -827,7 +827,7 @@
     }
   },
   "edit-program": {
-    "title": "Edit fund",
+    "title": "Edit program",
     "navigation-back-text":
       "All data will be deleted. Do you want to continue?",
     "confirm": "Confirm",
