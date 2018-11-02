@@ -15,12 +15,13 @@ import { Link } from "react-router-dom";
 import { formatValue } from "utils/formatter";
 import replaceParams from "utils/replace-params";
 
+import AssetEditContainer from "../../../../../../modules/asset-edit/asset-edit-container";
+import { PROGRAM } from "../../../../../../modules/asset-edit/asset-edit.constants";
 import ProgramDetailsInvestment from "../program-details-investment/program-details-investment";
+import ClosePeriodContainer from "./close-period/close-period-container";
 import CloseProgramContainer from "./close-program/close-program-container";
 import ProgramDetailsFavorite from "./program-details-favorite";
 import ProgramDetailsNotification from "./program-details-notificaton";
-import AssetEditContainer from "../../../../../../modules/asset-edit/asset-edit-container";
-import { PROGRAM } from "../../../../../../modules/asset-edit/asset-edit.constants";
 
 export const composeProgramNotificationsUrl = url => {
   return replaceParams(PROGRAM_NOTIFICATIONS_ROUTE, {
@@ -33,6 +34,7 @@ class ProgramDetailsDescription extends PureComponent {
     isOpenInvestmentPopup: false,
     isOpenCloseProgramPopup: false,
     isOpenEditProgramPopup: false,
+    isOpenClosePeriodPopup: false,
     isOpenAboutLevels: false,
     anchor: null
   };
@@ -74,11 +76,22 @@ class ProgramDetailsDescription extends PureComponent {
     updateDetails();
   };
 
+  handleOpenClosePeriodPopup = () => {
+    this.setState({ isOpenClosePeriodPopup: true });
+  };
+  handleCloseClosePeriodPopup = () => {
+    this.setState({ isOpenClosePeriodPopup: false });
+  };
+  handleApplyClosePeriodPopup = updateDetails => () => {
+    updateDetails();
+  };
+
   render() {
     const {
       isOpenInvestmentPopup,
       isOpenCloseProgramPopup,
       isOpenEditProgramPopup,
+      isOpenClosePeriodPopup,
       isOpenAboutLevels,
       anchor
     } = this.state;
@@ -247,9 +260,25 @@ class ProgramDetailsDescription extends PureComponent {
                       color="secondary"
                       variant="outlined"
                       onClick={this.handleOpenCloseProgramPopup}
-                      disabled={!canCloseProgram}
+                      disabled={
+                        !programDescription.personalProgramDetails
+                          .canCloseProgram
+                      }
                     >
                       {t("program-details-page.description.close-program")}
+                    </GVButton>
+
+                    <GVButton
+                      className="program-details-description__invest-btn"
+                      color="secondary"
+                      variant="outlined"
+                      onClick={this.handleOpenClosePeriodPopup}
+                      disabled={
+                        !programDescription.personalProgramDetails
+                          .canClosePeriod
+                      }
+                    >
+                      {t("program-details-page.close-period.title")}
                     </GVButton>
                     <GVButton
                       className="program-details-description__invest-btn"
@@ -281,6 +310,13 @@ class ProgramDetailsDescription extends PureComponent {
                     id={programDescription.id}
                     onClose={this.handleCloseInvestmentPopup}
                     onInvest={updateDetails}
+                  />
+
+                  <ClosePeriodContainer
+                    open={isOpenClosePeriodPopup}
+                    onCancel={this.handleCloseClosePeriodPopup}
+                    onApply={this.handleApplyClosePeriodPopup(updateDetails)}
+                    id={programDescription.id}
                   />
 
                   <CloseProgramContainer
