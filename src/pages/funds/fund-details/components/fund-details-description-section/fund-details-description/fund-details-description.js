@@ -72,6 +72,10 @@ class FundDetailsDescription extends PureComponent {
       fundDescription.personalFundDetails &&
       fundDescription.personalFundDetails.isFavorite;
 
+    const canCloseProgram =
+      fundDescription.personalFundDetails &&
+      fundDescription.personalFundDetails.canCloseProgram;
+
     const hasNotifications =
       fundDescription.personalFundDetails &&
       fundDescription.personalFundDetails.hasNotifications;
@@ -174,6 +178,7 @@ class FundDetailsDescription extends PureComponent {
                     color="secondary"
                     variant="outlined"
                     onClick={this.handleOpenEditFundPopup}
+                    disabled={!canCloseProgram}
                   >
                     {t("fund-details-page.description.edit-fund")}
                   </GVButton>

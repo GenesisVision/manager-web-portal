@@ -256,6 +256,7 @@ class ProgramDetailsDescription extends PureComponent {
                       color="secondary"
                       variant="outlined"
                       onClick={this.handleOpenEditProgramPopup}
+                      disabled={!canCloseProgram}
                     >
                       {t("program-details-page.description.edit-program")}
                     </GVButton>
