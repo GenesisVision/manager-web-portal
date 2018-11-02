@@ -50,7 +50,7 @@ class FundDetailsInvestment extends PureComponent {
             </span>
 
             <NumberFormat
-              value={investedAmount}
+              value={formatValue(investedAmount)}
               suffix={` ${balanceCurrency}`}
               displayType="text"
             />
@@ -70,7 +70,7 @@ class FundDetailsInvestment extends PureComponent {
               {t("fund-details-page.description.profit")}
             </span>
             <NumberFormat
-              value={profitPercent}
+              value={formatValue(profitPercent)}
               suffix=" %"
               displayType="text"
             />
