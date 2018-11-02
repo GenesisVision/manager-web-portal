@@ -16,6 +16,7 @@ import { FUND, PROGRAM } from "../asset-edit.constants";
 
 const AssetEditForm = ({
   t,
+  dirty,
   values,
   info,
   currency,
@@ -33,7 +34,7 @@ const AssetEditForm = ({
     errors.logo &&
     (errors.logo.width || errors.logo.height || errors.logo.size);
   return (
-    <form className="dialog__bottom" id="invest-form" onSubmit={handleSubmit}>
+    <form className="dialog__bottom" id="edit-form" onSubmit={handleSubmit}>
       <GVFormikField
         type="text"
         name="title"
@@ -90,7 +91,7 @@ const AssetEditForm = ({
           type="submit"
           id="signUpFormSubmit"
           className="invest-form__submit-button"
-          disabled={disabled}
+          disabled={disabled || !dirty}
         >
           {t("edit-program.confirm")}
         </GVButton>
@@ -111,7 +112,7 @@ export default compose(
         src: filesService.getFileUrl(props.info.logo.src),
         id: props.info.logo.src,
         isNew: false,
-        isDefault: true,
+        isDefault: !!!props.info.logo.src,
         width: undefined,
         height: undefined,
         size: undefined
