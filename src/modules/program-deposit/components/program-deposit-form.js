@@ -23,6 +23,8 @@ const ProgramDepositForm = ({
   const investAmount = parseFloat(values.amount || 0) - parseFloat(gvFee);
 
   const isAllow = values => {
+    if (info.isOwnProgram) return true;
+
     const { floatValue, formattedValue } = values;
     const { availableInWallet, availableToInvest } = info;
     const fee = calculateValueOfEntryFee(floatValue, info.entryFee);
