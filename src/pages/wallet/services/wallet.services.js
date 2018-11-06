@@ -56,6 +56,7 @@ export const cancelWithdrawRequest = txId => (dispatch, getState) => {
           true
         )
       );
+      dispatch(fetchWalletBalance());
       dispatch(fetchWalletTransactions());
       return response;
     })
@@ -76,6 +77,7 @@ export const resendWithdrawRequest = txId => (dispatch, getState) => {
           true
         )
       );
+      dispatch(fetchWalletBalance());
       dispatch(fetchWalletTransactions());
       return response;
     })

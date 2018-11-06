@@ -13,6 +13,8 @@ import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
 import replaceParams from "utils/replace-params";
 
+import AssetEditContainer from "../../../../../../modules/asset-edit/asset-edit-container";
+import { FUND } from "../../../../../../modules/asset-edit/asset-edit.constants";
 import { formatValue } from "../../../../../../utils/formatter";
 import FundDetailsInvestment from "../fund-details-investment/fund-details-investment";
 import FundDetailsFavorite from "./fund-details-favorite";
@@ -28,6 +30,7 @@ class FundDetailsDescription extends PureComponent {
   state = {
     isOpenInvestmentPopup: false,
     isOpenAboutLevels: false,
+    isOpenEditFundPopup: false,
     anchor: null
   };
 
@@ -43,9 +46,18 @@ class FundDetailsDescription extends PureComponent {
   handleCloseInvestmentPopup = () => {
     this.setState({ isOpenInvestmentPopup: false });
   };
+  handleOpenEditFundPopup = () => {
+    this.setState({ isOpenEditFundPopup: true });
+  };
+  handleCloseEditFundPopup = () => {
+    this.setState({ isOpenEditFundPopup: false });
+  };
+  handleApplyEditFundPopup = updateDetails => () => {
+    updateDetails();
+  };
 
   render() {
-    const { isOpenInvestmentPopup } = this.state;
+    const { isOpenInvestmentPopup, isOpenEditFundPopup } = this.state;
     const {
       t,
       canWithdraw,
@@ -59,6 +71,24 @@ class FundDetailsDescription extends PureComponent {
     const isFavorite =
       fundDescription.personalFundDetails &&
       fundDescription.personalFundDetails.isFavorite;
+
+    const canCloseProgram =
+      fundDescription.personalFundDetails &&
+      fundDescription.personalFundDetails.canCloseProgram;
+
+    const hasNotifications =
+      fundDescription.personalFundDetails &&
+      fundDescription.personalFundDetails.hasNotifications;
+
+    const composeEditInfo = {
+      id: fundDescription.id,
+      title: fundDescription.title,
+      description: fundDescription.description,
+      logo: {
+        src: fundDescription.logo
+      }
+    };
+
     return (
       <div className="fund-details-description">
         <div className="fund-details-description__left">
@@ -136,19 +166,40 @@ class FundDetailsDescription extends PureComponent {
                   <GVButton
                     className="fund-details-description__invest-btn"
                     onClick={this.handleOpenInvestmentPopup}
-                    disabled={!fundDescription.canInvest}
+                    disabled={
+                      !fundDescription.personalProgramDetails ||
+                      !fundDescription.personalProgramDetails.canInvest
+                    }
                   >
                     {t("fund-details-page.description.invest")}
                   </GVButton>
+                  <GVButton
+                    className="fund-details-description__invest-btn"
+                    color="secondary"
+                    variant="outlined"
+                    onClick={this.handleOpenEditFundPopup}
+                    disabled={!canCloseProgram}
+                  >
+                    {t("fund-details-page.description.edit-fund")}
+                  </GVButton>
                   <FundDetailContext.Consumer>
                     {({ updateDetails }) => (
-                      <FundDepositContainer
-                        open={isOpenInvestmentPopup}
-                        id={fundDescription.id}
-                        type={"fund"}
-                        onClose={this.handleCloseInvestmentPopup}
-                        onInvest={updateDetails}
-                      />
+                      <Fragment>
+                        <FundDepositContainer
+                          open={isOpenInvestmentPopup}
+                          id={fundDescription.id}
+                          type={"fund"}
+                          onClose={this.handleCloseInvestmentPopup}
+                          onInvest={updateDetails}
+                        />
+                        <AssetEditContainer
+                          open={isOpenEditFundPopup}
+                          info={composeEditInfo}
+                          onClose={this.handleCloseEditFundPopup}
+                          onApply={this.handleApplyEditFundPopup(updateDetails)}
+                          type={FUND}
+                        />
+                      </Fragment>
                     )}
                   </FundDetailContext.Consumer>
                 </div>
@@ -173,6 +224,7 @@ class FundDetailsDescription extends PureComponent {
           <FundDetailsNotification
             url={composeFundNotificationsUrl(fundDescription.url)}
             disabled={isFavoritePending}
+            hasNotifications={hasNotifications}
           />
         </div>
       </div>

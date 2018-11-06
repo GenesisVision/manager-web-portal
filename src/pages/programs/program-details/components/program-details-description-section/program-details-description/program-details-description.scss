@@ -118,7 +118,10 @@
   }
 
   &__invest-button-container {
-    padding: $padding-middle-mobile 0;
+    padding-bottom: $padding-middle-mobile;
+    & > button {
+      margin-top: $padding-middle-mobile;
+    }
     :not(:last-child) {
       margin-right: $padding-middle-mobile;
     }
@@ -212,12 +215,12 @@
     justify-content: center;
     cursor: pointer;
     color: $label-color;
-    .icon path {
-      stroke: $label-color;
-    }
     .icon--ring {
       width: 27px;
       height: 27px;
+    }
+    &-icon svg [stroke] {
+      stroke: $label-color;
     }
     &:hover {
       path {
@@ -235,6 +238,17 @@
       letter-spacing: 0.3px;
       color: $main-color;
       text-align: center;
+    }
+
+    & &-icon--active path {
+      fill: $primary-color;
+      stroke: $primary-color;
+    }
+    &:hover &-icon--active path {
+      stroke: $text-accent-color;
+    }
+    &-icon-notification path {
+      stroke: $label-color;
     }
   }
 
@@ -274,7 +288,10 @@
       line-height: $font-size-middle * 2;
     }
     &__invest-button-container {
-      padding: $padding-middle 0;
+      padding-bottom: $padding-middle;
+      & > button {
+        margin-top: $padding-middle;
+      }
       :not(:last-child) {
         margin-right: $padding-middle;
       }

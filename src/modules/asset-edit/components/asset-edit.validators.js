@@ -1,6 +1,6 @@
 import Yup from "yup";
 
-const createProgramSettingsValidationSchema = ({ t, ...props }) =>
+const editAssetSettingsValidationSchema = ({ t, ...props }) =>
   Yup.object().shape({
     logo: Yup.object().shape({
       width: Yup.number().min(
@@ -35,37 +35,7 @@ const createProgramSettingsValidationSchema = ({ t, ...props }) =>
       .max(
         500,
         t("create-program-page.settings.validation.description-is-long")
-      ),
-    currency: Yup.string().required(
-      t("create-program-page.settings.validation.currency-required")
-    ),
-    periodLength: Yup.string().required(
-      t("create-program-page.settings.validation.period-required")
-    ),
-    leverage: Yup.string().required(
-      t("create-program-page.settings.validation.leverage-required")
-    ),
-    entryFee: Yup.number()
-      .required(t("create-program-page.settings.validation.entry-fee-required"))
-      .max(
-        props.programsInfo.managerMaxEntryFee,
-        "Entry fee must be less than  " +
-          props.programsInfo.managerMaxEntryFee +
-          " %"
-      ),
-    successFee: Yup.number()
-      .required(
-        t("create-program-page.settings.validation.success-fee-required")
       )
-      .max(
-        props.programsInfo.managerMaxSuccessFee,
-        "Success fee must be less than  " +
-          props.programsInfo.managerMaxSuccessFee +
-          " %"
-      ),
-    accountType: Yup.string().required(
-      t("create-program-page.settings.validation.account-type-required")
-    )
   });
 
-export default createProgramSettingsValidationSchema;
+export default editAssetSettingsValidationSchema;

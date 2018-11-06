@@ -8,9 +8,9 @@ const Tabs = ({ t }) => {
       <GVTab
         value={"investor"}
         label={
-          // <a href={process.env.REACT_APP_INVESTOR_PORTAL_URL}>
-          t("auth.tabs.investor")
-          // </a>
+          <a href={process.env.REACT_APP_INVESTOR_PORTAL_URL}>
+            {t("auth.tabs.investor")}
+          </a>
         }
       />
       <GVTab value={"manager"} label={t("auth.tabs.manager")} />

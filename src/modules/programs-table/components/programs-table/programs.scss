@@ -168,7 +168,7 @@ $description-block-width: 250px;
 }
 
 .programs-table__cell {
-  padding: 0 $padding-small;
+  padding: $padding-small/2 $padding-small;
   &--avatar-title {
     display: flex;
     flex-direction: row;
@@ -217,7 +217,7 @@ $description-block-width: 250px;
     background: $secondary-color;
     padding: $padding/1.5;
     border-radius: $border-radius 0 0 $border-radius;
-    max-width: 318px;
+    min-width: 218px;
   }
 
   &__collapse {
@@ -252,7 +252,6 @@ $description-block-width: 250px;
     font-size: $title-text-size/1.5;
     letter-spacing: 0.2px;
     margin-bottom: $padding/2.5/1.5;
-    word-break: break-all;
     .gv-btn {
       padding: 0;
     }

@@ -1,3 +1,4 @@
+import assetEditReducer from "modules/asset-edit/reducer/asset-edit.reducer";
 import fundDepositReducer from "modules/fund-deposit/reducer/fund-deposit.reducer";
 import fundNotificationsReducer from "modules/fund-notifications/reducers/fund-notifications.reducers";
 import headerReducer from "modules/header/reducer/header-reducer";
@@ -30,6 +31,7 @@ export default combineReducers({
   programNotifications: programNotificationsReducer,
   fundNotifications: fundNotificationsReducer,
   programDeposit: programDepositReducer,
+  assetEdit: assetEditReducer,
   fundDeposit: fundDepositReducer,
   manager: managerReducer,
   programsData: programsReducer,

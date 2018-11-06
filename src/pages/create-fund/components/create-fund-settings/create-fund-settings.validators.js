@@ -23,12 +23,22 @@ const createFundSettingsValidationSchema = ({ t, ...props }) =>
       .required(t("create-fund-page.settings.validation.description-required"))
       .min(20, t("create-fund-page.settings.validation.description-is-short"))
       .max(500, t("create-fund-page.settings.validation.description-is-long")),
-    entryFee: Yup.string().required(
-      t("create-fund-page.settings.validation.entry-fee-required")
-    ),
-    exitFee: Yup.string().required(
-      t("create-fund-page.settings.validation.success-fee-required")
-    ),
+    entryFee: Yup.number()
+      .required(t("create-fund-page.settings.validation.entry-fee-required"))
+      .max(
+        props.programsInfo.managerMaxEntryFee,
+        "Entry fee must be less than  " +
+          props.programsInfo.managerMaxEntryFee +
+          " %"
+      ),
+    exitFee: Yup.number()
+      .required(t("create-fund-page.settings.validation.exit-fee-required"))
+      .max(
+        props.programsInfo.managerMaxExitFee,
+        "Exit fee must be less than  " +
+          props.programsInfo.managerMaxExitFee +
+          " %"
+      ),
     remainder: Yup.number()
       .required(t("create-fund-page.settings.validation.assets-share"))
       .max(0, t("create-fund-page.settings.validation.assets-share")),

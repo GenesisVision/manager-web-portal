@@ -32,7 +32,7 @@ const AppRoutes = () => {
   return (
     <AppLayout>
       <Switch>
-        <Redirect exact from={HOME_ROUTE} to={FUNDS_ROUTE} />
+        <Redirect exact from={HOME_ROUTE} to={PROGRAMS_ROUTE} />
         <Route path={PROGRAMS_ROUTE} component={ProgramsRoutes} />
         <Route path={GLOBAL_SEARCH_ROUTE} component={GlobalSearchPage} />
         <Route path={FUNDS_ROUTE} component={FundsRoutes} />
