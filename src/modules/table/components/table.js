@@ -90,11 +90,13 @@ class Table extends Component {
             </table>
           )}
         </Scrollbars>
-        <TableFooter
-          paging={this.props.paging}
-          updatePaging={this.props.updatePaging}
-          isPending={this.props.isPending}
-        />
+        {this.props.paging && (
+          <TableFooter
+            paging={this.props.paging}
+            updatePaging={this.props.updatePaging}
+            isPending={this.props.isPending}
+          />
+        )}
       </div>
     );
   }
