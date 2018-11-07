@@ -33,7 +33,7 @@ class Dialog extends Component {
                 className="dialog__close dialog__close--inside"
                 onClick={this.props.onClose}
               >
-                {t("buttons.close")}
+                <CloseIcon />
               </GVButton>
               {this.props.top && (
                 <div className="dialog__top">{this.props.top}</div>
