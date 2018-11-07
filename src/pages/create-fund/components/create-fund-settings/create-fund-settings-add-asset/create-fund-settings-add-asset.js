@@ -1,13 +1,12 @@
 import "../create-fund-settings.scss";
 
-import classNames from "classnames";
-import Popover from "components/popover/popover";
-import { GVTextField } from "gv-react-components";
-import React from "react";
-
+import classnames from "classnames";
 import FundAssetImage from "components/avatar/fund-asset-image/fund-asset-image";
 import { SearchIcon } from "components/icon/search-icon";
+import Popover from "components/popover/popover";
 import Regulator from "components/regulator/regulator";
+import { GVTextField } from "gv-react-components";
+import React from "react";
 import Scrollbars from "react-custom-scrollbars";
 
 class CreateFundSettingsAddAsset extends React.Component {
@@ -86,7 +85,7 @@ class CreateFundSettingsAddAsset extends React.Component {
                             <input
                               value={asset.percent}
                               onChange={handlePercentChange(asset)}
-                              className={classNames(
+                              className={classnames(
                                 "popover-add__regulator-input",
                                 {
                                   "popover-add__regulator-input--mute":

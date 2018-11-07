@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classnames from "classnames";
 import { RingIcon } from "components/icon/ring-icon";
 import React from "react";
 import { translate } from "react-i18next";
@@ -11,7 +11,7 @@ const FundDetailsNotificaton = ({ t, url, hasNotifications }) => {
     <Link to={url}>
       <div className="fund-details-description__control">
         <RingIcon
-          className={classNames("fund-details-description__control-icon", {
+          className={classnames("fund-details-description__control-icon", {
             "fund-details-description__control-icon--active": hasNotifications
           })}
         />
