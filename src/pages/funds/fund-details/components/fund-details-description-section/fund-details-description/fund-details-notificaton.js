@@ -6,9 +6,14 @@ import { Link } from "react-router-dom";
 import { compose } from "redux";
 import isAuthenticated from "shared/decorators/is-authenticated";
 
-const FundDetailsNotificaton = ({ t, url, hasNotifications }) => {
+const FundDetailsNotificaton = ({ t, url, hasNotifications, title }) => {
   return (
-    <Link to={url}>
+    <Link
+      to={{
+        pathname: url,
+        state: `/ ${title}`
+      }}
+    >
       <div className="fund-details-description__control">
         <RingIcon
           className={classnames("fund-details-description__control-icon", {

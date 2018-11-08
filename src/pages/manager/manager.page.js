@@ -48,7 +48,10 @@ class ManagerPage extends Component {
               <ManagerDescriptionContainer managerProfile={managerProfile} />
             </div>
             <div className="manager__history">
-              <ManagerHistorySection managerId={managerProfile.id} />
+              <ManagerHistorySection
+                managerId={managerProfile.id}
+                title={managerProfile.username}
+              />
             </div>
           </div>
         </Page>
