@@ -26,7 +26,7 @@ const TableBody = ({
       <tr>
         <td colSpan="11">
           {(createButtonBody &&
-            message !== "Loading..." &&
+            message !== t("table.loading") &&
             createAsset(createButtonBody, createText)) || (
             <div className="message">{message}</div>
           )}
@@ -34,15 +34,16 @@ const TableBody = ({
       </tr>
     ) : (
       (createButtonBody &&
-        message !== "Loading..." &&
+        message !== t("table.loading") &&
         createAsset(createButtonBody, createText)) || (
         <div className="message">{message}</div>
       )
     );
   };
   const renderItems = () => {
-    if (items === null || items === undefined) return setMessage("Loading...");
-    if (items.length === 0) return setMessage("There are no items.");
+    if (items === null || items === undefined)
+      return setMessage(t("table.loading"));
+    if (items.length === 0) return setMessage(t("table.no-items"));
     return items.map((x, idx) => (
       <Fragment key={x.id || idx}>{children(x)}</Fragment>
     ));
