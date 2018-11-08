@@ -7,8 +7,9 @@ import moment from "moment";
 import { composeManagerDetailsUrl } from "pages/manager/manager.page";
 import React from "react";
 import { Link } from "react-router-dom";
+import { translate } from "react-i18next";
 
-const ManagersTableRow = ({ manager }) => {
+const ManagersTableRow = ({ t, manager }) => {
   return (
     <TableRow className="managers-table__row">
       <TableCell className="managers-table__cell--username">
@@ -25,4 +26,4 @@ const ManagersTableRow = ({ manager }) => {
   );
 };
 
-export default ManagersTableRow;
+export default translate()(ManagersTableRow);
