@@ -9,12 +9,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { translate } from "react-i18next";
 
-const ManagersTableRow = ({ t, manager }) => {
+const ManagersTableRow = ({ t, manager, title }) => {
   return (
     <TableRow className="managers-table__row">
       <TableCell className="managers-table__cell--username">
         <ProfileAvatar url={manager.avatar} alt={manager.username} />
-        <Link to={composeManagerDetailsUrl(manager.url)}>
+        <Link
+          to={{
+            pathname: composeManagerDetailsUrl(manager.url),
+            state: `/ ${title}`
+          }}
+        >
           <GVButton variant="text" color="secondary">
             {manager.username}
           </GVButton>
