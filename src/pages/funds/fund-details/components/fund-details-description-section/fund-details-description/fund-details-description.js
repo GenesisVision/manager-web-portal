@@ -167,8 +167,8 @@ class FundDetailsDescription extends PureComponent {
                     className="fund-details-description__invest-btn"
                     onClick={this.handleOpenInvestmentPopup}
                     disabled={
-                      !fundDescription.personalProgramDetails ||
-                      !fundDescription.personalProgramDetails.canInvest
+                      !fundDescription.personalFundDetails ||
+                      !fundDescription.personalFundDetails.canInvest
                     }
                   >
                     {t("fund-details-page.description.invest")}
