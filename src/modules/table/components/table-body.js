@@ -1,5 +1,6 @@
 import { ChartIcon } from "components/icon/chart-icon";
 import React, { Fragment } from "react";
+import { translate } from "react-i18next";
 
 const TableBody = ({
   t,
@@ -52,4 +53,4 @@ const TableBody = ({
   return <Tag className={className}>{renderItems()}</Tag>;
 };
 
-export default TableBody;
+export default translate()(TableBody);
