@@ -49,7 +49,13 @@ class DashboardPrograms extends Component {
   };
 
   render() {
-    const { t, createButtonToolbar, createButtonBody, createText } = this.props;
+    const {
+      t,
+      createButtonToolbar,
+      createButtonBody,
+      createText,
+      title
+    } = this.props;
     return (
       <TableContainer
         createButtonToolbar={createButtonToolbar}
@@ -84,13 +90,25 @@ class DashboardPrograms extends Component {
           <TableRow>
             <TableCell className="programs-table__cell dashboard-programs__cell--title">
               <div className="dashboard-programs__cell--avatar-title">
-                <AssetAvatar
-                  url={program.logo}
-                  level={program.level}
-                  alt={program.title}
-                  color={program.color}
-                />
-                <Link to={composeProgramDetailsUrl(program.url)}>
+                <Link
+                  to={{
+                    pathname: composeProgramDetailsUrl(program.url),
+                    state: `/ ${title}`
+                  }}
+                >
+                  <AssetAvatar
+                    url={program.logo}
+                    level={program.level}
+                    alt={program.title}
+                    color={program.color}
+                  />
+                </Link>
+                <Link
+                  to={{
+                    pathname: composeProgramDetailsUrl(program.url),
+                    state: `/ ${title}`
+                  }}
+                >
                   <GVButton variant="text" color="secondary">
                     {program.title}
                   </GVButton>
