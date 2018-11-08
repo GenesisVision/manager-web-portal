@@ -33,7 +33,7 @@ class DashboardAssets extends Component {
 
   render() {
     const { tab } = this.state;
-    const { t } = this.props;
+    const { t, title } = this.props;
     return (
       <Surface className="dashboard-assets">
         <div className="dashboard-assets__head">
@@ -57,6 +57,7 @@ class DashboardAssets extends Component {
                 CREATE_PROGRAM_PAGE_ROUTE
               )}
               createText={t("dashboard.create-program-text")}
+              title={title}
             />
           )}
           {tab === "funds" && (
@@ -70,6 +71,7 @@ class DashboardAssets extends Component {
                 CREATE_FUND_PAGE_ROUTE
               )}
               createText={t("dashboard.create-fund-text")}
+              title={title}
             />
           )}
         </div>

@@ -13,18 +13,14 @@ import React, { Component, Fragment } from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
+import { composeFundsDetailsUrl } from "../../../../funds/funds.routes";
 
-import replaceParams from "../../../../../utils/replace-params";
 import { DASHBOARD_FUNDS_COLUMNS } from "../../../dashboard.constants";
 import {
   getDashboardFunds,
   updateDashboardFundsFilters
 } from "../../../services/dashboard-funds.service";
 import { formatValue } from "utils/formatter";
-
-const FUNDS_SLUG_URL_PARAM_NAME = "fundsSlugUrl";
-const FUNDS_ROUTE = "/funds";
-const FUND_DETAILS_ROUTE = `${FUNDS_ROUTE}/:${FUNDS_SLUG_URL_PARAM_NAME}`;
 
 class DashboardFunds extends Component {
   getDashboardFundsPlace = state => {
@@ -45,11 +41,13 @@ class DashboardFunds extends Component {
   };
 
   render() {
-    const fundDetailsUrl = fundUrl =>
-      replaceParams(FUND_DETAILS_ROUTE, {
-        [`:${FUNDS_SLUG_URL_PARAM_NAME}`]: fundUrl
-      });
-    const { t, createButtonToolbar, createButtonBody, createText } = this.props;
+    const {
+      t,
+      createButtonToolbar,
+      createButtonBody,
+      createText,
+      title
+    } = this.props;
     return (
       <TableContainer
         createButtonToolbar={createButtonToolbar}
@@ -84,13 +82,25 @@ class DashboardFunds extends Component {
           <TableRow>
             <TableCell className="funds-table__cell funds-table__cell--name">
               <div className="funds-table__cell--avatar-title">
-                <AssetAvatar
-                  url={fund.logo}
-                  alt={fund.title}
-                  color={fund.color}
-                />
+                <Link
+                  to={{
+                    pathname: composeFundsDetailsUrl(fund.url),
+                    state: `/ ${title}`
+                  }}
+                >
+                  <AssetAvatar
+                    url={fund.logo}
+                    alt={fund.title}
+                    color={fund.color}
+                  />
+                </Link>
                 <div className="funds-table__cell--title">
-                  <Link to={fundDetailsUrl(fund.url)}>
+                  <Link
+                    to={{
+                      pathname: composeFundsDetailsUrl(fund.url),
+                      state: `/ ${title}`
+                    }}
+                  >
                     <GVButton variant="text" color="secondary">
                       {fund.title}
                     </GVButton>
