@@ -5,15 +5,15 @@ const profileImageValidationSchema = ({ t }) =>
     logo: Yup.object().shape({
       width: Yup.number().min(
         300,
-        t("create-program-page.settings.validation.image-resolution-incorrect")
+        t("profile.settings.validation.image-resolution-incorrect")
       ),
       height: Yup.number().min(
         300,
-        t("create-program-page.settings.validation.image-resolution-incorrect")
+        t("profile.settings.validation.image-resolution-incorrect")
       ),
       size: Yup.number().max(
         2097152,
-        t("create-program-page.settings.validation.image-file-is-large")
+        t("profile.settings.validation.image-file-is-large")
       )
     })
   });

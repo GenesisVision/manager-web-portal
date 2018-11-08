@@ -1,11 +1,13 @@
-import "./create-program-settings.scss";
+import "./profile-image.scss";
 
 import { withFormik } from "formik";
 import { GVButton } from "gv-react-components";
 import React from "react";
 import { translate } from "react-i18next";
 import { compose } from "redux";
-import InputPhoto from "shared/components/form/input-photo/input-photo";
+import InputPhoto, {
+  getInputPhotoInitialValue
+} from "shared/components/form/input-photo/input-photo";
 import UserIcon from "shared/media/user-avatar.svg";
 
 import ProfileImageValidationSchema from "./profile-image.validators";
@@ -36,14 +38,7 @@ class ProfileImageForm extends React.Component {
   render() {
     const { isSubmitDisabled } = this;
 
-    const {
-      t,
-      handleSubmit,
-      values,
-      setFieldValue,
-      notifyError,
-      errors
-    } = this.props;
+    const { t, handleSubmit, values, setFieldValue, errors } = this.props;
 
     const imageInputError =
       errors &&
@@ -65,9 +60,7 @@ class ProfileImageForm extends React.Component {
           value={values.logo}
           defaultImage={UserIcon}
           onChange={setFieldValue}
-          notifyError={notifyError}
           className="profile-image__input-image"
-          alt="Program logo"
           error={imageInputError}
         />
 
@@ -89,22 +82,21 @@ export default compose(
   translate(),
   withFormik({
     displayName: "ProfileImageForm",
-    mapPropsToValues: () => ({
+    mapPropsToValues: props => ({
       logo: {
-        cropped: null,
-        src: "",
-        isDefault: true,
-        isUpdated: false,
-        width: undefined,
-        height: undefined,
-        size: undefined,
-        filetype: undefined
+        ...getInputPhotoInitialValue(),
+        src: props.avatar
       }
     }),
     validationSchema: ProfileImageValidationSchema,
     handleSubmit: (values, { props, setSubmitting, setFieldValue }) => {
       props.handleSubmit(values.logo.cropped, src => {
-        setFieldValue("logo", { ...values.logo, isUpdated: false, src });
+        setFieldValue("logo", {
+          ...values.logo,
+          isUpdated: false,
+          src,
+          isCrop: false
+        });
         setSubmitting(false);
       });
     }

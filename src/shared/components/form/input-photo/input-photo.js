@@ -6,8 +6,21 @@ import classnames from "classnames";
 import React, { Component } from "react";
 import Cropper from "react-cropper";
 import Dropzone from "react-dropzone";
+import { translate } from "react-i18next";
 
 import InputPhotoDefault from "./input-photo-default";
+
+export const getInputPhotoInitialValue = () => ({
+  isDefault: true,
+  isUpdated: false,
+  isCrop: false,
+  cropped: null,
+  src: "",
+  width: undefined,
+  height: undefined,
+  size: undefined,
+  filetype: undefined
+});
 
 class InputPhoto extends Component {
   constructor(props) {
@@ -15,6 +28,13 @@ class InputPhoto extends Component {
     const { onChange, value, name } = this.props;
 
     if (value.src) {
+      onChange(name, { ...value, isDefault: false });
+    }
+  }
+
+  componentDidUpdate() {
+    const { name, value, onChange } = this.props;
+    if (value.src && value.isDefault) {
       onChange(name, { ...value, isDefault: false });
     }
   }
@@ -27,10 +47,12 @@ class InputPhoto extends Component {
     const reader = new FileReader();
     reader.onload = () => {
       const data = {
+        ...getInputPhotoInitialValue(),
         src: reader.result,
         filename: img.name,
         filetype: img.type,
-        isDefault: false
+        isDefault: false,
+        isCrop: true
       };
       onChange(name, data);
     };
@@ -56,7 +78,8 @@ class InputPhoto extends Component {
         cropped: blob,
         width: croppedCanvas.width,
         height: croppedCanvas.height,
-        size: blob.size
+        size: blob.size,
+        isUpdated: true
       };
       onChange(name, img);
     }, value.filetype);
@@ -73,6 +96,7 @@ class InputPhoto extends Component {
       cropped: null,
       src: "",
       isDefault: true,
+      isCrop: false,
       isUpdated: true,
       width: undefined,
       height: undefined,
@@ -82,10 +106,33 @@ class InputPhoto extends Component {
     event.stopPropagation();
   };
 
+  get isShowDefaultImage() {
+    const { isDefault, isCrop } = this.props.value;
+
+    return isDefault && !isCrop;
+  }
+
+  get isShowPreview() {
+    const { isDefault, isCrop } = this.props.value;
+
+    return !isDefault && !isCrop;
+  }
+
+  get isShowCropper() {
+    return this.props.value.isCrop;
+  }
+
   render() {
-    const { className, value, defaultImage, error } = this.props;
+    const { className, value, defaultImage, error, t } = this.props;
     const { isDefault, src } = value;
-    const { onDrop, onCrop, clear } = this;
+    const {
+      onDrop,
+      onCrop,
+      clear,
+      isShowDefaultImage,
+      isShowPreview,
+      isShowCropper
+    } = this;
     return (
       <div
         className={classnames("input-photo", className, {
@@ -105,10 +152,23 @@ class InputPhoto extends Component {
           }}
           onDrop={onDrop}
         >
-          <div className="input-photo__dropzone-helper">Drop files...</div>
+          <div className="input-photo__dropzone-helper">
+            {t("fields.input-photo.drop-files")}
+          </div>
           <div className="input-photo__dropzone-content">
             <div className="input-photo__image-container">
-              {!isDefault && (
+              {isShowDefaultImage && (
+                <InputPhotoDefault defaultImage={defaultImage} />
+              )}
+              {isShowPreview && (
+                <span
+                  className="input-photo__preview-img"
+                  style={{
+                    backgroundImage: `url(${src})`
+                  }}
+                />
+              )}
+              {isShowCropper && (
                 <Cropper
                   ref={cropper => {
                     this.cropper = cropper;
@@ -120,26 +180,22 @@ class InputPhoto extends Component {
                   imageSmoothingQuality="high"
                   ready={onCrop}
                   cropend={onCrop}
+                  scalable={false}
+                  zoomable={false}
                 />
               )}
-
-              {isDefault && <InputPhotoDefault defaultImage={defaultImage} />}
             </div>
-            <p className="input-photo__text input-photo__text--big">
-              Drag the image here or click{" "}
-              <span
-                className="input-photo__text-upload"
-                onClick={this.openFileDialog}
-              >
-                upload
-              </span>{" "}
-              to browse your files
+            <p
+              className="input-photo__text input-photo__text--big"
+              onClick={this.openFileDialog}
+            >
+              {t("fields.input-photo.text-download--big")}
             </p>
             <p
               className="input-photo__text input-photo__text--small"
               onClick={this.openFileDialog}
             >
-              Tap to upload the image
+              {t("fields.input-photo.text-download--small")}
             </p>
           </div>
         </Dropzone>
@@ -154,4 +210,4 @@ class InputPhoto extends Component {
   }
 }
 
-export default InputPhoto;
+export default translate()(InputPhoto);
