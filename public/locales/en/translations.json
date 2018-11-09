@@ -3,6 +3,10 @@
     "header": "Manager Portal",
     "title": "Manager Portal: "
   },
+  "table": {
+    "loading": "Loading...",
+    "no-items": "There are no items."
+  },
   "global-search-page": {
     "title": "Search",
     "heading": "Search Results",

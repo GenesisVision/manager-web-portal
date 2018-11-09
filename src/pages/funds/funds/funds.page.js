@@ -9,7 +9,6 @@ import FundsNavigationTabsContainer from "./components/funds-navigation-tabs/fun
 const FundsPage = ({ t }) => {
   return (
     <Page title={t("funds-page.title")}>
-      <FundsNavigationTabsContainer />
       <FacetCardsContainer />
       <FundsTableContainer title={"All funds"} />
     </Page>
