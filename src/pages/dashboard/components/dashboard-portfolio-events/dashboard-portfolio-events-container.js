@@ -60,12 +60,13 @@ class DashboardPortfolioEventsContainer extends Component {
   };
 
   renderEvents = () => {
-    const { isPending, data } = this.props;
+    const { isPending, data, title } = this.props;
     if (isPending && !data) return <DashboardPortfolioEventsLoader />;
     if (data === undefined) return null;
     return (
       (data.data.total && (
         <DashboardPortfolioEvents
+          title={title}
           events={data.data.events}
           fullEventsUrl={DASHBOARD_EVENTS_ROUTE}
         />

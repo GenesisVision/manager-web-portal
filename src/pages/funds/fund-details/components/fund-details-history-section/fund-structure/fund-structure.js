@@ -3,7 +3,6 @@ import "../fund-structure/fund-structure.scss";
 import FundAssetImage from "components/avatar/fund-asset-image/fund-asset-image";
 import { TableCell, TableRow } from "modules/table/components";
 import TableModule from "modules/table/components/table-module";
-import { DEFAULT_PAGING } from "modules/table/reducers/table-paging.reducer";
 import React, { Component } from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
@@ -33,7 +32,6 @@ class FundStructure extends Component {
         fetchOnMount={false}
         data={data}
         getItems={this.fetchFundStructure}
-        paging={DEFAULT_PAGING}
         columns={FUND_STRUCTURE_COLUMNS}
         renderHeader={column => (
           <span

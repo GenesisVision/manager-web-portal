@@ -3,6 +3,10 @@
     "header": "Manager Portal",
     "title": "Manager Portal: "
   },
+  "table": {
+    "loading": "Loading...",
+    "no-items": "There are no items."
+  },
   "global-search-page": {
     "title": "Search",
     "heading": "Search Results",
@@ -827,7 +831,7 @@
     }
   },
   "edit-program": {
-    "title": "Edit fund",
+    "title": "Edit program",
     "navigation-back-text":
       "All data will be deleted. Do you want to continue?",
     "confirm": "Confirm",
