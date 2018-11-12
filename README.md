@@ -1,4 +1,9 @@
-# manager-web-portal
+# Project Deprecated
+This project is no longer maintained. 
+Manager web portal has been moved to the [web-client](https://github.com/GenesisVision/web-client) monorepo.
+
+
+## manager-web-portal
 
 Genesis Vision Platform Manager SPA.
 
