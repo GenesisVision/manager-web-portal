@@ -20,7 +20,8 @@ i18n
       wait: true
     },
     backend: {
-      queryStringParams: { v: "0.0.2" }
+      loadPath: `${process.env.REACT_APP_BASENAME}locales/{{lng}}/{{ns}}.json`,
+      queryStringParams: { v: "0.0.4" }
     }
   });
 

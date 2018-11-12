@@ -1,6 +1,6 @@
 import "cropperjs/dist/cropper.css";
 
-import "./input-file.css";
+import "./input-file.scss";
 
 import classnames from "classnames";
 import React, { PureComponent } from "react";
@@ -33,6 +33,7 @@ class InputFile extends PureComponent {
     const { name, value } = this.props.field;
     const { setFieldValue } = this.props.form;
     const croppedCanvas = this.cropper.getCroppedCanvas();
+
     if (!croppedCanvas) return;
 
     croppedCanvas.toBlob(blob => {

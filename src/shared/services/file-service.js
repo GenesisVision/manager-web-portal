@@ -1,12 +1,20 @@
-import SwaggerFileApi from "../../services/api-client/swagger-file-api";
+import FileApi, { fileApiProxy } from "services/api-client/file-api";
 
 const getFileUrl = id => {
-  if (id === null) return "";
-  return `${process.env.REACT_APP_API_URL}/api/files/${id}`;
+  if (!id) return "";
+  return `${process.env.REACT_APP_API_URL}/v1.0/file/${id}`;
 };
 
-const uploadFile = file => {
-  return SwaggerFileApi.apiFilesUploadPost(file).then(response => response.id);
+const uploadFile = (file, authorization) => {
+  return FileApi.v10FileUploadPost(file, { authorization }).then(
+    response => response.id
+  );
+};
+
+const uploadFileProxy = (file, authorization) => {
+  return fileApiProxy
+    .v10FileUploadPost(file, { authorization })
+    .then(response => response.data.id);
 };
 
 const addLogoSrc = key => data => {
@@ -33,5 +41,5 @@ const addLogoSrc = key => data => {
   return data;
 };
 
-const filesService = { getFileUrl, uploadFile, addLogoSrc };
+const filesService = { getFileUrl, uploadFile, addLogoSrc, uploadFileProxy };
 export default filesService;
