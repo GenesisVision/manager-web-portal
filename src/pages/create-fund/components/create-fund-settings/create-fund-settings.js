@@ -13,7 +13,9 @@ import {
 import React from "react";
 import { translate } from "react-i18next";
 import NumberFormat from "react-number-format";
-import InputImage from "shared/components/form/input-image/input-image";
+import InputPhoto, {
+  getInputPhotoInitialValue
+} from "shared/components/form/input-photo/input-photo";
 import { allowValuesNumberFormat } from "utils/helpers";
 
 import AddButton from "../../../../components/add-button/add-button";
@@ -174,11 +176,10 @@ class CreateFundSettings extends React.Component {
                 <Field
                   name="logo"
                   render={({ field, form }) => (
-                    <InputImage
+                    <InputPhoto
                       {...field}
                       defaultImage={FundDefaultImage}
                       onChange={setFieldValue}
-                      alt="Fund logo"
                       error={imageInputError}
                     />
                   )}
@@ -366,15 +367,7 @@ export default translate()(
         exitFee: "",
         title: "",
         description: "",
-        logo: {
-          cropped: null,
-          src: "",
-          isNew: false,
-          isDefault: true,
-          size: undefined,
-          width: undefined,
-          height: undefined
-        },
+        logo: getInputPhotoInitialValue(),
         entryFee: ""
       };
     },
